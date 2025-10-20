@@ -22,7 +22,7 @@ def code_completion(file_path, code_lines):
 if __name__ == "__main__":
     repo_path = "./mal_update_dataset/multiple_commits_human_made/virus1"
     repo_name = "virus1"
-    commit = "0581b67d15224c2b4976e1ddc96f4d364bcc99a7"
+    commit = "981f22b0c283a85c13cfef4701de782cf7b70312"
     joern_workspace_path = "./joern_output"
     joern_path = os.path.join(joern_workspace_path, repo_name)
     
@@ -35,15 +35,13 @@ if __name__ == "__main__":
         base_url="https://ark.cn-beijing.volces.com/api/v3"
     )
     
-    
+    subprocess.run(['git', '-C', repo_path, 'checkout',commit], check=True)
     project = project.Project(repo_path, joern_path)
     
     for file, change_codes in file_change_codes.items():
         sensitive_api_result = llm_evaluate.sensitive_api_check('\n'.join(change_codes['added']))
         # print("Sensitive API Check Result:", sensitive_api_result)
-        if 'No sensitive functions found' not in sensitive_api_result:
-            # 切换到指定commit的代码
-            subprocess.run(['git', '-C', repo_path, 'checkout',commit], check=True)
+        if 'No sensitive functions found' not in sensitive_api_result: 
             results_func_list = code_completion(os.path.join(repo_path,file), file_change_lines[file]['added'])
             print("Results Func List:", results_func_list)
             for func_name,func_code in results_func_list.items():

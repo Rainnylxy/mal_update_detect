@@ -61,11 +61,13 @@ class Project:
         def is_call_node(node: int) -> bool:
             node_type = cpg.nodes[node]["label"]
             if node_type == "CALL":
+                if cpg.nodes[node]["METHOD_FULL_NAME"].strip() == "<unknownFullName>":
+                    return True
                 if re.match(r"^<.*>.*", cpg.nodes[node]["METHOD_FULL_NAME"]):
                     return False
                 return True
             return False
-
+        
         for node in cpg.nodes():
             if not is_method_node(node):
                 continue
@@ -80,11 +82,14 @@ class Project:
         
         def process_call_edge(edge_data):
             u, v, data = edge_data
-            if not is_call_node(u) or not is_method_node(v):
+            if not is_call_node(u) or (not is_method_node(v) and not cpg.nodes[v]["label"] == "IDENTIFIER"):
                 return
-            if "label" not in data or data["label"] != "CALL":
+            if cpg.nodes[v]["label"] == "IDENTIFIER":
+                if "<returnValue>" in cpg.nodes[v]["TYPE_FULL_NAME"]:
+                    return
+            if "label" not in data or (data["label"] != "CALL" and data["label"] != "POST_DOMINATE"):
                 return
-
+            
             call_start_line = int(cpg.nodes[u]["LINE_NUMBER"])
             call_start_cloumn = int(cpg.nodes[u]["COLUMN_NUMBER"])
 
@@ -129,6 +134,12 @@ class Project:
             # 使用找到的caller_method创建边
             edge_key = str(call_start_line) + ":" + str(call_start_cloumn)
             with edge_lock:
+                if data["label"] == "POST_DOMINATE":
+                    cg.add_node(v, **cpg.nodes[v])
+                    cg.nodes[v]["NODE_TYPE"] = "GLOBAL_METHOD"
+                    cg.nodes[v]["label"] = cg.nodes[v]["CODE"].split("\n")[0]
+                    if cg.nodes[v]["CODE"] == "<empty>":
+                        cg.nodes[v]["label"] = cg.nodes[v]["NAME"]
                 cg.add_edge(caller_method, v, edge_key, **cpg.nodes[u])
                 cg.edges[caller_method, v, edge_key]["label"] = cpg.nodes[u]["LINE_NUMBER"]
 
@@ -157,11 +168,93 @@ class Project:
             return G
 
         cg = remove_cycles(cg)
+        
+        # # 处理全局代码调用其他函数的情况
+        # for u, v, data in cpg.edges(data=True):
+        #     if not is_call_node(u) or not cpg.nodes[v]["label"] == "IDENTIFIER" or not data.get("label") == "POST_DOMINATE":
+        #         continue
+        #     call_start_line = int(cpg.nodes[u]["LINE_NUMBER"])
+        #     call_start_column = int(cpg.nodes[u]["COLUMN_NUMBER"])
+        #     cg.add_node(v, **cpg.nodes[v])
+        #     cg.nodes[v]["NODE_TYPE"] = "METHOD"
+        #     cg.nodes[v]["label"] = cg.nodes[v]["CODE"].split("\n")[0]
+        #     if cg.nodes[v]["CODE"] == "<empty>":
+        #         cg.nodes[v]["label"] = cg.nodes[v]["NAME"]
+        #     edge_key = str(call_start_line) + ":" + str(call_start_column)
+        #     cg.add_edge(u, v, edge_key, **cpg.nodes[u])
         # writing cg to dot file
         cg_path = os.path.join(cg_dir, "cg.dot")
         nx.nx_agraph.write_dot(cg, cg_path)
         return cg
     
+    @cached_property
+    def dataflow_graph(self):
+        cpg_dir = os.path.join(self.joern_path, 'cpg')
+        if not os.path.exists(cpg_dir):
+            raise FileNotFoundError(f"cpg dir not found in {cpg_dir}")
+        cpg_path = os.path.join(cpg_dir, "export.dot")
+        if not os.path.exists(cpg_path):
+            raise FileNotFoundError(f"export.dot is not found in {cpg_path}")
+        cpg: nx.MultiDiGraph = nx.nx_agraph.read_dot(cpg_path)
+
+        # 构建 dataflow 图（有向，多重边）
+        dfg = nx.MultiDiGraph()
+
+        def is_dataflow_edge(edge_data):
+            if edge_data.get("label") != "REACHING_DEF" and edge_data.get("label") != "CALL":
+                return False
+            # if edge_data.get("property") is None:
+            #     return False
+            return True
+
+        for u, v, data in cpg.edges(data=True):
+            # 只保留与数据流相关的节点类型（可扩展）
+            if u not in cpg.nodes or v not in cpg.nodes:
+                continue
+            
+            if cpg.nodes[u].get("label") == "FILE":
+                if data.get("label") != "CONTAINS" or cpg.nodes[v].get("label") != "METHOD":
+                    continue
+            elif not is_dataflow_edge(data):
+                continue
+
+            if cpg.nodes[v].get("label") in ["BLOCK","IDENTIFIER","METHOD_PARAMETER_IN"] or cpg.nodes[u].get("label") in ["BLOCK","IDENTIFIER","METHOD_PARAMETER_IN"]:
+                continue
+            
+            
+            # 添加节点并保留基本属性
+            for n in (u, v):
+                if n not in dfg.nodes:
+                    attrs = dict(cpg.nodes[n])
+                    dfg.add_node(n, **attrs)
+                    # 标准化一些显示字段
+                    dfg.nodes[n]["NODE_TYPE"] = attrs.get("label")
+                    dfg.nodes[n]["label"] = attrs.get("CODE", attrs.get("NAME", str(n))).split("\n")[0]
+                    if dfg.nodes[n]["label"] == "<empty>":
+                        dfg.nodes[n]["label"] = attrs.get("NAME", dfg.nodes[n]["label"])
+
+            # 使用 line:column:label 来构成边 key，避免 key 冲突
+            line = cpg.nodes[u].get("LINE_NUMBER", "?")
+            col = cpg.nodes[u].get("COLUMN_NUMBER", "?")
+            edge_key = f"{data.get('label','')}_{line}:{col}"
+
+            # 将边信息（可能包含调用点信息）写入 dfg
+            dfg.add_edge(u, v, key=edge_key, **data)
+            # 保证边上有个简短的 label（便于可视化）
+            dfg.edges[u, v, edge_key]["label"] = str(data.get("property", edge_key))
+
+        # 输出到文件，方便调试/可视化
+        dfg_dir = os.path.join(self.joern_path, 'dfg')
+        os.makedirs(dfg_dir, exist_ok=True)
+        dfg_path = os.path.join(dfg_dir, "dfg.dot")
+        try:
+            nx.nx_agraph.write_dot(dfg, dfg_path)
+        except Exception:
+            # 如果 write_dot 不可用，忽略写入但仍返回图
+            logger.debug("write_dot failed for dfg; graph returned in-memory")
+
+        return dfg
+        
 
 class Function:
     def __init__(self, file_path, function_name, callers=None, callees=None):
@@ -180,8 +273,8 @@ class Function:
     
     
 if __name__ == "__main__":
-    repo_path = '/home/lxy/lxy_codes/malicious_update/commit_test_repo'
-    joern_path = '/home/lxy/lxy_codes/malicious_update/joern_output/commit_test_repo'
+    repo_path = './commit_test_repo'
+    joern_path = './joern_output/commit_test_repo'
     project = Project(repo_path, joern_path)
+    project.dataflow_graph
     project.callgraph
-    

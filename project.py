@@ -181,8 +181,8 @@ class Function:
     
     
 if __name__ == "__main__":
-    repo_path = './commit_test_repo'
-    joern_path = './joern_output/commit_test_repo'
+    repo_path = '../commit_test_repo'
+    joern_path = '../joern_output/commit_test_repo'
     project = Project(repo_path, joern_path)
     project.datagraph
     # project.dataflow_graph

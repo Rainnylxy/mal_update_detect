@@ -100,7 +100,7 @@ class Project:
                     continue
                 method_nodes.append(node)
                 dfg.add_node(node,**cpg.nodes[node])
-                dfg.nodes[node]["label"] = cpg.nodes[node].get('label', '') + " " + cpg.nodes[node].get('CODE', '')
+                dfg.nodes[node]["label"] = cpg.nodes[node].get('label', '') + " " + cpg.nodes[node].get('CODE', '') + " "+ str(node)
             method_nodes.sort(key=lambda x: int(cpg.nodes[x].get("LINE_NUMBER", "0")))
             # 处理call
             for node in method_nodes:
@@ -113,18 +113,19 @@ class Project:
                     if cpg.nodes[v].get("ARGUMENT_INDEX") != '-1':
                         continue   
                     call_nodes.append(v)
-               
+                    if v=='30064771078':
+                        print("debug")
                     # 处理赋值语句引起的data flow
                     child_nodes = get_ast_childs(v)
                     left = child_nodes[0]
                     dfg.add_node(left,**cpg.nodes[left])
-                    dfg.nodes[left]["label"] = cpg.nodes[left].get('label', '') + " " + cpg.nodes[left].get('CODE', '')
+                    dfg.nodes[left]["label"] = cpg.nodes[left].get('label', '') + " " + cpg.nodes[left].get('CODE', '') + " "+ str(left)
                     dfg.add_node(v,**cpg.nodes[v])
-                    dfg.nodes[v]["label"] = cpg.nodes[v].get('CODE', '')
+                    dfg.nodes[v]["label"] = cpg.nodes[v].get('CODE', '') + " "+ str(v)
                     dfg.add_edge(v,left,label='DDG: '+cpg.nodes[v].get('CODE',''))
                     for right in child_nodes[1:]:
                         dfg.add_node(right,**cpg.nodes[right])
-                        dfg.nodes[right]["label"] = cpg.nodes[right].get('label', '') + " " + cpg.nodes[right].get('CODE', '')
+                        dfg.nodes[right]["label"] = cpg.nodes[right].get('label', '') + " " + cpg.nodes[right].get('CODE', '') + " "+ str(right)
                         # dfg.add_edge(right,left,label=cpg.nodes[v].get('CODE',''))
                         dfg.add_edge(right,v,label='DDG: '+cpg.nodes[v].get('CODE',''))
                         
@@ -142,8 +143,12 @@ class Project:
                         u_childs = get_ast_childs(u)
                         v_childs = get_ast_childs(v)
                         for v_child in v_childs:
+                            if cpg.nodes[u].get("CODE","") in cpg.nodes[v_child].get("CODE","") :
+                                dfg.add_edge(u, v_child, label='DDG: SAME VALUE')
+                                continue
                             if cpg.nodes[v_child].get("NAME") == cpg.nodes[u_childs[0]].get("NAME"):
                                 dfg.add_edge(u_childs[0], v_child, label='DDG: SAME VALUE')
+                                
                         for v_child in v_childs:
                             for u_child in u_childs[1:]:
                                 if cpg.nodes[v_child].get("NAME") == cpg.nodes[u_child].get("NAME"):

@@ -1,6 +1,7 @@
 import tree_sitter_python as tspython
 from tree_sitter import Language, Parser
 
+
 def find_enclosing_function(file_path, code_line):
     # Initialize the parser
     PY_LANGUAGE = Language(tspython.language())

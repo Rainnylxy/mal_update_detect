@@ -93,7 +93,7 @@ class Project:
             cfg_path = os.path.join(cfg_dir, cfg_file)
             cfg: nx.MultiDiGraph = nx.nx_agraph.read_dot(cfg_path)
             pdg: nx.MultiDiGraph = nx.nx_agraph.read_dot(cfg_path.replace('cfg', 'pdg'))
-            
+            dfg.name = pdg.name
             method_nodes = []
             for node in cfg.nodes():
                 if not is_method_node(node):
@@ -186,4 +186,4 @@ if __name__ == "__main__":
     project = Project(repo_path, joern_path)
     project.datagraph
     # project.dataflow_graph
-    project.callgraph
+    # project.callgraph

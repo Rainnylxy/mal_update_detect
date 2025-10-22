@@ -37,8 +37,7 @@ if __name__ == "__main__":
     
     subprocess.run(['git', '-C', repo_path, 'checkout',commit], check=True)
     project = project.Project(repo_path, joern_path)
-    project.dataflow_graph
-    project.callgraph
+    project.datagraph
     
     # for file, change_codes in file_change_codes.items():
     #     sensitive_api_result = llm_evaluate.sensitive_api_check('\n'.join(change_codes['added']))

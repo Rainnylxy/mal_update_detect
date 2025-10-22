@@ -351,60 +351,125 @@ class Project:
         if not os.path.exists(cpg_path):
             raise FileNotFoundError(f"export.dot is not found in {cpg_path}")
         cpg: nx.MultiDiGraph = nx.nx_agraph.read_dot(cpg_path)
-        
-        pdg_dir = os.path.join(self.joern_path, 'pdg')
-        if not os.path.exists(pdg_dir):
-            logger.warning(f"pdg dir not found in {pdg_dir}")
+
+        cfg_dir = os.path.join(self.joern_path, 'cfg')
+        if not os.path.exists(cfg_dir):
+            logger.warning(f"cfg dir not found in {cfg_dir}")
             return None
         
-        for pdg_file in os.listdir(pdg_dir):
+        def is_method_node(node: int) -> bool:
+            if node not in cpg.nodes:
+                return False
+            if "label" not in cpg.nodes[node]:
+                return False
+            node_type = cpg.nodes[node]["label"]
+            if node_type == "METHOD":
+                if re.match(r"^<.*>.*", cpg.nodes[node]["FULL_NAME"]):
+                    return False
+                return True
+            return False
+        
+        
+        def is_call_node(node: int) -> bool:
+            node_type = cpg.nodes[node]["label"]
+            if node_type == "CALL":
+                return True
+            return False
+        
+        def get_ast_childs(node: int) -> list[int]:
+            child_nodes = []
+            for v in cpg.successors(node):
+                for edge_data in cpg[node][v].values():
+                    if edge_data.get("label") == "AST":
+                        child_nodes.append(v)
+            
+            child_nodes.sort(key=lambda x: int(cpg.nodes[x].get("ARGUMENT_INDEX", "0")))
+            return child_nodes
+        
+        def get_call_arguments(node: int) -> list[int]:
+            argument_nodes = []
+            for v in cpg.successors(node):
+                for edge_data in cpg[node][v].values():
+                    if edge_data.get("label") == "ARGUMENT":
+                        argument_nodes.append(v)
+            argument_nodes.sort(key=lambda x: int(cpg.nodes[x].get("ARGUMENT_INDEX", "0")))
+            return argument_nodes
+        
+        for cfg_file in os.listdir(cfg_dir):
             dfg = nx.MultiDiGraph()
-            if not pdg_file.endswith('.dot'):
+            if not cfg_file.endswith('.dot'):
                 continue
-            pdg_path = os.path.join(pdg_dir, pdg_file)
-            pdg: nx.MultiDiGraph = nx.nx_agraph.read_dot(pdg_path)
-            if "<operator>" in pdg.name:
-                continue
-            assignment_nodes = {}
-            for u in pdg.nodes:
-                if cpg.nodes[u]["label"] == "CALL" and cpg.nodes[u]["METHOD_FULL_NAME"] == "<operator>.assignment":
-                    child_nodes = []
-                    for v in cpg.successors(u):
-                        for edge_data in cpg[u][v].values():
-                            if edge_data.get("label") == "AST":
-                                child_nodes.append(v)
-                    
-                    child_nodes.sort(key=lambda x: int(cpg.nodes[x].get("ARGUMENT_INDEX", "0")))
-                    left_node = child_nodes[0]
-                    right_node = child_nodes[-1]
-                    identifier_name = cpg.nodes[left_node].get('CODE')
-                    right_ast_type = cpg.nodes[right_node].get('label')
-                    if right_ast_type == "TYPE_REF":
+            cfg_path = os.path.join(cfg_dir, cfg_file)
+            cfg: nx.MultiDiGraph = nx.nx_agraph.read_dot(cfg_path)
+            pdg: nx.MultiDiGraph = nx.nx_agraph.read_dot(cfg_path.replace('cfg', 'pdg'))
+            method_nodes = []
+            for node in cfg.nodes():
+                if not is_method_node(node):
+                    continue
+                method_nodes.append(node)
+                dfg.add_node(node,**cpg.nodes[node])
+                dfg.nodes[node]["label"] = cpg.nodes[node].get('label', '') + " " + cpg.nodes[node].get('CODE', '')
+            method_nodes.sort(key=lambda x: int(cpg.nodes[x].get("LINE_NUMBER", "0")))
+            # 处理call
+            for node in method_nodes:
+                call_nodes = []
+                for u, v, data in cpg.edges(node, data=True):
+                    if not is_call_node(v):
                         continue
-                    assignment_nodes[u] = self.ASNode(u,left_node,right_node)
-                    dfg.add_node(left_node, **cpg.nodes[left_node])
-                    dfg.nodes[left_node]["label"] = identifier_name
-                    dfg.add_node(right_node, **cpg.nodes[right_node])
-                    dfg.nodes[right_node]["label"] = cpg.nodes[right_node]["CODE"]
-                    dfg.add_edge(right_node, left_node, key="DATAFLOW", label=f"DDG: {cpg.nodes[u]['CODE']}")
-
-            for key,assign_node in assignment_nodes.items():
-                for v in pdg.successors(assign_node.node_id):
-                    if cpg.nodes[v]["label"] == "CALL" and cpg.nodes[v]["METHOD_FULL_NAME"] == "<operator>.assignment":
-                        for edge_data in pdg[assign_node.node_id][v].values():
-                            if "DDG" in edge_data.get("label", "") and edge_data.get("label", "")!="DDG: ":
-                                # u的左和v的右建立数据流边
-                                
-                                dfg.add_edge(assign_node.left_node,assignment_nodes[v].right_node,key="DATAFLOW", label=edge_data.get("label", ""))
-                                
+                    if data.get("label", '') != "CONTAINS":
+                        continue
+                    if cpg.nodes[v].get("ARGUMENT_INDEX") != '-1':
+                        continue   
+                    call_nodes.append(v)
+               
+                    # 处理赋值语句引起的data flow
+                    child_nodes = get_ast_childs(v)
+                    left = child_nodes[0]
+                    dfg.add_node(left,**cpg.nodes[left])
+                    dfg.nodes[left]["label"] = cpg.nodes[left].get('label', '') + " " + cpg.nodes[left].get('CODE', '')
+                    dfg.add_node(v,**cpg.nodes[v])
+                    dfg.nodes[v]["label"] = cpg.nodes[v].get('CODE', '')
+                    dfg.add_edge(v,left,label='DDG: '+cpg.nodes[v].get('CODE',''))
+                    for right in child_nodes[1:]:
+                        dfg.add_node(right,**cpg.nodes[right])
+                        dfg.nodes[right]["label"] = cpg.nodes[right].get('label', '') + " " + cpg.nodes[right].get('CODE', '')
+                        # dfg.add_edge(right,left,label=cpg.nodes[v].get('CODE',''))
+                        dfg.add_edge(right,v,label='DDG: '+cpg.nodes[v].get('CODE',''))
+                        
+                 
+                 # 处理函数调用参数引起的data flow
+                call_nodes.sort(key=lambda x: int(cpg.nodes[x].get("LINE_NUMBER", "0")))   
+                for call_node in call_nodes:
+                    if call_node =='30064771087':
+                        print("debug")
+                    for u,v,data in pdg.edges(call_node, data=True):
+                        if "DDG" not in data.get("label", ''):
+                            continue
+                        if data.get("label", '') == "DDG: ":
+                            continue
+                        
                             
+                        u_childs = get_ast_childs(u)
+                        v_childs = get_ast_childs(v)
+                        
+                        for v_child in v_childs:
+                            if cpg.nodes[v_child].get("NAME") == cpg.nodes[u_childs[0]].get("NAME"):
+                                dfg.add_edge(u_childs[0], v_child, label='DDG: SAME VALUE')
+                        
+                        for v_child in v_childs:
+                            for u_child in u_childs[1:]:
+                                if cpg.nodes[v_child].get("NAME") == cpg.nodes[u_child].get("NAME"):
+                                    dfg.add_edge(u, v, label=data.get("label", ''))
+                                    break
+                        
+                        
             # 输出到文件，方便调试/可视化
             dfg_dir = os.path.join(self.joern_path, 'dfg')
             os.makedirs(dfg_dir, exist_ok=True)
-            dfg_path = os.path.join(dfg_dir, f"{pdg_file}_dfg.dot")
+            dfg_path = os.path.join(dfg_dir, f"{cfg_file}_dfg.dot")
             try:
                 nx.nx_agraph.write_dot(dfg, dfg_path)
-                logger.debug(f"DFG written to {dfg_path}")
+                # logger.debug(f"DFG written to {dfg_path}")
             except Exception:
                 # 如果 write_dot 不可用，忽略写入但仍返回图
                 logger.debug("write_dot failed for dfg; graph returned in-memory")

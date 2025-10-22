@@ -12,7 +12,8 @@ class Project:
     def __init__(self, repo_path, joern_path):
         self.repo_path = repo_path
         self.joern_path = joern_path
-        joern_helper.joern_export(repo_path, joern_path, language='pythonsrc', overwrite=True)
+        joern_helper.joern_export(repo_path, joern_path, language='pythonsrc', overwrite=False)
+    
     
     def get_function_callers(self, function_name):
         callers = []
@@ -187,6 +188,22 @@ class Project:
         nx.nx_agraph.write_dot(cg, cg_path)
         return cg
     
+    def pdg_to_dfg(self,pdg: nx.MultiDiGraph) -> nx.MultiDiGraph:
+        dfg = nx.MultiDiGraph()
+        for u, v, data in pdg.edges(data=True):
+            if re.match(r"^<.*>.*", pdg.nodes[v].get("label", "")) or re.match(r"^<.*>.*", pdg.nodes[u].get("label", "")):
+                continue
+            if "CDG" in data.get("label", ""):
+                continue
+            # if "RETURN" in pdg.nodes[v].get("label", "") or "RETURN" in pdg.nodes[u].get("label", ""):
+            #     continue
+            dfg.add_node(u, **pdg.nodes[u])
+            dfg.add_node(v, **pdg.nodes[v])
+            dfg.add_edge(u, v, key=data.get("label", ""), **data)
+        return dfg
+        
+    
+    
     @cached_property
     def dataflow_graph(self):
         cpg_dir = os.path.join(self.joern_path, 'cpg')
@@ -200,62 +217,201 @@ class Project:
         # 构建 dataflow 图（有向，多重边）
         dfg = nx.MultiDiGraph()
 
-        def is_dataflow_edge(edge_data):
-            if edge_data.get("label") != "REACHING_DEF" and edge_data.get("label") != "CALL":
-                return False
-            # if edge_data.get("property") is None:
-            #     return False
-            return True
-
-        for u, v, data in cpg.edges(data=True):
-            # 只保留与数据流相关的节点类型（可扩展）
-            if u not in cpg.nodes or v not in cpg.nodes:
+        # 读取 pdg 文件夹中的所有 dot 文件
+        pdg_dir = os.path.join(self.joern_path, 'pdg')
+        if not os.path.exists(pdg_dir):
+            logger.warning(f"pdg dir not found in {pdg_dir}")
+            return dfg
+        func_dfgs = {}
+        # 遍历 pdg 文件夹中的所有 .dot 文件
+        for pdg_file in os.listdir(pdg_dir):
+            if not pdg_file.endswith('.dot'):
                 continue
-            
-            if cpg.nodes[u].get("label") == "FILE":
-                if data.get("label") != "CONTAINS" or cpg.nodes[v].get("label") != "METHOD":
+            pdg_path = os.path.join(pdg_dir, pdg_file)
+            pdg: nx.MultiDiGraph = nx.nx_agraph.read_dot(pdg_path)
+            # 只对module级别和自定义函数的pdg进行处理
+            if "&lt;operator&gt;" in pdg.name:
+                continue
+            # logger.debug(f"Reading PDG from {pdg_path}")
+            if pdg.name == "&lt;module&gt;":
+                dfg = nx.compose(dfg, self.pdg_to_dfg(pdg))
+            else:
+                func_dfgs[pdg.name] = self.pdg_to_dfg(pdg)
+        func_dfgs["global_module"] = dfg  # 包含module级别的dfg
+        
+        
+        def get_node_by_label(graph: nx.MultiDiGraph, label: str):
+            for node in graph.nodes():
+                if label in graph.nodes[node]["label"]:
+                    return node
+            return None
+        
+        for func_dfg in func_dfgs.values():
+            for node in func_dfg.nodes():
+                if "label" not in func_dfg.nodes[node]:
                     continue
-            elif not is_dataflow_edge(data):
-                continue
+                if "&lt;operator&gt;.assignment" in func_dfg.nodes[node]["label"]:
+                    label = func_dfg.nodes[node]["label"]
+                    function_name = label.split('=')[1].strip().split('(')[0]   
+                    callee_dfg = func_dfgs.get(function_name)
+                    if callee_dfg is None:
+                        continue
+                    dfg = nx.compose(dfg, callee_dfg)
+                    method_return_node = get_node_by_label(callee_dfg, "METHOD_RETURN")
+                    if method_return_node is None:
+                        continue
+                    dfg.add_edge(method_return_node,node,key=f"{function_name}_CALL_DDG", label=f"{function_name}_CALL_DDG")
+                    dfg.edges[method_return_node, node, f"{function_name}_CALL_DDG"]["color"] = "red"
+                    dfg.nodes[node]["color"] = "blue"
+        
+        # 删除DDG为空的边
+        edges_to_remove = []
+        for u, v, data in dfg.edges(data=True):
+            if "label" in data and data["label"] in ["DDG: "]:
+                edges_to_remove.append((u, v, data.get("key")))
+        for u, v, k in edges_to_remove:
+            try:
+                dfg.remove_edge(u, v, key=k)
+            except Exception:
+                pass
+        
+        # # 合并具有相同label的传递边: 如果 a->b 和 b->c 的 edge label 相同，则合并为 a->c
+        # edges_to_add = []
+        # edges_to_check_remove = []
 
-            if cpg.nodes[v].get("label") in ["BLOCK","IDENTIFIER","METHOD_PARAMETER_IN"] or cpg.nodes[u].get("label") in ["BLOCK","IDENTIFIER","METHOD_PARAMETER_IN"]:
-                continue
+        # for node in list(dfg.nodes()):
+        #     # 获取所有入边
+        #     in_edges = list(dfg.in_edges(node, data=True, keys=True))
+        #     # 获取所有出边
+        #     out_edges = list(dfg.out_edges(node, data=True, keys=True))
             
-            
-            # 添加节点并保留基本属性
-            for n in (u, v):
-                if n not in dfg.nodes:
-                    attrs = dict(cpg.nodes[n])
-                    dfg.add_node(n, **attrs)
-                    # 标准化一些显示字段
-                    dfg.nodes[n]["NODE_TYPE"] = attrs.get("label")
-                    dfg.nodes[n]["label"] = attrs.get("CODE", attrs.get("NAME", str(n))).split("\n")[0]
-                    if dfg.nodes[n]["label"] == "<empty>":
-                        dfg.nodes[n]["label"] = attrs.get("NAME", dfg.nodes[n]["label"])
+        #     for u, b, k1, data1 in in_edges:
+        #         label1 = data1.get("label", "")
+        #         for b2, v, k2, data2 in out_edges:
+        #             label2 = data2.get("label", "")
+        #             # 如果两条边的label相同，且是同一个中间节点
+        #             if label1 == label2 and b == b2 == node and label1:
+        #                 # 添加新边 u->v，使用相同的label
+        #                 edges_to_add.append((u, v, label1, dict(data1)))
+        #                 # 标记可能需要删除的中间边
+        #                 edges_to_check_remove.append((u, b, k1))
+        #                 edges_to_check_remove.append((b, v, k2))
 
-            # 使用 line:column:label 来构成边 key，避免 key 冲突
-            line = cpg.nodes[u].get("LINE_NUMBER", "?")
-            col = cpg.nodes[u].get("COLUMN_NUMBER", "?")
-            edge_key = f"{data.get('label','')}_{line}:{col}"
+        # # 添加合并后的边
+        # for u, v, label, data in edges_to_add:
+        #     if not dfg.has_edge(u, v, key=label):
+        #         dfg.add_edge(u, v, key=label, **data)
 
-            # 将边信息（可能包含调用点信息）写入 dfg
-            dfg.add_edge(u, v, key=edge_key, **data)
-            # 保证边上有个简短的 label（便于可视化）
-            dfg.edges[u, v, edge_key]["label"] = str(data.get("property", edge_key))
-
+        # # 删除被合并的边（只删除那些中间节点没有其他用途的边）
+        # for u, v, k in edges_to_check_remove:
+        #     if dfg.has_edge(u, v, key=k):
+        #         # 检查中间节点是否还有其他边，如果没有则可以删除
+        #         try:
+        #             dfg.remove_edge(u, v, key=k)
+        #         except Exception:
+        #             pass
+        
+        # 删除孤立节点
+        isolated_nodes = list(nx.isolates(dfg))
+        dfg.remove_nodes_from(isolated_nodes)
         # 输出到文件，方便调试/可视化
         dfg_dir = os.path.join(self.joern_path, 'dfg')
         os.makedirs(dfg_dir, exist_ok=True)
+        for func_name, func_dfg in func_dfgs.items():
+            func_dfg_path = os.path.join(dfg_dir, f"{func_name}_dfg.dot")
+            try:
+                nx.nx_agraph.write_dot(func_dfg, func_dfg_path)
+                logger.debug(f"Function DFG for {func_name} written to {func_dfg_path}")
+            except Exception:
+                # 如果 write_dot 不可用，忽略写入但仍返回图
+                logger.debug(f"write_dot failed for function {func_name} dfg; graph returned in-memory")
         dfg_path = os.path.join(dfg_dir, "dfg.dot")
         try:
             nx.nx_agraph.write_dot(dfg, dfg_path)
+            logger.debug(f"DFG written to {dfg_path}")
         except Exception:
             # 如果 write_dot 不可用，忽略写入但仍返回图
             logger.debug("write_dot failed for dfg; graph returned in-memory")
 
         return dfg
+    
+    class ASNode:
+        def __init__(self, node_id,left_node,right_node):
+            self.node_id = node_id
+            self.left_node = left_node
+            self.right_node = right_node
+    
+    
+    @cached_property
+    def datagraph(self):
+        cpg_dir = os.path.join(self.joern_path, 'cpg')
+        if not os.path.exists(cpg_dir):
+            raise FileNotFoundError(f"cpg dir not found in {cpg_dir}")
+        cpg_path = os.path.join(cpg_dir, "export.dot")
+        if not os.path.exists(cpg_path):
+            raise FileNotFoundError(f"export.dot is not found in {cpg_path}")
+        cpg: nx.MultiDiGraph = nx.nx_agraph.read_dot(cpg_path)
         
+        pdg_dir = os.path.join(self.joern_path, 'pdg')
+        if not os.path.exists(pdg_dir):
+            logger.warning(f"pdg dir not found in {pdg_dir}")
+            return None
+        
+        for pdg_file in os.listdir(pdg_dir):
+            dfg = nx.MultiDiGraph()
+            if not pdg_file.endswith('.dot'):
+                continue
+            pdg_path = os.path.join(pdg_dir, pdg_file)
+            pdg: nx.MultiDiGraph = nx.nx_agraph.read_dot(pdg_path)
+            if "<operator>" in pdg.name:
+                continue
+            assignment_nodes = {}
+            for u in pdg.nodes:
+                if cpg.nodes[u]["label"] == "CALL" and cpg.nodes[u]["METHOD_FULL_NAME"] == "<operator>.assignment":
+                    child_nodes = []
+                    for v in cpg.successors(u):
+                        for edge_data in cpg[u][v].values():
+                            if edge_data.get("label") == "AST":
+                                child_nodes.append(v)
+                    
+                    child_nodes.sort(key=lambda x: int(cpg.nodes[x].get("ARGUMENT_INDEX", "0")))
+                    left_node = child_nodes[0]
+                    right_node = child_nodes[-1]
+                    identifier_name = cpg.nodes[left_node].get('CODE')
+                    right_ast_type = cpg.nodes[right_node].get('label')
+                    if right_ast_type == "TYPE_REF":
+                        continue
+                    assignment_nodes[u] = self.ASNode(u,left_node,right_node)
+                    dfg.add_node(left_node, **cpg.nodes[left_node])
+                    dfg.nodes[left_node]["label"] = identifier_name
+                    dfg.add_node(right_node, **cpg.nodes[right_node])
+                    dfg.nodes[right_node]["label"] = cpg.nodes[right_node]["CODE"]
+                    dfg.add_edge(right_node, left_node, key="DATAFLOW", label=f"DDG: {cpg.nodes[u]['CODE']}")
 
+            for key,assign_node in assignment_nodes.items():
+                for v in pdg.successors(assign_node.node_id):
+                    if cpg.nodes[v]["label"] == "CALL" and cpg.nodes[v]["METHOD_FULL_NAME"] == "<operator>.assignment":
+                        for edge_data in pdg[assign_node.node_id][v].values():
+                            if "DDG" in edge_data.get("label", "") and edge_data.get("label", "")!="DDG: ":
+                                # u的左和v的右建立数据流边
+                                
+                                dfg.add_edge(assign_node.left_node,assignment_nodes[v].right_node,key="DATAFLOW", label=edge_data.get("label", ""))
+                                
+                            
+            # 输出到文件，方便调试/可视化
+            dfg_dir = os.path.join(self.joern_path, 'dfg')
+            os.makedirs(dfg_dir, exist_ok=True)
+            dfg_path = os.path.join(dfg_dir, f"{pdg_file}_dfg.dot")
+            try:
+                nx.nx_agraph.write_dot(dfg, dfg_path)
+                logger.debug(f"DFG written to {dfg_path}")
+            except Exception:
+                # 如果 write_dot 不可用，忽略写入但仍返回图
+                logger.debug("write_dot failed for dfg; graph returned in-memory")
+        return None
+                    
+           
+        
 class Function:
     def __init__(self, file_path, function_name, callers=None, callees=None):
         self.file_path = file_path
@@ -276,5 +432,6 @@ if __name__ == "__main__":
     repo_path = './commit_test_repo'
     joern_path = './joern_output/commit_test_repo'
     project = Project(repo_path, joern_path)
-    project.dataflow_graph
+    project.datagraph
+    # project.dataflow_graph
     project.callgraph

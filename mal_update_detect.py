@@ -23,7 +23,7 @@ if __name__ == "__main__":
     repo_path = "./mal_update_dataset/multiple_commits_human_made/virus1"
     repo_name = "virus1"
     commit = "981f22b0c283a85c13cfef4701de782cf7b70312"
-    joern_workspace_path = "./joern_output"
+    joern_workspace_path = "./joern_workspace"
     joern_path = os.path.join(joern_workspace_path, repo_name)
     
     commit_helper = CommitHelper(repo_path, commit)
@@ -37,21 +37,23 @@ if __name__ == "__main__":
     
     subprocess.run(['git', '-C', repo_path, 'checkout',commit], check=True)
     project = project.Project(repo_path, joern_path)
+    project.dataflow_graph
+    project.callgraph
     
-    for file, change_codes in file_change_codes.items():
-        sensitive_api_result = llm_evaluate.sensitive_api_check('\n'.join(change_codes['added']))
-        # print("Sensitive API Check Result:", sensitive_api_result)
-        if 'No sensitive functions found' not in sensitive_api_result: 
-            results_func_list = code_completion(os.path.join(repo_path,file), file_change_lines[file]['added'])
-            print("Results Func List:", results_func_list)
-            for func_name,func_code in results_func_list.items():
-                callees = project.get_function_callees(func_name)
-                for callee in callees:
-                    print(f"Function '{func_name}' calls '{callee['label']}'")
-                # is_malicious = llm_evaluate.true_attack_check(func_code)
-                # print(f"Function '{func_name}' malicious assertion result:", is_malicious)
-        else:
-            print("No sensitive functions found, skipping malicious check.")
+    # for file, change_codes in file_change_codes.items():
+    #     sensitive_api_result = llm_evaluate.sensitive_api_check('\n'.join(change_codes['added']))
+    #     # print("Sensitive API Check Result:", sensitive_api_result)
+    #     if 'No sensitive functions found' not in sensitive_api_result: 
+    #         results_func_list = code_completion(os.path.join(repo_path,file), file_change_lines[file]['added'])
+    #         print("Results Func List:", results_func_list)
+    #         for func_name,func_code in results_func_list.items():
+    #             callees = project.get_function_callees(func_name)
+    #             for callee in callees:
+    #                 print(f"Function '{func_name}' calls '{callee['label']}'")
+    #             # is_malicious = llm_evaluate.true_attack_check(func_code)
+    #             # print(f"Function '{func_name}' malicious assertion result:", is_malicious)
+    #     else:
+    #         print("No sensitive functions found, skipping malicious check.")
   
 # 敏感信息提取->建立连接->发送敏感信息            
 

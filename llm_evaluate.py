@@ -35,14 +35,15 @@ class LLM_Evaluate:
         )
         return completion.choices[0].message.content
     
-    def true_attack_check(self, code_snippet):
+    def true_attack_check(self, code_snippet,function_descriptions=None,data_flow_info=None):
         completion = self.client.chat.completions.create(
             model="deepseek-r1-250120",
             messages=[
                 {"role": "system", "content": "You are a professional assistant about software supply chain security."
-                "I will give you a code snippet and you need to determine whether this code actually causes a real attack or harm to users, not just contains templates or patterns of malicious behavior. if the snippet itself is skeletal code or incomplete code, please reply 'No real attack detected'."
-                "If the code truly performs an attack (such as stealing data, executing unauthorized actions, or causing damage), please describe the attack and its impact. If not, please reply 'No real attack detected'."},
-                {"role": "user", "content": code_snippet}
+                "I will give you a code snippet and its sub-functions' behavior descriptions and data source.  You need to determine whether this code contains malicious behavior. if not, please reply 'No real attack detected' and the reason."
+                "Note: if a sub-function has description, it means that this sub-function has been completed."
+                },
+                {"role": "user", "content": code_snippet,"function_descriptions": function_descriptions,"data_flow_info": data_flow_info}
             ]
         )
         return completion.choices[0].message.content
@@ -55,6 +56,19 @@ class LLM_Evaluate:
                 {"role": "system", "content": "You are a professional assistant about software supply chain security."
                 "I will give you a code snippet and you need to tell me if this code snippet does true harm to users (such as backdoor, trojan, ransomware, keylogger,etc.)."
                 "if yes, please give full attack chain that demonstrates the harm. if not, please reply 'No attack chain constructed'."},
+                {"role": "user", "content": code_snippet}
+            ]
+        )
+        return completion.choices[0].message.content
+    
+    def function_behavior_generate(self, code_snippet):
+        completion = self.client.chat.completions.create(
+            # 将推理接入点 <Model>替换为 Model ID
+            model="deepseek-r1-250120",
+            messages=[
+                {"role": "system", "content": "You are a professional assistant about software supply chain security."
+                "I will give you a code snippet and you need to generate its function behavior."
+                },
                 {"role": "user", "content": code_snippet}
             ]
         )

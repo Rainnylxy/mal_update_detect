@@ -87,12 +87,7 @@ class CommitHelper:
 
 # 示例用法
 if __name__ == "__main__":
-    repo = "./commit_test_repo"
-    commit = "d4b1d3cf7148c7f0b50bccdec43ab7bf092d583f"
-    added, deleted = get_commit_changed_line_numbers(get_commit_diff(repo, commit))
-    print("Added Lines:")
-    for line in added:
-        print(line)
-    print("\nDeleted Lines:")
-    for line in deleted:
-        print(line)
+    repo = "../commit_test_repo"
+    commit = "e11ae3b7217d75aab734700a3bf783288b0425de"
+    commit_helper = CommitHelper(repo, commit)
+    print(commit_helper.get_commit_diff())

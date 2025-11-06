@@ -41,56 +41,57 @@ def sensitive_data_source(nodes):
     return None
 
 
+
 def analyze(repo_path,repo_name,commit_before,commit_after,joern_workspace_root):
-    # joern_path_before = os.path.join(joern_workspace_root, repo_name, commit_before[:5])
+    joern_path_before = os.path.join(joern_workspace_root, repo_name, commit_before[:5])
     joern_path_after = os.path.join(joern_workspace_root, repo_name, commit_after[:5])
-    # project_before = project.Project(repo_path, joern_path_before,commit_before,overwrite=False)
-    project_after = project.Project(repo_path, joern_path_after,commit_after,overwrite=True)
+    project_before = project.Project(repo_path, joern_path_before,commit_before,overwrite=False)
+    project_after = project.Project(repo_path, joern_path_after,commit_after,overwrite=False)
     
-    # project_before.build_taint_data_graph()
-    project_after.build_taint_data_graph()
-
-    # for func, dg in project_before.datagraph.items():
-    #     for node in dg.nodes(data=True):
-    #         pass
-    #     pass
-
-    # commit_helper = CommitHelper(repo_path, commit_after)
-    # # {filepath: {"added": [行号], "deleted": [行号]}}
-    # file_change_lines = commit_helper.get_commit_changed_line_numbers_by_file()
-    # for file,change_lines in file_change_lines.items():
-    #     # 处理新增行的代码
-    #     add_visited_lines = set()
-    #     for line in change_lines['added']:
-    #         add_visited_lines.add(line)
-    #         cpg = project_after.cpg
-    #         nodes = cpg.get_nodes_by_line(line)
-    #         s_node = sensitive_data_source(nodes)
-    #         # 有新的敏感数据源引入，追踪其数据流去向
-    #         if s_node:
-    #             project_after.backward_taint_trace(s_node)
-    # file_change_codes = commit_helper.get_commit_changed_lines_by_file()
+    project_before.build_taint_data_graph()
+    
+    # 判断commit中是否包含sensitive api
+    commit_helper = CommitHelper(repo_path, repo_path, commit_after)
+    file_changed_lines = commit_helper.get_commit_changed_line_numbers_by_file()
+    
+    taint_graph_before = project_before.taintDG
+    
+    # 扩展taint_graph_before，加入新的数据依赖关系
+    for node, data in taint_graph_before.nodes(data=True):
+        node_file = data.get("file_path", "")
+        line = data.get("LINE_NUMBER", -1)
+        if node_file in file_changed_lines:
+            changed_lines = file_changed_lines[node_file]["deleted"]
+            if line in changed_lines:
+                # 该节点对应的代码行在commit中被修改，通过neighbor similarity扩展
+                pass
+            node_after = project_after.find_node_by_location(node_file, data)
+            
+            if node_after:
+                # 将node_after的邻居节点加入到taint_graph_before中
+                for neighbor in project_after.taintDG.neighbors(node_after):
+                    if not taint_graph_before.has_node(neighbor):
+                        taint_graph_before.add_node(neighbor, **project_after.taintDG.nodes[neighbor])
+                    taint_graph_before.add_edge(node, neighbor, **project_after.taintDG.get_edge_data(node_after, neighbor))
+    
+    
+    # project_after.build_taint_data_graph()
     
     # llm_evaluate = LLM_Evaluate(
     #     api_key="1d368dbf-5a67-448f-9356-49f9efa2fc13",
     #     base_url="https://ark.cn-beijing.volces.com/api/v3"
     # )
     
-    # for file,change_lines in file_change_lines.items():
-    #     results_func_list = code_completion(os.path.join(repo_path,file), file_change_lines[file]['added'])
-    #     print("Results Func List:", results_func_list)
-    #     for func_name,func_code in results_func_list.items():
-            
-    #         pass
+
 
     
 
 
 if __name__ == "__main__":
-    repo_path = "/home/lxy/lxy_codes/mal_update_detect/mal_update_dataset/multiple_commits/Chrome_pass_stealer"
-    repo_name = "Chrome_pass_stealer"
-    commit_before = "244fcc8b307ad86425c8057eda45d8c29c73842e"
-    commit_after = "b17b3ea033c6d03f9fdcbc4e4fff1f05b51544ed"
+    repo_path = "/home/lxy/lxy_codes/mal_update_detect/commit_test_repo"
+    repo_name = "commit_test_repo"
+    commit_before = "915e2fd6e8ca096b90b3d3da4eb6ba74222f72ae"
+    commit_after = "aa0a7"
     joern_workspace_path = "/home/lxy/lxy_codes/mal_update_detect/joern_workspace"
 
 

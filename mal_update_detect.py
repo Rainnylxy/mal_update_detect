@@ -73,7 +73,7 @@ def analyze(repo_path,repo_name,commit_before,commit_after,joern_workspace_root)
     joern_path_before = os.path.join(joern_workspace_root, repo_name, commit_before[:5])
     joern_path_after = os.path.join(joern_workspace_root, repo_name, commit_after[:5])
     project_before = project.Project(repo_path, joern_path_before,commit_before,overwrite=False)
-    project_after = project.Project(repo_path, joern_path_after,commit_after,overwrite=False)
+    project_after = project.Project(repo_path, joern_path_after,commit_after,overwrite=True)
     
     project_before.build_taint_data_graph()
     project_after.switch_commit()
@@ -189,26 +189,34 @@ def analyze(repo_path,repo_name,commit_before,commit_after,joern_workspace_root)
 
 
 if __name__ == "__main__":
-    repo_path = "/home/lxy/lxy_codes/mal_update_detect/commit_test_repo"
-    repo_name = "commit_test_repo"
-    commit_before = "2c65af0431ce1af0490ad598153b794f7c4178ad"
-    commit_after = "e7a456f79a14b64efa95447d09cae53b3a2c942b"
-    joern_workspace_path = "/home/lxy/lxy_codes/mal_update_detect/joern_workspace"
-
-
+    repo_path = "/home/lxy/lxy_codes/mal_update_detect/mal_update_dataset/multiple_commits_human_made/ransomware4"
+    repo_name = "ransomware4"
     
-    analyze(repo_path,repo_name,commit_before,commit_after,joern_workspace_path)
+    # 获取最近3个提交（按时间升序，便于逐对比较）
+    try:
+        raw = subprocess.check_output(
+            ["git", "-C", repo_path, "rev-list", "--max-count=5", "--reverse", "HEAD"],
+            stderr=subprocess.DEVNULL
+        )
+        commit_list = raw.decode().strip().splitlines()
+    except subprocess.CalledProcessError:
+        commit_list = []
+
+    if not commit_list:
+        raise RuntimeError(f"No commits found in {repo_path}")
+    # commit_list = [
+    #     "034e6",
+    #     "f74df"
+    # ]
+    
+    joern_workspace_path = "/home/lxy/lxy_codes/mal_update_detect/joern_workspace"
+    
+    
+    joern_path_init = os.path.join(joern_workspace_path, repo_name, commit_list[0][:5])
+    project_init = project.Project(repo_path, joern_path_init, commit_list[0], overwrite=True)
+    
+    for i in range(len(commit_list) - 1):
+        commit_before = commit_list[i]
+        commit_after = commit_list[i + 1]
+        analyze(repo_path,repo_name,commit_before,commit_after,joern_workspace_path)
   
-# 敏感信息提取->建立连接->发送敏感信息            
-
-# 1、调用其他函数，本函数为最高层的：数据流来源，函数来源
-# 2、被调用方，影响上游的main函数：数据流去向，函数调用
-# 对每一个函数都需要补充函数信息，define、update、作用
-
-# 如何利用前置已有的信息？
-# 1、修改了哪些function
-# 2、对于每一个修改的function，是否传入了新的敏感的数据流，否->不处理，是->标记该函数，大模型生成函数描述
-
-
-# 函数初始化，
-# 对于每一个函数，1、是否引入新的敏感数据源，对于新的敏感数据源，追踪其数据流去向，对于中途遇到的函数调用，更新数据流信息与函数作用描述 

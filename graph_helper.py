@@ -27,10 +27,10 @@ class GraphHelper:
     
     def is_sensitive_builtin(function_name):
         sensitive_functions = [
-            "environ",
+            "environ","walk",
             "input", "getpass", "open", "read", "recv", "recvfrom",
             "urlopen", "requests.get", "requests.post", "pandas.read_csv",
-            "json.load", "yaml.load","write","remove","rename","connect","execute","CryptUnprotectData","getenv","mkdir"
+            "json.load", "yaml.load","write","remove","rename","connect","execute","CryptUnprotectData","getenv","mkdir","generate_key"
         ]
         return function_name in sensitive_functions
         

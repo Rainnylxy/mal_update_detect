@@ -184,7 +184,7 @@ class Project:
         sensitive_methods = {}
         # 处理返回值函数调用的传播
         for node, data in taint_graph.nodes(data=True):
-            if data.get("TYPE","") == "METHOD":
+            if data.get("label","") == "METHOD":
                 sensitive_methods[data['NAME']] = node
         
         pdg_dir = os.path.join(self.joern_path, "pdg")
@@ -490,8 +490,9 @@ class Project:
         comp_out_root = os.path.join(self.joern_path, 'taint_slices_components')
         os.makedirs(comp_out_root, exist_ok=True)
 
-        comp_map = {}
+        
         for idx, comp in enumerate(components, start=1):
+            comp_map = {}
             for node in comp:
                 data = taint_graph.nodes[node]
                 if node == "30064771118":

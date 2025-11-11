@@ -23,6 +23,7 @@ class Project:
         self.pdgs = {}
         self.load_pdgs()
 
+
     def get_pdg_file_path(self, pdg):
         for node in pdg.nodes():
             node_full_data = self.cpg.nodes[node]
@@ -54,26 +55,89 @@ class Project:
     
     
     
-    def find_node_by_location(self, file_path, node_data):
+    def find_similar_node(self,node_file, target_node,func_name, pdg_before: nx.MultiDiGraph):
+        pdg_after = self.pdgs.get((node_file, func_name), None)
+        
+        # target_data = self.cpg.nodes[target_node]
+        target_neighbors = set()
+        for neighbor in pdg_before.nodes():
+            if pdg_before.has_edge(target_node, neighbor) or pdg_before.has_edge(neighbor, target_node):
+                target_neighbors.add(neighbor)
+        
+        max_similarity = 0.0
+        best_match_node = None
+        
+        for node, data in pdg_after.nodes(data=True):
+            # if data.get("label","") != target_data.get("label",""):
+            #     continue
+            # 计算邻居相似度
+            neighbor_set = set()
+            for neighbor in pdg_before.nodes():
+                if pdg_before.has_edge(node, neighbor) or pdg_before.has_edge(neighbor, node):
+                    neighbor_set.add(neighbor)
+            intersection = target_neighbors.intersection(neighbor_set)
+            union = target_neighbors.union(neighbor_set)
+            similarity = len(intersection) / len(union) if len(union) > 0 else 0.0
+            
+            if similarity > max_similarity:
+                max_similarity = similarity
+                best_match_node = node
+        
+        return best_match_node
+    
+    
+    def find_node_by_location(self, file_path, node_data,deleted_lines=None, added_lines=None):
+        line_number = int(node_data.get("LINE_NUMBER", -1))
+        after_line_number = line_number
+        for line in deleted_lines:
+            if line < line_number:
+                after_line_number = after_line_number - 1
+                
+        for line in added_lines:
+            if line < line_number:
+                after_line_number = after_line_number + 1
+        
         pdgs = [pdg for (fp, _), pdg in self.pdgs.items() if fp == file_path]
+        
         for pdg in pdgs:
-            for node, data in pdg.nodes(data=True):
-                match = True
-                for key, value in node_data.items():
-                    if data.get(key) != value:
-                        match = False
-                        break
-                if match:
-                    return node
+            # print("debug")
+            for node in pdg.nodes:
+                data = self.cpg.nodes[node]
+                if int(data.get("LINE_NUMBER", -1)) == after_line_number:
+                    match = True
+                    for key, value in node_data.items():
+                        if key in ["label","COLUMN_NUMBER","NAME"]:
+                            if data.get(key) != value:
+                                match = False
+                                break
+                    if match:
+                        return node
         return None
     
+    def extend_taint_graph(self, taint_graph: nx.MultiDiGraph):
+         # 递归/迭代地展开 caller 链直到没有新节点加入（防止无限循环，设置最大迭代次数）
+        max_iterations = 10
+        for i in range(max_iterations):
+            before_nodes = set(taint_graph.nodes())
+            taint_graph = self.caller_taint_trace(taint_graph)
+            after_nodes = set(taint_graph.nodes())
+            if after_nodes == before_nodes:
+                break
+        
+        for i in range(max_iterations):
+            before_nodes = set(taint_graph.nodes())
+            taint_graph = self.no_argument_call_node_add(taint_graph)
+            taint_graph = self.sub_function_taint_trace(taint_graph)
+            after_nodes = set(taint_graph.nodes())
+            if after_nodes == before_nodes:
+                break
+        return taint_graph
     
     def build_taint_data_graph(self):
         pdg_dir = os.path.join(self.joern_path, "pdg")
         taint_graph = nx.MultiDiGraph()
         for pdg_path in os.listdir(pdg_dir):
-            pdg = nx.nx_agraph.read_dot(os.path.join(pdg_dir, pdg_path))
-            cpg = self.cpg
+            pdg = nx.nx_agraph.read_dot(os.path.join(pdg_dir, pdg_path)) 
             
             pdg.graph['file_path'] = self.get_pdg_file_path(pdg)
             for node in pdg.nodes():
@@ -83,16 +147,14 @@ class Project:
                 function_name = node_full_data.get("NAME", '')
                 if not graph_helper.GraphHelper.is_sensitive_builtin(function_name):
                     continue
-                if cpg.nodes[node].get("CODE") == "<empty>":
+                if self.cpg.nodes[node].get("CODE") == "<empty>":
                     continue
                
                 taint_graph = self.taint_trace(node,taint_graph, pdg)
                 taint_graph.nodes[node]['color'] = 'blue'
-
-        taint_graph = self.caller_taint_trace(taint_graph)
-        taint_graph = self.no_argument_call_node_add(taint_graph)
-        taint_graph = self.sub_function_taint_trace(taint_graph)
         
+        # taint_graph = self.caller_taint_trace(taint_graph)
+        taint_graph = self.extend_taint_graph(taint_graph)
         
         # 标记入度为0的节点为红色（设为填充红色以便在 dot 可视化中更明显）
         for node in taint_graph.nodes():
@@ -124,6 +186,7 @@ class Project:
         for node, data in taint_graph.nodes(data=True):
             if data.get("TYPE","") == "METHOD":
                 sensitive_methods[data['NAME']] = node
+        
         pdg_dir = os.path.join(self.joern_path, "pdg")
         for pdg_path in os.listdir(pdg_dir):
             pdg = nx.nx_agraph.read_dot(os.path.join(pdg_dir, pdg_path))
@@ -131,19 +194,37 @@ class Project:
             for node in pdg.nodes():
                 node_full_data = self.cpg.nodes[node]
                 if node_full_data.get("label", '') == "CALL":
-                    for arg in self.get_call_argument_nodes(node)[1:]:
-                        call_name = self.cpg.nodes[arg].get("NAME","")
+                    if node_full_data.get("METHOD_FULL_NAME","") == "<operator>.assignment":
+                        args = self.get_call_argument_nodes(node)[1:]
+                        for arg in args:
+                            call_name = self.cpg.nodes[arg].get("NAME","")
+                            if call_name in sensitive_methods:
+                                method_node = sensitive_methods[call_name]
+                                entry_node = arg
+                                # taint_graph.add_node(entry_node, **self.cpg.nodes[entry_node])
+                                # taint_graph.nodes[entry_node]["label"] = (
+                                #     self.cpg.nodes[entry_node].get('label', '') + " " +
+                                #     self.cpg.nodes[entry_node].get('CODE', '') + " " + str(entry_node)
+                                # )
+                                # taint_graph.nodes[entry_node]['file_path'] = pdg.graph.get('file_path','unknown')
+                                taint_graph = self.taint_trace(node, taint_graph, pdg)
+                                taint_graph.add_edge(entry_node, node, label="FUNCTION_CALL",color="blue")
+                                taint_graph.add_edge(entry_node, method_node, label="FUNCTION_CALL",color="blue")
+                    elif "<module>." in node_full_data.get("METHOD_FULL_NAME",""):
+                        call_name = node_full_data.get("NAME","")
                         if call_name in sensitive_methods:
                             method_node = sensitive_methods[call_name]
-                            entry_node = arg
-                            taint_graph.add_node(entry_node, **self.cpg.nodes[entry_node])
-                            taint_graph.nodes[entry_node]["label"] = (
-                                self.cpg.nodes[entry_node].get('label', '') + " " +
-                                self.cpg.nodes[entry_node].get('CODE', '') + " " + str(entry_node)
-                            )
+                            entry_node = node
+                            # taint_graph.add_node(entry_node, **self.cpg.nodes[entry_node])
+                            # taint_graph.nodes[entry_node]["label"] = (
+                            #     self.cpg.nodes[entry_node].get('label', '') + " " +
+                            #     self.cpg.nodes[entry_node].get('CODE', '') + " " + str(entry_node)
+                            # )
+                            # taint_graph.nodes[entry_node]['file_path'] = pdg.graph.get('file_path','unknown')
                             taint_graph = self.taint_trace(node, taint_graph, pdg)
                             taint_graph.add_edge(entry_node, node, label="FUNCTION_CALL",color="blue")
                             taint_graph.add_edge(entry_node, method_node, label="FUNCTION_CALL",color="blue")
+                    
         return taint_graph
 
     def no_argument_call_node_add(self, taint_graph):
@@ -160,10 +241,10 @@ class Project:
                     # 将 arg 节点插入到 parent -> node 之间，使用 label='ARGUMENT'
                     if not taint_graph.has_node(arg):
                         taint_graph.add_node(arg, **self.cpg.nodes[arg])
-                        taint_graph.nodes[arg]["label"] = (
-                            self.cpg.nodes[arg].get('label', '') + " " +
-                            self.cpg.nodes[arg].get('CODE', '') + " " + str(arg)
-                        )
+                        # taint_graph.nodes[arg]["label"] = (
+                        #     self.cpg.nodes[arg].get('label', '') + " " +
+                        #     self.cpg.nodes[arg].get('CODE', '') + " " + str(arg)
+                        # )
                         # 尝试继承父节点文件路径信息
                         taint_graph.nodes[arg]['file_path'] = taint_graph.nodes[node].get('file_path', 'unknown')
 
@@ -199,7 +280,7 @@ class Project:
                     continue
                 pdg = self.pdgs[(file_path, function_name)]
                 entry_node = None
-                method_node = None
+                # method_node = None
                 pdg.graph['file_path'] = self.get_pdg_file_path(pdg)
                 argument_flag = False
                 for n, d in pdg.nodes(data=True):
@@ -210,13 +291,13 @@ class Project:
                         if taint_graph.has_edge(node, entry_node):
                             continue
                         taint_graph.add_edge(node, entry_node, label="SUB_FUNCTION_CALL",color="red")
-                if not argument_flag and method_node:
-                    print(method_node)
-                    print(pdg.graph["name"])
-                    taint_graph = self.taint_trace(method_node, taint_graph, pdg)
-                    if taint_graph.has_edge(node, method_node):
-                        continue
-                    taint_graph.add_edge(node, method_node, label="SUB_FUNCTION_CALL",color="red")
+                # if not argument_flag and method_node:
+                #     print(method_node)
+                #     print(pdg.graph["name"])
+                #     taint_graph = self.taint_trace(method_node, taint_graph, pdg)
+                #     if taint_graph.has_edge(node, method_node):
+                #         continue
+                #     taint_graph.add_edge(node, method_node, label="SUB_FUNCTION_CALL",color="red")
         return taint_graph
     
     
@@ -241,13 +322,13 @@ class Project:
                     return True
         return False
 
-    def taint_trace(self, start_node, taint_graph: nx.MultiDiGraph, pdg: nx.MultiDiGraph) -> nx.MultiDiGraph:
-        if taint_graph.has_node(start_node):
-            return taint_graph
-        taint_graph.add_node(start_node, **self.cpg.nodes[start_node])
-        taint_graph.nodes[start_node]["label"] = self.cpg.nodes[start_node].get('label', '') + " " + self.cpg.nodes[start_node].get('CODE', '') + " "+ str(start_node)
-        taint_graph.nodes[start_node]['TYPE'] = self.cpg.nodes[start_node].get('label', '')
-        taint_graph.nodes[start_node]['file_path'] = pdg.graph.get('file_path','unknown')
+    def delta_taint_trace(self, start_node, pdg: nx.MultiDiGraph, taint_graph_before: nx.MultiDiGraph, node_pairs : dict) -> nx.MultiDiGraph:
+        if taint_graph_before.has_node(start_node):
+            return taint_graph_before
+        taint_graph_before.add_node(start_node, **self.cpg.nodes[start_node])
+        # taint_graph_before.nodes[start_node]["label"] = self.cpg.nodes[start_node].get('label', '') + " " + self.cpg.nodes[start_node].get('CODE', '') + " "+ str(start_node)
+        # taint_graph_before.nodes[start_node]['TYPE'] = self.cpg.nodes[start_node].get('label', '')
+        taint_graph_before.nodes[start_node]['file_path'] = pdg.graph.get('file_path','unknown')
         visited = set()
         to_visit = set()
         to_visit.add(start_node)
@@ -274,14 +355,15 @@ class Project:
                     continue
                 # if self.cpg.nodes[v].get("METHOD_FULL_NAME","") == "<operator>.addition":
                 #     continue
-                if taint_graph.has_node(v) and taint_graph.has_edge(u,v):
+                
+                if taint_graph_before.has_node(v) and taint_graph_before.has_edge(u,v):
                     continue
                 
-                taint_graph.add_node(v, **self.cpg.nodes[v])
-                taint_graph.nodes[v]["label"] = self.cpg.nodes[v].get('label', '') + " " + self.cpg.nodes[v].get('CODE', '') + " "+ str(v)
-                taint_graph.nodes[v]['TYPE'] = self.cpg.nodes[v].get('label', '')
-                taint_graph.nodes[v]['file_path'] = pdg.graph.get('file_path','unknown')
-                taint_graph.add_edge(u, v, **data)
+                taint_graph_before.add_node(v, **self.cpg.nodes[v])
+                # taint_graph_before.nodes[v]["label"] = self.cpg.nodes[v].get('label', '') + " " + self.cpg.nodes[v].get('CODE', '') + " "+ str(v)
+                # taint_graph_before.nodes[v]['TYPE'] = self.cpg.nodes[v].get('label', '')
+                taint_graph_before.nodes[v]['file_path'] = pdg.graph.get('file_path','unknown')
+                taint_graph_before.add_edge(u, v, **data)
                 
                 to_visit.add(v)
                 
@@ -315,6 +397,83 @@ class Project:
                 taint_graph.add_edge(u, v, **data  )    
                 to_visit.add(u)
 
+        return taint_graph
+        
+    
+    
+    def taint_trace(self, start_node, taint_graph: nx.MultiDiGraph, pdg: nx.MultiDiGraph) -> nx.MultiDiGraph:
+        if taint_graph.has_node(start_node):
+            return taint_graph
+        taint_graph.add_node(start_node, **self.cpg.nodes[start_node])
+        # taint_graph.nodes[start_node]["label"] = self.cpg.nodes[start_node].get('label', '') + " " + self.cpg.nodes[start_node].get('CODE', '') + " "+ str(start_node)
+        # taint_graph.nodes[start_node]['TYPE'] = self.cpg.nodes[start_node].get('label', '')
+        taint_graph.nodes[start_node]['file_path'] = pdg.graph.get('file_path','unknown')
+        visited = set()
+        to_visit = set()
+        to_visit.add(start_node)
+
+        while to_visit:
+            current_node = to_visit.pop()
+            if current_node in visited:
+                continue
+            visited.add(current_node)
+            node_attrs = pdg.nodes.get(current_node, {})
+            if node_attrs.get("label") is None:
+                continue
+
+            # 后向追踪
+            for u,v,data in pdg.out_edges(current_node, data=True):
+                node_attrs = pdg.nodes.get(v, {})
+                if node_attrs.get("label") is None:
+                    continue
+                if "DDG" not in data.get("label", ''):
+                    continue
+                if data.get("label", '') == "DDG: ":
+                    continue
+                if self.cpg.nodes[v].get("label","") == "METHOD_RETURN":
+                    continue
+                # if self.cpg.nodes[v].get("METHOD_FULL_NAME","") == "<operator>.addition":
+                #     continue
+                if taint_graph.has_node(v) and taint_graph.has_edge(u,v):
+                    continue
+                
+                taint_graph.add_node(v, **self.cpg.nodes[v])
+                # taint_graph.nodes[v]["label"] = self.cpg.nodes[v].get('label', '') + " " + self.cpg.nodes[v].get('CODE', '') + " "+ str(v)
+                # taint_graph.nodes[v]['TYPE'] = self.cpg.nodes[v].get('label', '')
+                taint_graph.nodes[v]['file_path'] = pdg.graph.get('file_path','unknown')
+                taint_graph.add_edge(u, v, **data)
+                
+                to_visit.add(v)
+                
+            # 前向追踪
+            # 前向追踪：找到以 current_node 为 end 的所有边（入边）
+            for u, v, data in pdg.in_edges(current_node, data=True):
+                # skip nodes that only have an id and no other attributes
+                node_attrs = pdg.nodes.get(u, {})
+                if node_attrs.get("label") is None:
+                    continue
+                if "DDG" not in data.get("label", ''):
+                    continue
+                if data.get("label", '') == "DDG: " and self.cpg.nodes[u].get("label","") != "METHOD":
+                    continue
+                # if self.cpg.nodes[u].get("METHOD_FULL_NAME", "") == "<operator>.addition":
+                #     continue
+                if taint_graph.has_node(u) and taint_graph.has_edge(u, v):
+                    continue
+                # if not self.has_ast_edge(u, current_node):
+                #     continue
+                taint_graph.add_node(u, **self.cpg.nodes[u])
+                # if self.cpg.nodes[u].get("label","") == "METHOD":
+                #     taint_graph.nodes[u]["label"] = self.cpg.nodes[u].get('label', '') + " " + self.cpg.nodes[u].get('NAME', '') + " "+ str(u)
+                # else:
+                #     taint_graph.nodes[u]["label"] = (
+                #         self.cpg.nodes[u].get('label', '') + " " +
+                #         self.cpg.nodes[u].get('CODE', '') + " " + str(u)
+                #     )
+                # taint_graph.nodes[u]['TYPE'] = self.cpg.nodes[u].get('label', '')
+                taint_graph.nodes[u]['file_path'] = pdg.graph.get('file_path','unknown')
+                taint_graph.add_edge(u, v, **data  )    
+                to_visit.add(u)
 
         return taint_graph
 
@@ -331,11 +490,11 @@ class Project:
         comp_out_root = os.path.join(self.joern_path, 'taint_slices_components')
         os.makedirs(comp_out_root, exist_ok=True)
 
+        comp_map = {}
         for idx, comp in enumerate(components, start=1):
-            comp_map = {}
             for node in comp:
                 data = taint_graph.nodes[node]
-                if node == "30064771156":
+                if node == "30064771118":
                     print("debug")
                 file_path = data.get('file_path')
                 line_number = data.get('LINE_NUMBER')

@@ -30,7 +30,7 @@ def find_enclosing_function(file_path, code_line):
             for child in func.children:
                 if child.type == 'identifier':
                     return child.text.decode('utf-8'),source_code[func.start_byte:func.end_byte]
-    return None, None
+    return "&lt;module&gt;", None
 
 def find_enclosing_class(file_path, code_line):
     # Initialize the parser

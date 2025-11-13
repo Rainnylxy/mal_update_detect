@@ -2,6 +2,7 @@ from concurrent.futures import ThreadPoolExecutor
 from functools import cached_property
 import os
 import re
+import subprocess
 import threading
 import networkx as nx
 from loguru import logger
@@ -50,8 +51,12 @@ class Project:
 
 
     def switch_commit(self):
-        os.chdir(self.repo_path)
-        os.system(f'git checkout {self.commit}')
+        subprocess.check_output(
+            ["git", "-C", self.repo_path, "checkout", self.commit],
+            stderr=subprocess.DEVNULL
+        )
+        # os.chdir(self.repo_path)
+        # os.system(f'git checkout {self.commit}')
     
     
     
@@ -86,17 +91,18 @@ class Project:
         return best_match_node
     
     
-    def find_node_by_location(self, file_path, node_data,deleted_lines=None, added_lines=None):
+    def find_node_by_location(self, file_path, node_data,deleted_lines=[], added_lines=[]):
         line_number = int(node_data.get("LINE_NUMBER", -1))
         after_line_number = line_number
+        
         for line in deleted_lines:
             if line < line_number:
                 after_line_number = after_line_number - 1
-                
+              
         for line in added_lines:
             if line < line_number:
                 after_line_number = after_line_number + 1
-        
+            
         pdgs = [pdg for (fp, _), pdg in self.pdgs.items() if fp == file_path]
         
         for pdg in pdgs:
@@ -321,84 +327,6 @@ class Project:
                 if edge_data.get("label") == "AST":
                     return True
         return False
-
-    def delta_taint_trace(self, start_node, pdg: nx.MultiDiGraph, taint_graph_before: nx.MultiDiGraph, node_pairs : dict) -> nx.MultiDiGraph:
-        if taint_graph_before.has_node(start_node):
-            return taint_graph_before
-        taint_graph_before.add_node(start_node, **self.cpg.nodes[start_node])
-        # taint_graph_before.nodes[start_node]["label"] = self.cpg.nodes[start_node].get('label', '') + " " + self.cpg.nodes[start_node].get('CODE', '') + " "+ str(start_node)
-        # taint_graph_before.nodes[start_node]['TYPE'] = self.cpg.nodes[start_node].get('label', '')
-        taint_graph_before.nodes[start_node]['file_path'] = pdg.graph.get('file_path','unknown')
-        visited = set()
-        to_visit = set()
-        to_visit.add(start_node)
-
-        while to_visit:
-            current_node = to_visit.pop()
-            if current_node in visited:
-                continue
-            visited.add(current_node)
-            node_attrs = pdg.nodes.get(current_node, {})
-            if node_attrs.get("label") is None:
-                continue
-
-            # 后向追踪
-            for u,v,data in pdg.out_edges(current_node, data=True):
-                node_attrs = pdg.nodes.get(v, {})
-                if node_attrs.get("label") is None:
-                    continue
-                if "DDG" not in data.get("label", ''):
-                    continue
-                if data.get("label", '') == "DDG: ":
-                    continue
-                if self.cpg.nodes[v].get("label","") == "METHOD_RETURN":
-                    continue
-                # if self.cpg.nodes[v].get("METHOD_FULL_NAME","") == "<operator>.addition":
-                #     continue
-                
-                if taint_graph_before.has_node(v) and taint_graph_before.has_edge(u,v):
-                    continue
-                
-                taint_graph_before.add_node(v, **self.cpg.nodes[v])
-                # taint_graph_before.nodes[v]["label"] = self.cpg.nodes[v].get('label', '') + " " + self.cpg.nodes[v].get('CODE', '') + " "+ str(v)
-                # taint_graph_before.nodes[v]['TYPE'] = self.cpg.nodes[v].get('label', '')
-                taint_graph_before.nodes[v]['file_path'] = pdg.graph.get('file_path','unknown')
-                taint_graph_before.add_edge(u, v, **data)
-                
-                to_visit.add(v)
-                
-            # 前向追踪
-            # 前向追踪：找到以 current_node 为 end 的所有边（入边）
-            for u, v, data in pdg.in_edges(current_node, data=True):
-                # skip nodes that only have an id and no other attributes
-                node_attrs = pdg.nodes.get(u, {})
-                if node_attrs.get("label") is None:
-                    continue
-                if "DDG" not in data.get("label", ''):
-                    continue
-                if data.get("label", '') == "DDG: " and self.cpg.nodes[u].get("label","") != "METHOD":
-                    continue
-                # if self.cpg.nodes[u].get("METHOD_FULL_NAME", "") == "<operator>.addition":
-                #     continue
-                if taint_graph.has_node(u) and taint_graph.has_edge(u, v):
-                    continue
-                # if not self.has_ast_edge(u, current_node):
-                #     continue
-                taint_graph.add_node(u, **self.cpg.nodes[u])
-                if self.cpg.nodes[u].get("label","") == "METHOD":
-                    taint_graph.nodes[u]["label"] = self.cpg.nodes[u].get('label', '') + " " + self.cpg.nodes[u].get('NAME', '') + " "+ str(u)
-                else:
-                    taint_graph.nodes[u]["label"] = (
-                        self.cpg.nodes[u].get('label', '') + " " +
-                        self.cpg.nodes[u].get('CODE', '') + " " + str(u)
-                    )
-                taint_graph.nodes[u]['TYPE'] = self.cpg.nodes[u].get('label', '')
-                taint_graph.nodes[u]['file_path'] = pdg.graph.get('file_path','unknown')
-                taint_graph.add_edge(u, v, **data  )    
-                to_visit.add(u)
-
-        return taint_graph
-        
     
     
     def taint_trace(self, start_node, taint_graph: nx.MultiDiGraph, pdg: nx.MultiDiGraph) -> nx.MultiDiGraph:
@@ -483,14 +411,14 @@ class Project:
             source_code = f.read()
         return source_code.splitlines()[line_number - 1]
      
-    def extract_taint_codes(self, taint_graph: nx.MultiDiGraph) -> dict[str, dict[int, str]]:
+    def extract_taint_codes(self, taint_graph: nx.MultiDiGraph) -> dict[str, str]:
         self.switch_commit()
         # 为每个弱连接子图生成单独切片并写入 joern_path/taint_slices_components/<component_i>/...
         components = list(nx.weakly_connected_components(taint_graph))
         comp_out_root = os.path.join(self.joern_path, 'taint_slices_components')
         os.makedirs(comp_out_root, exist_ok=True)
 
-        
+        code_slices = {}
         for idx, comp in enumerate(components, start=1):
             comp_map = {}
             for node in comp:
@@ -509,43 +437,28 @@ class Project:
                     continue
                 comp_map.setdefault(full_path, {})[int(line_number)] = code_line
 
-            # 将该子图的切片按文件写入 component 目录
-            comp_dir = os.path.join(comp_out_root, f'component_{idx}')
+            # 将该子图的所有代码行写入同一个文件（不按照原文件路径分割）
+            flat_lines = []
             for file_path, lines in comp_map.items():
-                rel_path = os.path.relpath(file_path, self.repo_path)
-                rel_dir = os.path.dirname(rel_path)
-                base_name, ext = os.path.splitext(os.path.basename(rel_path))
-                out_dir = os.path.join(comp_dir, rel_dir)
-                os.makedirs(out_dir, exist_ok=True)
-                out_filename = f"{base_name}_taint_slice_comp{idx}{ext or '.txt'}"
-                out_path = os.path.join(out_dir, out_filename)
+                for line_no, code_line in lines.items():
+                    flat_lines.append((file_path, int(line_no), code_line))
+            # 按文件路径和行号排序（可根据需要调整排序策略）
+            flat_lines.sort(key=lambda x: (x[0], x[1]))
 
-                with open(out_path, 'w', encoding='utf-8') as f:
-                    for line_no in sorted(lines.keys()):
-                        if line_no >= 0:
-                            # f.write("# "+str(line_no)   + "\n")
-                            f.write(lines[line_no].rstrip() + "\n")
-        return comp_map
-class Function:
-    def __init__(self, file_path, function_name, callers=None, callees=None):
-        self.file_path = file_path
-        self.function_name = function_name
-        self.callers = callers if callers is not None else []
-        self.callees = callees if callees is not None else []
-        self.define_commit = None
-        self.update_commit = None
-        self.purpose = None
-    
-    def set_values(self, define_commit, update_commit, purpose):
-        self.define_commit = define_commit
-        self.update_commit = update_commit
-        self.purpose = purpose
-    
-    
-if __name__ == "__main__":
-    repo_path = '../commit_test_repo'
-    joern_path = '../joern_output/commit_test_repo'
-    project = Project(repo_path, joern_path)
-    project.datagraph
-    # project.dataflow_graph
-    # project.callgraph
+            comp_dir = os.path.join(comp_out_root, f'component_{idx}')
+            os.makedirs(comp_dir, exist_ok=True)
+            out_path = os.path.join(comp_dir, f'component_{idx}_taint_slice.py')
+            codes=[]
+            with open(out_path, 'w', encoding='utf-8') as out_f:
+                current_file = None
+                for file_path, line_no, code_line in flat_lines:
+                    # 可选写入文件分隔注释，便于阅读
+                    if file_path != current_file:
+                        out_f.write(f"# FILE: {os.path.relpath(file_path, self.repo_path)}\n")
+                        current_file = file_path
+                    out_f.write(code_line.rstrip() + "\n")
+                    codes.append(code_line.rstrip())
+            code_slices[comp_dir] = "\n".join(codes) + "\n"
+        return code_slices
+
+

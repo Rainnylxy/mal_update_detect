@@ -1,6 +1,7 @@
 from loguru import logger
 import os
 from commit_helper import CommitHelper
+from commit_helper import map_old_to_new
 from llm_evaluate import LLM_Evaluate
 import ast_helper
 import subprocess
@@ -28,29 +29,54 @@ logger.add(
 
 
 
-def get_node_pairs(project_before: project.Project, project_after: project.Project, file_changed_lines: dict):
+def get_node_pairs(project_before: project.Project, project_after: project.Project, file_changed_lines: dict, commit_helper: CommitHelper) -> dict:
     taint_graph_before = project_before.taintDG
     node_pairs = {}
     for node, data in taint_graph_before.nodes(data=True):
+        if node == "30064771212":
+            print("debug")
         node_file = data.get("file_path", "")
         line = int(data.get("LINE_NUMBER", -1))
-        if node_file in file_changed_lines:
-            deleted_lines = file_changed_lines[node_file]["deleted"]
-            added_lines = file_changed_lines[node_file]["added"]
-            if line in deleted_lines:
-                node_after = project_after.find_node_by_location(node_file, data,deleted_lines, added_lines)
-                if node_after:
-                    node_pairs[node] = node_after
-                # 可能遇到函数重命名的情况，通过通过neighbor similarity进行匹配
-                else:
-                    func_name = ast_helper.find_enclosing_function(node_file, line)[0]
-                    node_after = project_after.find_similar_node(node_file,node,func_name,project_before.pdgs.get((node_file, func_name), None))
-                    if node_after:
-                        node_pairs[node] = node_after    
-        else:
-            node_after = project_after.find_node_by_location(node_file, data)
+        
+        # 处理文件未变更的情况
+        if node_file not in file_changed_lines:
+            after_line_number = commit_helper.after_commit_line_number(line)
+            node_after = project_after.find_node_by_location(node_file, data, after_line_number)
             if node_after:
                 node_pairs[node] = node_after
+            continue
+
+        # 处理文件有变更的情况
+        deleted_lines = file_changed_lines[node_file]["deleted"]
+
+        if line not in deleted_lines:
+            after_line_number = commit_helper.after_commit_line_number(line)
+            node_after = project_after.find_node_by_location(node_file, data, after_line_number)
+            if node_after:
+                node_pairs[node] = node_after
+            continue
+
+        # 处理行被删除的情况
+        after_line_number = commit_helper.after_commit_line_number(line)
+        node_after = project_after.find_node_by_location(node_file, data, after_line_number)
+        if node_after:
+            node_pairs[node] = node_after
+            continue
+
+        # 处理函数重命名的情况
+        project_before.switch_commit()
+        func_name_before = ast_helper.find_enclosing_function(os.path.join(project_before.repo_path, node_file), line)[0]
+        project_after.switch_commit()
+        func_name_after = ast_helper.find_enclosing_function(os.path.join(project_after.repo_path, node_file), line)[0]
+
+        if func_name_before and func_name_after:
+            node_after = project_after.find_similar_node(
+                node_file, node, func_name_after, 
+                project_before.pdgs.get((node_file, func_name_before), None)
+            )
+            if node_after:
+                node_pairs[node] = node_after
+    
     return node_pairs
 
 
@@ -168,7 +194,7 @@ def analyze(project_before:project.Project, project_after:project.Project):
     nx.nx_agraph.write_dot(sub_taint_graph, out_path)
     
     # 根据 node_pairs 将 project_before 的节点视为 node_after（node_before -> node_after），合并 sub_taint_graph
-    node_pairs = get_node_pairs(project_before, project_after, file_changed_lines)
+    node_pairs = get_node_pairs(project_before, project_after, file_changed_lines,commit_helper)
     merged_taint_graph = merge_taint_graphs(taint_graph_before, sub_taint_graph, project_after, node_pairs)
     
     # 输出合并后的图
@@ -186,15 +212,19 @@ def analyze(project_before:project.Project, project_after:project.Project):
 
 
 if __name__ == "__main__":
-    repo_path = "/home/lxy/lxy_codes/mal_update_detect/mal_update_dataset/multiple_commits_human_made/backdoor2"
-    repo_name = "backdoor2"
+    repo_path = "/home/lxy/lxy_codes/mal_update_detect/mal_update_dataset/multiple_commits_human_made/ransomware4"
+    repo_name = "ransomware4"
     joern_workspace_path = "/home/lxy/lxy_codes/mal_update_detect/joern_workspace"
     
-    # 获取最近5个提交（按时间升序，便于逐对比较）
+    # subprocess.check_output(
+    #         ["git", "-C", repo_path, "checkout", "master"],
+    #         stderr=subprocess.DEVNULL
+    #     )
+    # 获取最近5个提交（按时间升序，便于逐对比较）"--max-count=1"
     try:
         
         raw = subprocess.check_output(
-            ["git", "-C", repo_path, "rev-list","--max-count=1", "--reverse", "HEAD"],
+            ["git", "-C", repo_path, "rev-list", "--reverse", "HEAD"],
             stderr=subprocess.DEVNULL
         )
         commit_list = raw.decode().strip().splitlines()
@@ -217,7 +247,7 @@ if __name__ == "__main__":
         project_before = project_after
     
     subprocess.check_output(
-            ["git", "-C", repo_path, "checkout", "main"],
+            ["git", "-C", repo_path, "checkout", commit_list[-1]],
             stderr=subprocess.DEVNULL
         )
 # begin-virus   

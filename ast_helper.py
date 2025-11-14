@@ -1,12 +1,41 @@
+import os
 import tree_sitter_python as tspython
 from tree_sitter import Language, Parser
+
+
+def extend_line_range(file_path, line_number):
+    PY_LANGUAGE = Language(tspython.language())
+    parser = Parser(PY_LANGUAGE)
+
+    with open(file_path, 'r', encoding='utf-8') as f:
+        source_code = f.read()
+
+    tree = parser.parse(bytes(source_code, "utf8"))
+    root_node = tree.root_node
+    start = -1
+    end = -1
+
+    def traverse(node):
+        nonlocal start, end
+        start_line = node.start_point[0] + 1  # tree-sitter lines are 0-indexed
+        end_line = node.end_point[0] + 1
+        if start_line <= line_number <= end_line:
+            start = start_line if start == -1 else min(start, start_line)
+            end = max(end, end_line)
+        for child in node.children:
+            traverse(child)
+
+    traverse(root_node)
+    return start, end
 
 
 def find_enclosing_function(file_path, code_line):
     # Initialize the parser
     PY_LANGUAGE = Language(tspython.language())
     parser = Parser(PY_LANGUAGE)
-
+    
+    if os.path.exists(file_path) is False:
+        return None, None
     with open(file_path, 'r', encoding='utf-8') as f:
         source_code = f.read()
 

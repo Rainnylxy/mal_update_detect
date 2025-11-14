@@ -8,6 +8,7 @@ import networkx as nx
 from loguru import logger
 import joern_helper
 import graph_helper
+from ast_helper import extend_line_range
 
 
 class Project:
@@ -91,18 +92,8 @@ class Project:
         return best_match_node
     
     
-    def find_node_by_location(self, file_path, node_data,deleted_lines=[], added_lines=[]):
-        line_number = int(node_data.get("LINE_NUMBER", -1))
-        after_line_number = line_number
+    def find_node_by_location(self, file_path, node_data, after_line_number=-1):
         
-        for line in deleted_lines:
-            if line < line_number:
-                after_line_number = after_line_number - 1
-              
-        for line in added_lines:
-            if line < line_number:
-                after_line_number = after_line_number + 1
-            
         pdgs = [pdg for (fp, _), pdg in self.pdgs.items() if fp == file_path]
         
         for pdg in pdgs:
@@ -112,7 +103,7 @@ class Project:
                 if int(data.get("LINE_NUMBER", -1)) == after_line_number:
                     match = True
                     for key, value in node_data.items():
-                        if key in ["label","COLUMN_NUMBER","NAME"]:
+                        if key in ["label","METHOD_FULL_NAME","NAME","DISPATCH_TYPE"]:
                             if data.get(key) != value:
                                 match = False
                                 break
@@ -354,8 +345,8 @@ class Project:
                 node_attrs = pdg.nodes.get(v, {})
                 if node_attrs.get("label") is None:
                     continue
-                if "DDG" not in data.get("label", ''):
-                    continue
+                # if "DDG" not in data.get("label", ''):
+                #     continue
                 if data.get("label", '') == "DDG: ":
                     continue
                 if self.cpg.nodes[v].get("label","") == "METHOD_RETURN":
@@ -380,8 +371,8 @@ class Project:
                 node_attrs = pdg.nodes.get(u, {})
                 if node_attrs.get("label") is None:
                     continue
-                if "DDG" not in data.get("label", ''):
-                    continue
+                # if "DDG" not in data.get("label", ''):
+                #     continue
                 if data.get("label", '') == "DDG: " and self.cpg.nodes[u].get("label","") != "METHOD":
                     continue
                 # if self.cpg.nodes[u].get("METHOD_FULL_NAME", "") == "<operator>.addition":
@@ -422,17 +413,25 @@ class Project:
         for idx, comp in enumerate(components, start=1):
             comp_map = {}
             for node in comp:
-                data = taint_graph.nodes[node]
-                if node == "30064771118":
+                if node == "30064771219":
                     print("debug")
+                data = taint_graph.nodes[node]
                 file_path = data.get('file_path')
                 line_number = data.get('LINE_NUMBER')
                 if not file_path or not line_number:
                     continue
                 full_path = os.path.join(self.repo_path, file_path)
                 try:
+                    # start_line, end_line = extend_line_range(full_path, int(line_number))
+                    # for line in range(start_line, end_line + 1):
+                    # code_line = self.get_code_by_line(full_path, line)
+                    # comp_map.setdefault(full_path, {})[line] = code_line
                     code_line = self.get_code_by_line(full_path, int(line_number))
-                except Exception:
+                    # TODO: 代码跨行处理
+                    # if code_line in data.get("CODE",""):
+                    #     code_line = data.get("CODE","") 
+                except Exception as e:
+                    print(f"Error reading file {full_path} at line {line_number}: {e}")
                     # 忽略读取失败的节点
                     continue
                 comp_map.setdefault(full_path, {})[int(line_number)] = code_line
@@ -454,7 +453,7 @@ class Project:
                 for file_path, line_no, code_line in flat_lines:
                     # 可选写入文件分隔注释，便于阅读
                     if file_path != current_file:
-                        out_f.write(f"# FILE: {os.path.relpath(file_path, self.repo_path)}\n")
+                        # out_f.write(f"# FILE: {os.path.relpath(file_path, self.repo_path)}\n")
                         current_file = file_path
                     out_f.write(code_line.rstrip() + "\n")
                     codes.append(code_line.rstrip())

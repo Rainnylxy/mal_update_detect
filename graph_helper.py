@@ -27,6 +27,7 @@ class GraphHelper:
     
     def is_sensitive_builtin(function_name):
         sensitive_functions = [
+            "call","check_output","getuid","IsUserAnAdmin","makedirs",
             "environ","walk",
             "input", "getpass", "open", "read", "recv", "recvfrom",
             "urlopen", "requests.get", "requests.post", "pandas.read_csv",

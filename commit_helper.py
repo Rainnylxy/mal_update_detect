@@ -1,6 +1,34 @@
 import subprocess
 import re
+import os
 
+def get_useful_commits(repo_path):
+    """
+    返回按时间升序（最早在前）的 commit 哈希列表，
+    仅包含那些修改了 .py 文件的提交。
+    """
+    try:
+        cmd = ['git', '-C', repo_path, 'log', '--pretty=format:%H', '--reverse']
+        result = subprocess.run(cmd, capture_output=True, text=True, check=True)
+    except subprocess.CalledProcessError:
+        return []
+
+    commits = [h.strip() for h in result.stdout.splitlines() if h.strip()]
+    useful = []
+
+    for ch in commits:
+        try:
+            cmd_files = ['git', '-C', repo_path, 'diff-tree', '--no-commit-id', '--name-only', '-r', ch]
+            r = subprocess.run(cmd_files, capture_output=True, text=True, check=True)
+            files = [p.strip() for p in r.stdout.splitlines() if p.strip()]
+        except subprocess.CalledProcessError:
+            continue
+
+        # 如果该提交修改了任意 .py 文件，则认为是有用的
+        if any(f.lower().endswith('.py') for f in files):
+            useful.append(ch)
+
+    return useful
 
 def analyze_line_changes(repo_path, commit_hash, file_path):
     """分析特定提交中文件的行号变化"""
@@ -49,7 +77,8 @@ class CommitHelper:
         self.commit_hash = commit_hash
         self.diff_text = self.get_commit_diff()
         self.hunks = []
-        self.parse_hunks()
+        self.parse_hunks()  
+      
         
     def get_commit_diff(self):
         """

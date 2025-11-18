@@ -166,12 +166,13 @@ def LLM_analyze_code_slices(code_slices: dict):
         api_key="1d368dbf-5a67-448f-9356-49f9efa2fc13",
         base_url="https://ark.cn-beijing.volces.com/api/v3"
     )
-    for output_dir, code_slice in code_slices.items():
-        logger.debug(f"Evaluating code slice in {output_dir} with LLM...")
+    for output_path, code_slice in code_slices.items():
+        logger.debug(f"Evaluating code slice in {output_path} with LLM...")
         response = llm_evaluate.malicious_assertion(code_slice)
-        logger.info(f"LLM response for {output_dir}: {response}")
+        logger.info(f"LLM response for {output_path}: {response}")
+        output_dir = os.path.dirname(output_path)
         os.makedirs(output_dir, exist_ok=True)
-        out_file = os.path.join(output_dir, "llm_response.txt")
+        out_file = os.path.join(output_dir, "llm_response_1.txt")
         try:
             with open(out_file, "w", encoding="utf-8") as fw:
                 fw.write(str(response))
@@ -212,42 +213,69 @@ def analyze(project_before:project.Project, project_after:project.Project):
 
 
 if __name__ == "__main__":
-    repo_path = "/home/lxy/lxy_codes/mal_update_detect/mal_update_dataset/multiple_commits_human_made/ransomware4"
-    repo_name = "ransomware4"
+    
+    # dataset_dir = "/home/lxy/lxy_codes/mal_update_detect/mal_update_dataset/multiple_commits_human_made/"
+    # joern_workspace_path = "/home/lxy/lxy_codes/mal_update_detect/joern_workspace"
+    # repo_path = "/home/lxy/lxy_codes/mal_update_detect/commit_test_repo"
+    # repo_name = "commit_test_repo"
+    # commit = "f5d7bfa6acef18e23399ec1984d318f11c96a6f0"
+    
+    # joern_path_init = os.path.join(joern_workspace_path, repo_name, f"0_{commit[:5]}")
+    # project_before = project.Project(repo_path, joern_path_init, commit, overwrite=True)
+    # project_before.build_taint_data_graph()
+    
+    
+    dataset_dir = "/home/lxy/lxy_codes/mal_update_detect/mal_update_dataset/multiple_commits_human_made/"
     joern_workspace_path = "/home/lxy/lxy_codes/mal_update_detect/joern_workspace"
-    
-    # subprocess.check_output(
-    #         ["git", "-C", repo_path, "checkout", "master"],
-    #         stderr=subprocess.DEVNULL
-    #     )
-    # 获取最近5个提交（按时间升序，便于逐对比较）"--max-count=1"
-    try:
-        
-        raw = subprocess.check_output(
-            ["git", "-C", repo_path, "rev-list", "--reverse", "HEAD"],
-            stderr=subprocess.DEVNULL
-        )
-        commit_list = raw.decode().strip().splitlines()
-        logger.info(f"Found commits: {commit_list}")
-    except subprocess.CalledProcessError:
-        commit_list = []
+    for repo_path in os.listdir(dataset_dir):
+        repo_path = os.path.join(dataset_dir, repo_path)
+        if not os.path.isdir(repo_path):
+            continue
+        repo_name = os.path.basename(repo_path)
+        if repo_name != "backdoor":
+            continue
+        logger.info(f"Processing repository: {repo_name}")
 
-    if not commit_list:
-        raise RuntimeError(f"No commits found in {repo_path}")
-    
-    joern_path_init = os.path.join(joern_workspace_path, repo_name, f"0_{commit_list[0][:5]}")
-    project_before = project.Project(repo_path, joern_path_init, commit_list[0], overwrite=True)
-    project_before.build_taint_data_graph()
-    
-    for i in range(len(commit_list) - 1):
-        commit_after = commit_list[i + 1]
-        joern_path_after = os.path.join(joern_workspace_path, repo_name, str(i + 1)+"_"+commit_after[:5])
-        project_after = project.Project(repo_path, joern_path_after,commit_after,overwrite=True)
-        project_after = analyze(project_before,project_after)
-        project_before = project_after
-    
-    subprocess.check_output(
-            ["git", "-C", repo_path, "checkout", commit_list[-1]],
-            stderr=subprocess.DEVNULL
-        )
+        subprocess.check_output(
+                ["git", "-C", repo_path, "checkout", "main"],
+                stderr=subprocess.DEVNULL
+            )
+        try:
+            
+            raw = subprocess.check_output(
+                ["git", "-C", repo_path, "rev-list", "--reverse", "HEAD"],
+                stderr=subprocess.DEVNULL
+            )
+            commit_list = raw.decode().strip().splitlines()
+            logger.info(f"Found commits: {commit_list}")
+        except subprocess.CalledProcessError:
+            commit_list = []
+
+        if not commit_list:
+            logger.error(f"Failed to get commit list for repository {repo_name}")
+            continue
+        
+        try:
+        
+            joern_path_init = os.path.join(joern_workspace_path, repo_name, f"0_{commit_list[0][:5]}")
+            project_before = project.Project(repo_path, joern_path_init, commit_list[0], overwrite=True)
+            project_before.build_taint_data_graph()
+            
+            for i in range(len(commit_list) - 1):
+                commit_after = commit_list[i + 1]
+                joern_path_after = os.path.join(joern_workspace_path, repo_name, str(i + 1)+"_"+commit_after[:5])
+                project_after = project.Project(repo_path, joern_path_after,commit_after,overwrite=True)
+                project_after = analyze(project_before,project_after)
+                project_before = project_after
+        except Exception as e:
+            logger.error(f"Error processing repository {repo_name}: {e}")
+            subprocess.check_output(
+                ["git", "-C", repo_path, "checkout", commit_list[-1]],
+                stderr=subprocess.DEVNULL
+            )
+            continue
+        subprocess.check_output(
+                ["git", "-C", repo_path, "checkout", commit_list[-1]],
+                stderr=subprocess.DEVNULL
+            )
 # begin-virus   

@@ -48,6 +48,12 @@ class Project:
             pdg: nx.MultiDiGraph = nx.nx_agraph.read_dot(pdg_path)
             file_path = self.get_pdg_file_path(pdg)
             pdg.graph['file_path'] = file_path
+            if pdg.name == "&lt;body&gt;":
+                for node in pdg.nodes():
+                    node_full_data = self.cpg.nodes[node]
+                    if node_full_data.get("label", '') == "METHOD":
+                        pdg.name = node_full_data.get("FULL_NAME","unknown").split('.')[2]
+                        break
             self.pdgs[(file_path, pdg.name)] = pdg
 
 
@@ -205,7 +211,11 @@ class Project:
                                 # )
                                 # taint_graph.nodes[entry_node]['file_path'] = pdg.graph.get('file_path','unknown')
                                 taint_graph = self.taint_trace(node, taint_graph, pdg)
-                                taint_graph.add_edge(entry_node, node, label="FUNCTION_CALL",color="blue")
+                                if taint_graph.has_edge(node, entry_node):
+                                    continue
+                                taint_graph.add_edge(node, entry_node, label="FUNCTION_CALL",color="blue")
+                                if taint_graph.has_edge(entry_node, method_node):
+                                    continue
                                 taint_graph.add_edge(entry_node, method_node, label="FUNCTION_CALL",color="blue")
                     elif "<module>." in node_full_data.get("METHOD_FULL_NAME",""):
                         call_name = node_full_data.get("NAME","")
@@ -219,7 +229,9 @@ class Project:
                             # )
                             # taint_graph.nodes[entry_node]['file_path'] = pdg.graph.get('file_path','unknown')
                             taint_graph = self.taint_trace(node, taint_graph, pdg)
-                            taint_graph.add_edge(entry_node, node, label="FUNCTION_CALL",color="blue")
+                            # taint_graph.add_edge(node, entry_node, label="FUNCTION_CALL",color="blue")
+                            if taint_graph.has_edge(entry_node, method_node):
+                                continue
                             taint_graph.add_edge(entry_node, method_node, label="FUNCTION_CALL",color="blue")
                     
         return taint_graph
@@ -404,60 +416,103 @@ class Project:
      
     def extract_taint_codes(self, taint_graph: nx.MultiDiGraph) -> dict[str, str]:
         self.switch_commit()
-        # 为每个弱连接子图生成单独切片并写入 joern_path/taint_slices_components/<component_i>/...
-        components = list(nx.weakly_connected_components(taint_graph))
-        comp_out_root = os.path.join(self.joern_path, 'taint_slices_components')
-        os.makedirs(comp_out_root, exist_ok=True)
+        # 为每个入度为0的 METHOD 节点构建它的“METHOD 连通图”，并据此抽取方法对应的代码片段。
+        method_slices = {}
+        # 预计算每个节点的 SUB_FUNCTION_CALL 入边来源集合
+        sub_call_callers = {}
+        for u, v, data in taint_graph.in_edges(data=True):
+            if data.get("label") == "SUB_FUNCTION_CALL" or data.get("label") == "FUNCTION_CALL":
+                sub_call_callers.setdefault(v, set()).add(u)
 
-        code_slices = {}
-        for idx, comp in enumerate(components, start=1):
+        def indegree_int(g, n):
+            try:
+                deg = g.in_degree(n)
+                if isinstance(deg, int):
+                    return deg
+                return deg[1]
+            except Exception:
+                # 兼容不同 networkx 版本
+                return int(g.in_degree(n))
+
+        # 找到所有 label == METHOD 且入度为 0 的根节点
+        method_roots = []
+        for n, d in taint_graph.nodes(data=True):
+            if d.get("label") == "METHOD" and indegree_int(taint_graph, n) == 0:
+                method_roots.append(n)
+
+        methods_out_root = os.path.join(self.joern_path, 'taint_slices_methods')
+        os.makedirs(methods_out_root, exist_ok=True)
+
+        for root in method_roots:
+            # BFS/扩展连通域（将边视为无向），按 SUB_FUNCTION_CALL 规则进行过滤
+            comp_nodes = set([root])
+            queue = [root]
+            qi = 0
+            while qi < len(queue):
+                cur = queue[qi]
+                qi += 1
+                # 遍历邻居（前驱和后继，视作无向）
+                neighbors = set(taint_graph.predecessors(cur)) | set(taint_graph.successors(cur))
+                for nb in neighbors:
+                    if nb in comp_nodes:
+                        continue
+                    # 检查 SUB_FUNCTION_CALL 入边规则
+                    callers = sub_call_callers.get(nb, set())
+                    if len(callers) == 0:
+                        # 没有 SUB_FUNCTION_CALL 入边，可以加入
+                        comp_nodes.add(nb)
+                        queue.append(nb)
+                    else:
+                        # 如果有 SUB_FUNCTION_CALL 入边，只在至少一个 caller 已在当前连通图时才加入
+                        # 注意：即便 callers 有多个，只把 nb 加入当前 METHOD 的连通图，其他 callers 不会被自动认为和当前 METHOD 连通
+                        if callers & comp_nodes:
+                            comp_nodes.add(nb)
+                            queue.append(nb)
+                        else:
+                            # 所有 caller 都不在当前连通图，跳过
+                            continue
+
+            # 根据 comp_nodes 抽取代码行并写入文件
+            # 收集 file_path -> {line: code}
             comp_map = {}
-            for node in comp:
-                if node == "30064771219":
-                    print("debug")
-                data = taint_graph.nodes[node]
+            for node in comp_nodes:
+                data = taint_graph.nodes.get(node, {})
                 file_path = data.get('file_path')
                 line_number = data.get('LINE_NUMBER')
                 if not file_path or not line_number:
                     continue
-                full_path = os.path.join(self.repo_path, file_path)
                 try:
-                    # start_line, end_line = extend_line_range(full_path, int(line_number))
-                    # for line in range(start_line, end_line + 1):
-                    # code_line = self.get_code_by_line(full_path, line)
-                    # comp_map.setdefault(full_path, {})[line] = code_line
+                    full_path = os.path.join(self.repo_path, file_path)
                     code_line = self.get_code_by_line(full_path, int(line_number))
-                    # TODO: 代码跨行处理
-                    # if code_line in data.get("CODE",""):
-                    #     code_line = data.get("CODE","") 
-                except Exception as e:
-                    print(f"Error reading file {full_path} at line {line_number}: {e}")
-                    # 忽略读取失败的节点
+                except Exception:
+                    # 忽略读取失败
                     continue
                 comp_map.setdefault(full_path, {})[int(line_number)] = code_line
 
-            # 将该子图的所有代码行写入同一个文件（不按照原文件路径分割）
+            # 展平并排序
             flat_lines = []
-            for file_path, lines in comp_map.items():
-                for line_no, code_line in lines.items():
-                    flat_lines.append((file_path, int(line_no), code_line))
-            # 按文件路径和行号排序（可根据需要调整排序策略）
+            for fp, lines in comp_map.items():
+                for ln, code in lines.items():
+                    flat_lines.append((fp, int(ln), code))
             flat_lines.sort(key=lambda x: (x[0], x[1]))
 
-            comp_dir = os.path.join(comp_out_root, f'component_{idx}')
+            # 输出文件名以 METHOD 名和节点 id 区分
+            method_name = taint_graph.nodes[root].get('NAME') or taint_graph.nodes[root].get('METHOD_FULL_NAME') or f"method_{str(root)}"
+            safe_method_name = re.sub(r'[^\w\-_.]', '_', str(method_name))
+            comp_dir = os.path.join(methods_out_root, f'{safe_method_name}_{str(root)}')
             os.makedirs(comp_dir, exist_ok=True)
-            out_path = os.path.join(comp_dir, f'component_{idx}_taint_slice.py')
-            codes=[]
+            out_path = os.path.join(comp_dir, f'{safe_method_name}_slice.py')
+
+            codes = []
             with open(out_path, 'w', encoding='utf-8') as out_f:
                 current_file = None
-                for file_path, line_no, code_line in flat_lines:
-                    # 可选写入文件分隔注释，便于阅读
-                    if file_path != current_file:
-                        # out_f.write(f"# FILE: {os.path.relpath(file_path, self.repo_path)}\n")
-                        current_file = file_path
+                for fp, ln, code_line in flat_lines:
+                    if fp != current_file:
+                        current_file = fp
                     out_f.write(code_line.rstrip() + "\n")
                     codes.append(code_line.rstrip())
-            code_slices[comp_dir] = "\n".join(codes) + "\n"
-        return code_slices
+
+            method_slices[out_path] = "\n".join(codes) + "\n"
+        return method_slices
 
 

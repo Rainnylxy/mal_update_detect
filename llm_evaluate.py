@@ -57,23 +57,28 @@ class LLM_Evaluate:
             model="deepseek-r1-250120",
             messages=[
                 {"role": "system", "content": 
-                """You are a professional cybersecurity analyst tasked with analyzing code snippets from an attacker's perspective and attack chain completeness to determine if they constitute a complete malicious attack chain.
-                Analyze the provided code snippet to determine its attack classification. Follow this structured assessment framework:
-                 
+                """You are a professional cybersecurity analyst tasked with analyzing code snippets from victim's perspective to classify given code snippets.
+                Follow this structured assessment framework:
                 
-
                 Classification:
-                1、Full Attack Chain: Contains all functional modules required for malicious behavior and forms a coherent, end‑to‑end logical chain. This represents a fully operational attack or one that can complete its objective without additional components.
-                2、Core Attack Chain: Includes core malicious functions that constitute the backbone of an attack but lacks one or more key components or steps. High potential to evolve into a Full Attack Chain with moderate additional effort.
-                3、Fragmented Attack Chain: Consists of isolated modules or code fragments that lack logical linkage and do not demonstrate a clear malicious end‑to‑end flow. 
-                4、Benign Artifact: No evidence of malicious intent or functionality. Behavior and code are consistent with legitimate administration, development, or research activities.
-
+                1. Full Attack Chain:
+                    Definition: A self-contained, operationally-ready attack that integrates all necessary stages. It demonstrates a logical, end-to-end sequence of malicious activity.
+                    Key Differentiator: Completeness and immediate operability. You should identify a seamless, integrated workflow from start to finish with no missing critical stages.
+                2. Core Attack Chain:
+                    Definition: Contains the essential, high-impact malicious components that form the backbone of an attack (e.g., a vulnerability exploit and a payload dropper), but is missing one or more key operational stages (e.g., a command & control channel). It has a high potential to evolve into a Full Attack Chain with moderate additional effort, such as integrating a few missing modules.
+                    Key Differentiator: Core malice is present but the operational loop is incomplete. You should identify clear malicious modules but also recognize the absence of key stages that prevent it from being a standalone threat.
+                3. Fragmented Attack Chain:
+                    Definition: Consists of isolated, standalone malicious code fragments or modules (e.g., a single suspicious script, a payload stub, or an exploit function). These elements lack logical connectivity and a demonstrable sequence of execution. There is no evidence of an integrated, end-to-end attack flow.
+                    Key Differentiator: Isolated malice without integration. You should recognize individual malicious capabilities but note the complete absence of a connecting logic or workflow between them.
+                4. Benign Artifact:
+                    Definition: Exhibits no evidence of malicious intent, functionality, or code. Its behavior, code patterns, and purpose are consistent with and fully explainable by legitimate activities, such as system administration, software development, debugging, or authorized security research. 
+                    Key Differentiator: Fully explainable by legitimate purposes. You should find zero indicators of malice and be able to attribute all components and behaviors to known, benign activities.
+                
                 Provide structured response with:
                 - **Classification:** "Full Attack Chain" | "Core Attack Chain" | "Fragmented Attack Chain" | "Benign Artifact"
-                - **Key Indicators:** Bulleted list of supporting evidence
-                - **Threat Level:** High/Medium/Low based on current implementation
-                
-                Apply this framework rigorously to the target code snippet."""
+                - **Missing Components:** If classified as "Core" or "Fragmented", specify what is missing to reach the next level.
+                - **Potential Impact:** Describe the potential impact if this attack were fully realized.
+                - **Threat Level:** High/Medium/Low based on current implementation"""
                 },
                 {"role": "user", "content": code_snippet}
             ]

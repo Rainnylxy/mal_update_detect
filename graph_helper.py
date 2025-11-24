@@ -25,15 +25,50 @@ class GraphHelper:
                 nodes.append(node)
         return nodes
     
+    
+    
     def is_sensitive_builtin(function_name):
-        sensitive_functions = [
-            "call","check_output","getuid","IsUserAnAdmin","makedirs",
-            "environ","walk",
-            "input", "getpass", "open", "read", "recv", "recvfrom",
-            "urlopen", "requests.get", "requests.post", "pandas.read_csv",
-            "json.load", "yaml.load","write","remove","rename","connect","execute","CryptUnprotectData","getenv","mkdir","generate_key"
+        sensitive_functions_v = [
+            # 网络相关
+            "socket.py:<module>.socket","socket.py:<module>.socket.<returnValue>.connect",
+            "ssl.py:<module>.wrap_socket","ssl.py:<module>.create_default_context",
+            "multiprocessing.connection:Listener",
+            "smtplib.py:<module>.SMTP","smtplib.py:<module>.SMTP_SSL",
+            "ftplib.py:<module>.FTP","ftplib.py:<module>.FTP_TLS",
+            "http.client.py:<module>.HTTPConnection",
+            "requests.py:<module>.get","requests.py:<module>.post", 
+            # 加密相关
+            "json.py:<module>.dumps.<returnValue>.encode","json.py:<module>.loads",
+            "base64.py:<module>.b64decode",
+            "cryptography/fernet.py:<module>.Fernet.generate_key",
+            "cryptography/fernet.py:<module>.Fernet.encrypt",
+            "cryptography/fernet.py:<module>.Fernet.decrypt",
+            "secrets.py:<module>.token_hex",
+            "pyAesCrypt.py:<module>.encryptFile","pyAesCrypt.py:<module>.decryptFile",
+            "win32crypt.py:<module>.CryptUnprotectData",
+            "hashlib.py:<module>.sha256","hashlib.py:<module>.md5","hashlib.py:<module>.sha1",
+            # 系统信息相关
+            "os.py:<module>.getenv","os.py:<module>.environ",
+            # 文件操作相关
+            "shutil.py:<module>.copyfile","shutil.py:<module>.move",
+            "os.py:<module>.makedirs","os.py:<module>.walk","os.py:<module>.chdir","os.py:<module>.remove","os.py:<module>.rename","os.py:<module>.getcwd",
+            "__builtin.open","__builtin.input",
+            # 进程相关
+            "subprocess.py:<module>.call","os.py:<module>.getuid","subprocess.py:<module>.Popen",
+            "threading.py:<module>.Thread",
+            "pynput.py:<module>.keyboard.Listener",
+            # keylogger相关
+            "keyboard.py:<module>.on_release","keyboard.py:<module>.on_press",
         ]
-        return function_name in sensitive_functions
+        # sensitive_functions = [
+        #     "socket.py:<module>.socket","copyfile","encrypt","Popen","create_default_context","wrap_socket","Thread","start","Listener","SMTP","FTP","HTTPConnection","starttls","sendmail",
+        #     "call","check_output","getuid","IsUserAnAdmin","makedirs",
+        #     "environ","walk",
+        #     "input", "getpass", "open", "read", "recv", "recvfrom",
+        #     "urlopen", "requests.get", "requests.post", "pandas.read_csv",
+        #     "json.load", "yaml.load","write","remove","rename","connect","execute","CryptUnprotectData","getenv","mkdir","generate_key"
+        # ]
+        return function_name in sensitive_functions_v
         
 
 if __name__ == "__main__":

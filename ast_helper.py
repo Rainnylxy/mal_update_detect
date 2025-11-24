@@ -2,31 +2,70 @@ import os
 import tree_sitter_python as tspython
 from tree_sitter import Language, Parser
 
-
-def extend_line_range(file_path, line_number):
+def closest_block_line(file_path, code_line):
+    """
+    Extract a complete code snippet that covers the given line number.
+    Ensures the relevant while/for/try/except structures are fully included,
+    and includes the outer class definition line if the snippet is inside a class.
+    Returns (snippet_text, start_line, end_line).
+    """
     PY_LANGUAGE = Language(tspython.language())
     parser = Parser(PY_LANGUAGE)
 
-    with open(file_path, 'r', encoding='utf-8') as f:
-        source_code = f.read()
+    if not os.path.exists(file_path):
+        return "", code_line, code_line
 
-    tree = parser.parse(bytes(source_code, "utf8"))
-    root_node = tree.root_node
-    start = -1
-    end = -1
+    with open(file_path, "r", encoding="utf-8") as f:
+        source = f.read()
 
-    def traverse(node):
-        nonlocal start, end
-        start_line = node.start_point[0] + 1  # tree-sitter lines are 0-indexed
+    tree = parser.parse(bytes(source, "utf8"))
+    root = tree.root_node
+
+    # Block types we care about
+    block_types = {
+        "while_statement",
+        "for_statement",
+        "try_statement",
+        "except_clause",
+        "finally_clause",
+        "if_statement",
+        "with_statement",
+        "class_definition",
+        "function_definition",
+        "else_clause",
+        "expression_statement",
+    }
+
+    # Collect candidate nodes that enclose the target line
+    candidates = []
+
+    def collect(node):
+        start_line = node.start_point[0] + 1
         end_line = node.end_point[0] + 1
-        if start_line <= line_number <= end_line:
-            start = start_line if start == -1 else min(start, start_line)
-            end = max(end, end_line)
+        if start_line < code_line <= end_line and node.type in block_types and node != root:
+            candidates.append(node)
         for child in node.children:
-            traverse(child)
+            collect(child)
 
-    traverse(root_node)
-    return start, end
+    collect(root)
+
+    # If no enclosing block, return the single line
+    if not candidates:
+        return code_line, code_line
+
+    # Choose the smallest enclosing block (innermost)
+    candidates.sort(key=lambda n: (n.end_point[0] - n.start_point[0], n.start_point[0]))
+    node = candidates[0]
+    start_line = node.start_point[0] + 1
+    if node.type in ["try_statement",
+                     "else_clause","expression_statement",
+                    "except_clause",
+                    "finally_clause"]:
+        return start_line, node.end_point[0] + 1
+    
+    return start_line, start_line
+    
+
 
 
 def find_enclosing_function(file_path, code_line):

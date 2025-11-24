@@ -113,6 +113,8 @@ class CommitHelper:
         for old_start, old_count, new_start, new_count in self.hunks:
             if line_number < old_start:
                 return line_number
+            if line_number == old_start and old_count == 0:
+                return line_number
             line_number -= old_count
             line_number += new_count
         return line_number

@@ -5966,3 +5966,910 @@ The functionality is equally consistent with legitimate applications (e.g., logg
 2025-11-24 09:30:48 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware6/3_400a1/taint_graphs/merged_changed_taint.dot
 2025-11-24 09:30:48 | DEBUG | project | Removing 2 deleted nodes from taint_graph
 2025-11-24 09:30:49 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware6/4_546b3/taint_graphs/merged_changed_taint.dot
+2025-11-25 05:27:43 | INFO | __main__ | Processing repository: ransomware6
+2025-11-25 05:27:43 | INFO | __main__ | Found commits: ['6d922993a3d12524d32d2145d9058571c0b50129', '571ee192e038d8acb1c27381791f4c68d0720d09', '2c7b060e419bf1ab4173d6b4f6c62ed90e2ac0c1', '400a15297fe6447f01edb4329c8ffb0164df9c12', '546b3a5042481d32ff1684ed342b1de000db2486']
+2025-11-25 05:27:43 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware6/1_571ee/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:27:44 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware6/2_2c7b0/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:27:44 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware6/3_400a1/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:27:44 | DEBUG | project | Removing 2 deleted nodes from taint_graph
+2025-11-25 05:27:45 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware6/4_546b3/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:27:45 | DEBUG | project | Removing 2 deleted nodes from taint_graph
+2025-11-25 05:29:18 | INFO | __main__ | Processing repository: reverseShell5
+2025-11-25 05:29:18 | INFO | __main__ | Found commits: ['eaed99285edd8b0d591bba618515963796e789e4', '9c2bb5bf099c3a91b89cb7f46e5b871f39c22aa0', '4f80a9f21cbec3e4150b621dbcc26bf30ad87b75', 'c0b0e6c3e8c106ee044eaa66c9c367ede7ffd87d', 'a63f7188150146d55f8c66d41edfc2019fd394ee', '456e6f75394cf459f9bf41bd73c204ba165976b5', '210bee0ca1c1e14633c09b9b30554c430f1102fc', 'c8f001de7af4a397711a2fdc661b0494416f4f74']
+2025-11-25 05:29:18 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/reverseShell5/1_9c2bb/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:29:18 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/reverseShell5/2_4f80a/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:29:19 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/reverseShell5/3_c0b0e/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:29:20 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/reverseShell5/4_a63f7/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:29:20 | DEBUG | project | Removing 3 deleted nodes from taint_graph
+2025-11-25 05:29:21 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/reverseShell5/5_456e6/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:29:21 | DEBUG | project | Removing 3 deleted nodes from taint_graph
+2025-11-25 05:29:23 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/reverseShell5/6_210be/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:29:23 | DEBUG | project | Removing 3 deleted nodes from taint_graph
+2025-11-25 05:29:24 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/reverseShell5/7_c8f00/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:29:24 | DEBUG | project | Removing 1 deleted nodes from taint_graph
+2025-11-25 05:29:25 | INFO | __main__ | Processing repository: ransomware5
+2025-11-25 05:29:25 | INFO | __main__ | Found commits: ['73839a310c266047dd8bd6024645dc4770358589', '1f376d9d89e23d903b11e1b6bab9c663935d2846', '2e3d36b7a087bce41dfa8e0170fa44a8490ef4cb', '262f100040e9df0ead017c4b14988843bc0a3363', '2e4e198067c971b4a4089f0b7c613e4645aec833']
+2025-11-25 05:29:25 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware5/1_1f376/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:29:26 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware5/2_2e3d3/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:29:27 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware5/3_262f1/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:29:29 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware5/4_2e4e1/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:29:29 | INFO | __main__ | Processing repository: ransomware2
+2025-11-25 05:29:29 | INFO | __main__ | Found commits: ['c5071da3893f91516d7d5633d60fa410fd91297c', 'cd6d75efe657931fca0d4a1d3883816ed75c7aa7', '0f8baa188dcc3bd402687d37183139839455a32c', '6a0dbbf29b722d8ee775fc1781db345237e946a5', 'f4a303d9232cd75ec173a4aaedcff1cfd1df0c37', '96b1f3f0dccd25d3ac1ed61871fbb3c100152ef3', 'c91afeaeef12135f158e395e466e1954e5e38b1a', '76b79c94f540f489c25b721d68b61a2409c9296f']
+2025-11-25 05:29:29 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware2/1_cd6d7/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:29:29 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware2/2_0f8ba/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:29:30 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware2/3_6a0db/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:29:30 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware2/4_f4a30/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:29:30 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware2/5_96b1f/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:29:30 | DEBUG | project | Removing 1 deleted nodes from taint_graph
+2025-11-25 05:29:31 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware2/6_c91af/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:29:32 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware2/7_76b79/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:29:32 | INFO | __main__ | Processing repository: ransomware3
+2025-11-25 05:29:32 | INFO | __main__ | Found commits: ['e16db2c483c7a95294666127cf813245ed4a6c28', '9986f0ee2c5bdebf15d64d5166f2291b6c550bbf', 'fba94c05fcae606e4dfde8c8292fa12e1fe9a449', 'aa70200d4e7b2ee95851cb85b4c2327d58823d23', '725f5ced48bea73841908629839c8d73f9f9ab3a', 'e29aa1746c7983f6f005d5ea569e100410ec08a4', '7d82fc6ddfb4954ca41756ddcd456d6edf414762']
+2025-11-25 05:29:32 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware3/1_9986f/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:29:32 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware3/2_fba94/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:29:33 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware3/3_aa702/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:29:33 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware3/4_725f5/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:29:34 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware3/5_e29aa/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:29:35 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware3/6_7d82f/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:29:36 | INFO | __main__ | Processing repository: keylogger4
+2025-11-25 05:29:36 | INFO | __main__ | Found commits: ['ee790ceb277b48bc67d1fa3685f7640f513e6ed3', '3ee923a831f30ed99a5d612217ca89b5a38618c8', '44e68aa53fa17255f06f8fdd0546cafd5f9ea39a', '204db7c11db55abd04a98e06a18ddf54b89970c9', '33dc768317558cb46c68d912516043e2edbb9e41', 'b071dad6f4c1959a37df89c17768929f0c9504d9']
+2025-11-25 05:29:36 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/keylogger4/1_3ee92/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:29:36 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/keylogger4/2_44e68/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:29:37 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/keylogger4/3_204db/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:29:37 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/keylogger4/4_33dc7/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:29:38 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/keylogger4/5_b071d/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:29:38 | DEBUG | project | Removing 1 deleted nodes from taint_graph
+2025-11-25 05:29:38 | INFO | __main__ | Processing repository: ransomware1
+2025-11-25 05:29:38 | INFO | __main__ | Found commits: ['04290734626bbca3d8ce86298c9326265e18bf8d', '80281e02defb5242117adb762cec18261d1ec763', '98861b90ef027a9d5be98c6b6c8400fe5d7b4a2f', '954c7d64664013658b4275d3f15ed6e6755c25c8', '4eda883d43dd5b111bcb6a505baa3c7b0ac7927a']
+2025-11-25 05:29:39 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware1/1_80281/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:29:39 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware1/2_98861/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:29:39 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware1/3_954c7/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:29:39 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware1/4_4eda8/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:29:39 | DEBUG | project | Removing 1 deleted nodes from taint_graph
+2025-11-25 05:29:39 | INFO | __main__ | Processing repository: keylogger5
+2025-11-25 05:29:39 | INFO | __main__ | Found commits: ['af2c7f8a1c58d8eaabd24eb4161cee0593d65bd7', '12c400e04b08abb43d36bd2e2bc6b272af164383', '31e4c2bb026c5fdc54c0f4ce393a8cadef35bb92', '227fb7b6f88a14966017d8250af3b17c3220b66a', 'e712e30d898be026aba8605594cb572d6b207acb', '75f79f66d5ec2e6076cacd8cd76b5f37abdb6985']
+2025-11-25 05:29:40 | ERROR | __main__ | Error processing repository keylogger5: Command '['git', '-C', '/home/lxy/lxy_codes/mal_update_detect/mal_update_dataset/multiple_commits_human_made/keylogger5', 'checkout', 'af2c7f8a1c58d8eaabd24eb4161cee0593d65bd7']' returned non-zero exit status 1.
+2025-11-25 05:29:40 | INFO | __main__ | Processing repository: virus2
+2025-11-25 05:29:40 | INFO | __main__ | Found commits: ['c356aa3411d3f2597dba8bb59ccd9948db2b63ec', '3365470de938bfcaaa32976eb721f643f2dad1eb', '42c925ef7785f2493a710646ec971f2b49672b68', '221a4648cc1e5ee46567fbf9c893469e6bc8f0a4', 'e4abd7bf17bac80394e3ef94eac7f08170950e90', '3423c3cf3387f846da16ad687ecf5ba2f3523083']
+2025-11-25 05:29:40 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/virus2/1_33654/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:29:41 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/virus2/2_42c92/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:29:41 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/virus2/3_221a4/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:29:43 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/virus2/4_e4abd/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:29:44 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/virus2/5_3423c/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:29:44 | DEBUG | project | Removing 1 deleted nodes from taint_graph
+2025-11-25 05:29:44 | INFO | __main__ | Processing repository: ransomware6
+2025-11-25 05:29:44 | INFO | __main__ | Found commits: ['6d922993a3d12524d32d2145d9058571c0b50129', '571ee192e038d8acb1c27381791f4c68d0720d09', '2c7b060e419bf1ab4173d6b4f6c62ed90e2ac0c1', '400a15297fe6447f01edb4329c8ffb0164df9c12', '546b3a5042481d32ff1684ed342b1de000db2486']
+2025-11-25 05:29:45 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware6/1_571ee/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:29:45 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware6/2_2c7b0/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:29:46 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware6/3_400a1/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:29:46 | DEBUG | project | Removing 2 deleted nodes from taint_graph
+2025-11-25 05:29:46 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware6/4_546b3/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:29:46 | DEBUG | project | Removing 2 deleted nodes from taint_graph
+2025-11-25 05:29:47 | INFO | __main__ | Processing repository: virus1
+2025-11-25 05:29:47 | INFO | __main__ | Found commits: ['c7d02afbbd77342e70889786bfe42a0482ad3845', '0581b67d15224c2b4976e1ddc96f4d364bcc99a7', '981f22b0c283a85c13cfef4701de782cf7b70312']
+2025-11-25 05:29:47 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/virus1/1_0581b/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:29:47 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/virus1/2_981f2/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:29:47 | INFO | __main__ | Processing repository: ransomware4
+2025-11-25 05:29:47 | INFO | __main__ | Found commits: ['ad57958f91cf907f7a4d27bad8f80ba0c56cead2', 'ad631869461132d0b4836c901fef28d55b574d8e', 'ed982b3d715e19f5ccc7f3099ca284dfed57f6ea', 'fea2644b82cc5e786370c274bc7acc965d720e43', '92b3a97cdbaf68b68ba2f888ff905dc7ea974bc2', '034e64027f6b701170e659d8df176eaa8133be2e', 'f74df2a3156a26ab9c263b2882a2f3fe5d99f67b', 'e8210cec295afb543a7d9c90a6eccf148653fa3a', '6fa08a1ba9147395ea78a6b9f5ea85dccae6a36f']
+2025-11-25 05:29:48 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware4/1_ad631/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:29:48 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware4/2_ed982/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:29:48 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware4/3_fea26/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:29:49 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware4/4_92b3a/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:29:50 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware4/5_034e6/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:29:51 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware4/6_f74df/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:29:53 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware4/7_e8210/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:29:55 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware4/8_6fa08/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:29:56 | INFO | __main__ | Processing repository: worm2
+2025-11-25 05:29:56 | INFO | __main__ | Found commits: ['0a2573695eef96d83df2dd6e7bd3c8c81a94a1e6', '3060a483e7eeb3920d114db8c7fd96c1e3d7ce10', '63bab504429a14dc6aa7c6a2231c0c3534300888', '2947e8bff6ab2c32cb59feaa74f50d91c366ce3e', '179a2c96d1356b26d202de9d074fdd07d520fbc8', 'a6bb989e3f8ee441403e750c6125b5a5d6308df4', '7a7273ca03b919d8957dda6ac61ba05a77ac6e98']
+2025-11-25 05:29:56 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/worm2/1_3060a/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:29:56 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/worm2/2_63bab/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:29:57 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/worm2/3_2947e/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:29:58 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/worm2/4_179a2/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:29:59 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/worm2/5_a6bb9/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:29:59 | DEBUG | project | Removing 1 deleted nodes from taint_graph
+2025-11-25 05:30:00 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/worm2/6_7a727/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:30:00 | DEBUG | project | Removing 1 deleted nodes from taint_graph
+2025-11-25 05:30:00 | INFO | __main__ | Processing repository: backdoor
+2025-11-25 05:30:00 | INFO | __main__ | Found commits: ['5638981a0847b366320f51015a62ff8512fd719c', '10fc9418a62d4b0970ea57488547f5ed85d8f940', 'b94ad069be0fcbd620573b47a1049bfe73770c86', '904d3f5abe2773da2f66c9d24785fd5064d06943', '3ce229830b4c6c5200233175dbaa7cc5f41a424c']
+2025-11-25 05:30:01 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/backdoor/1_10fc9/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:30:01 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/backdoor/2_b94ad/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:30:02 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/backdoor/3_904d3/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:30:03 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/backdoor/4_3ce22/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:30:03 | DEBUG | project | Removing 3 deleted nodes from taint_graph
+2025-11-25 05:30:03 | INFO | __main__ | Processing repository: simpleMalware1
+2025-11-25 05:30:03 | INFO | __main__ | Found commits: ['14a16942515f2af0fe109dfb185097b595005db4', 'cb43e78331f38e0cf504f475320a95db0681ad69', 'f8ec22ab5023bf82036704c6152c13c4f3859238', 'd320b13a715033df11ecce745386517e04e17044', 'cee65522a9e744f39f98faac6f6285b4da15c790']
+2025-11-25 05:30:03 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/simpleMalware1/1_cb43e/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:30:04 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/simpleMalware1/2_f8ec2/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:30:04 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/simpleMalware1/3_d320b/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:30:05 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/simpleMalware1/4_cee65/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:30:05 | DEBUG | project | Removing 3 deleted nodes from taint_graph
+2025-11-25 05:30:05 | INFO | __main__ | Processing repository: reverseShell3
+2025-11-25 05:30:05 | INFO | __main__ | Found commits: ['300320ae5af01107fde5b94d8b32ee2b30aa8826', 'dcf79fcc9df5364134636d9ff0bcec5742f38801', '1ccbb4ead10680404a8aa6fd317f3ee939af4d04']
+2025-11-25 05:30:05 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/reverseShell3/1_dcf79/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:30:05 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/reverseShell3/2_1ccbb/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:30:05 | INFO | __main__ | Processing repository: reverseShell2
+2025-11-25 05:30:05 | INFO | __main__ | Found commits: ['f13aa4737bdb3153cf671ba8fb20482b092a28a9', 'a9d0a82b780348f0310aa1c16f80a950d922ed07', '683ad44c6cb2aaeacb9f4a30eea30c9d67fe2ca8', '86f9e9089403a287abed5aa241ade78bc65195e4', '3d1ac4f38e03574df7d93d8cadd94f3321dcbfe5']
+2025-11-25 05:30:06 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/reverseShell2/1_a9d0a/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:30:06 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/reverseShell2/2_683ad/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:30:06 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/reverseShell2/3_86f9e/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:30:06 | DEBUG | project | Removing 1 deleted nodes from taint_graph
+2025-11-25 05:30:07 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/reverseShell2/4_3d1ac/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:30:07 | INFO | __main__ | Processing repository: keylogger3
+2025-11-25 05:30:07 | INFO | __main__ | Found commits: ['b0819c44d5eafde7fd723ce4ba617b48e5ee3eb9', '3f9482998ab2fc42ea308609ea774c58272f8fd8', '2e39e668e94a93fd6834604798510afb7a8d9d79', '4787906ae9cee06d19815a6bc266cf085961cdf6']
+2025-11-25 05:30:07 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/keylogger3/1_3f948/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:30:07 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/keylogger3/2_2e39e/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:30:08 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/keylogger3/3_47879/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:30:08 | INFO | __main__ | Processing repository: backdoor3
+2025-11-25 05:30:08 | INFO | __main__ | Found commits: ['54c6d4e9843c4c66db3d2aae9f9f4c50ecc7f011', '74d2c4af671c6c2e75111012e91f4cd0b6339f8b', '0e62ccd1372eeba9144c00a5e91e352c8dcb5202', '3e05d90f4be311116ae7719b2d4e26ad947148cd', 'c5ce82613481634b13634b37a8c57e2558bcf13f', '0b6ac7149c883837cec9d5d462c9c9f897b1813e']
+2025-11-25 05:30:08 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/backdoor3/1_74d2c/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:30:08 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/backdoor3/2_0e62c/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:30:09 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/backdoor3/3_3e05d/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:30:09 | DEBUG | project | Removing 7 deleted nodes from taint_graph
+2025-11-25 05:30:09 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/backdoor3/4_c5ce8/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:30:10 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/backdoor3/5_0b6ac/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:30:10 | INFO | __main__ | Processing repository: reverseShell1
+2025-11-25 05:30:10 | INFO | __main__ | Found commits: ['0e3b93bb881f68ec1dcad42d18e6199c9c06d09b', 'c6677facacca456510c8eb7eb88fe1222e8beb5d', '2ceaa62b67ea08cb2ed3dd985b7039bd7df95e94', '7277045c36faedc137cec09f1671ed41280fb646', 'a9d4139056681d0e2d2b84fddb88e5037382a15f']
+2025-11-25 05:30:10 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/reverseShell1/1_c6677/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:30:13 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/reverseShell1/2_2ceaa/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:30:13 | DEBUG | project | Removing 5 deleted nodes from taint_graph
+2025-11-25 05:30:13 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/reverseShell1/3_72770/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:30:14 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/reverseShell1/4_a9d41/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:30:14 | INFO | __main__ | Processing repository: keylogger2
+2025-11-25 05:30:14 | INFO | __main__ | Found commits: ['eb46b1fefacb575098bbe3c12a3428630368ee5c', '3bf0b8e55d55889d5a0003a9970321cf642bc3af', '07e9b04739c11b47d7105a5982b6ef8e7238fcd0', '125e1f86286f97318c4596b821d388ede04f9b03', 'ef8566c1d2512573f7f4ed48891356a4f1a43923', '96e94d441e96516da88d4235d356019610539080', '4a73749df75432856e5c0f507f3451c52c9e8f24', '2bc69cd1a76e494194629d8349c7de66abfa0900']
+2025-11-25 05:30:14 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/keylogger2/1_3bf0b/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:30:15 | ERROR | __main__ | Error processing repository keylogger2: The node 30064771084 is not in the digraph.
+2025-11-25 05:30:15 | INFO | __main__ | Processing repository: reverseShell4
+2025-11-25 05:30:15 | INFO | __main__ | Found commits: ['6e1a2ddeac75390b6f56a9034fbca0df66a4d56f', '532d0fb73496a2b447a8f77f8b39273feedaccf9', 'fc3fee1a38cf40edeafe0c2412c1af2fd9abbab0', 'f3a04ea8adef59e789bcc9ae49992d2928c2c85f', '08561122703c13578814cf9bcb78905420ff5dc8', '1c8740b8263bd9932a16a68c7229d52fbcf0b623']
+2025-11-25 05:30:15 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/reverseShell4/1_532d0/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:30:15 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/reverseShell4/2_fc3fe/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:30:15 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/reverseShell4/3_f3a04/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:30:16 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/reverseShell4/4_08561/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:30:16 | DEBUG | project | Removing 3 deleted nodes from taint_graph
+2025-11-25 05:30:17 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/reverseShell4/5_1c874/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:30:17 | INFO | __main__ | Processing repository: backdoor2
+2025-11-25 05:30:17 | INFO | __main__ | Found commits: ['8011d48dcf346ac411b41bcf4d5877d36db57d81', '0e5c4a1bb11871d9009f864bae849db508e777cc', '4982e633e7412362d73bab9084dce71f3914b2bf', '003bd36ca4cbb09c17bafcf648cb88b2684e9543', 'ce1574dcacff4f53d829d351d3eb75c82db58c44', '15433131ef95b8c990f7e501fd65b000cb43c669', '8216c67c8417a7b579b8305ea2a85f213cb23c8c', 'faa7c145b5c77494b4d97ca953efc1aede20998d', 'e1fd323efc896510b0fbe11787e2c6d0618e2f66', '27ddbbedf7cb164093e2111c79cb0ea4ca144bb3']
+2025-11-25 05:30:17 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/backdoor2/1_0e5c4/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:30:17 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/backdoor2/2_4982e/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:30:17 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/backdoor2/3_003bd/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:30:18 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/backdoor2/4_ce157/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:30:19 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/backdoor2/5_15433/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:30:19 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/backdoor2/6_8216c/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:30:20 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/backdoor2/7_faa7c/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:30:22 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/backdoor2/8_e1fd3/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:30:24 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/backdoor2/9_27ddb/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:30:24 | DEBUG | project | Removing 2 deleted nodes from taint_graph
+2025-11-25 05:30:25 | INFO | __main__ | Processing repository: backdoor1
+2025-11-25 05:30:25 | INFO | __main__ | Found commits: ['95d7b63be4a2f44df62e511750a1d805a092f0cf', '19f7b80f8e839477be9dab7c9a415fb7ecaa5a67']
+2025-11-25 05:30:25 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/backdoor1/1_19f7b/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:30:25 | INFO | __main__ | Processing repository: keylogger1
+2025-11-25 05:30:25 | INFO | __main__ | Found commits: ['c19269cc5bfdd797bfadf6290f21d9a59eacb7ac', '843298b4cdeb5a5dd59560bbb90903b2a148721b', 'feaadfa89edc5c263d690a646df9732953a4815d', '6342bf35500f04f83ca6f429e02e991bd98ebca3']
+2025-11-25 05:30:26 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/keylogger1/1_84329/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:30:26 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/keylogger1/2_feaad/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:30:27 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/keylogger1/3_6342b/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:30:27 | INFO | __main__ | Processing repository: worm1
+2025-11-25 05:30:27 | INFO | __main__ | Found commits: ['ae11584b1a9160b4c22e9b1de5fe0a80bc2d8e34', '65569b4bdaf68ba7eb38d29467613a617b405141', 'fe22471997e54825a655bc6b0a20a1d753e7261f', 'f264f3eaa24d05388c4116e791b36d1923aaf1f8', '57344ad9bb7ecd000d5c5f8f85e5908a7251302d', 'a283e1d1cacc8744346f780e1095a5b2a89980d6', '3a40aeeb6cce432610bb8944537e204204c7c1f1', 'f903997fe5328c660525de83f2c215982ec05d9c', '2d70658dcd47de9026895fb056e9c1d2f3f95bd6']
+2025-11-25 05:30:27 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/worm1/1_65569/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:30:28 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/worm1/2_fe224/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:30:29 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/worm1/3_f264f/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:30:29 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/worm1/4_57344/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:30:31 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/worm1/5_a283e/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:30:32 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/worm1/6_3a40a/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:30:32 | DEBUG | project | Removing 1 deleted nodes from taint_graph
+2025-11-25 05:30:34 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/worm1/7_f9039/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:30:34 | DEBUG | project | Removing 1 deleted nodes from taint_graph
+2025-11-25 05:30:37 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/worm1/8_2d706/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:30:38 | INFO | __main__ | Processing repository: dictionary-attack
+2025-11-25 05:30:38 | INFO | __main__ | Found commits: ['2da026219d74f32c92baf40a74b231d236183d90']
+2025-11-25 05:30:38 | INFO | __main__ | Processing repository: ransomware7
+2025-11-25 05:30:38 | INFO | __main__ | Found commits: ['1bb3d53b036488fd8558b3f8f9492f16bdf96a4e', '5312c768895da73bff052891c1425b6fabf3725e', 'ab1439df046b3bbc7d880ad830c958cd47d3595b', '8770aadef5f4f6b86c1769013be58fa6947de784', 'd6a53a4fee05b096ad12a2a6f3cd6b30b58f9061']
+2025-11-25 05:30:38 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware7/1_5312c/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:30:40 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware7/2_ab143/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:30:40 | DEBUG | project | Removing 6 deleted nodes from taint_graph
+2025-11-25 05:30:46 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware7/3_8770a/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:30:46 | DEBUG | project | Removing 14 deleted nodes from taint_graph
+2025-11-25 05:30:48 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware7/4_d6a53/taint_graphs/taint_graph_updated.dot
+2025-11-25 05:30:48 | DEBUG | project | Removing 3 deleted nodes from taint_graph
+2025-11-25 06:40:28 | INFO | __main__ | Processing repository: backdoor2
+2025-11-25 06:40:28 | INFO | __main__ | Found commits: ['8011d48dcf346ac411b41bcf4d5877d36db57d81', '0e5c4a1bb11871d9009f864bae849db508e777cc', '4982e633e7412362d73bab9084dce71f3914b2bf', '003bd36ca4cbb09c17bafcf648cb88b2684e9543', 'ce1574dcacff4f53d829d351d3eb75c82db58c44', '15433131ef95b8c990f7e501fd65b000cb43c669', '8216c67c8417a7b579b8305ea2a85f213cb23c8c', 'faa7c145b5c77494b4d97ca953efc1aede20998d', 'e1fd323efc896510b0fbe11787e2c6d0618e2f66', '27ddbbedf7cb164093e2111c79cb0ea4ca144bb3']
+2025-11-25 06:40:28 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/backdoor2/1_0e5c4/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:40:28 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/backdoor2/2_4982e/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:40:28 | ERROR | __main__ | Error processing repository backdoor2: after_commit_line_number() missing 1 required positional argument: 'old_line_number'
+2025-11-25 06:41:28 | INFO | __main__ | Processing repository: backdoor2
+2025-11-25 06:41:28 | INFO | __main__ | Found commits: ['8011d48dcf346ac411b41bcf4d5877d36db57d81', '0e5c4a1bb11871d9009f864bae849db508e777cc', '4982e633e7412362d73bab9084dce71f3914b2bf', '003bd36ca4cbb09c17bafcf648cb88b2684e9543', 'ce1574dcacff4f53d829d351d3eb75c82db58c44', '15433131ef95b8c990f7e501fd65b000cb43c669', '8216c67c8417a7b579b8305ea2a85f213cb23c8c', 'faa7c145b5c77494b4d97ca953efc1aede20998d', 'e1fd323efc896510b0fbe11787e2c6d0618e2f66', '27ddbbedf7cb164093e2111c79cb0ea4ca144bb3']
+2025-11-25 06:41:28 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/backdoor2/1_0e5c4/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:41:28 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/backdoor2/2_4982e/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:41:29 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/backdoor2/3_003bd/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:41:29 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/backdoor2/4_ce157/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:41:29 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/backdoor2/5_15433/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:41:30 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/backdoor2/6_8216c/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:41:30 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/backdoor2/7_faa7c/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:41:32 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/backdoor2/8_e1fd3/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:41:33 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/backdoor2/9_27ddb/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:42:21 | INFO | __main__ | Processing repository: backdoor2
+2025-11-25 06:42:21 | INFO | __main__ | Found commits: ['8011d48dcf346ac411b41bcf4d5877d36db57d81', '0e5c4a1bb11871d9009f864bae849db508e777cc', '4982e633e7412362d73bab9084dce71f3914b2bf', '003bd36ca4cbb09c17bafcf648cb88b2684e9543', 'ce1574dcacff4f53d829d351d3eb75c82db58c44', '15433131ef95b8c990f7e501fd65b000cb43c669', '8216c67c8417a7b579b8305ea2a85f213cb23c8c', 'faa7c145b5c77494b4d97ca953efc1aede20998d', 'e1fd323efc896510b0fbe11787e2c6d0618e2f66', '27ddbbedf7cb164093e2111c79cb0ea4ca144bb3']
+2025-11-25 06:42:21 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/backdoor2/1_0e5c4/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:42:21 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/backdoor2/2_4982e/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:42:22 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/backdoor2/3_003bd/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:42:22 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/backdoor2/4_ce157/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:42:22 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/backdoor2/5_15433/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:42:23 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/backdoor2/6_8216c/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:42:23 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/backdoor2/7_faa7c/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:42:25 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/backdoor2/8_e1fd3/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:42:26 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/backdoor2/9_27ddb/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:43:04 | INFO | __main__ | Processing repository: reverseShell5
+2025-11-25 06:43:04 | INFO | __main__ | Found commits: ['eaed99285edd8b0d591bba618515963796e789e4', '9c2bb5bf099c3a91b89cb7f46e5b871f39c22aa0', '4f80a9f21cbec3e4150b621dbcc26bf30ad87b75', 'c0b0e6c3e8c106ee044eaa66c9c367ede7ffd87d', 'a63f7188150146d55f8c66d41edfc2019fd394ee', '456e6f75394cf459f9bf41bd73c204ba165976b5', '210bee0ca1c1e14633c09b9b30554c430f1102fc', 'c8f001de7af4a397711a2fdc661b0494416f4f74']
+2025-11-25 06:43:05 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/reverseShell5/1_9c2bb/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:43:05 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/reverseShell5/2_4f80a/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:43:06 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/reverseShell5/3_c0b0e/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:43:06 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/reverseShell5/4_a63f7/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:43:06 | DEBUG | project | Removing 3 deleted nodes from taint_graph
+2025-11-25 06:43:08 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/reverseShell5/5_456e6/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:43:08 | DEBUG | project | Removing 3 deleted nodes from taint_graph
+2025-11-25 06:43:09 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/reverseShell5/6_210be/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:43:09 | DEBUG | project | Removing 3 deleted nodes from taint_graph
+2025-11-25 06:43:11 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/reverseShell5/7_c8f00/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:43:11 | DEBUG | project | Removing 1 deleted nodes from taint_graph
+2025-11-25 06:43:11 | INFO | __main__ | Processing repository: ransomware5
+2025-11-25 06:43:11 | INFO | __main__ | Found commits: ['73839a310c266047dd8bd6024645dc4770358589', '1f376d9d89e23d903b11e1b6bab9c663935d2846', '2e3d36b7a087bce41dfa8e0170fa44a8490ef4cb', '262f100040e9df0ead017c4b14988843bc0a3363', '2e4e198067c971b4a4089f0b7c613e4645aec833']
+2025-11-25 06:43:12 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware5/1_1f376/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:43:12 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware5/2_2e3d3/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:43:13 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware5/3_262f1/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:43:15 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware5/4_2e4e1/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:43:15 | INFO | __main__ | Processing repository: ransomware2
+2025-11-25 06:43:15 | INFO | __main__ | Found commits: ['c5071da3893f91516d7d5633d60fa410fd91297c', 'cd6d75efe657931fca0d4a1d3883816ed75c7aa7', '0f8baa188dcc3bd402687d37183139839455a32c', '6a0dbbf29b722d8ee775fc1781db345237e946a5', 'f4a303d9232cd75ec173a4aaedcff1cfd1df0c37', '96b1f3f0dccd25d3ac1ed61871fbb3c100152ef3', 'c91afeaeef12135f158e395e466e1954e5e38b1a', '76b79c94f540f489c25b721d68b61a2409c9296f']
+2025-11-25 06:43:16 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware2/1_cd6d7/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:43:16 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware2/2_0f8ba/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:43:16 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware2/3_6a0db/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:43:16 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware2/4_f4a30/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:43:17 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware2/5_96b1f/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:43:17 | DEBUG | project | Removing 1 deleted nodes from taint_graph
+2025-11-25 06:43:17 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware2/6_c91af/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:43:18 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware2/7_76b79/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:43:18 | INFO | __main__ | Processing repository: ransomware3
+2025-11-25 06:43:18 | INFO | __main__ | Found commits: ['e16db2c483c7a95294666127cf813245ed4a6c28', '9986f0ee2c5bdebf15d64d5166f2291b6c550bbf', 'fba94c05fcae606e4dfde8c8292fa12e1fe9a449', 'aa70200d4e7b2ee95851cb85b4c2327d58823d23', '725f5ced48bea73841908629839c8d73f9f9ab3a', 'e29aa1746c7983f6f005d5ea569e100410ec08a4', '7d82fc6ddfb4954ca41756ddcd456d6edf414762']
+2025-11-25 06:43:18 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware3/1_9986f/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:43:19 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware3/2_fba94/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:43:19 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware3/3_aa702/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:43:20 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware3/4_725f5/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:43:20 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware3/5_e29aa/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:43:22 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware3/6_7d82f/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:43:22 | INFO | __main__ | Processing repository: keylogger4
+2025-11-25 06:43:22 | INFO | __main__ | Found commits: ['ee790ceb277b48bc67d1fa3685f7640f513e6ed3', '3ee923a831f30ed99a5d612217ca89b5a38618c8', '44e68aa53fa17255f06f8fdd0546cafd5f9ea39a', '204db7c11db55abd04a98e06a18ddf54b89970c9', '33dc768317558cb46c68d912516043e2edbb9e41', 'b071dad6f4c1959a37df89c17768929f0c9504d9']
+2025-11-25 06:43:22 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/keylogger4/1_3ee92/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:43:22 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/keylogger4/2_44e68/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:43:23 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/keylogger4/3_204db/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:43:23 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/keylogger4/4_33dc7/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:43:24 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/keylogger4/5_b071d/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:43:24 | DEBUG | project | Removing 1 deleted nodes from taint_graph
+2025-11-25 06:43:25 | INFO | __main__ | Processing repository: ransomware1
+2025-11-25 06:43:25 | INFO | __main__ | Found commits: ['04290734626bbca3d8ce86298c9326265e18bf8d', '80281e02defb5242117adb762cec18261d1ec763', '98861b90ef027a9d5be98c6b6c8400fe5d7b4a2f', '954c7d64664013658b4275d3f15ed6e6755c25c8', '4eda883d43dd5b111bcb6a505baa3c7b0ac7927a']
+2025-11-25 06:43:25 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware1/1_80281/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:43:25 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware1/2_98861/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:43:25 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware1/3_954c7/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:43:25 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware1/4_4eda8/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:43:25 | DEBUG | project | Removing 1 deleted nodes from taint_graph
+2025-11-25 06:43:26 | INFO | __main__ | Processing repository: keylogger5
+2025-11-25 06:43:26 | INFO | __main__ | Found commits: ['af2c7f8a1c58d8eaabd24eb4161cee0593d65bd7', '12c400e04b08abb43d36bd2e2bc6b272af164383', '31e4c2bb026c5fdc54c0f4ce393a8cadef35bb92', '227fb7b6f88a14966017d8250af3b17c3220b66a', 'e712e30d898be026aba8605594cb572d6b207acb', '75f79f66d5ec2e6076cacd8cd76b5f37abdb6985']
+2025-11-25 06:43:26 | ERROR | __main__ | Error processing repository keylogger5: Command '['git', '-C', '/home/lxy/lxy_codes/mal_update_detect/mal_update_dataset/multiple_commits_human_made/keylogger5', 'checkout', 'af2c7f8a1c58d8eaabd24eb4161cee0593d65bd7']' returned non-zero exit status 1.
+2025-11-25 06:43:26 | INFO | __main__ | Processing repository: virus2
+2025-11-25 06:43:26 | INFO | __main__ | Found commits: ['c356aa3411d3f2597dba8bb59ccd9948db2b63ec', '3365470de938bfcaaa32976eb721f643f2dad1eb', '42c925ef7785f2493a710646ec971f2b49672b68', '221a4648cc1e5ee46567fbf9c893469e6bc8f0a4', 'e4abd7bf17bac80394e3ef94eac7f08170950e90', '3423c3cf3387f846da16ad687ecf5ba2f3523083']
+2025-11-25 06:43:26 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/virus2/1_33654/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:43:26 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/virus2/2_42c92/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:43:27 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/virus2/3_221a4/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:43:28 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/virus2/4_e4abd/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:43:30 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/virus2/5_3423c/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:43:30 | DEBUG | project | Removing 1 deleted nodes from taint_graph
+2025-11-25 06:43:30 | INFO | __main__ | Processing repository: ransomware6
+2025-11-25 06:43:30 | INFO | __main__ | Found commits: ['6d922993a3d12524d32d2145d9058571c0b50129', '571ee192e038d8acb1c27381791f4c68d0720d09', '2c7b060e419bf1ab4173d6b4f6c62ed90e2ac0c1', '400a15297fe6447f01edb4329c8ffb0164df9c12', '546b3a5042481d32ff1684ed342b1de000db2486']
+2025-11-25 06:43:30 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware6/1_571ee/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:43:31 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware6/2_2c7b0/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:43:31 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware6/3_400a1/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:43:31 | DEBUG | project | Removing 2 deleted nodes from taint_graph
+2025-11-25 06:43:32 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware6/4_546b3/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:43:32 | DEBUG | project | Removing 2 deleted nodes from taint_graph
+2025-11-25 06:43:32 | INFO | __main__ | Processing repository: virus1
+2025-11-25 06:43:32 | INFO | __main__ | Found commits: ['c7d02afbbd77342e70889786bfe42a0482ad3845', '0581b67d15224c2b4976e1ddc96f4d364bcc99a7', '981f22b0c283a85c13cfef4701de782cf7b70312']
+2025-11-25 06:43:32 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/virus1/1_0581b/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:43:33 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/virus1/2_981f2/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:43:33 | INFO | __main__ | Processing repository: ransomware4
+2025-11-25 06:43:33 | INFO | __main__ | Found commits: ['ad57958f91cf907f7a4d27bad8f80ba0c56cead2', 'ad631869461132d0b4836c901fef28d55b574d8e', 'ed982b3d715e19f5ccc7f3099ca284dfed57f6ea', 'fea2644b82cc5e786370c274bc7acc965d720e43', '92b3a97cdbaf68b68ba2f888ff905dc7ea974bc2', '034e64027f6b701170e659d8df176eaa8133be2e', 'f74df2a3156a26ab9c263b2882a2f3fe5d99f67b', 'e8210cec295afb543a7d9c90a6eccf148653fa3a', '6fa08a1ba9147395ea78a6b9f5ea85dccae6a36f']
+2025-11-25 06:43:33 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware4/1_ad631/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:43:33 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware4/2_ed982/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:43:33 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware4/3_fea26/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:43:34 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware4/4_92b3a/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:43:35 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware4/5_034e6/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:43:36 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware4/6_f74df/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:43:38 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware4/7_e8210/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:43:40 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware4/8_6fa08/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:43:41 | INFO | __main__ | Processing repository: worm2
+2025-11-25 06:43:41 | INFO | __main__ | Found commits: ['0a2573695eef96d83df2dd6e7bd3c8c81a94a1e6', '3060a483e7eeb3920d114db8c7fd96c1e3d7ce10', '63bab504429a14dc6aa7c6a2231c0c3534300888', '2947e8bff6ab2c32cb59feaa74f50d91c366ce3e', '179a2c96d1356b26d202de9d074fdd07d520fbc8', 'a6bb989e3f8ee441403e750c6125b5a5d6308df4', '7a7273ca03b919d8957dda6ac61ba05a77ac6e98']
+2025-11-25 06:43:41 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/worm2/1_3060a/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:43:41 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/worm2/2_63bab/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:43:42 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/worm2/3_2947e/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:43:43 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/worm2/4_179a2/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:43:44 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/worm2/5_a6bb9/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:43:44 | DEBUG | project | Removing 1 deleted nodes from taint_graph
+2025-11-25 06:43:45 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/worm2/6_7a727/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:43:45 | DEBUG | project | Removing 1 deleted nodes from taint_graph
+2025-11-25 06:43:45 | INFO | __main__ | Processing repository: backdoor
+2025-11-25 06:43:45 | INFO | __main__ | Found commits: ['5638981a0847b366320f51015a62ff8512fd719c', '10fc9418a62d4b0970ea57488547f5ed85d8f940', 'b94ad069be0fcbd620573b47a1049bfe73770c86', '904d3f5abe2773da2f66c9d24785fd5064d06943', '3ce229830b4c6c5200233175dbaa7cc5f41a424c']
+2025-11-25 06:43:45 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/backdoor/1_10fc9/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:43:45 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/backdoor/2_b94ad/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:43:46 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/backdoor/3_904d3/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:43:47 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/backdoor/4_3ce22/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:43:47 | DEBUG | project | Removing 3 deleted nodes from taint_graph
+2025-11-25 06:43:47 | INFO | __main__ | Processing repository: simpleMalware1
+2025-11-25 06:43:47 | INFO | __main__ | Found commits: ['14a16942515f2af0fe109dfb185097b595005db4', 'cb43e78331f38e0cf504f475320a95db0681ad69', 'f8ec22ab5023bf82036704c6152c13c4f3859238', 'd320b13a715033df11ecce745386517e04e17044', 'cee65522a9e744f39f98faac6f6285b4da15c790']
+2025-11-25 06:43:47 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/simpleMalware1/1_cb43e/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:43:47 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/simpleMalware1/2_f8ec2/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:43:48 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/simpleMalware1/3_d320b/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:43:48 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/simpleMalware1/4_cee65/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:43:48 | DEBUG | project | Removing 3 deleted nodes from taint_graph
+2025-11-25 06:43:48 | INFO | __main__ | Processing repository: reverseShell3
+2025-11-25 06:43:48 | INFO | __main__ | Found commits: ['300320ae5af01107fde5b94d8b32ee2b30aa8826', 'dcf79fcc9df5364134636d9ff0bcec5742f38801', '1ccbb4ead10680404a8aa6fd317f3ee939af4d04']
+2025-11-25 06:43:48 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/reverseShell3/1_dcf79/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:43:49 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/reverseShell3/2_1ccbb/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:43:49 | INFO | __main__ | Processing repository: reverseShell2
+2025-11-25 06:43:49 | INFO | __main__ | Found commits: ['f13aa4737bdb3153cf671ba8fb20482b092a28a9', 'a9d0a82b780348f0310aa1c16f80a950d922ed07', '683ad44c6cb2aaeacb9f4a30eea30c9d67fe2ca8', '86f9e9089403a287abed5aa241ade78bc65195e4', '3d1ac4f38e03574df7d93d8cadd94f3321dcbfe5']
+2025-11-25 06:43:49 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/reverseShell2/1_a9d0a/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:43:49 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/reverseShell2/2_683ad/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:43:50 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/reverseShell2/3_86f9e/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:43:50 | DEBUG | project | Removing 1 deleted nodes from taint_graph
+2025-11-25 06:43:50 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/reverseShell2/4_3d1ac/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:43:50 | INFO | __main__ | Processing repository: keylogger3
+2025-11-25 06:43:50 | INFO | __main__ | Found commits: ['b0819c44d5eafde7fd723ce4ba617b48e5ee3eb9', '3f9482998ab2fc42ea308609ea774c58272f8fd8', '2e39e668e94a93fd6834604798510afb7a8d9d79', '4787906ae9cee06d19815a6bc266cf085961cdf6']
+2025-11-25 06:43:50 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/keylogger3/1_3f948/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:43:51 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/keylogger3/2_2e39e/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:43:51 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/keylogger3/3_47879/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:43:51 | INFO | __main__ | Processing repository: backdoor3
+2025-11-25 06:43:51 | INFO | __main__ | Found commits: ['54c6d4e9843c4c66db3d2aae9f9f4c50ecc7f011', '74d2c4af671c6c2e75111012e91f4cd0b6339f8b', '0e62ccd1372eeba9144c00a5e91e352c8dcb5202', '3e05d90f4be311116ae7719b2d4e26ad947148cd', 'c5ce82613481634b13634b37a8c57e2558bcf13f', '0b6ac7149c883837cec9d5d462c9c9f897b1813e']
+2025-11-25 06:43:51 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/backdoor3/1_74d2c/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:43:51 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/backdoor3/2_0e62c/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:43:52 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/backdoor3/3_3e05d/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:43:52 | DEBUG | project | Removing 7 deleted nodes from taint_graph
+2025-11-25 06:43:52 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/backdoor3/4_c5ce8/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:43:52 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/backdoor3/5_0b6ac/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:43:53 | INFO | __main__ | Processing repository: reverseShell1
+2025-11-25 06:43:53 | INFO | __main__ | Found commits: ['0e3b93bb881f68ec1dcad42d18e6199c9c06d09b', 'c6677facacca456510c8eb7eb88fe1222e8beb5d', '2ceaa62b67ea08cb2ed3dd985b7039bd7df95e94', '7277045c36faedc137cec09f1671ed41280fb646', 'a9d4139056681d0e2d2b84fddb88e5037382a15f']
+2025-11-25 06:43:53 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/reverseShell1/1_c6677/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:43:56 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/reverseShell1/2_2ceaa/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:43:56 | DEBUG | project | Removing 5 deleted nodes from taint_graph
+2025-11-25 06:43:56 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/reverseShell1/3_72770/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:43:57 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/reverseShell1/4_a9d41/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:43:57 | INFO | __main__ | Processing repository: keylogger2
+2025-11-25 06:43:57 | INFO | __main__ | Found commits: ['eb46b1fefacb575098bbe3c12a3428630368ee5c', '3bf0b8e55d55889d5a0003a9970321cf642bc3af', '07e9b04739c11b47d7105a5982b6ef8e7238fcd0', '125e1f86286f97318c4596b821d388ede04f9b03', 'ef8566c1d2512573f7f4ed48891356a4f1a43923', '96e94d441e96516da88d4235d356019610539080', '4a73749df75432856e5c0f507f3451c52c9e8f24', '2bc69cd1a76e494194629d8349c7de66abfa0900']
+2025-11-25 06:43:57 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/keylogger2/1_3bf0b/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:43:58 | ERROR | __main__ | Error processing repository keylogger2: The node 30064771084 is not in the digraph.
+2025-11-25 06:43:58 | INFO | __main__ | Processing repository: reverseShell4
+2025-11-25 06:43:58 | INFO | __main__ | Found commits: ['6e1a2ddeac75390b6f56a9034fbca0df66a4d56f', '532d0fb73496a2b447a8f77f8b39273feedaccf9', 'fc3fee1a38cf40edeafe0c2412c1af2fd9abbab0', 'f3a04ea8adef59e789bcc9ae49992d2928c2c85f', '08561122703c13578814cf9bcb78905420ff5dc8', '1c8740b8263bd9932a16a68c7229d52fbcf0b623']
+2025-11-25 06:43:58 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/reverseShell4/1_532d0/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:43:58 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/reverseShell4/2_fc3fe/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:43:58 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/reverseShell4/3_f3a04/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:43:59 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/reverseShell4/4_08561/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:43:59 | DEBUG | project | Removing 3 deleted nodes from taint_graph
+2025-11-25 06:43:59 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/reverseShell4/5_1c874/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:43:59 | INFO | __main__ | Processing repository: backdoor2
+2025-11-25 06:43:59 | INFO | __main__ | Found commits: ['8011d48dcf346ac411b41bcf4d5877d36db57d81', '0e5c4a1bb11871d9009f864bae849db508e777cc', '4982e633e7412362d73bab9084dce71f3914b2bf', '003bd36ca4cbb09c17bafcf648cb88b2684e9543', 'ce1574dcacff4f53d829d351d3eb75c82db58c44', '15433131ef95b8c990f7e501fd65b000cb43c669', '8216c67c8417a7b579b8305ea2a85f213cb23c8c', 'faa7c145b5c77494b4d97ca953efc1aede20998d', 'e1fd323efc896510b0fbe11787e2c6d0618e2f66', '27ddbbedf7cb164093e2111c79cb0ea4ca144bb3']
+2025-11-25 06:43:59 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/backdoor2/1_0e5c4/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:44:00 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/backdoor2/2_4982e/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:44:00 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/backdoor2/3_003bd/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:44:00 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/backdoor2/4_ce157/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:44:01 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/backdoor2/5_15433/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:44:01 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/backdoor2/6_8216c/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:44:02 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/backdoor2/7_faa7c/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:44:04 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/backdoor2/8_e1fd3/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:44:05 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/backdoor2/9_27ddb/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:44:06 | INFO | __main__ | Processing repository: backdoor1
+2025-11-25 06:44:06 | INFO | __main__ | Found commits: ['95d7b63be4a2f44df62e511750a1d805a092f0cf', '19f7b80f8e839477be9dab7c9a415fb7ecaa5a67']
+2025-11-25 06:44:06 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/backdoor1/1_19f7b/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:44:06 | INFO | __main__ | Processing repository: keylogger1
+2025-11-25 06:44:06 | INFO | __main__ | Found commits: ['c19269cc5bfdd797bfadf6290f21d9a59eacb7ac', '843298b4cdeb5a5dd59560bbb90903b2a148721b', 'feaadfa89edc5c263d690a646df9732953a4815d', '6342bf35500f04f83ca6f429e02e991bd98ebca3']
+2025-11-25 06:44:06 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/keylogger1/1_84329/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:44:07 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/keylogger1/2_feaad/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:44:07 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/keylogger1/3_6342b/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:44:07 | INFO | __main__ | Processing repository: worm1
+2025-11-25 06:44:07 | INFO | __main__ | Found commits: ['ae11584b1a9160b4c22e9b1de5fe0a80bc2d8e34', '65569b4bdaf68ba7eb38d29467613a617b405141', 'fe22471997e54825a655bc6b0a20a1d753e7261f', 'f264f3eaa24d05388c4116e791b36d1923aaf1f8', '57344ad9bb7ecd000d5c5f8f85e5908a7251302d', 'a283e1d1cacc8744346f780e1095a5b2a89980d6', '3a40aeeb6cce432610bb8944537e204204c7c1f1', 'f903997fe5328c660525de83f2c215982ec05d9c', '2d70658dcd47de9026895fb056e9c1d2f3f95bd6']
+2025-11-25 06:44:08 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/worm1/1_65569/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:44:08 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/worm1/2_fe224/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:44:09 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/worm1/3_f264f/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:44:10 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/worm1/4_57344/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:44:11 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/worm1/5_a283e/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:44:12 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/worm1/6_3a40a/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:44:12 | DEBUG | project | Removing 1 deleted nodes from taint_graph
+2025-11-25 06:44:13 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/worm1/7_f9039/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:44:13 | DEBUG | project | Removing 1 deleted nodes from taint_graph
+2025-11-25 06:44:15 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/worm1/8_2d706/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:44:16 | INFO | __main__ | Processing repository: dictionary-attack
+2025-11-25 06:44:16 | INFO | __main__ | Found commits: ['2da026219d74f32c92baf40a74b231d236183d90']
+2025-11-25 06:44:16 | INFO | __main__ | Processing repository: ransomware7
+2025-11-25 06:44:16 | INFO | __main__ | Found commits: ['1bb3d53b036488fd8558b3f8f9492f16bdf96a4e', '5312c768895da73bff052891c1425b6fabf3725e', 'ab1439df046b3bbc7d880ad830c958cd47d3595b', '8770aadef5f4f6b86c1769013be58fa6947de784', 'd6a53a4fee05b096ad12a2a6f3cd6b30b58f9061']
+2025-11-25 06:44:16 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware7/1_5312c/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:44:18 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware7/2_ab143/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:44:18 | DEBUG | project | Removing 6 deleted nodes from taint_graph
+2025-11-25 06:44:24 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware7/3_8770a/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:44:24 | DEBUG | project | Removing 14 deleted nodes from taint_graph
+2025-11-25 06:44:25 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware7/4_d6a53/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:44:25 | DEBUG | project | Removing 3 deleted nodes from taint_graph
+2025-11-25 06:49:11 | INFO | __main__ | Processing repository: reverseShell5
+2025-11-25 06:49:11 | INFO | __main__ | Found commits: ['eaed99285edd8b0d591bba618515963796e789e4', '9c2bb5bf099c3a91b89cb7f46e5b871f39c22aa0', '4f80a9f21cbec3e4150b621dbcc26bf30ad87b75', 'c0b0e6c3e8c106ee044eaa66c9c367ede7ffd87d', 'a63f7188150146d55f8c66d41edfc2019fd394ee', '456e6f75394cf459f9bf41bd73c204ba165976b5', '210bee0ca1c1e14633c09b9b30554c430f1102fc', 'c8f001de7af4a397711a2fdc661b0494416f4f74']
+2025-11-25 06:49:11 | ERROR | __main__ | Error processing repository reverseShell5: [Errno 2] No such file or directory: '/home/lxy/lxy_codes/mal_update_detect/joern_workspace/reverseShell5/1_9c2bb/taint_graphs/taint_graph_updated.dot'
+2025-11-25 06:49:11 | INFO | __main__ | Processing repository: ransomware5
+2025-11-25 06:49:11 | INFO | __main__ | Found commits: ['73839a310c266047dd8bd6024645dc4770358589', '1f376d9d89e23d903b11e1b6bab9c663935d2846', '2e3d36b7a087bce41dfa8e0170fa44a8490ef4cb', '262f100040e9df0ead017c4b14988843bc0a3363', '2e4e198067c971b4a4089f0b7c613e4645aec833']
+2025-11-25 06:49:11 | ERROR | __main__ | Error processing repository ransomware5: [Errno 2] No such file or directory: '/home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware5/1_1f376/taint_graphs/taint_graph_updated.dot'
+2025-11-25 06:49:11 | INFO | __main__ | Processing repository: ransomware2
+2025-11-25 06:49:11 | INFO | __main__ | Found commits: ['c5071da3893f91516d7d5633d60fa410fd91297c', 'cd6d75efe657931fca0d4a1d3883816ed75c7aa7', '0f8baa188dcc3bd402687d37183139839455a32c', '6a0dbbf29b722d8ee775fc1781db345237e946a5', 'f4a303d9232cd75ec173a4aaedcff1cfd1df0c37', '96b1f3f0dccd25d3ac1ed61871fbb3c100152ef3', 'c91afeaeef12135f158e395e466e1954e5e38b1a', '76b79c94f540f489c25b721d68b61a2409c9296f']
+2025-11-25 06:49:11 | ERROR | __main__ | Error processing repository ransomware2: [Errno 2] No such file or directory: '/home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware2/1_cd6d7/taint_graphs/taint_graph_updated.dot'
+2025-11-25 06:49:11 | INFO | __main__ | Processing repository: ransomware3
+2025-11-25 06:49:11 | INFO | __main__ | Found commits: ['e16db2c483c7a95294666127cf813245ed4a6c28', '9986f0ee2c5bdebf15d64d5166f2291b6c550bbf', 'fba94c05fcae606e4dfde8c8292fa12e1fe9a449', 'aa70200d4e7b2ee95851cb85b4c2327d58823d23', '725f5ced48bea73841908629839c8d73f9f9ab3a', 'e29aa1746c7983f6f005d5ea569e100410ec08a4', '7d82fc6ddfb4954ca41756ddcd456d6edf414762']
+2025-11-25 06:49:11 | ERROR | __main__ | Error processing repository ransomware3: [Errno 2] No such file or directory: '/home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware3/1_9986f/taint_graphs/taint_graph_updated.dot'
+2025-11-25 06:49:11 | INFO | __main__ | Processing repository: keylogger4
+2025-11-25 06:49:11 | INFO | __main__ | Found commits: ['ee790ceb277b48bc67d1fa3685f7640f513e6ed3', '3ee923a831f30ed99a5d612217ca89b5a38618c8', '44e68aa53fa17255f06f8fdd0546cafd5f9ea39a', '204db7c11db55abd04a98e06a18ddf54b89970c9', '33dc768317558cb46c68d912516043e2edbb9e41', 'b071dad6f4c1959a37df89c17768929f0c9504d9']
+2025-11-25 06:49:12 | ERROR | __main__ | Error processing repository keylogger4: [Errno 2] No such file or directory: '/home/lxy/lxy_codes/mal_update_detect/joern_workspace/keylogger4/1_3ee92/taint_graphs/taint_graph_updated.dot'
+2025-11-25 06:49:12 | INFO | __main__ | Processing repository: ransomware1
+2025-11-25 06:49:12 | INFO | __main__ | Found commits: ['04290734626bbca3d8ce86298c9326265e18bf8d', '80281e02defb5242117adb762cec18261d1ec763', '98861b90ef027a9d5be98c6b6c8400fe5d7b4a2f', '954c7d64664013658b4275d3f15ed6e6755c25c8', '4eda883d43dd5b111bcb6a505baa3c7b0ac7927a']
+2025-11-25 06:49:12 | ERROR | __main__ | Error processing repository ransomware1: [Errno 2] No such file or directory: '/home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware1/1_80281/taint_graphs/taint_graph_updated.dot'
+2025-11-25 06:49:12 | INFO | __main__ | Processing repository: keylogger5
+2025-11-25 06:49:12 | INFO | __main__ | Found commits: ['af2c7f8a1c58d8eaabd24eb4161cee0593d65bd7', '12c400e04b08abb43d36bd2e2bc6b272af164383', '31e4c2bb026c5fdc54c0f4ce393a8cadef35bb92', '227fb7b6f88a14966017d8250af3b17c3220b66a', 'e712e30d898be026aba8605594cb572d6b207acb', '75f79f66d5ec2e6076cacd8cd76b5f37abdb6985']
+2025-11-25 06:49:12 | ERROR | __main__ | Error processing repository keylogger5: Command '['git', '-C', '/home/lxy/lxy_codes/mal_update_detect/mal_update_dataset/multiple_commits_human_made/keylogger5', 'checkout', 'af2c7f8a1c58d8eaabd24eb4161cee0593d65bd7']' returned non-zero exit status 1.
+2025-11-25 06:49:12 | INFO | __main__ | Processing repository: virus2
+2025-11-25 06:49:12 | INFO | __main__ | Found commits: ['c356aa3411d3f2597dba8bb59ccd9948db2b63ec', '3365470de938bfcaaa32976eb721f643f2dad1eb', '42c925ef7785f2493a710646ec971f2b49672b68', '221a4648cc1e5ee46567fbf9c893469e6bc8f0a4', 'e4abd7bf17bac80394e3ef94eac7f08170950e90', '3423c3cf3387f846da16ad687ecf5ba2f3523083']
+2025-11-25 06:49:12 | ERROR | __main__ | Error processing repository virus2: [Errno 2] No such file or directory: '/home/lxy/lxy_codes/mal_update_detect/joern_workspace/virus2/1_33654/taint_graphs/taint_graph_updated.dot'
+2025-11-25 06:49:12 | INFO | __main__ | Processing repository: ransomware6
+2025-11-25 06:49:12 | INFO | __main__ | Found commits: ['6d922993a3d12524d32d2145d9058571c0b50129', '571ee192e038d8acb1c27381791f4c68d0720d09', '2c7b060e419bf1ab4173d6b4f6c62ed90e2ac0c1', '400a15297fe6447f01edb4329c8ffb0164df9c12', '546b3a5042481d32ff1684ed342b1de000db2486']
+2025-11-25 06:49:12 | ERROR | __main__ | Error processing repository ransomware6: [Errno 2] No such file or directory: '/home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware6/1_571ee/taint_graphs/taint_graph_updated.dot'
+2025-11-25 06:49:12 | INFO | __main__ | Processing repository: virus1
+2025-11-25 06:49:12 | INFO | __main__ | Found commits: ['c7d02afbbd77342e70889786bfe42a0482ad3845', '0581b67d15224c2b4976e1ddc96f4d364bcc99a7', '981f22b0c283a85c13cfef4701de782cf7b70312']
+2025-11-25 06:49:13 | ERROR | __main__ | Error processing repository virus1: [Errno 2] No such file or directory: '/home/lxy/lxy_codes/mal_update_detect/joern_workspace/virus1/1_0581b/taint_graphs/taint_graph_updated.dot'
+2025-11-25 06:49:13 | INFO | __main__ | Processing repository: ransomware4
+2025-11-25 06:49:13 | INFO | __main__ | Found commits: ['ad57958f91cf907f7a4d27bad8f80ba0c56cead2', 'ad631869461132d0b4836c901fef28d55b574d8e', 'ed982b3d715e19f5ccc7f3099ca284dfed57f6ea', 'fea2644b82cc5e786370c274bc7acc965d720e43', '92b3a97cdbaf68b68ba2f888ff905dc7ea974bc2', '034e64027f6b701170e659d8df176eaa8133be2e', 'f74df2a3156a26ab9c263b2882a2f3fe5d99f67b', 'e8210cec295afb543a7d9c90a6eccf148653fa3a', '6fa08a1ba9147395ea78a6b9f5ea85dccae6a36f']
+2025-11-25 06:49:13 | ERROR | __main__ | Error processing repository ransomware4: [Errno 2] No such file or directory: '/home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware4/1_ad631/taint_graphs/taint_graph_updated.dot'
+2025-11-25 06:49:13 | INFO | __main__ | Processing repository: worm2
+2025-11-25 06:49:13 | INFO | __main__ | Found commits: ['0a2573695eef96d83df2dd6e7bd3c8c81a94a1e6', '3060a483e7eeb3920d114db8c7fd96c1e3d7ce10', '63bab504429a14dc6aa7c6a2231c0c3534300888', '2947e8bff6ab2c32cb59feaa74f50d91c366ce3e', '179a2c96d1356b26d202de9d074fdd07d520fbc8', 'a6bb989e3f8ee441403e750c6125b5a5d6308df4', '7a7273ca03b919d8957dda6ac61ba05a77ac6e98']
+2025-11-25 06:49:13 | ERROR | __main__ | Error processing repository worm2: [Errno 2] No such file or directory: '/home/lxy/lxy_codes/mal_update_detect/joern_workspace/worm2/1_3060a/taint_graphs/taint_graph_updated.dot'
+2025-11-25 06:49:13 | INFO | __main__ | Processing repository: backdoor
+2025-11-25 06:49:13 | INFO | __main__ | Found commits: ['5638981a0847b366320f51015a62ff8512fd719c', '10fc9418a62d4b0970ea57488547f5ed85d8f940', 'b94ad069be0fcbd620573b47a1049bfe73770c86', '904d3f5abe2773da2f66c9d24785fd5064d06943', '3ce229830b4c6c5200233175dbaa7cc5f41a424c']
+2025-11-25 06:49:13 | ERROR | __main__ | Error processing repository backdoor: [Errno 2] No such file or directory: '/home/lxy/lxy_codes/mal_update_detect/joern_workspace/backdoor/1_10fc9/taint_graphs/taint_graph_updated.dot'
+2025-11-25 06:49:13 | INFO | __main__ | Processing repository: simpleMalware1
+2025-11-25 06:49:13 | INFO | __main__ | Found commits: ['14a16942515f2af0fe109dfb185097b595005db4', 'cb43e78331f38e0cf504f475320a95db0681ad69', 'f8ec22ab5023bf82036704c6152c13c4f3859238', 'd320b13a715033df11ecce745386517e04e17044', 'cee65522a9e744f39f98faac6f6285b4da15c790']
+2025-11-25 06:49:14 | ERROR | __main__ | Error processing repository simpleMalware1: [Errno 2] No such file or directory: '/home/lxy/lxy_codes/mal_update_detect/joern_workspace/simpleMalware1/1_cb43e/taint_graphs/taint_graph_updated.dot'
+2025-11-25 06:49:14 | INFO | __main__ | Processing repository: reverseShell3
+2025-11-25 06:49:14 | INFO | __main__ | Found commits: ['300320ae5af01107fde5b94d8b32ee2b30aa8826', 'dcf79fcc9df5364134636d9ff0bcec5742f38801', '1ccbb4ead10680404a8aa6fd317f3ee939af4d04']
+2025-11-25 06:49:14 | ERROR | __main__ | Error processing repository reverseShell3: [Errno 2] No such file or directory: '/home/lxy/lxy_codes/mal_update_detect/joern_workspace/reverseShell3/1_dcf79/taint_graphs/taint_graph_updated.dot'
+2025-11-25 06:49:14 | INFO | __main__ | Processing repository: reverseShell2
+2025-11-25 06:49:14 | INFO | __main__ | Found commits: ['f13aa4737bdb3153cf671ba8fb20482b092a28a9', 'a9d0a82b780348f0310aa1c16f80a950d922ed07', '683ad44c6cb2aaeacb9f4a30eea30c9d67fe2ca8', '86f9e9089403a287abed5aa241ade78bc65195e4', '3d1ac4f38e03574df7d93d8cadd94f3321dcbfe5']
+2025-11-25 06:49:14 | ERROR | __main__ | Error processing repository reverseShell2: [Errno 2] No such file or directory: '/home/lxy/lxy_codes/mal_update_detect/joern_workspace/reverseShell2/1_a9d0a/taint_graphs/taint_graph_updated.dot'
+2025-11-25 06:49:14 | INFO | __main__ | Processing repository: keylogger3
+2025-11-25 06:49:14 | INFO | __main__ | Found commits: ['b0819c44d5eafde7fd723ce4ba617b48e5ee3eb9', '3f9482998ab2fc42ea308609ea774c58272f8fd8', '2e39e668e94a93fd6834604798510afb7a8d9d79', '4787906ae9cee06d19815a6bc266cf085961cdf6']
+2025-11-25 06:49:14 | ERROR | __main__ | Error processing repository keylogger3: [Errno 2] No such file or directory: '/home/lxy/lxy_codes/mal_update_detect/joern_workspace/keylogger3/1_3f948/taint_graphs/taint_graph_updated.dot'
+2025-11-25 06:49:14 | INFO | __main__ | Processing repository: backdoor3
+2025-11-25 06:49:14 | INFO | __main__ | Found commits: ['54c6d4e9843c4c66db3d2aae9f9f4c50ecc7f011', '74d2c4af671c6c2e75111012e91f4cd0b6339f8b', '0e62ccd1372eeba9144c00a5e91e352c8dcb5202', '3e05d90f4be311116ae7719b2d4e26ad947148cd', 'c5ce82613481634b13634b37a8c57e2558bcf13f', '0b6ac7149c883837cec9d5d462c9c9f897b1813e']
+2025-11-25 06:49:14 | ERROR | __main__ | Error processing repository backdoor3: [Errno 2] No such file or directory: '/home/lxy/lxy_codes/mal_update_detect/joern_workspace/backdoor3/1_74d2c/taint_graphs/taint_graph_updated.dot'
+2025-11-25 06:49:14 | INFO | __main__ | Processing repository: reverseShell1
+2025-11-25 06:49:14 | INFO | __main__ | Found commits: ['0e3b93bb881f68ec1dcad42d18e6199c9c06d09b', 'c6677facacca456510c8eb7eb88fe1222e8beb5d', '2ceaa62b67ea08cb2ed3dd985b7039bd7df95e94', '7277045c36faedc137cec09f1671ed41280fb646', 'a9d4139056681d0e2d2b84fddb88e5037382a15f']
+2025-11-25 06:49:15 | ERROR | __main__ | Error processing repository reverseShell1: [Errno 2] No such file or directory: '/home/lxy/lxy_codes/mal_update_detect/joern_workspace/reverseShell1/1_c6677/taint_graphs/taint_graph_updated.dot'
+2025-11-25 06:49:15 | INFO | __main__ | Processing repository: keylogger2
+2025-11-25 06:49:15 | INFO | __main__ | Found commits: ['eb46b1fefacb575098bbe3c12a3428630368ee5c', '3bf0b8e55d55889d5a0003a9970321cf642bc3af', '07e9b04739c11b47d7105a5982b6ef8e7238fcd0', '125e1f86286f97318c4596b821d388ede04f9b03', 'ef8566c1d2512573f7f4ed48891356a4f1a43923', '96e94d441e96516da88d4235d356019610539080', '4a73749df75432856e5c0f507f3451c52c9e8f24', '2bc69cd1a76e494194629d8349c7de66abfa0900']
+2025-11-25 06:49:15 | ERROR | __main__ | Error processing repository keylogger2: [Errno 2] No such file or directory: '/home/lxy/lxy_codes/mal_update_detect/joern_workspace/keylogger2/1_3bf0b/taint_graphs/taint_graph_updated.dot'
+2025-11-25 06:49:15 | INFO | __main__ | Processing repository: reverseShell4
+2025-11-25 06:49:15 | INFO | __main__ | Found commits: ['6e1a2ddeac75390b6f56a9034fbca0df66a4d56f', '532d0fb73496a2b447a8f77f8b39273feedaccf9', 'fc3fee1a38cf40edeafe0c2412c1af2fd9abbab0', 'f3a04ea8adef59e789bcc9ae49992d2928c2c85f', '08561122703c13578814cf9bcb78905420ff5dc8', '1c8740b8263bd9932a16a68c7229d52fbcf0b623']
+2025-11-25 06:49:15 | ERROR | __main__ | Error processing repository reverseShell4: [Errno 2] No such file or directory: '/home/lxy/lxy_codes/mal_update_detect/joern_workspace/reverseShell4/1_532d0/taint_graphs/taint_graph_updated.dot'
+2025-11-25 06:49:15 | INFO | __main__ | Processing repository: backdoor2
+2025-11-25 06:49:15 | INFO | __main__ | Found commits: ['8011d48dcf346ac411b41bcf4d5877d36db57d81', '0e5c4a1bb11871d9009f864bae849db508e777cc', '4982e633e7412362d73bab9084dce71f3914b2bf', '003bd36ca4cbb09c17bafcf648cb88b2684e9543', 'ce1574dcacff4f53d829d351d3eb75c82db58c44', '15433131ef95b8c990f7e501fd65b000cb43c669', '8216c67c8417a7b579b8305ea2a85f213cb23c8c', 'faa7c145b5c77494b4d97ca953efc1aede20998d', 'e1fd323efc896510b0fbe11787e2c6d0618e2f66', '27ddbbedf7cb164093e2111c79cb0ea4ca144bb3']
+2025-11-25 06:49:15 | ERROR | __main__ | Error processing repository backdoor2: [Errno 2] No such file or directory: '/home/lxy/lxy_codes/mal_update_detect/joern_workspace/backdoor2/1_0e5c4/taint_graphs/taint_graph_updated.dot'
+2025-11-25 06:49:15 | INFO | __main__ | Processing repository: backdoor1
+2025-11-25 06:49:15 | INFO | __main__ | Found commits: ['95d7b63be4a2f44df62e511750a1d805a092f0cf', '19f7b80f8e839477be9dab7c9a415fb7ecaa5a67']
+2025-11-25 06:49:15 | ERROR | __main__ | Error processing repository backdoor1: [Errno 2] No such file or directory: '/home/lxy/lxy_codes/mal_update_detect/joern_workspace/backdoor1/1_19f7b/taint_graphs/taint_graph_updated.dot'
+2025-11-25 06:49:15 | INFO | __main__ | Processing repository: keylogger1
+2025-11-25 06:49:15 | INFO | __main__ | Found commits: ['c19269cc5bfdd797bfadf6290f21d9a59eacb7ac', '843298b4cdeb5a5dd59560bbb90903b2a148721b', 'feaadfa89edc5c263d690a646df9732953a4815d', '6342bf35500f04f83ca6f429e02e991bd98ebca3']
+2025-11-25 06:49:16 | ERROR | __main__ | Error processing repository keylogger1: [Errno 2] No such file or directory: '/home/lxy/lxy_codes/mal_update_detect/joern_workspace/keylogger1/1_84329/taint_graphs/taint_graph_updated.dot'
+2025-11-25 06:49:16 | INFO | __main__ | Processing repository: worm1
+2025-11-25 06:49:16 | INFO | __main__ | Found commits: ['ae11584b1a9160b4c22e9b1de5fe0a80bc2d8e34', '65569b4bdaf68ba7eb38d29467613a617b405141', 'fe22471997e54825a655bc6b0a20a1d753e7261f', 'f264f3eaa24d05388c4116e791b36d1923aaf1f8', '57344ad9bb7ecd000d5c5f8f85e5908a7251302d', 'a283e1d1cacc8744346f780e1095a5b2a89980d6', '3a40aeeb6cce432610bb8944537e204204c7c1f1', 'f903997fe5328c660525de83f2c215982ec05d9c', '2d70658dcd47de9026895fb056e9c1d2f3f95bd6']
+2025-11-25 06:49:16 | ERROR | __main__ | Error processing repository worm1: [Errno 2] No such file or directory: '/home/lxy/lxy_codes/mal_update_detect/joern_workspace/worm1/1_65569/taint_graphs/taint_graph_updated.dot'
+2025-11-25 06:49:16 | INFO | __main__ | Processing repository: dictionary-attack
+2025-11-25 06:49:16 | INFO | __main__ | Found commits: ['2da026219d74f32c92baf40a74b231d236183d90']
+2025-11-25 06:49:16 | INFO | __main__ | Processing repository: ransomware7
+2025-11-25 06:49:16 | INFO | __main__ | Found commits: ['1bb3d53b036488fd8558b3f8f9492f16bdf96a4e', '5312c768895da73bff052891c1425b6fabf3725e', 'ab1439df046b3bbc7d880ad830c958cd47d3595b', '8770aadef5f4f6b86c1769013be58fa6947de784', 'd6a53a4fee05b096ad12a2a6f3cd6b30b58f9061']
+2025-11-25 06:49:16 | ERROR | __main__ | Error processing repository ransomware7: [Errno 2] No such file or directory: '/home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware7/1_5312c/taint_graphs/taint_graph_updated.dot'
+2025-11-25 06:52:47 | INFO | __main__ | Processing repository: reverseShell5
+2025-11-25 06:52:47 | INFO | __main__ | Found commits: ['eaed99285edd8b0d591bba618515963796e789e4', '9c2bb5bf099c3a91b89cb7f46e5b871f39c22aa0']
+2025-11-25 06:52:47 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/reverseShell5/1_9c2bb/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:52:47 | INFO | __main__ | Processing repository: ransomware5
+2025-11-25 06:52:47 | INFO | __main__ | Found commits: ['73839a310c266047dd8bd6024645dc4770358589', '1f376d9d89e23d903b11e1b6bab9c663935d2846']
+2025-11-25 06:52:47 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware5/1_1f376/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:52:47 | INFO | __main__ | Processing repository: ransomware2
+2025-11-25 06:52:47 | INFO | __main__ | Found commits: ['c5071da3893f91516d7d5633d60fa410fd91297c', 'cd6d75efe657931fca0d4a1d3883816ed75c7aa7', '0f8baa188dcc3bd402687d37183139839455a32c', '6a0dbbf29b722d8ee775fc1781db345237e946a5', 'f4a303d9232cd75ec173a4aaedcff1cfd1df0c37', '96b1f3f0dccd25d3ac1ed61871fbb3c100152ef3', 'c91afeaeef12135f158e395e466e1954e5e38b1a', '76b79c94f540f489c25b721d68b61a2409c9296f']
+2025-11-25 06:52:47 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware2/1_cd6d7/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:52:48 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware2/2_0f8ba/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:52:48 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware2/3_6a0db/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:52:48 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware2/4_f4a30/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:52:48 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware2/5_96b1f/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:52:48 | DEBUG | project | Removing 1 deleted nodes from taint_graph
+2025-11-25 06:52:49 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware2/6_c91af/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:52:50 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware2/7_76b79/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:52:50 | INFO | __main__ | Processing repository: ransomware3
+2025-11-25 06:52:50 | INFO | __main__ | Found commits: ['e16db2c483c7a95294666127cf813245ed4a6c28', '9986f0ee2c5bdebf15d64d5166f2291b6c550bbf', 'fba94c05fcae606e4dfde8c8292fa12e1fe9a449', 'aa70200d4e7b2ee95851cb85b4c2327d58823d23', '725f5ced48bea73841908629839c8d73f9f9ab3a', 'e29aa1746c7983f6f005d5ea569e100410ec08a4', '7d82fc6ddfb4954ca41756ddcd456d6edf414762']
+2025-11-25 06:52:50 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware3/1_9986f/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:52:50 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware3/2_fba94/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:52:51 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware3/3_aa702/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:52:51 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware3/4_725f5/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:52:52 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware3/5_e29aa/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:52:53 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware3/6_7d82f/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:52:54 | INFO | __main__ | Processing repository: keylogger4
+2025-11-25 06:52:54 | INFO | __main__ | Found commits: ['ee790ceb277b48bc67d1fa3685f7640f513e6ed3', '3ee923a831f30ed99a5d612217ca89b5a38618c8', '44e68aa53fa17255f06f8fdd0546cafd5f9ea39a', '204db7c11db55abd04a98e06a18ddf54b89970c9', '33dc768317558cb46c68d912516043e2edbb9e41', 'b071dad6f4c1959a37df89c17768929f0c9504d9']
+2025-11-25 06:52:54 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/keylogger4/1_3ee92/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:52:54 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/keylogger4/2_44e68/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:52:55 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/keylogger4/3_204db/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:52:55 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/keylogger4/4_33dc7/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:52:56 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/keylogger4/5_b071d/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:52:56 | DEBUG | project | Removing 1 deleted nodes from taint_graph
+2025-11-25 06:52:56 | INFO | __main__ | Processing repository: ransomware1
+2025-11-25 06:52:56 | INFO | __main__ | Found commits: ['04290734626bbca3d8ce86298c9326265e18bf8d', '80281e02defb5242117adb762cec18261d1ec763', '98861b90ef027a9d5be98c6b6c8400fe5d7b4a2f', '954c7d64664013658b4275d3f15ed6e6755c25c8', '4eda883d43dd5b111bcb6a505baa3c7b0ac7927a']
+2025-11-25 06:52:56 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware1/1_80281/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:52:57 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware1/2_98861/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:52:57 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware1/3_954c7/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:52:57 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware1/4_4eda8/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:52:57 | DEBUG | project | Removing 1 deleted nodes from taint_graph
+2025-11-25 06:52:57 | INFO | __main__ | Processing repository: keylogger5
+2025-11-25 06:52:57 | INFO | __main__ | Found commits: ['af2c7f8a1c58d8eaabd24eb4161cee0593d65bd7', '12c400e04b08abb43d36bd2e2bc6b272af164383', '31e4c2bb026c5fdc54c0f4ce393a8cadef35bb92', '227fb7b6f88a14966017d8250af3b17c3220b66a', 'e712e30d898be026aba8605594cb572d6b207acb', '75f79f66d5ec2e6076cacd8cd76b5f37abdb6985']
+2025-11-25 06:57:20 | INFO | __main__ | Processing repository: reverseShell5
+2025-11-25 06:57:20 | INFO | __main__ | Found commits: ['eaed99285edd8b0d591bba618515963796e789e4', '9c2bb5bf099c3a91b89cb7f46e5b871f39c22aa0']
+2025-11-25 06:57:20 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/reverseShell5/1_9c2bb/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:57:20 | INFO | __main__ | Processing repository: ransomware5
+2025-11-25 06:57:20 | INFO | __main__ | Found commits: ['73839a310c266047dd8bd6024645dc4770358589', '1f376d9d89e23d903b11e1b6bab9c663935d2846']
+2025-11-25 06:57:20 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware5/1_1f376/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:57:20 | INFO | __main__ | Processing repository: ransomware2
+2025-11-25 06:57:20 | INFO | __main__ | Found commits: ['c5071da3893f91516d7d5633d60fa410fd91297c', 'cd6d75efe657931fca0d4a1d3883816ed75c7aa7', '0f8baa188dcc3bd402687d37183139839455a32c', '6a0dbbf29b722d8ee775fc1781db345237e946a5', 'f4a303d9232cd75ec173a4aaedcff1cfd1df0c37', '96b1f3f0dccd25d3ac1ed61871fbb3c100152ef3', 'c91afeaeef12135f158e395e466e1954e5e38b1a', '76b79c94f540f489c25b721d68b61a2409c9296f']
+2025-11-25 06:57:20 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware2/1_cd6d7/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:57:21 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware2/2_0f8ba/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:57:21 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware2/3_6a0db/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:57:21 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware2/4_f4a30/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:57:21 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware2/5_96b1f/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:57:21 | DEBUG | project | Removing 1 deleted nodes from taint_graph
+2025-11-25 06:57:22 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware2/6_c91af/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:57:23 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware2/7_76b79/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:57:23 | INFO | __main__ | Processing repository: ransomware3
+2025-11-25 06:57:23 | INFO | __main__ | Found commits: ['e16db2c483c7a95294666127cf813245ed4a6c28', '9986f0ee2c5bdebf15d64d5166f2291b6c550bbf', 'fba94c05fcae606e4dfde8c8292fa12e1fe9a449', 'aa70200d4e7b2ee95851cb85b4c2327d58823d23', '725f5ced48bea73841908629839c8d73f9f9ab3a', 'e29aa1746c7983f6f005d5ea569e100410ec08a4', '7d82fc6ddfb4954ca41756ddcd456d6edf414762']
+2025-11-25 06:57:23 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware3/1_9986f/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:57:23 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware3/2_fba94/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:57:24 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware3/3_aa702/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:57:24 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware3/4_725f5/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:57:25 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware3/5_e29aa/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:57:26 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware3/6_7d82f/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:57:27 | INFO | __main__ | Processing repository: keylogger4
+2025-11-25 06:57:27 | INFO | __main__ | Found commits: ['ee790ceb277b48bc67d1fa3685f7640f513e6ed3', '3ee923a831f30ed99a5d612217ca89b5a38618c8', '44e68aa53fa17255f06f8fdd0546cafd5f9ea39a', '204db7c11db55abd04a98e06a18ddf54b89970c9', '33dc768317558cb46c68d912516043e2edbb9e41', 'b071dad6f4c1959a37df89c17768929f0c9504d9']
+2025-11-25 06:57:27 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/keylogger4/1_3ee92/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:57:27 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/keylogger4/2_44e68/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:57:27 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/keylogger4/3_204db/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:57:28 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/keylogger4/4_33dc7/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:57:29 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/keylogger4/5_b071d/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:57:29 | DEBUG | project | Removing 1 deleted nodes from taint_graph
+2025-11-25 06:57:29 | INFO | __main__ | Processing repository: ransomware1
+2025-11-25 06:57:29 | INFO | __main__ | Found commits: ['04290734626bbca3d8ce86298c9326265e18bf8d', '80281e02defb5242117adb762cec18261d1ec763', '98861b90ef027a9d5be98c6b6c8400fe5d7b4a2f', '954c7d64664013658b4275d3f15ed6e6755c25c8', '4eda883d43dd5b111bcb6a505baa3c7b0ac7927a']
+2025-11-25 06:57:29 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware1/1_80281/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:57:29 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware1/2_98861/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:57:30 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware1/3_954c7/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:57:30 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware1/4_4eda8/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:57:30 | DEBUG | project | Removing 1 deleted nodes from taint_graph
+2025-11-25 06:57:30 | INFO | __main__ | Processing repository: keylogger5
+2025-11-25 06:57:30 | INFO | __main__ | Found commits: ['af2c7f8a1c58d8eaabd24eb4161cee0593d65bd7']
+2025-11-25 06:57:30 | ERROR | __main__ | Error processing repository keylogger5: [Errno 2] No such file or directory: '/home/lxy/lxy_codes/mal_update_detect/joern_workspace/keylogger5/0_af2c7/cpg/export.dot'
+2025-11-25 06:57:30 | INFO | __main__ | Processing repository: virus2
+2025-11-25 06:57:30 | INFO | __main__ | Found commits: ['c356aa3411d3f2597dba8bb59ccd9948db2b63ec', '3365470de938bfcaaa32976eb721f643f2dad1eb', '42c925ef7785f2493a710646ec971f2b49672b68', '221a4648cc1e5ee46567fbf9c893469e6bc8f0a4', 'e4abd7bf17bac80394e3ef94eac7f08170950e90', '3423c3cf3387f846da16ad687ecf5ba2f3523083']
+2025-11-25 06:57:30 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/virus2/1_33654/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:57:31 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/virus2/2_42c92/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:57:32 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/virus2/3_221a4/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:57:34 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/virus2/4_e4abd/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:57:35 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/virus2/5_3423c/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:57:35 | DEBUG | project | Removing 1 deleted nodes from taint_graph
+2025-11-25 06:57:35 | INFO | __main__ | Processing repository: ransomware6
+2025-11-25 06:57:35 | INFO | __main__ | Found commits: ['6d922993a3d12524d32d2145d9058571c0b50129', '571ee192e038d8acb1c27381791f4c68d0720d09', '2c7b060e419bf1ab4173d6b4f6c62ed90e2ac0c1', '400a15297fe6447f01edb4329c8ffb0164df9c12', '546b3a5042481d32ff1684ed342b1de000db2486']
+2025-11-25 06:57:36 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware6/1_571ee/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:57:36 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware6/2_2c7b0/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:57:37 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware6/3_400a1/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:57:37 | DEBUG | project | Removing 2 deleted nodes from taint_graph
+2025-11-25 06:57:38 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware6/4_546b3/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:57:38 | DEBUG | project | Removing 2 deleted nodes from taint_graph
+2025-11-25 06:57:38 | INFO | __main__ | Processing repository: virus1
+2025-11-25 06:57:38 | INFO | __main__ | Found commits: ['c7d02afbbd77342e70889786bfe42a0482ad3845', '0581b67d15224c2b4976e1ddc96f4d364bcc99a7', '981f22b0c283a85c13cfef4701de782cf7b70312']
+2025-11-25 06:57:38 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/virus1/1_0581b/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:57:39 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/virus1/2_981f2/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:57:39 | INFO | __main__ | Processing repository: ransomware4
+2025-11-25 06:57:39 | INFO | __main__ | Found commits: ['ad57958f91cf907f7a4d27bad8f80ba0c56cead2', 'ad631869461132d0b4836c901fef28d55b574d8e', 'ed982b3d715e19f5ccc7f3099ca284dfed57f6ea', 'fea2644b82cc5e786370c274bc7acc965d720e43', '92b3a97cdbaf68b68ba2f888ff905dc7ea974bc2', '034e64027f6b701170e659d8df176eaa8133be2e', 'f74df2a3156a26ab9c263b2882a2f3fe5d99f67b', 'e8210cec295afb543a7d9c90a6eccf148653fa3a', '6fa08a1ba9147395ea78a6b9f5ea85dccae6a36f']
+2025-11-25 06:57:39 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware4/1_ad631/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:57:39 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware4/2_ed982/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:57:39 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware4/3_fea26/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:57:40 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware4/4_92b3a/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:57:41 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware4/5_034e6/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:57:43 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware4/6_f74df/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:57:45 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware4/7_e8210/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:57:46 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware4/8_6fa08/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:57:47 | INFO | __main__ | Processing repository: worm2
+2025-11-25 06:57:47 | INFO | __main__ | Found commits: ['0a2573695eef96d83df2dd6e7bd3c8c81a94a1e6', '3060a483e7eeb3920d114db8c7fd96c1e3d7ce10', '63bab504429a14dc6aa7c6a2231c0c3534300888', '2947e8bff6ab2c32cb59feaa74f50d91c366ce3e', '179a2c96d1356b26d202de9d074fdd07d520fbc8', 'a6bb989e3f8ee441403e750c6125b5a5d6308df4', '7a7273ca03b919d8957dda6ac61ba05a77ac6e98']
+2025-11-25 06:57:47 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/worm2/1_3060a/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:57:48 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/worm2/2_63bab/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:57:48 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/worm2/3_2947e/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:57:49 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/worm2/4_179a2/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:57:50 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/worm2/5_a6bb9/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:57:50 | DEBUG | project | Removing 1 deleted nodes from taint_graph
+2025-11-25 06:57:51 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/worm2/6_7a727/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:57:51 | DEBUG | project | Removing 1 deleted nodes from taint_graph
+2025-11-25 06:57:51 | INFO | __main__ | Processing repository: backdoor
+2025-11-25 06:57:51 | INFO | __main__ | Found commits: ['5638981a0847b366320f51015a62ff8512fd719c', '10fc9418a62d4b0970ea57488547f5ed85d8f940', 'b94ad069be0fcbd620573b47a1049bfe73770c86', '904d3f5abe2773da2f66c9d24785fd5064d06943', '3ce229830b4c6c5200233175dbaa7cc5f41a424c']
+2025-11-25 06:57:52 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/backdoor/1_10fc9/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:57:52 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/backdoor/2_b94ad/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:57:52 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/backdoor/3_904d3/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:57:53 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/backdoor/4_3ce22/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:57:53 | DEBUG | project | Removing 3 deleted nodes from taint_graph
+2025-11-25 06:57:53 | INFO | __main__ | Processing repository: simpleMalware1
+2025-11-25 06:57:53 | INFO | __main__ | Found commits: ['14a16942515f2af0fe109dfb185097b595005db4', 'cb43e78331f38e0cf504f475320a95db0681ad69', 'f8ec22ab5023bf82036704c6152c13c4f3859238', 'd320b13a715033df11ecce745386517e04e17044', 'cee65522a9e744f39f98faac6f6285b4da15c790']
+2025-11-25 06:57:54 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/simpleMalware1/1_cb43e/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:57:54 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/simpleMalware1/2_f8ec2/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:57:54 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/simpleMalware1/3_d320b/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:57:55 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/simpleMalware1/4_cee65/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:57:55 | DEBUG | project | Removing 3 deleted nodes from taint_graph
+2025-11-25 06:57:55 | INFO | __main__ | Processing repository: reverseShell3
+2025-11-25 06:57:55 | INFO | __main__ | Found commits: ['300320ae5af01107fde5b94d8b32ee2b30aa8826', 'dcf79fcc9df5364134636d9ff0bcec5742f38801', '1ccbb4ead10680404a8aa6fd317f3ee939af4d04']
+2025-11-25 06:57:55 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/reverseShell3/1_dcf79/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:57:55 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/reverseShell3/2_1ccbb/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:57:55 | INFO | __main__ | Processing repository: reverseShell2
+2025-11-25 06:57:55 | INFO | __main__ | Found commits: ['f13aa4737bdb3153cf671ba8fb20482b092a28a9', 'a9d0a82b780348f0310aa1c16f80a950d922ed07', '683ad44c6cb2aaeacb9f4a30eea30c9d67fe2ca8', '86f9e9089403a287abed5aa241ade78bc65195e4', '3d1ac4f38e03574df7d93d8cadd94f3321dcbfe5']
+2025-11-25 06:57:56 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/reverseShell2/1_a9d0a/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:57:56 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/reverseShell2/2_683ad/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:57:56 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/reverseShell2/3_86f9e/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:57:56 | DEBUG | project | Removing 1 deleted nodes from taint_graph
+2025-11-25 06:57:57 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/reverseShell2/4_3d1ac/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:57:57 | INFO | __main__ | Processing repository: keylogger3
+2025-11-25 06:57:57 | INFO | __main__ | Found commits: ['b0819c44d5eafde7fd723ce4ba617b48e5ee3eb9', '3f9482998ab2fc42ea308609ea774c58272f8fd8', '2e39e668e94a93fd6834604798510afb7a8d9d79', '4787906ae9cee06d19815a6bc266cf085961cdf6']
+2025-11-25 06:57:57 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/keylogger3/1_3f948/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:57:57 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/keylogger3/2_2e39e/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:57:57 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/keylogger3/3_47879/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:57:57 | INFO | __main__ | Processing repository: backdoor3
+2025-11-25 06:57:57 | INFO | __main__ | Found commits: ['54c6d4e9843c4c66db3d2aae9f9f4c50ecc7f011', '74d2c4af671c6c2e75111012e91f4cd0b6339f8b', '0e62ccd1372eeba9144c00a5e91e352c8dcb5202', '3e05d90f4be311116ae7719b2d4e26ad947148cd', 'c5ce82613481634b13634b37a8c57e2558bcf13f', '0b6ac7149c883837cec9d5d462c9c9f897b1813e']
+2025-11-25 06:57:58 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/backdoor3/1_74d2c/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:57:58 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/backdoor3/2_0e62c/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:57:58 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/backdoor3/3_3e05d/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:57:58 | DEBUG | project | Removing 7 deleted nodes from taint_graph
+2025-11-25 06:57:59 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/backdoor3/4_c5ce8/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:57:59 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/backdoor3/5_0b6ac/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:57:59 | INFO | __main__ | Processing repository: reverseShell1
+2025-11-25 06:57:59 | INFO | __main__ | Found commits: ['0e3b93bb881f68ec1dcad42d18e6199c9c06d09b', 'c6677facacca456510c8eb7eb88fe1222e8beb5d', '2ceaa62b67ea08cb2ed3dd985b7039bd7df95e94', '7277045c36faedc137cec09f1671ed41280fb646', 'a9d4139056681d0e2d2b84fddb88e5037382a15f']
+2025-11-25 06:58:00 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/reverseShell1/1_c6677/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:58:02 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/reverseShell1/2_2ceaa/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:58:02 | DEBUG | project | Removing 5 deleted nodes from taint_graph
+2025-11-25 06:58:02 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/reverseShell1/3_72770/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:58:03 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/reverseShell1/4_a9d41/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:58:03 | INFO | __main__ | Processing repository: keylogger2
+2025-11-25 06:58:03 | INFO | __main__ | Found commits: ['eb46b1fefacb575098bbe3c12a3428630368ee5c', '3bf0b8e55d55889d5a0003a9970321cf642bc3af', '07e9b04739c11b47d7105a5982b6ef8e7238fcd0', '125e1f86286f97318c4596b821d388ede04f9b03', 'ef8566c1d2512573f7f4ed48891356a4f1a43923', '96e94d441e96516da88d4235d356019610539080', '4a73749df75432856e5c0f507f3451c52c9e8f24', '2bc69cd1a76e494194629d8349c7de66abfa0900']
+2025-11-25 06:58:04 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/keylogger2/1_3bf0b/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:58:04 | ERROR | __main__ | Error processing repository keylogger2: The node 30064771084 is not in the digraph.
+2025-11-25 06:58:04 | INFO | __main__ | Processing repository: reverseShell4
+2025-11-25 06:58:04 | INFO | __main__ | Found commits: ['6e1a2ddeac75390b6f56a9034fbca0df66a4d56f', '532d0fb73496a2b447a8f77f8b39273feedaccf9', 'fc3fee1a38cf40edeafe0c2412c1af2fd9abbab0', 'f3a04ea8adef59e789bcc9ae49992d2928c2c85f', '08561122703c13578814cf9bcb78905420ff5dc8', '1c8740b8263bd9932a16a68c7229d52fbcf0b623']
+2025-11-25 06:58:04 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/reverseShell4/1_532d0/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:58:04 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/reverseShell4/2_fc3fe/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:58:05 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/reverseShell4/3_f3a04/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:58:05 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/reverseShell4/4_08561/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:58:05 | DEBUG | project | Removing 3 deleted nodes from taint_graph
+2025-11-25 06:58:06 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/reverseShell4/5_1c874/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:58:06 | INFO | __main__ | Processing repository: backdoor2
+2025-11-25 06:58:06 | INFO | __main__ | Found commits: ['8011d48dcf346ac411b41bcf4d5877d36db57d81', '0e5c4a1bb11871d9009f864bae849db508e777cc', '4982e633e7412362d73bab9084dce71f3914b2bf', '003bd36ca4cbb09c17bafcf648cb88b2684e9543', 'ce1574dcacff4f53d829d351d3eb75c82db58c44', '15433131ef95b8c990f7e501fd65b000cb43c669', '8216c67c8417a7b579b8305ea2a85f213cb23c8c', 'faa7c145b5c77494b4d97ca953efc1aede20998d', 'e1fd323efc896510b0fbe11787e2c6d0618e2f66', '27ddbbedf7cb164093e2111c79cb0ea4ca144bb3']
+2025-11-25 06:58:06 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/backdoor2/1_0e5c4/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:58:06 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/backdoor2/2_4982e/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:58:06 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/backdoor2/3_003bd/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:58:07 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/backdoor2/4_ce157/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:58:07 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/backdoor2/5_15433/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:58:08 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/backdoor2/6_8216c/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:58:09 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/backdoor2/7_faa7c/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:58:11 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/backdoor2/8_e1fd3/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:58:13 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/backdoor2/9_27ddb/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:58:14 | INFO | __main__ | Processing repository: backdoor1
+2025-11-25 06:58:14 | INFO | __main__ | Found commits: ['95d7b63be4a2f44df62e511750a1d805a092f0cf', '19f7b80f8e839477be9dab7c9a415fb7ecaa5a67']
+2025-11-25 06:58:14 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/backdoor1/1_19f7b/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:58:14 | INFO | __main__ | Processing repository: keylogger1
+2025-11-25 06:58:14 | INFO | __main__ | Found commits: ['c19269cc5bfdd797bfadf6290f21d9a59eacb7ac', '843298b4cdeb5a5dd59560bbb90903b2a148721b', 'feaadfa89edc5c263d690a646df9732953a4815d', '6342bf35500f04f83ca6f429e02e991bd98ebca3']
+2025-11-25 06:58:14 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/keylogger1/1_84329/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:58:14 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/keylogger1/2_feaad/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:58:15 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/keylogger1/3_6342b/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:58:15 | INFO | __main__ | Processing repository: worm1
+2025-11-25 06:58:15 | INFO | __main__ | Found commits: ['ae11584b1a9160b4c22e9b1de5fe0a80bc2d8e34', '65569b4bdaf68ba7eb38d29467613a617b405141', 'fe22471997e54825a655bc6b0a20a1d753e7261f', 'f264f3eaa24d05388c4116e791b36d1923aaf1f8', '57344ad9bb7ecd000d5c5f8f85e5908a7251302d', 'a283e1d1cacc8744346f780e1095a5b2a89980d6', '3a40aeeb6cce432610bb8944537e204204c7c1f1', 'f903997fe5328c660525de83f2c215982ec05d9c', '2d70658dcd47de9026895fb056e9c1d2f3f95bd6']
+2025-11-25 06:58:15 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/worm1/1_65569/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:58:16 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/worm1/2_fe224/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:58:17 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/worm1/3_f264f/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:58:18 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/worm1/4_57344/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:58:19 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/worm1/5_a283e/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:58:21 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/worm1/6_3a40a/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:58:21 | DEBUG | project | Removing 1 deleted nodes from taint_graph
+2025-11-25 06:58:23 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/worm1/7_f9039/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:58:23 | DEBUG | project | Removing 1 deleted nodes from taint_graph
+2025-11-25 06:58:25 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/worm1/8_2d706/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:58:26 | INFO | __main__ | Processing repository: dictionary-attack
+2025-11-25 06:58:26 | INFO | __main__ | Found commits: ['2da026219d74f32c92baf40a74b231d236183d90']
+2025-11-25 06:58:26 | INFO | __main__ | Processing repository: ransomware7
+2025-11-25 06:58:26 | INFO | __main__ | Found commits: ['1bb3d53b036488fd8558b3f8f9492f16bdf96a4e', '5312c768895da73bff052891c1425b6fabf3725e', 'ab1439df046b3bbc7d880ad830c958cd47d3595b', '8770aadef5f4f6b86c1769013be58fa6947de784', 'd6a53a4fee05b096ad12a2a6f3cd6b30b58f9061']
+2025-11-25 06:58:26 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware7/1_5312c/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:58:28 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware7/2_ab143/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:58:28 | DEBUG | project | Removing 6 deleted nodes from taint_graph
+2025-11-25 06:58:33 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware7/3_8770a/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:58:33 | DEBUG | project | Removing 14 deleted nodes from taint_graph
+2025-11-25 06:58:35 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware7/4_d6a53/taint_graphs/taint_graph_updated.dot
+2025-11-25 06:58:35 | DEBUG | project | Removing 3 deleted nodes from taint_graph
+2025-11-25 07:00:23 | INFO | __main__ | Processing repository: reverseShell5
+2025-11-25 07:00:23 | INFO | __main__ | Found commits: ['eaed99285edd8b0d591bba618515963796e789e4', '9c2bb5bf099c3a91b89cb7f46e5b871f39c22aa0']
+2025-11-25 07:00:23 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/reverseShell5/1_9c2bb/taint_graphs/taint_graph_updated.dot
+2025-11-25 07:00:23 | INFO | __main__ | Processing repository: ransomware5
+2025-11-25 07:00:23 | INFO | __main__ | Found commits: ['73839a310c266047dd8bd6024645dc4770358589', '1f376d9d89e23d903b11e1b6bab9c663935d2846']
+2025-11-25 07:00:24 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware5/1_1f376/taint_graphs/taint_graph_updated.dot
+2025-11-25 07:00:24 | INFO | __main__ | Processing repository: ransomware2
+2025-11-25 07:00:24 | INFO | __main__ | Found commits: ['c5071da3893f91516d7d5633d60fa410fd91297c', 'cd6d75efe657931fca0d4a1d3883816ed75c7aa7', '0f8baa188dcc3bd402687d37183139839455a32c', '6a0dbbf29b722d8ee775fc1781db345237e946a5', 'f4a303d9232cd75ec173a4aaedcff1cfd1df0c37', '96b1f3f0dccd25d3ac1ed61871fbb3c100152ef3', 'c91afeaeef12135f158e395e466e1954e5e38b1a', '76b79c94f540f489c25b721d68b61a2409c9296f']
+2025-11-25 07:00:24 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware2/1_cd6d7/taint_graphs/taint_graph_updated.dot
+2025-11-25 07:00:24 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware2/2_0f8ba/taint_graphs/taint_graph_updated.dot
+2025-11-25 07:00:24 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware2/3_6a0db/taint_graphs/taint_graph_updated.dot
+2025-11-25 07:00:24 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware2/4_f4a30/taint_graphs/taint_graph_updated.dot
+2025-11-25 07:00:25 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware2/5_96b1f/taint_graphs/taint_graph_updated.dot
+2025-11-25 07:00:25 | DEBUG | project | Removing 1 deleted nodes from taint_graph
+2025-11-25 07:00:25 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware2/6_c91af/taint_graphs/taint_graph_updated.dot
+2025-11-25 07:00:26 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware2/7_76b79/taint_graphs/taint_graph_updated.dot
+2025-11-25 07:00:26 | INFO | __main__ | Processing repository: ransomware3
+2025-11-25 07:00:26 | INFO | __main__ | Found commits: ['e16db2c483c7a95294666127cf813245ed4a6c28', '9986f0ee2c5bdebf15d64d5166f2291b6c550bbf', 'fba94c05fcae606e4dfde8c8292fa12e1fe9a449', 'aa70200d4e7b2ee95851cb85b4c2327d58823d23', '725f5ced48bea73841908629839c8d73f9f9ab3a', 'e29aa1746c7983f6f005d5ea569e100410ec08a4', '7d82fc6ddfb4954ca41756ddcd456d6edf414762']
+2025-11-25 07:00:26 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware3/1_9986f/taint_graphs/taint_graph_updated.dot
+2025-11-25 07:00:27 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware3/2_fba94/taint_graphs/taint_graph_updated.dot
+2025-11-25 07:00:27 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware3/3_aa702/taint_graphs/taint_graph_updated.dot
+2025-11-25 07:00:28 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware3/4_725f5/taint_graphs/taint_graph_updated.dot
+2025-11-25 07:00:28 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware3/5_e29aa/taint_graphs/taint_graph_updated.dot
+2025-11-25 07:00:30 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware3/6_7d82f/taint_graphs/taint_graph_updated.dot
+2025-11-25 07:00:30 | INFO | __main__ | Processing repository: keylogger4
+2025-11-25 07:00:30 | INFO | __main__ | Found commits: ['ee790ceb277b48bc67d1fa3685f7640f513e6ed3', '3ee923a831f30ed99a5d612217ca89b5a38618c8', '44e68aa53fa17255f06f8fdd0546cafd5f9ea39a', '204db7c11db55abd04a98e06a18ddf54b89970c9', '33dc768317558cb46c68d912516043e2edbb9e41', 'b071dad6f4c1959a37df89c17768929f0c9504d9']
+2025-11-25 07:00:30 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/keylogger4/1_3ee92/taint_graphs/taint_graph_updated.dot
+2025-11-25 07:00:30 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/keylogger4/2_44e68/taint_graphs/taint_graph_updated.dot
+2025-11-25 07:00:31 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/keylogger4/3_204db/taint_graphs/taint_graph_updated.dot
+2025-11-25 07:00:31 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/keylogger4/4_33dc7/taint_graphs/taint_graph_updated.dot
+2025-11-25 07:00:33 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/keylogger4/5_b071d/taint_graphs/taint_graph_updated.dot
+2025-11-25 07:00:33 | DEBUG | project | Removing 1 deleted nodes from taint_graph
+2025-11-25 07:00:33 | INFO | __main__ | Processing repository: ransomware1
+2025-11-25 07:00:33 | INFO | __main__ | Found commits: ['04290734626bbca3d8ce86298c9326265e18bf8d', '80281e02defb5242117adb762cec18261d1ec763', '98861b90ef027a9d5be98c6b6c8400fe5d7b4a2f', '954c7d64664013658b4275d3f15ed6e6755c25c8', '4eda883d43dd5b111bcb6a505baa3c7b0ac7927a']
+2025-11-25 07:00:33 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware1/1_80281/taint_graphs/taint_graph_updated.dot
+2025-11-25 07:00:33 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware1/2_98861/taint_graphs/taint_graph_updated.dot
+2025-11-25 07:00:33 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware1/3_954c7/taint_graphs/taint_graph_updated.dot
+2025-11-25 07:00:34 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware1/4_4eda8/taint_graphs/taint_graph_updated.dot
+2025-11-25 07:00:34 | DEBUG | project | Removing 1 deleted nodes from taint_graph
+2025-11-25 07:00:34 | INFO | __main__ | Processing repository: keylogger5
+2025-11-25 07:00:34 | INFO | __main__ | Found commits: ['af2c7f8a1c58d8eaabd24eb4161cee0593d65bd7']
+2025-11-25 07:00:34 | ERROR | __main__ | Error processing repository keylogger5: [Errno 2] No such file or directory: '/home/lxy/lxy_codes/mal_update_detect/joern_workspace/keylogger5/0_af2c7/cpg/export.dot'
+2025-11-25 07:00:34 | INFO | __main__ | Processing repository: virus2
+2025-11-25 07:00:34 | INFO | __main__ | Found commits: ['c356aa3411d3f2597dba8bb59ccd9948db2b63ec', '3365470de938bfcaaa32976eb721f643f2dad1eb', '42c925ef7785f2493a710646ec971f2b49672b68', '221a4648cc1e5ee46567fbf9c893469e6bc8f0a4', 'e4abd7bf17bac80394e3ef94eac7f08170950e90', '3423c3cf3387f846da16ad687ecf5ba2f3523083']
+2025-11-25 07:00:34 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/virus2/1_33654/taint_graphs/taint_graph_updated.dot
+2025-11-25 07:00:35 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/virus2/2_42c92/taint_graphs/taint_graph_updated.dot
+2025-11-25 07:00:36 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/virus2/3_221a4/taint_graphs/taint_graph_updated.dot
+2025-11-25 07:00:38 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/virus2/4_e4abd/taint_graphs/taint_graph_updated.dot
+2025-11-25 07:00:39 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/virus2/5_3423c/taint_graphs/taint_graph_updated.dot
+2025-11-25 07:00:39 | DEBUG | project | Removing 1 deleted nodes from taint_graph
+2025-11-25 07:00:40 | INFO | __main__ | Processing repository: ransomware6
+2025-11-25 07:00:40 | INFO | __main__ | Found commits: ['6d922993a3d12524d32d2145d9058571c0b50129', '571ee192e038d8acb1c27381791f4c68d0720d09', '2c7b060e419bf1ab4173d6b4f6c62ed90e2ac0c1', '400a15297fe6447f01edb4329c8ffb0164df9c12', '546b3a5042481d32ff1684ed342b1de000db2486']
+2025-11-25 07:00:40 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware6/1_571ee/taint_graphs/taint_graph_updated.dot
+2025-11-25 07:00:41 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware6/2_2c7b0/taint_graphs/taint_graph_updated.dot
+2025-11-25 07:00:42 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware6/3_400a1/taint_graphs/taint_graph_updated.dot
+2025-11-25 07:00:42 | DEBUG | project | Removing 2 deleted nodes from taint_graph
+2025-11-25 07:00:43 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware6/4_546b3/taint_graphs/taint_graph_updated.dot
+2025-11-25 07:00:43 | DEBUG | project | Removing 2 deleted nodes from taint_graph
+2025-11-25 07:00:43 | INFO | __main__ | Processing repository: virus1
+2025-11-25 07:00:43 | INFO | __main__ | Found commits: ['c7d02afbbd77342e70889786bfe42a0482ad3845', '0581b67d15224c2b4976e1ddc96f4d364bcc99a7', '981f22b0c283a85c13cfef4701de782cf7b70312']
+2025-11-25 07:00:43 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/virus1/1_0581b/taint_graphs/taint_graph_updated.dot
+2025-11-25 07:00:44 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/virus1/2_981f2/taint_graphs/taint_graph_updated.dot
+2025-11-25 07:00:44 | INFO | __main__ | Processing repository: ransomware4
+2025-11-25 07:00:44 | INFO | __main__ | Found commits: ['ad57958f91cf907f7a4d27bad8f80ba0c56cead2', 'ad631869461132d0b4836c901fef28d55b574d8e', 'ed982b3d715e19f5ccc7f3099ca284dfed57f6ea', 'fea2644b82cc5e786370c274bc7acc965d720e43', '92b3a97cdbaf68b68ba2f888ff905dc7ea974bc2', '034e64027f6b701170e659d8df176eaa8133be2e', 'f74df2a3156a26ab9c263b2882a2f3fe5d99f67b', 'e8210cec295afb543a7d9c90a6eccf148653fa3a', '6fa08a1ba9147395ea78a6b9f5ea85dccae6a36f']
+2025-11-25 07:00:44 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware4/1_ad631/taint_graphs/taint_graph_updated.dot
+2025-11-25 07:00:44 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware4/2_ed982/taint_graphs/taint_graph_updated.dot
+2025-11-25 07:00:45 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware4/3_fea26/taint_graphs/taint_graph_updated.dot
+2025-11-25 07:00:45 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware4/4_92b3a/taint_graphs/taint_graph_updated.dot
+2025-11-25 07:00:46 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware4/5_034e6/taint_graphs/taint_graph_updated.dot
+2025-11-25 07:00:48 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware4/6_f74df/taint_graphs/taint_graph_updated.dot
+2025-11-25 07:00:50 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware4/7_e8210/taint_graphs/taint_graph_updated.dot
+2025-11-25 07:00:52 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware4/8_6fa08/taint_graphs/taint_graph_updated.dot
+2025-11-25 07:00:53 | INFO | __main__ | Processing repository: worm2
+2025-11-25 07:00:53 | INFO | __main__ | Found commits: ['0a2573695eef96d83df2dd6e7bd3c8c81a94a1e6', '3060a483e7eeb3920d114db8c7fd96c1e3d7ce10', '63bab504429a14dc6aa7c6a2231c0c3534300888', '2947e8bff6ab2c32cb59feaa74f50d91c366ce3e', '179a2c96d1356b26d202de9d074fdd07d520fbc8', 'a6bb989e3f8ee441403e750c6125b5a5d6308df4', '7a7273ca03b919d8957dda6ac61ba05a77ac6e98']
+2025-11-25 07:00:54 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/worm2/1_3060a/taint_graphs/taint_graph_updated.dot
+2025-11-25 07:00:54 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/worm2/2_63bab/taint_graphs/taint_graph_updated.dot
+2025-11-25 07:00:55 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/worm2/3_2947e/taint_graphs/taint_graph_updated.dot
+2025-11-25 07:00:56 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/worm2/4_179a2/taint_graphs/taint_graph_updated.dot
+2025-11-25 07:00:57 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/worm2/5_a6bb9/taint_graphs/taint_graph_updated.dot
+2025-11-25 07:00:57 | DEBUG | project | Removing 1 deleted nodes from taint_graph
+2025-11-25 07:00:59 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/worm2/6_7a727/taint_graphs/taint_graph_updated.dot
+2025-11-25 07:00:59 | DEBUG | project | Removing 1 deleted nodes from taint_graph
+2025-11-25 07:00:59 | INFO | __main__ | Processing repository: backdoor
+2025-11-25 07:00:59 | INFO | __main__ | Found commits: ['5638981a0847b366320f51015a62ff8512fd719c', '10fc9418a62d4b0970ea57488547f5ed85d8f940', 'b94ad069be0fcbd620573b47a1049bfe73770c86', '904d3f5abe2773da2f66c9d24785fd5064d06943', '3ce229830b4c6c5200233175dbaa7cc5f41a424c']
+2025-11-25 07:00:59 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/backdoor/1_10fc9/taint_graphs/taint_graph_updated.dot
+2025-11-25 07:01:00 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/backdoor/2_b94ad/taint_graphs/taint_graph_updated.dot
+2025-11-25 07:01:00 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/backdoor/3_904d3/taint_graphs/taint_graph_updated.dot
+2025-11-25 07:01:02 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/backdoor/4_3ce22/taint_graphs/taint_graph_updated.dot
+2025-11-25 07:01:02 | DEBUG | project | Removing 3 deleted nodes from taint_graph
+2025-11-25 07:01:02 | INFO | __main__ | Processing repository: simpleMalware1
+2025-11-25 07:01:02 | INFO | __main__ | Found commits: ['14a16942515f2af0fe109dfb185097b595005db4', 'cb43e78331f38e0cf504f475320a95db0681ad69', 'f8ec22ab5023bf82036704c6152c13c4f3859238', 'd320b13a715033df11ecce745386517e04e17044', 'cee65522a9e744f39f98faac6f6285b4da15c790']
+2025-11-25 07:01:02 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/simpleMalware1/1_cb43e/taint_graphs/taint_graph_updated.dot
+2025-11-25 07:01:02 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/simpleMalware1/2_f8ec2/taint_graphs/taint_graph_updated.dot
+2025-11-25 07:01:03 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/simpleMalware1/3_d320b/taint_graphs/taint_graph_updated.dot
+2025-11-25 07:01:03 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/simpleMalware1/4_cee65/taint_graphs/taint_graph_updated.dot
+2025-11-25 07:01:03 | DEBUG | project | Removing 3 deleted nodes from taint_graph
+2025-11-25 07:01:04 | INFO | __main__ | Processing repository: reverseShell3
+2025-11-25 07:01:04 | INFO | __main__ | Found commits: ['300320ae5af01107fde5b94d8b32ee2b30aa8826', 'dcf79fcc9df5364134636d9ff0bcec5742f38801', '1ccbb4ead10680404a8aa6fd317f3ee939af4d04']
+2025-11-25 07:01:04 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/reverseShell3/1_dcf79/taint_graphs/taint_graph_updated.dot
+2025-11-25 07:01:04 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/reverseShell3/2_1ccbb/taint_graphs/taint_graph_updated.dot
+2025-11-25 07:01:04 | INFO | __main__ | Processing repository: reverseShell2
+2025-11-25 07:01:04 | INFO | __main__ | Found commits: ['f13aa4737bdb3153cf671ba8fb20482b092a28a9', 'a9d0a82b780348f0310aa1c16f80a950d922ed07', '683ad44c6cb2aaeacb9f4a30eea30c9d67fe2ca8', '86f9e9089403a287abed5aa241ade78bc65195e4', '3d1ac4f38e03574df7d93d8cadd94f3321dcbfe5']
+2025-11-25 07:01:05 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/reverseShell2/1_a9d0a/taint_graphs/taint_graph_updated.dot
+2025-11-25 07:01:05 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/reverseShell2/2_683ad/taint_graphs/taint_graph_updated.dot
+2025-11-25 07:01:05 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/reverseShell2/3_86f9e/taint_graphs/taint_graph_updated.dot
+2025-11-25 07:01:05 | DEBUG | project | Removing 1 deleted nodes from taint_graph
+2025-11-25 07:01:06 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/reverseShell2/4_3d1ac/taint_graphs/taint_graph_updated.dot
+2025-11-25 07:01:06 | INFO | __main__ | Processing repository: keylogger3
+2025-11-25 07:01:06 | INFO | __main__ | Found commits: ['b0819c44d5eafde7fd723ce4ba617b48e5ee3eb9', '3f9482998ab2fc42ea308609ea774c58272f8fd8', '2e39e668e94a93fd6834604798510afb7a8d9d79', '4787906ae9cee06d19815a6bc266cf085961cdf6']
+2025-11-25 07:01:06 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/keylogger3/1_3f948/taint_graphs/taint_graph_updated.dot
+2025-11-25 07:01:06 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/keylogger3/2_2e39e/taint_graphs/taint_graph_updated.dot
+2025-11-25 07:01:06 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/keylogger3/3_47879/taint_graphs/taint_graph_updated.dot
+2025-11-25 07:01:07 | INFO | __main__ | Processing repository: backdoor3
+2025-11-25 07:01:07 | INFO | __main__ | Found commits: ['54c6d4e9843c4c66db3d2aae9f9f4c50ecc7f011', '74d2c4af671c6c2e75111012e91f4cd0b6339f8b', '0e62ccd1372eeba9144c00a5e91e352c8dcb5202', '3e05d90f4be311116ae7719b2d4e26ad947148cd', 'c5ce82613481634b13634b37a8c57e2558bcf13f', '0b6ac7149c883837cec9d5d462c9c9f897b1813e']
+2025-11-25 07:01:07 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/backdoor3/1_74d2c/taint_graphs/taint_graph_updated.dot
+2025-11-25 07:01:07 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/backdoor3/2_0e62c/taint_graphs/taint_graph_updated.dot
+2025-11-25 07:01:07 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/backdoor3/3_3e05d/taint_graphs/taint_graph_updated.dot
+2025-11-25 07:01:07 | DEBUG | project | Removing 7 deleted nodes from taint_graph
+2025-11-25 07:01:08 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/backdoor3/4_c5ce8/taint_graphs/taint_graph_updated.dot
+2025-11-25 07:01:08 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/backdoor3/5_0b6ac/taint_graphs/taint_graph_updated.dot
+2025-11-25 07:01:08 | INFO | __main__ | Processing repository: reverseShell1
+2025-11-25 07:01:08 | INFO | __main__ | Found commits: ['0e3b93bb881f68ec1dcad42d18e6199c9c06d09b', 'c6677facacca456510c8eb7eb88fe1222e8beb5d', '2ceaa62b67ea08cb2ed3dd985b7039bd7df95e94', '7277045c36faedc137cec09f1671ed41280fb646', 'a9d4139056681d0e2d2b84fddb88e5037382a15f']
+2025-11-25 07:01:08 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/reverseShell1/1_c6677/taint_graphs/taint_graph_updated.dot
+2025-11-25 07:01:11 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/reverseShell1/2_2ceaa/taint_graphs/taint_graph_updated.dot
+2025-11-25 07:01:11 | DEBUG | project | Removing 5 deleted nodes from taint_graph
+2025-11-25 07:01:11 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/reverseShell1/3_72770/taint_graphs/taint_graph_updated.dot
+2025-11-25 07:01:12 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/reverseShell1/4_a9d41/taint_graphs/taint_graph_updated.dot
+2025-11-25 07:01:12 | INFO | __main__ | Processing repository: keylogger2
+2025-11-25 07:01:12 | INFO | __main__ | Found commits: ['eb46b1fefacb575098bbe3c12a3428630368ee5c', '3bf0b8e55d55889d5a0003a9970321cf642bc3af', '07e9b04739c11b47d7105a5982b6ef8e7238fcd0', '125e1f86286f97318c4596b821d388ede04f9b03', 'ef8566c1d2512573f7f4ed48891356a4f1a43923', '96e94d441e96516da88d4235d356019610539080', '4a73749df75432856e5c0f507f3451c52c9e8f24', '2bc69cd1a76e494194629d8349c7de66abfa0900']
+2025-11-25 07:01:12 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/keylogger2/1_3bf0b/taint_graphs/taint_graph_updated.dot
+2025-11-25 07:01:13 | ERROR | __main__ | Error processing repository keylogger2: The node 30064771084 is not in the digraph.
+2025-11-25 07:01:13 | INFO | __main__ | Processing repository: reverseShell4
+2025-11-25 07:01:13 | INFO | __main__ | Found commits: ['6e1a2ddeac75390b6f56a9034fbca0df66a4d56f', '532d0fb73496a2b447a8f77f8b39273feedaccf9', 'fc3fee1a38cf40edeafe0c2412c1af2fd9abbab0', 'f3a04ea8adef59e789bcc9ae49992d2928c2c85f', '08561122703c13578814cf9bcb78905420ff5dc8', '1c8740b8263bd9932a16a68c7229d52fbcf0b623']
+2025-11-25 07:01:13 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/reverseShell4/1_532d0/taint_graphs/taint_graph_updated.dot
+2025-11-25 07:01:13 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/reverseShell4/2_fc3fe/taint_graphs/taint_graph_updated.dot
+2025-11-25 07:01:13 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/reverseShell4/3_f3a04/taint_graphs/taint_graph_updated.dot
+2025-11-25 07:01:14 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/reverseShell4/4_08561/taint_graphs/taint_graph_updated.dot
+2025-11-25 07:01:14 | DEBUG | project | Removing 3 deleted nodes from taint_graph
+2025-11-25 07:01:14 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/reverseShell4/5_1c874/taint_graphs/taint_graph_updated.dot
+2025-11-25 07:01:14 | INFO | __main__ | Processing repository: backdoor2
+2025-11-25 07:01:14 | INFO | __main__ | Found commits: ['8011d48dcf346ac411b41bcf4d5877d36db57d81', '0e5c4a1bb11871d9009f864bae849db508e777cc', '4982e633e7412362d73bab9084dce71f3914b2bf', '003bd36ca4cbb09c17bafcf648cb88b2684e9543', 'ce1574dcacff4f53d829d351d3eb75c82db58c44', '15433131ef95b8c990f7e501fd65b000cb43c669', '8216c67c8417a7b579b8305ea2a85f213cb23c8c', 'faa7c145b5c77494b4d97ca953efc1aede20998d', 'e1fd323efc896510b0fbe11787e2c6d0618e2f66', '27ddbbedf7cb164093e2111c79cb0ea4ca144bb3']
+2025-11-25 07:01:14 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/backdoor2/1_0e5c4/taint_graphs/taint_graph_updated.dot
+2025-11-25 07:01:14 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/backdoor2/2_4982e/taint_graphs/taint_graph_updated.dot
+2025-11-25 07:01:15 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/backdoor2/3_003bd/taint_graphs/taint_graph_updated.dot
+2025-11-25 07:01:15 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/backdoor2/4_ce157/taint_graphs/taint_graph_updated.dot
+2025-11-25 07:01:15 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/backdoor2/5_15433/taint_graphs/taint_graph_updated.dot
+2025-11-25 07:01:16 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/backdoor2/6_8216c/taint_graphs/taint_graph_updated.dot
+2025-11-25 07:01:17 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/backdoor2/7_faa7c/taint_graphs/taint_graph_updated.dot
+2025-11-25 07:01:19 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/backdoor2/8_e1fd3/taint_graphs/taint_graph_updated.dot
+2025-11-25 07:01:21 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/backdoor2/9_27ddb/taint_graphs/taint_graph_updated.dot
+2025-11-25 07:01:21 | INFO | __main__ | Processing repository: backdoor1
+2025-11-25 07:01:21 | INFO | __main__ | Found commits: ['95d7b63be4a2f44df62e511750a1d805a092f0cf', '19f7b80f8e839477be9dab7c9a415fb7ecaa5a67']
+2025-11-25 07:01:22 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/backdoor1/1_19f7b/taint_graphs/taint_graph_updated.dot
+2025-11-25 07:01:22 | INFO | __main__ | Processing repository: keylogger1
+2025-11-25 07:01:22 | INFO | __main__ | Found commits: ['c19269cc5bfdd797bfadf6290f21d9a59eacb7ac', '843298b4cdeb5a5dd59560bbb90903b2a148721b', 'feaadfa89edc5c263d690a646df9732953a4815d', '6342bf35500f04f83ca6f429e02e991bd98ebca3']
+2025-11-25 07:01:22 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/keylogger1/1_84329/taint_graphs/taint_graph_updated.dot
+2025-11-25 07:01:22 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/keylogger1/2_feaad/taint_graphs/taint_graph_updated.dot
+2025-11-25 07:01:23 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/keylogger1/3_6342b/taint_graphs/taint_graph_updated.dot
+2025-11-25 07:01:23 | INFO | __main__ | Processing repository: worm1
+2025-11-25 07:01:23 | INFO | __main__ | Found commits: ['ae11584b1a9160b4c22e9b1de5fe0a80bc2d8e34', '65569b4bdaf68ba7eb38d29467613a617b405141', 'fe22471997e54825a655bc6b0a20a1d753e7261f', 'f264f3eaa24d05388c4116e791b36d1923aaf1f8', '57344ad9bb7ecd000d5c5f8f85e5908a7251302d', 'a283e1d1cacc8744346f780e1095a5b2a89980d6', '3a40aeeb6cce432610bb8944537e204204c7c1f1', 'f903997fe5328c660525de83f2c215982ec05d9c', '2d70658dcd47de9026895fb056e9c1d2f3f95bd6']
+2025-11-25 07:01:24 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/worm1/1_65569/taint_graphs/taint_graph_updated.dot
+2025-11-25 07:01:24 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/worm1/2_fe224/taint_graphs/taint_graph_updated.dot
+2025-11-25 07:01:25 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/worm1/3_f264f/taint_graphs/taint_graph_updated.dot
+2025-11-25 07:01:26 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/worm1/4_57344/taint_graphs/taint_graph_updated.dot
+2025-11-25 07:01:27 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/worm1/5_a283e/taint_graphs/taint_graph_updated.dot
+2025-11-25 07:01:28 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/worm1/6_3a40a/taint_graphs/taint_graph_updated.dot
+2025-11-25 07:01:28 | DEBUG | project | Removing 1 deleted nodes from taint_graph
+2025-11-25 07:01:30 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/worm1/7_f9039/taint_graphs/taint_graph_updated.dot
+2025-11-25 07:01:30 | DEBUG | project | Removing 1 deleted nodes from taint_graph
+2025-11-25 07:01:31 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/worm1/8_2d706/taint_graphs/taint_graph_updated.dot
+2025-11-25 07:01:32 | INFO | __main__ | Processing repository: dictionary-attack
+2025-11-25 07:01:32 | INFO | __main__ | Found commits: ['2da026219d74f32c92baf40a74b231d236183d90']
+2025-11-25 07:01:32 | INFO | __main__ | Processing repository: ransomware7
+2025-11-25 07:01:32 | INFO | __main__ | Found commits: ['1bb3d53b036488fd8558b3f8f9492f16bdf96a4e', '5312c768895da73bff052891c1425b6fabf3725e', 'ab1439df046b3bbc7d880ad830c958cd47d3595b', '8770aadef5f4f6b86c1769013be58fa6947de784', 'd6a53a4fee05b096ad12a2a6f3cd6b30b58f9061']
+2025-11-25 07:01:32 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware7/1_5312c/taint_graphs/taint_graph_updated.dot
+2025-11-25 07:01:34 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware7/2_ab143/taint_graphs/taint_graph_updated.dot
+2025-11-25 07:01:34 | DEBUG | project | Removing 6 deleted nodes from taint_graph
+2025-11-25 07:01:39 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware7/3_8770a/taint_graphs/taint_graph_updated.dot
+2025-11-25 07:01:39 | DEBUG | project | Removing 14 deleted nodes from taint_graph
+2025-11-25 07:01:41 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_workspace/ransomware7/4_d6a53/taint_graphs/taint_graph_updated.dot
+2025-11-25 07:01:41 | DEBUG | project | Removing 3 deleted nodes from taint_graph

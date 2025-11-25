@@ -33,14 +33,14 @@ def get_node_pairs(project_before: project.Project, project_after: project.Proje
     taint_graph_before = project_before.taintDG
     node_pairs = {}
     for node, data in taint_graph_before.nodes(data=True):
-        # if node == "30064771114":
+        # if node == "30064771239":
         #     print("debug")
         node_file = data.get("file_path", "")
         line = int(data.get("LINE_NUMBER", -1))
         
         # 处理文件未变更的情况
         if node_file not in file_changed_lines:
-            after_line_number = commit_helper.after_commit_line_number(line)
+            after_line_number = commit_helper.after_commit_line_number(node_file, line)
             node_after = project_after.find_node_by_location(node_file, data, after_line_number)
             if node_after:
                 node_pairs[node] = node_after
@@ -50,14 +50,14 @@ def get_node_pairs(project_before: project.Project, project_after: project.Proje
         deleted_lines = file_changed_lines[node_file]["deleted"]
 
         if line not in deleted_lines:
-            after_line_number = commit_helper.after_commit_line_number(line)
+            after_line_number = commit_helper.after_commit_line_number(node_file, line)
             node_after = project_after.find_node_by_location(node_file, data, after_line_number)
             if node_after:
                 node_pairs[node] = node_after
             continue
 
         # 处理行被删除的情况
-        after_line_number = commit_helper.after_commit_line_number(line)
+        after_line_number = commit_helper.after_commit_line_number(node_file, line)
         node_after = project_after.find_node_by_location(node_file, data, after_line_number)
         if node_after:
             node_pairs[node] = node_after
@@ -81,11 +81,29 @@ def get_node_pairs(project_before: project.Project, project_after: project.Proje
     return node_pairs
 
 
-
-# 构建新增敏感API调用的子图
-def get_sub_taint_graph(project_after: project.Project, file_changed_lines: dict) -> nx.MultiDiGraph:
-    sub_taint_graph = nx.MultiDiGraph()
+# 判断是否和taint图有数据流关联
+def has_data_flow(node_id: str, taint_graph: nx.MultiDiGraph, pdg: nx.MultiDiGraph) -> bool:
     
+    for u, v, edge_data in pdg.out_edges(node_id, data=True):
+        if edge_data.get("label") is None:
+            continue
+        if edge_data.get("label", '') == "DDG: ":
+            continue
+        if taint_graph.has_node(v):
+            return True
+        
+    for u, v, edge_data in pdg.in_edges(node_id, data=True):
+        if edge_data.get("label") is None:
+            continue
+        if edge_data.get("label", '') == "DDG: ":
+            continue
+        if taint_graph.has_node(u):
+            return True
+    return False
+
+
+# 更新taint图，添加新增敏感API调用的子图
+def taint_graph_update(project_after: project.Project, file_changed_lines: dict, taint_graph_relabeled: nx.MultiDiGraph) -> nx.MultiDiGraph:    
     for changed_file, changed_lines in file_changed_lines.items():
         added_lines = changed_lines["added"]
         changed_funcs = {}
@@ -95,8 +113,7 @@ def get_sub_taint_graph(project_after: project.Project, file_changed_lines: dict
                 changed_funcs[func_name] = []
             if func_name:
                 changed_funcs[func_name].append(line_num)
-        
-        added_sensitive_nodes = []
+                
         for func_name, line_nums in changed_funcs.items():
             for line_num in line_nums:
                 pdg_after = project_after.pdgs.get((changed_file, func_name), None)
@@ -106,6 +123,9 @@ def get_sub_taint_graph(project_after: project.Project, file_changed_lines: dict
                 for node_id in pdg_after.nodes():
                     node_full_data = project_after.cpg.nodes[node_id]
                     if int(node_full_data.get("LINE_NUMBER", -1)) == line_num:
+                        if has_data_flow(node_id, taint_graph_relabeled, pdg_after):
+                            taint_graph_relabeled = project_after.taint_trace(node_id, taint_graph_relabeled, pdg_after)
+                            continue
                         if node_full_data.get("label", '') != "CALL" :
                             continue
                         function_name = node_full_data.get("METHOD_FULL_NAME", '')
@@ -114,15 +134,12 @@ def get_sub_taint_graph(project_after: project.Project, file_changed_lines: dict
                             continue
                         if node_full_data.get("CODE") == "<empty>":
                             continue
-                        sub_taint_graph = project_after.taint_trace(node_id, sub_taint_graph, pdg_after)
-                        added_sensitive_nodes.append(node_id)
-    sub_taint_graph = project_after.extend_taint_graph(sub_taint_graph)
-    return sub_taint_graph
+                        taint_graph_relabeled = project_after.taint_trace(node_id, taint_graph_relabeled, pdg_after)
+    taint_graph_relabeled = project_after.extend_taint_graph(taint_graph_relabeled)
+    return taint_graph_relabeled
 
 
-
-# 合并原有的taint图和新增的子图并对图进行扩展
-def merge_taint_graphs(taint_graph_before: nx.MultiDiGraph, sub_taint_graph: nx.MultiDiGraph,project_after: project.Project, node_pairs: dict) -> nx.MultiDiGraph:
+def taint_graph_relabel(taint_graph_before: nx.MultiDiGraph, node_pairs: dict) -> nx.MultiDiGraph:
     correct_mapping = dict(node_pairs)
     
     taint_before_relabeled = nx.relabel_nodes(taint_graph_before, correct_mapping, copy=True)
@@ -143,13 +160,7 @@ def merge_taint_graphs(taint_graph_before: nx.MultiDiGraph, sub_taint_graph: nx.
     for node in taint_before_relabeled.nodes():
         if 'orig_id' not in taint_before_relabeled.nodes[node]:
             taint_before_relabeled.nodes[node]['deleted'] = True
-
-    # 合并：相同的 node_after id 在两图中会被认为是同一个节点
-    merged_taint_graph = nx.compose(taint_before_relabeled, sub_taint_graph)
-    
-    # TODO: 处理新的DDG边和CDG边 
-    merged_taint_graph = project_after.extend_taint_graph(merged_taint_graph)
-    return merged_taint_graph
+    return taint_before_relabeled
 
 
 def LLM_analyze_code_slices(code_slices: dict):
@@ -182,24 +193,21 @@ def analyze(project_before:project.Project, project_after:project.Project):
     # 构建新增敏感API调用的子图
     # if project_after.commit == "843298b4cdeb5a5dd59560bbb90903b2a148721b":
     #     print("debug")
-    sub_taint_graph = get_sub_taint_graph(project_after, file_changed_lines)
-    os.makedirs(os.path.join(joern_path_after, "taint_graphs"), exist_ok=True)
-    out_path = os.path.join(joern_path_after, "taint_graphs", "added_sensitive_subgraph.dot")
-    nx.nx_agraph.write_dot(sub_taint_graph, out_path)
     
     # 根据 node_pairs 将 project_before 的节点视为 node_after（node_before -> node_after），合并 sub_taint_graph
     node_pairs = get_node_pairs(project_before, project_after, file_changed_lines,commit_helper)
-    merged_taint_graph = merge_taint_graphs(taint_graph_before, sub_taint_graph, project_after, node_pairs)
+    taint_before_relabeled = taint_graph_relabel(taint_graph_before, node_pairs)
+    taint_graph_updated = taint_graph_update(project_after, file_changed_lines, taint_before_relabeled)
     
     # 输出合并后的图
-    merged_out = os.path.join(joern_path_after, "taint_graphs", "merged_changed_taint.dot")
-    nx.nx_agraph.write_dot(merged_taint_graph, merged_out)
-    logger.info(f"Merged taint graph written to {merged_out}")
-    project_after.taintDG = merged_taint_graph
+    taint_graph_out = os.path.join(joern_path_after, "taint_graphs", "taint_graph_updated.dot")
+    os.makedirs(os.path.dirname(taint_graph_out), exist_ok=True)
+    nx.nx_agraph.write_dot(taint_graph_updated, taint_graph_out)
+    logger.info(f"Merged taint graph written to {taint_graph_out}")
+    project_after.taintDG = taint_graph_updated
     
     # 大模型判断代码切片是否有恶意行为
-    
-    code_slices = project_after.extract_taint_codes(merged_taint_graph)
+    code_slices = project_after.extract_taint_codes(taint_graph_updated)
     # is_malicious = LLM_analyze_code_slices(code_slices)
 
     return project_after
@@ -215,14 +223,14 @@ if __name__ == "__main__":
         if not os.path.isdir(repo_path):
             continue
         repo_name = os.path.basename(repo_path)
-        if repo_name != "ransomware6":
+        if repo_name != "ransomware7":
             continue
         logger.info(f"Processing repository: {repo_name}")
 
-        subprocess.check_output(
-                ["git", "-C", repo_path, "checkout", "main"],
-                stderr=subprocess.DEVNULL
-            )
+        # subprocess.check_output(
+        #         ["git", "-C", repo_path, "checkout", "main"],
+        #         stderr=subprocess.DEVNULL
+        #     )
         try:
             
             raw = subprocess.check_output(
@@ -246,7 +254,7 @@ if __name__ == "__main__":
             
             for i in range(len(commit_list) - 1):
                 commit_after = commit_list[i + 1]
-                if commit_after == "400a15297fe6447f01edb4329c8ffb0164df9c12":
+                if commit_after == "8770aadef5f4f6b86c1769013be58fa6947de784":
                     print("debug")
                 joern_path_after = os.path.join(joern_workspace_path, repo_name, str(i + 1)+"_"+commit_after[:5])
                 project_after = project.Project(repo_path, joern_path_after,commit_after,overwrite=False)
@@ -258,9 +266,7 @@ if __name__ == "__main__":
                 ["git", "-C", repo_path, "checkout", commit_list[-1]],
                 stderr=subprocess.DEVNULL
             )
-            continue
         subprocess.check_output(
                 ["git", "-C", repo_path, "checkout", commit_list[-1]],
                 stderr=subprocess.DEVNULL
-            )
-# begin-virus   
+            )  

@@ -36,9 +36,11 @@ if __name__ == "__main__":
             if not os.path.isdir(commit_dir_path):
                 continue
             taint_slices_dir = os.path.join(commit_dir_path, "taint_slices_methods")
+            taint_graph_dir = os.path.join(commit_dir_path, "taint_graphs")
             if os.path.isdir(taint_slices_dir):
                 try:
                     shutil.rmtree(taint_slices_dir)
+                    shutil.rmtree(taint_graph_dir)
                 except FileNotFoundError:
                     pass
                 except Exception as e:

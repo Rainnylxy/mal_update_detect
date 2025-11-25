@@ -76,7 +76,7 @@ class CommitHelper:
         self.repo_path = repo_path
         self.commit_hash = commit_hash
         self.diff_text = self.get_commit_diff()
-        self.hunks = []
+        self.hunks = {}
         self.parse_hunks()  
       
         
@@ -96,21 +96,29 @@ class CommitHelper:
 
     def parse_hunks(self):
         diff_text = self.get_commit_diff()
-        for m in re.finditer(r'^@@ -(\d+)(?:,(\d+))? \+(\d+)(?:,(\d+))? @@', diff_text, flags=re.M):
-            old_start = int(m.group(1))
-            old_count = int(m.group(2)) if m.group(2) else 1
-            new_start = int(m.group(3))
-            new_count = int(m.group(4)) if m.group(4) else 1
-            self.hunks.append((old_start, old_count, new_start, new_count))
+
+        # 将整体 diff 按文件块分割，每一块以 "diff --git " 开头
+        parts = re.split(r'(?m)^diff --git ', diff_text)
+        for part in parts[1:]:
+            # part 开头示例: "a/path/to/file b/path/to/file\n..."
+            first_line, _, rest = part.partition('\n')
+            mfile = re.match(r'a/(.*?) b/(.*)', first_line)
+            filename = mfile.group(2) if mfile else None
+            for m in re.finditer(r'^@@ -(\d+)(?:,(\d+))? \+(\d+)(?:,(\d+))? @@', diff_text, flags=re.M):
+                old_start = int(m.group(1))
+                old_count = int(m.group(2)) if m.group(2) else 1
+                new_start = int(m.group(3))
+                new_count = int(m.group(4)) if m.group(4) else 1
+                self.hunks.setdefault(filename, []).append((old_start, old_count, new_start, new_count))
         
-    def after_commit_line_number(self, old_line_number):
+    def after_commit_line_number(self, file_name, old_line_number):
         """
         根据hunks信息，映射提交前的行号到提交后的行号。
         :param old_line_number: 提交前的行号
         :return: 提交后的行号
         """
         line_number = old_line_number
-        for old_start, old_count, new_start, new_count in self.hunks:
+        for old_start, old_count, new_start, new_count in self.hunks.get(file_name, []):
             if line_number < old_start:
                 return line_number
             if line_number == old_start and old_count == 0:

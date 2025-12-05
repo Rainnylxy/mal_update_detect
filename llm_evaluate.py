@@ -1,12 +1,52 @@
 import os
 from openai import OpenAI
 
+
+ASSERTION_PROMPT = """Give you the follow code snippet {code_snippet},
+                Follow this structured assessment framework:
+                
+                Classification:
+                1. Full Attack Chain:
+                    Definition: A malicious implementation that contains self-contained, end-to-end attack logic capable of autonomously executing its primary malicious objective.
+                2. Core Attack Chain:
+                    Definition: An attack that possesses core malicious components but lacks one or more critical elements required to achieved its primary objective. The potential for harm is high, but the incomplete logic chain prevents the attack from reaching its damaging conclusion.
+                3. Fragmented Attack Chain:
+                    Definition: Consists of isolated, standalone malicious code fragments or modules. These elements lack logical connectivity and a demonstrable sequence of execution.
+                    Key Differentiator: Isolated malice without integration. You should recognize individual malicious capabilities but note the complete absence of a connecting logic or workflow between them.
+                4. Benign Artifact:
+                    Definition: Exhibits no evidence of malicious intent, functionality, or code. Its behavior, code patterns, and purpose are consistent with and fully explainable by legitimate activities, such as system administration, software development, debugging, or authorized security research. 
+                    Key Differentiator: Fully explainable by legitimate purposes. You should find zero indicators of malice and be able to attribute all components and behaviors to known, benign activities.
+            
+                Provide structured response with:
+                - **Classification:** "Full Attack Chain" | "Core Attack Chain" | "Fragmented Attack Chain" | "Benign Artifact"
+                - **Missing Components:** If classified as "Core" or "Fragmented", specify what is missing to reach the next level.
+                - **Potential Impact:** Describe the potential impact if this attack were fully realized.
+                - **Threat Level:** High/Medium/Low based on current implementation"""
+
+CHECK_PROMPT = """Analyze the previous classification response's Missing Components part. 
+                If the inability to reach the next level is solely caused by non-logical issues such as syntax errors, missing imports, missing error handling, placeholder or fake IP addresses, minor formatting/encoding problems, or other superficial implementation faults, 
+                ignore those issues and re-evaluate the code as if they were fixed. 
+                
+                
+                Focus only on the logical capabilities that determine attack chain completeness.
+                
+                Produce a structured English response with these fields:
+                - Classification: "Full Attack Chain" | "Core Attack Chain" | "Fragmented Attack Chain" | "Benign Artifact"
+                - Missing Components: If classified as "Core" or "Fragmented", list the specific logical capabilities missing to reach the next level. Ignore superficial blockers described above.
+                - Potential Impact: Describe consequences if the attack were fully realized.
+                - Threat Level: High/Medium/Low based on the logical capabilities present after ignoring superficial faults.
+
+                Return only the structured response in plain English using the field names above."""
+SYSTEM_PROMPT = """You are a professional cybersecurity analyst tasked with analyzing code snippets from victim's perspective to classify given code snippets."""
+    
+        #Also ignore persistence mechanisms (e.g., file-based persistence, registry entries, scheduled tasks, or other long-term storage/auto-start mechanisms) when determining whether the attack reaches the next level. 
 class LLM_Evaluate:
     def __init__(self,api_key, base_url):
         self.client = OpenAI(
             api_key=api_key,
             base_url=base_url,
         )
+        self.conversation_history = []
 
     def sensitive_api_check(self, code_snippet):
         completion = self.client.chat.completions.create(
@@ -22,75 +62,38 @@ class LLM_Evaluate:
         return completion.choices[0].message.content
 
 
-    def malicious_check(self, code_snippet):
-        completion = self.client.chat.completions.create(
-            # 将推理接入点 <Model>替换为 Model ID
-            model="deepseek-r1-250120",
-            messages=[
-                {"role": "system", "content": "You are a professional assistant about software supply chain security."
-                "I will give you a code snippet and you need to tell me if there are any malicious behaviors, such as backdoor, trojan, ransomware, etc."
-                "if there are, please list the malicious behaviors. if not, please reply 'No malicious behaviors found'."},
-                {"role": "user", "content": code_snippet}
-            ]
-        )
-        return completion.choices[0].message.content
+
+    def reset_conversation(self, system_prompt=None):
+        """清空会话历史，可选设置新的 system_prompt"""
+        self.conversation_history = []
+        if system_prompt:
+            self.conversation_history.append({"role": "system", "content": system_prompt})
+
+    def get_conversation_history(self):
+        """返回当前会话历史的浅拷贝"""
+        return list(getattr(self, "conversation_history", []))
     
-    def true_attack_check(self, code_snippet,function_descriptions=None,data_flow_info=None):
+    
+    def malicious_assertion_check(self):
+        self.conversation_history.append({"role": "user", "content": CHECK_PROMPT})
+        
         completion = self.client.chat.completions.create(
-            model="deepseek-r1-250120",
-            messages=[
-                {"role": "system", "content": "You are a professional assistant about software supply chain security."
-                "I will give you a code snippet and its sub-functions' behavior descriptions and data source.  You need to determine whether this code contains malicious behavior. if not, please reply 'No real attack detected' and the reason."
-                "Note: if a sub-function has description, it means that this sub-function has been completed."
-                },
-                {"role": "user", "content": code_snippet,"function_descriptions": function_descriptions,"data_flow_info": data_flow_info}
-            ]
+            model="deepseek-v3-1-250821",
+            messages=self.conversation_history
         )
         return completion.choices[0].message.content
-    # Key Evaluation Principles：
-                # 1、Focus on Intent Over Implementation: Even if the code has syntax errors, missing imports, or other technical issues, it should be considered malicious if the attack chain is complete
-                # 2、Functional Module Completeness: Assess whether core malicious functional modules are complete
-                # 3、Logical Chain Coherence: Whether each attack phase forms a coherent logical chain
     
     def malicious_assertion(self, code_snippet):
+        user_prompt = ASSERTION_PROMPT.format(code_snippet=code_snippet)
+        self.conversation_history.append({"role": "system", "content": SYSTEM_PROMPT})
+        self.conversation_history.append({"role": "user", "content": user_prompt})
         completion = self.client.chat.completions.create(
-            model="deepseek-r1-250120",
-            messages=[
-                {"role": "system", "content": 
-                """You are a professional cybersecurity analyst tasked with analyzing code snippets from victim's perspective to classify given code snippets.
-                Follow this structured assessment framework:
-                
-                Note the following:
-                You can assume that the attacker's side code are fully functional.
-                Don't focus on code errors or missing imports or uncorrect IP configuration or missing error handling
-                
-                Classification:
-                1. Full Attack Chain:
-                    Definition: An attack can cause actual damage to the system. It has completed its end-to-end malicious lifecycle and achieved its primary objective, resulting in a compromised system state.
-                    Key Differentiator: The system's integrity, confidentiality, or availability has been tangibly harmed. Evidence of the final malicious state is present and observable (e.g., files encrypted, data exfiltrated, systems corrupted).
-                    Note: Even if there are code errors or missing imports or uncorrect IP configuration or missing error handling, if the attack chain is complete and can cause damage, it should be classified as Full Attack Chain.
-                2. Core Attack Chain:
-                    Definition: An attack that possesses core malicious components but lacks one or more critical elements required to execute its full payload, and has therefore failed to cause actual damage. The potential for harm is high, but the incomplete logic chain prevents the attack from reaching its damaging conclusion.
-                    Key Differentiator: Malicious modules are present and functional in isolation, but the absence of a key component means the attack fizzles out before harm is done.
-                    Note: Don't focus on code errors or missing imports or uncorrect IP configuration or missing error handling in this classification. Pay more attention to whether all components of the attack are present and whether the logical chain is complete. 
-                3. Fragmented Attack Chain:
-                    Definition: Consists of isolated, standalone malicious code fragments or modules. These elements lack logical connectivity and a demonstrable sequence of execution.
-                    Key Differentiator: Isolated malice without integration. You should recognize individual malicious capabilities but note the complete absence of a connecting logic or workflow between them.
-                4. Benign Artifact:
-                    Definition: Exhibits no evidence of malicious intent, functionality, or code. Its behavior, code patterns, and purpose are consistent with and fully explainable by legitimate activities, such as system administration, software development, debugging, or authorized security research. 
-                    Key Differentiator: Fully explainable by legitimate purposes. You should find zero indicators of malice and be able to attribute all components and behaviors to known, benign activities.
-                
-            
-                Provide structured response with:
-                - **Classification:** "Full Attack Chain" | "Core Attack Chain" | "Fragmented Attack Chain" | "Benign Artifact"
-                - **Missing Components:** If classified as "Core" or "Fragmented", specify what is missing to reach the next level.
-                - **Potential Impact:** Describe the potential impact if this attack were fully realized.
-                - **Threat Level:** High/Medium/Low based on current implementation"""
-                },
-                {"role": "user", "content": code_snippet}
-            ]
+            model="deepseek-v3-1-250821",
+            messages=self.conversation_history
         )
+        self.conversation_history.append({"role": "assistant", "content": completion.choices[0].message.content})
         return completion.choices[0].message.content
+    
     
     def function_behavior_generate(self, code_snippet):
         completion = self.client.chat.completions.create(

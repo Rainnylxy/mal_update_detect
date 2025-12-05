@@ -13,7 +13,7 @@ def closest_block_line(file_path, code_line):
     parser = Parser(PY_LANGUAGE)
 
     if not os.path.exists(file_path):
-        return "", code_line, code_line
+        return None, None
 
     with open(file_path, "r", encoding="utf-8") as f:
         source = f.read()

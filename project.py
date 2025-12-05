@@ -25,6 +25,12 @@ class Project:
         self.pdgs = {}
         self.load_pdgs()
 
+    def get_node_file_path(self, node_):
+        for pdg in self.pdgs.values():
+            for node in pdg.nodes():
+                if node == node_:
+                    file_path = pdg.graph.get('file_path','unknown')
+                    return file_path
 
     def get_pdg_file_path(self, pdg):
         for node in pdg.nodes():
@@ -70,6 +76,8 @@ class Project:
     
     def find_similar_node(self,node_file, target_node,func_name, pdg_before: nx.MultiDiGraph, cpg_before: nx.MultiDiGraph):
         pdg_after = self.pdgs.get((node_file, func_name), None)
+        if pdg_after is None:
+            return None
         
         # target_data = self.cpg.nodes[target_node]
         target_neighbors = set()
@@ -90,6 +98,8 @@ class Project:
 
             # 孤立节点
             if not target_neighbors and not neighbor_set:
+                if "file_path" not in self.cpg.nodes[node]:
+                    self.cpg.nodes[node]['file_path'] = self.get_node_file_path(node)
                 if self.node_eq(cpg_before.nodes[target_node],self.cpg.nodes[node]):
                     similarity = 1.0
                 else:
@@ -100,6 +110,8 @@ class Project:
                 matched = 0
                 for t in target_neighbors:
                     for n in list(available):
+                        if "file_path" not in self.cpg.nodes[n]:
+                            self.cpg.nodes[n]['file_path'] = self.get_node_file_path(n)
                         if self.node_eq(cpg_before.nodes[t], self.cpg.nodes[n]):
                             matched += 1
                             available.remove(n)
@@ -113,13 +125,20 @@ class Project:
         return best_match_node
     
     def node_eq(self, node_a_data, node_b_data):
+        if node_a_data.get("file_path","") != "unknown" and node_b_data.get("file_path","") != "unknown":
+            if node_a_data.get("file_path","") != node_b_data.get("file_path",""):
+                return False
+        
         for key, value in node_a_data.items():
             # TODO: 需要考虑后续commit补充import使得METHOD_FULL_NAME变化的情况
-            if key in ["label","METHOD_FULL_NAME","NAME","DISPATCH_TYPE"]:
+            if key in ["label","NAME","DISPATCH_TYPE"]:
                 if node_b_data.get(key) != value:
                     return False
             elif key == "CODE":
                 if not self.node_code_eq(node_b_data.get("CODE",""), value):
+                    return False
+            elif key == "METHOD_FULL_NAME":
+                if node_a_data.get("METHOD_FULL_NAME","") != "<unknownFullName>" and node_a_data.get("METHOD_FULL_NAME","") != node_b_data.get("METHOD_FULL_NAME",""):
                     return False
         return True
     
@@ -132,6 +151,10 @@ class Project:
         for node in self.cpg.nodes():
             data = self.cpg.nodes[node]
             if int(data.get("LINE_NUMBER", -1)) == after_line_number:
+                if node == "30064771297":
+                    print("debug")
+                if "file_path" not in data:
+                    data['file_path'] = self.get_node_file_path(node)
                 match = self.node_eq(node_data, data)
                 if match:
                     return node
@@ -218,7 +241,7 @@ class Project:
             for node in pdg.nodes():
                 node_full_data = self.cpg.nodes[node]
                 if node_full_data.get("label", '') == "CALL":
-                    if not self.if_project_call(node):
+                    if not self.is_project_call(node):
                         continue
                     if node_full_data.get("METHOD_FULL_NAME","") == "<operator>.assignment":
                         args = self.get_call_argument_nodes(node)[1:]
@@ -260,24 +283,31 @@ class Project:
         return taint_graph
 
     def no_argument_call_node_add(self, taint_graph):
-        # 处理没有参数的CALL，这类节点在pdg中不会以结点的形式出现
         taint_graph_copy = taint_graph.copy()
         for node in taint_graph_copy.nodes():
-            for arg in self.get_call_argument_nodes(node)[1:]:
+            if self.cpg.nodes[node].get("label","") != "CALL":
+                continue
+            if node == "30064771203":
+                print("debug")
+            args = self.get_call_argument_nodes(node)
+            for arg in args:
+                if self.cpg.nodes[arg].get("label","") != "CALL":
+                    continue
                 sub_args = self.get_call_argument_nodes(arg)
-                if len(sub_args) == 0:
+                
+                # 处理没有参数的CALL，这类节点在pdg中不会以结点的形式出现
+                # 处理不是项目内调用但是参数可能是项目内函数的情况
+                if len(sub_args) == 0 or not self.is_project_call(node):
                     function_name = self.cpg.nodes[arg].get("NAME","")
+                    # 特殊处理ARGUMENT_NAME="callback" CODE="self.callback"的CALL节点
+                    if "ARGUMENT_NAME" in self.cpg.nodes[arg]:
+                        function_name = self.cpg.nodes[arg].get("CODE","").split('.')[-1]
                     file_path = self.get_function_file_path(function_name)
                     if file_path == "unknown":
                         continue
                     # 将 arg 节点插入到 parent -> node 之间，使用 label='ARGUMENT'
                     if not taint_graph.has_node(arg):
                         taint_graph.add_node(arg, **self.cpg.nodes[arg])
-                        # taint_graph.nodes[arg]["label"] = (
-                        #     self.cpg.nodes[arg].get('label', '') + " " +
-                        #     self.cpg.nodes[arg].get('CODE', '') + " " + str(arg)
-                        # )
-                        # 尝试继承父节点文件路径信息
                         taint_graph.nodes[arg]['file_path'] = taint_graph.nodes[node].get('file_path', 'unknown')
 
                     # 收集当前所有指向 node 的入边，然后替换为 parent -> arg -> node
@@ -286,23 +316,17 @@ class Project:
                         # 仅处理来自 u -> node 的边（避免重复处理已经被替换的情况）
                         if u == arg:
                             continue
-                        # 移除原有边
-                        try:
-                            taint_graph.remove_edge(u, v, key=k)
-                        except Exception:
-                            # 若 removal 失败则继续
-                            pass
-                        # 添加 u -> arg 和 arg -> node 两条 ARGUMENT 边（避免重复添加）
+                        taint_graph.remove_edge(u, v, key=k)
                         if not taint_graph.has_edge(u, arg):
                             taint_graph.add_edge(u, arg, label='ARGUMENT')
                         if not taint_graph.has_edge(arg, node):
                             taint_graph.add_edge(arg, node, label='ARGUMENT')
         return taint_graph
     
-    def if_project_call(self, node):
+    def is_project_call(self, node):
         method_full_name = self.cpg.nodes[node].get("METHOD_FULL_NAME","")
         file_path = method_full_name.split(':')[0]
-        if file_path == "<unknownFullName>":
+        if file_path == "<unknownFullName>" or "py" not in file_path:
             return True
         if os.path.exists(os.path.join(self.repo_path, file_path)):
             return True
@@ -314,15 +338,25 @@ class Project:
         for node, data in taint_graph_copy.nodes(data=True):
             # sub-function call 继续追踪
             if self.cpg.nodes[node].get("label","") == "CALL":
-                if node == "30064771142":
+                if node == "30064771201":
                     print("debug")
-                if not self.if_project_call(node):
+                if not self.is_project_call(node):
                     continue
                 function_name = self.cpg.nodes[node].get("NAME","")
+                # 特殊处理ARGUMENT_NAME="callback" CODE="self.callback"的CALL节点
+                if "ARGUMENT_NAME" in self.cpg.nodes[node]:
+                    function_name = self.cpg.nodes[node].get("CODE","").split('.')[-1]
+                # 处理 operator.assignment 的CALL的情况
+                if function_name == "<operator>.assignment":
+                    arg = self.get_call_argument_nodes(node)[1]
+                    if self.cpg.nodes[arg].get("label","") == "METHOD_REF":
+                        function_name = self.cpg.nodes[arg].get("METHOD_FULL_NAME","").split('.')[-1]
                 file_path = self.get_function_file_path(function_name)
                 if file_path == "unknown":
                     continue
-                pdg = self.pdgs[(file_path, function_name)]
+                pdg = self.pdgs.get((file_path, function_name))
+                if pdg is None:
+                    continue
                 pdg.graph['file_path'] = self.get_pdg_file_path(pdg)
                 
                 argument_flag = False
@@ -372,12 +406,11 @@ class Project:
     
     
     def taint_trace(self, start_node, taint_graph: nx.MultiDiGraph, pdg: nx.MultiDiGraph) -> nx.MultiDiGraph:
-        if taint_graph.has_node(start_node):
-            return taint_graph
-        taint_graph.add_node(start_node, **self.cpg.nodes[start_node])
-        # taint_graph.nodes[start_node]["label"] = self.cpg.nodes[start_node].get('label', '') + " " + self.cpg.nodes[start_node].get('CODE', '') + " "+ str(start_node)
-        # taint_graph.nodes[start_node]['TYPE'] = self.cpg.nodes[start_node].get('label', '')
-        taint_graph.nodes[start_node]['file_path'] = pdg.graph.get('file_path','unknown')
+        if not taint_graph.has_node(start_node):
+            taint_graph.add_node(start_node, **self.cpg.nodes[start_node])
+            # taint_graph.nodes[start_node]["label"] = self.cpg.nodes[start_node].get('label', '') + " " + self.cpg.nodes[start_node].get('CODE', '') + " "+ str(start_node)
+            # taint_graph.nodes[start_node]['TYPE'] = self.cpg.nodes[start_node].get('label', '')
+            taint_graph.nodes[start_node]['file_path'] = pdg.graph.get('file_path','unknown')
         visited = set()
         to_visit = set()
         to_visit.add(start_node)
@@ -394,7 +427,7 @@ class Project:
             # 后向追踪
             for u,v,data in pdg.out_edges(current_node, data=True):
                 node_attrs = pdg.nodes.get(v, {})
-                if node_attrs.get("label") is None:
+                if node_attrs.get("label") is None and self.cpg.nodes.get(v, {}).get("label") != "CALL":
                     continue
                 # if "DDG" not in data.get("label", ''):
                 #     continue
@@ -420,7 +453,7 @@ class Project:
             for u, v, data in pdg.in_edges(current_node, data=True):
                 # skip nodes that only have an id and no other attributes
                 node_attrs = pdg.nodes.get(u, {})
-                if node_attrs.get("label") is None:
+                if node_attrs.get("label") is None and self.cpg.nodes.get(u, {}).get("label") != "CALL":
                     continue
                 # if "DDG" not in data.get("label", ''):
                 #     continue
@@ -449,21 +482,14 @@ class Project:
 
 
     def get_code_by_line(self, file_path, line_number):
+        print(file_path,line_number)
+        if not os.path.exists(file_path):
+            return ""
         with open(file_path, 'r', encoding='utf-8') as f:
             source_code = f.read()
         return source_code.splitlines()[line_number - 1]
      
     def extract_taint_codes(self, taint_graph: nx.MultiDiGraph) -> dict[str, str]:
-        # 移除 taint_graph 中标记为 deleted 的节点（支持 bool/int/str 标记）
-        to_remove = []
-        for n, d in taint_graph.nodes(data=True):
-            val = d.get('deleted', None)
-            if val is True:
-                to_remove.append(n)
-        if to_remove:
-            logger.debug(f"Removing {len(to_remove)} deleted nodes from taint_graph")
-            taint_graph.remove_nodes_from(to_remove)
-
         self.switch_commit()
         # 为每个入度为0的 METHOD 节点构建它的“METHOD 连通图”，并据此抽取方法对应的代码片段。
         method_slices = {}
@@ -579,8 +605,9 @@ class Project:
 
             # 输出文件名以 METHOD 名和节点 id 区分
             method_name = taint_graph.nodes[root].get('NAME') or taint_graph.nodes[root].get('METHOD_FULL_NAME') or f"method_{str(root)}"
+            method_path = taint_graph.nodes[root].get('file_path','unknown')
             safe_method_name = re.sub(r'[^\w\-_.]', '_', str(method_name))
-            comp_dir = os.path.join(methods_out_root, f'{safe_method_name}_{str(root)}')
+            comp_dir = os.path.join(methods_out_root, f'{method_path}_{safe_method_name}')
             os.makedirs(comp_dir, exist_ok=True)
             out_path = os.path.join(comp_dir, f'{safe_method_name}_slice.py')
     

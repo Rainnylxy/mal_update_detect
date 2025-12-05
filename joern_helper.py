@@ -147,12 +147,12 @@ def joern_export_and_preprocess(package_name: str, package_code_path: str, joern
 if __name__ == '__main__':
     # subprocess.run(['which', 'joern'])
     package_name = 'commit_test_repo'
-    package_code_path = '/home/lxy/lxy_codes/malicious_update/'
-    joern_dir = '/home/lxy/lxy_codes/malicious_update/joern_output'
+    package_code_path = '/home/lxy/lxy_codes/mal_update_detect/'
+    joern_dir = '/home/lxy/lxy_codes/mal_update_detect/joern_output'
     joern_dir = os.path.join(package_code_path, joern_dir)
     language = 'pythonsrc'
     package_code_dir = os.path.join(package_code_path, package_name)
-    joern_export(package_name, package_code_dir, joern_dir, language, overwrite=True)
+    joern_export(package_code_dir, joern_dir, language, overwrite=True)
     # pdg_dir = os.path.join(joern_dir, package_name, 'pdg')
     # cfg_dir = os.path.join(joern_dir, package_name, 'cfg')
     # cpg_dir = os.path.join(joern_dir, package_name, 'cpg')

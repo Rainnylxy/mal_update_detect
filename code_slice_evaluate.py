@@ -17,6 +17,7 @@ def LLM_analyze_code_slices(taint_slices_dir):
                     code_slice = fr.read()
                 print(f"Analyzing code slice from file: {file_path}")
                 response = llm_evaluate.malicious_assertion(code_slice)
+                response = llm_evaluate.malicious_assertion_check()
                 out_file = os.path.join(dir_path, "llm_response.txt")
                 try:
                     with open(out_file, "w", encoding="utf-8") as fw:
@@ -26,8 +27,10 @@ def LLM_analyze_code_slices(taint_slices_dir):
                         fw.write(f"Failed to serialize response: {e}\nRaw response:\n{str(response)}")
 
 if __name__ == "__main__":
-    joern_workspace_path = "/home/lxy/lxy_codes/mal_update_detect/joern_workspace"
+    joern_workspace_path = "/home/lxy/lxy_codes/mal_update_detect/joern_workspace/multiple_commits"
     for repo_path in os.listdir(joern_workspace_path):
+        if repo_path != "beep":
+            continue
         repo_path = os.path.join(joern_workspace_path, repo_path)
         if not os.path.isdir(repo_path):
             continue
@@ -36,12 +39,4 @@ if __name__ == "__main__":
             if not os.path.isdir(commit_dir_path):
                 continue
             taint_slices_dir = os.path.join(commit_dir_path, "taint_slices_methods")
-            taint_graph_dir = os.path.join(commit_dir_path, "taint_graphs")
-            if os.path.isdir(taint_slices_dir):
-                try:
-                    shutil.rmtree(taint_slices_dir)
-                    shutil.rmtree(taint_graph_dir)
-                except FileNotFoundError:
-                    pass
-                except Exception as e:
-                    print(f"Failed to remove {taint_slices_dir}: {e}")
+            LLM_analyze_code_slices(taint_slices_dir)

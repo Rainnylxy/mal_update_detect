@@ -1,6 +1,6 @@
 from loguru import logger
 import os
-from commit_helper import CommitHelper
+from commit_helper import CommitHelper, get_useful_commits
 from commit_helper import map_old_to_new
 from llm_evaluate import LLM_Evaluate
 import ast_helper
@@ -9,6 +9,7 @@ import graph_helper
 import project
 import networkx as nx
 import json
+import pandas as pd
 
 
 
@@ -33,8 +34,8 @@ def get_node_pairs(project_before: project.Project, project_after: project.Proje
     taint_graph_before = project_before.taintDG
     node_pairs = {}
     for node, data in taint_graph_before.nodes(data=True):
-        # if node == "30064771239":
-        #     print("debug")
+        if node == "30064771089":
+            print("debug")
         node_file = data.get("file_path", "")
         line = int(data.get("LINE_NUMBER", -1))
         
@@ -69,6 +70,9 @@ def get_node_pairs(project_before: project.Project, project_after: project.Proje
         project_after.switch_commit()
         func_name_after = ast_helper.find_enclosing_function(os.path.join(project_after.repo_path, node_file), after_line_number)[0]
 
+        if func_name_before == "&lt;module&gt;" or func_name_after == "&lt;module&gt;":
+            continue
+        
         if func_name_before and func_name_after:
             node_after = project_after.find_similar_node(
                 node_file, node, func_name_after, 
@@ -116,6 +120,8 @@ def taint_graph_update(project_after: project.Project, file_changed_lines: dict,
                 
         for func_name, line_nums in changed_funcs.items():
             for line_num in line_nums:
+                if line_num == 69:
+                    print("debug")
                 pdg_after = project_after.pdgs.get((changed_file, func_name), None)
                 if not pdg_after:
                     continue
@@ -141,6 +147,11 @@ def taint_graph_update(project_after: project.Project, file_changed_lines: dict,
 
 def taint_graph_relabel(taint_graph_before: nx.MultiDiGraph, node_pairs: dict) -> nx.MultiDiGraph:
     correct_mapping = dict(node_pairs)
+    remove_nodes = set()
+    for before_node in taint_graph_before.nodes():
+        if before_node not in correct_mapping:
+            remove_nodes.add(before_node)
+    taint_graph_before.remove_nodes_from(remove_nodes)
     
     taint_before_relabeled = nx.relabel_nodes(taint_graph_before, correct_mapping, copy=True)
     # 标记映射节点的原始 id，并对未映射的原始节点添加 deleted 标记（保留原有属性）
@@ -156,10 +167,7 @@ def taint_graph_relabel(taint_graph_before: nx.MultiDiGraph, node_pairs: dict) -
         # 更新图中节点属性
         taint_before_relabeled.nodes[after_node].clear()
         taint_before_relabeled.nodes[after_node].update(combined)
-    
-    for node in taint_before_relabeled.nodes():
-        if 'orig_id' not in taint_before_relabeled.nodes[node]:
-            taint_before_relabeled.nodes[node]['deleted'] = True
+
     return taint_before_relabeled
 
 
@@ -197,7 +205,13 @@ def analyze(project_before:project.Project, project_after:project.Project):
     # 根据 node_pairs 将 project_before 的节点视为 node_after（node_before -> node_after），合并 sub_taint_graph
     node_pairs = get_node_pairs(project_before, project_after, file_changed_lines,commit_helper)
     taint_before_relabeled = taint_graph_relabel(taint_graph_before, node_pairs)
+    taint_graph_before_relabeled_out = os.path.join(joern_path_after, "taint_graphs", "taint_graph_before_relabeled.dot")
+    os.makedirs(os.path.dirname(taint_graph_before_relabeled_out), exist_ok=True)
+    nx.nx_agraph.write_dot(taint_before_relabeled, taint_graph_before_relabeled_out)
+    logger.info(f"Relabeled taint graph written to {taint_graph_before_relabeled_out}")
+    
     taint_graph_updated = taint_graph_update(project_after, file_changed_lines, taint_before_relabeled)
+    
     
     # 输出合并后的图
     taint_graph_out = os.path.join(joern_path_after, "taint_graphs", "taint_graph_updated.dot")
@@ -208,6 +222,19 @@ def analyze(project_before:project.Project, project_after:project.Project):
     
     # 大模型判断代码切片是否有恶意行为
     code_slices = project_after.extract_taint_codes(taint_graph_updated)
+    
+    # 将 taint_graph_updated 的 label 设置为节点的 name（便于查看），并写入新的 dot 文件
+    taint_graph_copy = taint_graph_updated.copy()
+    for n, attrs in taint_graph_copy.nodes(data=True):
+        if attrs.get("label") == "METHOD":
+            name_val = attrs.get("NAME")
+            taint_graph_copy.nodes[n]["label"] = str(name_val)
+            taint_graph_copy.nodes[n]["color"] = "green"
+
+    taint_graph_labeled_out = os.path.join(joern_path_after, "taint_graphs", "taint_graph_updated_labeled.dot")
+    os.makedirs(os.path.dirname(taint_graph_labeled_out), exist_ok=True)
+    nx.nx_agraph.write_dot(taint_graph_copy, taint_graph_labeled_out)
+    logger.info(f"Labeled taint graph written to {taint_graph_labeled_out}")
     # is_malicious = LLM_analyze_code_slices(code_slices)
 
     return project_after
@@ -216,29 +243,40 @@ def analyze(project_before:project.Project, project_after:project.Project):
 
 if __name__ == "__main__":
         
-    dataset_dir = "/home/lxy/lxy_codes/mal_update_detect/mal_update_dataset/multiple_commits_human_made"
-    joern_workspace_path = "/home/lxy/lxy_codes/mal_update_detect/joern_workspace/"
+    dataset_dir = "/home/lxy/lxy_codes/mal_update_detect/mal_update_dataset/multiple_commits"
+    joern_workspace_path = "/home/lxy/lxy_codes/mal_update_detect/joern_workspace/multiple_commits"
     for repo_path in os.listdir(dataset_dir):
+        csv_path = os.path.join("/home/lxy/lxy_codes/mal_update_detect/mal_update_detect/commit_counts.csv")
+        csv_read = pd.read_csv(csv_path)
+        try:
+            useful_count = int(csv_read.loc[csv_read.iloc[:, 0].astype(str) == str(repo_path), csv_read.columns[2]].iat[0])
+        except Exception:
+            useful_count = 0
+        if useful_count > 50:
+            logger.info(f"Skipping repository {repo_path} with {useful_count} useful commits")
+            continue
+        
         repo_path = os.path.join(dataset_dir, repo_path)
         if not os.path.isdir(repo_path):
             continue
         repo_name = os.path.basename(repo_path)
-        if repo_name != "ransomware7":
+        if repo_name !="keylogger4":
             continue
         logger.info(f"Processing repository: {repo_name}")
 
         # subprocess.check_output(
-        #         ["git", "-C", repo_path, "checkout", "main"],
+        #         ["git", "-C", repo_path, "checkout", "417b15063380338cafa9fd2c23485ad107e7075b"],
         #         stderr=subprocess.DEVNULL
         #     )
         try:
             
-            raw = subprocess.check_output(
-                ["git", "-C", repo_path, "rev-list", "--reverse", "HEAD"],
-                stderr=subprocess.DEVNULL
-            )
-            commit_list = raw.decode().strip().splitlines()
-            logger.info(f"Found commits: {commit_list}")
+            # raw = subprocess.check_output(
+            #     ["git", "-C", repo_path, "rev-list", "--reverse", "HEAD"],
+            #     stderr=subprocess.DEVNULL
+            # )
+            # commit_list = raw.decode().strip().splitlines()
+            # logger.info(f"Found commits: {commit_list}")
+            commit_list = get_useful_commits(repo_path)
         except subprocess.CalledProcessError:
             commit_list = []
 
@@ -254,7 +292,7 @@ if __name__ == "__main__":
             
             for i in range(len(commit_list) - 1):
                 commit_after = commit_list[i + 1]
-                if commit_after == "8770aadef5f4f6b86c1769013be58fa6947de784":
+                if commit_after == "b071dad6f4c1959a37df89c17768929f0c9504d9":
                     print("debug")
                 joern_path_after = os.path.join(joern_workspace_path, repo_name, str(i + 1)+"_"+commit_after[:5])
                 project_after = project.Project(repo_path, joern_path_after,commit_after,overwrite=False)

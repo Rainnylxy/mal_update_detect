@@ -138,7 +138,9 @@ class CommitHelper:
         current_file = None
         current_old_line = None
         current_new_line = None
-
+        # 忽略 Git diff 中的 "\ No newline at end of file" 行，避免错误地推进行计数器
+        diff_content = '\n'.join([ln for ln in diff_content.splitlines() if not ln.startswith('\\ No newline')])
+        
         for line in diff_content.splitlines():
             if line.startswith('diff --git'):
                 m = re.match(r'diff --git a/(.*?) b/(.*)', line)

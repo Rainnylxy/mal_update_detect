@@ -30,7 +30,8 @@ class GraphHelper:
     def is_sensitive_builtin(function_name):
         sensitive_functions_v = [
             # 网络相关
-            "socket.py:<module>.socket","socket.py:<module>.socket.<returnValue>.connect",
+            "socket.py:<module>.socket","socket.py:<module>.socket.<returnValue>.connect","socket.py:<module>.socket.<returnValue>.recv",
+            "socket.py:<module>.socket.<returnValue>.send",
             "ssl.py:<module>.wrap_socket","ssl.py:<module>.create_default_context",
             "multiprocessing.connection:Listener",
             "smtplib.py:<module>.SMTP","smtplib.py:<module>.SMTP_SSL",
@@ -48,14 +49,14 @@ class GraphHelper:
             "win32crypt.py:<module>.CryptUnprotectData",
             "hashlib.py:<module>.sha256","hashlib.py:<module>.md5","hashlib.py:<module>.sha1",
             # 系统信息相关
-            "os.py:<module>.getenv","os.py:<module>.environ",
+            "os.py:<module>.getenv","os.py:<module>.environ","os.py:<module>.system",
             # 文件操作相关
             "shutil.py:<module>.copyfile","shutil.py:<module>.move",
             "os.py:<module>.makedirs","os.py:<module>.walk","os.py:<module>.chdir","os.py:<module>.remove","os.py:<module>.rename","os.py:<module>.getcwd",
             "__builtin.open","__builtin.input",
             # 进程相关
-            "subprocess.py:<module>.call","os.py:<module>.getuid","subprocess.py:<module>.Popen",
-            "threading.py:<module>.Thread",
+            "subprocess.py:<module>.call","os.py:<module>.getuid","subprocess.py:<module>.Popen","subprocess.py:<module>.getoutput",
+            "threading.py:<module>.Thread","threading.py:<module>.Thread.__init__","threading.py:<module>.Thread.start",
             "pynput.py:<module>.keyboard.Listener",
             # keylogger相关
             "keyboard.py:<module>.on_release","keyboard.py:<module>.on_press",

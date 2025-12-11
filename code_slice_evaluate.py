@@ -8,16 +8,16 @@ def LLM_analyze_code_slices(taint_slices_dir):
         base_url="https://ark.cn-beijing.volces.com/api/v3"
     )
     
-    for dir in os.listdir(taint_slices_dir):
-        dir_path =  os.path.join(taint_slices_dir, dir)
-        for file in os.listdir(dir_path):
-            file_path = os.path.join(dir_path, file)
+    for root, dirs, files in os.walk(taint_slices_dir):
+        for file in files:
             if file.endswith(".py"):
+                file_path = os.path.join(root, file)
                 with open(file_path, "r", encoding="utf-8") as fr:
                     code_slice = fr.read()
                 print(f"Analyzing code slice from file: {file_path}")
                 response = llm_evaluate.malicious_assertion(code_slice)
                 response = llm_evaluate.malicious_assertion_check()
+                dir_path = os.path.dirname(file_path)
                 out_file = os.path.join(dir_path, "llm_response.txt")
                 try:
                     with open(out_file, "w", encoding="utf-8") as fw:
@@ -25,11 +25,12 @@ def LLM_analyze_code_slices(taint_slices_dir):
                 except Exception as e:
                     with open(out_file, "w", encoding="utf-8") as fw:
                         fw.write(f"Failed to serialize response: {e}\nRaw response:\n{str(response)}")
-
+                        
+                        
 if __name__ == "__main__":
-    joern_workspace_path = "/home/lxy/lxy_codes/mal_update_detect/joern_workspace/multiple_commits"
+    joern_workspace_path = "/home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits"
     for repo_path in os.listdir(joern_workspace_path):
-        if repo_path != "beep":
+        if repo_path not in ["dojo6oct16"]:
             continue
         repo_path = os.path.join(joern_workspace_path, repo_path)
         if not os.path.isdir(repo_path):

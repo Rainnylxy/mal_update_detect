@@ -34,7 +34,7 @@ def get_node_pairs(project_before: project.Project, project_after: project.Proje
     taint_graph_before = project_before.taintDG
     node_pairs = {}
     for node, data in taint_graph_before.nodes(data=True):
-        if node == "30064771089":
+        if node == "107374182507":
             print("debug")
         node_file = data.get("file_path", "")
         line = int(data.get("LINE_NUMBER", -1))
@@ -129,6 +129,8 @@ def taint_graph_update(project_after: project.Project, file_changed_lines: dict,
                 for node_id in pdg_after.nodes():
                     node_full_data = project_after.cpg.nodes[node_id]
                     if int(node_full_data.get("LINE_NUMBER", -1)) == line_num:
+                        if node_full_data.get("label","") == "METHOD_RETURN":
+                            continue
                         if has_data_flow(node_id, taint_graph_relabeled, pdg_after):
                             taint_graph_relabeled = project_after.taint_trace(node_id, taint_graph_relabeled, pdg_after)
                             continue
@@ -141,6 +143,9 @@ def taint_graph_update(project_after: project.Project, file_changed_lines: dict,
                         if node_full_data.get("CODE") == "<empty>":
                             continue
                         taint_graph_relabeled = project_after.taint_trace(node_id, taint_graph_relabeled, pdg_after)
+                        taint_graph_relabeled.nodes[node_id]['color'] = 'blue'
+                        taint_graph_relabeled.nodes[node_id]['style'] = 'filled'
+                        taint_graph_relabeled.nodes[node_id]['fillcolor'] = 'lightgrey'
     taint_graph_relabeled = project_after.extend_taint_graph(taint_graph_relabeled)
     return taint_graph_relabeled
 
@@ -244,35 +249,41 @@ def analyze(project_before:project.Project, project_after:project.Project):
 if __name__ == "__main__":
         
     dataset_dir = "/home/lxy/lxy_codes/mal_update_detect/mal_update_dataset/multiple_commits"
-    joern_workspace_path = "/home/lxy/lxy_codes/mal_update_detect/joern_workspace/multiple_commits"
+    joern_workspace_path = "/home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits"
     for repo_path in os.listdir(dataset_dir):
+        repo_path = os.path.join(dataset_dir, repo_path)
+        if not os.path.isdir(repo_path):
+            continue
+        repo_name = os.path.basename(repo_path)
+        # NetWorm
+        if repo_name !="funny-virus":
+            continue
         csv_path = os.path.join("/home/lxy/lxy_codes/mal_update_detect/mal_update_detect/commit_counts.csv")
         csv_read = pd.read_csv(csv_path)
         try:
             useful_count = int(csv_read.loc[csv_read.iloc[:, 0].astype(str) == str(repo_path), csv_read.columns[2]].iat[0])
         except Exception:
             useful_count = 0
-        if useful_count > 50:
+        if useful_count > 40:
             logger.info(f"Skipping repository {repo_path} with {useful_count} useful commits")
             continue
         
-        repo_path = os.path.join(dataset_dir, repo_path)
-        if not os.path.isdir(repo_path):
-            continue
-        repo_name = os.path.basename(repo_path)
-        if repo_name !="keylogger4":
-            continue
         logger.info(f"Processing repository: {repo_name}")
+        
+        subprocess.check_output(
+            ["git", "-C", repo_path, "checkout", "FETCH_HEAD"],
+            stderr=subprocess.DEVNULL
+        )
 
         # subprocess.check_output(
-        #         ["git", "-C", repo_path, "checkout", "417b15063380338cafa9fd2c23485ad107e7075b"],
+        #         ["git", "-C", repo_path, "checkout", "main"],
         #         stderr=subprocess.DEVNULL
         #     )
         try:
             
             # raw = subprocess.check_output(
             #     ["git", "-C", repo_path, "rev-list", "--reverse", "HEAD"],
-            #     stderr=subprocess.DEVNULL
+            #     stderr=subprocess.DEVNULL 
             # )
             # commit_list = raw.decode().strip().splitlines()
             # logger.info(f"Found commits: {commit_list}")
@@ -284,27 +295,35 @@ if __name__ == "__main__":
             logger.error(f"Failed to get commit list for repository {repo_name}")
             continue
         
-        try:
+        # try:
         
-            joern_path_init = os.path.join(joern_workspace_path, repo_name, f"0_{commit_list[0][:5]}")
-            project_before = project.Project(repo_path, joern_path_init, commit_list[0], overwrite=False)
-            project_before.build_taint_data_graph()
-            
-            for i in range(len(commit_list) - 1):
-                commit_after = commit_list[i + 1]
-                if commit_after == "b071dad6f4c1959a37df89c17768929f0c9504d9":
+        joern_path_init = os.path.join(joern_workspace_path, repo_name, f"0_{commit_list[0][:5]}")
+        project_before = project.Project(repo_path, joern_path_init, commit_list[0], overwrite=False)
+        # project_before.build_taint_data_graph()
+        
+        for i in range(len(commit_list) - 1):
+            commit_after = commit_list[i + 1]
+            commit_helper = CommitHelper(repo_path, commit_after)
+            commit_before = commit_helper.parent_hash
+            joern_path_before = os.path.join(joern_workspace_path, repo_name, str(commit_list.index(commit_before)) + "_" + commit_before[:5])
+            project_before = project.Project(repo_path, joern_path_before,commit_before,overwrite=True)
+            if commit_after == "ff97ba8e5f58e1ef60fccbe0f410d90fafab07b2":
                     print("debug")
-                joern_path_after = os.path.join(joern_workspace_path, repo_name, str(i + 1)+"_"+commit_after[:5])
-                project_after = project.Project(repo_path, joern_path_after,commit_after,overwrite=False)
-                project_after = analyze(project_before,project_after)
-                project_before = project_after
-        except Exception as e:
-            logger.error(f"Error processing repository {repo_name}: {e}")
-            subprocess.check_output(
-                ["git", "-C", repo_path, "checkout", commit_list[-1]],
-                stderr=subprocess.DEVNULL
-            )
+            joern_path_after = os.path.join(joern_workspace_path, repo_name, str(i + 1)+"_"+commit_after[:5])
+            project_after = project.Project(repo_path, joern_path_after,commit_after,overwrite=True)
+            project_after = analyze(project_before,project_after)
+            # project_before = project_after
+        # except Exception as e:
+        #     logger.error(f"Error processing repository {repo_name}: {e}")
+        #     subprocess.check_output(
+        #         ["git", "-C", repo_path, "checkout", commit_list[-1]],
+        #         stderr=subprocess.DEVNULL
+        #     )
         subprocess.check_output(
-                ["git", "-C", repo_path, "checkout", commit_list[-1]],
-                stderr=subprocess.DEVNULL
-            )  
+            ["git", "-C", repo_path, "checkout", "FETCH_HEAD"],
+            stderr=subprocess.DEVNULL
+        )
+        # subprocess.check_output(
+        #         ["git", "-C", repo_path, "checkout", commit_list[-1]],
+        #         stderr=subprocess.DEVNULL
+        #     )  

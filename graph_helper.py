@@ -38,6 +38,7 @@ class GraphHelper:
             "ftplib.py:<module>.FTP","ftplib.py:<module>.FTP_TLS",
             "http.client.py:<module>.HTTPConnection",
             "requests.py:<module>.get","requests.py:<module>.post", 
+            "wget.py:<module>.download",
             # 加密相关
             "json.py:<module>.dumps.<returnValue>.encode","json.py:<module>.loads",
             "base64.py:<module>.b64decode",
@@ -54,12 +55,17 @@ class GraphHelper:
             "shutil.py:<module>.copyfile","shutil.py:<module>.move",
             "os.py:<module>.makedirs","os.py:<module>.walk","os.py:<module>.chdir","os.py:<module>.remove","os.py:<module>.rename","os.py:<module>.getcwd",
             "__builtin.open","__builtin.input",
+            "importlib.py:<module>.<member>(machinery).SourceFileLoader.__init__","importlib.py:<module>.<member>(machinery).SourceFileLoader.get_data",
             # 进程相关
-            "subprocess.py:<module>.call","os.py:<module>.getuid","subprocess.py:<module>.Popen","subprocess.py:<module>.getoutput",
+            "subprocess.py:<module>.call","os.py:<module>.getuid","subprocess.py:<module>.Popen","subprocess.py:<module>.getoutput","subprocess.py:<module>.run","subprocess.py:<module>.check_output",
             "threading.py:<module>.Thread","threading.py:<module>.Thread.__init__","threading.py:<module>.Thread.start",
             "pynput.py:<module>.keyboard.Listener",
             # keylogger相关
             "keyboard.py:<module>.on_release","keyboard.py:<module>.on_press",
+        ]
+        
+        sensitive_functions_judge_code = [
+            "os.environ","subprocess.call",
         ]
         # sensitive_functions = [
         #     "socket.py:<module>.socket","copyfile","encrypt","Popen","create_default_context","wrap_socket","Thread","start","Listener","SMTP","FTP","HTTPConnection","starttls","sendmail",

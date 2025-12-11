@@ -13,7 +13,7 @@ def closest_block_line(file_path, code_line):
     parser = Parser(PY_LANGUAGE)
 
     if not os.path.exists(file_path):
-        return None, None
+        return None, None, False
 
     with open(file_path, "r", encoding="utf-8") as f:
         source = f.read()
@@ -34,6 +34,8 @@ def closest_block_line(file_path, code_line):
         "function_definition",
         "else_clause",
         "expression_statement",
+        "call",
+        "assignment",
     }
 
     # Collect candidate nodes that enclose the target line
@@ -42,7 +44,7 @@ def closest_block_line(file_path, code_line):
     def collect(node):
         start_line = node.start_point[0] + 1
         end_line = node.end_point[0] + 1
-        if start_line < code_line <= end_line and node.type in block_types and node != root:
+        if start_line <= code_line <= end_line and node.type in block_types and node != root and start_line != end_line:
             candidates.append(node)
         for child in node.children:
             collect(child)
@@ -51,19 +53,22 @@ def closest_block_line(file_path, code_line):
 
     # If no enclosing block, return the single line
     if not candidates:
-        return code_line, code_line
+        return code_line, code_line, False
 
     # Choose the smallest enclosing block (innermost)
     candidates.sort(key=lambda n: (n.end_point[0] - n.start_point[0], n.start_point[0]))
     node = candidates[0]
     start_line = node.start_point[0] + 1
     if node.type in ["try_statement",
-                     "else_clause","expression_statement",
+                     "else_clause","expression_statement","if_statement",
                     "except_clause",
                     "finally_clause"]:
-        return start_line, node.end_point[0] + 1
+        return start_line, node.end_point[0] + 1,False
     
-    return start_line, start_line
+    if node.type in ["with_statement","call","assignment"]:
+        return start_line, node.end_point[0] + 1,True
+    
+    return start_line, start_line,False
     
 
 

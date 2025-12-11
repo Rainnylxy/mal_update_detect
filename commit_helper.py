@@ -17,8 +17,10 @@ def get_useful_commits(repo_path):
     useful = []
 
     for ch in commits:
+        if ch == "ff97ba8e5f58e1ef60fccbe0f410d90fafab07b2":
+            print("debug")
         try:
-            cmd_files = ['git', '-C', repo_path, 'diff-tree', '--no-commit-id', '--name-only', '-r', ch]
+            cmd_files = ['git', '-C', repo_path, 'diff-tree','-m', '--no-commit-id', '--name-only', '-r', ch]
             r = subprocess.run(cmd_files, capture_output=True, text=True, check=True)
             files = [p.strip() for p in r.stdout.splitlines() if p.strip()]
         except subprocess.CalledProcessError:
@@ -75,20 +77,38 @@ class CommitHelper:
     def __init__(self,repo_path,commit_hash):
         self.repo_path = repo_path
         self.commit_hash = commit_hash
+        self.parent_hash = self.get_parent_hash()
         self.diff_text = self.get_commit_diff()
         self.hunks = {}
         self.parse_hunks()  
       
+
+    def get_parent_hash(self):
+        """
+        获取指定commit的父commit哈希列表。
+        :param repo_path: 仓库路径
+        :param commit_hash: commit的哈希值
+        :return: 父commit哈希列表
+        """
         
+        cmd_parents = [
+            'git', '-C', self.repo_path, 'rev-list', '--parents', '-n', '1', self.commit_hash
+        ]
+        parents_output = subprocess.check_output(cmd_parents, text=True).strip()
+        parts = parents_output.split()
+        # 返回第一个父提交
+        return parts[1]  # 返回父commit哈希列表
+    
+    
     def get_commit_diff(self):
         """
-        获取指定commit的diff内容（整体diff，不分文件）。
+        获取指定commit的diff内容（整体diff，不分文件）,只和父提交的差异。
         :param repo_path: 仓库路径
         :param commit_hash: commit的哈希值
         :return: diff内容字符串
         """
         cmd_diff = [
-            'git', '-C', self.repo_path, 'diff', f'{self.commit_hash}^!', '--unified=0', '--no-renames'
+            'git', '-C', self.repo_path, 'diff', f'{self.commit_hash}^1',f'{self.commit_hash}', '--unified=0', '--no-renames'
         ]
         diff_output = subprocess.check_output(cmd_diff, text=True)
         return diff_output
@@ -104,7 +124,7 @@ class CommitHelper:
             first_line, _, rest = part.partition('\n')
             mfile = re.match(r'a/(.*?) b/(.*)', first_line)
             filename = mfile.group(2) if mfile else None
-            for m in re.finditer(r'^@@ -(\d+)(?:,(\d+))? \+(\d+)(?:,(\d+))? @@', diff_text, flags=re.M):
+            for m in re.finditer(r'^@@ -(\d+)(?:,(\d+))? \+(\d+)(?:,(\d+))? @@', part, flags=re.M):
                 old_start = int(m.group(1))
                 old_count = int(m.group(2)) if m.group(2) else 1
                 new_start = int(m.group(3))

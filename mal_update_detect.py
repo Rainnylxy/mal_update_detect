@@ -34,7 +34,7 @@ def get_node_pairs(project_before: project.Project, project_after: project.Proje
     taint_graph_before = project_before.taintDG
     node_pairs = {}
     for node, data in taint_graph_before.nodes(data=True):
-        if node == "107374182507":
+        if node == "107374182400":
             print("debug")
         node_file = data.get("file_path", "")
         line = int(data.get("LINE_NUMBER", -1))
@@ -49,16 +49,19 @@ def get_node_pairs(project_before: project.Project, project_after: project.Proje
 
         # 处理文件有变更的情况
         deleted_lines = file_changed_lines[node_file]["deleted"]
+        # 对于module node，行号始终为1
+        if data.get("NAME","") != "<module>":
+            after_line_number = commit_helper.after_commit_line_number(node_file, line)
+        else:
+            after_line_number = line
 
         if line not in deleted_lines:
-            after_line_number = commit_helper.after_commit_line_number(node_file, line)
             node_after = project_after.find_node_by_location(node_file, data, after_line_number)
             if node_after:
                 node_pairs[node] = node_after
             continue
 
         # 处理行被删除的情况
-        after_line_number = commit_helper.after_commit_line_number(node_file, line)
         node_after = project_after.find_node_by_location(node_file, data, after_line_number)
         if node_after:
             node_pairs[node] = node_after
@@ -159,6 +162,10 @@ def taint_graph_relabel(taint_graph_before: nx.MultiDiGraph, node_pairs: dict) -
     taint_graph_before.remove_nodes_from(remove_nodes)
     
     taint_before_relabeled = nx.relabel_nodes(taint_graph_before, correct_mapping, copy=True)
+    taint_graph_before_relabeled_out = os.path.join("/home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/Doomed/5_2b87d", "taint_graphs", "taint_graph_before_relabeled1.dot")
+    os.makedirs(os.path.dirname(taint_graph_before_relabeled_out), exist_ok=True)
+    nx.nx_agraph.write_dot(taint_before_relabeled, taint_graph_before_relabeled_out)
+    
     # 标记映射节点的原始 id，并对未映射的原始节点添加 deleted 标记（保留原有属性）
     for before_node, after_node in correct_mapping.items():
         taint_before_relabeled.nodes[after_node]['orig_id'] = before_node
@@ -298,31 +305,44 @@ if __name__ == "__main__":
         # try:
         
         joern_path_init = os.path.join(joern_workspace_path, repo_name, f"0_{commit_list[0][:5]}")
-        project_before = project.Project(repo_path, joern_path_init, commit_list[0], overwrite=False)
-        # project_before.build_taint_data_graph()
+        project_before = project.Project(repo_path, joern_path_init, commit_list[0], flag = "before")
+        
+        project_dir_dict = {}
+        project_dir_dict[commit_list[0]] = joern_path_init
+        commit_before = commit_list[0]
         
         for i in range(len(commit_list) - 1):
             commit_after = commit_list[i + 1]
+            # commit_after = "2b87dfdaaf9fd9408cdd9b5136c95caa1369c3e5"
             commit_helper = CommitHelper(repo_path, commit_after)
-            commit_before = commit_helper.parent_hash
-            joern_path_before = os.path.join(joern_workspace_path, repo_name, str(commit_list.index(commit_before)) + "_" + commit_before[:5])
-            project_before = project.Project(repo_path, joern_path_before,commit_before,overwrite=True)
-            if commit_after == "ff97ba8e5f58e1ef60fccbe0f410d90fafab07b2":
-                    print("debug")
-            joern_path_after = os.path.join(joern_workspace_path, repo_name, str(i + 1)+"_"+commit_after[:5])
-            project_after = project.Project(repo_path, joern_path_after,commit_after,overwrite=True)
+            logger.info(f"Analyzing commit {i+1}/{len(commit_list)-1}: {commit_after}")
+            if commit_after == "2b87dfdaaf9fd9408cdd9b5136c95caa1369c3e5":
+                print("debug")
+            if commit_helper.parent_hash != commit_before:
+                commit_before = commit_helper.parent_hash
+                if commit_before not in project_dir_dict:
+                    project_dir_dict[commit_before] = str(i) + "_" + commit_before[:5]
+                joern_path_before = os.path.join(joern_workspace_path, repo_name, project_dir_dict.get(commit_before, ""))
+                # joern_path_before = os.path.join(joern_workspace_path, repo_name, "4_"+commit_before[:5])
+                project_before = project.Project(repo_path, joern_path_before, commit_before,flag = "before")
+            
+            joern_path_after = os.path.join(joern_workspace_path, repo_name, str(i+1) + "_" + commit_after[:5])
+            project_after = project.Project(repo_path, joern_path_after,commit_after,flag = "after")
+            project_dir_dict[commit_after] = joern_path_after
+            
             project_after = analyze(project_before,project_after)
-            # project_before = project_after
+            project_before = project_after
+            commit_before = commit_after
         # except Exception as e:
         #     logger.error(f"Error processing repository {repo_name}: {e}")
         #     subprocess.check_output(
         #         ["git", "-C", repo_path, "checkout", commit_list[-1]],
         #         stderr=subprocess.DEVNULL
         #     )
-        subprocess.check_output(
-            ["git", "-C", repo_path, "checkout", "FETCH_HEAD"],
-            stderr=subprocess.DEVNULL
-        )
+        # subprocess.check_output(
+        #     ["git", "-C", repo_path, "checkout", "FETCH_HEAD"],
+        #     stderr=subprocess.DEVNULL
+        # )
         # subprocess.check_output(
         #         ["git", "-C", repo_path, "checkout", commit_list[-1]],
         #         stderr=subprocess.DEVNULL

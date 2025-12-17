@@ -139,9 +139,9 @@ class CommitHelper:
         """
         line_number = old_line_number
         for old_start, old_count, new_start, new_count in self.hunks.get(file_name, []):
-            if line_number < old_start:
+            if old_line_number < old_start:
                 return line_number
-            if line_number == old_start and old_count == 0:
+            if old_line_number == old_start and old_count == 0:
                 return line_number
             line_number -= old_count
             line_number += new_count

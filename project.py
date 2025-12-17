@@ -13,19 +13,20 @@ from ast_helper import closest_block_line
 from rapidfuzz import fuzz
 
 class Project:
-    def __init__(self, repo_path, joern_path,commit,overwrite=True):
+    def __init__(self, repo_path, joern_path,commit, flag=""):
         self.repo_path = repo_path
         self.joern_path = joern_path
         self.commit = commit
         self.datagraph = {}
         self.switch_commit()
-        if overwrite:
-            joern_helper.joern_export(repo_path, joern_path, language='pythonsrc', overwrite=overwrite)
+        if os.path.exists(joern_path) is False:
+            joern_helper.joern_export(repo_path, joern_path, language='pythonsrc')
         self.cpg = nx.nx_agraph.read_dot(os.path.join(joern_path, 'cpg', 'export.dot'))
         self.pdgs = {}
         self.load_pdgs()
         self.taintDG = nx.MultiDiGraph()
-        self.load_taint_DG()
+        if flag == "before":
+            self.load_taint_DG()
         
         
 
@@ -199,14 +200,8 @@ class Project:
             after_nodes = set(taint_graph.nodes())
             if after_nodes == before_nodes:
                 break
-        
-        # # TODO：无关的结点处理
-        # nodes_to_remove = []
-        # for node, data in taint_graph.nodes(data=True):
-        #     if data.get("label","") == "METHOD" and data.get("NAME","") == "<body>":
-        #         nodes_to_remove.extend(list(taint_graph.successors(node)))
-        # taint_graph.remove_nodes_from(nodes_to_remove)
-        return taint_graph
+        # taint_graph = self.class_nodes_trace(taint_graph)
+        return taint_graph            
     
     def build_taint_data_graph(self):
         pdg_dir = os.path.join(self.joern_path, "pdg")
@@ -235,12 +230,7 @@ class Project:
         taint_graph = self.extend_taint_graph(taint_graph)
         self.taintDG = taint_graph
         with open(os.path.join(self.joern_path, f"taint.dot"), 'w') as f:
-            taint_graph_label = taint_graph.copy()
-            for n in taint_graph_label.nodes():
-                taint_graph_label.nodes[n]["label"] = (
-                    taint_graph_label.nodes[n].get('CODE', '') + " " + str(n)
-                )
-            nx.nx_agraph.write_dot(taint_graph_label, f)
+            nx.nx_agraph.write_dot(taint_graph, f)
         self.extract_taint_codes(taint_graph)
 
     
@@ -257,7 +247,7 @@ class Project:
             pdg = nx.nx_agraph.read_dot(os.path.join(pdg_dir, pdg_path))
             pdg.graph['file_path'] = self.get_pdg_file_path(pdg)
             for node in pdg.nodes():
-                if node == "30064771186":
+                if node == "30064771089":
                     print("debug")
                 node_full_data = self.cpg.nodes[node]
                 if node_full_data.get("label", '') == "CALL":
@@ -278,6 +268,19 @@ class Project:
                                 if taint_graph.has_edge(entry_node, method_node):
                                     continue
                                 taint_graph.add_edge(entry_node, method_node, label="FUNCTION_CALL",color="blue")
+                            # ATTENTION PLEASE: 特殊处理joern识别METHOD_FULL_NAME错误的情况,只根据call_name匹配
+                            else:
+                                for (s_call_name, s_call_path), method_node in sensitive_methods.items():
+                                    if s_call_name == call_name:
+                                        entry_node = arg
+                                        taint_graph = self.taint_trace(node, taint_graph, pdg)
+                                        if taint_graph.has_edge(node, entry_node):
+                                            continue
+                                        taint_graph.add_edge(node, entry_node, label="FUNCTION_CALL",color="blue")
+                                        if taint_graph.has_edge(entry_node, method_node):
+                                            continue
+                                        taint_graph.add_edge(entry_node, method_node, label="FUNCTION_CALL",color="blue")
+                            
                     elif "<module>." in node_full_data.get("METHOD_FULL_NAME",""):
                         if not self.is_project_call(node):
                             continue
@@ -340,6 +343,10 @@ class Project:
         file_path = method_full_name.split(':')[0]
         if file_path == "<unknownFullName>" or "py" not in file_path:
             return True
+        if "/" in file_path:
+            file_module = file_path.split('/')[0]
+            if os.path.exists(os.path.join(self.repo_path, file_module)):
+                return True
         if os.path.exists(os.path.join(self.repo_path, file_path)):
             return True
         return False
@@ -350,7 +357,7 @@ class Project:
         for node, data in taint_graph_copy.nodes(data=True):
             # sub-function call 继续追踪
             if self.cpg.nodes[node].get("label","") == "CALL":
-                if node == "30064771186":
+                if node == "30064771105":
                     print("debug")
                 if not self.is_project_call(node):
                     continue
@@ -364,7 +371,7 @@ class Project:
                     if self.cpg.nodes[arg].get("label","") == "METHOD_REF":
                         function_name = self.cpg.nodes[arg].get("METHOD_FULL_NAME","").split('.')[-1]
                 file_path = data.get("METHOD_FULL_NAME","").split(':')[0]
-                if file_path == "":
+                if file_path == "" or file_path == "<operator>.assignment":
                     file_path = self.get_function_file_path(function_name)
                 if file_path == "unknown":
                     continue
@@ -561,15 +568,35 @@ class Project:
         
 
         for root in method_roots:
-            # BFS/扩展连通域（将边视为无向），按 SUB_FUNCTION_CALL 规则进行过滤
+            if root == "107374182415":
+                print("debug")
+            
             comp_nodes = set([root])
+            
+            
+            # BFS/扩展连通域（将边视为无向），按 SUB_FUNCTION_CALL 规则进行过滤      
             queue = [root]
             qi = 0
             while qi < len(queue):
                 cur = queue[qi]
-                if cur == "111669149766":
-                    print("debug")
                 qi += 1
+                if cur == "107374182415":
+                    print("debug")
+                if taint_graph.nodes[cur].get("label","") == "METHOD":
+                    # 对于METHOD节点，添加CLASS_BODY和CLASS_INIT相关节点
+                    body_full_name = taint_graph.nodes[cur].get("FULL_NAME","").replace(taint_graph.nodes[cur].get("NAME",""), "<body>")
+                    for n, d in self.cpg.nodes(data=True):
+                        if d.get("label","") == "METHOD" and d.get("FULL_NAME","") == body_full_name:
+                            body_method_node = n
+                            comp_nodes.add(body_method_node)
+                            init_full_name = d.get("FULL_NAME","").replace("<body>", "__init__")
+                            for n2, d2 in self.cpg.nodes(data=True):
+                                if d2.get("label","") == "METHOD" and d2.get("FULL_NAME","") == init_full_name:
+                                    init_method_node = n2
+                                    comp_nodes.add(init_method_node)
+                                    break
+                            break
+                    
                 # 遍历邻居（前驱和后继，视作无向）
                 neighbors = set(taint_graph.predecessors(cur)) | set(taint_graph.successors(cur))
                 callers = sub_call_callers.get(cur, set())
@@ -598,7 +625,11 @@ class Project:
             comp_map = {}
             for node in comp_nodes:
                 data = taint_graph.nodes.get(node, {})
-                file_path = data.get('file_path')
+                if taint_graph.has_node(node) is False:
+                    data = self.cpg.nodes.get(node, {})
+                    file_path = data.get("FILENAME", "unknown")
+                else:
+                    file_path = data.get('file_path')
                 line_number = data.get('LINE_NUMBER')
                 if not file_path or not line_number:
                     continue
@@ -608,6 +639,13 @@ class Project:
                     
                 except Exception:
                     # 忽略读取失败
+                    continue
+                # 若为CLASS init方法，则将整个init方法体加入
+                if data.get("label","") == "METHOD" and data.get("NAME","") == "__init__":
+                    end_line = int(data.get("LINE_NUMBER_END", line_number))
+                    start_line = int(data.get("LINE_NUMBER", line_number))
+                    for ln in range(start_line, end_line):
+                        comp_map.setdefault(full_path, set()).add(ln)
                     continue
                 comp_map.setdefault(full_path, set()).add(int(line_number))
 

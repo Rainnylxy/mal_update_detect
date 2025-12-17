@@ -4,7 +4,7 @@ import networkx as nx
 import re
 
 def joern_export(package_code_path: str, package_joern_path: str, language: str,
-                 overwrite: bool = False):
+                 overwrite: bool = True):
     """
     导出 cpg 和 pdg, 保存在 joern_workspace_path/package_name/cpg 和 joern_workspace_path/package_name/pdg
     :param package_name: 包名

@@ -28,16 +28,17 @@ def LLM_analyze_code_slices(taint_slices_dir):
                         
                         
 if __name__ == "__main__":
-    joern_workspace_path = "/home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits"
-    for repo_path in os.listdir(joern_workspace_path):
-        if repo_path not in ["dojo6oct16"]:
-            continue
-        repo_path = os.path.join(joern_workspace_path, repo_path)
-        if not os.path.isdir(repo_path):
-            continue
-        for commit_dir in os.listdir(repo_path):
-            commit_dir_path = os.path.join(repo_path, commit_dir)
-            if not os.path.isdir(commit_dir_path):
-                continue
-            taint_slices_dir = os.path.join(commit_dir_path, "taint_slices_methods")
-            LLM_analyze_code_slices(taint_slices_dir)
+    # joern_workspace_path = "/home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits"
+    # for repo_path in os.listdir(joern_workspace_path):
+    #     if repo_path not in ["dojo6oct16"]:
+    #         continue
+    #     repo_path = os.path.join(joern_workspace_path, repo_path)
+    #     if not os.path.isdir(repo_path):
+    #         continue
+    #     for commit_dir in os.listdir(repo_path):
+    #         commit_dir_path = os.path.join(repo_path, commit_dir)
+    #         if not os.path.isdir(commit_dir_path):
+    #             continue
+    #         taint_slices_dir = os.path.join(commit_dir_path, "taint_slices_methods")
+    #         LLM_analyze_code_slices(taint_slices_dir)
+    LLM_analyze_code_slices("/home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/1stMalware/7_3a8ed/taint_slices_methods")

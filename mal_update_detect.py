@@ -282,7 +282,7 @@ if __name__ == "__main__":
         logger.info(f"Processing repository: {repo_name}")
         
         subprocess.check_output(
-            ["git", "-C", repo_path, "checkout", "FETCH_HEAD"],
+            ["git", "-C", repo_path, "checkout", "bd51210179c239c7b1464b0c4bc8af26afdf3cd7"],
             stderr=subprocess.DEVNULL
         )
         try: 

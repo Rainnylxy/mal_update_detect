@@ -20,7 +20,7 @@ def get_useful_commits(repo_path):
         if ch == "ff97ba8e5f58e1ef60fccbe0f410d90fafab07b2":
             print("debug")
         try:
-            cmd_files = ['git', '-C', repo_path, 'diff-tree','-m', '--no-commit-id', '--name-only', '-r', ch]
+            cmd_files = ['git', '-C', repo_path, 'diff-tree','--root','-m', '--no-commit-id', '--name-only', '-r', ch]
             r = subprocess.run(cmd_files, capture_output=True, text=True, check=True)
             files = [p.strip() for p in r.stdout.splitlines() if p.strip()]
         except subprocess.CalledProcessError:

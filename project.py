@@ -680,16 +680,12 @@ class Project:
                 for ln in lines:
                     if ln == 5:
                         print("debug")
-                    block_line_start, block_line_end, is_extend = closest_block_line(fp, ln)
-                    if block_line_start is None or block_line_end is None:
+                    block_lines = closest_block_line(fp, ln)
+                    if block_lines is None:
                         continue
-                    if is_extend:
-                        for block_line in range(block_line_start, block_line_end + 1):
-                            if block_line not in comp_map[fp]:
-                                comp_map[fp].add(block_line)
-                    else:
-                        comp_map[fp].add(block_line_start)
-                        comp_map[fp].add(block_line_end)
+                    for block_line in block_lines:
+                        if block_line not in comp_map[fp]:
+                            comp_map[fp].add(block_line)
             
             # 展平并排序
             flat_lines = []

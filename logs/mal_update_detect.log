@@ -13424,3 +13424,135 @@ The functionality is equally consistent with legitimate applications (e.g., logg
 2025-12-22 05:01:27 | INFO | __main__ | Labeled taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/PizzaVirus/9_5a01a/taint_graphs/taint_graph_updated_labeled.dot
 2025-12-22 05:32:46 | INFO | __main__ | Processing repository: Python_KeyLogger_Prototype
 2025-12-22 05:32:56 | INFO | __main__ | Analyzing commit 1/10: 381d980dca173aa0fbba730ee7548d266823ea3d
+2025-12-22 05:33:05 | INFO | __main__ | Relabeled taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/Python_KeyLogger_Prototype/1_381d9/taint_graphs/taint_graph_before_relabeled.dot
+2025-12-22 05:33:05 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/Python_KeyLogger_Prototype/1_381d9/taint_graphs/taint_graph_updated.dot
+2025-12-22 05:33:05 | INFO | __main__ | Labeled taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/Python_KeyLogger_Prototype/1_381d9/taint_graphs/taint_graph_updated_labeled.dot
+2025-12-22 05:33:05 | INFO | __main__ | Analyzing commit 2/10: 41ebc0d8cea531453d15af65c0e1b7b085b02f16
+2025-12-22 05:33:14 | INFO | __main__ | Relabeled taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/Python_KeyLogger_Prototype/2_41ebc/taint_graphs/taint_graph_before_relabeled.dot
+2025-12-22 05:33:14 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/Python_KeyLogger_Prototype/2_41ebc/taint_graphs/taint_graph_updated.dot
+2025-12-22 05:33:14 | INFO | __main__ | Labeled taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/Python_KeyLogger_Prototype/2_41ebc/taint_graphs/taint_graph_updated_labeled.dot
+2025-12-22 05:33:14 | INFO | __main__ | Analyzing commit 3/10: 25ded5641dc216d21a00bc60d15ddf25845c6d41
+2025-12-22 05:33:23 | INFO | __main__ | Relabeled taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/Python_KeyLogger_Prototype/3_25ded/taint_graphs/taint_graph_before_relabeled.dot
+2025-12-22 05:33:23 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/Python_KeyLogger_Prototype/3_25ded/taint_graphs/taint_graph_updated.dot
+2025-12-22 05:33:23 | INFO | __main__ | Labeled taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/Python_KeyLogger_Prototype/3_25ded/taint_graphs/taint_graph_updated_labeled.dot
+2025-12-22 05:33:23 | INFO | __main__ | Analyzing commit 4/10: b01c9ed07aca2ddc79befc39732c461632773fcc
+2025-12-22 05:33:33 | INFO | __main__ | Relabeled taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/Python_KeyLogger_Prototype/4_b01c9/taint_graphs/taint_graph_before_relabeled.dot
+2025-12-22 05:33:33 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/Python_KeyLogger_Prototype/4_b01c9/taint_graphs/taint_graph_updated.dot
+2025-12-22 05:33:33 | INFO | __main__ | Labeled taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/Python_KeyLogger_Prototype/4_b01c9/taint_graphs/taint_graph_updated_labeled.dot
+2025-12-22 05:33:33 | INFO | __main__ | Analyzing commit 5/10: 5289f1756738a299171f9d037042f68ede0e3564
+2025-12-22 05:33:42 | INFO | __main__ | Relabeled taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/Python_KeyLogger_Prototype/5_5289f/taint_graphs/taint_graph_before_relabeled.dot
+2025-12-22 05:33:42 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/Python_KeyLogger_Prototype/5_5289f/taint_graphs/taint_graph_updated.dot
+2025-12-22 05:33:42 | INFO | __main__ | Labeled taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/Python_KeyLogger_Prototype/5_5289f/taint_graphs/taint_graph_updated_labeled.dot
+2025-12-22 05:33:42 | INFO | __main__ | Analyzing commit 6/10: 314471ac9adcb6cecf4dd7081b5822f073a55cdd
+2025-12-22 05:33:52 | INFO | __main__ | Relabeled taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/Python_KeyLogger_Prototype/6_31447/taint_graphs/taint_graph_before_relabeled.dot
+2025-12-22 05:33:52 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/Python_KeyLogger_Prototype/6_31447/taint_graphs/taint_graph_updated.dot
+2025-12-22 05:33:52 | INFO | __main__ | Labeled taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/Python_KeyLogger_Prototype/6_31447/taint_graphs/taint_graph_updated_labeled.dot
+2025-12-22 05:33:52 | INFO | __main__ | Analyzing commit 7/10: f1be20cf7d4228dd48f0088ce6f820007f69166e
+2025-12-22 05:34:01 | INFO | __main__ | Relabeled taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/Python_KeyLogger_Prototype/7_f1be2/taint_graphs/taint_graph_before_relabeled.dot
+2025-12-22 05:34:01 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/Python_KeyLogger_Prototype/7_f1be2/taint_graphs/taint_graph_updated.dot
+2025-12-22 05:34:02 | INFO | __main__ | Labeled taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/Python_KeyLogger_Prototype/7_f1be2/taint_graphs/taint_graph_updated_labeled.dot
+2025-12-22 05:34:02 | INFO | __main__ | Analyzing commit 8/10: 26dfd4f98c693d39dbc38b543da98c09de7657fd
+2025-12-22 05:34:11 | INFO | __main__ | Relabeled taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/Python_KeyLogger_Prototype/8_26dfd/taint_graphs/taint_graph_before_relabeled.dot
+2025-12-22 05:34:11 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/Python_KeyLogger_Prototype/8_26dfd/taint_graphs/taint_graph_updated.dot
+2025-12-22 05:34:11 | INFO | __main__ | Labeled taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/Python_KeyLogger_Prototype/8_26dfd/taint_graphs/taint_graph_updated_labeled.dot
+2025-12-22 05:34:11 | INFO | __main__ | Analyzing commit 9/10: 610e1f0b24bbda109009c9437237f20b2e41ce2d
+2025-12-22 05:34:20 | INFO | __main__ | Relabeled taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/Python_KeyLogger_Prototype/9_610e1/taint_graphs/taint_graph_before_relabeled.dot
+2025-12-22 05:34:21 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/Python_KeyLogger_Prototype/9_610e1/taint_graphs/taint_graph_updated.dot
+2025-12-22 05:34:21 | INFO | __main__ | Labeled taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/Python_KeyLogger_Prototype/9_610e1/taint_graphs/taint_graph_updated_labeled.dot
+2025-12-22 05:34:21 | INFO | __main__ | Analyzing commit 10/10: bd51210179c239c7b1464b0c4bc8af26afdf3cd7
+2025-12-22 05:34:30 | INFO | __main__ | Relabeled taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/Python_KeyLogger_Prototype/10_bd512/taint_graphs/taint_graph_before_relabeled.dot
+2025-12-22 05:34:30 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/Python_KeyLogger_Prototype/10_bd512/taint_graphs/taint_graph_updated.dot
+2025-12-22 05:34:30 | INFO | __main__ | Labeled taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/Python_KeyLogger_Prototype/10_bd512/taint_graphs/taint_graph_updated_labeled.dot
+2025-12-22 05:35:51 | INFO | __main__ | Processing repository: Python_KeyLogger_Prototype
+2025-12-22 05:35:51 | ERROR | __main__ | Failed to get commit list for repository Python_KeyLogger_Prototype
+2025-12-22 05:41:23 | INFO | __main__ | Processing repository: Python_KeyLogger_Prototype
+2025-12-22 05:41:33 | INFO | __main__ | Analyzing commit 1/11: 3e19284015ed2d0791c9e190885b18b4d88d3b90
+2025-12-22 05:41:42 | INFO | __main__ | Relabeled taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/Python_KeyLogger_Prototype/1_3e192/taint_graphs/taint_graph_before_relabeled.dot
+2025-12-22 05:41:42 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/Python_KeyLogger_Prototype/1_3e192/taint_graphs/taint_graph_updated.dot
+2025-12-22 05:41:42 | INFO | __main__ | Labeled taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/Python_KeyLogger_Prototype/1_3e192/taint_graphs/taint_graph_updated_labeled.dot
+2025-12-22 05:41:42 | INFO | __main__ | Analyzing commit 2/11: 381d980dca173aa0fbba730ee7548d266823ea3d
+2025-12-22 05:41:52 | INFO | __main__ | Relabeled taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/Python_KeyLogger_Prototype/2_381d9/taint_graphs/taint_graph_before_relabeled.dot
+2025-12-22 05:41:52 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/Python_KeyLogger_Prototype/2_381d9/taint_graphs/taint_graph_updated.dot
+2025-12-22 05:41:52 | INFO | __main__ | Labeled taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/Python_KeyLogger_Prototype/2_381d9/taint_graphs/taint_graph_updated_labeled.dot
+2025-12-22 05:41:52 | INFO | __main__ | Analyzing commit 3/11: 41ebc0d8cea531453d15af65c0e1b7b085b02f16
+2025-12-22 05:42:01 | INFO | __main__ | Relabeled taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/Python_KeyLogger_Prototype/3_41ebc/taint_graphs/taint_graph_before_relabeled.dot
+2025-12-22 05:42:01 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/Python_KeyLogger_Prototype/3_41ebc/taint_graphs/taint_graph_updated.dot
+2025-12-22 05:42:01 | INFO | __main__ | Labeled taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/Python_KeyLogger_Prototype/3_41ebc/taint_graphs/taint_graph_updated_labeled.dot
+2025-12-22 05:42:01 | INFO | __main__ | Analyzing commit 4/11: 25ded5641dc216d21a00bc60d15ddf25845c6d41
+2025-12-22 05:42:10 | INFO | __main__ | Relabeled taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/Python_KeyLogger_Prototype/4_25ded/taint_graphs/taint_graph_before_relabeled.dot
+2025-12-22 05:42:10 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/Python_KeyLogger_Prototype/4_25ded/taint_graphs/taint_graph_updated.dot
+2025-12-22 05:42:10 | INFO | __main__ | Labeled taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/Python_KeyLogger_Prototype/4_25ded/taint_graphs/taint_graph_updated_labeled.dot
+2025-12-22 05:42:10 | INFO | __main__ | Analyzing commit 5/11: b01c9ed07aca2ddc79befc39732c461632773fcc
+2025-12-22 05:42:19 | INFO | __main__ | Relabeled taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/Python_KeyLogger_Prototype/5_b01c9/taint_graphs/taint_graph_before_relabeled.dot
+2025-12-22 05:42:19 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/Python_KeyLogger_Prototype/5_b01c9/taint_graphs/taint_graph_updated.dot
+2025-12-22 05:42:19 | INFO | __main__ | Labeled taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/Python_KeyLogger_Prototype/5_b01c9/taint_graphs/taint_graph_updated_labeled.dot
+2025-12-22 05:42:19 | INFO | __main__ | Analyzing commit 6/11: 5289f1756738a299171f9d037042f68ede0e3564
+2025-12-22 05:42:29 | INFO | __main__ | Relabeled taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/Python_KeyLogger_Prototype/6_5289f/taint_graphs/taint_graph_before_relabeled.dot
+2025-12-22 05:42:29 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/Python_KeyLogger_Prototype/6_5289f/taint_graphs/taint_graph_updated.dot
+2025-12-22 05:42:29 | INFO | __main__ | Labeled taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/Python_KeyLogger_Prototype/6_5289f/taint_graphs/taint_graph_updated_labeled.dot
+2025-12-22 05:42:29 | INFO | __main__ | Analyzing commit 7/11: 314471ac9adcb6cecf4dd7081b5822f073a55cdd
+2025-12-22 05:42:39 | INFO | __main__ | Relabeled taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/Python_KeyLogger_Prototype/7_31447/taint_graphs/taint_graph_before_relabeled.dot
+2025-12-22 05:42:39 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/Python_KeyLogger_Prototype/7_31447/taint_graphs/taint_graph_updated.dot
+2025-12-22 05:42:39 | INFO | __main__ | Labeled taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/Python_KeyLogger_Prototype/7_31447/taint_graphs/taint_graph_updated_labeled.dot
+2025-12-22 05:42:39 | INFO | __main__ | Analyzing commit 8/11: f1be20cf7d4228dd48f0088ce6f820007f69166e
+2025-12-22 05:42:48 | INFO | __main__ | Relabeled taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/Python_KeyLogger_Prototype/8_f1be2/taint_graphs/taint_graph_before_relabeled.dot
+2025-12-22 05:42:48 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/Python_KeyLogger_Prototype/8_f1be2/taint_graphs/taint_graph_updated.dot
+2025-12-22 05:42:48 | INFO | __main__ | Labeled taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/Python_KeyLogger_Prototype/8_f1be2/taint_graphs/taint_graph_updated_labeled.dot
+2025-12-22 05:42:48 | INFO | __main__ | Analyzing commit 9/11: 26dfd4f98c693d39dbc38b543da98c09de7657fd
+2025-12-22 05:42:58 | INFO | __main__ | Relabeled taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/Python_KeyLogger_Prototype/9_26dfd/taint_graphs/taint_graph_before_relabeled.dot
+2025-12-22 05:42:58 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/Python_KeyLogger_Prototype/9_26dfd/taint_graphs/taint_graph_updated.dot
+2025-12-22 05:42:58 | INFO | __main__ | Labeled taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/Python_KeyLogger_Prototype/9_26dfd/taint_graphs/taint_graph_updated_labeled.dot
+2025-12-22 05:42:58 | INFO | __main__ | Analyzing commit 10/11: 610e1f0b24bbda109009c9437237f20b2e41ce2d
+2025-12-22 05:43:08 | INFO | __main__ | Relabeled taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/Python_KeyLogger_Prototype/10_610e1/taint_graphs/taint_graph_before_relabeled.dot
+2025-12-22 05:43:08 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/Python_KeyLogger_Prototype/10_610e1/taint_graphs/taint_graph_updated.dot
+2025-12-22 05:43:08 | INFO | __main__ | Labeled taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/Python_KeyLogger_Prototype/10_610e1/taint_graphs/taint_graph_updated_labeled.dot
+2025-12-22 05:43:08 | INFO | __main__ | Analyzing commit 11/11: bd51210179c239c7b1464b0c4bc8af26afdf3cd7
+2025-12-22 05:43:17 | INFO | __main__ | Relabeled taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/Python_KeyLogger_Prototype/11_bd512/taint_graphs/taint_graph_before_relabeled.dot
+2025-12-22 05:43:17 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/Python_KeyLogger_Prototype/11_bd512/taint_graphs/taint_graph_updated.dot
+2025-12-22 05:43:18 | INFO | __main__ | Labeled taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/Python_KeyLogger_Prototype/11_bd512/taint_graphs/taint_graph_updated_labeled.dot
+2025-12-22 06:01:00 | INFO | __main__ | Processing repository: Python_KeyLogger_Prototype
+2025-12-22 06:02:27 | INFO | __main__ | Processing repository: Python_KeyLogger_Prototype
+2025-12-22 06:02:27 | INFO | __main__ | Analyzing commit 1/11: 3e19284015ed2d0791c9e190885b18b4d88d3b90
+2025-12-22 06:02:28 | INFO | __main__ | Relabeled taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/Python_KeyLogger_Prototype/1_3e192/taint_graphs/taint_graph_before_relabeled.dot
+2025-12-22 06:02:28 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/Python_KeyLogger_Prototype/1_3e192/taint_graphs/taint_graph_updated.dot
+2025-12-22 06:02:28 | INFO | __main__ | Labeled taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/Python_KeyLogger_Prototype/1_3e192/taint_graphs/taint_graph_updated_labeled.dot
+2025-12-22 06:02:28 | INFO | __main__ | Analyzing commit 2/11: 381d980dca173aa0fbba730ee7548d266823ea3d
+2025-12-22 06:02:28 | INFO | __main__ | Relabeled taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/Python_KeyLogger_Prototype/2_381d9/taint_graphs/taint_graph_before_relabeled.dot
+2025-12-22 06:02:28 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/Python_KeyLogger_Prototype/2_381d9/taint_graphs/taint_graph_updated.dot
+2025-12-22 06:02:28 | INFO | __main__ | Labeled taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/Python_KeyLogger_Prototype/2_381d9/taint_graphs/taint_graph_updated_labeled.dot
+2025-12-22 06:02:28 | INFO | __main__ | Analyzing commit 3/11: 41ebc0d8cea531453d15af65c0e1b7b085b02f16
+2025-12-22 06:02:28 | INFO | __main__ | Relabeled taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/Python_KeyLogger_Prototype/3_41ebc/taint_graphs/taint_graph_before_relabeled.dot
+2025-12-22 06:02:28 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/Python_KeyLogger_Prototype/3_41ebc/taint_graphs/taint_graph_updated.dot
+2025-12-22 06:02:28 | INFO | __main__ | Labeled taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/Python_KeyLogger_Prototype/3_41ebc/taint_graphs/taint_graph_updated_labeled.dot
+2025-12-22 06:02:28 | INFO | __main__ | Analyzing commit 4/11: 25ded5641dc216d21a00bc60d15ddf25845c6d41
+2025-12-22 06:02:29 | INFO | __main__ | Relabeled taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/Python_KeyLogger_Prototype/4_25ded/taint_graphs/taint_graph_before_relabeled.dot
+2025-12-22 06:02:29 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/Python_KeyLogger_Prototype/4_25ded/taint_graphs/taint_graph_updated.dot
+2025-12-22 06:02:29 | INFO | __main__ | Labeled taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/Python_KeyLogger_Prototype/4_25ded/taint_graphs/taint_graph_updated_labeled.dot
+2025-12-22 06:02:29 | INFO | __main__ | Analyzing commit 5/11: b01c9ed07aca2ddc79befc39732c461632773fcc
+2025-12-22 06:02:29 | INFO | __main__ | Relabeled taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/Python_KeyLogger_Prototype/5_b01c9/taint_graphs/taint_graph_before_relabeled.dot
+2025-12-22 06:02:29 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/Python_KeyLogger_Prototype/5_b01c9/taint_graphs/taint_graph_updated.dot
+2025-12-22 06:02:29 | INFO | __main__ | Labeled taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/Python_KeyLogger_Prototype/5_b01c9/taint_graphs/taint_graph_updated_labeled.dot
+2025-12-22 06:02:29 | INFO | __main__ | Analyzing commit 6/11: 5289f1756738a299171f9d037042f68ede0e3564
+2025-12-22 06:02:30 | INFO | __main__ | Relabeled taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/Python_KeyLogger_Prototype/6_5289f/taint_graphs/taint_graph_before_relabeled.dot
+2025-12-22 06:02:30 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/Python_KeyLogger_Prototype/6_5289f/taint_graphs/taint_graph_updated.dot
+2025-12-22 06:02:30 | INFO | __main__ | Labeled taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/Python_KeyLogger_Prototype/6_5289f/taint_graphs/taint_graph_updated_labeled.dot
+2025-12-22 06:02:30 | INFO | __main__ | Analyzing commit 7/11: 314471ac9adcb6cecf4dd7081b5822f073a55cdd
+2025-12-22 06:02:31 | INFO | __main__ | Relabeled taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/Python_KeyLogger_Prototype/7_31447/taint_graphs/taint_graph_before_relabeled.dot
+2025-12-22 06:02:31 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/Python_KeyLogger_Prototype/7_31447/taint_graphs/taint_graph_updated.dot
+2025-12-22 06:02:31 | INFO | __main__ | Labeled taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/Python_KeyLogger_Prototype/7_31447/taint_graphs/taint_graph_updated_labeled.dot
+2025-12-22 06:02:31 | INFO | __main__ | Analyzing commit 8/11: f1be20cf7d4228dd48f0088ce6f820007f69166e
+2025-12-22 06:02:31 | INFO | __main__ | Relabeled taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/Python_KeyLogger_Prototype/8_f1be2/taint_graphs/taint_graph_before_relabeled.dot
+2025-12-22 06:02:31 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/Python_KeyLogger_Prototype/8_f1be2/taint_graphs/taint_graph_updated.dot
+2025-12-22 06:02:31 | INFO | __main__ | Labeled taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/Python_KeyLogger_Prototype/8_f1be2/taint_graphs/taint_graph_updated_labeled.dot
+2025-12-22 06:02:32 | INFO | __main__ | Analyzing commit 9/11: 26dfd4f98c693d39dbc38b543da98c09de7657fd
+2025-12-22 06:02:32 | INFO | __main__ | Relabeled taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/Python_KeyLogger_Prototype/9_26dfd/taint_graphs/taint_graph_before_relabeled.dot
+2025-12-22 06:02:32 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/Python_KeyLogger_Prototype/9_26dfd/taint_graphs/taint_graph_updated.dot
+2025-12-22 06:02:33 | INFO | __main__ | Labeled taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/Python_KeyLogger_Prototype/9_26dfd/taint_graphs/taint_graph_updated_labeled.dot
+2025-12-22 06:02:33 | INFO | __main__ | Analyzing commit 10/11: 610e1f0b24bbda109009c9437237f20b2e41ce2d
+2025-12-22 06:02:33 | INFO | __main__ | Relabeled taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/Python_KeyLogger_Prototype/10_610e1/taint_graphs/taint_graph_before_relabeled.dot
+2025-12-22 06:02:33 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/Python_KeyLogger_Prototype/10_610e1/taint_graphs/taint_graph_updated.dot
+2025-12-22 06:02:33 | INFO | __main__ | Labeled taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/Python_KeyLogger_Prototype/10_610e1/taint_graphs/taint_graph_updated_labeled.dot
+2025-12-22 06:02:33 | INFO | __main__ | Analyzing commit 11/11: bd51210179c239c7b1464b0c4bc8af26afdf3cd7
+2025-12-22 06:02:34 | INFO | __main__ | Relabeled taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/Python_KeyLogger_Prototype/11_bd512/taint_graphs/taint_graph_before_relabeled.dot
+2025-12-22 06:02:34 | INFO | __main__ | Merged taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/Python_KeyLogger_Prototype/11_bd512/taint_graphs/taint_graph_updated.dot
+2025-12-22 06:02:34 | INFO | __main__ | Labeled taint graph written to /home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/Python_KeyLogger_Prototype/11_bd512/taint_graphs/taint_graph_updated_labeled.dot

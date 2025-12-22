@@ -1,0 +1,5 @@
+mongo:
+    username: 'root'
+    password: ''
+    host: 'localhost:27017'
+    db_name: 'cs460_keylogger'

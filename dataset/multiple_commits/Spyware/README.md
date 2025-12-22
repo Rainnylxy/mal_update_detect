@@ -1,0 +1,2 @@
+# Spyware
+ONLY FOR EXPERIMENTAL AND EDUCATIONAL PURPOSES: Python-based spyware for Windows. This malicious software logs the foreground window activites, keyboard inputs. Furthermore it is able to take screenshots, and run shell commands in the backgorund. Periodically uploads the log files to an FTP server. I created a remote GUI control panel for the spyware (Qt framework C++), it sends the config data through a Flask webserver.

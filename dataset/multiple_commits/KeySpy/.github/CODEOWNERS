@@ -1,0 +1,14 @@
+# Code owners for the different parts of the project
+# Syntax: "file_path_pattern @github_user"
+
+# Overall project owner
+*                    @project-owner
+
+# Assigning core functionality reviewers
+core/*               @core-team @security-team
+platform/*           @platform-team
+utils/*              @utils-team
+
+# Configurations and CI/CD workflows
+config/*             @devops-team
+.github/workflows/*  @ci-cd-team

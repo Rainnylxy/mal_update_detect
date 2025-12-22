@@ -1,0 +1,34 @@
+image: continuumio/miniconda3:latest
+
+test:forward:
+  stage: test
+  script:
+    - conda env create -f environment.yml
+    - source activate simple-worm
+    - pip install .[test]
+    - pytest -v ./tests/component_calculations.py
+    - pytest -v ./tests/constant.py
+    - pytest -v ./tests/control_gating.py
+    - pytest -v ./tests/forward_model.py
+    - pytest -v ./tests/l2projection.py
+    - pytest -v ./tests/material_parameters.py
+
+test:inverse:
+  stage: test
+  script:
+    - conda env create -f environment_inv.yml
+    - source activate simple-worm-inv
+    - pip install -e .[inv,test]
+    - pytest -v ./tests/component_calculations.py
+    - pytest -v ./tests/constant.py
+    - pytest -v ./tests/control_gating.py
+    - pytest -v ./tests/forward_model.py
+    - pytest -v ./tests/inverse_bounds.py
+    - pytest -v ./tests/inverse_solvers.py
+    - pytest -v ./tests/k_estimation.py
+    - pytest -v ./tests/l2projection.py
+    - pytest -v ./tests/material_parameters.py
+# TODO reintroduce tests when fixed
+#    - pytest -v ./tests/control_optimisation.py
+#    - pytest -v ./tests/inverse_trainer.py
+#    - pytest -v ./tests/regularisation.py

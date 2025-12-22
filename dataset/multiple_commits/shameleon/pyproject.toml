@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "shameleon"
+version = "0.3.0"
+description = ""
+authors = [
+    "Jychp <jeremy.chapeau@resilience.care>"
+]
+readme = "README.md"
+homepage = "https://github.com/jychp/shameleon"
+package-mode = false
+
+[tool.poetry.dependencies]
+python = "^3.10"
+pyyaml = "^6.0.2"
+cryptography = "^45.0.5"
+aiohttp = "^3.12.14"
+
+[tool.poetry.group.dummyserver.dependencies]
+fastapi = "^0.116.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

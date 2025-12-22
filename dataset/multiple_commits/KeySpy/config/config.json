@@ -1,0 +1,35 @@
+{
+  "environment": "development",   // Options: "development", "production", "testing"
+  "logging": {
+    "level": "INFO",
+    "file_path": "logs/keylogger.log",
+    "rotation": {
+      "enabled": true,
+      "max_bytes": 10485760,       // 10 MB
+      "backup_count": 5
+    }
+  },
+  "encryption": {
+    "enabled": true,
+    "method": "AES",
+    "key": "sample_key_base64"     // Stored as base64 for encryption
+  },
+  "alert": {
+    "email": "alerts@example.com",
+    "sms": "+1234567890"
+  },
+  "storage": {
+    "local": {
+      "path": "logs/keylog_data.enc"
+    },
+    "remote": {
+      "enabled": true,
+      "url": "https://api.example.com/upload",
+      "auth_token": "secure_token_here"
+    }
+  },
+  "persistence": {
+    "startup": true,
+    "interval_seconds": 60
+  }
+}

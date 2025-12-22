@@ -1,0 +1,8 @@
+altgraph @ file:///Users/cbousseau/work/recipes/ci_py311/altgraph_1677935118027/work
+cffi==1.16.0
+cryptography==41.0.7
+macholib @ file:///Users/cbousseau/work/recipes/ci_py311/macholib_1677960736051/work
+pyAesCrypt==6.1.1
+pycparser==2.21
+pyinstaller @ file:///private/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_fb7kw95rb6/croot/pyinstaller_1703109566859/work
+pyinstaller-hooks-contrib @ file:///Users/cbousseau/work/recipes/ci_py311/pyinstaller-hooks-contrib_1677961419221/work

@@ -1,0 +1,17 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+
+# IDE
+.idea/
+.vscode/
+
+# Tests
+.mypy_cache/
+
+# Specifics
+.env
+profiles/
+test.py
+backdoor
+backdoor.exe

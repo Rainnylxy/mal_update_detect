@@ -1,0 +1,85 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  lint-and-test:
+    name: Lint, Test, and Analyze
+    runs-on: ubuntu-22.04  # Use the specific version for now
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set Up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11' # Use the latest stable Python version
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Lint Code with Black and isort
+        run: |
+          pip install black isort
+          black --check .
+          isort --check-only .
+
+      - name: Run Static Code Analysis with Flake8
+        run: |
+          pip install flake8
+          flake8 .
+
+      - name: Security Static Analysis with Bandit
+        run: |
+          pip install bandit
+          bandit -r keyspy
+
+      - name: Run Tests with Pytest and Generate Coverage
+        run: |
+          pip install pytest pytest-cov
+          pytest --cov=keyspy --cov-report=xml
+
+      - name: Upload Coverage Report to Codecov
+        uses: codecov/codecov-action@v4
+        with:
+          files: ./coverage.xml
+          flags: unittests
+          fail_ci_if_error: true
+
+      - name: Dependency Vulnerability Scanning
+        run: |
+          pip install safety
+          safety check
+
+  test-on-ubuntu-24:
+    name: Compatibility Test on Ubuntu 24.04
+    runs-on: ubuntu-24.04
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set Up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run Tests
+        run: |
+          pip install pytest
+          pytest

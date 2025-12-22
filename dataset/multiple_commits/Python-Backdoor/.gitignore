@@ -1,0 +1,10 @@
+.idea
+__pycache__/
+src/test.py
+build
+dist
+*.pyo
+*.spec
+*.pyc
+venv
+*.DS_Store

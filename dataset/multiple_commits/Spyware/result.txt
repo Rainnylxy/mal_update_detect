@@ -1,0 +1,21 @@
+D:\code\C#\ArchivePractice\bin\Debug\ArchivePractice.exe
+D:\code\C#\ArchivePractice\obj\Debug\ArchivePractice.exe
+D:\code\C#\CarRace\bin\Debug\CarRace.exe
+D:\code\C#\CarRace\obj\Debug\CarRace.exe
+D:\code\C#\cheat\solutions\SI2Assignments\RegularExpression\bin\Debug\RegularExpression.exe
+D:\code\C#\cheat\solutions\SI2Assignments\RegularExpression\obj\Debug\RegularExpression.exe
+D:\code\C#\LinkedList\bin\Debug\LinkedList.exe
+D:\code\C#\LINQ\src\ApplicationProcess.Console\bin\Debug\ApplicationProcess.Console.exe
+D:\code\C#\LINQ\src\ApplicationProcess.Console\obj\Debug\ApplicationProcess.Console.exe
+D:\code\C#\Practice\bin\Debug\Practice.exe
+D:\code\C#\Practice\obj\Debug\Practice.exe
+D:\code\C#\SeekAndArchive\bin\Debug\SeekAndArchive.exe
+D:\code\C#\SeekAndArchive\obj\Debug\SeekAndArchive.exe
+D:\code\C#\TraversingDirectories\bin\Debug\TraversingDirectories.exe
+D:\code\C#\TraversingDirectories\obj\Debug\TraversingDirectories.exe
+D:\code\C#\WpfTreeView\bin\Debug\WpfTreeView.exe
+D:\code\C#\WpfTreeView\obj\Debug\WpfTreeView.exe
+D:\code\C#\youtube\Windows 10 Dark Theme\Windows\Tools\UltraUXThemePatcher_3.3.4.exe
+D:\code\C#\youtube\Windows 10 Dark Theme\Windows\Tools\OldNewExplorer 1.1.8.4\OldNewExplorerCfg.exe
+D:\code\C#\youtube\Windows 10 Dark Theme\Windows\Tools\Winaero Tweaker (Removing 3D Objects from This PC)\WinaeroTweaker.exe
+D:\code\C#\youtube\Windows 10 Dark Theme\Windows\Tools\Winaero Tweaker (Removing 3D Objects from This PC)\WinaeroTweakerHelper.exe

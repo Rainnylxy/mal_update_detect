@@ -1,0 +1,72 @@
+#!/usr/bin/python
+# -*- coding: UTF-8 -*-
+
+
+
+
+#######################################################################################################################################################
+#MODULOS UTILIZADOS
+#######################################################################################################################################################
+import os       #SISTEMA OPERATIVO
+import sys
+import platform
+#######################################################################################################################################################
+
+
+
+
+
+#######################################################################################################################################################
+#DIVIDIMOS EN FUNCIÓN DEL SISTEMA OPERATIVO
+#######################################################################################################################################################
+
+def SISTEMA_OPERATIVO():
+	if sys.platform.startswith('win32') or sys.platform.startswith('cygwin'):
+		#########
+		#WINDOWS#
+		#########
+		#print 'Hola windows'
+		
+		SO = platform.uname() # ('Windows', 'GO100011', '10', '10.0.10586', 'AMD64', 'Intel64 Family 6 Model 78 Stepping 3, GenuineIntel') 
+		SO2 = sys.getwindowsversion() #sys.getwindowsversion(major=6, minor=2, build=9200, platform=2, service_pack='')
+		print SO
+		print SO2
+		return 0
+
+
+	elif sys.platform.startswith('linux'):
+		#######
+		#LINUX#
+		#######
+		#print 'Hola linux'
+			
+		SO = os.uname() # ('Linux', 'jorge-VirtualBox', '4.4.0-53-generic', '#74-Ubuntu SMP Fri Dec 2 15:58:04 UTC 2016', 'i686', 'i686')
+		SO2 = platform.linux_distribution() # ('LinuxMint', '18.1', 'serena')
+		print SO
+		print SO2
+		return 1
+
+
+
+def CONEXION_CON_EL_SERVIDOR():
+	try:
+		from socket import *
+		s = socket(AF_INET,SOCK_STREAM)
+		s.connect(('127.0.0.1',9000))
+		#Luego recibe la respuesta
+		while True:
+			data = s.recv(10000)
+		print 'En el servidor se escogió la opción: ' + data
+		s.close()
+	except:
+		print 'Error en la conexión'
+
+SYSTEMA_OPERATIVO()
+
+
+
+def main():
+	SISTEMA_OPERATIVO()
+	#TODAVÍA POR AÑADIR
+	linux_windows = SISTEMA_OPERATIVO()		#VALOR DE 0 Ó 1 EN FUNCIÓN DEL SISTEMA OPERATIVO
+	CONEXION_CON_EL_SERVIDOR()

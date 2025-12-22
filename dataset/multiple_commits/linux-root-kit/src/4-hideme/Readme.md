@@ -1,0 +1,1 @@
+Now to hide the module from a simple `lsmod`, we modify the linked list where your module name is stored.

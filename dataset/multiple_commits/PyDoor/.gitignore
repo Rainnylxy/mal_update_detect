@@ -1,0 +1,10 @@
+.vscode/
+build/
+dist/
+__pycache__/
+*.spec
+*.log
+*.png
+*.pem
+.DS_STORE
+test*.py

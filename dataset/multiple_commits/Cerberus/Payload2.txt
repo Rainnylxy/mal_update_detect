@@ -1,0 +1,10 @@
+rem Example Malware -- Does not do anything Malicious
+
+rem Create a text file with computer information
+echo Computer Information>%tempDir%\computer_info.txt
+echo.>>%tempDir%\computer_info.txt
+systeminfo>>"%tempDir%\computer_info.txt"
+
+rem Save PC username, PC name to data.txt
+echo :computer: PC Username: %username%>%tempDir%\data.txt
+echo :desktop: PC Name: %pcname%>>%tempDir%\data.txt

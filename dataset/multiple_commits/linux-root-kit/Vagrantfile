@@ -1,0 +1,53 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+Vagrant.require_version ">=1.6.2"
+
+Vagrant.configure("2") do |config|
+    config.vm.box = "bento/ubuntu-24.04"
+    config.vm.box_version = "202502.21.0"
+
+    config.vm.hostname = "linux-root-kit"
+    
+    # Shared folder
+    config.vm.synced_folder "src/", "/vagrant", type: "virtualbox"
+  
+    # Resources
+    config.vm.provider "virtualbox" do |vb|
+      vb.memory = 4096
+      vb.cpus = 4
+      # vb.gui = true
+    end
+  
+    # Provision with a simple shell script (this will for sure break in the feature :P, but will work for now) todo change to ansible
+    # install build-essentials + headers a desktop environment and vscode 
+    config.vm.provision "shell", inline: <<-SHELL
+
+      echo 'Updating...'
+      sudo DEBIAN_FRONTEND=noninteractive apt update 1>/dev/null
+      sudo DEBIAN_FRONTEND=noninteractive apt install -y vim git build-essential linux-headers-$(uname -r) golang 1>/dev/null
+      echo 'Adding the multiverse repo'
+      sudo add-apt-repository multiverse -y 1>/dev/null
+      sudo DEBIAN_FRONTEND=noninteractive apt update 1>/dev/null
+
+      # echo 'Adding vscode and btop with snap'
+      # snap install code --classic 1>/dev/null
+
+      # snap install btop 1>/dev/null
+      echo 'Installing vbox stuff...'
+      sudo DEBIAN_FRONTEND=noninteractive apt install virtualbox-guest-x11 virtualbox-guest-utils 1>/dev/null
+
+      sudo DEBIAN_FRONTEND=noninteractive apt upgrade 1>/dev/null
+      echo 'READY :D....'
+      exit 0 
+      #sudo do-release-upgrade
+
+      # need to do this at last because a lot of services need to reboot :P
+      # echo 'Adding a desktop... (this can take a long time)'
+      # sudo DEBIAN_FRONTEND=noninteractive apt install -y ubuntu-desktop 1>/dev/null
+
+      # dont just use sudo reboot --> try to stop the network connection of the ssh connection but cant because thats the ssh process that started the process :P
+      #nohup sudo reboot >/dev/null 2>&1 &
+      #exit 0
+    SHELL
+  end
+  

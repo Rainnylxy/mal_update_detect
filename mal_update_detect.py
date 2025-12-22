@@ -162,9 +162,6 @@ def taint_graph_relabel(taint_graph_before: nx.MultiDiGraph, node_pairs: dict) -
     taint_graph_before.remove_nodes_from(remove_nodes)
     
     taint_before_relabeled = nx.relabel_nodes(taint_graph_before, correct_mapping, copy=True)
-    taint_graph_before_relabeled_out = os.path.join("/home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/Doomed/5_2b87d", "taint_graphs", "taint_graph_before_relabeled1.dot")
-    os.makedirs(os.path.dirname(taint_graph_before_relabeled_out), exist_ok=True)
-    nx.nx_agraph.write_dot(taint_before_relabeled, taint_graph_before_relabeled_out)
     
     # 标记映射节点的原始 id，并对未映射的原始节点添加 deleted 标记（保留原有属性）
     for before_node, after_node in correct_mapping.items():

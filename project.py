@@ -357,7 +357,7 @@ class Project:
         for node, data in taint_graph_copy.nodes(data=True):
             # sub-function call 继续追踪
             if self.cpg.nodes[node].get("label","") == "CALL":
-                if node == "30064771105":
+                if node == "30064771248":
                     print("debug")
                 if not self.is_project_call(node):
                     continue
@@ -395,7 +395,7 @@ class Project:
                 # 没有参数节点则连接到方法节点
                 if not argument_flag:
                     for n, d in pdg.nodes(data=True):
-                        if self.cpg.nodes.get(n, {}).get("label","") == "METHOD":
+                        if self.cpg.nodes.get(n, {}).get("label","") == "METHOD" and self.cpg.nodes.get(n, {}).get("NAME","") == function_name:
                             method_node = n
                     taint_graph = self.taint_trace(method_node, taint_graph, pdg)
                     if taint_graph.has_edge(node, method_node):
@@ -604,21 +604,23 @@ class Project:
                 for nb in neighbors:
                     if nb in comp_nodes:
                         continue
-                    # 检查 SUB_FUNCTION_CALL 入边规则
-                    callers = sub_call_callers.get(nb, set())
-                    if len(callers) == 0:
-                        # 没有 SUB_FUNCTION_CALL 入边，可以加入
-                        comp_nodes.add(nb)
-                        queue.append(nb)
-                    else:
-                        # 如果有 SUB_FUNCTION_CALL 入边，只在至少一个 caller 已在当前连通图时才加入
-                        # 注意：即便 callers 有多个，只把 nb 加入当前 METHOD 的连通图，其他 callers 不会被自动认为和当前 METHOD 连通
-                        if callers & comp_nodes:
-                            comp_nodes.add(nb)
-                            queue.append(nb)
-                        else:
-                            # 所有 caller 都不在当前连通图，跳过
-                            continue
+                    comp_nodes.add(nb)
+                    queue.append(nb)
+                    # # 检查 SUB_FUNCTION_CALL 入边规则
+                    # callers = sub_call_callers.get(nb, set())
+                    # if len(callers) == 0:
+                    #     # 没有 SUB_FUNCTION_CALL 入边，可以加入
+                    #     comp_nodes.add(nb)
+                    #     queue.append(nb)
+                    # else:
+                    #     # 如果有 SUB_FUNCTION_CALL 入边，只在至少一个 caller 已在当前连通图时才加入
+                    #     # 注意：即便 callers 有多个，只把 nb 加入当前 METHOD 的连通图，其他 callers 不会被自动认为和当前 METHOD 连通
+                    #     if callers & comp_nodes:
+                    #         comp_nodes.add(nb)
+                    #         queue.append(nb)
+                    #     else:
+                    #         # 所有 caller 都不在当前连通图，跳过
+                    #         continue
 
             # 根据 comp_nodes 抽取代码行并写入文件
             # 收集 file_path -> {line: code}

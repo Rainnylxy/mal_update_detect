@@ -34,7 +34,7 @@ def get_node_pairs(project_before: project.Project, project_after: project.Proje
     taint_graph_before = project_before.taintDG
     node_pairs = {}
     for node, data in taint_graph_before.nodes(data=True):
-        if node == "107374182400":
+        if node == "30064771099":
             print("debug")
         node_file = data.get("file_path", "")
         line = int(data.get("LINE_NUMBER", -1))
@@ -141,6 +141,13 @@ def taint_graph_update(project_after: project.Project, file_changed_lines: dict,
                             continue
                         function_name = node_full_data.get("METHOD_FULL_NAME", '')
                         dynamic_func_name = node_full_data.get("DYNAMIC_TYPE_HINT_FULL_NAME", '')
+                        if node_full_data.get("METHOD_FULL_NAME", '') == "<operator>.assignment":
+                            args = project_after.get_call_argument_nodes(node_id)
+                            if len(args) < 2:
+                                continue
+                            assigned_arg = args[1]
+                            assigned_arg_data = project_after.cpg.nodes[assigned_arg]
+                            function_name = assigned_arg_data.get("METHOD_FULL_NAME", '')
                         if not graph_helper.GraphHelper.is_sensitive_builtin(function_name) and not graph_helper.GraphHelper.is_sensitive_builtin(dynamic_func_name):
                             continue
                         if node_full_data.get("CODE") == "<empty>":
@@ -260,7 +267,7 @@ if __name__ == "__main__":
             continue
         repo_name = os.path.basename(repo_path)
         # NetWorm
-        if repo_name !="funny-virus":
+        if repo_name !="Python_KeyLogger_Prototype":
             continue
         csv_path = os.path.join("/home/lxy/lxy_codes/mal_update_detect/mal_update_detect/commit_counts.csv")
         csv_read = pd.read_csv(csv_path)
@@ -268,7 +275,7 @@ if __name__ == "__main__":
             useful_count = int(csv_read.loc[csv_read.iloc[:, 0].astype(str) == str(repo_path), csv_read.columns[2]].iat[0])
         except Exception:
             useful_count = 0
-        if useful_count > 40:
+        if useful_count > 50:
             logger.info(f"Skipping repository {repo_path} with {useful_count} useful commits")
             continue
         
@@ -278,13 +285,7 @@ if __name__ == "__main__":
             ["git", "-C", repo_path, "checkout", "FETCH_HEAD"],
             stderr=subprocess.DEVNULL
         )
-
-        # subprocess.check_output(
-        #         ["git", "-C", repo_path, "checkout", "main"],
-        #         stderr=subprocess.DEVNULL
-        #     )
-        try:
-            
+        try: 
             # raw = subprocess.check_output(
             #     ["git", "-C", repo_path, "rev-list", "--reverse", "HEAD"],
             #     stderr=subprocess.DEVNULL 
@@ -313,8 +314,8 @@ if __name__ == "__main__":
             # commit_after = "2b87dfdaaf9fd9408cdd9b5136c95caa1369c3e5"
             commit_helper = CommitHelper(repo_path, commit_after)
             logger.info(f"Analyzing commit {i+1}/{len(commit_list)-1}: {commit_after}")
-            if commit_after == "2b87dfdaaf9fd9408cdd9b5136c95caa1369c3e5":
-                print("debug")
+            # if commit_after != "445a2a1879559a695061dcdfba8414343e7ac441":
+            #     continue
             if commit_helper.parent_hash != commit_before:
                 commit_before = commit_helper.parent_hash
                 if commit_before not in project_dir_dict:
@@ -340,7 +341,3 @@ if __name__ == "__main__":
         #     ["git", "-C", repo_path, "checkout", "FETCH_HEAD"],
         #     stderr=subprocess.DEVNULL
         # )
-        # subprocess.check_output(
-        #         ["git", "-C", repo_path, "checkout", commit_list[-1]],
-        #         stderr=subprocess.DEVNULL
-        #     )  

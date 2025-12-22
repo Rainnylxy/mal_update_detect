@@ -201,6 +201,20 @@ class Project:
             if after_nodes == before_nodes:
                 break
         # taint_graph = self.class_nodes_trace(taint_graph)
+                    # 处理缺少的边
+        for node, data in taint_graph.nodes(data=True):
+            if data.get("label","") == "METHOD":
+                if node == "107374182409":
+                    print("debug")
+                for u, v, edge_data in self.cpg.out_edges(node, data=True):
+                    if edge_data.get("label","") == "CONTAINS" and v in taint_graph.nodes() and taint_graph.nodes[v].get("label","") == "CALL":
+                        pdg = self.pdgs.get((taint_graph.nodes[node].get('file_path','unknown'), taint_graph.nodes[node].get('NAME','unknown')), None)
+                        if pdg is None:
+                            continue
+                        if v in pdg.nodes():
+                            if not taint_graph.has_edge(node, v):
+                                taint_graph.add_edge(node, v, label="CONTAINS", color="green")
+
         return taint_graph            
     
     def build_taint_data_graph(self):
@@ -211,11 +225,20 @@ class Project:
             
             pdg.graph['file_path'] = self.get_pdg_file_path(pdg)
             for node in pdg.nodes():
+                if node == "30064771109":
+                    print("debug")
                 node_full_data = self.cpg.nodes[node]
                 if node_full_data.get("label", '') != "CALL" :
                     continue
                 function_name = node_full_data.get("METHOD_FULL_NAME", '')
                 dynamic_func_name = node_full_data.get("DYNAMIC_TYPE_HINT_FULL_NAME", '')
+                if node_full_data.get("METHOD_FULL_NAME", '') == "<operator>.assignment":
+                    args = self.get_call_argument_nodes(node)
+                    if len(args) < 2:
+                        continue
+                    assigned_arg = args[1]
+                    assigned_arg_data = self.cpg.nodes[assigned_arg]
+                    function_name = assigned_arg_data.get("METHOD_FULL_NAME", '')
                 if not graph_helper.GraphHelper.is_sensitive_builtin(function_name) and not graph_helper.GraphHelper.is_sensitive_builtin(dynamic_func_name):
                     continue
                 if self.cpg.nodes[node].get("CODE") == "<empty>":
@@ -354,7 +377,7 @@ class Project:
     def sub_function_taint_trace(self, taint_graph):
         taint_graph_copy = taint_graph.copy()
         # 在这里实现子函数的污点追踪逻辑
-        for node, data in taint_graph_copy.nodes(data=True):
+        for node, data in taint_graph_copy.nodes(data=True):                
             # sub-function call 继续追踪
             if self.cpg.nodes[node].get("label","") == "CALL":
                 if node == "30064771248":
@@ -510,8 +533,7 @@ class Project:
                 # taint_graph.nodes[u]['TYPE'] = self.cpg.nodes[u].get('label', '')
                 taint_graph.nodes[u]['file_path'] = pdg.graph.get('file_path','unknown')
                 taint_graph.add_edge(u, v, **data  )    
-                to_visit.add(u)
-
+                to_visit.add(u)   
         return taint_graph
     
     

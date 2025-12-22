@@ -39,6 +39,7 @@ class GraphHelper:
             "http.client.py:<module>.HTTPConnection",
             "requests.py:<module>.get","requests.py:<module>.post", 
             "wget.py:<module>.download",
+            "webbrowser.py:<module>.open","urllib.py:<module>.urlopen","websocket.py:<module>.create_connection",
             # 加密相关
             "json.py:<module>.dumps.<returnValue>.encode","json.py:<module>.loads",
             "base64.py:<module>.b64decode",

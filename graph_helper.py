@@ -53,7 +53,7 @@ class GraphHelper:
             # 系统信息相关
             "os.py:<module>.getenv","os.py:<module>.environ","os.py:<module>.system",
             # 文件操作相关
-            "shutil.py:<module>.copyfile","shutil.py:<module>.move",
+            "shutil.py:<module>.copyfile","shutil.py:<module>.move","shutil.py:<module>.rmtree",
             "os.py:<module>.makedirs","os.py:<module>.walk","os.py:<module>.chdir","os.py:<module>.remove","os.py:<module>.rename","os.py:<module>.getcwd",
             "__builtin.open","__builtin.input",
             "importlib.py:<module>.<member>(machinery).SourceFileLoader.__init__","importlib.py:<module>.<member>(machinery).SourceFileLoader.get_data",

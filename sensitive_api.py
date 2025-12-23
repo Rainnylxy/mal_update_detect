@@ -8,33 +8,33 @@ API = [
 import pandas as pd
 import os
 
-def sort_csv_by_first_column(input_file, output_file):
+def get_subdirs_and_save_to_csv(directory, output_file):
     try:
-        # 1. 读取 CSV 文件
-        # 如果没有表头，可以设置 header=None
-        df = pd.read_csv(input_file,header=None)
+        # 1. 获取指定目录的所有子目录名
+        subdirs = [d for d in os.listdir(directory) if os.path.isdir(os.path.join(directory, d))]
         
-        # 2. 获取第一列的列名
-        first_col = df.columns[0]
+        # 2. 按首字母排序（升序）
+        subdirs_sorted = sorted(subdirs)
         
-        # 3. 按照第一列进行排序（升序）
-        # 如果是字符串，它会默认按字母顺序 (A-Z) 排序
-        df_sorted = df.sort_values(by=first_col, ascending=True)
+        # 3. 创建 DataFrame
+        df = pd.DataFrame({'subdirectory': subdirs_sorted})
         
-        # 4. 保存到新的 CSV 文件
-        df_sorted.to_csv(output_file, index=False)
+        # 4. 保存到 CSV 文件
+        df.to_csv(output_file, index=False)
         
-        print(f"排序完成！结果已保存至: {output_file}")
+        print(f"子目录已保存并按首字母排序！结果已保存至: {output_file}")
+        print(f"共找到 {len(subdirs_sorted)} 个子目录")
         
     except Exception as e:
         print(f"处理过程中出错: {e}")
 
+
 # 使用示例
 if __name__ == "__main__":
-    input_path = "commit_counts.csv"  # 你的原始文件名
-    output_path = "sorted_commit_counts.csv"    # 排序后的文件名
+    directory_path = "/home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits"  # 你的目录路径
+    output_path = "repos.csv"    # 输出文件名
     
-    if os.path.exists(input_path):
-        sort_csv_by_first_column(input_path, output_path)
+    if os.path.exists(directory_path):
+        get_subdirs_and_save_to_csv(directory_path, output_path)
     else:
-        print("未找到指定的输入文件。")
+        print("未找到指定的目录。")

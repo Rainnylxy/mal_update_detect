@@ -43,4 +43,4 @@ if __name__ == "__main__":
     #             continue
     #         taint_slices_dir = os.path.join(commit_dir_path, "taint_slices_methods")
     #         LLM_analyze_code_slices(taint_slices_dir)
-    LLM_analyze_code_slices("/home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/little-python-malware/0_4aead/taint_slices_methods")
+    LLM_analyze_code_slices("/home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/KMike/39_3af22/taint_slices_methods")

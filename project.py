@@ -161,7 +161,7 @@ class Project:
                 if not self.node_code_eq(node_b_data.get("CODE",""), value):
                     return False
             elif key == "METHOD_FULL_NAME":
-                if node_a_data.get("METHOD_FULL_NAME","") != "<unknownFullName>" and node_a_data.get("METHOD_FULL_NAME","") != node_b_data.get("METHOD_FULL_NAME",""):
+                if node_a_data.get("METHOD_FULL_NAME","") != "<unknownFullName>" and node_b_data.get("METHOD_FULL_NAME","")!="<unknownFullName>" and node_a_data.get("METHOD_FULL_NAME","") != node_b_data.get("METHOD_FULL_NAME",""):
                     return False
         return True
     

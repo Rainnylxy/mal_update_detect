@@ -34,7 +34,7 @@ def get_node_pairs(project_before: project.Project, project_after: project.Proje
     taint_graph_before = project_before.taintDG
     node_pairs = {}
     for node, data in taint_graph_before.nodes(data=True):
-        if node == "30064771099":
+        if node == "30064771488":
             print("debug")
         node_file = data.get("file_path", "")
         line = int(data.get("LINE_NUMBER", -1))
@@ -286,7 +286,7 @@ def single_repo_analyze(repo_path: str,joern_workspace_path: str):
         commit_after = commit_list[i + 1]
         commit_helper = CommitHelper(repo_path, commit_after)
         logger.info(f"Analyzing commit {i+1}/{len(commit_list)-1}: {commit_after}")
-        # if commit_after != "445a2a1879559a695061dcdfba8414343e7ac441":
+        # if commit_after != "933b5b57f3170008e08753490eefa5a4180d6ccf":
         #     continue
         if commit_helper.parent_hash != commit_before:
             commit_before = commit_helper.parent_hash
@@ -344,7 +344,7 @@ def parallel_repo_analyze(repo_dir: str, joern_workspace_path: str):
 
 if __name__ == "__main__":
         
-    dataset_dir = "/home/lxy/lxy_codes/mal_update_detect/mal_update_dataset/multiple_commits/"
+    dataset_dir = "/home/lxy/lxy_codes/mal_update_detect/mal_update_dataset/multiple_commits/KeySpy"
     joern_workspace_path = "/home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/"
-    # single_repo_analyze(dataset_dir, joern_workspace_path)
-    parallel_repo_analyze(dataset_dir, joern_workspace_path)
+    single_repo_analyze(dataset_dir, joern_workspace_path)
+    # parallel_repo_analyze(dataset_dir, joern_workspace_path)

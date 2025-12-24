@@ -344,7 +344,7 @@ def parallel_repo_analyze(repo_dir: str, joern_workspace_path: str):
 
 if __name__ == "__main__":
         
-    dataset_dir = "/home/lxy/lxy_codes/mal_update_detect/mal_update_dataset/multiple_commits/KeySpy"
+    dataset_dir = "/home/lxy/lxy_codes/mal_update_detect/mal_update_dataset/multiple_commits/KMike"
     joern_workspace_path = "/home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/"
     single_repo_analyze(dataset_dir, joern_workspace_path)
     # parallel_repo_analyze(dataset_dir, joern_workspace_path)

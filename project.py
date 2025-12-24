@@ -594,6 +594,7 @@ class Project:
                 print("debug")
             
             comp_nodes = set([root])
+            has_sensitive_node = False
             
             
             # BFS/扩展连通域（将边视为无向），按 SUB_FUNCTION_CALL 规则进行过滤      
@@ -602,6 +603,8 @@ class Project:
             while qi < len(queue):
                 cur = queue[qi]
                 qi += 1
+                if taint_graph.nodes[cur].get("fillcolor","") == "lightgrey":
+                    has_sensitive_node = True
                 if cur == "107374182415":
                     print("debug")
                 if taint_graph.nodes[cur].get("label","") == "METHOD":
@@ -643,7 +646,11 @@ class Project:
                     #     else:
                     #         # 所有 caller 都不在当前连通图，跳过
                     #         continue
-
+            
+            # 跳过没有敏感节点的连通图
+            if not has_sensitive_node:
+                continue
+            
             # 根据 comp_nodes 抽取代码行并写入文件
             # 收集 file_path -> {line: code}
             comp_map = {}

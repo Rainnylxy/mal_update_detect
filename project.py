@@ -405,17 +405,17 @@ class Project:
                 
                 argument_flag = False
                 
-                # 有参数节点，则连接到参数节点
-                for n, d in pdg.nodes(data=True):
-                    if self.cpg.nodes.get(n, {}).get("label","") == "METHOD_PARAMETER_IN":
-                        argument_flag = True
-                        entry_node = n
-                        taint_graph = self.taint_trace(entry_node, taint_graph, pdg)
-                        if taint_graph.has_edge(node, entry_node):
-                            continue
-                        taint_graph.add_edge(node, entry_node, label="SUB_FUNCTION_CALL",color="red")
+                # # 有参数节点，则连接到参数节点
+                # for n, d in pdg.nodes(data=True):
+                #     if self.cpg.nodes.get(n, {}).get("label","") == "METHOD_PARAMETER_IN":
+                #         argument_flag = True
+                #         entry_node = n
+                #         taint_graph = self.taint_trace(entry_node, taint_graph, pdg)
+                #         if taint_graph.has_edge(node, entry_node):
+                #             continue
+                #         taint_graph.add_edge(node, entry_node, label="SUB_FUNCTION_CALL",color="red")
                 
-                # 没有参数节点则连接到方法节点
+                # 统统连接到METHOD节点
                 if not argument_flag:
                     for n, d in pdg.nodes(data=True):
                         if self.cpg.nodes.get(n, {}).get("label","") == "METHOD" and self.cpg.nodes.get(n, {}).get("NAME","") == function_name:

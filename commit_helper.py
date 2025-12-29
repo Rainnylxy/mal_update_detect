@@ -97,7 +97,7 @@ class CommitHelper:
         parents_output = subprocess.check_output(cmd_parents, text=True).strip()
         parts = parents_output.split()
         # 返回第一个父提交
-        return parts[1]  # 返回父commit哈希列表
+        return parts[1] if len(parts) > 1 else None
     
     
     def get_commit_diff(self):
@@ -107,8 +107,10 @@ class CommitHelper:
         :param commit_hash: commit的哈希值
         :return: diff内容字符串
         """
+        if self.parent_hash is None:
+            return ""
         cmd_diff = [
-            'git', '-C', self.repo_path, 'diff', f'{self.commit_hash}^1',f'{self.commit_hash}', '--unified=0', '--no-renames'
+            'git', '-C', self.repo_path, 'diff', f'{self.parent_hash}',f'{self.commit_hash}', '--unified=0', '--no-renames'
         ]
         diff_output = subprocess.check_output(cmd_diff, text=True)
         return diff_output

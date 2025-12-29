@@ -34,10 +34,12 @@ def get_node_pairs(project_before: project.Project, project_after: project.Proje
     taint_graph_before = project_before.taintDG
     node_pairs = {}
     for node, data in taint_graph_before.nodes(data=True):
-        if node == "30064771488":
+        if node == "30064771217":
             print("debug")
         node_file = data.get("file_path", "")
         line = int(data.get("LINE_NUMBER", -1))
+        if line == -1 or not node_file:
+            continue 
         
         # 处理文件未变更的情况
         if node_file not in file_changed_lines:
@@ -122,16 +124,19 @@ def taint_graph_update(project_after: project.Project, file_changed_lines: dict,
                 changed_funcs[func_name].append(line_num)
                 
         for func_name, line_nums in changed_funcs.items():
+            pdg_after = project_after.pdgs.get((changed_file, func_name), None)
+            if not pdg_after:
+                continue
+            
             for line_num in line_nums:
-                if line_num == 69:
+                if line_num == 29:
                     print("debug")
-                pdg_after = project_after.pdgs.get((changed_file, func_name), None)
-                if not pdg_after:
-                    continue
 
                 for node_id in pdg_after.nodes():
                     node_full_data = project_after.cpg.nodes[node_id]
                     if int(node_full_data.get("LINE_NUMBER", -1)) == line_num:
+                        if node_id == "30064771140":
+                            print("debug")
                         if node_full_data.get("label","") == "METHOD_RETURN":
                             continue
                         if has_data_flow(node_id, taint_graph_relabeled, pdg_after):
@@ -207,10 +212,9 @@ def LLM_analyze_code_slices(code_slices: dict):
                 fw.write(f"Failed to serialize response: {e}\nRaw response:\n{str(response)}")
     return True
 
-def analyze(project_before:project.Project, project_after:project.Project, repo_path: str, commit_after: str, joern_path_after: str):
+def analyze(project_before:project.Project, project_after:project.Project, repo_path: str, commit_helper: CommitHelper, joern_path_after: str):
     project_after.switch_commit()
     # 判断commit中是否包含sensitive api
-    commit_helper = CommitHelper(repo_path, commit_after)
     file_changed_lines = commit_helper.get_commit_changed_line_numbers_by_file()
     taint_graph_before = project_before.taintDG
 
@@ -284,10 +288,17 @@ def single_repo_analyze(repo_path: str,joern_workspace_path: str):
     
     for i in range(len(commit_list) - 1):
         commit_after = commit_list[i + 1]
+        if commit_after != "47da41ebe07a43cfdc7c98553822ce052a501ecf":
+            continue
+            
         commit_helper = CommitHelper(repo_path, commit_after)
+        joern_path_after = os.path.join(joern_workspace_path, repo_name, str(i+1) + "_" + commit_after[:5])
+        
+        if commit_helper.parent_hash is None:
+            project_after = project.Project(repo_path, joern_path_after,commit_after,flag = "before")
+            continue
+        
         logger.info(f"Analyzing commit {i+1}/{len(commit_list)-1}: {commit_after}")
-        # if commit_after != "933b5b57f3170008e08753490eefa5a4180d6ccf":
-        #     continue
         if commit_helper.parent_hash != commit_before:
             commit_before = commit_helper.parent_hash
             if commit_before not in project_dir_dict:
@@ -296,11 +307,10 @@ def single_repo_analyze(repo_path: str,joern_workspace_path: str):
             # joern_path_before = os.path.join(joern_workspace_path, repo_name, "4_"+commit_before[:5])
             project_before = project.Project(repo_path, joern_path_before, commit_before,flag = "before")
         
-        joern_path_after = os.path.join(joern_workspace_path, repo_name, str(i+1) + "_" + commit_after[:5])
         project_after = project.Project(repo_path, joern_path_after,commit_after,flag = "after")
         project_dir_dict[commit_after] = joern_path_after
         
-        project_after = analyze(project_before,project_after, repo_path, commit_after, joern_path_after)
+        project_after = analyze(project_before,project_after, repo_path, commit_helper, joern_path_after)
         project_before = project_after
         commit_before = commit_after
     
@@ -344,7 +354,7 @@ def parallel_repo_analyze(repo_dir: str, joern_workspace_path: str):
 
 if __name__ == "__main__":
         
-    dataset_dir = "/home/lxy/lxy_codes/mal_update_detect/mal_update_dataset/multiple_commits/KMike"
+    dataset_dir = "/home/lxy/lxy_codes/mal_update_detect/mal_update_dataset/multiple_commits/MirageLink-rat-gui"
     joern_workspace_path = "/home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/"
     single_repo_analyze(dataset_dir, joern_workspace_path)
     # parallel_repo_analyze(dataset_dir, joern_workspace_path)

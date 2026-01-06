@@ -9,77 +9,104 @@ import json
 ASSERTION_PROMPT = """
 Analyze the provided code snippet: {code_snippet}
 
-Step 1: Determine the "Primary Malicious Intent" (e.g., Keylogger, Backdoor, Wiper, Ransomware, Cryptominer).
-Step 2: Apply the "Success Criteria Matrix" below to determine if the attack is "Full" or "Core".
+Step 1: Determine "Malware Type" using the Matrix below.
+Step 2: Perform "Dual-Axis Analysis" to assign the final Classification.
 
-*** ATTACK TYPE SUCCESS CRITERIA MATRIX ***
+*** DUAL-AXIS EVALUATION (CRITICAL) ***
+
+[AXIS 1: COMPONENT CHECK] (Static Analysis)
+- **Goal:** Check if the code meets the "Components for Full" criteria in the Matrix (ignoring reachability).
+- **Question:** Are ALL critical components for the identified Malware Type PRESENT in the code?
+- **Result:** 
+  - "Complete": The malicious logic is present.
+  - "Incomplete": The critical malicious logic is **MISSING ENTIRELY**.
+- **Action:** If "Incomplete", identify exactly what is missing (e.g., "Missing Network Logic").
+
+[AXIS 2: REACHABILITY CHECK] (Control Flow Analysis)
+- **Goal:** Check if the interpreter can executes the malicious components found in Axis 1.
+- **Question:** Is the malicious logic **REACHABLE**? 
+- **Result:** 
+  - "Reachable": The malicious logic can be executed.
+  - "Blocked": The malicious logic is unreachable.
+
+
+*** ATTACK TYPE MATRIX (Definition of Components) ***
 
 [Type A: InfoStealer / Keylogger / Spyware]
 - Goal: Steal sensitive data (env vars, passwords, keystrokes) and send it to the attacker.
-- Core Attack Chain: Successfully collects/records data to a variable or local file, BUT lacks the network logic to exfiltrate it.
-- Full Attack Chain: Collects data AND exfiltrate it (via HTTP, SMTP, DNS, FTP, or Webhook).
-  * Rule: No Network Exfiltration = NOT Full (for this type).
+- Components for Full: Data collection + Network Exfiltration.
 
 [Type B: Backdoor / RAT (Remote Access Trojan) / Reverse Shell]
 - Goal: Provide unauthorized remote access or command execution.
-- Core Attack Chain: Defines malicious functions (e.g., `os.popen`, `subprocess.run`) but lacks a trigger or connection mechanism.
-- Full Attack Chain: 
-  1. Has Execution Logic: Can run arbitrary commands.
-  2. Has Connectivity: Connects to a C2 server (Reverse Shell) OR opens a listener (Bind Shell) OR fetches commands from a URL.
+- Components for Full: Command Execution + Connection Logic.
+
 
 [Type C: Ransomware]
-- Goal: Deny access to data until payment.
-- Core Attack Chain: Encrypts files but lacks a ransom note or decryption key management.
-- Full Attack Chain: Encrypts files AND generates a ransom note/demand.
+- Goal: Deny access to data via encryption until payment.
+- Components for Full: File Encryption + Ransom Note/Demand generation.
 
 [Type D: Wiper / Destructive Malware]
 - Goal: Destroy/Encrypt essential data/files or exhaust resources (Availability Loss).
-- Core Attack Chain: Logic exists but is unreachable.
-- Full Attack Chain: The destructive logic (delete, overwrite, flood) is present and executable. If the user loses immediate access to the files, the Wiper logic is Complete.
+- Components for Full: Destructive logic (delete/overwrite) is present.
 
 [Type E: Clipboard Hijacker / Clipper] 
 - Goal: INTERCEPT and MODIFY user clipboard content (specifically crypto addresses) to redirect funds.
-- Key Characteristics: Uses Regex to find wallet addresses and replaces them (`Set-Clipboard` or similar).
-- Core Attack Chain: Identifies targets but fails to execute the replacement/swap logic.
-- Full Attack Chain: Can read clipboard content and Successfully replaces/overwrites the clipboard content with a hardcoded address.
+- Components for Full: Can read clipboard content and successfully replaces/overwrites the clipboard content with a hardcoded address.
 
 [Type F: Malware Builder]
-- Goal: Create, modify, or infect software packages, binaries, or source code to include malicious payloads.
-- Core Attack Chain: Can unpack/open the target (e.g., .deb, .jar, .exe) and locate the injection point, but fails to write the payload or rebuild the artifact.
-- Full Attack Chain: Can write/append the malicious payload (shellcode, script) into a strategic location (e.g., postinst, __init__.py, Main func) or reconstruct malicious artifact (e.g., `dpkg-deb -b`, `zip`, `compile`).
+- Goal: Create infected artifacts.
+- Components for Full: Can write/append the malicious payload (shellcode, script) into a strategic location (e.g., postinst, __init__.py, Main func) or reconstruct malicious artifact (e.g., `dpkg-deb -b`, `zip`, `compile`).
 
 [Type G: Logic Bomb / Targeted Trigger]
 - Goal: Execute malicious actions ONLY when specific conditions (Time, Hostname, Environment) are met.
-- Core Attack Chain: The trigger condition exists, but the malicious action inside is missing or benign.
-- Full Attack Chain: Connects a **Trigger** (Time/Env/Identity) to a **Malicious Payload** (Destruction/Theft). if condition met, harmful action executes.
+- Components for Full: Connects a **Trigger** (Time/Env/Identity) to a **Malicious Payload** (Destruction/Theft). if condition met, harmful action executes.
 
 [Type H: Uncategorized High-Impact Threat]
-- Definition: Any malicious logic that does not fit A-F but causes **Severe Harm** to the system.
-- Core Attack Chain: The harmful logic is present but unreachable or incomplete.
-- Full Attack Chain: The harmful action is fully implemented and executable. The code successfully performs the harmful modification, download, destruction or exposure.
+- Goal: Any malicious logic that does not fit A-F but causes **Severe Harm** to the system.
+- Components for Full: The harmful action is fully implemented. The code successfully performs the harmful modification, download, destruction or exposure.
 
 
-*** CLASSIFICATION FRAMEWORK ***
+*** CLASSIFICATION FRAMEWORK (Final Decision) ***
 
-Based on the Matrix above, classify the code:
+Based on Axis 1 and Axis 2, classify the code:
 
-1. Full Attack Chain: Meets ALL criteria for its specific Attack Type in the Matrix. The objective is strategically complete.
-2. Core Attack Chain: Meets the "Core" criteria in the Matrix. The capability exists locally or partially but fails to close the loop (e.g., Keylogger without Email, Ransomware without Note).
-3. Fragmented Attack Chain: Isolated suspicious snippets without logic flow.
-4. Benign Artifact: Legitimate, explainable code.
+1. **Full Attack Chain** (High Threat, Active)
+   - [Axis 1]: **Complete** (Malicious modules exist).
+   - [Axis 2]: **Reachable** (Logic flows correctly to the payload).
+   - *Meaning:* The malware is fully functional and executable.
 
+2. **Latent Attack Chain** (High Threat, Broken Implementation)
+   - [Axis 1]: **Complete** (Malicious modules exist).
+   - [Axis 2]: **Blocked** (Payload is unreachable).
+   - *Meaning:* The attacker INTENDED a full attack, but failed in implementation. A single fix activates it.
+
+3. **Core Attack Chain** (Medium Threat, Partial Capability)
+   - [Axis 1]: **Incomplete**.
+   - *Meaning:* The malware has SOME malicious capability but is INCOMPLETE.
+
+4. **Fragmented Attack Chain**: (Low Threat, Inconclusive)
+   - [Axis 1]: **Incomplete**.
+   - *Meaning:* Suspicious snippets without coherent logic.
+   
+5. **Benign Artifact** (No Threat)
+   - [Axis 1]: N/A.
+   - [Axis 2]: N/A.
+   - *Meaning:* Legitimate, explainable code.
+
+*** RESPONSE FORMAT ***
 Provide structured response:
-- **Malware Type:** (e.g., "Type E: Clipper")
-- **Classification:** "Full Attack Chain" | "Core Attack Chain" | ...
-- **Missing Components:** Critical missing steps based on the Matrix.
-- **Potential Impact:** Description of consequences.
-- **Threat Level:** High/Medium/Low.
+- **Malware Type:** (e.g., "Type A: Keylogger")
+- **Axis 1 (Components):** [Complete/Incomplete]
+- **Missing Components:** [List the missing components OR "None"] (CRITICAL: If Incomplete, you MUST list what is missing).
+- **Axis 2 (Reachability):** [Reachable/Blocked/N/A]
+- **Classification:** "Full Attack Chain" | "Latent Attack Chain" | "Core Attack Chain" | "Fragmented Attack Chain" | "Benign Artifact".
+- **Reasoning:** Explain based on Components and Reachability.
+- **Potential Impact:** Describe specific damage (data loss, unauthorized access, financial theft, etc.).
+
 """
 
-
-
 CHECK_PROMPT = """ 
-You are the Supreme Quality Assurance Auditor. Review the previous analysis and the code.
+You are the Supreme Quality Assurance Auditor. Analyze the LLM's assessment below for accuracy and consistency.
 
 PREVIOUS RESPONSE: 
 {response}
@@ -88,35 +115,62 @@ ORIGINAL CODE SNIPPET:
 {code_snippet}
 
 *** AUDIT TASKS ***
-1. Analyze "Missing Components" and re-Evaluate Classification: 
-   - If the reported missing components are just syntax errors, missing imports, undefined variables, invalid ip addresses, or placeholders,
-   IGNORE THEM. Assume they are fixed and upgrade the classification to the next level based on the original code snippet.
-   ATTENTION: Except for syntax errors, missing imports, undefined variables, invalid ip addresses, or placeholders, do NOT ignore any other missing components.
+1. **Verify "Missing Components":**
+    If "Missing Components" are caused by syntax errors,missing imports,undefined variables, placeholders, missing error handling, or dummy values, treat and set "Missing_Components" to "None".
 
-2. **Generate Final Assessment:**
-   Respond in JSON format adhering to the following schema:
-  "Classification": "Full Attack Chain" | "Core Attack Chain" | "Fragmented Attack Chain" | "Benign Artifact",
-  "Missing_Components": "List of critical missing steps or 'None' if all components are present.",
+2. **Verify Logic Consistency (CRITICAL RULE):**
+   - After applying Rule #1, check for consistency.
+   - **IF "Missing_Components" is NOT None:** Classification MUST be "Core Attack Chain".
+   - **IF "Missing_Components" is None:** Classification MUST be "Full Attack Chain" OR "Latent Attack Chain"(dependent on reachability).
+
+3. **Verify Reachability (Latent vs Full):**
+   - If Components are Complete ("Missing_Components" is None), check reachability.
+   - Blocked = "Latent". Reachable = "Full".
+
+4. **Generate Final Assessment JSON:**
+   Respond in JSON format:
   "Malware_Type": "e.g., 'Type F: Clipboard Hijacker' or 'Type D: Wiper'",
+  "Classification": "Full Attack Chain" | "Latent Attack Chain" | "Core Attack Chain" |  "Fragmented Attack Chain" | "Benign Artifact",
+  "Components": "Complete" | "Incomplete",
+  "Reachability": "Reachable" | "Blocked" | "N/A",
+  "Missing_Components": "List of critical missing steps or 'None' if all components are present.",
   "Threat_Level": "High" | "Medium" | "Low",
   "Reasoning": "Explanation focusing on realized capability and ignored bugs.",
   "Potential_Impact": "Specific damage description."
-
 """
 
 SYSTEM_PROMPT = """
 ROLE:
-You are an elite Supply Chain Security Expert and Code Auditor. Your mission is to detect, classify, and explain malicious intent within software package updates based on "Realized Capability".
+You are an elite Supply Chain Security Expert using a "Dual-Axis" approach to classify malware threats.
 
-CORE PHILOSOPHY: "INTENT OVER IMPLEMENTATION"
-- You analyze ARCHITECTURE and INTENT.
-- You IGNORE superficial implementation faults (syntax errors, missing imports, undefined variables/placeholders) if the malicious logic flow is visible.
+CLASSIFICATION LOGIC (HIERARCHY):
 
-CLASSIFICATION:
-1. Full Attack Chain 
-2. Core Attack Chain
-3. Fragmented Attack Chain
-4. Benign Artifact
+1. **Full Attack Chain** (High Threat)
+   - [Components]: **Complete**.
+   - [Reachability]: **Reachable**.
+   - *Meaning:* The malware is fully functional and active.
+
+2. **Latent Attack Chain** (High Threat, Broken Logic)
+   - [Components]: **Complete**.
+   - [Reachability]: **Blocked**.
+   - *Meaning:* The attacker INTENDED a full attack, but failed in implementation.
+
+3. **Core Attack Chain** (Medium Threat, Partial Capability)
+   - [Components]: **Missing**.
+   - [Reachability]: N/A.
+   - *Meaning:* The malware has SOME malicious capability but is INCOMPLETE.
+
+4. **Fragmented Attack Chain**: (Low Threat, Inconclusive)
+   - [Components]: **Isolated**.
+   - [Reachability]: N/A.
+   - *Meaning:* Suspicious snippets without coherent logic.
+   
+5. **Benign Artifact** (No Threat)
+   - [Components]: N/A.
+   - [Reachability]: N/A.
+   - *Meaning:* Legitimate, explainable code.
+
+
 """
 
 
@@ -206,6 +260,8 @@ class LLM_Evaluate:
         )
         
         response_1 = completion.choices[0].message.content
+        print("Initial LLM Response:")
+        print(response_1)
         check_prompt = CHECK_PROMPT.format(response=response_1, code_snippet=code_snippet)
         completion = self.client.chat.completions.create(
             model="deepseek-v3-1-250821",
@@ -216,6 +272,8 @@ class LLM_Evaluate:
             response_format={"type": "json_object"}
         )
         response_2 = completion.choices[0].message.content
+        print("Audited LLM Response:")
+        print(response_2)
         return json.loads(response_2)  # 解析JSON字符串为Python字典
         
     

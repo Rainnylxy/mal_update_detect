@@ -1,6 +1,7 @@
 from llm_evaluate import LLM_Evaluate
 import os
 import shutil
+import json
 
 
 def LLM_analyze_code_slices(taint_slices_dir):
@@ -13,19 +14,34 @@ def LLM_analyze_code_slices(taint_slices_dir):
         for file in files:
             if file.endswith(".py"):
                 file_path = os.path.join(root, file)
+                print(f"Analyzing code slice from file: {file_path}")
                 with open(file_path, "r", encoding="utf-8") as fr:
                     code_slice = fr.read()
-                print(f"Analyzing code slice from file: {file_path}")
-                response = llm_evaluate.malicious_assertion(code_slice)
-                response = llm_evaluate.malicious_assertion_check()
+                response = llm_evaluate.malware_analyze(code_slice)
                 dir_path = os.path.dirname(file_path)
-                out_file = os.path.join(dir_path, "llm_response.txt")
+                out_file = os.path.join(dir_path, "llm_response.json")
                 try:
                     with open(out_file, "w", encoding="utf-8") as fw:
-                        fw.write(str(response))
+                        json.dump(response, fw, ensure_ascii=False, indent=2)
                 except Exception as e:
                     with open(out_file, "w", encoding="utf-8") as fw:
-                        fw.write(f"Failed to serialize response: {e}\nRaw response:\n{str(response)}")
+                        json.dump({"error": str(e), "raw_response": str(response)}, fw, ensure_ascii=False, indent=2)
+
+# def Gemini_analyze_code_slices(taint_slices_dir):
+#     germini_evaluate = Gemini_Evaluate()
+#     for root, dirs, files in os.walk(taint_slices_dir):
+#         for file in files:
+#             if file.endswith(".py"):
+#                 file_path = os.path.join(root, file)
+#                 with open(file_path, "r", encoding="utf-8") as fr:
+#                     code_slice = fr.read()
+#                 print(f"Analyzing code slice from file: {file_path}")
+#                 response = germini_evaluate.malicious_analyze(code_slice)
+#                 dir_path = os.path.dirname(file_path)
+#                 out_file = os.path.join(dir_path, "gemini_llm_response.json")
+                
+#                 with open(out_file, "w", encoding="utf-8") as fw:
+#                     fw.write(str(response))
                         
                         
 if __name__ == "__main__":
@@ -43,4 +59,5 @@ if __name__ == "__main__":
     #             continue
     #         taint_slices_dir = os.path.join(commit_dir_path, "taint_slices_methods")
     #         LLM_analyze_code_slices(taint_slices_dir)
-    LLM_analyze_code_slices("/home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/MirageLink-rat-gui/0_719c8/taint_slices_methods")
+    LLM_analyze_code_slices("/home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/Python_KeyLogger_Prototype/0_d9b6c/taint_slices_methods") 
+    # Gemini_analyze_code_slices("/home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/PY-RAT/0_9ffc2/taint_slices_methods")

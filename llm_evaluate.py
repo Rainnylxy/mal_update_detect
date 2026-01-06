@@ -1,9 +1,13 @@
 import os
 from openai import OpenAI
+import base64
+from google import genai
+from openai import types
+import json
 
 
 ASSERTION_PROMPT = """
-You are a supply chain security expert. Analyze the provided code snippet: {code_snippet}
+Analyze the provided code snippet: {code_snippet}
 
 Step 1: Determine the "Primary Malicious Intent" (e.g., Keylogger, Backdoor, Wiper, Ransomware, Cryptominer).
 Step 2: Apply the "Success Criteria Matrix" below to determine if the attack is "Full" or "Core".
@@ -13,7 +17,7 @@ Step 2: Apply the "Success Criteria Matrix" below to determine if the attack is 
 [Type A: InfoStealer / Keylogger / Spyware]
 - Goal: Steal sensitive data (env vars, passwords, keystrokes) and send it to the attacker.
 - Core Attack Chain: Successfully collects/records data to a variable or local file, BUT lacks the network logic to exfiltrate it.
-- Full Attack Chain: Collects data AND contains logic to exfiltrate it (via HTTP, SMTP, DNS, FTP, or Webhook).
+- Full Attack Chain: Collects data AND exfiltrate it (via HTTP, SMTP, DNS, FTP, or Webhook).
   * Rule: No Network Exfiltration = NOT Full (for this type).
 
 [Type B: Backdoor / RAT (Remote Access Trojan) / Reverse Shell]
@@ -29,7 +33,7 @@ Step 2: Apply the "Success Criteria Matrix" below to determine if the attack is 
 - Full Attack Chain: Encrypts files AND generates a ransom note/demand.
 
 [Type D: Wiper / Destructive Malware]
-- Goal: Destroy/Encrypt data/files or exhaust resources (Availability Loss).
+- Goal: Destroy/Encrypt essential data/files or exhaust resources (Availability Loss).
 - Core Attack Chain: Logic exists but is unreachable.
 - Full Attack Chain: The destructive logic (delete, overwrite, flood) is present and executable. If the user loses immediate access to the files, the Wiper logic is Complete.
 
@@ -42,10 +46,7 @@ Step 2: Apply the "Success Criteria Matrix" below to determine if the attack is 
 [Type F: Malware Builder]
 - Goal: Create, modify, or infect software packages, binaries, or source code to include malicious payloads.
 - Core Attack Chain: Can unpack/open the target (e.g., .deb, .jar, .exe) and locate the injection point, but fails to write the payload or rebuild the artifact.
-- Full Attack Chain: 
-  1. Unpack/Read Logic: Can access the target file structure.
-  2. Injection Logic: Can write/append the malicious payload (shellcode, script) into a strategic location (e.g., postinst, __init__.py, Main func).
-  3. Repack/Build Logic: Can reconstruct the artifact (e.g., `dpkg-deb -b`, `zip`, `compile`).
+- Full Attack Chain: Can write/append the malicious payload (shellcode, script) into a strategic location (e.g., postinst, __init__.py, Main func) or reconstruct malicious artifact (e.g., `dpkg-deb -b`, `zip`, `compile`).
 
 [Type G: Logic Bomb / Targeted Trigger]
 - Goal: Execute malicious actions ONLY when specific conditions (Time, Hostname, Environment) are met.
@@ -53,14 +54,9 @@ Step 2: Apply the "Success Criteria Matrix" below to determine if the attack is 
 - Full Attack Chain: Connects a **Trigger** (Time/Env/Identity) to a **Malicious Payload** (Destruction/Theft). if condition met, harmful action executes.
 
 [Type H: Uncategorized High-Impact Threat]
-- Definition: Any malicious logic that does not fit A-F but causes **Severe Harm** to the Confidentiality, Integrity, or Availability of the system.
-- Scope of Severe Harm:
-  1. **Integrity Loss:** Modifying system settings (e.g., DNS, Hosts file, Firewall rules), disabling security tools (AV/EDR), or injecting code into other processes.
-  2. **Confidentiality Loss (Novel methods):** Exposing internal state/secrets to public logs, or side-channel attacks not covered by Type A.
-  3. **Availability Loss (Novel methods):** Killing critical system processes, infinite fork bombs, or physical hardware stress.
-  4. **Facilitation:** Dropping/Downloading unknown binaries (Droppers) or obfuscated execution (Loaders).
-- Full Attack Chain: The harmful action is fully implemented and executable. The code successfully performs the harmful modification, download, or exposure.
+- Definition: Any malicious logic that does not fit A-F but causes **Severe Harm** to the system.
 - Core Attack Chain: The harmful logic is present but unreachable or incomplete.
+- Full Attack Chain: The harmful action is fully implemented and executable. The code successfully performs the harmful modification, download, destruction or exposure.
 
 
 *** CLASSIFICATION FRAMEWORK ***
@@ -69,34 +65,128 @@ Based on the Matrix above, classify the code:
 
 1. Full Attack Chain: Meets ALL criteria for its specific Attack Type in the Matrix. The objective is strategically complete.
 2. Core Attack Chain: Meets the "Core" criteria in the Matrix. The capability exists locally or partially but fails to close the loop (e.g., Keylogger without Email, Ransomware without Note).
-3. Fragmented Attack Chain: Isolated suspicious snippets (e.g., just a base64 string, just a random import) without logic flow.
+3. Fragmented Attack Chain: Isolated suspicious snippets without logic flow.
 4. Benign Artifact: Legitimate, explainable code.
 
 Provide structured response:
-- **Malware Type:** (e.g., "Keylogger", "Wiper", "Backdoor")
+- **Malware Type:** (e.g., "Type E: Clipper")
 - **Classification:** "Full Attack Chain" | "Core Attack Chain" | ...
-- **Missing Components:** Critical missing steps based on the Matrix (e.g., "Missing Network Exfiltration module").
+- **Missing Components:** Critical missing steps based on the Matrix.
 - **Potential Impact:** Description of consequences.
 - **Threat Level:** High/Medium/Low.
 """
 
 
 
-CHECK_PROMPT = """Analyze the previous classification response's Missing Components part. 
-                If the inability to reach the next level is solely caused by non-logical issues such as syntax errors, missing imports, missing error handling, placeholder or fake IP addresses, minor formatting/encoding problems, or other superficial implementation faults, 
-                ignore those issues and re-evaluate the code as if they were fixed. 
-                
-                Produce a structured English response with these fields:
-                - Malware Type: (e.g., "Keylogger", "Wiper", "Backdoor")
-                - Classification: "Full Attack Chain" | "Core Attack Chain" | "Fragmented Attack Chain" | "Benign Artifact"
-                - Missing Components: If classified as "Core" or "Fragmented", list the specific logical capabilities missing to reach the next level. Ignore superficial blockers described above.
-                - Potential Impact: Describe consequences if the attack were fully realized.
-                - Threat Level: High/Medium/Low based on the logical capabilities present after ignoring superficial faults.
+CHECK_PROMPT = """ 
+You are the Supreme Quality Assurance Auditor. Review the previous analysis and the code.
 
-                Return only the structured response in plain English using the field names above."""
-SYSTEM_PROMPT = """You are a professional cybersecurity analyst tasked with analyzing code snippets from victim's perspective to classify given code snippets."""
-    
-        #Also ignore persistence mechanisms (e.g., file-based persistence, registry entries, scheduled tasks, or other long-term storage/auto-start mechanisms) when determining whether the attack reaches the next level. 
+PREVIOUS RESPONSE: 
+{response}
+
+ORIGINAL CODE SNIPPET: 
+{code_snippet}
+
+*** AUDIT TASKS ***
+1. Analyze "Missing Components" and re-Evaluate Classification: 
+   - If the reported missing components are just syntax errors, missing imports, undefined variables, invalid ip addresses, or placeholders,
+   IGNORE THEM. Assume they are fixed and upgrade the classification to the next level based on the original code snippet.
+   ATTENTION: Except for syntax errors, missing imports, undefined variables, invalid ip addresses, or placeholders, do NOT ignore any other missing components.
+
+2. **Generate Final Assessment:**
+   Respond in JSON format adhering to the following schema:
+  "Classification": "Full Attack Chain" | "Core Attack Chain" | "Fragmented Attack Chain" | "Benign Artifact",
+  "Missing_Components": "List of critical missing steps or 'None' if all components are present.",
+  "Malware_Type": "e.g., 'Type F: Clipboard Hijacker' or 'Type D: Wiper'",
+  "Threat_Level": "High" | "Medium" | "Low",
+  "Reasoning": "Explanation focusing on realized capability and ignored bugs.",
+  "Potential_Impact": "Specific damage description."
+
+"""
+
+SYSTEM_PROMPT = """
+ROLE:
+You are an elite Supply Chain Security Expert and Code Auditor. Your mission is to detect, classify, and explain malicious intent within software package updates based on "Realized Capability".
+
+CORE PHILOSOPHY: "INTENT OVER IMPLEMENTATION"
+- You analyze ARCHITECTURE and INTENT.
+- You IGNORE superficial implementation faults (syntax errors, missing imports, undefined variables/placeholders) if the malicious logic flow is visible.
+
+CLASSIFICATION:
+1. Full Attack Chain 
+2. Core Attack Chain
+3. Fragmented Attack Chain
+4. Benign Artifact
+"""
+
+
+
+
+# gemini_key = "AIzaSyCcTlGHPZWzL2koyUPx8PM3jsOOh_rawL8" 
+
+# AUDIT_SCHEMA = types.Schema(
+#     type=types.Type.OBJECT,
+#     properties={
+#         "Classification": types.Schema(
+#             type=types.Type.STRING,
+#             enum=["Full Attack Chain", "Core Attack Chain", "Fragmented Attack Chain", "Benign Artifact"]
+#         ),
+#         "Malware_Type": types.Schema(
+#             type=types.Type.STRING,
+#             description="e.g., 'Type F: Clipboard Hijacker' or 'Type D: Wiper'"
+#         ),
+#         "Threat_Level": types.Schema(
+#             type=types.Type.STRING,
+#             enum=["High", "Medium", "Low"]
+#         ),
+#         "Reasoning": types.Schema(
+#             type=types.Type.STRING,
+#             description="Explanation focusing on realized capability and ignored bugs."
+#         ),
+#         "Potential_Impact": types.Schema(
+#             type=types.Type.STRING,
+#             description="Specific damage description."
+#         )
+#     },
+#     required=["Classification", "Malware_Type", "Threat_Level", "Reasoning", "Potential_Impact"]
+# )
+
+
+# class Gemini_Evaluate:
+#     def __init__(self, api_key=gemini_key, model="gemini-1.5-pro"):
+#         self.client = genai.Client(api_key=api_key)
+#         self.model = model
+        
+#     def malicious_analyze(self, code_snippet):
+#         assertion_prompt = ASSERTION_PROMPT.format(code_snippet=code_snippet)
+#         contents = ASSERTION_PROMPT.format(code_snippet=code_snippet)
+#         generate_content_config = types.GenerateContentConfig(
+#             system_instruction=SYSTEM_PROMPT,
+#             temperature=0.2
+#         )
+#         response_1 = self.client.models.generate_content(
+#             model=self.model,
+#             contents=contents,
+#             config=generate_content_config,
+#         )
+#         assertion_response = response_1.text
+        
+#         check_contents = CHECK_PROMPT.format(response=assertion_response, code_snippet=code_snippet)
+#         generate_content_config = types.GenerateContentConfig(
+#             response_mime_type="application/json",
+#             system_instruction=SYSTEM_PROMPT,
+#             schema=AUDIT_SCHEMA,
+#             temperature=0.1
+#         )
+#         response_2 = self.client.models.generate_content(
+#             model=self.model,
+#             contents=check_contents,
+#             config=generate_content_config,
+#         )
+#         response = response_2.text
+#         return response
+
+
 class LLM_Evaluate:
     def __init__(self,api_key, base_url):
         self.client = OpenAI(
@@ -105,6 +195,30 @@ class LLM_Evaluate:
         )
         self.conversation_history = []
 
+    def malware_analyze(self, code_snippet):
+        assertion_prompt = ASSERTION_PROMPT.format(code_snippet=code_snippet)
+        completion = self.client.chat.completions.create(
+            model="deepseek-v3-1-250821",
+            messages=[
+                {"role": "system", "content": SYSTEM_PROMPT},
+                {"role": "user", "content": assertion_prompt}
+            ]
+        )
+        
+        response_1 = completion.choices[0].message.content
+        check_prompt = CHECK_PROMPT.format(response=response_1, code_snippet=code_snippet)
+        completion = self.client.chat.completions.create(
+            model="deepseek-v3-1-250821",
+            messages=[
+                {"role": "system", "content": SYSTEM_PROMPT},
+                {"role": "user", "content": check_prompt}
+            ],
+            response_format={"type": "json_object"}
+        )
+        response_2 = completion.choices[0].message.content
+        return json.loads(response_2)  # 解析JSON字符串为Python字典
+        
+    
     def sensitive_api_check(self, code_snippet):
         completion = self.client.chat.completions.create(
             # 将推理接入点 <Model>替换为 Model ID

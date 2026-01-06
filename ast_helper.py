@@ -104,6 +104,8 @@ def find_enclosing_function(file_path, code_line):
     
     if os.path.exists(file_path) is False:
         return None, None
+    if not os.path.isfile(file_path):
+        return None, None
     with open(file_path, 'r', encoding='utf-8') as f:
         source_code = f.read()
 

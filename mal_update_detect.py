@@ -287,10 +287,11 @@ def single_repo_analyze(repo_path: str,joern_workspace_path: str):
     commit_before = commit_list[0]
     
     for i in range(len(commit_list) - 1):
-        commit_after = commit_list[i + 1]
-        if commit_after != "47da41ebe07a43cfdc7c98553822ce052a501ecf":
+        if i < 20:
             continue
-            
+        commit_after = commit_list[i + 1]
+        # if commit_after != "47da41ebe07a43cfdc7c98553822ce052a501ecf":
+        #     continue
         commit_helper = CommitHelper(repo_path, commit_after)
         joern_path_after = os.path.join(joern_workspace_path, repo_name, str(i+1) + "_" + commit_after[:5])
         
@@ -354,7 +355,7 @@ def parallel_repo_analyze(repo_dir: str, joern_workspace_path: str):
 
 if __name__ == "__main__":
         
-    dataset_dir = "/home/lxy/lxy_codes/mal_update_detect/mal_update_dataset/multiple_commits/MirageLink-rat-gui"
+    dataset_dir = "/home/lxy/lxy_codes/mal_update_detect/mal_update_dataset/multiple_commits/pinkcord"
     joern_workspace_path = "/home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/"
     single_repo_analyze(dataset_dir, joern_workspace_path)
     # parallel_repo_analyze(dataset_dir, joern_workspace_path)

@@ -114,6 +114,8 @@ def has_data_flow(node_id: str, taint_graph: nx.MultiDiGraph, pdg: nx.MultiDiGra
 # 更新taint图，添加新增敏感API调用的子图
 def taint_graph_update(project_after: project.Project, file_changed_lines: dict, taint_graph_relabeled: nx.MultiDiGraph) -> nx.MultiDiGraph:    
     for changed_file, changed_lines in file_changed_lines.items():
+        if not changed_file.lower().endswith(".py"):
+            continue
         added_lines = changed_lines["added"]
         changed_funcs = {}
         for line_num in added_lines:
@@ -135,7 +137,7 @@ def taint_graph_update(project_after: project.Project, file_changed_lines: dict,
                 for node_id in pdg_after.nodes():
                     node_full_data = project_after.cpg.nodes[node_id]
                     if int(node_full_data.get("LINE_NUMBER", -1)) == line_num:
-                        if node_id == "30064771140":
+                        if node_id == "30064771364":
                             print("debug")
                         if node_full_data.get("label","") == "METHOD_RETURN":
                             continue
@@ -287,10 +289,10 @@ def single_repo_analyze(repo_path: str,joern_workspace_path: str):
     commit_before = commit_list[0]
     
     for i in range(len(commit_list) - 1):
-        if i < 20:
-            continue
+        # if i < 20:
+        #     continue
         commit_after = commit_list[i + 1]
-        # if commit_after != "47da41ebe07a43cfdc7c98553822ce052a501ecf":
+        # if commit_after != "22dee64b6fb8e4997908cb916debfd5f8464e0c1":
         #     continue
         commit_helper = CommitHelper(repo_path, commit_after)
         joern_path_after = os.path.join(joern_workspace_path, repo_name, str(i+1) + "_" + commit_after[:5])
@@ -355,7 +357,7 @@ def parallel_repo_analyze(repo_dir: str, joern_workspace_path: str):
 
 if __name__ == "__main__":
         
-    dataset_dir = "/home/lxy/lxy_codes/mal_update_detect/mal_update_dataset/multiple_commits/pinkcord"
+    dataset_dir = "/home/lxy/lxy_codes/mal_update_detect/mal_update_dataset/multiple_commits/python-malware"
     joern_workspace_path = "/home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/"
     single_repo_analyze(dataset_dir, joern_workspace_path)
     # parallel_repo_analyze(dataset_dir, joern_workspace_path)

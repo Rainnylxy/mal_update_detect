@@ -59,12 +59,14 @@ class GraphHelper:
             "importlib.py:<module>.<member>(machinery).SourceFileLoader.__init__","importlib.py:<module>.<member>(machinery).SourceFileLoader.get_data",
             
             # 进程相关
-            "subprocess.py:<module>.call","os.py:<module>.getuid","subprocess.py:<module>.Popen","subprocess.py:<module>.getoutput","subprocess.py:<module>.run","subprocess.py:<module>.check_output",
+            "subprocess.py:<module>.call","os.py:<module>.getuid","subprocess.py:<module>.Popen.__init__","subprocess.py:<module>.getoutput","subprocess.py:<module>.run","subprocess.py:<module>.check_output",
             "threading.py:<module>.Thread","threading.py:<module>.Thread.__init__","threading.py:<module>.Thread.start",
             "pynput.py:<module>.keyboard.Listener",
             "__builtin.exec","__builtin.eval",
             # keylogger相关
-            "keyboard.py:<module>.on_release","keyboard.py:<module>.on_press","keyboard.py:<module>.block_key"
+            "keyboard.py:<module>.on_release","keyboard.py:<module>.on_press","keyboard.py:<module>.block_key",
+            # 数据库相关
+            "sqlite3.py:<module>.connect"
         ]
         
         sensitive_functions_judge_code = [

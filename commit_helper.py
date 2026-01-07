@@ -9,7 +9,7 @@ def get_useful_commits(repo_path):
     """
     try:
         cmd = ['git', '-C', repo_path, 'log', '--pretty=format:%H', '--reverse']
-        result = subprocess.run(cmd, capture_output=True, text=True, check=True)
+        result = subprocess.run(cmd, capture_output=True, text=True, encoding='utf-8', errors='ignore', check=True)
     except subprocess.CalledProcessError:
         return []
 
@@ -21,7 +21,7 @@ def get_useful_commits(repo_path):
             print("debug")
         try:
             cmd_files = ['git', '-C', repo_path, 'diff-tree','--root','-m', '--no-commit-id', '--name-only', '-r', ch]
-            r = subprocess.run(cmd_files, capture_output=True, text=True, check=True)
+            r = subprocess.run(cmd_files, capture_output=True, text=True, encoding='utf-8', errors='ignore', check=True)
             files = [p.strip() for p in r.stdout.splitlines() if p.strip()]
         except subprocess.CalledProcessError:
             continue
@@ -37,7 +37,7 @@ def analyze_line_changes(repo_path, commit_hash, file_path):
     
     # 获取该提交的diff
     cmd = ['git', '-C', repo_path, 'show', '--unified=0', commit_hash, '--', file_path]
-    result = subprocess.run(cmd, capture_output=True, text=True)
+    result = subprocess.run(cmd, capture_output=True, text=True, encoding='utf-8', errors='ignore')
     diff_output = result.stdout
     
     line_mapping = {}
@@ -94,7 +94,7 @@ class CommitHelper:
         cmd_parents = [
             'git', '-C', self.repo_path, 'rev-list', '--parents', '-n', '1', self.commit_hash
         ]
-        parents_output = subprocess.check_output(cmd_parents, text=True).strip()
+        parents_output = subprocess.check_output(cmd_parents, text=True, encoding='utf-8', errors='ignore').strip()
         parts = parents_output.split()
         # 返回第一个父提交
         return parts[1] if len(parts) > 1 else None
@@ -112,9 +112,8 @@ class CommitHelper:
         cmd_diff = [
             'git', '-C', self.repo_path, 'diff', f'{self.parent_hash}',f'{self.commit_hash}', '--unified=0', '--no-renames'
         ]
-        diff_output = subprocess.check_output(cmd_diff, text=True)
+        diff_output = subprocess.check_output(cmd_diff, text=True, encoding='utf-8', errors='ignore')
         return diff_output
-
 
     def parse_hunks(self):
         diff_text = self.get_commit_diff()

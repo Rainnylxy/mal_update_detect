@@ -270,7 +270,7 @@ class Project:
             pdg = nx.nx_agraph.read_dot(os.path.join(pdg_dir, pdg_path))
             pdg.graph['file_path'] = self.get_pdg_file_path(pdg)
             for node in pdg.nodes():
-                if node == "30064771089":
+                if node == "30064771371":
                     print("debug")
                 node_full_data = self.cpg.nodes[node]
                 if node_full_data.get("label", '') == "CALL":
@@ -305,10 +305,18 @@ class Project:
                                         taint_graph.add_edge(entry_node, method_node, label="FUNCTION_CALL",color="blue")
                             
                     elif "<module>." in node_full_data.get("METHOD_FULL_NAME",""):
-                        if not self.is_project_call(node):
-                            continue
-                        call_name = node_full_data.get("NAME","")
-                        call_path = node_full_data.get("METHOD_FULL_NAME","").split(':')[0]
+                        # 特殊处理threading.Thread(target=xxx)的情况
+                        if node_full_data.get("METHOD_FULL_NAME","") == "threading.py:<module>.Thread.__init__":
+                            args = self.get_call_argument_nodes(node)
+                            arg_target = args[0]
+                            call_name = self.cpg.nodes[arg_target].get("CODE","")
+                            call_path = self.cpg.nodes[arg_target].get("TYPE_FULL_NAME","").split(':')[0]
+                        else:   
+                            if not self.is_project_call(node):
+                                continue
+                            call_name = node_full_data.get("NAME","")
+                            call_path = node_full_data.get("METHOD_FULL_NAME","").split(':')[0]
+                        
                         if (call_name, call_path) in sensitive_methods:
                             method_node = sensitive_methods[(call_name, call_path)]
                             entry_node = node
@@ -323,9 +331,9 @@ class Project:
         for node in taint_graph_copy.nodes():
             if self.cpg.nodes[node].get("label","") != "CALL":
                 continue
-            if node == "30064771203":
+            if node == "30064771364":
                 print("debug")
-            args = self.get_call_argument_nodes(node)
+            args = self.get_call_argument_nodes(node)                
             for arg in args:
                 if self.cpg.nodes[arg].get("label","") != "CALL":
                     continue
@@ -380,7 +388,7 @@ class Project:
         for node, data in taint_graph_copy.nodes(data=True):                
             # sub-function call 继续追踪
             if self.cpg.nodes[node].get("label","") == "CALL":
-                if node == "30064771248":
+                if node == "30064771371":
                     print("debug")
                 if not self.is_project_call(node):
                     continue
@@ -605,7 +613,7 @@ class Project:
                 qi += 1
                 if taint_graph.nodes[cur].get("fillcolor","") == "lightgrey":
                     has_sensitive_node = True
-                if cur == "107374182415":
+                if cur == "107374182404":
                     print("debug")
                 if taint_graph.nodes[cur].get("label","") == "METHOD":
                     # 对于METHOD节点，添加CLASS_BODY和CLASS_INIT相关节点
@@ -622,15 +630,27 @@ class Project:
                                     break
                             break
                     
+                
+                # 后继肯定需要加入
+                successors = set(taint_graph.successors(cur))
+                comp_nodes.update(successors)
+                queue.extend(successor for successor in successors if successor not in queue)
+                # 前驱视情况加入
+                predecessors = set(taint_graph.predecessors(cur))
+                predecessors = predecessors - sub_call_callers.get(cur, set())
+                comp_nodes.update(predecessors)
+                queue.extend(predecessor for predecessor in predecessors if predecessor not in queue)
+                
+
                 # 遍历邻居（前驱和后继，视作无向）
-                neighbors = set(taint_graph.predecessors(cur)) | set(taint_graph.successors(cur))
-                callers = sub_call_callers.get(cur, set())
-                neighbors = neighbors - callers  # 排除所有 SUB_FUNCTION_CALL 的 caller 节点
-                for nb in neighbors:
-                    if nb in comp_nodes:
-                        continue
-                    comp_nodes.add(nb)
-                    queue.append(nb)
+                # neighbors = set(taint_graph.predecessors(cur)) | set(taint_graph.successors(cur))
+                # callers = sub_call_callers.get(cur, set())
+                # neighbors = neighbors - callers  # 排除所有 SUB_FUNCTION_CALL 的 caller 节点
+                # for nb in neighbors:
+                #     if nb in comp_nodes:
+                #         continue
+                #     comp_nodes.add(nb)
+                #     queue.append(nb)
                     # # 检查 SUB_FUNCTION_CALL 入边规则
                     # callers = sub_call_callers.get(nb, set())
                     # if len(callers) == 0:

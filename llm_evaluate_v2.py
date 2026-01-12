@@ -75,9 +75,9 @@ You are an elite Supply Chain Security Expert and Code Auditor. Your mission is 
 2. **Core Attack Chain (Latent Threat / High Confidence)**
    - **Criteria**: The code cannot currently execute successfully, missing critical components to execute malicious behavior (e.g., missing exfiltration, missing execution trigger, missing ransom note). But the INTENT and ARCHITECTURE for malicious activity is CLEAR.
    - **Exclusion**: Mere presence of generic networking or file operations WITHOUT malicious context is NOT Core.
-   - **Verdict**: MALICIOUS UPDATE.
+   - **Verdict**: WARNING UPDATE.
 
-3. **Fragmented Attack Chain (Ambiguous / Low Confidence)**
+3. **Undetermined Call Chain (Ambiguous / Low Confidence)**
    - **Criteria**: Isolated **"Dual-Use" components** that lack a demonstrable malicious context.
    - **Verdict**: BENIGN (Treat as Noise/Safe unless combined with other indicators).
 
@@ -117,8 +117,7 @@ ORIGINAL CODE SNIPPET:
 
 ### AUDIT TASKS
 - Review the "Missing Components".
-- If the reported missing parts are **only** Syntax Errors, Missing Imports, or Undefined Variables, or Missing error handling, **IGNORE THEM**. 
-- Assume they are fixed and re-evaluate the classification based on the original code snippet.
+- If the reported missing parts does NOT actually prevent the malicious logic from being executed, reclassify the code.
 - **CRITICAL**: If the "Missing Component" is the **CORE PAYLOAD FUNCTION** itself (e.g., the `Encrypt` function body is missing in a Ransomware script, or the `socket.send` line is missing in a Spyware script), you CANNOT classify it as "Full Attack Chain".
 - Otherwise, keep the original classification.
 
@@ -126,7 +125,7 @@ ORIGINAL CODE SNIPPET:
 ### FINAL OUTPUT
 Respond in JSON format:
 {{
-  "Classification": "Full Attack Chain" | "Core Attack Chain" | "Fragmented Attack Chain" | "Benign Artifact",
+  "Classification": "Full Attack Chain" | "Core Attack Chain" | "Undetermined Call Chain" | "Benign Artifact",
   "Missing_Components": "List of critical logic gaps (or 'None' if fixed by AUDIT TASKS).",
   "Malware_Type": "String",
   "Threat_Level": "High" | "Medium" | "Low",

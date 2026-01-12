@@ -162,11 +162,44 @@ def find_enclosing_class(file_path, code_line):
     return None, None
 
 
+def extract_import_lines(file_path: str) -> list[str]:
+    PY_LANGUAGE = Language(tspython.language())
+    parser = Parser(PY_LANGUAGE)
+
+    with open(file_path, 'r', encoding='utf-8') as f:
+        source_code = f.read()
+
+    tree = parser.parse(bytes(source_code, "utf8"))
+    
+    import_query = """
+    [
+        (import_statement) @import_stmt
+        (import_from_statement) @import_from_stmt
+    ]
+    """
+    query = PY_LANGUAGE.query(import_query)
+    captures = query.captures(tree.root_node)
+    
+    
+    import_stmts = captures["import_stmt"] if "import_stmt" in captures else []
+    import_from_stmts = captures["import_from_stmt"] if "import_from_stmt" in captures else []
+    import_lines = []
+    for node in import_stmts:
+        start_line = node.start_point[0] + 1
+        end_line = node.end_point[0] + 1
+        for line_num in range(start_line, end_line + 1):
+            import_lines.append(line_num)
+    for node in import_from_stmts:
+        start_line = node.start_point[0] + 1
+        end_line = node.end_point[0] + 1
+        for line_num in range(start_line, end_line + 1):
+            import_lines.append(line_num)
+    import_lines = sorted(set(import_lines))
+    
+    return import_lines
+
+
 if __name__ == "__main__":
-    file_path = 'commit_test_repo/file2.py'
-    code_line = 8  # Example line number
-    func_name = find_enclosing_function(file_path, code_line)
-    if func_name:
-        print(f"The line {code_line} is inside the function: {func_name}")
-    else:
-        print(f"The line {code_line} is not inside any function.")
+    file_path = '/home/lxy/lxy_codes/mal_update_detect/mal_update_dataset/multiple_commits/PythonVirusStiller/Virus/Stiller.py'
+    lines = extract_import_lines(file_path)
+    print(lines)

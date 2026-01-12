@@ -2,6 +2,7 @@ import os
 import subprocess
 import networkx as nx
 import re
+from ast_parser import ASTParser
 
 def joern_export(package_code_path: str, package_joern_path: str, language: str,
                  overwrite: bool = True):
@@ -35,38 +36,32 @@ def joern_export(package_code_path: str, package_joern_path: str, language: str,
 def joern_preprocess(package_dir: str, pdg_dir: str, cfg_dir: str, cpg_dir: str):
     cpg = nx.nx_agraph.read_dot(os.path.join(cpg_dir, 'export.dot'))
     for pdg_file in os.listdir(pdg_dir):
-        file_id = pdg_file.split('-')[0]
+        # file_id = pdg_file.split('-')[0]
         pdg: nx.MultiDiGraph = nx.nx_agraph.read_dot(os.path.join(pdg_dir, pdg_file))
-        cfg: nx.MultiDiGraph = nx.nx_agraph.read_dot(os.path.join(cfg_dir, f'{file_id}-cfg.dot'))
+        # cfg: nx.MultiDiGraph = nx.nx_agraph.read_dot(os.path.join(cfg_dir, f'{file_id}-cfg.dot'))
 
-        ddg_null_edges = []
-        for u, v, k, d in pdg.edges(data=True, keys=True):
-            if d['label'] in ['DDG: ', 'CDG: ']:
-                ddg_null_edges.append((u, v, k, d))
-        pdg.remove_edges_from(ddg_null_edges)
+        # ddg_null_edges = []
+        # for u, v, k, d in pdg.edges(data=True, keys=True):
+        #     if d['label'] in ['DDG: ', 'CDG: ']:
+        #         ddg_null_edges.append((u, v, k, d))
+        # pdg.remove_edges_from(ddg_null_edges)
 
-        redundant_edges = []
-        pdg: nx.MultiDiGraph = nx.compose(pdg, cfg)
-        for u, v, k, d in pdg.edges(data=True, keys=True):
-            if 'label' not in d:
-                number_of_edges = pdg.number_of_edges(u, v)
-                if number_of_edges == 1:
-                    pdg.edges[u, v, k]['label'] = 'CFG'
-                else:
-                    redundant_edges.append((u, v, k, d))
-        pdg.remove_edges_from(redundant_edges)
-
-        method_node = None
-        param_nodes = []
+        # redundant_edges = []
+        # pdg: nx.MultiDiGraph = nx.compose(pdg, cfg)
+        # for u, v, k, d in pdg.edges(data=True, keys=True):
+        #     if 'label' not in d:
+        #         number_of_edges = pdg.number_of_edges(u, v)
+        #         if number_of_edges == 1:
+        #             pdg.edges[u, v, k]['label'] = 'CFG'
+        #         else:
+        #             redundant_edges.append((u, v, k, d))
+        # pdg.remove_edges_from(redundant_edges)
+        
         for node in pdg.nodes:
             for key, value in cpg.nodes[node].items():
                 pdg.nodes[node][key] = value
             pdg.nodes[node]['NODE_TYPE'] = pdg.nodes[node]['label']
             node_type = pdg.nodes[node]['NODE_TYPE']
-            if node_type == 'METHOD':
-                method_node = node
-            if node_type == 'METHOD_PARAMETER_IN':
-                param_nodes.append(node)
             if 'CODE' not in pdg.nodes[node]:
                 pdg.nodes[node]['CODE'] = ''
             node_code = pdg.nodes[node]['CODE'].replace("\n", "\\n")
@@ -74,10 +69,8 @@ def joern_preprocess(package_dir: str, pdg_dir: str, cfg_dir: str, cpg_dir: str)
             node_line = pdg.nodes[node]['LINE_NUMBER'] if 'LINE_NUMBER' in pdg.nodes[node] else 0
             node_column = pdg.nodes[node]['COLUMN_NUMBER'] if 'COLUMN_NUMBER' in pdg.nodes[node] else 0
             pdg.nodes[node]['label'] = f"[{node}][{node_line}:{node_column}][{node_type}]: {node_code}"
-            if pdg.nodes[node]['NODE_TYPE'] == 'METHOD_RETURN':
-                pdg.remove_edges_from(list(pdg.in_edges(node)))
-        for param_node in param_nodes:
-            pdg.add_edge(method_node, param_node, label='DDG')
+
+
 
         # add_edge(pdg, package_dir, method_node, param_nodes)
 
@@ -109,7 +102,7 @@ def add_edge(pdg: nx.MultiDiGraph, package_dir, method_node, param_nodes):
                     current_line_number += 1
 
             # 解析lambda函数的中formal parameter
-            ast_parser = ASTParser(code_snippet, 'javascript')
+            ast_parser = ASTParser(code_snippet, 'python')
             formal_parameter_query = '(formal_parameters)@formal'
             query_result = ast_parser.query_oneshot(formal_parameter_query)
             formal_parameter_list = []
@@ -135,12 +128,12 @@ def add_edge(pdg: nx.MultiDiGraph, package_dir, method_node, param_nodes):
             for param_node in param_nodes:
                 pdg.add_edge(method_node, param_node, label='DDG')
 
-def joern_export_and_preprocess(package_name: str, package_code_path: str, joern_workspace_path: str, language: str,
+def joern_export_and_preprocess(package_code_path: str, package_joern_path: str, language: str,
                            overwrite: bool = False):
-    joern_export(package_name, package_code_path, joern_workspace_path, language, overwrite)
-    pdg_dir = os.path.join(joern_workspace_path, package_name, 'pdg')
-    cfg_dir = os.path.join(joern_workspace_path, package_name, 'cfg')
-    cpg_dir = os.path.join(joern_workspace_path, package_name, 'cpg')
+    joern_export(package_code_path, package_joern_path, language, overwrite)
+    pdg_dir = os.path.join(package_joern_path, 'pdg')
+    cfg_dir = os.path.join(package_joern_path, 'cfg')
+    cpg_dir = os.path.join(package_joern_path, 'cpg')
     joern_preprocess(package_code_path, pdg_dir, cfg_dir, cpg_dir)
 
 

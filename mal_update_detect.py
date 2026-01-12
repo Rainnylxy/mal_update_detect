@@ -281,41 +281,45 @@ def single_repo_analyze(repo_path: str,joern_workspace_path: str):
         logger.error(f"Failed to get commit list for repository {repo_name}")
 
     
-    joern_path_init = os.path.join(joern_workspace_path, repo_name, f"0_{commit_list[0][:5]}")
-    project_before = project.Project(repo_path, joern_path_init, commit_list[0], flag = "before")
+    try:
     
-    project_dir_dict = {}
-    project_dir_dict[commit_list[0]] = joern_path_init
-    commit_before = commit_list[0]
-    
-    for i in range(len(commit_list) - 1):
-        # if i < 20:
-        #     continue
-        commit_after = commit_list[i + 1]
-        # if commit_after != "164d2fc164c9d9beedc8b0311c13794baaa29a90":
-        #     continue
-        commit_helper = CommitHelper(repo_path, commit_after)
-        joern_path_after = os.path.join(joern_workspace_path, repo_name, str(i+1) + "_" + commit_after[:5])
+        joern_path_init = os.path.join(joern_workspace_path, repo_name, f"0_{commit_list[0][:5]}")
+        project_before = project.Project(repo_path, joern_path_init, commit_list[0], flag = "before")
         
-        if commit_helper.parent_hash is None:
-            project_after = project.Project(repo_path, joern_path_after,commit_after,flag = "before")
-            continue
+        project_dir_dict = {}
+        project_dir_dict[commit_list[0]] = joern_path_init
+        commit_before = commit_list[0]
         
-        logger.info(f"Analyzing commit {i+1}/{len(commit_list)-1}: {commit_after}")
-        if commit_helper.parent_hash != commit_before:
-            commit_before = commit_helper.parent_hash
-            if commit_before not in project_dir_dict:
-                project_dir_dict[commit_before] = str(i) + "_" + commit_before[:5]
-            joern_path_before = os.path.join(joern_workspace_path, repo_name, project_dir_dict.get(commit_before, ""))
-            # joern_path_before = os.path.join(joern_workspace_path, repo_name, "4_"+commit_before[:5])
-            project_before = project.Project(repo_path, joern_path_before, commit_before,flag = "before")
-        
-        project_after = project.Project(repo_path, joern_path_after,commit_after,flag = "after")
-        project_dir_dict[commit_after] = joern_path_after
-        
-        project_after = analyze(project_before,project_after, repo_path, commit_helper, joern_path_after)
-        project_before = project_after
-        commit_before = commit_after
+        for i in range(len(commit_list) - 1):
+            # if i < 20:
+            #     continue
+            commit_after = commit_list[i + 1]
+            # if commit_after != "c45da279a886d6fa87572ad3f919b3d4c80b9856":
+            #     continue
+            commit_helper = CommitHelper(repo_path, commit_after)
+            joern_path_after = os.path.join(joern_workspace_path, repo_name, str(i+1) + "_" + commit_after[:5])
+            
+            if commit_helper.parent_hash is None:
+                project_after = project.Project(repo_path, joern_path_after,commit_after,flag = "before")
+                continue
+            
+            logger.info(f"Analyzing commit {i+1}/{len(commit_list)-1}: {commit_after}")
+            if commit_helper.parent_hash != commit_before:
+                commit_before = commit_helper.parent_hash
+                if commit_before not in project_dir_dict:
+                    project_dir_dict[commit_before] = str(i) + "_" + commit_before[:5]
+                joern_path_before = os.path.join(joern_workspace_path, repo_name, project_dir_dict.get(commit_before, ""))
+                # joern_path_before = os.path.join(joern_workspace_path, repo_name, "4_"+commit_before[:5])
+                project_before = project.Project(repo_path, joern_path_before, commit_before,flag = "before")
+            
+            project_after = project.Project(repo_path, joern_path_after,commit_after,flag = "after")
+            project_dir_dict[commit_after] = joern_path_after
+            
+            project_after = analyze(project_before,project_after, repo_path, commit_helper, joern_path_after)
+            project_before = project_after
+            commit_before = commit_after
+    except Exception as e:
+        logger.error(f"Error processing repository {repo_name}: {e}")
     
 
 def parallel_repo_analyze(repo_dir: str, joern_workspace_path: str):
@@ -329,9 +333,9 @@ def parallel_repo_analyze(repo_dir: str, joern_workspace_path: str):
         if not os.path.isdir(repo_path):
             continue
         repo_name = os.path.basename(repo_path)
-        # if os.path.exists(os.path.join(joern_workspace_path, repo_name)):
-        #     # logger.info(f"Skipping already processed repository: {repo_name}")
-        #     continue
+        if not os.path.exists(os.path.join(joern_workspace_path, repo_name)):
+            logger.info(f"Skipping repository: {repo_name}")
+            continue
         if repo_name in ["PythonMalware_1","python-malware1","python-malware2","python-malware3","Malware1","Keylogger1",".vscode","TWO_PART"]:
             logger.info(f"Skipping known problematic repository: {repo_name}")
             continue
@@ -340,9 +344,9 @@ def parallel_repo_analyze(repo_dir: str, joern_workspace_path: str):
             useful_count = int(csv_read.loc[csv_read.iloc[:, 0].astype(str) == str(repo_name), csv_read.columns[2]].iat[0])
         except Exception:
             useful_count = 0
-        if useful_count > 50:
-            logger.info(f"Skipping repository {repo_path} with {useful_count} useful commits")
-            continue
+        # if useful_count > 50:
+        #     logger.info(f"Skipping repository {repo_path} with {useful_count} useful commits")
+        #     continue
         logger.info(f"Processing repository: {repo_name}")
         
         result = pool.apply_async(single_repo_analyze, args=(repo_path, joern_workspace_path))
@@ -357,7 +361,7 @@ def parallel_repo_analyze(repo_dir: str, joern_workspace_path: str):
 
 if __name__ == "__main__":
         
-    dataset_dir = "/home/lxy/lxy_codes/mal_update_detect/mal_update_dataset/multiple_commits/shameleon"
+    dataset_dir = "/home/lxy/lxy_codes/mal_update_detect/mal_update_dataset/multiple_commits/1stMalware"
     joern_workspace_path = "/home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/"
     single_repo_analyze(dataset_dir, joern_workspace_path)
     # parallel_repo_analyze(dataset_dir, joern_workspace_path)

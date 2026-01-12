@@ -32,7 +32,7 @@ class GraphHelper:
             # 网络相关
             "socket.py:<module>.socket","socket.py:<module>.socket.<returnValue>.connect","socket.py:<module>.socket.<returnValue>.recv",
             "socket.py:<module>.socket.<returnValue>.send","socket.py:<module>.gethostname","socket.py:<module>.socket.<returnValue>.bind",
-            "socket.py:<module>.socket.<returnValue>.listen","socket.py:<module>.socket.<returnValue>.accept",
+            "socket.py:<module>.socket.<returnValue>.listen","socket.py:<module>.socket.<returnValue>.accept","socket.py:<module>.gethostbyname",
             "ssl.py:<module>.wrap_socket","ssl.py:<module>.create_default_context",
             "multiprocessing.connection:Listener",
             "smtplib.py:<module>.SMTP","smtplib.py:<module>.SMTP_SSL",
@@ -53,7 +53,7 @@ class GraphHelper:
             "hashlib.py:<module>.sha256","hashlib.py:<module>.md5","hashlib.py:<module>.sha1",
             # 系统信息相关
             "os.py:<module>.getenv","os.py:<module>.environ","os.py:<module>.system","os.py:<module>.getlogin",
-            "platform.py:<module>.uname","platform.py:<module>.platform",
+            "platform.py:<module>.uname","platform.py:<module>.platform","platform.py:<module>.machine",
             "getpass.py:<module>.getuser",
             # 文件操作相关
             "shutil.py:<module>.copyfile","shutil.py:<module>.move","shutil.py:<module>.rmtree",
@@ -66,6 +66,7 @@ class GraphHelper:
             "threading.py:<module>.Thread","threading.py:<module>.Thread.__init__","threading.py:<module>.Thread.start",
             "pynput.py:<module>.keyboard.Listener",
             "__builtin.exec","__builtin.eval",
+            "os.py:<module>.popen",
             # keylogger相关
             "keyboard.py:<module>.on_release","keyboard.py:<module>.on_press","keyboard.py:<module>.block_key",
             # 数据库相关

@@ -11,6 +11,7 @@ import joern_helper
 import graph_helper
 from ast_helper import closest_block_line
 from rapidfuzz import fuzz
+from ast_helper import extract_import_lines
 
 class Project:
     def __init__(self, repo_path, joern_path,commit, flag=""):
@@ -20,7 +21,8 @@ class Project:
         self.datagraph = {}
         self.switch_commit()
         if os.path.exists(joern_path) is False:
-            joern_helper.joern_export(repo_path, joern_path, language='pythonsrc')
+            # joern_helper.joern_export(repo_path, joern_path, language='pythonsrc')
+            joern_helper.joern_export_and_preprocess(repo_path, joern_path, language='pythonsrc')
         self.cpg = nx.nx_agraph.read_dot(os.path.join(joern_path, 'cpg', 'export.dot'))
         self.pdgs = {}
         self.load_pdgs()
@@ -35,8 +37,10 @@ class Project:
         if os.path.exists(taint_dot_path):
             self.taintDG = nx.nx_agraph.read_dot(taint_dot_path)
         else:
-            self.build_taint_data_graph()
-            taint_dot_path = os.path.join(self.joern_path,  "taint.dot")
+            taint_dot_path = os.path.join(self.joern_path, "taint.dot")
+            if not os.path.exists(taint_dot_path):
+                self.build_taint_data_graph()
+            # taint_dot_path = os.path.join(self.joern_path,  "taint.dot")
             self.taintDG = nx.nx_agraph.read_dot(taint_dot_path)
     
     
@@ -270,7 +274,7 @@ class Project:
             pdg = nx.nx_agraph.read_dot(os.path.join(pdg_dir, pdg_path))
             pdg.graph['file_path'] = self.get_pdg_file_path(pdg)
             for node in pdg.nodes():
-                if node == "30064771186":
+                if node == "30064771240":
                     print("debug")
                 node_full_data = self.cpg.nodes[node]
                 if node_full_data.get("label", '') == "CALL":
@@ -486,7 +490,7 @@ class Project:
 
         while to_visit:
             current_node = to_visit.pop()
-            if current_node == "107374182400":
+            if current_node == "30064771240":
                 print("debug")
             if current_node in visited:
                 continue
@@ -504,7 +508,7 @@ class Project:
                     continue
                 # if node_attrs.get("label") is None and self.cpg.nodes.get(v, {}).get("label") != "CALL":
                 #     continue
-                if "DDG" not in data.get("label", ''):
+                if "DDG" not in data.get("label", '') and "CDG" not in data.get("label", ''):
                     continue
                 if data.get("label", '') == "DDG: ":
                     continue
@@ -532,7 +536,7 @@ class Project:
                     continue
                 # if node_attrs.get("label") is None and self.cpg.nodes.get(u, {}).get("label") != "CALL":
                 #     continue
-                if "DDG" not in data.get("label", ''):
+                if "DDG" not in data.get("label", '') and "CDG" not in data.get("label", ''):
                     continue
                 if data.get("label", '') == "DDG: " and self.cpg.nodes[u].get("label","") != "METHOD":
                     continue
@@ -654,32 +658,6 @@ class Project:
                 predecessors = predecessors - sub_call_callers.get(cur, set())
                 comp_nodes.update(predecessors)
                 queue.extend(predecessor for predecessor in predecessors if predecessor not in queue)
-                
-
-                # 遍历邻居（前驱和后继，视作无向）
-                # neighbors = set(taint_graph.predecessors(cur)) | set(taint_graph.successors(cur))
-                # callers = sub_call_callers.get(cur, set())
-                # neighbors = neighbors - callers  # 排除所有 SUB_FUNCTION_CALL 的 caller 节点
-                # for nb in neighbors:
-                #     if nb in comp_nodes:
-                #         continue
-                #     comp_nodes.add(nb)
-                #     queue.append(nb)
-                    # # 检查 SUB_FUNCTION_CALL 入边规则
-                    # callers = sub_call_callers.get(nb, set())
-                    # if len(callers) == 0:
-                    #     # 没有 SUB_FUNCTION_CALL 入边，可以加入
-                    #     comp_nodes.add(nb)
-                    #     queue.append(nb)
-                    # else:
-                    #     # 如果有 SUB_FUNCTION_CALL 入边，只在至少一个 caller 已在当前连通图时才加入
-                    #     # 注意：即便 callers 有多个，只把 nb 加入当前 METHOD 的连通图，其他 callers 不会被自动认为和当前 METHOD 连通
-                    #     if callers & comp_nodes:
-                    #         comp_nodes.add(nb)
-                    #         queue.append(nb)
-                    #     else:
-                    #         # 所有 caller 都不在当前连通图，跳过
-                    #         continue
             
             # 跳过没有敏感节点的连通图
             if not has_sensitive_node:
@@ -728,6 +706,15 @@ class Project:
                         if block_line not in comp_map[fp]:
                             comp_map[fp].add(block_line)
             
+            # 补充import语句
+            for fp in list(comp_map.keys()):
+                if not os.path.exists(fp):
+                    continue
+                import_lines = extract_import_lines(fp)
+                for imp_line in import_lines:
+                    if imp_line not in comp_map[fp]:
+                        comp_map[fp].add(imp_line)
+            
             # 展平并排序
             flat_lines = []
             for fp, lines in comp_map.items():
@@ -743,13 +730,12 @@ class Project:
             comp_dir = os.path.join(methods_out_root, f'{method_path}_{safe_method_name}')
             os.makedirs(comp_dir, exist_ok=True)
             out_path = os.path.join(comp_dir, f'{safe_method_name}_slice.py')
-    
+
             
             codes = []
             with open(out_path, 'w', encoding='utf-8') as out_f:
                 current_file = None
                 for fp, ln, code_line in flat_lines:
-                   
                     if fp != current_file:
                         current_file = fp
                     out_f.write(code_line.rstrip() + "\n")

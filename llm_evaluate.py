@@ -18,7 +18,7 @@ Step 2: Apply the "Success Criteria Matrix" below to determine if the attack is 
 - Goal: Steal sensitive data (env vars, passwords, keystrokes) and send it to the attacker.
 - Core Attack Chain: Successfully collects/records data to a variable or local file, BUT lacks the network logic to exfiltrate it. Or, has exfiltration logic but fails to collect any data.
 - Full Attack Chain: Collects data AND exfiltrate it (via HTTP, SMTP, DNS, FTP, or Webhook).
-  * Rule: No Network Exfiltration = NOT Full (for this type). No data collection = NOT Full.
+  * Rule: Not all network connections count as exfiltration. Only connections that send sensitive data qualify.
 
 [Type B: Backdoor / RAT (Remote Access Trojan) / Reverse Shell]
 - Goal: Provide unauthorized remote access or command execution.
@@ -33,9 +33,16 @@ Step 2: Apply the "Success Criteria Matrix" below to determine if the attack is 
 - Full Attack Chain: Encrypts files AND generates a ransom note/demand.
 
 [Type D: Wiper / Destructive Malware]
-- Goal: Destroy/Encrypt essential data/files or exhaust resources (Availability Loss).
-- Core Attack Chain: Logic exists but is unreachable.
-- Full Attack Chain: The destructive logic (delete, overwrite, flood) is present and executable. If the user loses immediate access to the files, the Wiper logic is Complete.
+- Goal: Irreversibly destroy data to cause damage (Sabotage).
+- Anti-Definition (NOT Malware): 
+  * Utility functions explicitly named for cleanup (e.g., `clean_tmp`, `clear_cache`, `delete_images`).
+  * Operations limited to safe scopes (e.g., `/tmp`, user-provided non-root paths).
+  * Code that handles specific file types for business logic (e.g., deleting processed .lock files).
+- Core Attack Chain: Destructive logic exists but is unreachable or lacks a trigger.
+- Full Attack Chain: 
+  1. Targeting High-Value/System Paths (e.g., /, /etc, C:\Windows, /var/www).
+  2. Indiscriminate Deletion: Logic deletes without clear filters OR targets widely (recursive delete on root).
+
 
 [Type E: Clipboard Hijacker / Clipper] 
 - Goal: INTERCEPT and MODIFY user clipboard content (specifically crypto addresses) to redirect funds.
@@ -90,18 +97,17 @@ ORIGINAL CODE SNIPPET:
 *** AUDIT TASKS ***
 1. Analyze "Missing Components" and re-Evaluate Classification: 
    - If the reported missing components are just syntax errors, missing imports, undefined variables, invalid ip addresses, or placeholders,
-   IGNORE THEM. Assume they are fixed and upgrade the classification to the next level based on the original code snippet.
+   IGNORE THEM. Assume they are fixed and re-evaluate the classification based on the original code snippet.
    ATTENTION: Except for syntax errors, missing imports, undefined variables, invalid ip addresses, or placeholders, do NOT ignore any other missing components.
 
 2. **Generate Final Assessment:**
    Respond in JSON format adhering to the following schema:
   "Classification": "Full Attack Chain" | "Core Attack Chain" | "Fragmented Attack Chain" | "Benign Artifact",
-  "Missing_Components": "List of critical missing steps or 'None' if all components are present.",
+  "Missing_Components": "List of critical missing steps",
   "Malware_Type": "e.g., 'Type F: Clipboard Hijacker' or 'Type D: Wiper'",
   "Threat_Level": "High" | "Medium" | "Low",
   "Reasoning": "Explanation focusing on realized capability and ignored bugs.",
   "Potential_Impact": "Specific damage description."
-
 """
 
 SYSTEM_PROMPT = """
@@ -111,12 +117,6 @@ You are an elite Supply Chain Security Expert and Code Auditor. Your mission is 
 CORE PHILOSOPHY: "INTENT OVER IMPLEMENTATION"
 - You analyze ARCHITECTURE and INTENT.
 - You IGNORE superficial implementation faults (syntax errors, missing imports, undefined variables/placeholders) if the malicious logic flow is visible.
-
-CLASSIFICATION:
-1. Full Attack Chain 
-2. Core Attack Chain
-3. Fragmented Attack Chain
-4. Benign Artifact
 """
 
 

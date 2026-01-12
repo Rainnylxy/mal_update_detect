@@ -31,7 +31,8 @@ class GraphHelper:
         sensitive_functions_v = [
             # 网络相关
             "socket.py:<module>.socket","socket.py:<module>.socket.<returnValue>.connect","socket.py:<module>.socket.<returnValue>.recv",
-            "socket.py:<module>.socket.<returnValue>.send",
+            "socket.py:<module>.socket.<returnValue>.send","socket.py:<module>.gethostname","socket.py:<module>.socket.<returnValue>.bind",
+            "socket.py:<module>.socket.<returnValue>.listen","socket.py:<module>.socket.<returnValue>.accept",
             "ssl.py:<module>.wrap_socket","ssl.py:<module>.create_default_context",
             "multiprocessing.connection:Listener",
             "smtplib.py:<module>.SMTP","smtplib.py:<module>.SMTP_SSL",
@@ -51,10 +52,12 @@ class GraphHelper:
             "win32crypt.py:<module>.CryptUnprotectData",
             "hashlib.py:<module>.sha256","hashlib.py:<module>.md5","hashlib.py:<module>.sha1",
             # 系统信息相关
-            "os.py:<module>.getenv","os.py:<module>.environ","os.py:<module>.system",
+            "os.py:<module>.getenv","os.py:<module>.environ","os.py:<module>.system","os.py:<module>.getlogin",
+            "platform.py:<module>.uname","platform.py:<module>.platform",
+            "getpass.py:<module>.getuser",
             # 文件操作相关
             "shutil.py:<module>.copyfile","shutil.py:<module>.move","shutil.py:<module>.rmtree",
-            "os.py:<module>.makedirs","os.py:<module>.walk","os.py:<module>.chdir","os.py:<module>.remove","os.py:<module>.rename","os.py:<module>.getcwd",
+            "os.py:<module>.makedirs","os.py:<module>.walk","os.py:<module>.chdir","os.py:<module>.remove","os.py:<module>.rename","os.py:<module>.getcwd","os.py:<module>.listdir","os.py:<module>.stat",
             "__builtin.open","__builtin.input",
             "importlib.py:<module>.<member>(machinery).SourceFileLoader.__init__","importlib.py:<module>.<member>(machinery).SourceFileLoader.get_data",
             
@@ -66,7 +69,10 @@ class GraphHelper:
             # keylogger相关
             "keyboard.py:<module>.on_release","keyboard.py:<module>.on_press","keyboard.py:<module>.block_key",
             # 数据库相关
-            "sqlite3.py:<module>.connect"
+            "sqlite3.py:<module>.connect",
+            # 注册表相关
+            "winreg.py:<module>.OpenKey","winreg.py:<module>.CreateKey",
+            # 其他敏感函数
         ]
         
         sensitive_functions_judge_code = [

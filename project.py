@@ -270,7 +270,7 @@ class Project:
             pdg = nx.nx_agraph.read_dot(os.path.join(pdg_dir, pdg_path))
             pdg.graph['file_path'] = self.get_pdg_file_path(pdg)
             for node in pdg.nodes():
-                if node == "30064771371":
+                if node == "30064771186":
                     print("debug")
                 node_full_data = self.cpg.nodes[node]
                 if node_full_data.get("label", '') == "CALL":
@@ -292,7 +292,7 @@ class Project:
                                     continue
                                 taint_graph.add_edge(entry_node, method_node, label="FUNCTION_CALL",color="blue")
                             # ATTENTION PLEASE: 特殊处理joern识别METHOD_FULL_NAME错误的情况,只根据call_name匹配
-                            else:
+                            elif ".py" not in call_path:
                                 for (s_call_name, s_call_path), method_node in sensitive_methods.items():
                                     if s_call_name == call_name:
                                         entry_node = arg
@@ -304,11 +304,17 @@ class Project:
                                             continue
                                         taint_graph.add_edge(entry_node, method_node, label="FUNCTION_CALL",color="blue")
                             
-                    elif "<module>." in node_full_data.get("METHOD_FULL_NAME",""):
+                    elif "<module>." in node_full_data.get("METHOD_FULL_NAME","") or "<returnValue>." in node_full_data.get("METHOD_FULL_NAME",""):
                         # 特殊处理threading.Thread(target=xxx)的情况
                         if node_full_data.get("METHOD_FULL_NAME","") == "threading.py:<module>.Thread.__init__":
                             args = self.get_call_argument_nodes(node)
-                            arg_target = args[0]
+                            arg_target = None
+                            for arg in args:
+                                if self.cpg.nodes[arg].get("ARGUMENT_NAME","") == "target":
+                                    arg_target = arg
+                                    break
+                            if arg_target is None:
+                                continue
                             call_name = self.cpg.nodes[arg_target].get("CODE","")
                             call_path = self.cpg.nodes[arg_target].get("TYPE_FULL_NAME","").split(':')[0]
                         else:   
@@ -323,7 +329,15 @@ class Project:
                             taint_graph = self.taint_trace(node, taint_graph, pdg)
                             if taint_graph.has_edge(entry_node, method_node):
                                 continue
-                            taint_graph.add_edge(entry_node, method_node, label="FUNCTION_CALL",color="blue")       
+                            taint_graph.add_edge(entry_node, method_node, label="FUNCTION_CALL",color="blue")
+                        elif ".py" not in call_path:
+                            for (s_call_name, s_call_path), method_node in sensitive_methods.items():
+                                if s_call_name == call_name:
+                                    entry_node = node
+                                    taint_graph = self.taint_trace(node, taint_graph, pdg)
+                                    if taint_graph.has_edge(entry_node, method_node):
+                                        continue
+                                    taint_graph.add_edge(entry_node, method_node, label="FUNCTION_CALL",color="blue")
         return taint_graph
 
     def no_argument_call_node_add(self, taint_graph):
@@ -331,7 +345,7 @@ class Project:
         for node in taint_graph_copy.nodes():
             if self.cpg.nodes[node].get("label","") != "CALL":
                 continue
-            if node == "30064771364":
+            if node == "30064771337":
                 print("debug")
             args = self.get_call_argument_nodes(node)                
             for arg in args:
@@ -388,7 +402,7 @@ class Project:
         for node, data in taint_graph_copy.nodes(data=True):                
             # sub-function call 继续追踪
             if self.cpg.nodes[node].get("label","") == "CALL":
-                if node == "30064771371":
+                if node == "30064771337":
                     print("debug")
                 if not self.is_project_call(node):
                     continue

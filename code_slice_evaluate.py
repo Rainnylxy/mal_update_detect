@@ -1,4 +1,5 @@
 from llm_evaluate import LLM_Evaluate
+from llm_evaluate_v2 import LLM_Evaluate as LLM_Evaluate_v2
 import os
 import shutil
 import json
@@ -6,6 +7,10 @@ import json
 
 def LLM_analyze_code_slices(taint_slices_dir):
     llm_evaluate = LLM_Evaluate(
+        api_key="1d368dbf-5a67-448f-9356-49f9efa2fc13",
+        base_url="https://ark.cn-beijing.volces.com/api/v3"
+    )
+    llm_evaluate_v2 = LLM_Evaluate_v2(
         api_key="1d368dbf-5a67-448f-9356-49f9efa2fc13",
         base_url="https://ark.cn-beijing.volces.com/api/v3"
     )
@@ -17,7 +22,9 @@ def LLM_analyze_code_slices(taint_slices_dir):
                 print(f"Analyzing code slice from file: {file_path}")
                 with open(file_path, "r", encoding="utf-8") as fr:
                     code_slice = fr.read()
-                response = llm_evaluate.malware_analyze(code_slice)
+                # response_v1 = llm_evaluate.malware_analyze(code_slice)
+                response_v2 = llm_evaluate_v2.malware_analyze(code_slice)
+                response = response_v2
                 dir_path = os.path.dirname(file_path)
                 out_file = os.path.join(dir_path, "llm_response.json")
                 try:
@@ -59,5 +66,5 @@ if __name__ == "__main__":
     #             continue
     #         taint_slices_dir = os.path.join(commit_dir_path, "taint_slices_methods")
     #         LLM_analyze_code_slices(taint_slices_dir)
-    LLM_analyze_code_slices("/home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/python-malware/14_0c40b/taint_slices_methods") 
+    LLM_analyze_code_slices("/home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/crypto-clipper/4_299de/taint_slices_methods") 
     # Gemini_analyze_code_slices("/home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/PY-RAT/0_9ffc2/taint_slices_methods")

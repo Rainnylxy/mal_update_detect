@@ -292,7 +292,7 @@ def single_repo_analyze(repo_path: str,joern_workspace_path: str):
         # if i < 20:
         #     continue
         commit_after = commit_list[i + 1]
-        # if commit_after != "22dee64b6fb8e4997908cb916debfd5f8464e0c1":
+        # if commit_after != "164d2fc164c9d9beedc8b0311c13794baaa29a90":
         #     continue
         commit_helper = CommitHelper(repo_path, commit_after)
         joern_path_after = os.path.join(joern_workspace_path, repo_name, str(i+1) + "_" + commit_after[:5])
@@ -357,7 +357,7 @@ def parallel_repo_analyze(repo_dir: str, joern_workspace_path: str):
 
 if __name__ == "__main__":
         
-    dataset_dir = "/home/lxy/lxy_codes/mal_update_detect/mal_update_dataset/multiple_commits/python-malware"
+    dataset_dir = "/home/lxy/lxy_codes/mal_update_detect/mal_update_dataset/multiple_commits/shameleon"
     joern_workspace_path = "/home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/"
     single_repo_analyze(dataset_dir, joern_workspace_path)
     # parallel_repo_analyze(dataset_dir, joern_workspace_path)

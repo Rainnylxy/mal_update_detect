@@ -10,17 +10,17 @@ def process_commit(args):
     Args:
         args (tuple): (repo_path, commit_dir)
     """
-    # try:
-    repo_path, commit_dir = args
-    # if not os.path.exists(os.path.join(repo_path, commit_dir)):
-    #     return
-    commit = os.path.basename(commit_dir).split('_')[1]
-    print(f"Processing commit {commit}")
+    try:
+        repo_path, commit_dir = args
+        # if not os.path.exists(os.path.join(repo_path, commit_dir)):
+        #     return
+        commit = os.path.basename(commit_dir).split('_')[1]
+        print(f"Processing commit {commit}")
 
-    project = Project(repo_path, commit_dir, commit, flag="before")
-    project.extract_taint_codes(project.taintDG)
-    # except Exception as e:
-    #     print(f"Error processing {repo_path}/{commit_dir}: {e}")
+        project = Project(repo_path, commit_dir, commit, flag="before")
+        project.extract_taint_codes(project.taintDG)
+    except Exception as e:
+        print(f"Error processing {repo_path}/{commit_dir}: {e}")
 
 
 def process_import(joern_dir):

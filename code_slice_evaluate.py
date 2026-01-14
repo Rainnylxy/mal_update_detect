@@ -1,8 +1,44 @@
 from llm_evaluate import LLM_Evaluate
 from llm_evaluate_v2 import LLM_Evaluate as LLM_Evaluate_v2
+from llm_evaluate_v3 import LLM_Evaluate as LLM_Evaluate_v3
 import os
 import shutil
 import json
+
+
+def LLM_analyze_code_slice(code_slice_path):
+    llm_evaluate_v2 = LLM_Evaluate_v2(
+        api_key="1d368dbf-5a67-448f-9356-49f9efa2fc13",
+        base_url="https://ark.cn-beijing.volces.com/api/v3"
+    )
+    llm_evaluate_v3 = LLM_Evaluate_v3(
+        api_key="1d368dbf-5a67-448f-9356-49f9efa2fc13",
+        base_url="https://ark.cn-beijing.volces.com/api/v3"
+    )
+    
+    with open(code_slice_path, "r", encoding="utf-8") as fr:
+        code_slice = fr.read()
+    # response_v1 = llm_evaluate.malware_analyze(code_slice)
+    response_v2 = llm_evaluate_v2.malware_analyze(code_slice)
+    response_v3 = llm_evaluate_v3.malware_analyze(code_slice)
+    response = response_v3
+    dir_path = os.path.dirname(code_slice_path)
+    out_file_v3 = os.path.join(dir_path, "llm_response_v3.json")
+    out_file_v2 = os.path.join(dir_path, "llm_response_v2.json")
+    try:
+        with open(out_file_v2, "w", encoding="utf-8") as fw:
+            json.dump(response_v2, fw, ensure_ascii=False, indent=2)
+    except Exception as e:
+        with open(out_file_v2, "w", encoding="utf-8") as fw:
+            json.dump({"error": str(e), "raw_response": str(response_v2)}, fw, ensure_ascii=False, indent=2)
+    
+    try:
+        with open(out_file_v3, "w", encoding="utf-8") as fw:
+            json.dump(response_v3, fw, ensure_ascii=False, indent=2)
+    except Exception as e:
+        with open(out_file_v3, "w", encoding="utf-8") as fw:
+            json.dump({"error": str(e), "raw_response": str(response_v3)}, fw, ensure_ascii=False, indent=2)
+    return response_v2['Classification'], response_v3['Classification']    
 
 
 def LLM_analyze_code_slices(taint_slices_dir):
@@ -11,6 +47,10 @@ def LLM_analyze_code_slices(taint_slices_dir):
         base_url="https://ark.cn-beijing.volces.com/api/v3"
     )
     llm_evaluate_v2 = LLM_Evaluate_v2(
+        api_key="1d368dbf-5a67-448f-9356-49f9efa2fc13",
+        base_url="https://ark.cn-beijing.volces.com/api/v3"
+    )
+    llm_evaluate_v3 = LLM_Evaluate_v3(
         api_key="1d368dbf-5a67-448f-9356-49f9efa2fc13",
         base_url="https://ark.cn-beijing.volces.com/api/v3"
     )
@@ -24,14 +64,22 @@ def LLM_analyze_code_slices(taint_slices_dir):
                     code_slice = fr.read()
                 # response_v1 = llm_evaluate.malware_analyze(code_slice)
                 response_v2 = llm_evaluate_v2.malware_analyze(code_slice)
-                response = response_v2
+                response_v3 = llm_evaluate_v3.malware_analyze(code_slice)
+                response = response_v3
                 dir_path = os.path.dirname(file_path)
-                out_file = os.path.join(dir_path, "llm_response.json")
+                out_file_v3 = os.path.join(dir_path, "llm_response_v3.json")
+                out_file_v2 = os.path.join(dir_path, "llm_response_v2.json")
                 try:
-                    with open(out_file, "w", encoding="utf-8") as fw:
+                    with open(out_file_v2, "w", encoding="utf-8") as fw:
                         json.dump(response, fw, ensure_ascii=False, indent=2)
                 except Exception as e:
-                    with open(out_file, "w", encoding="utf-8") as fw:
+                    with open(out_file_v2, "w", encoding="utf-8") as fw:
+                        json.dump({"error": str(e), "raw_response": str(response)}, fw, ensure_ascii=False, indent=2)
+                try:
+                    with open(out_file_v3, "w", encoding="utf-8") as fw:
+                        json.dump(response, fw, ensure_ascii=False, indent=2)
+                except Exception as e:
+                    with open(out_file_v3, "w", encoding="utf-8") as fw:
                         json.dump({"error": str(e), "raw_response": str(response)}, fw, ensure_ascii=False, indent=2)
 
 # def Gemini_analyze_code_slices(taint_slices_dir):
@@ -66,5 +114,5 @@ if __name__ == "__main__":
     #             continue
     #         taint_slices_dir = os.path.join(commit_dir_path, "taint_slices_methods")
     #         LLM_analyze_code_slices(taint_slices_dir)
-    LLM_analyze_code_slices("/home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/crypto-clipper/4_299de/taint_slices_methods") 
+    LLM_analyze_code_slices("/home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/WannaHappy/5_ef915/taint_slices_methods") 
     # Gemini_analyze_code_slices("/home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/PY-RAT/0_9ffc2/taint_slices_methods")

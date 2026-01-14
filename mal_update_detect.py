@@ -283,7 +283,7 @@ def single_repo_analyze(repo_path: str,joern_workspace_path: str):
     
     try:
     
-        joern_path_init = os.path.join(joern_workspace_path, repo_name, f"0_{commit_list[0][:5]}")
+        joern_path_init = os.path.join(joern_workspace_path, repo_name, f"0_{commit_list[0][:5]}_00000")
         project_before = project.Project(repo_path, joern_path_init, commit_list[0], flag = "before")
         
         project_dir_dict = {}
@@ -294,15 +294,17 @@ def single_repo_analyze(repo_path: str,joern_workspace_path: str):
             # if i < 20:
             #     continue
             commit_after = commit_list[i + 1]
-            # if commit_after != "c45da279a886d6fa87572ad3f919b3d4c80b9856":
+            # if commit_after != "848409044ca4fc21f6283240f015077e7cbb0fe2":
             #     continue
             commit_helper = CommitHelper(repo_path, commit_after)
-            joern_path_after = os.path.join(joern_workspace_path, repo_name, str(i+1) + "_" + commit_after[:5])
+            # joern_path_after = os.path.join(joern_workspace_path, repo_name, str(i+1) + "_" + commit_after[:5])
             
             if commit_helper.parent_hash is None:
+                joern_path_after = os.path.join(joern_workspace_path, repo_name, str(i+1) + "_" + commit_after[:5] + "_00000")
                 project_after = project.Project(repo_path, joern_path_after,commit_after,flag = "before")
+                project_dir_dict[commit_after] = joern_path_after
                 continue
-            
+            joern_path_after = os.path.join(joern_workspace_path, repo_name, str(i+1) + "_" + commit_after[:5]+ "_" + commit_helper.parent_hash[:5])
             logger.info(f"Analyzing commit {i+1}/{len(commit_list)-1}: {commit_after}")
             if commit_helper.parent_hash != commit_before:
                 commit_before = commit_helper.parent_hash
@@ -359,9 +361,245 @@ def parallel_repo_analyze(repo_dir: str, joern_workspace_path: str):
         result.get()
 
 
+
+def single_repo_process(repo_path: str,joern_workspace_path: str):
+    repo_name = os.path.basename(repo_path)
+    try:
+        subprocess.check_output(
+                ["git", "-C", repo_path, "checkout", "FETCH_HEAD"],
+                stderr=subprocess.DEVNULL
+            )
+    except subprocess.CalledProcessError as e:
+        logger.error(f"Failed to checkout FETCH_HEAD for repository {repo_name}: {e}")
+        
+    try: 
+        commit_list = get_useful_commits(repo_path)
+    except subprocess.CalledProcessError:
+        commit_list = []
+
+    if not commit_list:
+        logger.error(f"Failed to get commit list for repository {repo_name}")
+
+    
+    try:
+    
+        joern_path_init = os.path.join(joern_workspace_path, repo_name, f"0_{commit_list[0][:5]}_00000")
+        project_before = project.Project(repo_path, joern_path_init, commit_list[0], flag = "before")
+        project_before.extract_codes_by_graph(project_before.taintDG)
+        
+        project_dir_dict = {}
+        project_dir_dict[commit_list[0]] = joern_path_init
+        commit_before = commit_list[0]
+        
+        for i in range(len(commit_list) - 1):
+            # if i < 20:
+            #     continue
+            commit_after = commit_list[i + 1]
+            # if commit_after != "848409044ca4fc21f6283240f015077e7cbb0fe2":
+            #     continue
+            commit_helper = CommitHelper(repo_path, commit_after)
+            # joern_path_after = os.path.join(joern_workspace_path, repo_name, str(i+1) + "_" + commit_after[:5])
+            
+            if commit_helper.parent_hash is None:
+                joern_path_after = os.path.join(joern_workspace_path, repo_name, str(i+1) + "_" + commit_after[:5] + "_00000")
+                project_after = project.Project(repo_path, joern_path_after,commit_after,flag = "before")
+                project_dir_dict[commit_after] = joern_path_after
+                continue
+            joern_path_after = os.path.join(joern_workspace_path, repo_name, str(i+1) + "_" + commit_after[:5]+ "_" + commit_helper.parent_hash[:5])
+            logger.info(f"Analyzing commit {i+1}/{len(commit_list)-1}: {commit_after}")
+            if commit_helper.parent_hash != commit_before:
+                commit_before = commit_helper.parent_hash
+                if commit_before not in project_dir_dict:
+                    project_dir_dict[commit_before] = str(i) + "_" + commit_before[:5]
+                joern_path_before = os.path.join(joern_workspace_path, repo_name, project_dir_dict.get(commit_before, ""))
+                # joern_path_before = os.path.join(joern_workspace_path, repo_name, "4_"+commit_before[:5])
+                project_before = project.Project(repo_path, joern_path_before, commit_before,flag = "before")
+            
+            project_after = project.Project(repo_path, joern_path_after,commit_after,flag = "after")
+            project_dir_dict[commit_after] = joern_path_after
+            
+            project_before.extract_codes_by_graph(project_before.taintDG)
+            project_after.extract_codes_by_graph(project_after.taintDG)
+            project_before = project_after
+            commit_before = commit_after
+    except Exception as e:
+        logger.error(f"Error processing repository {repo_name}: {e}")
+    
+
+
+
+def change_commit_name(repo_path: str,joern_workspace_path: str):
+    repo_name = os.path.basename(repo_path)
+    try:
+        subprocess.check_output(
+                ["git", "-C", repo_path, "checkout", "FETCH_HEAD"],
+                stderr=subprocess.DEVNULL
+            )
+    except subprocess.CalledProcessError as e:
+        logger.error(f"Failed to checkout FETCH_HEAD for repository {repo_name}: {e}")
+        
+    try: 
+        commit_list = get_useful_commits(repo_path)
+    except subprocess.CalledProcessError:
+        commit_list = []
+
+    if not commit_list:
+        logger.error(f"Failed to get commit list for repository {repo_name}")
+        return
+    
+    commit_dir_dict = {}
+    repo_joern_dir = os.path.join(joern_workspace_path, repo_name)
+    for commit_dir in os.listdir(repo_joern_dir):
+        if not os.path.isdir(os.path.join(repo_joern_dir, commit_dir)):
+            continue
+        parts = commit_dir.split("_")
+        commit_dir_dict[parts[1]] = commit_dir
+
+    joern_path_init = os.path.join(joern_workspace_path, repo_name, f"0_{commit_list[0][:5]}")
+    joern_path_init_new = joern_path_init + "_00000"
+    os.rename(
+        joern_path_init,
+        joern_path_init_new
+    )
+    
+    for i in range(len(commit_list) - 1):
+        commit_after = commit_list[i + 1]
+        commit_helper = CommitHelper(repo_path, commit_after)
+        joern_path_after = commit_dir_dict.get(commit_after[:5], "")
+        
+        if commit_helper.parent_hash is None:
+            joern_path_after_new = joern_path_after + "_00000"
+        else:
+            joern_path_after_new = joern_path_after + "_" + commit_helper.parent_hash[:5]
+        os.rename(
+            os.path.join(repo_joern_dir, joern_path_after),
+            os.path.join(repo_joern_dir, joern_path_after_new)
+        )
+
+
+
+def is_taint_graph_changed(repo_dir,joern_workspace_path,commit):
+    repo_name = os.path.basename(repo_dir)
+    repo_joern_dir = os.path.join(joern_workspace_path, repo_name)
+    for commit_dir in os.listdir(repo_joern_dir):
+        parts = commit_dir.split("_")
+        if parts[1] == commit[:5]:
+            joern_path = os.path.join(repo_joern_dir, commit_dir)
+            break
+    else:
+        return False
+    project_curr = project.Project(repo_dir, joern_path, commit, flag="after")
+    taint_graph_curr = project_curr.taintDG
+    
+    commit_before = CommitHelper(repo_dir, commit).parent_hash
+    for commit_dir in os.listdir(repo_joern_dir):
+        parts = commit_dir.split("_")
+        if parts[1] == commit_before[:5]:
+            joern_path_before = os.path.join(repo_joern_dir, commit_dir)
+            break
+    if "00000" not in joern_path_before:
+        project_before = project.Project(repo_dir, joern_path_before, commit, flag="before")
+    elif CommitHelper(repo_dir, commit_before).parent_hash is None:
+        project_before = project.Project(repo_dir, joern_path_before, commit_before, flag="before")
+    else:
+        project_before = project.Project(repo_dir, joern_path_before, commit_before, flag="after")
+    
+    taint_subgraphs_before = project_before.get_taint_subgraphs(project_before.taintDG)
+    taint_subgraphs_curr = project_curr.get_taint_subgraphs(project_curr.taintDG)
+    if not taint_subgraphs_before or not taint_subgraphs_curr:
+        return True
+    
+    for key, subgraph_before in taint_subgraphs_before.items():
+        if key not in taint_subgraphs_curr:
+            return True
+        subgraph_curr = taint_subgraphs_curr[key]
+
+        # 1. 完整性自检 (Sanity Check)
+        # 确保 relabel 没有意外丢失节点或边
+        if taint_graph_before.number_of_nodes() != taint_graph_before_relabeled.number_of_nodes():
+            print(f"{commit} Node count mismatch between taint_graph_before and taint_graph_before_relabeled")
+            return True
+        if taint_graph_before.number_of_edges() != taint_graph_before_relabeled.number_of_edges():
+            print(f"{commit} Edge count mismatch between taint_graph_before and taint_graph_before_relabeled")
+            return True
+
+        # 2. 数量初筛 (Fast Fail)
+        # 如果节点数或边数不同，肯定是变了
+        if taint_graph_before_relabeled.number_of_nodes() != taint_graph_curr.number_of_nodes():
+            print(f"{commit} Node count mismatch between taint_graph_before_relabeled and taint_graph_curr")
+            return True
+        if taint_graph_before_relabeled.number_of_edges() != taint_graph_curr.number_of_edges():
+            print(f"{commit} Edge count mismatch between taint_graph_before_relabeled and taint_graph_curr")
+            return True
+        
+        # 3. 节点级深度比对 (Node & Attribute Check)
+        # 这一步检测 "修改 (Modification)" 和 "替换"
+        for node in taint_graph_before_relabeled.nodes():
+            # A. 检查 ID 是否存在 (Deletion/Addition)
+            if node not in taint_graph_curr.nodes():
+                print(f"{commit} Node {node} missing in taint_graph_curr")
+                return True
+                
+            # B. 检查节点核心属性 (Content Modification)
+            # 注意：除了 CODE，如果你的图有其他关键属性(如 Type, LineNo等)，也要考虑是否对比
+            if taint_graph_before_relabeled.nodes[node].get("CODE") != taint_graph_curr.nodes[node].get("CODE"):
+                print(f"{commit} Node {node} CODE mismatch")
+                return True
+
+        # 4. [新增关键步骤] 边拓扑比对 (Edge Topology Check)
+        # 这一步检测 "逻辑重组" (A->B 变成了 A->C)
+        # 如果是有向图，edges() 返回 (u, v) 元组；如果是多重图，需要考虑 key
+        
+        edges_old = set(taint_graph_before_relabeled.edges())
+        edges_new = set(taint_graph_curr.edges())
+        
+        if edges_old != edges_new:
+            return True
+
+        # 5. [可选进阶] 边属性比对 (Edge Attribute Check)
+        # 如果你的边上有关键属性（比如 "条件: True/False" 或 "变量名"），也需要比对
+        # 如果边仅代表依赖关系而无属性，可跳过此步
+        for u, v in edges_old:
+            # 获取边的属性字典
+            attrs_old = taint_graph_before_relabeled.get_edge_data(u, v)
+            attrs_new = taint_graph_curr.get_edge_data(u, v)
+            
+            # 简单比对属性是否一致 (需要根据你的 NetworkX 版本和图类型 MultiDiGraph/DiGraph 调整)
+            if attrs_old != attrs_new:
+                return True
+
+    # 只有通过了以上所有检查，才认为是同构的
+    return False
+
+
+
 if __name__ == "__main__":
         
-    dataset_dir = "/home/lxy/lxy_codes/mal_update_detect/mal_update_dataset/multiple_commits/1stMalware"
+    repo_path = "/home/lxy/lxy_codes/mal_update_detect/mal_update_dataset/multiple_commits/1stMalware"
     joern_workspace_path = "/home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/"
-    single_repo_analyze(dataset_dir, joern_workspace_path)
+    repo_name = os.path.basename(repo_path)
+    try:
+        subprocess.check_output(
+                ["git", "-C", repo_path, "checkout", "FETCH_HEAD"],
+                stderr=subprocess.DEVNULL
+            )
+    except subprocess.CalledProcessError as e:
+        logger.error(f"Failed to checkout FETCH_HEAD for repository {repo_name}: {e}")
+        
+    try: 
+        commit_list = get_useful_commits(repo_path)
+    except subprocess.CalledProcessError:
+        commit_list = []
+
+    if not commit_list:
+        logger.error(f"Failed to get commit list for repository {repo_name}")
+    for commit in commit_list[1:]:
+        changed = is_taint_graph_changed(repo_path, joern_workspace_path, commit)
+        if changed:
+            logger.info(f"Taint graph changed for commit {commit} in repository {repo_name}")
+        else:
+            logger.info(f"Taint graph NOT changed for commit {commit} in repository {repo_name}")
+    # single_repo_analyze(dataset_dir, joern_workspace_path)
     # parallel_repo_analyze(dataset_dir, joern_workspace_path)
+    # change_commit_name(dataset_dir, joern_workspace_path)
+    # single_repo_process(repo_path, joern_workspace_path)

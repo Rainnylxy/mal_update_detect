@@ -1,75 +1,92 @@
-repo_name,commit_num,commit,code_slice,classification,llm_classify_v2,llm_classify_v3
-1stMalware,0,3fd09,_module__slice.py,unknown,Undetermined Call Chain,Benign Artifact
-1stMalware,1,ba466,_module__slice.py,unknown,Core Attack Chain,Core Attack Chain
-1stMalware,2,177b1,_module__slice.py,unknown,Core Attack Chain,Undetermined Call Chain
-1stMalware,2,177b1,_module__slice.py,unknown,Core Attack Chain,Benign Artifact
-1stMalware,3,f5809,_body__slice.py,unknown,Core Attack Chain,Undetermined Call Chain
-1stMalware,3,f5809,takeTheOwn_metaClassAdapter__slice.py,unknown,Core Attack Chain,Undetermined Call Chain
-1stMalware,3,f5809,_body__slice.py,unknown,Core Attack Chain,Undetermined Call Chain
-1stMalware,3,f5809,keycreation_metaClassAdapter__slice.py,unknown,Core Attack Chain,Core Attack Chain
-1stMalware,3,f5809,_module__slice.py,unknown,Core Attack Chain,Undetermined Call Chain
-1stMalware,4,c45da,_body__slice.py,unknown,Core Attack Chain,Core Attack Chain
-1stMalware,4,c45da,takeTheOwn_metaClassAdapter__slice.py,unknown,Core Attack Chain,Undetermined Call Chain
-1stMalware,4,c45da,keyCreation_metaClassAdapter__slice.py,unknown,Core Attack Chain,Undetermined Call Chain
-1stMalware,4,c45da,_body__slice.py,unknown,Core Attack Chain,Core Attack Chain
-1stMalware,4,c45da,useTheKey_metaClassAdapter__slice.py,unknown,Core Attack Chain,Core Attack Chain
-1stMalware,4,c45da,__init___metaClassAdapter__slice.py,unknown,Core Attack Chain,Undetermined Call Chain
-1stMalware,5,426f7,_body__slice.py,unknown,Core Attack Chain,Undetermined Call Chain
-1stMalware,5,426f7,takeTheOwn_metaClassAdapter__slice.py,unknown,Core Attack Chain,Core Attack Chain
-1stMalware,5,426f7,keyCreation_metaClassAdapter__slice.py,unknown,Core Attack Chain,Undetermined Call Chain
-1stMalware,5,426f7,_body__slice.py,unknown,Core Attack Chain,Core Attack Chain
-1stMalware,5,426f7,useTheKey_metaClassAdapter__slice.py,unknown,Core Attack Chain,Core Attack Chain
-1stMalware,5,426f7,__init___metaClassAdapter__slice.py,unknown,Core Attack Chain,Undetermined Call Chain
-1stMalware,6,21b58,_module__slice.py,unknown,Core Attack Chain,Undetermined Call Chain
-1stMalware,6,21b58,_body__slice.py,unknown,Core Attack Chain,Undetermined Call Chain
-1stMalware,6,21b58,takeTheOwn_metaClassAdapter__slice.py,unknown,Core Attack Chain,Undetermined Call Chain
-1stMalware,6,21b58,keyCreation_metaClassAdapter__slice.py,unknown,Core Attack Chain,Undetermined Call Chain
-1stMalware,6,21b58,exploreAll_metaClassAdapter__slice.py,unknown,Core Attack Chain,Core Attack Chain
-1stMalware,6,21b58,_body__slice.py,unknown,Core Attack Chain,Core Attack Chain
-1stMalware,6,21b58,useTheKey_metaClassAdapter__slice.py,unknown,Core Attack Chain,Core Attack Chain
-1stMalware,6,21b58,__init___metaClassAdapter__slice.py,unknown,Core Attack Chain,Undetermined Call Chain
-1stMalware,7,3a8ed,_module__slice.py,unknown,Core Attack Chain,Core Attack Chain
-1stMalware,7,3a8ed,_body__slice.py,unknown,Core Attack Chain,Undetermined Call Chain
-1stMalware,7,3a8ed,takeTheOwn_metaClassAdapter__slice.py,unknown,Core Attack Chain,Undetermined Call Chain
-1stMalware,7,3a8ed,keyCreation_metaClassAdapter__slice.py,unknown,Core Attack Chain,Undetermined Call Chain
-1stMalware,7,3a8ed,exploreAll_metaClassAdapter__slice.py,unknown,Core Attack Chain,Full Attack Chain
-1stMalware,7,3a8ed,_body__slice.py,unknown,Core Attack Chain,Full Attack Chain
-1stMalware,7,3a8ed,useTheKey_metaClassAdapter__slice.py,unknown,Core Attack Chain,Core Attack Chain
-1stMalware,7,3a8ed,__init___metaClassAdapter__slice.py,unknown,Core Attack Chain,Undetermined Call Chain
-1stMalware,8,03ca7,_body__slice.py,unknown,Core Attack Chain,Core Attack Chain
-1stMalware,8,03ca7,takeTheOwn_metaClassAdapter__slice.py,unknown,Core Attack Chain,Undetermined Call Chain
-1stMalware,8,03ca7,keyCreation_metaClassAdapter__slice.py,unknown,Core Attack Chain,Core Attack Chain
-1stMalware,8,03ca7,exploreAll_metaClassAdapter__slice.py,unknown,Core Attack Chain,Full Attack Chain
-1stMalware,8,03ca7,_body__slice.py,unknown,Core Attack Chain,Full Attack Chain
-1stMalware,8,03ca7,useTheKey_metaClassAdapter__slice.py,unknown,Core Attack Chain,Core Attack Chain
-1stMalware,8,03ca7,__init___metaClassAdapter__slice.py,unknown,Core Attack Chain,Undetermined Call Chain
-1stMalware,9,47f7a,_body__slice.py,unknown,Core Attack Chain,Undetermined Call Chain
-1stMalware,9,47f7a,takeTheOwn_metaClassAdapter__slice.py,unknown,Core Attack Chain,Undetermined Call Chain
-1stMalware,9,47f7a,keyCreation_metaClassAdapter__slice.py,unknown,Undetermined Call Chain,Undetermined Call Chain
-1stMalware,9,47f7a,exploreAll_metaClassAdapter__slice.py,unknown,Core Attack Chain,Full Attack Chain
-1stMalware,9,47f7a,_body__slice.py,unknown,Core Attack Chain,Core Attack Chain
-1stMalware,9,47f7a,useTheKey_metaClassAdapter__slice.py,unknown,Core Attack Chain,Undetermined Call Chain
-1stMalware,9,47f7a,__init___metaClassAdapter__slice.py,unknown,Undetermined Call Chain,Undetermined Call Chain
-1stMalware,10,3a1e0,_body__slice.py,unknown,Core Attack Chain,Undetermined Call Chain
-1stMalware,10,3a1e0,processus_metaClassAdapter__slice.py,unknown,Core Attack Chain,Undetermined Call Chain
-1stMalware,10,3a1e0,keyCreation_metaClassAdapter__slice.py,unknown,Core Attack Chain,Undetermined Call Chain
-1stMalware,10,3a1e0,exploreAll_metaClassAdapter__slice.py,unknown,Core Attack Chain,Full Attack Chain
-1stMalware,10,3a1e0,_body__slice.py,unknown,Core Attack Chain,Core Attack Chain
-1stMalware,10,3a1e0,useTheKey_metaClassAdapter__slice.py,unknown,Core Attack Chain,Core Attack Chain
-1stMalware,10,3a1e0,__init___metaClassAdapter__slice.py,unknown,Undetermined Call Chain,Undetermined Call Chain
-Backdoorcreator,0,04d0c,_module__slice.py,unknown,Core Attack Chain,Undetermined Call Chain
-Backdoorcreator,0,04d0c,_module__slice.py,unknown,Core Attack Chain,Undetermined Call Chain
-Backdoorcreator,1,22da0,_module__slice.py,unknown,Core Attack Chain,Undetermined Call Chain
-Backdoorcreator,1,22da0,_module__slice.py,unknown,Core Attack Chain,Undetermined Call Chain
-Backdoorcreator,2,677e6,_module__slice.py,unknown,Core Attack Chain,Undetermined Call Chain
-Backdoorcreator,2,677e6,_module__slice.py,unknown,Full Attack Chain,Undetermined Call Chain
-Backdoorcreator,3,697db,_module__slice.py,unknown,Core Attack Chain,Undetermined Call Chain
-Backdoorcreator,3,697db,_module__slice.py,unknown,Core Attack Chain,Undetermined Call Chain
-Backdoorcreator,4,ad97a,_module__slice.py,unknown,Core Attack Chain,Undetermined Call Chain
-Backdoorcreator,4,ad97a,_module__slice.py,unknown,Core Attack Chain,Undetermined Call Chain
-Backdoorcreator,5,c92d2,_module__slice.py,unknown,Core Attack Chain,Undetermined Call Chain
-Backdoorcreator,5,c92d2,_module__slice.py,unknown,Core Attack Chain,Full Attack Chain
-Backdoorcreator,6,1ce4c,_module__slice.py,unknown,Core Attack Chain,Undetermined Call Chain
-Backdoorcreator,6,1ce4c,_module__slice.py,unknown,Core Attack Chain,Full Attack Chain
-Backdoorcreator,7,417b1,_module__slice.py,unknown,Core Attack Chain,Undetermined Call Chain
-Backdoorcreator,7,417b1,_module__slice.py,unknown,Core Attack Chain,Undetermined Call Chain
+repo_name,commit_num,commit,code_slice,classification,llm_classify_v2
+1stMalware,0,3fd09,test.py__module__slice.py,unknown,Undetermined Call Chain
+1stMalware,1,ba466,modules_crypt_crypt.py__module__slice.py,unknown,Core Attack Chain
+1stMalware,2,177b1,modules_crypt_crypt.py__module__slice.py,unknown,Core Attack Chain
+1stMalware,2,177b1,test.py__module__slice.py,unknown,Undetermined Call Chain
+1stMalware,3,f5809,modules_crypt_crypt.py__body__slice.py,unknown,Core Attack Chain
+1stMalware,3,f5809,modules_crypt_crypt.py_keycreation_metaClassAdapter__slice.py,unknown,Benign Artifact
+1stMalware,3,f5809,test.py__module__slice.py,unknown,Undetermined Call Chain
+1stMalware,3,f5809,modules_rights_getRights.py__body__slice.py,unknown,Core Attack Chain
+1stMalware,3,f5809,modules_rights_getRights.py_takeTheOwn_metaClassAdapter__slice.py,unknown,Core Attack Chain
+1stMalware,4,c45da,modules_crypt_crypt.py_useTheKey_metaClassAdapter__slice.py,unknown,Core Attack Chain
+1stMalware,4,c45da,modules_crypt_crypt.py__body__slice.py,unknown,Core Attack Chain
+1stMalware,4,c45da,modules_crypt_crypt.py___init___metaClassAdapter__slice.py,unknown,Undetermined Call Chain
+1stMalware,4,c45da,modules_crypt_crypt.py_keyCreation_metaClassAdapter__slice.py,unknown,Undetermined Call Chain
+1stMalware,4,c45da,modules_rights_getRights.py__body__slice.py,unknown,Core Attack Chain
+1stMalware,4,c45da,modules_rights_getRights.py_takeTheOwn_metaClassAdapter__slice.py,unknown,Undetermined Call Chain
+1stMalware,5,426f7,modules_crypt_crypt.py_useTheKey_metaClassAdapter__slice.py,unknown,Core Attack Chain
+1stMalware,5,426f7,modules_crypt_crypt.py__body__slice.py,unknown,Core Attack Chain
+1stMalware,5,426f7,modules_crypt_crypt.py___init___metaClassAdapter__slice.py,unknown,Core Attack Chain
+1stMalware,5,426f7,modules_crypt_crypt.py_keyCreation_metaClassAdapter__slice.py,unknown,Undetermined Call Chain
+1stMalware,5,426f7,modules_rights_getRights.py__body__slice.py,unknown,Undetermined Call Chain
+1stMalware,5,426f7,modules_rights_getRights.py_takeTheOwn_metaClassAdapter__slice.py,unknown,Core Attack Chain
+1stMalware,6,21b58,modules_crypt_crypt.py_useTheKey_metaClassAdapter__slice.py,unknown,Core Attack Chain
+1stMalware,6,21b58,modules_crypt_crypt.py__body__slice.py,unknown,Core Attack Chain
+1stMalware,6,21b58,modules_crypt_crypt.py___init___metaClassAdapter__slice.py,unknown,Undetermined Call Chain
+1stMalware,6,21b58,modules_crypt_crypt.py_keyCreation_metaClassAdapter__slice.py,unknown,Undetermined Call Chain
+1stMalware,6,21b58,modules_crypt_crypt.py_exploreAll_metaClassAdapter__slice.py,unknown,Core Attack Chain
+1stMalware,6,21b58,modules_rights_getRights.py__body__slice.py,unknown,Undetermined Call Chain
+1stMalware,6,21b58,modules_network_smtp.py__module__slice.py,unknown,Core Attack Chain
+1stMalware,6,21b58,modules_rights_getRights.py_takeTheOwn_metaClassAdapter__slice.py,unknown,Core Attack Chain
+1stMalware,7,3a8ed,modules_crypt_crypt.py_useTheKey_metaClassAdapter__slice.py,unknown,Core Attack Chain
+1stMalware,7,3a8ed,modules_crypt_crypt.py__body__slice.py,unknown,Core Attack Chain
+1stMalware,7,3a8ed,modules_crypt_crypt.py___init___metaClassAdapter__slice.py,unknown,Core Attack Chain
+1stMalware,7,3a8ed,modules_crypt_crypt.py_keyCreation_metaClassAdapter__slice.py,unknown,Undetermined Call Chain
+1stMalware,7,3a8ed,modules_crypt_crypt.py_exploreAll_metaClassAdapter__slice.py,unknown,Full Attack Chain
+1stMalware,7,3a8ed,modules_rights_getRights.py__body__slice.py,unknown,Undetermined Call Chain
+1stMalware,7,3a8ed,modules_rights_getRights.py_takeTheOwn_metaClassAdapter__slice.py,unknown,Core Attack Chain
+1stMalware,7,3a8ed,modules_network_stmpgmail.py__module__slice.py,unknown,Core Attack Chain
+1stMalware,8,03ca7,modules_crypt_crypt.py_useTheKey_metaClassAdapter__slice.py,unknown,Core Attack Chain
+1stMalware,8,03ca7,modules_crypt_crypt.py__body__slice.py,unknown,Full Attack Chain
+1stMalware,8,03ca7,modules_crypt_crypt.py___init___metaClassAdapter__slice.py,unknown,Core Attack Chain
+1stMalware,8,03ca7,modules_crypt_crypt.py_keyCreation_metaClassAdapter__slice.py,unknown,Core Attack Chain
+1stMalware,8,03ca7,modules_crypt_crypt.py_exploreAll_metaClassAdapter__slice.py,unknown,Core Attack Chain
+1stMalware,8,03ca7,modules_rights_getRights.py__body__slice.py,unknown,Undetermined Call Chain
+1stMalware,8,03ca7,modules_rights_getRights.py_takeTheOwn_metaClassAdapter__slice.py,unknown,Core Attack Chain
+1stMalware,9,47f7a,modules_crypt_crypt.py_useTheKey_metaClassAdapter__slice.py,unknown,Core Attack Chain
+1stMalware,9,47f7a,modules_crypt_crypt.py__body__slice.py,unknown,Full Attack Chain
+1stMalware,9,47f7a,modules_crypt_crypt.py___init___metaClassAdapter__slice.py,unknown,Undetermined Call Chain
+1stMalware,9,47f7a,modules_crypt_crypt.py_keyCreation_metaClassAdapter__slice.py,unknown,Core Attack Chain
+1stMalware,9,47f7a,modules_crypt_crypt.py_exploreAll_metaClassAdapter__slice.py,unknown,Core Attack Chain
+1stMalware,9,47f7a,modules_rights_getRights.py__body__slice.py,unknown,Core Attack Chain
+1stMalware,9,47f7a,modules_rights_getRights.py_takeTheOwn_metaClassAdapter__slice.py,unknown,Core Attack Chain
+1stMalware,10,3a1e0,modules_crypt_crypt.py_useTheKey_metaClassAdapter__slice.py,unknown,Core Attack Chain
+1stMalware,10,3a1e0,modules_crypt_crypt.py__body__slice.py,unknown,Full Attack Chain
+1stMalware,10,3a1e0,modules_crypt_crypt.py___init___metaClassAdapter__slice.py,unknown,Undetermined Call Chain
+1stMalware,10,3a1e0,modules_crypt_crypt.py_keyCreation_metaClassAdapter__slice.py,unknown,Core Attack Chain
+1stMalware,10,3a1e0,modules_crypt_crypt.py_exploreAll_metaClassAdapter__slice.py,unknown,Core Attack Chain
+1stMalware,10,3a1e0,modules_rights_getRights.py__body__slice.py,unknown,Undetermined Call Chain
+1stMalware,10,3a1e0,modules_rights_getRights.py_processus_metaClassAdapter__slice.py,unknown,Core Attack Chain
+Backdoorcreator,0,04d0c,backdoorcreate.py__module__slice.py,unknown,Core Attack Chain
+Backdoorcreator,0,04d0c,server.py__module__slice.py,unknown,Undetermined Call Chain
+Backdoorcreator,1,22da0,backdoorcreate.py__module__slice.py,unknown,Core Attack Chain
+Backdoorcreator,1,22da0,server.py__module__slice.py,unknown,Undetermined Call Chain
+Backdoorcreator,2,677e6,backdoorcreate.py__module__slice.py,unknown,Core Attack Chain
+Backdoorcreator,2,677e6,server.py__module__slice.py,unknown,Undetermined Call Chain
+Backdoorcreator,3,697db,backdoorcreate.py__module__slice.py,unknown,Core Attack Chain
+Backdoorcreator,3,697db,server.py__module__slice.py,unknown,Undetermined Call Chain
+Backdoorcreator,4,ad97a,backdoorcreate.py__module__slice.py,unknown,Core Attack Chain
+Backdoorcreator,4,ad97a,server.py__module__slice.py,unknown,Undetermined Call Chain
+Backdoorcreator,5,c92d2,backdoorcreate.py__module__slice.py,unknown,Core Attack Chain
+Backdoorcreator,5,c92d2,server.py__module__slice.py,unknown,Undetermined Call Chain
+Backdoorcreator,6,1ce4c,backdoorcreate.py__module__slice.py,unknown,Core Attack Chain
+Backdoorcreator,6,1ce4c,server.py__module__slice.py,unknown,Undetermined Call Chain
+Backdoorcreator,7,417b1,backdoorcreate.py__module__slice.py,unknown,Full Attack Chain
+Backdoorcreator,7,417b1,server.py__module__slice.py,unknown,Undetermined Call Chain
+Basic-Keylogger,0,5a51a,keylogger.py__module__slice.py,unknown,Full Attack Chain
+Basic-Keylogger,1,808fa,keylogger.py__module__slice.py,unknown,Benign Artifact
+Basic-Keylogger,2,b573a,keylogger.py__module__slice.py,unknown,Core Attack Chain
+Basic-Keylogger,3,00252,keylogger.py__module__slice.py,unknown,Undetermined Call Chain
+beep,0,244fc,virus.py__module__slice.py,unknown,Benign Artifact
+beep,1,aac79,virus.py__module__slice.py,unknown,Full Attack Chain
+beep,2,01a62,virus.py__module__slice.py,unknown,Full Attack Chain
+beep,3,a6a72,virus.py__module__slice.py,unknown,Full Attack Chain
+beep,4,6ca31,virus.py__module__slice.py,unknown,Core Attack Chain
+beep,5,55be7,virus.py__module__slice.py,unknown,Core Attack Chain
+beep,6,53e58,virus.py__module__slice.py,unknown,Full Attack Chain
+beep,7,1ade8,virus.py__module__slice.py,unknown,Undetermined Call Chain
+beep,8,77881,virus.py__module__slice.py,unknown,Core Attack Chain
+beep,9,beae0,virus.py__module__slice.py,unknown,Full Attack Chain
+beep,10,9719c,virus.py__module__slice.py,unknown,Core Attack Chain
+beep,11,6a815,virus.py__module__slice.py,unknown,Full Attack Chain
+beep,12,41a8e,virus.py__module__slice.py,unknown,Core Attack Chain

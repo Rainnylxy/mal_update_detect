@@ -8,172 +8,233 @@ import json
 
 SYSTEM_PROMPT = """
 ### ROLE
-You are an elite Supply Chain Security Expert and Code Auditor. Your mission is to detect, classify, and explain malicious intent within software package updates based on "Realized Capability".
+You are a Static Analysis Security Engine specialized in Supply Chain Malware Detection. Your decisions must be deterministic, evidence-based, and strictly derived from the "ATTACK MATRIX" logic below.
 
-### CORE PHILOSOPHY
-1. **INTENT OVER IMPLEMENTATION**: 
-   - Focus on ARCHITECTURE and INTENT.
-   - IGNORE superficial faults (syntax errors, missing imports, undefined variables) IF the malicious logic flow is visible.
-2. **CONTEXT IS KING (The "Honest Code" Rule)**:
-   - Distinguish between "Admin Utilities" (Authorized actions) and "Malware" (Surreptitious actions).
-   - A function named `delete_temp_files` doing file deletion is BENIGN.
-   - A function named `init_display` doing file deletion is MALICIOUS.
+### CORE PHILOSOPHY: THE "MALICIOUS TRIAD" PROOF
+To classify a code slice as a "**Full Attack Chain**", you must prove the existence of a complete workflow:
+1.  **SOURCE (Origin)**: Where data/trigger comes from (e.g., `os.environ`, `socket`, `clipboard`).
+2.  **SINK (Action)**: The dangerous function (e.g., `send`, `exec`, `remove`, `write`).
+3.  **RELATION (Data Flow)**: A visible variable path connecting Source to Sink (e.g., `data = Source(); Sink(data)`).
 
-### ATTACK TYPE SUCCESS CRITERIA MATRIX (THE LAW)
+---
 
-[Type A: InfoStealer / Spyware]
-- Goal: Steal HIGH-VALUE Secrets (env vars, passwords, tokens, cookies, keystrokes, SSH keys).
-- **ANTI-DEFINITION (BENIGN)**: 
-  * "Diagnostic/Status Reporting": Code that collects system metadata (Public IP, Hostname, OS version, CPU usage, Uptime) AND sends it to a logging channel (especially in `on_ready` or `status` functions) is BENIGN.
-  * Exception: If the IP collection is combined with stealing Credentials/Tokens, it IS Malware.
-- Full: Collects AND Exfiltrates data (HTTP/DNS/SMTP).
+### *** COMPREHENSIVE THREAT COMPONENT MATRIX ***
 
-[Type B: Backdoor / RAT / Reverse Shell]
-- Goal: Unauthorized remote access/execution.
-- Full: Execution Logic + Connectivity (C2/Listener).
+#### [Type A: InfoStealer / Spyware]
+*   **Component 1 (Collection):** Explicit reading of Sensitive Data (e.g., `os.environ`, `~/.ssh`, `/etc/passwd`, Browser Cookies, Registry, AWS Tokens).
+*   **Component 2 (Exfiltration):** Transmission via Network (e.g., `requests.post`, `socket.send`, `smtplib`, `Telegram/Discord/Slack API`).
+*   **RELATION CHECK:** The data being sent MUST be the sensitive data collected.
+*   **ANTI-MALWARE RULE (Benign):** 
+    - Collecting system specs (CPU, OS, Hostname) for "Telemetry/Crash Report" is BENIGN.
+    - Sending data to known legitimate vendors (Sentry, Datadog, Google Analytics) is BENIGN.
 
-[Type C: Ransomware]
-- Goal: Deny access via encryption.
-- Full: 
-  1. **Active Encryption Logic**: The specific function performing file locking/encryption is PRESENT and defined (e.g., AES/RSA loops).
-  2. **Ransom Demand**: Ransom note generation or deployment logic is present.
+#### [Type B: Backdoor / RAT / Reverse Shell]
+*   **Component 1 (Connectivity):** Establishment of a Network Socket (Connect-back, Bind Port, or Polling HTTP Beacon).
+*   **Component 2 (Execution):** Handing off control to a system shell or code interpreter (e.g., `subprocess.Popen(shell=True)`, `os.dup2` redirection, `exec()`, `os.system()`).
+*   **RELATION CHECK:** The input for execution MUST come from the network, OR the output of execution MUST go to the network.
+*   **STRICT TRIGGER:** `socket.connect` + `os.dup2` + `subprocess` = **AUTOMATIC FULL CHAIN**.
 
-[Type D: Wiper]
-- Goal: Irreversibly destroy data for sabotage.
-- **ANTI-DEFINITION (BENIGN)**: Utility functions explicitly named for cleanup (e.g., `clean_cache`, `delete_images`) operating on safe scopes are NOT malware.
-- Full: 
-  1. Targets High-Value/System Paths (/, /etc, C:\\Windows).
-  2. Indiscriminate/Recursive deletion without filters.
-  3. Deceptive Intent (Function name hides the behavior).
+#### [Type C: Ransomware]
+*   **Component 1 (Traversal):** Recursively walking through file system directories (e.g., `os.walk`, `glob`).
+*   **Component 2 (Locking):** Reading file content AND (Encrypting [AES/RSA/XOR] OR Overwriting) AND (Deleting original OR Renaming with extension).
+*   **MALICIOUS PAYLOAD:** Absence of User Interaction for key management (key is generated/stored remotely or hardcoded).
 
-[Type E: Clipboard Hijacker]
-- Goal: Swap crypto addresses in clipboard.
-- Full: Successfully reads AND overwrites clipboard.
+#### [Type D: Wiper / Sabotage]
+*   **Component 1 (Targeting):** Hardcoded paths to Critical System Areas (`/`, `/boot`, `C:\\Windows`, `~`) OR generic "All Files" logic.
+*   **Component 2 (Destruction):** Irreversible deletion (`rm -rf`, `unlink`, `shutil.rmtree`) or Raw Disk Overwriting (`dd if=/dev/zero`).
+*   **ANTI-MALWARE RULE (Benign):**
+    - Functions named `clean_tmp`, `uninstall`, `test_teardown` are BENIGN.
+    - Targets inside `/tmp`, `%TEMP%`, `__pycache__` are BENIGN.
 
-[Type F: Malware Builder / Dropper]
-- Goal: Inject payload into other files/builds.
-- Full: Successfully writes payload to strategic location (postinst, __init__.py).
+#### [Type E: Clipboard Hijacker (Clipper)]
+*   **Component 1 (Surveillance):** A loop or event listener monitoring `pyperclip.paste()` or `clipboard.GetText()`.
+*   **Component 2 (Manipulation):** Regex pattern matching for Crypto Addresses (ETH `0x...`, BTC `1...`) AND Substitution (`paste(attacker_wallet)`).
 
-[Type G: Logic Bomb]
-- Goal: Delayed execution based on conditions.
-- Full: Trigger (Time/Env) + Malicious Payload connected.
+#### [Type F: Dropper / Supply Chain Injector]
+*   **Component 1 (Payload Staging):**
+    - Presence of large Obfuscated Blobs (Base64, Hex) containing executable code.
+    - OR Logic checking for "Missing Packages" (Typosquatting behavior).
+*   **Component 2 (Persistence/Execution):**
+    - Decoding the blob AND Writing to Disk (e.g., `__init__.py`, `Startup` folder).
+    - OR Directly executing via `exec(decode(blob))`.
 
-[Type H: Keylogger / Keystroke Logger]
-- Goal: Capture keystrokes stealthily and exfiltrate.
-- Full: Captures keystrokes AND successfully stores and exfiltrates them.
+#### [Type G: Logic Bomb]
+*   **Component 1 (Guardrail):** Conditional logic based on Date/Time (Timebomb), Specific Hostname/IP, or Domain check (Targeted Attack).
+*   **Component 2 (Payload):** Triggering any malicious action from Types A, B, C, D, or F upon satisfaction of the condition.
 
-[Type I: Uncategorized High-Impact]
-- Full: Any other specific logic causing severe harm/exposure.
+#### [Type H: Keylogger]
+*   **Component 1 (Hooking):** Using libraries like `pynput`, `keyboard`, `GetAsyncKeyState` to capture keystrokes globally.
+*   **Component 2 (Leakage):** Writing captures to a hidden file OR sending to Network (Type A logic).
+*   **ANTI-MALWARE RULE (Benign):** Code inside a game engine or CLI tool that handles local input for immediate control is BENIGN.
 
+#### [Type I: Resource Hijacking (Miner)]
+*   **Component 1 (Activity):** High-load calculation loops or downloading known Miner Binaries (XMRig).
+*   **Component 2 (Configuration):** Connecting to Mining Pools (stratum+tcp) or referencing Wallet Addresses in arguments.
 
-### CLASSIFICATION LEVELS
+---
 
-1. **Full Attack Chain (Actionable Threat)**
-   - **Criteria**: Meets ALL criteria in the Matrix. The malicious logic is complete, configured, and capable of execution (Payload + Trigger + Connectivity).
-   - **Verdict**: MALICIOUS UPDATE.
+### CLASSIFICATION DECISION LOGIC
 
-2. **Core Attack Chain (Latent Threat / High Confidence)**
-   - **Criteria**: The code cannot currently execute successfully, missing critical components to execute malicious behavior (e.g., missing exfiltration, missing execution trigger, missing ransom note).
-    - **Constraint**: There must be a visible **Action-Logic** (e.g., a function capturing keys, writing to a file, or processing data), even if incomplete.
-    - **NOT Core**: Mere definitions (Classes, Variables, Imports) without functional body code are NOT Core.
-   - **Verdict**: WARNING UPDATE.
+**1. Full Attack Chain (Actionable Threat)**
+   - **Requirement**: `Comp 1 (Present) + Comp 2 (Present) + Relation (Proven)`.
+   - **Verdict**: The malicious behavior is complete and executable.
 
-3. **Undetermined Call Chain (Ambiguous / Low Confidence)**
-   - **Criteria**: Isolated **"Dual-Use" components** that lack a demonstrable malicious context.
-   - **Verdict**: BENIGN (Treat as Noise/Safe unless combined with other indicators).
+**2. Core Attack Chain (High Confidence)**
+   - **Scenario A (Broken Link)**: Comp 1 and Comp 2 exist, but data flow is implied/broken due to slicing (e.g., function definition separation).
+   - **Scenario B (Visible Payload)**: Only ONE Component exists, BUT it contains a **High-Confidence Malicious Payload**.
+     - *Example*: Hardcoded `rm -rf /` (Type D Comp 2) without the loop (Type D Comp 1).
+     - *Example*: Hardcoded Reverse Shell String without the socket trigger.
+   - **Verdict**: Intent is clearly malicious, but execution path is incomplete in this slice.
 
-4. **Benign Artifact (Safe / Authorized)**
-   - **Criteria**: The code matches the "ANTI-DEFINITION" or "Honest Code Rule".
-   - **Verdict**: BENIGN UPDATE.
+**3. Undetermined Call Chain (Low Confidence)**
+   - **Requirement**: Contains dangerous functions (e.g., `exec`, `socket`, `requests`) BUT fails the "Malicious Payload" check.
+   - **Example**: `exec(user_input)` (Vulnerability, not Malware), or `requests.get(url)` (Benign traffic).
+   - **Verdict**: Needs manual review / harmless context.
 
+**4. Benign Artifact (Safe)**
+   - **Requirement**: Matches "ANTI-MALWARE RULES" (Test files, Docs, Cleanup scripts) OR no dangerous logic.
 
-### [CRITICAL REFERENCE EXAMPLES] (Learn from these cases)
-
-**CASE 1: The "Skeleton" Trap (Inert Code)**
-- **Input**: 
-  ```python
-  class Keylogger(Thread):
-      def __init__(self):
-          self.log = ""
-  # No on_press, no write_to_file, no send_data
-CLASSIFICATION: Undetermined Call Chain.
-Reasoning: Despite the malicious name "Keylogger", the code is purely declarative. It contains NO "Operational Logic" (Active Verbs). Without a function that actually captures, stores, or sends data, it is inert/dead code.
-
-**CASE 2: The "Dual-Use" Listener (Ambiguous)**
-- **Input**: 
-  ```python
-  def on_press(key):
-      print(f"Key  pressed")
-      if key == Key.esc: return False
-Verdict: Undetermined Call Chain (or Benign).
-Reasoning: This is standard input handling (Dual-Use). There is no attempt to hide, no writing to hidden files, and no network exfiltration. It lacks "Malicious Context".
-
-CASE 3: The "Real" Core (Malicious Intent Visible)
-Input:
-code
-Python
-# Writes to a hidden system file
-def on_press(key):
-    with open("/tmp/.hidden_log", "a") as f: 
-        f.write(str(key))
-Verdict: Core Attack Chain.
-Reasoning: While logic is incomplete (no network send), the intent is malicious because it writes to a HIDDEN file (.hidden_log). The "Stealth" behavior upgrades it from Dual-Use to Core.
+### INSTRUCTION FOR ANALYSIS
+When analyzing, you must strictly map the code to the **Specific Components** above. 
 """
 
 ASSERTION_PROMPT = """
-Analyze the provided code snippet: {code_snippet}
+Analyze the provided code slice: {code_snippet}
 
-### INSTRUCTIONS
-1. **Identify Intent**: Determine the potential malware type based on the "ATTACK TYPE SUCCESS CRITERIA MATRIX" defined in the System Instructions.
-2. **Check for Benign Context**: Apply the "ANTI-DEFINITION" rules. If the code looks like a standard utility, mark it as "Benign Artifact".
-3. **Determine Chain Status**:
-   - If it is malicious, determine if it is "Full" or "Core" based on the Matrix.
-   - Be specific about what is missing if it is "Core".
+### ANALYSIS PROTOCOL (STRICT EXECUTION ORDER)
+You must follow these steps sequentially. Do not jump to conclusions.
 
-### OUTPUT REQUIREMENT
-Provide a structured response:
-- **Malware Type:** (e.g., "Type D: Wiper" or "None")
-- **Classification:** "Full Attack Chain" | "Core Attack Chain" | "Fragmented Attack Chain" | "Benign Artifact"
-- **Missing Components:** Critical missing steps (refer to the Matrix).
-- **Potential Impact:** Description of consequences.
-- **Threat Level:** High/Medium/Low.
-- **Reasoning:** Explain why it fits the specific criteria.
+**STEP 1: BENIGN WHITELIST CHECK (Fail Fast)**
+- Is the code explicitly part of a Unit Test (e.g., `unittest`, `mock`, `/tests/`)?
+- Is the code a Linter/Formatter/Documentation/Setup Script (standard `setup.py`)?
+- Is the dangerous action targeting ONLY safe paths (e.g., deleting `/tmp`, sending data to `sentry.io`)?
+-> **IF YES**: Stop analysis. Output `Classification: Benign Artifact`.
+
+**STEP 2: THREAT TYPE SCAN (Component Matching)**
+Scan the code against Types A through I defined in the System Prompt. You must identify the **Primary Suspect Type**.
+*   **Mandatory Check**: Does the code contain **Component 1** (Source/Trigger) AND **Component 2** (Sink/Action) for this Type?
+    - *Constraint*: You must quote the exact code line acting as the component.
+
+**STEP 3: TRIAD PROOF (Relational Analysis)**
+If you found both components, verify the link:
+1.  **Source**: Where does the data/control come from?
+2.  **Sink**: Where does it go?
+3.  **Relation (The Critical Link)**: Is there a variable or logic flow connecting Source to Sink? (e.g., `x = Source(); Sink(x)`).
+    - *If Relation is broken/invisible due to slicing*: Mark as **Broken Link**.
+
+**STEP 4: PAYLOAD VERIFICATION (The "Malice" Test)**
+Analyze the specific data or command being processed.
+- **Malicious**: Hardcoded shell commands, grabbing `.ssh` keys, encrypting files.
+- **Benign/Generic**: `echo hello`, `ls`, `s.send("ok")`, generic `user_input`.
+- **Unknown**: Variable content is not visible (e.g., `exec(blob)`).
+
+---
+
+### CLASSIFICATION LOGIC (Logic Gates)
+
+*   **FULL ATTACK CHAIN** :=
+    (Comp 1 Present) **AND** (Comp 2 Present) **AND** (Relation == Verified) **AND** (Payload == Malicious).
+    *Note: All 4 conditions must be TRUE.*
+
+*   **CORE ATTACK CHAIN** :=
+    *   Case A: (Comp 1 & 2 Present) **BUT** (Relation == Broken/Implied).
+    *   Case B: Only One Component Present **BUT** (Payload == High-Confidence Malicious, e.g., hardcoded `rm -rf /` or known Ransomware extension).
+
+*   **UNDETERMINED CALL CHAIN** :=
+    (Comp 1 or 2 Present) **BUT** (Payload == Generic/Unknown/Benign).
+    *Example: `os.system(cmd)` where `cmd` source is unknown.*
+
+*   **BENIGN ARTIFACT** :=
+    Matches Step 1 Whitelist OR No dangerous components found.
+
+---
+
+### FINAL OUTPUT FORMAT (JSON ONLY)
+Respond strictly in this JSON format:
+
+{{
+  "Step_1_Benign_Check": {{
+    "Is_Benign": boolean,
+    "Reason": "e.g., 'Target is temp folder' or 'None'"
+  }},
+  "Step_2_Component_Match": {{
+    "Suspect_Type": "Type A / Type B / ... / None",
+    "Component_1_Evidence": "Quote the code snippet or 'Missing'",
+    "Component_2_Evidence": "Quote the code snippet or 'Missing'"
+  }},
+  "Step_3_Triad_Proof": {{
+    "Source_Variable": "string (or None)",
+    "Sink_Function": "string (or None)",
+    "Flow_Status": "Verified / Broken / None"
+  }},
+  "Step_4_Payload_Analysis": {{
+    "Content": "Describe what is being executed/sent",
+    "Malicious_Verdict": "Confirmed Malicious / Generic / Benign"
+  }},
+  "Final_Classification": "Full Attack Chain | Core Attack Chain | Undetermined Call Chain | Benign Artifact",
+  "Reasoning": "Synthesize the logic gates. Explain exactly why criteria for Full/Core were met or missed."
+}}
 """
 
-CHECK_PROMPT = """ 
-You are the Supreme Quality Assurance Auditor. Review the PREVIOUS RESPONSE and the ORIGINAL CODE.
+CHECK_PROMPT = """
+You are the **Supreme Logic Auditor**. Your mission is to audit the Analyst's findings and define exactly what is missing to constitute a "Full Attack Chain".
 
-PREVIOUS RESPONSE: 
-{response}
-
-ORIGINAL CODE SNIPPET: 
+### INPUT DATA
+1. **Original Code Slice**:
 {code_snippet}
 
-### AUDIT EXECUTION PLAN
+2. **Analyst Report**:
+{response}
 
-**Step 1: The "Sanity Check" (Benign Filter)**
-- Verify if the code matches the "ANTI-DEFINITION" or "Honest Code Rule".
-- If a function named `cleanup` or `delete_cache` is deleting files, or `on_ready` is logging IP, **OVERRIDE** to "Benign Artifact".
+---
 
-**Step 2: The "Skeleton Check" (Inert Filter)**
-- Look at the code structure. Is it purely declarative (Classes, Imports, `__init__`) without any active logic flow (e.g., no `on_press`, no `encrypt_loop`, no `socket.send`)?
-- If YES, it is Inert/Skeleton code. **OVERRIDE** to "Undetermined Call Chain".
+### AUDIT EXECUTION PROTOCOL
 
-**Step 3: The "Payload Check" (Core vs Full)**
-- If the code passes Step 1 & 2 and is deemed Malicious:
-- Check the "Missing Components".
-- **CRITICAL RULE**: If the missing component is the **CORE PAYLOAD FUNCTION BODY** (e.g., `Encrypt` function is called but not defined, or logic flow implies `upload` but code is missing), you CANNOT classify it as "Full".
-- **ACTION**: Downgrade "Full" to "Core Attack Chain".
+**Step 1: Evidence Verification (Hallucination Check)**
+- Verify `Component_1_Evidence` and `Component_2_Evidence`.
+- **Action**: If the quoted code does NOT exist in the Original Code Slice, mark that Component as **MISSING**.
 
-### FINAL OUTPUT
-Respond in JSON format:
+**Step 2: Logic & Flow Verification**
+- Review `Step_3_Triad_Proof` (Source -> Sink Flow).
+- **Action**: If the flow logic is "Inferred" or "Broken" (e.g., variables don't match), mark "Relation/Data Flow" as **MISSING**.
+- Review `Step_4_Payload_Analysis`.
+- **Action**: If the payload is "Generic" (e.g., `os.system(cmd)` without knowing `cmd`) or "Benign", mark "Confirmed Malicious Payload" as **MISSING**.
+
+**Step 3: Gap Analysis (The "Missing Link" Calculation)**
+Compare the verified facts against the **FULL ATTACK CHAIN Formula**:
+`Full = (Comp 1 Present) + (Comp 2 Present) + (Relation Verified) + (Payload Malicious)`
+
+Identify specifically what is absent:
+- Is **Component 1** (Source/Trigger) missing?
+- Is **Component 2** (Sink/Action) missing?
+- Is the **Relation** (Connection between 1 & 2) broken or unproven?
+- Is the **Payload** (The actual malicious content) generic or invisible?
+
+---
+
+### FINAL AUDIT DECISION (JSON ONLY)
+Respond strictly in JSON.
+
 {{
-  "Classification": "Full Attack Chain" | "Core Attack Chain" | "Undetermined Call Chain" | "Benign Artifact",
-  "Missing_Components": "List of critical logic gaps (or 'None').",
-  "Malware_Type": "String",
-  "Threat_Level": "High" | "Medium" | "Low",
-  "Reasoning": "Final verdict explaining the decision process (especially if overridden).",
-  "Potential_Impact": "Specific damage description."
+  "Audit_Status": "Agreed" | "Overridden",
+  "Correction_Reason": "If Overridden, explain strictly based on the missing criteria below.",
+  
+  "Final_Classification": "Full Attack Chain | Core Attack Chain | Undetermined Call Chain | Benign Artifact",
+  
+  "Malware_Type": "Type A / ... / None",
+  
+  "Missing_Criteria_For_Full": [
+     "List specific gaps here. Options:",
+     "- Component 1 (Source/Trigger) - e.g., Missing network listener",
+     "- Component 2 (Sink/Action) - e.g., Missing execution function",
+     "- Relation (Data Flow) - e.g., Source variable does not reach Sink",
+     "- Malicious Payload - e.g., Command is generic 'ls' or unknown variable",
+     "- None (If Full Attack Chain)"
+  ],
+  
+  "Gap_Summary": "A one-sentence explanation of what is needed to upgrade this to Full Chain (e.g., 'Code needs to show where the variable 'cmd' comes from').",
+  
+  "Confidence_Score": "High/Medium/Low"
 }}
 """
 
@@ -192,7 +253,8 @@ class LLM_Evaluate:
             messages=[
                 {"role": "system", "content": SYSTEM_PROMPT},
                 {"role": "user", "content": assertion_prompt}
-            ]
+            ],
+            temperature=0
         )
         
         response_1 = completion.choices[0].message.content
@@ -205,7 +267,8 @@ class LLM_Evaluate:
                 {"role": "system", "content": SYSTEM_PROMPT},
                 {"role": "user", "content": check_prompt}
             ],
-            response_format={"type": "json_object"}
+            response_format={"type": "json_object"},
+            temperature=0
         )
         response_2 = completion.choices[0].message.content
         return json.loads(response_2)  # 解析JSON字符串为Python字典

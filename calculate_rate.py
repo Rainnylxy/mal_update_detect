@@ -47,8 +47,8 @@ def process_file(file_info):
         if file.endswith(".py"):
             file_path = os.path.join(root, file)
             logger.info(f"Analyzing code slice from file: {file_path}")
-            classification_v2, classification_v3 = LLM_analyze_code_slice(file_path)
-            result_row = [repo_name,dir_info[0], dir_info[1], file, "unknown", classification_v2, classification_v3]
+            classification_v2 = LLM_analyze_code_slice(file_path)
+            result_row = [repo_name,dir_info[0], dir_info[1], file, "unknown", classification_v2]
             return result_row
     except Exception as e:
         logger.error(f"Error processing file {file}: {e}")
@@ -79,7 +79,7 @@ def process_repo_name(repo_name, joern_dir):
                     
             # 使用多进程处理文件
             if files_to_process:
-                with Pool(processes=10) as file_pool:
+                with Pool(processes=min(20, len(files_to_process))) as file_pool:
                     file_results = file_pool.map(process_file, files_to_process)
                 
                 # 过滤掉 None 结果
@@ -97,11 +97,15 @@ def process_repo_name(repo_name, joern_dir):
 
 def process_repo_names(repo_names, joern_dir, result_csv_path):
     """顺序处理多个仓库，每个仓库内部使用多进程处理文件"""
-    repos_to_process = repo_names[:2]  # Example: process first 2 repos
+    # for index, repo_name in enumerate(repo_names):
+    #     if repo_name == "raccoon_clipper":
+    #         print(index)
+    repos_to_process = repo_names[0:4]  # Example: process first 2 repos
     
     # 顺序处理每个仓库（不使用多进程处理仓库）
     for repo_name in repos_to_process:
         logger.info(f"Starting to process repository: {repo_name}")
+        # change_commit_name(os.path.join("/home/lxy/lxy_codes/mal_update_detect/mal_update_dataset/multiple_commits", repo_name), joern_dir)
         results = process_repo_name(repo_name, joern_dir)
         
         # 将结果写入 CSV
@@ -122,9 +126,9 @@ if __name__ == "__main__":
     result_csv_path = "./result.csv"
     
     # print(cpu_count())
-    # # 初始化 CSV 文件头
-    # with open(result_csv_path, 'w', newline='') as f:
-    #     writer = csv.writer(f)
-    #     writer.writerow(["repo_name","commit_num", "commit", "code_slice", "classification", "llm_classify_v2", "llm_classify_v3"])
+    # 初始化 CSV 文件头
+    with open(result_csv_path, 'w', newline='') as f:
+        writer = csv.writer(f)
+        writer.writerow(["repo_name","commit_num", "commit", "code_slice", "classification", "llm_classify_v2"])
     
     process_repo_names(repo_names, joern_dir, result_csv_path)

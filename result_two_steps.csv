@@ -1678,7 +1678,8 @@ KMike,39,3af22,<body>@c_and_c_server_asymmetric_encryption.py_slice.py,SAME AS B
 little-python-malware,0,4aead,NEW@<module>@malware.py_slice.py,Full Attack Chain,Full Attack Chain
 little-python-malware,1,2647f,NEW@<module>@malware.py_slice.py,Full Attack Chain,Full Attack Chain
 little-python-malware,2,6c7ab,<module>@malware.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
-little-python-malware,2,6c7ab,NEW@<module>@guess-number-game.py_slice.py,Benign,BenignMakeMalware_EthicalHacking,0,3db3c,NEW@<module>@demo2_getReportByEmail.py_slice.py,Full Attack Chain,Full Attack Chain
+little-python-malware,2,6c7ab,NEW@<module>@guess-number-game.py_slice.py,Benign,Benign
+MakeMalware_EthicalHacking,0,3db3c,NEW@<module>@demo2_getReportByEmail.py_slice.py,Full Attack Chain,Full Attack Chain
 MakeMalware_EthicalHacking,0,3db3c,NEW@<module>@demo1_executeCommands.py_slice.py,Full Attack Chain,Full Attack Chain
 MakeMalware_EthicalHacking,1,a587c,NEW@<module>@demo2_getReportByEmail.py_slice.py,Full Attack Chain,Full Attack Chain
 MakeMalware_EthicalHacking,1,a587c,<module>@demo1_executeCommands.py_slice.py,SAME AS BEFORE,SAME AS BEFORE

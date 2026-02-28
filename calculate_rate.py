@@ -47,8 +47,12 @@ def process_file(file_info):
         if file.endswith(".py"):
             file_path = os.path.join(root, file)
             logger.info(f"Analyzing code slice from file: {file_path}")
-            classification_v2 = LLM_analyze_code_slice(file_path)
-            result_row = [repo_name,dir_info[0], dir_info[1], file, "unknown", classification_v2]
+            if "NEW" in file:               
+                classification_v2 = LLM_analyze_code_slice(file_path)
+            else:
+                classification_v2 = "SAME AS BEFORE"
+            # classification_v2 = "Benign Artifact"  # Placeholder for actual classification
+            result_row = [repo_name,dir_info[0], dir_info[1], file, classification_v2, classification_v2]
             return result_row
     except Exception as e:
         logger.error(f"Error processing file {file}: {e}")
@@ -100,7 +104,7 @@ def process_repo_names(repo_names, joern_dir, result_csv_path):
     # for index, repo_name in enumerate(repo_names):
     #     if repo_name == "raccoon_clipper":
     #         print(index)
-    repos_to_process = repo_names[0:4]  # Example: process first 2 repos
+    repos_to_process = repo_names[36:37]  # Example: process first 5 repos
     
     # 顺序处理每个仓库（不使用多进程处理仓库）
     for repo_name in repos_to_process:
@@ -123,12 +127,12 @@ if __name__ == "__main__":
     joern_dir = "/home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits"
     csv_path = "./malware_update_dataset.csv"
     repo_names = read_repo_names_from_csv(csv_path)
-    result_csv_path = "./result.csv"
+    result_csv_path = "./result_two_steps.csv"
     
     # print(cpu_count())
     # 初始化 CSV 文件头
-    with open(result_csv_path, 'w', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow(["repo_name","commit_num", "commit", "code_slice", "classification", "llm_classify_v2"])
+    # with open(result_csv_path, 'w', newline='') as f:
+    #     writer = csv.writer(f)
+    #     writer.writerow(["repo_name","commit_num", "commit", "code_slice", "classification","result_two_steps"])
     
     process_repo_names(repo_names, joern_dir, result_csv_path)

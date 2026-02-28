@@ -1,92 +1,982 @@
 repo_name,commit_num,commit,code_slice,classification,llm_classify_v2
-1stMalware,0,3fd09,test.py__module__slice.py,unknown,Undetermined Call Chain
-1stMalware,1,ba466,modules_crypt_crypt.py__module__slice.py,unknown,Core Attack Chain
-1stMalware,2,177b1,modules_crypt_crypt.py__module__slice.py,unknown,Core Attack Chain
-1stMalware,2,177b1,test.py__module__slice.py,unknown,Undetermined Call Chain
-1stMalware,3,f5809,modules_crypt_crypt.py__body__slice.py,unknown,Core Attack Chain
-1stMalware,3,f5809,modules_crypt_crypt.py_keycreation_metaClassAdapter__slice.py,unknown,Benign Artifact
-1stMalware,3,f5809,test.py__module__slice.py,unknown,Undetermined Call Chain
-1stMalware,3,f5809,modules_rights_getRights.py__body__slice.py,unknown,Core Attack Chain
-1stMalware,3,f5809,modules_rights_getRights.py_takeTheOwn_metaClassAdapter__slice.py,unknown,Core Attack Chain
-1stMalware,4,c45da,modules_crypt_crypt.py_useTheKey_metaClassAdapter__slice.py,unknown,Core Attack Chain
-1stMalware,4,c45da,modules_crypt_crypt.py__body__slice.py,unknown,Core Attack Chain
-1stMalware,4,c45da,modules_crypt_crypt.py___init___metaClassAdapter__slice.py,unknown,Undetermined Call Chain
-1stMalware,4,c45da,modules_crypt_crypt.py_keyCreation_metaClassAdapter__slice.py,unknown,Undetermined Call Chain
-1stMalware,4,c45da,modules_rights_getRights.py__body__slice.py,unknown,Core Attack Chain
-1stMalware,4,c45da,modules_rights_getRights.py_takeTheOwn_metaClassAdapter__slice.py,unknown,Undetermined Call Chain
-1stMalware,5,426f7,modules_crypt_crypt.py_useTheKey_metaClassAdapter__slice.py,unknown,Core Attack Chain
-1stMalware,5,426f7,modules_crypt_crypt.py__body__slice.py,unknown,Core Attack Chain
-1stMalware,5,426f7,modules_crypt_crypt.py___init___metaClassAdapter__slice.py,unknown,Core Attack Chain
-1stMalware,5,426f7,modules_crypt_crypt.py_keyCreation_metaClassAdapter__slice.py,unknown,Undetermined Call Chain
-1stMalware,5,426f7,modules_rights_getRights.py__body__slice.py,unknown,Undetermined Call Chain
-1stMalware,5,426f7,modules_rights_getRights.py_takeTheOwn_metaClassAdapter__slice.py,unknown,Core Attack Chain
-1stMalware,6,21b58,modules_crypt_crypt.py_useTheKey_metaClassAdapter__slice.py,unknown,Core Attack Chain
-1stMalware,6,21b58,modules_crypt_crypt.py__body__slice.py,unknown,Core Attack Chain
-1stMalware,6,21b58,modules_crypt_crypt.py___init___metaClassAdapter__slice.py,unknown,Undetermined Call Chain
-1stMalware,6,21b58,modules_crypt_crypt.py_keyCreation_metaClassAdapter__slice.py,unknown,Undetermined Call Chain
-1stMalware,6,21b58,modules_crypt_crypt.py_exploreAll_metaClassAdapter__slice.py,unknown,Core Attack Chain
-1stMalware,6,21b58,modules_rights_getRights.py__body__slice.py,unknown,Undetermined Call Chain
-1stMalware,6,21b58,modules_network_smtp.py__module__slice.py,unknown,Core Attack Chain
-1stMalware,6,21b58,modules_rights_getRights.py_takeTheOwn_metaClassAdapter__slice.py,unknown,Core Attack Chain
-1stMalware,7,3a8ed,modules_crypt_crypt.py_useTheKey_metaClassAdapter__slice.py,unknown,Core Attack Chain
-1stMalware,7,3a8ed,modules_crypt_crypt.py__body__slice.py,unknown,Core Attack Chain
-1stMalware,7,3a8ed,modules_crypt_crypt.py___init___metaClassAdapter__slice.py,unknown,Core Attack Chain
-1stMalware,7,3a8ed,modules_crypt_crypt.py_keyCreation_metaClassAdapter__slice.py,unknown,Undetermined Call Chain
-1stMalware,7,3a8ed,modules_crypt_crypt.py_exploreAll_metaClassAdapter__slice.py,unknown,Full Attack Chain
-1stMalware,7,3a8ed,modules_rights_getRights.py__body__slice.py,unknown,Undetermined Call Chain
-1stMalware,7,3a8ed,modules_rights_getRights.py_takeTheOwn_metaClassAdapter__slice.py,unknown,Core Attack Chain
-1stMalware,7,3a8ed,modules_network_stmpgmail.py__module__slice.py,unknown,Core Attack Chain
-1stMalware,8,03ca7,modules_crypt_crypt.py_useTheKey_metaClassAdapter__slice.py,unknown,Core Attack Chain
-1stMalware,8,03ca7,modules_crypt_crypt.py__body__slice.py,unknown,Full Attack Chain
-1stMalware,8,03ca7,modules_crypt_crypt.py___init___metaClassAdapter__slice.py,unknown,Core Attack Chain
-1stMalware,8,03ca7,modules_crypt_crypt.py_keyCreation_metaClassAdapter__slice.py,unknown,Core Attack Chain
-1stMalware,8,03ca7,modules_crypt_crypt.py_exploreAll_metaClassAdapter__slice.py,unknown,Core Attack Chain
-1stMalware,8,03ca7,modules_rights_getRights.py__body__slice.py,unknown,Undetermined Call Chain
-1stMalware,8,03ca7,modules_rights_getRights.py_takeTheOwn_metaClassAdapter__slice.py,unknown,Core Attack Chain
-1stMalware,9,47f7a,modules_crypt_crypt.py_useTheKey_metaClassAdapter__slice.py,unknown,Core Attack Chain
-1stMalware,9,47f7a,modules_crypt_crypt.py__body__slice.py,unknown,Full Attack Chain
-1stMalware,9,47f7a,modules_crypt_crypt.py___init___metaClassAdapter__slice.py,unknown,Undetermined Call Chain
-1stMalware,9,47f7a,modules_crypt_crypt.py_keyCreation_metaClassAdapter__slice.py,unknown,Core Attack Chain
-1stMalware,9,47f7a,modules_crypt_crypt.py_exploreAll_metaClassAdapter__slice.py,unknown,Core Attack Chain
-1stMalware,9,47f7a,modules_rights_getRights.py__body__slice.py,unknown,Core Attack Chain
-1stMalware,9,47f7a,modules_rights_getRights.py_takeTheOwn_metaClassAdapter__slice.py,unknown,Core Attack Chain
-1stMalware,10,3a1e0,modules_crypt_crypt.py_useTheKey_metaClassAdapter__slice.py,unknown,Core Attack Chain
-1stMalware,10,3a1e0,modules_crypt_crypt.py__body__slice.py,unknown,Full Attack Chain
-1stMalware,10,3a1e0,modules_crypt_crypt.py___init___metaClassAdapter__slice.py,unknown,Undetermined Call Chain
-1stMalware,10,3a1e0,modules_crypt_crypt.py_keyCreation_metaClassAdapter__slice.py,unknown,Core Attack Chain
-1stMalware,10,3a1e0,modules_crypt_crypt.py_exploreAll_metaClassAdapter__slice.py,unknown,Core Attack Chain
-1stMalware,10,3a1e0,modules_rights_getRights.py__body__slice.py,unknown,Undetermined Call Chain
-1stMalware,10,3a1e0,modules_rights_getRights.py_processus_metaClassAdapter__slice.py,unknown,Core Attack Chain
-Backdoorcreator,0,04d0c,backdoorcreate.py__module__slice.py,unknown,Core Attack Chain
-Backdoorcreator,0,04d0c,server.py__module__slice.py,unknown,Undetermined Call Chain
-Backdoorcreator,1,22da0,backdoorcreate.py__module__slice.py,unknown,Core Attack Chain
-Backdoorcreator,1,22da0,server.py__module__slice.py,unknown,Undetermined Call Chain
-Backdoorcreator,2,677e6,backdoorcreate.py__module__slice.py,unknown,Core Attack Chain
-Backdoorcreator,2,677e6,server.py__module__slice.py,unknown,Undetermined Call Chain
-Backdoorcreator,3,697db,backdoorcreate.py__module__slice.py,unknown,Core Attack Chain
-Backdoorcreator,3,697db,server.py__module__slice.py,unknown,Undetermined Call Chain
-Backdoorcreator,4,ad97a,backdoorcreate.py__module__slice.py,unknown,Core Attack Chain
-Backdoorcreator,4,ad97a,server.py__module__slice.py,unknown,Undetermined Call Chain
-Backdoorcreator,5,c92d2,backdoorcreate.py__module__slice.py,unknown,Core Attack Chain
-Backdoorcreator,5,c92d2,server.py__module__slice.py,unknown,Undetermined Call Chain
-Backdoorcreator,6,1ce4c,backdoorcreate.py__module__slice.py,unknown,Core Attack Chain
-Backdoorcreator,6,1ce4c,server.py__module__slice.py,unknown,Undetermined Call Chain
-Backdoorcreator,7,417b1,backdoorcreate.py__module__slice.py,unknown,Full Attack Chain
-Backdoorcreator,7,417b1,server.py__module__slice.py,unknown,Undetermined Call Chain
-Basic-Keylogger,0,5a51a,keylogger.py__module__slice.py,unknown,Full Attack Chain
-Basic-Keylogger,1,808fa,keylogger.py__module__slice.py,unknown,Benign Artifact
-Basic-Keylogger,2,b573a,keylogger.py__module__slice.py,unknown,Core Attack Chain
-Basic-Keylogger,3,00252,keylogger.py__module__slice.py,unknown,Undetermined Call Chain
-beep,0,244fc,virus.py__module__slice.py,unknown,Benign Artifact
-beep,1,aac79,virus.py__module__slice.py,unknown,Full Attack Chain
-beep,2,01a62,virus.py__module__slice.py,unknown,Full Attack Chain
-beep,3,a6a72,virus.py__module__slice.py,unknown,Full Attack Chain
-beep,4,6ca31,virus.py__module__slice.py,unknown,Core Attack Chain
-beep,5,55be7,virus.py__module__slice.py,unknown,Core Attack Chain
-beep,6,53e58,virus.py__module__slice.py,unknown,Full Attack Chain
-beep,7,1ade8,virus.py__module__slice.py,unknown,Undetermined Call Chain
-beep,8,77881,virus.py__module__slice.py,unknown,Core Attack Chain
-beep,9,beae0,virus.py__module__slice.py,unknown,Full Attack Chain
-beep,10,9719c,virus.py__module__slice.py,unknown,Core Attack Chain
-beep,11,6a815,virus.py__module__slice.py,unknown,Full Attack Chain
-beep,12,41a8e,virus.py__module__slice.py,unknown,Core Attack Chain
+1stMalware,0,3fd09,test.py__module__slice.py,Benign Artifact,Benign Artifact
+1stMalware,1,ba466,modules_crypt_crypt.py__module__slice.py,Core Attack Chain,Core Attack Chain
+1stMalware,2,177b1,modules_crypt_crypt.py__module__slice.py,Core Attack Chain,Core Attack Chain
+1stMalware,2,177b1,test.py__module__slice.py,Benign Artifact,Benign Artifact
+1stMalware,3,f5809,modules_crypt_crypt.py__body__slice.py,Core Attack Chain,Core Attack Chain
+1stMalware,3,f5809,modules_crypt_crypt.py_keycreation_metaClassAdapter__slice.py,Core Attack Chain,Core Attack Chain
+1stMalware,3,f5809,test.py__module__slice.py,Benign Artifact,Benign Artifact
+1stMalware,3,f5809,modules_rights_getRights.py__body__slice.py,Core Attack Chain,Core Attack Chain
+1stMalware,3,f5809,modules_rights_getRights.py_takeTheOwn_metaClassAdapter__slice.py,Core Attack Chain,Core Attack Chain
+1stMalware,4,c45da,modules_crypt_crypt.py_useTheKey_metaClassAdapter__slice.py,Core Attack Chain,Core Attack Chain
+1stMalware,4,c45da,modules_crypt_crypt.py__body__slice.py,Core Attack Chain,Core Attack Chain
+1stMalware,4,c45da,modules_crypt_crypt.py___init___metaClassAdapter__slice.py,Core Attack Chain,Core Attack Chain
+1stMalware,4,c45da,modules_crypt_crypt.py_keyCreation_metaClassAdapter__slice.py,Core Attack Chain,Core Attack Chain
+1stMalware,4,c45da,modules_rights_getRights.py__body__slice.py,Core Attack Chain,Core Attack Chain
+1stMalware,4,c45da,modules_rights_getRights.py_takeTheOwn_metaClassAdapter__slice.py,Core Attack Chain,Core Attack Chain
+1stMalware,5,426f7,modules_crypt_crypt.py_useTheKey_metaClassAdapter__slice.py,Core Attack Chain,Core Attack Chain
+1stMalware,5,426f7,modules_crypt_crypt.py__body__slice.py,Core Attack Chain,Core Attack Chain
+1stMalware,5,426f7,modules_crypt_crypt.py___init___metaClassAdapter__slice.py,Undetermined Call Chain,Undetermined Call Chain
+1stMalware,5,426f7,modules_crypt_crypt.py_keyCreation_metaClassAdapter__slice.py,Core Attack Chain,Core Attack Chain
+1stMalware,5,426f7,modules_rights_getRights.py__body__slice.py,Core Attack Chain,Core Attack Chain
+1stMalware,5,426f7,modules_rights_getRights.py_takeTheOwn_metaClassAdapter__slice.py,Core Attack Chain,Core Attack Chain
+1stMalware,6,21b58,modules_crypt_crypt.py_useTheKey_metaClassAdapter__slice.py,Core Attack Chain,Core Attack Chain
+1stMalware,6,21b58,modules_crypt_crypt.py__body__slice.py,Core Attack Chain,Core Attack Chain
+1stMalware,6,21b58,modules_crypt_crypt.py___init___metaClassAdapter__slice.py,Core Attack Chain,Core Attack Chain
+1stMalware,6,21b58,modules_crypt_crypt.py_keyCreation_metaClassAdapter__slice.py,Core Attack Chain,Core Attack Chain
+1stMalware,6,21b58,modules_crypt_crypt.py_exploreAll_metaClassAdapter__slice.py,Core Attack Chain,Core Attack Chain
+1stMalware,6,21b58,modules_rights_getRights.py__body__slice.py,Core Attack Chain,Core Attack Chain
+1stMalware,6,21b58,modules_network_smtp.py__module__slice.py,Full Attack Chain,Full Attack Chain
+1stMalware,6,21b58,modules_rights_getRights.py_takeTheOwn_metaClassAdapter__slice.py,Core Attack Chain,Core Attack Chain
+1stMalware,7,3a8ed,modules_crypt_crypt.py_useTheKey_metaClassAdapter__slice.py,Core Attack Chain,Core Attack Chain
+1stMalware,7,3a8ed,modules_crypt_crypt.py__body__slice.py,Core Attack Chain,Core Attack Chain
+1stMalware,7,3a8ed,modules_crypt_crypt.py___init___metaClassAdapter__slice.py,Core Attack Chain,Core Attack Chain
+1stMalware,7,3a8ed,modules_crypt_crypt.py_keyCreation_metaClassAdapter__slice.py,Core Attack Chain,Core Attack Chain
+1stMalware,7,3a8ed,modules_crypt_crypt.py_exploreAll_metaClassAdapter__slice.py,Core Attack Chain,Core Attack Chain
+1stMalware,7,3a8ed,modules_rights_getRights.py__body__slice.py,Core Attack Chain,Core Attack Chain
+1stMalware,7,3a8ed,modules_rights_getRights.py_takeTheOwn_metaClassAdapter__slice.py,Core Attack Chain,Core Attack Chain
+1stMalware,7,3a8ed,modules_network_stmpgmail.py__module__slice.py,Full Attack Chain,Full Attack Chain
+1stMalware,8,03ca7,modules_crypt_crypt.py_useTheKey_metaClassAdapter__slice.py,Core Attack Chain,Core Attack Chain
+1stMalware,8,03ca7,modules_crypt_crypt.py__body__slice.py,Core Attack Chain,Core Attack Chain
+1stMalware,8,03ca7,modules_crypt_crypt.py___init___metaClassAdapter__slice.py,Undetermined Call Chain,Undetermined Call Chain
+1stMalware,8,03ca7,modules_crypt_crypt.py_keyCreation_metaClassAdapter__slice.py,Core Attack Chain,Core Attack Chain
+1stMalware,8,03ca7,modules_crypt_crypt.py_exploreAll_metaClassAdapter__slice.py,Core Attack Chain,Core Attack Chain
+1stMalware,8,03ca7,modules_rights_getRights.py__body__slice.py,Core Attack Chain,Core Attack Chain
+1stMalware,8,03ca7,modules_rights_getRights.py_takeTheOwn_metaClassAdapter__slice.py,Core Attack Chain,Core Attack Chain
+1stMalware,9,47f7a,modules_crypt_crypt.py_useTheKey_metaClassAdapter__slice.py,Core Attack Chain,Core Attack Chain
+1stMalware,9,47f7a,modules_crypt_crypt.py__body__slice.py,Core Attack Chain,Core Attack Chain
+1stMalware,9,47f7a,modules_crypt_crypt.py___init___metaClassAdapter__slice.py,Core Attack Chain,Core Attack Chain
+1stMalware,9,47f7a,modules_crypt_crypt.py_keyCreation_metaClassAdapter__slice.py,Core Attack Chain,Core Attack Chain
+1stMalware,9,47f7a,modules_crypt_crypt.py_exploreAll_metaClassAdapter__slice.py,Core Attack Chain,Core Attack Chain
+1stMalware,9,47f7a,modules_rights_getRights.py__body__slice.py,Core Attack Chain,Core Attack Chain
+1stMalware,9,47f7a,modules_rights_getRights.py_takeTheOwn_metaClassAdapter__slice.py,Core Attack Chain,Core Attack Chain
+1stMalware,10,3a1e0,modules_crypt_crypt.py_useTheKey_metaClassAdapter__slice.py,Core Attack Chain,Core Attack Chain
+1stMalware,10,3a1e0,modules_crypt_crypt.py__body__slice.py,Core Attack Chain,Core Attack Chain
+1stMalware,10,3a1e0,modules_crypt_crypt.py___init___metaClassAdapter__slice.py,Core Attack Chain,Core Attack Chain
+1stMalware,10,3a1e0,modules_crypt_crypt.py_keyCreation_metaClassAdapter__slice.py,Core Attack Chain,Core Attack Chain
+1stMalware,10,3a1e0,modules_crypt_crypt.py_exploreAll_metaClassAdapter__slice.py,Core Attack Chain,Core Attack Chain
+1stMalware,10,3a1e0,modules_rights_getRights.py__body__slice.py,Core Attack Chain,Core Attack Chain
+1stMalware,10,3a1e0,modules_rights_getRights.py_processus_metaClassAdapter__slice.py,Core Attack Chain,Core Attack Chain
+Backdoorcreator,0,04d0c,backdoorcreate.py__module__slice.py,Core Attack Chain,Core Attack Chain
+Backdoorcreator,0,04d0c,server.py__module__slice.py,Benign Artifact,Benign Artifact
+Backdoorcreator,1,22da0,backdoorcreate.py__module__slice.py,Core Attack Chain,Core Attack Chain
+Backdoorcreator,1,22da0,server.py__module__slice.py,Core Attack Chain,Core Attack Chain
+Backdoorcreator,2,677e6,backdoorcreate.py__module__slice.py,Core Attack Chain,Core Attack Chain
+Backdoorcreator,2,677e6,server.py__module__slice.py,Core Attack Chain,Core Attack Chain
+Backdoorcreator,3,697db,backdoorcreate.py__module__slice.py,Core Attack Chain,Core Attack Chain
+Backdoorcreator,3,697db,server.py__module__slice.py,Benign Artifact,Benign Artifact
+Backdoorcreator,4,ad97a,backdoorcreate.py__module__slice.py,Core Attack Chain,Core Attack Chain
+Backdoorcreator,4,ad97a,server.py__module__slice.py,Core Attack Chain,Core Attack Chain
+Backdoorcreator,5,c92d2,backdoorcreate.py__module__slice.py,Core Attack Chain,Core Attack Chain
+Backdoorcreator,5,c92d2,server.py__module__slice.py,Core Attack Chain,Core Attack Chain
+Backdoorcreator,6,1ce4c,backdoorcreate.py__module__slice.py,Core Attack Chain,Core Attack Chain
+Backdoorcreator,6,1ce4c,server.py__module__slice.py,Benign Artifact,Benign Artifact
+Backdoorcreator,7,417b1,backdoorcreate.py__module__slice.py,Core Attack Chain,Core Attack Chain
+Backdoorcreator,7,417b1,server.py__module__slice.py,Core Attack Chain,Core Attack Chain
+Basic-Keylogger,0,5a51a,keylogger.py__module__slice.py,Core Attack Chain,Core Attack Chain
+Basic-Keylogger,1,808fa,keylogger.py__module__slice.py,Core Attack Chain,Core Attack Chain
+Basic-Keylogger,2,b573a,keylogger.py__module__slice.py,Core Attack Chain,Core Attack Chain
+Basic-Keylogger,3,00252,keylogger.py__module__slice.py,Core Attack Chain,Core Attack Chain
+beep,0,244fc,virus.py__module__slice.py,Benign Artifact,Benign Artifact
+beep,1,aac79,virus.py__module__slice.py,Full Attack Chain,Full Attack Chain
+beep,2,01a62,virus.py__module__slice.py,Full Attack Chain,Full Attack Chain
+beep,3,a6a72,virus.py__module__slice.py,Full Attack Chain,Full Attack Chain
+beep,4,6ca31,virus.py__module__slice.py,Full Attack Chain,Full Attack Chain
+beep,5,55be7,virus.py__module__slice.py,Full Attack Chain,Full Attack Chain
+beep,6,53e58,virus.py__module__slice.py,Full Attack Chain,Full Attack Chain
+beep,7,1ade8,virus.py__module__slice.py,Core Attack Chain,Core Attack Chain
+beep,8,77881,virus.py__module__slice.py,Full Attack Chain,Full Attack Chain
+beep,9,beae0,virus.py__module__slice.py,Full Attack Chain,Full Attack Chain
+beep,10,9719c,virus.py__module__slice.py,Core Attack Chain,Core Attack Chain
+beep,11,6a815,virus.py__module__slice.py,Full Attack Chain,Full Attack Chain
+beep,12,41a8e,virus.py__module__slice.py,Full Attack Chain,Full Attack Chain
+BskyBot,0,60dc3,core_bsky_client.py_create_post_metaClassAdapter__slice.py,Benign Artifact,Benign Artifact
+BskyBot,0,60dc3,core_bsky_client.py__body__slice.py,Benign Artifact,Benign Artifact
+BskyBot,0,60dc3,core_bsky_client.py_create_reply_metaClassAdapter__slice.py,Benign Artifact,Benign Artifact
+BskyBot,1,e7c5d,core_jpeg_stegano.py_encode_slice.py,Undetermined Call Chain,Undetermined Call Chain
+BskyBot,1,e7c5d,core_jpeg_stegano.py_decode_slice.py,Core Attack Chain,Core Attack Chain
+BskyBot,1,e7c5d,core_bsky_client.py_create_reply_slice.py,Benign Artifact,Benign Artifact
+BskyBot,1,e7c5d,core_bsky_client.py_create_post_slice.py,Benign Artifact,Benign Artifact
+BskyBot,2,dc601,core_jpeg_stegano.py_encode_slice.py,Undetermined Call Chain,Undetermined Call Chain
+BskyBot,2,dc601,core_data_serializer.py_deserialize_string_slice.py,Benign Artifact,Benign Artifact
+BskyBot,2,dc601,core_jpeg_stegano.py_decode_slice.py,Core Attack Chain,Core Attack Chain
+BskyBot,2,dc601,core_bsky_client.py_create_reply_slice.py,Benign Artifact,Benign Artifact
+BskyBot,2,dc601,core_data_serializer.py_deserialize_bytes_slice.py,Benign Artifact,Benign Artifact
+BskyBot,2,dc601,core_bsky_client.py_create_post_slice.py,Benign Artifact,Benign Artifact
+BskyBot,3,48818,core_jpeg_stegano.py_encode_slice.py,Undetermined Call Chain,Undetermined Call Chain
+BskyBot,3,48818,core_data_serializer.py_deserialize_string_slice.py,Benign Artifact,Benign Artifact
+BskyBot,3,48818,core_jpeg_stegano.py_decode_slice.py,Undetermined Call Chain,Undetermined Call Chain
+BskyBot,3,48818,core_bsky_client.py_create_reply_slice.py,Benign Artifact,Benign Artifact
+BskyBot,3,48818,core_data_serializer.py_deserialize_bytes_slice.py,Benign Artifact,Benign Artifact
+BskyBot,3,48818,core_bsky_client.py_create_post_slice.py,Benign Artifact,Benign Artifact
+BskyBot,4,bae5f,core_dummy_image_path_generator.py_generate_slice.py,Benign Artifact,Benign Artifact
+BskyBot,4,bae5f,core_jpeg_stegano.py_encode_slice.py,Undetermined Call Chain,Undetermined Call Chain
+BskyBot,4,bae5f,bot_bot.py__module__slice.py,Full Attack Chain,Full Attack Chain
+BskyBot,4,bae5f,core_jpeg_stegano.py_decode_slice.py,Undetermined Call Chain,Undetermined Call Chain
+BskyBot,4,bae5f,core_bsky_client.py_create_reply_slice.py,Benign Artifact,Benign Artifact
+BskyBot,4,bae5f,example.py__module__slice.py,Core Attack Chain,Core Attack Chain
+BskyBot,4,bae5f,core_data_serializer.py_deserialize_bytes_slice.py,Benign Artifact,Benign Artifact
+BskyBot,5,b7819,core_dummy_image_path_generator.py_generate_slice.py,Benign Artifact,Benign Artifact
+BskyBot,5,b7819,core_jpeg_stegano.py_encode_slice.py,Undetermined Call Chain,Undetermined Call Chain
+BskyBot,5,b7819,bot_bot.py__module__slice.py,Full Attack Chain,Full Attack Chain
+BskyBot,5,b7819,core_jpeg_stegano.py_decode_slice.py,Core Attack Chain,Core Attack Chain
+BskyBot,5,b7819,core_bsky_client.py_create_reply_slice.py,Benign Artifact,Benign Artifact
+BskyBot,5,b7819,example.py__module__slice.py,Benign Artifact,Benign Artifact
+BskyBot,5,b7819,core_data_serializer.py_deserialize_bytes_slice.py,Benign Artifact,Benign Artifact
+BskyBot,6,57dd6,core_dummy_image_path_generator.py_generate_slice.py,Benign Artifact,Benign Artifact
+BskyBot,6,57dd6,core_jpeg_stegano.py_encode_slice.py,Undetermined Call Chain,Undetermined Call Chain
+BskyBot,6,57dd6,core_jpeg_stegano.py_decode_slice.py,Core Attack Chain,Core Attack Chain
+BskyBot,6,57dd6,bot.py__module__slice.py,Full Attack Chain,Full Attack Chain
+BskyBot,6,57dd6,core_bsky_client.py_create_reply_slice.py,Benign Artifact,Benign Artifact
+BskyBot,6,57dd6,core_data_serializer.py_deserialize_bytes_slice.py,Benign Artifact,Benign Artifact
+BskyBot,6,57dd6,core_bsky_client.py_create_post_slice.py,Benign Artifact,Benign Artifact
+BskyBot,7,7e97f,core_dummy_image_path_generator.py_generate_slice.py,Benign Artifact,Benign Artifact
+BskyBot,7,7e97f,core_jpeg_stegano.py_encode_slice.py,Undetermined Call Chain,Undetermined Call Chain
+BskyBot,7,7e97f,core_jpeg_stegano.py_decode_slice.py,Core Attack Chain,Core Attack Chain
+BskyBot,7,7e97f,bot.py__module__slice.py,Core Attack Chain,Core Attack Chain
+BskyBot,7,7e97f,core_bsky_client.py_create_reply_slice.py,Benign Artifact,Benign Artifact
+BskyBot,7,7e97f,controller.py__module__slice.py,Full Attack Chain,Full Attack Chain
+BskyBot,7,7e97f,core_data_serializer.py_deserialize_bytes_slice.py,Benign Artifact,Benign Artifact
+BskyBot,7,7e97f,core_bsky_client.py_create_post_slice.py,Benign Artifact,Benign Artifact
+BskyBot,8,e0939,core_dummy_image_path_generator.py_generate_slice.py,Benign Artifact,Benign Artifact
+BskyBot,8,e0939,core_jpeg_stegano.py_encode_slice.py,Undetermined Call Chain,Undetermined Call Chain
+BskyBot,8,e0939,core_jpeg_stegano.py_decode_slice.py,Undetermined Call Chain,Undetermined Call Chain
+BskyBot,8,e0939,bot.py__module__slice.py,Full Attack Chain,Full Attack Chain
+BskyBot,8,e0939,core_bsky_client.py_create_reply_slice.py,Benign Artifact,Benign Artifact
+BskyBot,8,e0939,controller.py__module__slice.py,Full Attack Chain,Full Attack Chain
+BskyBot,8,e0939,core_data_serializer.py_deserialize_bytes_slice.py,Benign Artifact,Benign Artifact
+BskyBot,8,e0939,core_bsky_client.py_create_post_slice.py,Benign Artifact,Benign Artifact
+BskyBot,9,d789a,core_dummy_image_path_generator.py_generate_slice.py,Benign Artifact,Benign Artifact
+BskyBot,9,d789a,core_jpeg_stegano.py_encode_slice.py,Undetermined Call Chain,Undetermined Call Chain
+BskyBot,9,d789a,core_jpeg_stegano.py_decode_slice.py,Core Attack Chain,Core Attack Chain
+BskyBot,9,d789a,bot.py__module__slice.py,Core Attack Chain,Core Attack Chain
+BskyBot,9,d789a,core_bsky_client.py_create_reply_slice.py,Benign Artifact,Benign Artifact
+BskyBot,9,d789a,controller.py__module__slice.py,Full Attack Chain,Full Attack Chain
+BskyBot,9,d789a,core_data_serializer.py_deserialize_bytes_slice.py,Benign Artifact,Benign Artifact
+BskyBot,9,d789a,core_bsky_client.py_create_post_slice.py,Benign Artifact,Benign Artifact
+BskyBot,10,baced,core_dummy_image_path_generator.py_generate_slice.py,Benign Artifact,Benign Artifact
+BskyBot,10,baced,core_jpeg_stegano.py_encode_slice.py,Undetermined Call Chain,Undetermined Call Chain
+BskyBot,10,baced,core_jpeg_stegano.py_decode_slice.py,Core Attack Chain,Core Attack Chain
+BskyBot,10,baced,bot.py__module__slice.py,Full Attack Chain,Full Attack Chain
+BskyBot,10,baced,core_bsky_client.py_create_reply_slice.py,Benign Artifact,Benign Artifact
+BskyBot,10,baced,controller.py__module__slice.py,Full Attack Chain,Full Attack Chain
+BskyBot,10,baced,core_data_serializer.py_deserialize_bytes_slice.py,Benign Artifact,Benign Artifact
+BskyBot,10,baced,core_bsky_client.py_create_post_slice.py,Benign Artifact,Benign Artifact
+BskyBot,11,fbe51,core_dummy_image_path_generator.py_generate_slice.py,Benign Artifact,Benign Artifact
+BskyBot,11,fbe51,core_jpeg_stegano.py_encode_slice.py,Undetermined Call Chain,Undetermined Call Chain
+BskyBot,11,fbe51,core_jpeg_stegano.py_decode_slice.py,Undetermined Call Chain,Undetermined Call Chain
+BskyBot,11,fbe51,bot.py__module__slice.py,Full Attack Chain,Full Attack Chain
+BskyBot,11,fbe51,core_bsky_client.py_create_reply_slice.py,Benign Artifact,Benign Artifact
+BskyBot,11,fbe51,controller.py__module__slice.py,Full Attack Chain,Full Attack Chain
+BskyBot,11,fbe51,core_data_serializer.py_deserialize_bytes_slice.py,Benign Artifact,Benign Artifact
+BskyBot,11,fbe51,core_bsky_client.py_create_post_slice.py,Benign Artifact,Benign Artifact
+BskyBot,12,b40cc,core_dummy_image_path_generator.py_generate_slice.py,Benign Artifact,Benign Artifact
+BskyBot,12,b40cc,core_jpeg_stegano.py_encode_slice.py,Undetermined Call Chain,Undetermined Call Chain
+BskyBot,12,b40cc,core_jpeg_stegano.py_decode_slice.py,Benign Artifact,Benign Artifact
+BskyBot,12,b40cc,bot.py__module__slice.py,Core Attack Chain,Core Attack Chain
+BskyBot,12,b40cc,core_bsky_client.py_create_reply_slice.py,Benign Artifact,Benign Artifact
+BskyBot,12,b40cc,controller.py__module__slice.py,Full Attack Chain,Full Attack Chain
+BskyBot,12,b40cc,core_data_serializer.py_deserialize_bytes_slice.py,Benign Artifact,Benign Artifact
+BskyBot,12,b40cc,core_bsky_client.py_create_post_slice.py,Benign Artifact,Benign Artifact
+Cerberus,0,ab1e0,Cerberus.py__module__slice.py,Full Attack Chain,Full Attack Chain
+Cerberus,1,44601,Cerberus.py__module__slice.py,Full Attack Chain,Full Attack Chain
+Cerberus,2,cb198,Cerberus.py__module__slice.py,Full Attack Chain,Full Attack Chain
+Cerberus,3,7d2ad,Cerberus.py__module__slice.py,Full Attack Chain,Full Attack Chain
+Cerberus,4,e8f21,Cerberus.py__module__slice.py,Core Attack Chain,Core Attack Chain
+Cerberus,5,f03d4,Cerberus.py__module__slice.py,Full Attack Chain,Full Attack Chain
+Cerberus,6,261a4,Cerberus.py__module__slice.py,Full Attack Chain,Full Attack Chain
+Cerberus,7,1262b,Cerberus.py__module__slice.py,Full Attack Chain,Full Attack Chain
+Cerberus,8,f5ca7,Cerberus.py__module__slice.py,Full Attack Chain,Full Attack Chain
+Chrome_pass_stealer,0,0c8fb,chromepass.py__module__slice.py,Core Attack Chain,Core Attack Chain
+Chrome_pass_stealer,1,0eeba,chromepass.py__module__slice.py,Core Attack Chain,Core Attack Chain
+Chrome_pass_stealer,2,5c618,chromepass.py__module__slice.py,Core Attack Chain,Core Attack Chain
+Chrome_pass_stealer,3,915e2,chromepass.py__module__slice.py,Core Attack Chain,Core Attack Chain
+Chrome_pass_stealer,4,d766e,chromepass.py__module__slice.py,Full Attack Chain,Full Attack Chain
+Chrome_pass_stealer,5,444fc,chromepass.py__module__slice.py,Full Attack Chain,Full Attack Chain
+Chrome_pass_stealer,6,c060d,chromepass.py__module__slice.py,Full Attack Chain,Full Attack Chain
+Chrome_pass_stealer,7,73291,chromepass.py__module__slice.py,Full Attack Chain,Full Attack Chain
+Chrome_pass_stealer,8,4ac98,chromepass.py__module__slice.py,Full Attack Chain,Full Attack Chain
+Chrome_pass_stealer,9,56cdf,chromepass.py__module__slice.py,Full Attack Chain,Full Attack Chain
+Chrome_pass_stealer,10,fc1f7,chromepass.py__module__slice.py,Full Attack Chain,Full Attack Chain
+Chrome_pass_stealer,11,b6c64,chromepass.py__module__slice.py,Full Attack Chain,Full Attack Chain
+Chrome_pass_stealer,12,5d3bc,chromepass.py__module__slice.py,Full Attack Chain,Full Attack Chain
+crypto-clipper,0,dfe2b,main.py__module__slice.py,Full Attack Chain,Full Attack Chain
+crypto-clipper,0,dfe2b,uninstaller.py__module__slice.py,Benign Artifact,Benign Artifact
+crypto-clipper,1,868ca,main.py_dupe_self_slice.py,Core Attack Chain,Core Attack Chain
+crypto-clipper,1,868ca,main.py_main_slice.py,Full Attack Chain,Full Attack Chain
+crypto-clipper,1,868ca,uninstaller.py__module__slice.py,Benign Artifact,Benign Artifact
+crypto-clipper,2,ca07b,main.py__module__slice.py,Core Attack Chain,Core Attack Chain
+crypto-clipper,2,ca07b,uninstaller.py__module__slice.py,Benign Artifact,Benign Artifact
+crypto-clipper,3,f9abe,main.py__module__slice.py,Full Attack Chain,Full Attack Chain
+crypto-clipper,3,f9abe,uninstaller.py__module__slice.py,Benign Artifact,Benign Artifact
+crypto-clipper,4,299de,main.py__module__slice.py,Full Attack Chain,Full Attack Chain
+crypto-clipper,4,299de,uninstaller.py__module__slice.py,Benign Artifact,Benign Artifact
+dojo6oct16,4,c6dce,infector.py_infect_slice.py,Core Attack Chain,Core Attack Chain
+dojo6oct16,6,ff97b,infector.py_infect_slice.py,Benign Artifact,Benign Artifact
+dojo6oct16,7,8916a,infector.py_infect_slice.py,Core Attack Chain,Core Attack Chain
+dojo6oct16,8,06600,infector.py_infect_slice.py,Full Attack Chain,Full Attack Chain
+dojo6oct16,9,1a34e,infector.py_infect_slice.py,Core Attack Chain,Core Attack Chain
+dojo6oct16,10,1f053,importhook.py_find_spec_slice.py,Full Attack Chain,Full Attack Chain
+dojo6oct16,11,502e1,infector.py_find_spec_slice.py,Full Attack Chain,Full Attack Chain
+dojo6oct16,12,84ec1,infector.py_find_spec_slice.py,Core Attack Chain,Core Attack Chain
+dojo6oct16,13,c2083,importhook.py_find_spec_slice.py,Core Attack Chain,Core Attack Chain
+dojo6oct16,14,0098c,infector.py_find_spec_slice.py,Core Attack Chain,Core Attack Chain
+dojo6oct16,15,36a16,infector.py_find_spec_slice.py,Core Attack Chain,Core Attack Chain
+dojo6oct16,16,df504,infector.py_find_spec_slice.py,Core Attack Chain,Core Attack Chain
+dojo6oct16,17,af251,infector.py_find_spec_slice.py,Full Attack Chain,Full Attack Chain
+Doomed,0,d5b77,game_npc.py___init___metaClassAdapter__slice.py,Benign Artifact,Benign Artifact
+Doomed,0,d5b77,game_sprite_object.py__body__slice.py,Benign Artifact,Benign Artifact
+Doomed,0,d5b77,doomed.py__module__slice.py,Core Attack Chain,Core Attack Chain
+Doomed,0,d5b77,deneme.py__module__slice.py,Benign Artifact,Benign Artifact
+Doomed,0,d5b77,game_sprite_object.py_get_images_metaClassAdapter__slice.py,Benign Artifact,Benign Artifact
+Doomed,0,d5b77,lock.py__module__slice.py,Core Attack Chain,Core Attack Chain
+Doomed,0,d5b77,game_npc.py__body__slice.py,Benign Artifact,Benign Artifact
+Doomed,0,d5b77,game_sprite_object.py___init___metaClassAdapter__slice.py,Benign Artifact,Benign Artifact
+Doomed,1,1e3ca,doomed.py__module__slice.py,Core Attack Chain,Core Attack Chain
+Doomed,1,1e3ca,deneme.py__module__slice.py,Benign Artifact,Benign Artifact
+Doomed,1,1e3ca,npc.py___init___slice.py,Benign Artifact,Benign Artifact
+Doomed,1,1e3ca,lock.py__module__slice.py,Core Attack Chain,Core Attack Chain
+Doomed,1,1e3ca,sprite_object.py_get_images_slice.py,Benign Artifact,Benign Artifact
+Doomed,1,1e3ca,unknown___init___slice.py,Benign Artifact,Benign Artifact
+Doomed,2,d1557,doomed.py__module__slice.py,Core Attack Chain,Core Attack Chain
+Doomed,2,d1557,npc.py___init___slice.py,Benign Artifact,Benign Artifact
+Doomed,2,d1557,lock.py__module__slice.py,Core Attack Chain,Core Attack Chain
+Doomed,2,d1557,unknown___init___slice.py,Benign Artifact,Benign Artifact
+Doomed,3,8e8c4,doomed.py__module__slice.py,Core Attack Chain,Core Attack Chain
+Doomed,3,8e8c4,npc.py___init___slice.py,Benign Artifact,Benign Artifact
+Doomed,3,8e8c4,lock.py__module__slice.py,Core Attack Chain,Core Attack Chain
+Doomed,3,8e8c4,lock.py_BaslangicaTasi_slice.py,Core Attack Chain,Core Attack Chain
+Doomed,3,8e8c4,unknown___init___slice.py,Benign Artifact,Benign Artifact
+Doomed,4,01c74,DOOM_lock.py__module__slice.py,Benign Artifact,Benign Artifact
+Doomed,4,01c74,DOOM.py_BaslangicaTasi_slice.py,Core Attack Chain,Core Attack Chain
+Doomed,4,01c74,DOOM_npc.py___init___slice.py,Benign Artifact,Benign Artifact
+Doomed,4,01c74,DOOM.py__module__slice.py,Core Attack Chain,Core Attack Chain
+Doomed,5,2b87d,DOOM_lock.py__module__slice.py,Benign Artifact,Benign Artifact
+Doomed,5,2b87d,DOOM.py_BaslangicaTasi_slice.py,Core Attack Chain,Core Attack Chain
+Doomed,5,2b87d,unknown___init___slice.py,Benign Artifact,Benign Artifact
+Doomed,5,2b87d,DOOM.py__module__slice.py,Benign Artifact,Benign Artifact
+Doomed,6,a580d,DOOM_lock.py__module__slice.py,Benign Artifact,Benign Artifact
+Doomed,6,a580d,DOOM_npc.py___init___slice.py,Benign Artifact,Benign Artifact
+Doomed,6,a580d,DOOM.py__module__slice.py,Full Attack Chain,Full Attack Chain
+Doomed,7,920bf,DOOM_lock.py__module__slice.py,Benign Artifact,Benign Artifact
+Doomed,7,920bf,unknown___init___slice.py,Benign Artifact,Benign Artifact
+Doomed,7,920bf,DOOM.py__module__slice.py,Core Attack Chain,Core Attack Chain
+Doomed,8,06b31,DOOM_lock.py__module__slice.py,Benign Artifact,Benign Artifact
+Doomed,8,06b31,unknown___init___slice.py,Benign Artifact,Benign Artifact
+Doomed,8,06b31,DOOM.py__module__slice.py,Core Attack Chain,Core Attack Chain
+EvilCrow,0,402ea,EvilCrow.py__module__slice.py,Core Attack Chain,Core Attack Chain
+EvilCrow,1,2ec65,EvilCrow.py__module__slice.py,Core Attack Chain,Core Attack Chain
+EvilCrow,2,8c077,EvilCrow.py__module__slice.py,Full Attack Chain,Full Attack Chain
+funny-virus,0,5d0e8,1.py__module__slice.py,Full Attack Chain,Full Attack Chain
+funny-virus,1,410ec,1.py__module__slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,1,410ec,sork.py__module__slice.py,Full Attack Chain,Full Attack Chain
+funny-virus,1,410ec,sork_listner.py__module__slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,2,2cbb3,1.py__module__slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,2,2cbb3,sork_sork.py__module__slice.py,Full Attack Chain,Full Attack Chain
+funny-virus,2,2cbb3,sork_listner.py__module__slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,3,d3bdf,sork_sork_listner.py__module__slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,3,d3bdf,1.py__module__slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,3,d3bdf,sork_sork.py__module__slice.py,Full Attack Chain,Full Attack Chain
+funny-virus,4,5df84,sork_sork_listner.py__module__slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,4,5df84,1.py__module__slice.py,Full Attack Chain,Full Attack Chain
+funny-virus,4,5df84,sork_sork.py__module__slice.py,Full Attack Chain,Full Attack Chain
+funny-virus,5,e4e14,sork_sork_listner.py__module__slice.py,Full Attack Chain,Full Attack Chain
+funny-virus,5,e4e14,riny_riny.py__module__slice.py,Full Attack Chain,Full Attack Chain
+funny-virus,5,e4e14,1.py__module__slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,6,e2566,riny_riny.py__module__slice.py,Full Attack Chain,Full Attack Chain
+funny-virus,6,e2566,riny_riny_listner.py__module__slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,6,e2566,1.py__module__slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,7,97ad1,riny_riny.py__module__slice.py,Full Attack Chain,Full Attack Chain
+funny-virus,7,97ad1,riny_riny_listner.py__module__slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,7,97ad1,1.py__module__slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,7,97ad1,papa_papa_socket.py__module__slice.py,Full Attack Chain,Full Attack Chain
+funny-virus,8,0a71a,papa_papa_server.py_handle_client_slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,8,0a71a,riny_riny.py__module__slice.py,Full Attack Chain,Full Attack Chain
+funny-virus,8,0a71a,riny_riny_listner.py__module__slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,8,0a71a,1.py__module__slice.py,Full Attack Chain,Full Attack Chain
+funny-virus,8,0a71a,papa_papa_socket.py__module__slice.py,Full Attack Chain,Full Attack Chain
+funny-virus,8,0a71a,papa_papa_server.py_start_listener_slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,9,d48fd,papa_papa_server.py_handle_client_slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,9,d48fd,papa_client.py__module__slice.py,Full Attack Chain,Full Attack Chain
+funny-virus,9,d48fd,riny_riny.py__module__slice.py,Full Attack Chain,Full Attack Chain
+funny-virus,9,d48fd,riny_riny_listner.py__module__slice.py,Full Attack Chain,Full Attack Chain
+funny-virus,9,d48fd,1.py__module__slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,9,d48fd,papa_papa_socket.py__module__slice.py,Full Attack Chain,Full Attack Chain
+funny-virus,9,d48fd,papa_papa_server.py_start_listener_slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,9,d48fd,papa_client.py_execute_command_slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,10,90791,papa_papa_server.py_handle_client_slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,10,90791,papa_server.py__module__slice.py,Full Attack Chain,Full Attack Chain
+funny-virus,10,90791,papa_client.py__module__slice.py,Full Attack Chain,Full Attack Chain
+funny-virus,10,90791,riny_riny.py__module__slice.py,Full Attack Chain,Full Attack Chain
+funny-virus,10,90791,riny_riny_listner.py__module__slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,10,90791,papa_server.py_send_command_to_client_slice.py,Full Attack Chain,Full Attack Chain
+funny-virus,10,90791,1.py__module__slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,10,90791,papa_papa_socket.py__module__slice.py,Full Attack Chain,Full Attack Chain
+funny-virus,10,90791,papa_papa_server.py_start_listener_slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,10,90791,papa_client.py_execute_command_slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,11,d8dd7,papa_papa_server.py_handle_client_slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,11,d8dd7,papa_server.py__module__slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,11,d8dd7,papa_client.py__module__slice.py,Full Attack Chain,Full Attack Chain
+funny-virus,11,d8dd7,riny_riny.py__module__slice.py,Full Attack Chain,Full Attack Chain
+funny-virus,11,d8dd7,riny_riny_listner.py__module__slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,11,d8dd7,papa_server.py_send_command_to_client_slice.py,Full Attack Chain,Full Attack Chain
+funny-virus,11,d8dd7,1.py__module__slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,11,d8dd7,papa_papa_socket.py__module__slice.py,Full Attack Chain,Full Attack Chain
+funny-virus,11,d8dd7,papa_papa_server.py_start_listener_slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,11,d8dd7,papa_client.py_execute_command_slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,12,909c5,papa_papa_server.py_handle_client_slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,12,909c5,papa_server.py__module__slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,12,909c5,papa_client.py__module__slice.py,Full Attack Chain,Full Attack Chain
+funny-virus,12,909c5,riny_riny.py__module__slice.py,Full Attack Chain,Full Attack Chain
+funny-virus,12,909c5,riny_riny_listner.py__module__slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,12,909c5,papa_server.py_send_command_to_client_slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,12,909c5,1.py__module__slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,12,909c5,papa_papa_socket.py__module__slice.py,Full Attack Chain,Full Attack Chain
+funny-virus,12,909c5,usb_history.py__module__slice.py,Benign Artifact,Benign Artifact
+funny-virus,12,909c5,papa_papa_server.py_start_listener_slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,12,909c5,papa_client.py_execute_command_slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,13,578e1,papa_papa_server.py_handle_client_slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,13,578e1,papa_server.py__module__slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,13,578e1,papa_client.py__module__slice.py,Full Attack Chain,Full Attack Chain
+funny-virus,13,578e1,riny_riny.py__module__slice.py,Full Attack Chain,Full Attack Chain
+funny-virus,13,578e1,riny_riny_listner.py__module__slice.py,Full Attack Chain,Full Attack Chain
+funny-virus,13,578e1,papa_server.py_send_command_to_client_slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,13,578e1,1.py__module__slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,13,578e1,papa_papa_socket.py__module__slice.py,Full Attack Chain,Full Attack Chain
+funny-virus,13,578e1,usb_history.py__module__slice.py,Benign Artifact,Benign Artifact
+funny-virus,13,578e1,papa_papa_server.py_start_listener_slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,13,578e1,papa_client.py_execute_command_slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,14,e69ef,papa_papa_server.py_handle_client_slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,14,e69ef,papa_server.py__module__slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,14,e69ef,papa_client.py__module__slice.py,Full Attack Chain,Full Attack Chain
+funny-virus,14,e69ef,riny_riny.py__module__slice.py,Full Attack Chain,Full Attack Chain
+funny-virus,14,e69ef,papa_payload.py_upload_file_slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,14,e69ef,riny_riny_listner.py__module__slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,14,e69ef,papa_server.py_send_command_to_client_slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,14,e69ef,1.py__module__slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,14,e69ef,papa_payload.py_ping_target_slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,14,e69ef,papa_payload.py_download_file_slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,14,e69ef,papa_payload.py_kill_process_slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,14,e69ef,papa_papa_socket.py__module__slice.py,Full Attack Chain,Full Attack Chain
+funny-virus,14,e69ef,usb_history.py__module__slice.py,Benign Artifact,Benign Artifact
+funny-virus,14,e69ef,papa_papa_server.py_start_listener_slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,14,e69ef,papa_payload.py__module__slice.py,Full Attack Chain,Full Attack Chain
+funny-virus,14,e69ef,papa_payload.py_delete_file_slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,14,e69ef,papa_payload.py_execute_command_slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,14,e69ef,papa_payload.py_execute_powershell_command_slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,14,e69ef,papa_payload.py_execute_powershell_slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,14,e69ef,papa_payload.py_rename_file_slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,15,11668,papa_papa_server.py_handle_client_slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,15,11668,papa_server.py__module__slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,15,11668,papa_client.py__module__slice.py,Full Attack Chain,Full Attack Chain
+funny-virus,15,11668,riny_riny.py__module__slice.py,Full Attack Chain,Full Attack Chain
+funny-virus,15,11668,papa_payload.py_upload_file_slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,15,11668,riny_riny_listner.py__module__slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,15,11668,papa_server.py_send_command_to_client_slice.py,Full Attack Chain,Full Attack Chain
+funny-virus,15,11668,1.py__module__slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,15,11668,papa_payload.py_ping_target_slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,15,11668,papa_payload.py_download_file_slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,15,11668,papa_payload.py_kill_process_slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,15,11668,papa_papa_socket.py__module__slice.py,Full Attack Chain,Full Attack Chain
+funny-virus,15,11668,usb_history.py__module__slice.py,Benign Artifact,Benign Artifact
+funny-virus,15,11668,papa_papa_server.py_start_listener_slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,15,11668,papa_payload.py__module__slice.py,Full Attack Chain,Full Attack Chain
+funny-virus,15,11668,papa_payload.py_delete_file_slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,15,11668,papa_payload.py_execute_command_slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,15,11668,papa_socket.py__module__slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,15,11668,papa_payload.py_execute_powershell_command_slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,15,11668,papa_payload.py_execute_powershell_slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,15,11668,papa_payload.py_rename_file_slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,15,11668,papa_socket.py_send_command_to_client_slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,16,ad64d,papa_client.py_execute_powershell_command_slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,16,ad64d,papa_papa_server.py_handle_client_slice.py,Full Attack Chain,Full Attack Chain
+funny-virus,16,ad64d,papa_server.py__module__slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,16,ad64d,papa_client.py__module__slice.py,Full Attack Chain,Full Attack Chain
+funny-virus,16,ad64d,riny_riny.py__module__slice.py,Full Attack Chain,Full Attack Chain
+funny-virus,16,ad64d,papa_payload.py_upload_file_slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,16,ad64d,riny_riny_listner.py__module__slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,16,ad64d,papa_server.py_send_command_to_client_slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,16,ad64d,1.py__module__slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,16,ad64d,papa_payload.py_ping_target_slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,16,ad64d,papa_payload.py_download_file_slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,16,ad64d,papa_client.py_kill_process_slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,16,ad64d,Birthday_Message_Bomb_superstar.py__module__slice.py,Full Attack Chain,Full Attack Chain
+funny-virus,16,ad64d,papa_client.py_upload_file_slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,16,ad64d,papa_payload.py_kill_process_slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,16,ad64d,papa_client.py_delete_file_slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,16,ad64d,papa_client.py_ping_target_slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,16,ad64d,papa_papa_socket.py__module__slice.py,Full Attack Chain,Full Attack Chain
+funny-virus,16,ad64d,usb_history.py__module__slice.py,Benign Artifact,Benign Artifact
+funny-virus,16,ad64d,papa_payload.py__module__slice.py,Full Attack Chain,Full Attack Chain
+funny-virus,16,ad64d,papa_payload.py_delete_file_slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,16,ad64d,papa_payload.py_execute_command_slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,16,ad64d,papa_socket.py__module__slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,16,ad64d,papa_client.py_rename_file_slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,16,ad64d,papa_payload.py_execute_powershell_command_slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,16,ad64d,papa_client.py_download_file_slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,16,ad64d,papa_payload.py_execute_powershell_slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,16,ad64d,papa_payload.py_rename_file_slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,16,ad64d,papa_socket.py_send_command_to_client_slice.py,Full Attack Chain,Full Attack Chain
+funny-virus,17,5776f,papa_client.py_execute_powershell_command_slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,17,5776f,papa_papa_server.py_handle_client_slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,17,5776f,papa_server.py__module__slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,17,5776f,papa_client.py__module__slice.py,Full Attack Chain,Full Attack Chain
+funny-virus,17,5776f,riny_riny.py__module__slice.py,Full Attack Chain,Full Attack Chain
+funny-virus,17,5776f,papa_payload.py_upload_file_slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,17,5776f,riny_riny_listner.py__module__slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,17,5776f,papa_server.py_send_command_to_client_slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,17,5776f,1.py__module__slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,17,5776f,papa_payload.py_ping_target_slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,17,5776f,papa_payload.py_download_file_slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,17,5776f,papa_client.py_kill_process_slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,17,5776f,Birthday_Message_Bomb_superstar.py__module__slice.py,Full Attack Chain,Full Attack Chain
+funny-virus,17,5776f,papa_client.py_upload_file_slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,17,5776f,papa_payload.py_kill_process_slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,17,5776f,papa_client.py_delete_file_slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,17,5776f,papa_client.py_ping_target_slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,17,5776f,papa_papa_socket.py__module__slice.py,Full Attack Chain,Full Attack Chain
+funny-virus,17,5776f,usb_history.py__module__slice.py,Benign Artifact,Benign Artifact
+funny-virus,17,5776f,papa_payload.py__module__slice.py,Full Attack Chain,Full Attack Chain
+funny-virus,17,5776f,papa_payload.py_delete_file_slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,17,5776f,papa_payload.py_execute_command_slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,17,5776f,papa_socket.py__module__slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,17,5776f,papa_client.py_rename_file_slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,17,5776f,papa_payload.py_execute_powershell_command_slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,17,5776f,papa_client.py_download_file_slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,17,5776f,papa_payload.py_execute_powershell_slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,17,5776f,papa_payload.py_rename_file_slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,17,5776f,papa_socket.py_send_command_to_client_slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,18,3e3b2,papa_client.py_execute_powershell_command_slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,18,3e3b2,papa_papa_server.py_handle_client_slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,18,3e3b2,papa_server.py__module__slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,18,3e3b2,papa_client.py__module__slice.py,Full Attack Chain,Full Attack Chain
+funny-virus,18,3e3b2,riny_riny.py__module__slice.py,Full Attack Chain,Full Attack Chain
+funny-virus,18,3e3b2,papa_payload.py_upload_file_slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,18,3e3b2,riny_riny_listner.py__module__slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,18,3e3b2,papa_server.py_send_command_to_client_slice.py,Full Attack Chain,Full Attack Chain
+funny-virus,18,3e3b2,1.py__module__slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,18,3e3b2,papa_payload.py_ping_target_slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,18,3e3b2,papa_payload.py_download_file_slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,18,3e3b2,papa_client.py_kill_process_slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,18,3e3b2,Birthday_Message_Bomb_superstar.py__module__slice.py,Full Attack Chain,Full Attack Chain
+funny-virus,18,3e3b2,papa_client.py_upload_file_slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,18,3e3b2,papa_payload.py_kill_process_slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,18,3e3b2,papa_client.py_delete_file_slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,18,3e3b2,papa_client.py_ping_target_slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,18,3e3b2,papa_papa_socket.py__module__slice.py,Full Attack Chain,Full Attack Chain
+funny-virus,18,3e3b2,usb_history.py__module__slice.py,Benign Artifact,Benign Artifact
+funny-virus,18,3e3b2,papa_payload.py__module__slice.py,Full Attack Chain,Full Attack Chain
+funny-virus,18,3e3b2,papa_payload.py_delete_file_slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,18,3e3b2,papa_payload.py_execute_command_slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,18,3e3b2,papa_socket.py__module__slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,18,3e3b2,papa_client.py_rename_file_slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,18,3e3b2,papa_payload.py_execute_powershell_command_slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,18,3e3b2,papa_client.py_download_file_slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,18,3e3b2,papa_payload.py_execute_powershell_slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,18,3e3b2,papa_payload.py_rename_file_slice.py,Core Attack Chain,Core Attack Chain
+funny-virus,18,3e3b2,papa_socket.py_send_command_to_client_slice.py,Core Attack Chain,Core Attack Chain
+HackerDoomsday,2,4533e,main.py_customize_and_set_window_color_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,2,4533e,main.py_show_page_3_slice.py,Full Attack Chain,Full Attack Chain
+HackerDoomsday,2,4533e,main.py__module__slice.py,Full Attack Chain,Full Attack Chain
+HackerDoomsday,2,4533e,main.py_change_shell_slice.py,Core Attack Chain,Core Attack Chain
+HackerDoomsday,2,4533e,main.py_set_file_attributes_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,3,90d6a,start_gdi.py_starttunnel_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,3,90d6a,start_gdi.py_starthell_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,3,90d6a,start_gdi.py_startinvert_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,3,90d6a,start_gdi.py_startpanscreen_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,3,90d6a,start_gdi.py_startrottun_slice.py,Undetermined Call Chain,Undetermined Call Chain
+HackerDoomsday,3,90d6a,start_gdi.py_startsmelt_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,3,90d6a,start_gdi.py_starterrors_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,3,90d6a,start_gdi.py_startrastagHori_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,3,90d6a,start_gdi.py_startmelt_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,3,90d6a,start_gdi.py_startswipescreen_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,3,90d6a,start_gdi.py_startvoid_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,3,90d6a,main.py__module__slice.py,Full Attack Chain,Full Attack Chain
+HackerDoomsday,3,90d6a,start_gdi.py_startdrawimages_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,3,90d6a,gui.py_show_page_3_slice.py,Full Attack Chain,Full Attack Chain
+HackerDoomsday,3,90d6a,start_gdi.py_startsines_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,3,90d6a,start_gdi.py_starticonscursor_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,4,4dce8,start_gdi.py_starttunnel_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,4,4dce8,start_gdi.py_starthell_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,4,4dce8,start_gdi.py_startinvert_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,4,4dce8,start_gdi.py_startpanscreen_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,4,4dce8,start_gdi.py_startrottun_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,4,4dce8,start_gdi.py_startsmelt_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,4,4dce8,start_gdi.py_starterrors_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,4,4dce8,start_gdi.py_startrastagHori_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,4,4dce8,start_gdi.py_startmelt_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,4,4dce8,start_gdi.py_startswipescreen_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,4,4dce8,start_gdi.py_startvoid_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,4,4dce8,main.py__module__slice.py,Full Attack Chain,Full Attack Chain
+HackerDoomsday,4,4dce8,start_gdi.py_startdrawimages_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,4,4dce8,gui.py_show_page_3_slice.py,Full Attack Chain,Full Attack Chain
+HackerDoomsday,4,4dce8,start_gdi.py_startsines_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,4,4dce8,start_gdi.py_starticonscursor_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,5,96855,start_gdi.py_starttunnel_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,5,96855,start_gdi.py_starthell_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,5,96855,start_gdi.py_startinvert_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,5,96855,start_gdi.py_startpanscreen_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,5,96855,start_gdi.py_startrottun_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,5,96855,start_gdi.py_startsmelt_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,5,96855,start_gdi.py_starterrors_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,5,96855,start_gdi.py_startrastagHori_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,5,96855,start_gdi.py_startmelt_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,5,96855,start_gdi.py_startswipescreen_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,5,96855,gui.py__lambda_12_slice.py,Full Attack Chain,Full Attack Chain
+HackerDoomsday,5,96855,start_gdi.py_startvoid_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,5,96855,main.py__module__slice.py,Full Attack Chain,Full Attack Chain
+HackerDoomsday,5,96855,start_gdi.py_startdrawimages_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,5,96855,gui.py_show_page_3_slice.py,Full Attack Chain,Full Attack Chain
+HackerDoomsday,5,96855,start_gdi.py_startsines_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,5,96855,start_gdi.py_starticonscursor_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,5,96855,gui.py_instability_effect_slice.py,Full Attack Chain,Full Attack Chain
+HackerDoomsday,5,96855,gui.py__lambda_11_slice.py,Full Attack Chain,Full Attack Chain
+HackerDoomsday,6,74617,start_gdi.py_starttunnel_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,6,74617,start_gdi.py_starthell_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,6,74617,start_gdi.py_startinvert_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,6,74617,start_gdi.py_startpanscreen_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,6,74617,start_gdi.py_startrottun_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,6,74617,start_gdi.py_startsmelt_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,6,74617,start_gdi.py_starterrors_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,6,74617,start_gdi.py_startrastagHori_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,6,74617,start_gdi.py_startmelt_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,6,74617,start_gdi.py_startswipescreen_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,6,74617,gui.py__lambda_12_slice.py,Full Attack Chain,Full Attack Chain
+HackerDoomsday,6,74617,start_gdi.py_startvoid_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,6,74617,gui.py_handle_alt_f4_slice.py,Full Attack Chain,Full Attack Chain
+HackerDoomsday,6,74617,main.py_start_chaos_in_thread_slice.py,Full Attack Chain,Full Attack Chain
+HackerDoomsday,6,74617,main.py__module__slice.py,Full Attack Chain,Full Attack Chain
+HackerDoomsday,6,74617,start_gdi.py_startdrawimages_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,6,74617,gui.py_show_page_3_slice.py,Full Attack Chain,Full Attack Chain
+HackerDoomsday,6,74617,start_gdi.py_startsines_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,6,74617,start_gdi.py_starticonscursor_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,6,74617,gui.py__lambda_11_slice.py,Full Attack Chain,Full Attack Chain
+HackerDoomsday,7,55bbf,start_gdi.py_starttunnel_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,7,55bbf,start_gdi.py_starthell_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,7,55bbf,start_gdi.py_startinvert_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,7,55bbf,start_gdi.py_startpanscreen_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,7,55bbf,start_gdi.py_startrottun_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,7,55bbf,start_gdi.py_startsmelt_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,7,55bbf,start_gdi.py_starterrors_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,7,55bbf,start_gdi.py_startrastagHori_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,7,55bbf,start_gdi.py_startmelt_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,7,55bbf,start_gdi.py_startswipescreen_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,7,55bbf,gui.py__lambda_12_slice.py,Full Attack Chain,Full Attack Chain
+HackerDoomsday,7,55bbf,start_gdi.py_startvoid_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,7,55bbf,gui.py_handle_alt_f4_slice.py,Full Attack Chain,Full Attack Chain
+HackerDoomsday,7,55bbf,main.py_start_chaos_in_thread_slice.py,Full Attack Chain,Full Attack Chain
+HackerDoomsday,7,55bbf,main.py__module__slice.py,Full Attack Chain,Full Attack Chain
+HackerDoomsday,7,55bbf,start_gdi.py_startdrawimages_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,7,55bbf,gui.py_show_page_3_slice.py,Full Attack Chain,Full Attack Chain
+HackerDoomsday,7,55bbf,start_gdi.py_startsines_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,7,55bbf,start_gdi.py_starticonscursor_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,7,55bbf,gui.py__lambda_11_slice.py,Full Attack Chain,Full Attack Chain
+HackerDoomsday,8,63891,start_gdi.py_starttunnel_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,8,63891,start_gdi.py_starthell_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,8,63891,start_gdi.py_startinvert_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,8,63891,start_gdi.py_startpanscreen_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,8,63891,start_gdi.py_startrottun_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,8,63891,start_gdi.py_startsmelt_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,8,63891,start_gdi.py_starterrors_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,8,63891,start_gdi.py_startrastagHori_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,8,63891,start_gdi.py_startmelt_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,8,63891,start_gdi.py_startswipescreen_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,8,63891,gui.py__lambda_12_slice.py,Full Attack Chain,Full Attack Chain
+HackerDoomsday,8,63891,start_gdi.py_startvoid_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,8,63891,gui.py_handle_alt_f4_slice.py,Full Attack Chain,Full Attack Chain
+HackerDoomsday,8,63891,main.py_start_chaos_in_thread_slice.py,Full Attack Chain,Full Attack Chain
+HackerDoomsday,8,63891,main.py__module__slice.py,Full Attack Chain,Full Attack Chain
+HackerDoomsday,8,63891,start_gdi.py_startdrawimages_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,8,63891,gui.py_show_page_3_slice.py,Full Attack Chain,Full Attack Chain
+HackerDoomsday,8,63891,start_gdi.py_startsines_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,8,63891,start_gdi.py_starticonscursor_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,8,63891,gui.py__lambda_11_slice.py,Full Attack Chain,Full Attack Chain
+HackerDoomsday,9,587b0,start_gdi.py_starttunnel_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,9,587b0,start_gdi.py__module__slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,9,587b0,start_gdi.py_starthell_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,9,587b0,start_gdi.py_startinvert_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,9,587b0,start_gdi.py_startpanscreen_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,9,587b0,start_gdi.py_startrottun_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,9,587b0,start_gdi.py_startsmelt_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,9,587b0,start_gdi.py_starterrors_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,9,587b0,start_gdi.py_startrastagHori_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,9,587b0,start_gdi.py_startmelt_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,9,587b0,start_gdi.py_startswipescreen_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,9,587b0,unknown_worker_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,9,587b0,gui.py__lambda_12_slice.py,Full Attack Chain,Full Attack Chain
+HackerDoomsday,9,587b0,start_gdi.py_startvoid_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,9,587b0,gui.py_handle_alt_f4_slice.py,Full Attack Chain,Full Attack Chain
+HackerDoomsday,9,587b0,main.py_start_chaos_in_thread_slice.py,Full Attack Chain,Full Attack Chain
+HackerDoomsday,9,587b0,main.py__module__slice.py,Full Attack Chain,Full Attack Chain
+HackerDoomsday,9,587b0,start_gdi.py_startdrawimages_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,9,587b0,gui.py_show_page_3_slice.py,Full Attack Chain,Full Attack Chain
+HackerDoomsday,9,587b0,start_gdi.py_startsines_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,9,587b0,start_gdi.py_starticonscursor_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,9,587b0,gui.py__lambda_11_slice.py,Full Attack Chain,Full Attack Chain
+HackerDoomsday,10,b73db,start_gdi.py_starttunnel_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,10,b73db,start_gdi.py__module__slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,10,b73db,start_gdi.py_starthell_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,10,b73db,start_gdi.py_startinvert_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,10,b73db,start_gdi.py_startpanscreen_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,10,b73db,start_gdi.py_startrottun_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,10,b73db,start_gdi.py_startsmelt_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,10,b73db,start_gdi.py_starterrors_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,10,b73db,start_gdi.py_startrastagHori_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,10,b73db,start_gdi.py_startmelt_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,10,b73db,start_gdi.py_startswipescreen_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,10,b73db,unknown_worker_slice.py,Full Attack Chain,Full Attack Chain
+HackerDoomsday,10,b73db,gui.py__lambda_12_slice.py,Full Attack Chain,Full Attack Chain
+HackerDoomsday,10,b73db,start_gdi.py_startvoid_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,10,b73db,gui.py_handle_alt_f4_slice.py,Full Attack Chain,Full Attack Chain
+HackerDoomsday,10,b73db,main.py_start_chaos_in_thread_slice.py,Full Attack Chain,Full Attack Chain
+HackerDoomsday,10,b73db,main.py__module__slice.py,Full Attack Chain,Full Attack Chain
+HackerDoomsday,10,b73db,start_gdi.py_startdrawimages_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,10,b73db,gui.py_show_page_3_slice.py,Full Attack Chain,Full Attack Chain
+HackerDoomsday,10,b73db,start_gdi.py_startsines_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,10,b73db,start_gdi.py_starticonscursor_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,10,b73db,gui.py__lambda_11_slice.py,Full Attack Chain,Full Attack Chain
+HackerDoomsday,11,cfc7a,start_gdi.py_starttunnel_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,11,cfc7a,start_gdi.py__module__slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,11,cfc7a,start_gdi.py_starthell_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,11,cfc7a,start_gdi.py_startinvert_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,11,cfc7a,start_gdi.py_startpanscreen_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,11,cfc7a,start_gdi.py_startrottun_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,11,cfc7a,start_gdi.py_startsmelt_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,11,cfc7a,start_gdi.py_starterrors_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,11,cfc7a,start_gdi.py_startrastagHori_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,11,cfc7a,start_gdi.py_startmelt_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,11,cfc7a,start_gdi.py_startswipescreen_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,11,cfc7a,unknown_worker_slice.py,Full Attack Chain,Full Attack Chain
+HackerDoomsday,11,cfc7a,gui.py__lambda_12_slice.py,Full Attack Chain,Full Attack Chain
+HackerDoomsday,11,cfc7a,start_gdi.py_startvoid_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,11,cfc7a,gui.py_handle_alt_f4_slice.py,Full Attack Chain,Full Attack Chain
+HackerDoomsday,11,cfc7a,main.py_start_chaos_in_thread_slice.py,Full Attack Chain,Full Attack Chain
+HackerDoomsday,11,cfc7a,main.py__module__slice.py,Full Attack Chain,Full Attack Chain
+HackerDoomsday,11,cfc7a,start_gdi.py_startdrawimages_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,11,cfc7a,gui.py_show_page_3_slice.py,Full Attack Chain,Full Attack Chain
+HackerDoomsday,11,cfc7a,start_gdi.py_startsines_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,11,cfc7a,start_gdi.py_starticonscursor_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,11,cfc7a,gui.py__lambda_11_slice.py,Full Attack Chain,Full Attack Chain
+HackerDoomsday,12,22e8b,start_gdi.py_starttunnel_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,12,22e8b,start_gdi.py__module__slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,12,22e8b,start_gdi.py_starthell_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,12,22e8b,start_gdi.py_startinvert_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,12,22e8b,start_gdi.py_startpanscreen_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,12,22e8b,start_gdi.py_startrottun_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,12,22e8b,start_gdi.py_startsmelt_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,12,22e8b,start_gdi.py_starterrors_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,12,22e8b,start_gdi.py_startrastagHori_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,12,22e8b,start_gdi.py_startmelt_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,12,22e8b,start_gdi.py_startswipescreen_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,12,22e8b,unknown_worker_slice.py,Full Attack Chain,Full Attack Chain
+HackerDoomsday,12,22e8b,gui.py__lambda_12_slice.py,Full Attack Chain,Full Attack Chain
+HackerDoomsday,12,22e8b,start_gdi.py_startvoid_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,12,22e8b,gui.py_handle_alt_f4_slice.py,Full Attack Chain,Full Attack Chain
+HackerDoomsday,12,22e8b,main.py__module__slice.py,Full Attack Chain,Full Attack Chain
+HackerDoomsday,12,22e8b,start_gdi.py_startdrawimages_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,12,22e8b,gui.py_show_page_3_slice.py,Full Attack Chain,Full Attack Chain
+HackerDoomsday,12,22e8b,start_gdi.py_startsines_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,12,22e8b,start_gdi.py_starticonscursor_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,12,22e8b,gui.py__lambda_11_slice.py,Full Attack Chain,Full Attack Chain
+HackerDoomsday,13,584b5,start_gdi.py_starttunnel_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,13,584b5,start_gdi.py__module__slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,13,584b5,start_gdi.py_starthell_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,13,584b5,start_gdi.py_startinvert_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,13,584b5,start_gdi.py_startpanscreen_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,13,584b5,start_gdi.py_startrottun_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,13,584b5,start_gdi.py_startsmelt_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,13,584b5,start_gdi.py_starterrors_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,13,584b5,start_gdi.py_startrastagHori_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,13,584b5,start_gdi.py_startmelt_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,13,584b5,start_gdi.py_startswipescreen_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,13,584b5,unknown_worker_slice.py,Full Attack Chain,Full Attack Chain
+HackerDoomsday,13,584b5,gui.py__lambda_12_slice.py,Full Attack Chain,Full Attack Chain
+HackerDoomsday,13,584b5,start_gdi.py_startvoid_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,13,584b5,gui.py_handle_alt_f4_slice.py,Full Attack Chain,Full Attack Chain
+HackerDoomsday,13,584b5,main.py__module__slice.py,Full Attack Chain,Full Attack Chain
+HackerDoomsday,13,584b5,start_gdi.py_startdrawimages_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,13,584b5,gui.py_show_page_3_slice.py,Full Attack Chain,Full Attack Chain
+HackerDoomsday,13,584b5,start_gdi.py_startsines_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,13,584b5,start_gdi.py_starticonscursor_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,13,584b5,gui.py__lambda_11_slice.py,Full Attack Chain,Full Attack Chain
+HackerDoomsday,14,79e7c,start_gdi.py_starttunnel_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,14,79e7c,start_gdi.py__module__slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,14,79e7c,start_gdi.py_starthell_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,14,79e7c,start_gdi.py_startinvert_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,14,79e7c,start_gdi.py_startpanscreen_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,14,79e7c,start_gdi.py_startrottun_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,14,79e7c,start_gdi.py_startsmelt_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,14,79e7c,start_gdi.py_starterrors_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,14,79e7c,start_gdi.py_startrastagHori_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,14,79e7c,start_gdi.py_startmelt_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,14,79e7c,start_gdi.py_startswipescreen_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,14,79e7c,unknown_worker_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,14,79e7c,gui.py__lambda_12_slice.py,Full Attack Chain,Full Attack Chain
+HackerDoomsday,14,79e7c,start_gdi.py_startvoid_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,14,79e7c,gui.py_handle_alt_f4_slice.py,Full Attack Chain,Full Attack Chain
+HackerDoomsday,14,79e7c,main.py__module__slice.py,Full Attack Chain,Full Attack Chain
+HackerDoomsday,14,79e7c,start_gdi.py_startdrawimages_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,14,79e7c,gui.py_show_page_3_slice.py,Full Attack Chain,Full Attack Chain
+HackerDoomsday,14,79e7c,start_gdi.py_startsines_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,14,79e7c,start_gdi.py_starticonscursor_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,14,79e7c,gui.py__lambda_11_slice.py,Full Attack Chain,Full Attack Chain
+HackerDoomsday,15,2b860,start_gdi.py_starttunnel_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,15,2b860,start_gdi.py_starthell_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,15,2b860,start_gdi.py_startinvert_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,15,2b860,start_gdi.py_startpanscreen_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,15,2b860,start_gdi.py_startrottun_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,15,2b860,start_gdi.py_startsmelt_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,15,2b860,start_gdi.py_starterrors_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,15,2b860,start_gdi.py_startrastagHori_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,15,2b860,start_gdi.py_startmelt_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,15,2b860,start_gdi.py_startswipescreen_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,15,2b860,unknown_worker_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,15,2b860,gui.py__lambda_12_slice.py,Full Attack Chain,Full Attack Chain
+HackerDoomsday,15,2b860,start_gdi.py_startvoid_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,15,2b860,gui.py_handle_alt_f4_slice.py,Full Attack Chain,Full Attack Chain
+HackerDoomsday,15,2b860,main.py__module__slice.py,Full Attack Chain,Full Attack Chain
+HackerDoomsday,15,2b860,start_gdi.py_startdrawimages_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,15,2b860,gui.py_show_page_3_slice.py,Full Attack Chain,Full Attack Chain
+HackerDoomsday,15,2b860,start_gdi.py_startsines_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,15,2b860,start_gdi.py_starticonscursor_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,15,2b860,gui.py__lambda_11_slice.py,Full Attack Chain,Full Attack Chain
+HackerDoomsday,16,de183,start_gdi.py_starttunnel_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,16,de183,gui.py__lambda_15_slice.py,Full Attack Chain,Full Attack Chain
+HackerDoomsday,16,de183,start_gdi.py_starthell_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,16,de183,start_gdi.py_startinvert_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,16,de183,multimedia.py_change_txt_2_slice.py,Core Attack Chain,Core Attack Chain
+HackerDoomsday,16,de183,gui.py__lambda_13_slice.py,Full Attack Chain,Full Attack Chain
+HackerDoomsday,16,de183,start_gdi.py_startpanscreen_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,16,de183,start_gdi.py_startrottun_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,16,de183,gui.py_on_install_pressed_slice.py,Full Attack Chain,Full Attack Chain
+HackerDoomsday,16,de183,start_gdi.py_startsmelt_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,16,de183,start_gdi.py_starterrors_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,16,de183,start_gdi.py_startrastagHori_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,16,de183,start_gdi.py_startmelt_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,16,de183,start_gdi.py_startswipescreen_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,16,de183,unknown_worker_slice.py,Undetermined Call Chain,Undetermined Call Chain
+HackerDoomsday,16,de183,gui.py__lambda_12_slice.py,Full Attack Chain,Full Attack Chain
+HackerDoomsday,16,de183,start_gdi.py_startvoid_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,16,de183,gui.py_handle_alt_f4_slice.py,Full Attack Chain,Full Attack Chain
+HackerDoomsday,16,de183,main.py__module__slice.py,Full Attack Chain,Full Attack Chain
+HackerDoomsday,16,de183,start_gdi.py_startdrawimages_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,16,de183,gui.py__lambda_16_slice.py,Full Attack Chain,Full Attack Chain
+HackerDoomsday,16,de183,start_gdi.py_startsines_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,16,de183,start_gdi.py_starticonscursor_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,17,2bf39,start_gdi.py_starttunnel_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,17,2bf39,gui.py__lambda_15_slice.py,Full Attack Chain,Full Attack Chain
+HackerDoomsday,17,2bf39,start_gdi.py_starthell_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,17,2bf39,start_gdi.py_startinvert_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,17,2bf39,multimedia.py_change_txt_2_slice.py,Core Attack Chain,Core Attack Chain
+HackerDoomsday,17,2bf39,gui.py__lambda_13_slice.py,Full Attack Chain,Full Attack Chain
+HackerDoomsday,17,2bf39,start_gdi.py_startpanscreen_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,17,2bf39,start_gdi.py_startrottun_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,17,2bf39,gui.py_on_install_pressed_slice.py,Full Attack Chain,Full Attack Chain
+HackerDoomsday,17,2bf39,start_gdi.py_startsmelt_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,17,2bf39,start_gdi.py_starterrors_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,17,2bf39,start_gdi.py_startrastagHori_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,17,2bf39,start_gdi.py_startmelt_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,17,2bf39,start_gdi.py_startswipescreen_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,17,2bf39,unknown_worker_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,17,2bf39,gui.py__lambda_12_slice.py,Full Attack Chain,Full Attack Chain
+HackerDoomsday,17,2bf39,start_gdi.py_startvoid_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,17,2bf39,gui.py_handle_alt_f4_slice.py,Full Attack Chain,Full Attack Chain
+HackerDoomsday,17,2bf39,main.py__module__slice.py,Full Attack Chain,Full Attack Chain
+HackerDoomsday,17,2bf39,start_gdi.py_startdrawimages_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,17,2bf39,gui.py__lambda_16_slice.py,Full Attack Chain,Full Attack Chain
+HackerDoomsday,17,2bf39,start_gdi.py_startsines_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,17,2bf39,start_gdi.py_starticonscursor_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,18,b4360,start_gdi.py_starttunnel_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,18,b4360,gui.py__lambda_15_slice.py,Full Attack Chain,Full Attack Chain
+HackerDoomsday,18,b4360,start_gdi.py_starthell_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,18,b4360,start_gdi.py_startinvert_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,18,b4360,multimedia.py_change_txt_2_slice.py,Core Attack Chain,Core Attack Chain
+HackerDoomsday,18,b4360,gui.py__lambda_13_slice.py,Full Attack Chain,Full Attack Chain
+HackerDoomsday,18,b4360,start_gdi.py_startpanscreen_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,18,b4360,start_gdi.py_startrottun_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,18,b4360,gui.py_on_install_pressed_slice.py,Full Attack Chain,Full Attack Chain
+HackerDoomsday,18,b4360,start_gdi.py_startsmelt_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,18,b4360,start_gdi.py_starterrors_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,18,b4360,start_gdi.py_startrastagHori_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,18,b4360,start_gdi.py_startmelt_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,18,b4360,start_gdi.py_startswipescreen_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,18,b4360,gui.py__lambda_12_slice.py,Full Attack Chain,Full Attack Chain
+HackerDoomsday,18,b4360,start_gdi.py_startvoid_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,18,b4360,gui.py_handle_alt_f4_slice.py,Full Attack Chain,Full Attack Chain
+HackerDoomsday,18,b4360,main.py__module__slice.py,Full Attack Chain,Full Attack Chain
+HackerDoomsday,18,b4360,start_gdi.py_startdrawimages_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,18,b4360,gui.py__lambda_16_slice.py,Full Attack Chain,Full Attack Chain
+HackerDoomsday,18,b4360,start_gdi.py_startsines_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,18,b4360,start_gdi.py_starticonscursor_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,19,09785,start_gdi.py_starttunnel_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,19,09785,gui.py__lambda_15_slice.py,Full Attack Chain,Full Attack Chain
+HackerDoomsday,19,09785,start_gdi.py_starthell_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,19,09785,start_gdi.py_startinvert_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,19,09785,multimedia.py_change_txt_2_slice.py,Core Attack Chain,Core Attack Chain
+HackerDoomsday,19,09785,gui.py__lambda_13_slice.py,Full Attack Chain,Full Attack Chain
+HackerDoomsday,19,09785,start_gdi.py_startpanscreen_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,19,09785,start_gdi.py_startrottun_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,19,09785,gui.py_on_install_pressed_slice.py,Full Attack Chain,Full Attack Chain
+HackerDoomsday,19,09785,start_gdi.py_startsmelt_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,19,09785,start_gdi.py_starterrors_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,19,09785,start_gdi.py_startrastagHori_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,19,09785,start_gdi.py_startmelt_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,19,09785,start_gdi.py_startswipescreen_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,19,09785,gui.py__lambda_12_slice.py,Full Attack Chain,Full Attack Chain
+HackerDoomsday,19,09785,start_gdi.py_startvoid_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,19,09785,gui.py_handle_alt_f4_slice.py,Full Attack Chain,Full Attack Chain
+HackerDoomsday,19,09785,main.py__module__slice.py,Full Attack Chain,Full Attack Chain
+HackerDoomsday,19,09785,start_gdi.py_startdrawimages_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,19,09785,gui.py__lambda_16_slice.py,Full Attack Chain,Full Attack Chain
+HackerDoomsday,19,09785,start_gdi.py_startsines_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,19,09785,start_gdi.py_starticonscursor_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,20,9b8ec,start_gdi.py_starttunnel_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,20,9b8ec,start_gdi.py_starthell_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,20,9b8ec,start_gdi.py_startinvert_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,20,9b8ec,multimedia.py_change_txt_2_slice.py,Core Attack Chain,Core Attack Chain
+HackerDoomsday,20,9b8ec,start_gdi.py_startpanscreen_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,20,9b8ec,start_gdi.py_startrottun_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,20,9b8ec,gui.py_on_install_pressed_slice.py,Full Attack Chain,Full Attack Chain
+HackerDoomsday,20,9b8ec,start_gdi.py_startsmelt_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,20,9b8ec,start_gdi.py_starterrors_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,20,9b8ec,start_gdi.py_startrastagHori_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,20,9b8ec,start_gdi.py_startmelt_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,20,9b8ec,start_gdi.py_startswipescreen_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,20,9b8ec,regedit_and_virus_safe.py_MinusRegedit_slice.py,Core Attack Chain,Core Attack Chain
+HackerDoomsday,20,9b8ec,unknown_worker_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,20,9b8ec,start_gdi.py_startvoid_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,20,9b8ec,main.py__module__slice.py,Full Attack Chain,Full Attack Chain
+HackerDoomsday,20,9b8ec,start_gdi.py_startdrawimages_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,20,9b8ec,gui.py__lambda_16_slice.py,Full Attack Chain,Full Attack Chain
+HackerDoomsday,20,9b8ec,start_gdi.py_startsines_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,20,9b8ec,start_gdi.py_starticonscursor_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,21,88b3c,start_gdi.py_starttunnel_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,21,88b3c,start_gdi.py_starthell_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,21,88b3c,start_gdi.py_startinvert_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,21,88b3c,start_gdi.py_startpanscreen_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,21,88b3c,start_gdi.py_startrottun_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,21,88b3c,gui.py_on_install_pressed_slice.py,Full Attack Chain,Full Attack Chain
+HackerDoomsday,21,88b3c,start_gdi.py_startsmelt_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,21,88b3c,start_gdi.py_starterrors_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,21,88b3c,start_gdi.py_startrastagHori_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,21,88b3c,start_gdi.py_startmelt_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,21,88b3c,gui.py__lambda_5_slice.py,Full Attack Chain,Full Attack Chain
+HackerDoomsday,21,88b3c,start_gdi.py_startswipescreen_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,21,88b3c,regedit_and_virus_safe.py_MinusRegedit_slice.py,Core Attack Chain,Core Attack Chain
+HackerDoomsday,21,88b3c,unknown_worker_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,21,88b3c,start_gdi.py_startvoid_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,21,88b3c,gui.py__lambda_6_slice.py,Full Attack Chain,Full Attack Chain
+HackerDoomsday,21,88b3c,main.py__module__slice.py,Full Attack Chain,Full Attack Chain
+HackerDoomsday,21,88b3c,start_gdi.py_startdrawimages_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,21,88b3c,regedit_and_virus_safe.py_configure_system_settings_after_50_slice.py,Core Attack Chain,Core Attack Chain
+HackerDoomsday,21,88b3c,start_gdi.py_startsines_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,21,88b3c,start_gdi.py_starticonscursor_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,22,3b318,start_gdi.py_starttunnel_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,22,3b318,start_gdi.py_starthell_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,22,3b318,start_gdi.py_startinvert_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,22,3b318,start_gdi.py_startpanscreen_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,22,3b318,start_gdi.py_startrottun_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,22,3b318,gui.py_on_install_pressed_slice.py,Full Attack Chain,Full Attack Chain
+HackerDoomsday,22,3b318,start_gdi.py_startsmelt_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,22,3b318,multimedia.py_change_txt_1_slice.py,Core Attack Chain,Core Attack Chain
+HackerDoomsday,22,3b318,start_gdi.py_starterrors_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,22,3b318,start_gdi.py_startrastagHori_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,22,3b318,start_gdi.py_startmelt_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,22,3b318,gui.py__lambda_5_slice.py,Full Attack Chain,Full Attack Chain
+HackerDoomsday,22,3b318,start_gdi.py_startswipescreen_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,22,3b318,regedit_and_virus_safe.py_MinusRegedit_slice.py,Core Attack Chain,Core Attack Chain
+HackerDoomsday,22,3b318,unknown_worker_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,22,3b318,start_gdi.py_startvoid_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,22,3b318,gui.py__lambda_6_slice.py,Full Attack Chain,Full Attack Chain
+HackerDoomsday,22,3b318,main.py__module__slice.py,Full Attack Chain,Full Attack Chain
+HackerDoomsday,22,3b318,start_gdi.py_startdrawimages_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,22,3b318,regedit_and_virus_safe.py_configure_system_settings_after_50_slice.py,Core Attack Chain,Core Attack Chain
+HackerDoomsday,22,3b318,start_gdi.py_startsines_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,22,3b318,start_gdi.py_starticonscursor_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,23,cc00d,start_gdi.py_starttunnel_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,23,cc00d,start_gdi.py_starthell_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,23,cc00d,start_gdi.py_startinvert_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,23,cc00d,start_gdi.py_startpanscreen_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,23,cc00d,start_gdi.py_startrottun_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,23,cc00d,gui.py_on_install_pressed_slice.py,Full Attack Chain,Full Attack Chain
+HackerDoomsday,23,cc00d,start_gdi.py_startsmelt_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,23,cc00d,multimedia.py_change_txt_1_slice.py,Core Attack Chain,Core Attack Chain
+HackerDoomsday,23,cc00d,start_gdi.py_starterrors_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,23,cc00d,start_gdi.py_startrastagHori_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,23,cc00d,start_gdi.py_startmelt_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,23,cc00d,gui.py__lambda_5_slice.py,Full Attack Chain,Full Attack Chain
+HackerDoomsday,23,cc00d,start_gdi.py_startswipescreen_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,23,cc00d,start_gdi.py_startvoid_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,23,cc00d,gui.py__lambda_6_slice.py,Full Attack Chain,Full Attack Chain
+HackerDoomsday,23,cc00d,main.py__module__slice.py,Full Attack Chain,Full Attack Chain
+HackerDoomsday,23,cc00d,start_gdi.py_startdrawimages_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,23,cc00d,start_gdi.py_startsines_slice.py,Benign Artifact,Benign Artifact
+HackerDoomsday,23,cc00d,start_gdi.py_starticonscursor_slice.py,Benign Artifact,Benign Artifact
+Hallucinate,0,1ab46,compiler.py__module__slice.py,Full Attack Chain,Full Attack Chain
+Hallucinate,1,1971e,compiler.py_walk_slice.py,Benign Artifact,Benign Artifact
+Hallucinate,1,1971e,compiler.py__module__slice.py,Full Attack Chain,Full Attack Chain
+Hallucinate,2,cf047,compiler.py_walk_slice.py,Benign Artifact,Benign Artifact
+Hallucinate,2,cf047,compiler.py__module__slice.py,Full Attack Chain,Full Attack Chain
+Hallucinate,3,ea14a,compiler.py_walk_slice.py,Benign Artifact,Benign Artifact
+Hallucinate,3,ea14a,compiler.py__module__slice.py,Full Attack Chain,Full Attack Chain
+Hallucinate,4,961c9,compiler.py_walk_slice.py,Benign Artifact,Benign Artifact
+Hallucinate,4,961c9,main.py__module__slice.py,Full Attack Chain,Full Attack Chain
+Hallucinate,4,961c9,compiler.py__module__slice.py,Full Attack Chain,Full Attack Chain
+Infinite-Folder-Virus,0,ba7bd,_module__slice.py,Benign Artifact,Benign Artifact
+Infinite-Folder-Virus,0,ba7bd,folder_explore2_slice.py,Benign Artifact,Benign Artifact
+Infinite-Folder-Virus,1,4a9ea,attacker.py__module__slice.py,Core Attack Chain,Core Attack Chain
+Infinite-Folder-Virus,2,65556,attacker.py__module__slice.py,Full Attack Chain,Full Attack Chain
+Infinite-Folder-Virus,2,65556,test.py__module__slice.py,Benign Artifact,Benign Artifact
+Infinite-Folder-Virus,3,7ac4d,attacker.py__module__slice.py,Full Attack Chain,Full Attack Chain
+Infinite-Folder-Virus,4,88f37,base.py_main_slice.py,Undetermined Call Chain,Undetermined Call Chain
+Infinite-Folder-Virus,4,88f37,attacker.py__module__slice.py,Core Attack Chain,Core Attack Chain
+Infinite-Folder-Virus,5,2118e,base.py_main_slice.py,Undetermined Call Chain,Undetermined Call Chain
+Infinite-Folder-Virus,5,2118e,attacker.py__module__slice.py,Core Attack Chain,Core Attack Chain
+Infinite-Folder-Virus,6,90d1d,base.py__module__slice.py,Core Attack Chain,Core Attack Chain
+Infinite-Folder-Virus,6,90d1d,attacker.py__module__slice.py,Core Attack Chain,Core Attack Chain
+Infinite-Folder-Virus,7,a6604,base.py__module__slice.py,Core Attack Chain,Core Attack Chain
+Infinite-Folder-Virus,7,a6604,attacker.py__module__slice.py,Full Attack Chain,Full Attack Chain
+Infinite-Folder-Virus,8,4f6a1,base.py__module__slice.py,Core Attack Chain,Core Attack Chain
+Infinite-Folder-Virus,8,4f6a1,attacker.py__module__slice.py,Full Attack Chain,Full Attack Chain
+Infinite-Folder-Virus,8,4f6a1,test.py__module__slice.py,Core Attack Chain,Core Attack Chain
+Infinite-Folder-Virus,9,f5eb8,base.py__module__slice.py,Core Attack Chain,Core Attack Chain
+Infinite-Folder-Virus,9,f5eb8,attacker.py__module__slice.py,Full Attack Chain,Full Attack Chain
+Infinite-Folder-Virus,9,f5eb8,test.py_FolderRemove_slice.py,Core Attack Chain,Core Attack Chain
+Infinite-Folder-Virus,9,f5eb8,test.py__module__slice.py,Benign Artifact,Benign Artifact
+Infinite-Folder-Virus,10,eb4ab,base.py__module__slice.py,Benign Artifact,Benign Artifact
+Infinite-Folder-Virus,10,eb4ab,base.py_Main_slice.py,Benign Artifact,Benign Artifact
+Infinite-Folder-Virus,10,eb4ab,attacker.py__module__slice.py,Benign Artifact,Benign Artifact
+Infinite-Folder-Virus,10,eb4ab,EnvCreator.py__module__slice.py,Benign Artifact,Benign Artifact
+Infinite-Folder-Virus,11,983cf,base.py__module__slice.py,Benign Artifact,Benign Artifact
+Infinite-Folder-Virus,11,983cf,base.py_Main_slice.py,Full Attack Chain,Full Attack Chain
+Infinite-Folder-Virus,11,983cf,attacker.py__module__slice.py,Full Attack Chain,Full Attack Chain
+Infinite-Folder-Virus,11,983cf,EnvCreator.py__module__slice.py,Benign Artifact,Benign Artifact
+Infinite-Folder-Virus,12,a5995,base.py__module__slice.py,Benign Artifact,Benign Artifact
+Infinite-Folder-Virus,12,a5995,base.py_Main_slice.py,Full Attack Chain,Full Attack Chain
+Infinite-Folder-Virus,12,a5995,attacker.py__module__slice.py,Full Attack Chain,Full Attack Chain
+Infinite-Folder-Virus,12,a5995,EnvCreator.py__module__slice.py,Benign Artifact,Benign Artifact
+Infinite-Folder-Virus,13,903ad,base.py__module__slice.py,Benign Artifact,Benign Artifact
+Infinite-Folder-Virus,13,903ad,attacker.py__module__slice.py,Full Attack Chain,Full Attack Chain
+Infinite-Folder-Virus,13,903ad,EnvCreator.py__module__slice.py,Benign Artifact,Benign Artifact
+Infinite-Folder-Virus,14,8c8d1,base.py__module__slice.py,Full Attack Chain,Full Attack Chain
+Infinite-Folder-Virus,14,8c8d1,attacker.py__module__slice.py,Full Attack Chain,Full Attack Chain
+Infinite-Folder-Virus,14,8c8d1,EnvCreator.py__module__slice.py,Benign Artifact,Benign Artifact
+Infinite-Folder-Virus,15,f9ce1,base.py__module__slice.py,Full Attack Chain,Full Attack Chain
+Infinite-Folder-Virus,15,f9ce1,attacker.py__module__slice.py,Full Attack Chain,Full Attack Chain
+Infinite-Folder-Virus,15,f9ce1,EnvCreator.py__module__slice.py,Benign Artifact,Benign Artifact
+Infinite-Folder-Virus,16,1c08f,base.py__module__slice.py,Full Attack Chain,Full Attack Chain
+Infinite-Folder-Virus,16,1c08f,attacker.py__module__slice.py,Full Attack Chain,Full Attack Chain
+Infinite-Folder-Virus,16,1c08f,base.py_MAIN_slice.py,Benign Artifact,Benign Artifact
+Infinite-Folder-Virus,16,1c08f,ctypesTest.py__module__slice.py,Benign Artifact,Benign Artifact
+Infinite-Folder-Virus,17,9f429,base.py__module__slice.py,Full Attack Chain,Full Attack Chain
+Infinite-Folder-Virus,17,9f429,attacker.py__module__slice.py,Full Attack Chain,Full Attack Chain
+Infinite-Folder-Virus,17,9f429,base.py_MAIN_slice.py,Benign Artifact,Benign Artifact
+Infinite-Folder-Virus,17,9f429,ctypesTest.py__module__slice.py,Benign Artifact,Benign Artifact
+Infinite-Folder-Virus,18,926e2,base.py__module__slice.py,Benign Artifact,Benign Artifact
+Infinite-Folder-Virus,18,926e2,attacker.py__module__slice.py,Full Attack Chain,Full Attack Chain
+Infinite-Folder-Virus,18,926e2,EnvCreator.py_EnvCreator_slice.py,Benign Artifact,Benign Artifact
+Infinite-Folder-Virus,18,926e2,Fbscraper.py__module__slice.py,Benign Artifact,Benign Artifact
+Infinite-Folder-Virus,19,4e4db,base.py__module__slice.py,Benign Artifact,Benign Artifact
+Infinite-Folder-Virus,19,4e4db,attacker.py__module__slice.py,Core Attack Chain,Core Attack Chain
+Infinite-Folder-Virus,19,4e4db,EnvCreator.py_EnvCreator_slice.py,Benign Artifact,Benign Artifact
+Infinite-Folder-Virus,19,4e4db,Fbscraper.py__module__slice.py,Benign Artifact,Benign Artifact

@@ -33,8 +33,9 @@ def closest_block_line(file_path, code_line):
         "class_definition",
         "function_definition",
         "else_clause",
-        "expression_statement",
         "call",
+        "argument_list",
+        "expression_statement",
         "assignment",
     }
 
@@ -56,7 +57,8 @@ def closest_block_line(file_path, code_line):
         return None
 
     # Choose the smallest enclosing block (innermost)
-    candidates.sort(key=lambda n: (n.end_point[0] - n.start_point[0], n.start_point[0]))
+    # When parent and child have same position, child node comes first
+    candidates.sort(key=lambda n: (n.end_point[0] - n.start_point[0], -n.start_point[0]))
     node = candidates[0]
     
     slice_lines = set()
@@ -88,12 +90,13 @@ def closest_block_line(file_path, code_line):
         slice_lines.add(parent.start_point[0] + 1)
         slice_lines.add(parent.end_point[0] + 1)
     
-    if node.type in ["expression_statement"]:
+    if node.type in ["with_statement","call","assignment"]:
+        slice_lines.update(range(start_line, end_line + 1))
         return slice_lines
     
-    if node.type in ["with_statement","call","assignment"]:
-        return slice_lines.update(range(start_line, end_line + 1))
-    
+    # if node.type in ["expression_statement"]:
+    #     return slice_lines
+
     return slice_lines
     
 

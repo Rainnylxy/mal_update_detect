@@ -8,10 +8,10 @@ import json
 
 def LLM_analyze_code_slice(code_slice_path):
     llm_evaluate_v2 = LLM_Evaluate_v2(
-        api_key="1d368dbf-5a67-448f-9356-49f9efa2fc13",
+        api_key="57bd6c19-3b9f-4cbe-8596-63c472ca47d2",
         base_url="https://ark.cn-beijing.volces.com/api/v3"
     )
-    llm_evaluate_v3 = LLM_Evaluate_v3(
+    llm_evaluate = LLM_Evaluate(
         api_key="1d368dbf-5a67-448f-9356-49f9efa2fc13",
         base_url="https://ark.cn-beijing.volces.com/api/v3"
     )
@@ -19,21 +19,21 @@ def LLM_analyze_code_slice(code_slice_path):
     with open(code_slice_path, "r", encoding="utf-8") as fr:
         code_slice = fr.read()
     # response_v1 = llm_evaluate.malware_analyze(code_slice)
-    response_v2 = llm_evaluate_v2.malware_analyze(code_slice)
+    response_v1 = llm_evaluate_v2.malware_analyze_two_steps(code_slice)
      # 检查响应是否为None
-    if response_v2 is None:
-        print(f"Warning: response_v2 is None for {code_slice_path}")
-        response_v2 = {"error": "LLM returned None"}
+    if response_v1 is None:
+        print(f"Warning: response_v1 is None for {code_slice_path}")
+        response_v1 = {"error": "LLM returned None"}
     # response_v3 = llm_evaluate_v3.malware_analyze(code_slice)
     dir_path = os.path.dirname(code_slice_path)
     out_file_v3 = os.path.join(dir_path, f"{os.path.basename(code_slice_path)}_llm_response_v3.json")
-    out_file_v2 = os.path.join(dir_path, f"{os.path.basename(code_slice_path)}_llm_response_v2.json")
+    out_file_v2 = os.path.join(dir_path, f"{os.path.basename(code_slice_path)}_two_steps.json")
     try:
         with open(out_file_v2, "w", encoding="utf-8") as fw:
-            json.dump(response_v2, fw, ensure_ascii=False, indent=2)
+            json.dump(response_v1, fw, ensure_ascii=False, indent=2)
     except Exception as e:
         with open(out_file_v2, "w", encoding="utf-8") as fw:
-            json.dump({"error": str(e), "raw_response": str(response_v2)}, fw, ensure_ascii=False, indent=2)
+            json.dump({"error": str(e), "raw_response": str(response_v1)}, fw, ensure_ascii=False, indent=2)
     
     # try:
     #     with open(out_file_v3, "w", encoding="utf-8") as fw:
@@ -41,7 +41,9 @@ def LLM_analyze_code_slice(code_slice_path):
     # except Exception as e:
     #     with open(out_file_v3, "w", encoding="utf-8") as fw:
     #         json.dump({"error": str(e), "raw_response": str(response_v3)}, fw, ensure_ascii=False, indent=2)
-    return response_v2['Final_Classification']
+    if 'Detected Category' not in response_v1:
+        return response_v1['Classification']
+    return response_v1['Detected Category']
 
 
 def LLM_analyze_code_slices(taint_slices_dir):

@@ -27,6 +27,7 @@ class Project:
         self.pdgs = {}
         self.load_pdgs()
         self.taintDG = nx.MultiDiGraph()
+        self.taintDG_before = nx.MultiDiGraph()
         # if flag == "before":
         self.load_taint_DG()
         
@@ -36,11 +37,13 @@ class Project:
         taint_dot_path = os.path.join(self.joern_path, "taint_graphs", "taint_graph_updated.dot")
         if os.path.exists(taint_dot_path):
             self.taintDG = nx.nx_agraph.read_dot(taint_dot_path)
+            self.taintDG_before = nx.nx_agraph.read_dot(os.path.join(self.joern_path, "taint_graphs", "taint_graph_before_relabeled.dot"))
         else:
+            self.build_taint_data_graph()
             taint_dot_path = os.path.join(self.joern_path, "taint.dot")
-            if not os.path.exists(taint_dot_path):
-                self.build_taint_data_graph()
-            # taint_dot_path = os.path.join(self.joern_path,  "taint.dot")
+            # if not os.path.exists(taint_dot_path):
+            #     self.build_taint_data_graph()
+            # # taint_dot_path = os.path.join(self.joern_path,  "taint.dot")
             self.taintDG = nx.nx_agraph.read_dot(taint_dot_path)
     
     
@@ -158,7 +161,7 @@ class Project:
         
         for key, value in node_a_data.items():
             # TODO: 需要考虑后续commit补充import使得METHOD_FULL_NAME变化的情况
-            if key in ["label","NAME","DISPATCH_TYPE"]:
+            if key in ["label","NAME","DISPATCH_TYPE","INDEX"]:
                 if node_b_data.get(key) != value:
                     return False
             elif key == "CODE":
@@ -178,7 +181,7 @@ class Project:
         for node in self.cpg.nodes():
             data = self.cpg.nodes[node]
             if int(data.get("LINE_NUMBER", -1)) == after_line_number:
-                if node == "107374182400":
+                if node == "111669149718":
                     print("debug")
                 if "file_path" not in data:
                     data['file_path'] = self.get_node_file_path(node)
@@ -274,7 +277,7 @@ class Project:
             pdg = nx.nx_agraph.read_dot(os.path.join(pdg_dir, pdg_path))
             pdg.graph['file_path'] = self.get_pdg_file_path(pdg)
             for node in pdg.nodes():
-                if node == "30064771273":
+                if node == "30064771089":
                     print("debug")
                 node_full_data = self.cpg.nodes[node]
                 if node_full_data.get("label", '') == "CALL":
@@ -291,6 +294,9 @@ class Project:
                                 taint_graph = self.taint_trace(node, taint_graph, pdg)
                                 if taint_graph.has_edge(node, entry_node):
                                     continue
+                                if not taint_graph.has_node(entry_node):
+                                    taint_graph.add_node(entry_node, **self.cpg.nodes[entry_node])
+                                    taint_graph.nodes[entry_node]['file_path'] = taint_graph.nodes[node].get('file_path', 'unknown')
                                 taint_graph.add_edge(node, entry_node, label="FUNCTION_CALL",color="blue")
                                 if taint_graph.has_edge(entry_node, method_node):
                                     continue
@@ -298,16 +304,33 @@ class Project:
                             # ATTENTION PLEASE: 特殊处理joern识别METHOD_FULL_NAME错误的情况,只根据call_name匹配
                             elif ".py" not in call_path:
                                 for (s_call_name, s_call_path), method_node in sensitive_methods.items():
-                                    if s_call_name == call_name:
+                                    if s_call_name == call_name and s_call_path == call_path:
                                         entry_node = arg
                                         taint_graph = self.taint_trace(node, taint_graph, pdg)
                                         if taint_graph.has_edge(node, entry_node):
                                             continue
+                                        if not taint_graph.has_node(entry_node):
+                                            taint_graph.add_node(entry_node, **self.cpg.nodes[entry_node])
+                                            taint_graph.nodes[entry_node]['file_path'] = taint_graph.nodes[node].get('file_path', 'unknown')
                                         taint_graph.add_edge(node, entry_node, label="FUNCTION_CALL",color="blue")
                                         if taint_graph.has_edge(entry_node, method_node):
                                             continue
                                         taint_graph.add_edge(entry_node, method_node, label="FUNCTION_CALL",color="blue")
-                            
+                            else:
+                                call_name = call_name.split('.')[-1]
+                                for (s_call_name, s_call_path), method_node in sensitive_methods.items():
+                                    if s_call_name.split('.')[-1] == call_name and call_path.replace('.py','') in s_call_path:
+                                        entry_node = arg
+                                        taint_graph = self.taint_trace(node, taint_graph, pdg)
+                                        if taint_graph.has_edge(node, entry_node):
+                                            continue
+                                        if not taint_graph.has_node(entry_node):
+                                            taint_graph.add_node(entry_node, **self.cpg.nodes[entry_node])
+                                            taint_graph.nodes[entry_node]['file_path'] = taint_graph.nodes[node].get('file_path', 'unknown')
+                                        taint_graph.add_edge(node, entry_node, label="FUNCTION_CALL",color="blue")
+                                        if taint_graph.has_edge(entry_node, method_node):
+                                            continue
+                                        taint_graph.add_edge(entry_node, method_node, label="FUNCTION_CALL",color="blue")
                     elif "<module>." in node_full_data.get("METHOD_FULL_NAME","") or "<returnValue>." in node_full_data.get("METHOD_FULL_NAME",""):
                         # 特殊处理threading.Thread(target=xxx)的情况
                         if node_full_data.get("METHOD_FULL_NAME","") == "threading.py:<module>.Thread.__init__":
@@ -326,7 +349,8 @@ class Project:
                                 continue
                             call_name = node_full_data.get("METHOD_FULL_NAME","")
                             call_path = node_full_data.get("METHOD_FULL_NAME","").split(':')[0]
-                        
+                        if "<returnValue>." in call_name:
+                            call_name = call_name.replace("<returnValue>.",'')
                         if (call_name, call_path) in sensitive_methods:
                             method_node = sensitive_methods[(call_name, call_path)]
                             entry_node = node
@@ -336,7 +360,7 @@ class Project:
                             taint_graph.add_edge(entry_node, method_node, label="FUNCTION_CALL",color="blue")
                         elif ".py" not in call_path:
                             for (s_call_name, s_call_path), method_node in sensitive_methods.items():
-                                if s_call_name == call_name:
+                                if s_call_name == call_name and s_call_path == call_path:
                                     entry_node = node
                                     taint_graph = self.taint_trace(node, taint_graph, pdg)
                                     if taint_graph.has_edge(entry_node, method_node):
@@ -349,7 +373,7 @@ class Project:
         for node in taint_graph_copy.nodes():
             if self.cpg.nodes[node].get("label","") != "CALL":
                 continue
-            if node == "30064771337":
+            if node == "30064771089":
                 print("debug")
             args = self.get_call_argument_nodes(node)                
             for arg in args:
@@ -406,7 +430,7 @@ class Project:
         for node, data in taint_graph_copy.nodes(data=True):                
             # sub-function call 继续追踪
             if self.cpg.nodes[node].get("label","") == "CALL":
-                if node == "30064771273":
+                if node == "30064771089":
                     print("debug")
                 if not self.is_project_call(node):
                     continue
@@ -573,7 +597,117 @@ class Project:
             source_code = f.read()
         return source_code.splitlines()[line_number - 1]
         
+
+    def extract_subgraph_codes(self, subgraph: nx.MultiDiGraph, out_path: str) -> dict[str, str]:
+        """根据敏感子图提取代码切片
+
+        Args:
+            subgraph (nx.MultiDiGraph): 提取出的敏感子图
+            out_path (str): 输出路径
+
+        Returns:
+            dict[str, str]: _description_
+        """
+        # 提取子图对应的代码
+        comp_map = {}
+        for node in subgraph.nodes():
+            data = subgraph.nodes.get(node, {})
+            file_path = data.get('file_path', 'unknown')
+            line_number = data.get('LINE_NUMBER')            
+            try:
+                full_path = os.path.join(self.repo_path, file_path)
+                if not os.path.exists(full_path):
+                    continue
+                    
+                # 若为CLASS init方法，则将整个init方法体加入
+                if data.get("label", "") == "METHOD" and data.get("NAME", "") == "__init__":
+                    end_line = int(data.get("LINE_NUMBER_END", line_number))
+                    start_line = int(data.get("LINE_NUMBER", line_number))
+                    for ln in range(start_line, end_line + 1):
+                        comp_map.setdefault(full_path, set()).add(ln)
+                else:
+                    comp_map.setdefault(full_path, set()).add(int(line_number))
+                    
+            except Exception as e:
+                logger.warning(f"Error processing node {node}: {e}")
+                continue
+        
+        # 扩展行号集合以包含相关代码块
+        for fp in list(comp_map.keys()):
+            lines = list(comp_map[fp])
+            for ln in lines:
+                if ln == 87:
+                    print("debug")
+                block_lines = closest_block_line(fp, ln)
+                if block_lines:
+                    comp_map[fp].update(block_lines)
+        
+        # 补充import语句
+        for fp in list(comp_map.keys()):
+            if os.path.exists(fp):
+                import_lines = extract_import_lines(fp)
+                comp_map[fp].update(import_lines)
+        
+        # 展平并排序
+        flat_lines = []
+        for fp, lines in comp_map.items():
+            for ln in sorted(lines):
+                code = self.get_code_by_line(fp, ln)
+                flat_lines.append((fp, int(ln), code))
+        flat_lines.sort(key=lambda x: (x[0], x[1]))
+        
+        # 输出文件名以 METHOD 名和节点 id 区分
+        with open(out_path, 'w', encoding='utf-8') as out_f:
+            for fp, ln, code_line in flat_lines:
+                out_f.write(code_line.rstrip() + "\n")
+        logger.info(f"Extracted subgraph to {out_path}")
     
+    
+    def extract_taint_graph_codes(self, taint_graph: nx.MultiDiGraph):
+        self.switch_commit()
+        taint_subgraphs_before = self.extract_taint_subgraphs(self.taintDG_before)
+        taint_subgraphs_after = self.extract_taint_subgraphs(self.taintDG)
+        methods_out_root = os.path.join(self.joern_path, 'taint_slices_methods')
+        if os.path.exists(methods_out_root):
+            shutil.rmtree(methods_out_root)
+        os.makedirs(methods_out_root, exist_ok=True)
+        for method_node_id, method_graph_before in taint_subgraphs_before.items():
+            method_graph_after = taint_subgraphs_after.get(method_node_id, None)
+            if method_graph_after is None:
+                continue
+            method_name = method_graph_after.nodes[method_node_id].get('NAME') or method_graph_after.nodes[method_node_id].get('METHOD_FULL_NAME') or f"method_{str(method_node_id)}"
+            method_path = method_graph_after.nodes[method_node_id].get('file_path','unknown').replace('/', '_')
+            # out_path = os.path.join(methods_out_root, f'{method_name}_{method_path}_slice.py')
+            # Skip metaClassAdapter methods
+            if method_name.endswith("<metaClassAdapter>") or ("<lambda>" in method_name):
+                continue
+            
+            if graph_helper.is_isomorphic_fast(method_graph_before, method_graph_after):
+                out_path = os.path.join(methods_out_root, f'{method_name}@{method_path}_slice.py')
+                method_code = self.extract_subgraph_codes(method_graph_after, out_path)
+            else:
+                print(f"Method {method_name} changed between commits, extracting both versions.")
+                out_path = os.path.join(methods_out_root, f'NEW@{method_name}@{method_path}_slice.py')
+                method_code = self.extract_subgraph_codes(method_graph_after, out_path)
+
+        # 处理新版本中新增的方法
+        for method_node_id, method_graph_after in taint_subgraphs_after.items():
+            if method_node_id in taint_subgraphs_before:
+                continue
+            method_name = method_graph_after.nodes[method_node_id].get('NAME') or method_graph_after.nodes[method_node_id].get('METHOD_FULL_NAME') or f"method_{str(method_node_id)}"
+            method_path = method_graph_after.nodes[method_node_id].get('file_path','unknown').replace('/', '_')
+            # Skip metaClassAdapter methods
+            if method_name.endswith("<metaClassAdapter>") or ("<lambda>" in method_name):
+                continue
+            print(f"Method {method_name} is new in the latest commit, extracting.")
+            out_path = os.path.join(methods_out_root, f'NEW@{method_name}@{method_path}_slice.py')
+            method_code = self.extract_subgraph_codes(method_graph_after, out_path)
+            # graph_put_path = os.path.join(self.joern_path, f'NEW@{method_name}@{method_path}_graph.dot')
+            # with open(graph_put_path, 'w', encoding='utf-8') as out_f:
+            #     nx.nx_agraph.write_dot(method_graph_after, out_f)
+        
+        
+        
     def extract_sensitive_subgraph_for_method(self, taint_graph: nx.MultiDiGraph, root: str) -> nx.MultiDiGraph:
         """
         为指定的method根节点提取其关联的敏感子图
@@ -603,6 +737,10 @@ class Project:
             cur = queue[qi]
             qi += 1
             
+            if cur == "107374182542":
+                print("debug")
+            
+            
             # 检查是否包含敏感节点
             if taint_graph.nodes[cur].get("fillcolor", "") == "lightgrey":
                 has_sensitive_node = True
@@ -624,19 +762,24 @@ class Project:
             
             # 后继节点加入
             successors = set(taint_graph.successors(cur))
+            if "30064773045" in successors:
+                print(cur)
             comp_nodes.update(successors)
             queue.extend(successor for successor in successors if successor not in queue)
             
             # 前驱节点视情况加入（排除SUB_FUNCTION_CALL的调用者）
             predecessors = set(taint_graph.predecessors(cur))
             predecessors = predecessors - sub_call_callers.get(cur, set())
-            comp_nodes.update(predecessors)
-            queue.extend(predecessor for predecessor in predecessors if predecessor not in queue)
+            comp_nodes.update(predecessor for predecessor in predecessors if self.cpg.nodes[predecessor].get("label","") == "CALL")
+            # queue.extend(predecessor for predecessor in predecessors if predecessor not in queue)
         
         # 构建子图：添加所有收集的节点和它们之间的边
         for node in comp_nodes:
             if taint_graph.has_node(node):
                 sensitive_subgraph.add_node(node, **taint_graph.nodes[node])
+            elif self.cpg.has_node(node):
+                sensitive_subgraph.add_node(node, **self.cpg.nodes[node])
+                sensitive_subgraph.nodes[node]['file_path'] = self.cpg.nodes[node].get('FILENAME', 'unknown')
         
         # 添加节点之间的边
         for u, v, key, data in taint_graph.out_edges(keys=True, data=True):
@@ -645,111 +788,9 @@ class Project:
         
         return sensitive_subgraph if has_sensitive_node else None
 
-
-    def extract_subgraph_codes(self, taint_graph: nx.MultiDiGraph, method_roots: list) -> dict[str, nx.MultiDiGraph]:
-        """
-        为每个method根节点提取敏感子图，并保存相应的代码切片
-        
-        Args:
-            taint_graph: 完整的污点图
-            method_roots: METHOD根节点列表
-        
-        Returns:
-            method_id -> 敏感子图 的映射
-        """
-        self.switch_commit()
-        method_subgraphs = {}
-        
-        methods_out_root = os.path.join(self.joern_path, 'taint_slices_methods')
-        if os.path.exists(methods_out_root):
-            shutil.rmtree(methods_out_root)
-        os.makedirs(methods_out_root, exist_ok=True)
-        
-        for root in method_roots:
-            # 提取该方法的敏感子图
-            subgraph = self.extract_sensitive_subgraph_for_method(taint_graph, root)
-            
-            if subgraph is None:
-                logger.info(f"Method {root} has no sensitive nodes, skipping")
-                continue
-            
-            method_subgraphs[root] = subgraph
-            
-            # 提取子图对应的代码
-            comp_map = {}
-            for node in subgraph.nodes():
-                data = subgraph.nodes.get(node, {})
-                file_path = data.get('file_path', 'unknown')
-                line_number = data.get('LINE_NUMBER')
-                
-                if not file_path or not line_number or file_path == 'unknown':
-                    continue
-                
-                try:
-                    full_path = os.path.join(self.repo_path, file_path)
-                    if not os.path.exists(full_path):
-                        continue
-                        
-                    # 若为CLASS init方法，则将整个init方法体加入
-                    if data.get("label", "") == "METHOD" and data.get("NAME", "") == "__init__":
-                        end_line = int(data.get("LINE_NUMBER_END", line_number))
-                        start_line = int(data.get("LINE_NUMBER", line_number))
-                        for ln in range(start_line, end_line + 1):
-                            comp_map.setdefault(full_path, set()).add(ln)
-                    else:
-                        comp_map.setdefault(full_path, set()).add(int(line_number))
-                        
-                except Exception as e:
-                    logger.warning(f"Error processing node {node}: {e}")
-                    continue
-            
-            # 扩展行号集合以包含相关代码块
-            for fp in list(comp_map.keys()):
-                lines = list(comp_map[fp])
-                for ln in lines:
-                    block_lines = closest_block_line(fp, ln)
-                    if block_lines:
-                        comp_map[fp].update(block_lines)
-            
-            # 补充import语句
-            for fp in list(comp_map.keys()):
-                if os.path.exists(fp):
-                    import_lines = extract_import_lines(fp)
-                    comp_map[fp].update(import_lines)
-            
-            # 展平并排序
-            flat_lines = []
-            for fp, lines in comp_map.items():
-                for ln in sorted(lines):
-                    code = self.get_code_by_line(fp, ln)
-                    flat_lines.append((fp, int(ln), code))
-            flat_lines.sort(key=lambda x: (x[0], x[1]))
-            
-            # 输出文件名以 METHOD 名和节点 id 区分
-            method_name = taint_graph.nodes[root].get('NAME') or taint_graph.nodes[root].get('METHOD_FULL_NAME') or f"method_{str(root)}"
-            method_path = taint_graph.nodes[root].get('file_path','unknown').replace('/', '_')
-            safe_method_name = re.sub(r'[^\w\-_.]', '_', str(method_name))
-            # comp_dir = os.path.join(methods_out_root, f'{method_path}_{safe_method_name}')
-            # os.makedirs(comp_dir, exist_ok=True)
-            out_path = os.path.join(methods_out_root, f'{method_path}_{safe_method_name}_slice.py')
-            subgraph_dot_path = os.path.join(methods_out_root, f'{method_path}_{safe_method_name}_subgraph.dot')
-            with open(subgraph_dot_path, 'w') as dot_f:
-                nx.nx_agraph.write_dot(subgraph, dot_f)
-            
-            with open(out_path, 'w', encoding='utf-8') as out_f:
-                for fp, ln, code_line in flat_lines:
-                    out_f.write(code_line.rstrip() + "\n")
-            
-            logger.info(f"Extracted subgraph for method {method_name} to {out_path}")
-        
-        return method_subgraphs
     
     
-    def extract_codes_by_graph(self, taint_graph: nx.MultiDiGraph) -> dict[str, str]:
-        self.switch_commit()
-        # 为每个入度为0的 METHOD 节点构建它的“METHOD 连通图”，并据此抽取方法对应的代码片段。
-        method_slices = {}
-        # 预计算每个节点的 SUB_FUNCTION_CALL 入边来源集合
+    def extract_taint_subgraphs(self, taint_graph: nx.MultiDiGraph) -> dict[str, nx.MultiDiGraph]:
         sub_call_callers = {}
         for u, v, data in taint_graph.in_edges(data=True):
             if data.get("label") == "SUB_FUNCTION_CALL" or data.get("label") == "FUNCTION_CALL":
@@ -780,8 +821,21 @@ class Project:
                             continue
                         else:
                             method_roots.append(n)
+        method_subgraphs = {}
         
-        self.extract_subgraph_codes(taint_graph, method_roots)
+        for root in method_roots:
+            if root == "107374182497":
+                print("debug")
+            # 提取该方法的敏感子图
+            subgraph = self.extract_sensitive_subgraph_for_method(taint_graph, root)
+            
+            if subgraph is None:
+                logger.info(f"Method {root} has no sensitive nodes, skipping")
+                continue
+            
+            method_subgraphs[root] = subgraph
+        return method_subgraphs
+    
     
     def extract_taint_codes(self, taint_graph: nx.MultiDiGraph) -> dict[str, str]:
         self.switch_commit()
@@ -958,3 +1012,10 @@ class Project:
         return method_slices
 
 
+if __name__ == "__main__":
+    repo_path = "/home/lxy/lxy_codes/mal_update_detect/mal_update_dataset/multiple_commits/funny-virus"
+    commit_after = "3e3b2"
+    joern_workspace_path = "/home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/funny-virus/18_3e3b2_5776f"
+    project_after = Project(repo_path, joern_workspace_path,commit_after,flag = "after")
+    project_after.extract_taint_graph_codes(project_after.taintDG)
+    

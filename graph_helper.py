@@ -1,5 +1,47 @@
 import networkx as nx
 import sys
+
+
+# 定义匹配规则：只有当逻辑属性完全一致时，才认为两个节点可能相同
+def cpg_node_match(n1, n2):
+    # 1. 首先检查节点类型 (最快排除)
+    if n1.get('label') != n2.get('label'):
+        return False
+    
+    # 2. 检查具体的函数名或操作符名
+    if n1.get('file_path') != n2.get('file_path'):
+        return False
+
+    # 3. 检查NAME
+    if n1.get('NAME', '') != n2.get('NAME', ''):
+        return False        
+    
+    # 4.检查CODE
+    if n1.get('CODE', '') != n2.get('CODE', ''):
+        return False
+    
+    # 注意：LINE_NUMBER 被忽略，不作为匹配条件
+    
+    return True
+
+# 定义边匹配规则 (如果你的边也有属性，比如流类型 FLOWS_TO, AST 等)
+def cpg_edge_match(e1, e2):
+    # 假设边有一个 'label' 属性，比如 'AST' 或 'CFG'
+    return e1.get('label') == e2.get('label')
+
+
+def is_isomorphic_fast(graph_a, graph_b):
+    # 使用匹配器
+    
+    gm = nx.algorithms.isomorphism.MultiDiGraphMatcher(
+        graph_a, 
+        graph_b, 
+        node_match=cpg_node_match,
+        edge_match=cpg_edge_match # 如果边有类型，建议也加上
+    )
+    return gm.is_isomorphic()
+
+
 class GraphHelper:
     def __init__(self, graph: nx.MultiDiGraph):
         self.graph = graph

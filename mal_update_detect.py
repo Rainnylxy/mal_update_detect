@@ -1,3 +1,5 @@
+import csv
+import re
 import shutil
 from loguru import logger
 import os
@@ -12,7 +14,14 @@ import networkx as nx
 import json
 import pandas as pd
 
-
+def read_repo_names_from_csv(csv_path):
+    repo_names = []
+    with open(csv_path, 'r') as f:
+        reader = csv.reader(f)
+        for row in reader:
+            if row:  # Ensure the row is not empty
+                repo_names.append(row[0])
+    return repo_names
 
 log_dir = "/home/lxy/lxy_codes/mal_update_detect/logs"
 os.makedirs(log_dir, exist_ok=True)
@@ -35,7 +44,7 @@ def get_node_pairs(project_before: project.Project, project_after: project.Proje
     taint_graph_before = project_before.taintDG
     node_pairs = {}
     for node, data in taint_graph_before.nodes(data=True):
-        if node == "30064771217":
+        if node == "111669149712":
             print("debug")
         node_file = data.get("file_path", "")
         line = int(data.get("LINE_NUMBER", -1))
@@ -117,6 +126,8 @@ def taint_graph_update(project_after: project.Project, file_changed_lines: dict,
     for changed_file, changed_lines in file_changed_lines.items():
         if not changed_file.lower().endswith(".py"):
             continue
+        if "venv" in changed_file or "site-packages" in changed_file:
+            continue
         added_lines = changed_lines["added"]
         changed_funcs = {}
         for line_num in added_lines:
@@ -127,6 +138,8 @@ def taint_graph_update(project_after: project.Project, file_changed_lines: dict,
                 changed_funcs[func_name].append(line_num)
                 
         for func_name, line_nums in changed_funcs.items():
+            if func_name == "deleteTheProcess":
+                print("debug")
             pdg_after = project_after.pdgs.get((changed_file, func_name), None)
             if not pdg_after:
                 continue
@@ -138,13 +151,18 @@ def taint_graph_update(project_after: project.Project, file_changed_lines: dict,
                 for node_id in pdg_after.nodes():
                     node_full_data = project_after.cpg.nodes[node_id]
                     if int(node_full_data.get("LINE_NUMBER", -1)) == line_num:
-                        if node_id == "30064771364":
+                        if node_id == "30064771311":
                             print("debug")
                         if node_full_data.get("label","") == "METHOD_RETURN":
                             continue
                         if has_data_flow(node_id, taint_graph_relabeled, pdg_after):
                             taint_graph_relabeled = project_after.taint_trace(node_id, taint_graph_relabeled, pdg_after)
                             continue
+                        if pdg_after.name == "&lt;module&gt;":
+                            for pdg in project_after.pdgs.values():
+                                if has_data_flow(node_id, taint_graph_relabeled, pdg):
+                                    taint_graph_relabeled = project_after.taint_trace(node_id, taint_graph_relabeled, pdg)
+                                    break
                         if node_full_data.get("label", '') != "CALL" :
                             continue
                         function_name = node_full_data.get("METHOD_FULL_NAME", '')
@@ -232,10 +250,8 @@ def analyze(project_before:project.Project, project_after:project.Project, repo_
     os.makedirs(os.path.dirname(taint_graph_before_relabeled_out), exist_ok=True)
     nx.nx_agraph.write_dot(taint_before_relabeled, taint_graph_before_relabeled_out)
     logger.info(f"Relabeled taint graph written to {taint_graph_before_relabeled_out}")
-    
-    taint_graph_updated = taint_graph_update(project_after, file_changed_lines, taint_before_relabeled)
-    
-    
+    project_after.taintDG_before = taint_before_relabeled.copy()
+    taint_graph_updated = taint_graph_update(project_after, file_changed_lines, taint_before_relabeled)    
     # 输出合并后的图
     taint_graph_out = os.path.join(joern_path_after, "taint_graphs", "taint_graph_updated.dot")
     os.makedirs(os.path.dirname(taint_graph_out), exist_ok=True)
@@ -243,8 +259,7 @@ def analyze(project_before:project.Project, project_after:project.Project, repo_
     logger.info(f"Merged taint graph written to {taint_graph_out}")
     project_after.taintDG = taint_graph_updated
     
-    # 大模型判断代码切片是否有恶意行为
-    code_slices = project_after.extract_taint_codes(taint_graph_updated)
+    project_after.extract_taint_graph_codes(taint_graph_updated)
     
     # 将 taint_graph_updated 的 label 设置为节点的 name（便于查看），并写入新的 dot 文件
     taint_graph_copy = taint_graph_updated.copy()
@@ -299,17 +314,19 @@ def single_repo_analyze(repo_path: str,joern_workspace_path: str):
     
         joern_path_init = os.path.join(joern_workspace_path, repo_name, f"0_{commit_list[0][:5]}_00000")
         project_before = project.Project(repo_path, joern_path_init, commit_list[0], flag = "before")
+        project_before.extract_taint_graph_codes(project_before.taintDG)
         
         project_dir_dict = {}
         project_dir_dict[commit_list[0]] = joern_path_init
         commit_before = commit_list[0]
         
         for i in range(len(commit_list) - 1):
+            # continue
             # if i < 20:
             #     continue
             commit_after = commit_list[i + 1]
-            # if commit_after != "848409044ca4fc21f6283240f015077e7cbb0fe2":
-            #     continue
+            if commit_after == "942826ae3094d9aca7fd67a7980dd6ced4eca105":
+                print("debug")
             commit_helper = CommitHelper(repo_path, commit_after)
             # joern_path_after = os.path.join(joern_workspace_path, repo_name, str(i+1) + "_" + commit_after[:5])
             
@@ -327,12 +344,13 @@ def single_repo_analyze(repo_path: str,joern_workspace_path: str):
                 joern_path_before = os.path.join(joern_workspace_path, repo_name, project_dir_dict.get(commit_before, ""))
                 # joern_path_before = os.path.join(joern_workspace_path, repo_name, "4_"+commit_before[:5])
                 project_before = project.Project(repo_path, joern_path_before, commit_before,flag = "before")
+                # project_before.extract_taint_graph_codes(project_before.taintDG)
             
             project_after = project.Project(repo_path, joern_path_after,commit_after,flag = "after")
             project_dir_dict[commit_after] = joern_path_after
             
-            project_after.extract_taint_codes(project_after.taintDG)
-            # project_after = analyze(project_before,project_after, repo_path, commit_helper, joern_path_after)
+            # project_after.extract_taint_graph_codes(project_after.taintDG)
+            project_after = analyze(project_before,project_after, repo_path, commit_helper, joern_path_after)
             project_before = project_after
             commit_before = commit_after
     except Exception as e:
@@ -341,11 +359,11 @@ def single_repo_analyze(repo_path: str,joern_workspace_path: str):
 
 def parallel_repo_analyze(repo_dir: str, joern_workspace_path: str):
     import multiprocessing
-    pool = multiprocessing.Pool(processes=20)  # 根据需要调整进程数
+    pool = multiprocessing.Pool(processes=10)  # 根据需要调整进程数
     results = []
-    csv_path = os.path.join("/home/lxy/lxy_codes/mal_update_detect/mal_update_detect/commit_counts.csv")
-    csv_read = pd.read_csv(csv_path)
-    for repo_name in os.listdir(repo_dir):
+    csv_path = "./malware_update_dataset.csv"
+    repo_names = read_repo_names_from_csv(csv_path)
+    for repo_name in repo_names[:10]:
         repo_path = os.path.join(repo_dir, repo_name)
         if not os.path.isdir(repo_path):
             continue
@@ -356,11 +374,6 @@ def parallel_repo_analyze(repo_dir: str, joern_workspace_path: str):
         if repo_name in ["PythonMalware_1","python-malware1","python-malware2","python-malware3","Malware1","Keylogger1",".vscode","TWO_PART"]:
             logger.info(f"Skipping known problematic repository: {repo_name}")
             continue
-        
-        try:
-            useful_count = int(csv_read.loc[csv_read.iloc[:, 0].astype(str) == str(repo_name), csv_read.columns[2]].iat[0])
-        except Exception:
-            useful_count = 0
         # if useful_count > 50:
         #     logger.info(f"Skipping repository {repo_path} with {useful_count} useful commits")
         #     continue
@@ -376,6 +389,23 @@ def parallel_repo_analyze(repo_dir: str, joern_workspace_path: str):
         result.get()
 
 
+def check_graph_isomorphism(sub_graphs_before: list, sub_graphs_after: list, project_after: project.Project) -> dict:
+    isomorphism_mapping = {}
+    for method_name_before, method_graph_before in sub_graphs_before.items():
+        method_graph_after = sub_graphs_after.get(method_name_before, None)
+        if method_graph_after is None:
+            continue
+        # 进行子图匹配
+        if graph_helper.graph_isomorphism(method_graph_before, method_graph_after):
+            logger.info(f"Subgraph for method {method_name_before} is isomorphic between before and after.")
+            isomorphism_mapping[method_name_before] = True
+        else:
+            logger.info(f"Subgraph for method {method_name_before} is NOT isomorphic between before and after.")
+            isomorphism_mapping[method_name_before] = False
+        
+    return isomorphism_mapping
+
+
 
 def single_repo_process(repo_path: str,joern_workspace_path: str):
     repo_name = os.path.basename(repo_path)
@@ -386,6 +416,19 @@ def single_repo_process(repo_path: str,joern_workspace_path: str):
             )
     except subprocess.CalledProcessError as e:
         logger.error(f"Failed to checkout FETCH_HEAD for repository {repo_name}: {e}")
+        try:
+            subprocess.check_output(
+                    ["git", "-C", repo_path, "checkout", "master"],
+                    stderr=subprocess.DEVNULL
+                )
+        except subprocess.CalledProcessError as e:
+            try:
+                subprocess.check_output(
+                        ["git", "-C", repo_path, "checkout", "main"],
+                        stderr=subprocess.DEVNULL
+                    )
+            except subprocess.CalledProcessError as e:
+                logger.error(f"Failed to checkout master/main for repository {repo_name}: {e}")
         
     try: 
         commit_list = get_useful_commits(repo_path)
@@ -399,48 +442,27 @@ def single_repo_process(repo_path: str,joern_workspace_path: str):
     try:
     
         joern_path_init = os.path.join(joern_workspace_path, repo_name, f"0_{commit_list[0][:5]}_00000")
-        project_before = project.Project(repo_path, joern_path_init, commit_list[0], flag = "before")
-        project_before.extract_codes_by_graph(project_before.taintDG)
+        # project_before = project.Project(repo_path, joern_path_init, commit_list[0], flag = "before")
         
         project_dir_dict = {}
         project_dir_dict[commit_list[0]] = joern_path_init
-        commit_before = commit_list[0]
+        # commit_before = commit_list[0]
         
         for i in range(len(commit_list) - 1):
-            # if i < 20:
-            #     continue
             commit_after = commit_list[i + 1]
-            # if commit_after != "848409044ca4fc21f6283240f015077e7cbb0fe2":
-            #     continue
             commit_helper = CommitHelper(repo_path, commit_after)
-            # joern_path_after = os.path.join(joern_workspace_path, repo_name, str(i+1) + "_" + commit_after[:5])
-            
             if commit_helper.parent_hash is None:
-                joern_path_after = os.path.join(joern_workspace_path, repo_name, str(i+1) + "_" + commit_after[:5] + "_00000")
-                project_after = project.Project(repo_path, joern_path_after,commit_after,flag = "before")
-                project_dir_dict[commit_after] = joern_path_after
                 continue
             joern_path_after = os.path.join(joern_workspace_path, repo_name, str(i+1) + "_" + commit_after[:5]+ "_" + commit_helper.parent_hash[:5])
             logger.info(f"Analyzing commit {i+1}/{len(commit_list)-1}: {commit_after}")
-            if commit_helper.parent_hash != commit_before:
-                commit_before = commit_helper.parent_hash
-                if commit_before not in project_dir_dict:
-                    project_dir_dict[commit_before] = str(i) + "_" + commit_before[:5]
-                joern_path_before = os.path.join(joern_workspace_path, repo_name, project_dir_dict.get(commit_before, ""))
-                # joern_path_before = os.path.join(joern_workspace_path, repo_name, "4_"+commit_before[:5])
-                project_before = project.Project(repo_path, joern_path_before, commit_before,flag = "before")
             
             project_after = project.Project(repo_path, joern_path_after,commit_after,flag = "after")
-            project_dir_dict[commit_after] = joern_path_after
-            
-            project_before.extract_codes_by_graph(project_before.taintDG)
-            project_after.extract_codes_by_graph(project_after.taintDG)
-            project_before = project_after
-            commit_before = commit_after
+            sub_graphs_before = project_after.extract_taint_subgraphs(project_after.taintDG_before)
+            sub_graphs_after = project_after.extract_taint_subgraphs(project_after.taintDG)
+            mapping_results = check_graph_isomorphism(sub_graphs_before, sub_graphs_after, project_after)
     except Exception as e:
         logger.error(f"Error processing repository {repo_name}: {e}")
     
-
 
 
 def change_commit_name(repo_path: str,joern_workspace_path: str):
@@ -519,31 +541,9 @@ def change_commit_name(repo_path: str,joern_workspace_path: str):
 
 if __name__ == "__main__":
         
-    dataset_dir = "/home/lxy/lxy_codes/mal_update_detect/mal_update_dataset/multiple_commits"
+    dataset_dir = "/home/lxy/lxy_codes/mal_update_detect/mal_update_dataset/multiple_commits/Python_Malware"
     joern_workspace_path = "/home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/"
-    # repo_name = os.path.basename(repo_path)
-    # try:
-    #     subprocess.check_output(
-    #             ["git", "-C", repo_path, "checkout", "FETCH_HEAD"],
-    #             stderr=subprocess.DEVNULL
-    #         )
-    # except subprocess.CalledProcessError as e:
-    #     logger.error(f"Failed to checkout FETCH_HEAD for repository {repo_name}: {e}")
-        
-    # try: 
-    #     commit_list = get_useful_commits(repo_path)
-    # except subprocess.CalledProcessError:
-    #     commit_list = []
-
-    # if not commit_list:
-    #     logger.error(f"Failed to get commit list for repository {repo_name}")
-    # for commit in commit_list[1:]:
-    #     changed = is_taint_graph_changed(repo_path, joern_workspace_path, commit)
-    #     if changed:
-    #         logger.info(f"Taint graph changed for commit {commit} in repository {repo_name}")
-    #     else:
-    #         logger.info(f"Taint graph NOT changed for commit {commit} in repository {repo_name}")
-    # single_repo_analyze(dataset_dir, joern_workspace_path)
-    parallel_repo_analyze(dataset_dir, joern_workspace_path)
+    # parallel_repo_analyze(dataset_dir, joern_workspace_path)
     # change_commit_name(dataset_dir, joern_workspace_path)
-    # single_repo_process(repo_path, joern_workspace_path)
+    # single_repo_process(dataset_dir, joern_workspace_path)
+    single_repo_analyze(dataset_dir, joern_workspace_path)

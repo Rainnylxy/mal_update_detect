@@ -204,10 +204,16 @@ CODE SNIPPET:
 [Type G: Logic Bomb] Goal: Delayed malicious execution based on conditions.
 [Type H: Keylogger] Goal: Stealthy input capture. *Anti-Def*: Hotkeys/Game inputs are Benign.
 [Type I: Builder] Goal: Generate malware.
-[Type J: Dropper / Downloader]Goal: Download and execute malicious payloads. Or Extracts payload from Internal Sources (e.g., Base64 strings, embedded resources, Zip extraction) and Replicates itself to a new location.
+[Type J: Dropper / Downloader]Goal: Deliver and activate a secondary payload.
+Type J requires a visible payload-delivery chain, such as:
+  1) fetch/extract/decode payload bytes from external or embedded source,
+  2) write/drop payload to a new executable/script location,
+  3) execute/launch the dropped payload (or clear execution handoff).
 ANTI-DEFINITION (BENIGN):
 "Installers / Auto-Updaters": Code that downloads files from Official/Trusted Domains.
 Logic: If the URL matches the package metadata or well-known trusted sources, it is Benign.
+Additional Anti-Definition:
+  * Base64 decode + `exec` over local project content (e.g., reading local `source.py`) WITHOUT drop-to-new-location or payload handoff is NOT Type J.
 [Type K: System Interference]Goal: Causes network/keyboard/filesystem disorganization or instability.
 [Type L: Network Propagator]
 - Goal: Self-replicate and spread across networks (Lateral Movement) without user interaction.
@@ -322,7 +328,11 @@ Full Criteria:
 - Full Criteria: Contains complete build logic and implementation (e.g., uses PyInstaller/Nuitka with all necessary parameters).
 
 [Type J: Dropper / Downloader]
-- Full Criteria: Downloads payloads from Untrusted/Hardcoded Source and executes malicious payloads. Or Extracts payload from Internal Sources (e.g., Base64 strings, embedded resources, Zip extraction) and Replicates itself to a new location.
+- Full Criteria:
+  1. Payload Delivery: obtains payload from untrusted external source OR extracts embedded payload bytes.
+  2. Payload Staging: writes/drops payload to a new file/location.
+  3. Activation: executes/launched payload or clearly hands off execution.
+  4. If any of 1-3 is missing, downgrade to Core/Undetermined based on context.
 
 [Type K: System Interference]
 - Full Criteria: Implements disruptive actions (e.g., network disconnection, disabling input devices, altering system settings) that degrade system usability or integrity.

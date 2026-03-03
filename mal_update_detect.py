@@ -543,7 +543,7 @@ def change_commit_name(repo_path: str,joern_workspace_path: str):
 
 if __name__ == "__main__":
         
-    dataset_dir = "/home/lxy/lxy_codes/mal_update_detect/mal_update_dataset/multiple_commits/Python-RAT"
+    dataset_dir = "/home/lxy/lxy_codes/mal_update_detect/mal_update_dataset/multiple_commits/Python-Rootkit"
     joern_workspace_path = "/home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/"
     # parallel_repo_analyze(dataset_dir, joern_workspace_path)
     # change_commit_name(dataset_dir, joern_workspace_path)

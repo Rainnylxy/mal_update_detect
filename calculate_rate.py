@@ -104,7 +104,7 @@ def process_repo_names(repo_names, joern_dir, result_csv_path):
     # for index, repo_name in enumerate(repo_names):
     #     if repo_name == "raccoon_clipper":
     #         print(index)
-    repos_to_process = repo_names[36:37]  # Example: process first 5 repos
+    repos_to_process = repo_names[44:45]  # Example: process first 5 repos
     
     # 顺序处理每个仓库（不使用多进程处理仓库）
     for repo_name in repos_to_process:

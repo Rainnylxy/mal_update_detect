@@ -100,7 +100,8 @@ def closest_block_line(file_path, code_line):
     return slice_lines
     
 
-def find_enclosing_function(file_path, code_line):
+def find_enclosing_function(repo_path,file_path_, code_line):
+    file_path = os.path.join(repo_path, file_path_)
     # Initialize the parser
     PY_LANGUAGE = Language(tspython.language())
     parser = Parser(PY_LANGUAGE)
@@ -115,24 +116,42 @@ def find_enclosing_function(file_path, code_line):
     tree = parser.parse(bytes(source_code, "utf8"))
     root_node = tree.root_node
 
-    def get_function_nodes(node):
-        funcs = []
-        for child in node.children:
-            if child.type == 'function_definition':
-                funcs.append(child)
-            funcs.extend(get_function_nodes(child))
-        return funcs
+    candidates = []
 
-    function_nodes = get_function_nodes(root_node)
-    for func in function_nodes:
-        start_line = func.start_point[0] + 1
-        end_line = func.end_point[0] + 1
-        if start_line <= code_line <= end_line:
-            # Get function name
-            for child in func.children:
-                if child.type == 'identifier':
-                    return child.text.decode('utf-8'),source_code[func.start_byte:func.end_byte]
-    return "&lt;module&gt;", None
+    def get_identifier_name(node):
+        for child in node.children:
+            if child.type == 'identifier':
+                return child.text.decode('utf-8')
+        return None
+
+    def collect(node, class_stack):
+        current_class_stack = class_stack
+        if node.type == "class_definition":
+            class_name = get_identifier_name(node)
+            if class_name:
+                current_class_stack = class_stack + [class_name]
+
+        if node.type == 'function_definition':
+            start_line = node.start_point[0] + 1
+            end_line = node.end_point[0] + 1
+            if start_line <= code_line <= end_line:
+                func_name = get_identifier_name(node)
+                if func_name:
+                    qualified_name = ".".join(current_class_stack + [func_name]) if current_class_stack else func_name
+                    candidates.append(
+                        (end_line - start_line, start_line, qualified_name, source_code[node.start_byte:node.end_byte])
+                    )
+
+        for child in node.children:
+            collect(child, current_class_stack)
+
+    collect(root_node, [])
+    if candidates:
+        # 选最内层（跨度最小）函数，避免嵌套函数时命中外层
+        candidates.sort(key=lambda x: (x[0], -x[1]))
+        _, _, func_name, func_code = candidates[0]
+        return f"{file_path_}:<module>.{func_name}", func_code
+    return f"{file_path_}:<module>", None
 
 def find_enclosing_class(file_path, code_line):
     # Initialize the parser

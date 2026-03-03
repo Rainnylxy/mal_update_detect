@@ -41,9 +41,11 @@ def LLM_analyze_code_slice(code_slice_path):
     # except Exception as e:
     #     with open(out_file_v3, "w", encoding="utf-8") as fw:
     #         json.dump({"error": str(e), "raw_response": str(response_v3)}, fw, ensure_ascii=False, indent=2)
-    if 'Detected Category' not in response_v1:
+    if 'Classification' in response_v1:
         return response_v1['Classification']
-    return response_v1['Detected Category']
+    if 'Detected Category' in response_v1:
+        return response_v1['Detected Category']
+    return "Undetermined"
 
 
 def LLM_analyze_code_slices(taint_slices_dir):

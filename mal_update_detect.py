@@ -81,9 +81,9 @@ def get_node_pairs(project_before: project.Project, project_after: project.Proje
 
         # 处理函数重命名的情况
         project_before.switch_commit()
-        func_name_before = ast_helper.find_enclosing_function(os.path.join(project_before.repo_path, node_file), line)[0]
+        func_name_before = ast_helper.find_enclosing_function(project_before.repo_path, node_file, line)[0]
         project_after.switch_commit()
-        func_name_after = ast_helper.find_enclosing_function(os.path.join(project_after.repo_path, node_file), after_line_number)[0]
+        func_name_after = ast_helper.find_enclosing_function(project_after.repo_path, node_file, after_line_number)[0]
 
         if func_name_before == "&lt;module&gt;" or func_name_after == "&lt;module&gt;":
             continue
@@ -91,7 +91,7 @@ def get_node_pairs(project_before: project.Project, project_after: project.Proje
         if func_name_before and func_name_after:
             node_after = project_after.find_similar_node(
                 node_file, node, func_name_after, 
-                project_before.pdgs.get((node_file, func_name_before), None),
+                project_before.get_pdg_by_function(node_file, func_name_before),
                 project_before.cpg
             )
             if node_after:
@@ -131,7 +131,7 @@ def taint_graph_update(project_after: project.Project, file_changed_lines: dict,
         added_lines = changed_lines["added"]
         changed_funcs = {}
         for line_num in added_lines:
-            func_name,func_code = ast_helper.find_enclosing_function(os.path.join(project_after.repo_path, changed_file), line_num)
+            func_name,func_code = ast_helper.find_enclosing_function(project_after.repo_path,changed_file, line_num)
             if func_name and func_name not in changed_funcs:
                 changed_funcs[func_name] = []
             if func_name:
@@ -140,18 +140,18 @@ def taint_graph_update(project_after: project.Project, file_changed_lines: dict,
         for func_name, line_nums in changed_funcs.items():
             if func_name == "deleteTheProcess":
                 print("debug")
-            pdg_after = project_after.pdgs.get((changed_file, func_name), None)
+            pdg_after = project_after.get_pdg_by_function(changed_file, func_name)
             if not pdg_after:
                 continue
             
             for line_num in line_nums:
-                if line_num == 29:
+                if line_num == 55:
                     print("debug")
 
                 for node_id in pdg_after.nodes():
                     node_full_data = project_after.cpg.nodes[node_id]
                     if int(node_full_data.get("LINE_NUMBER", -1)) == line_num:
-                        if node_id == "30064771311":
+                        if node_id == "30064771183":
                             print("debug")
                         if node_full_data.get("label","") == "METHOD_RETURN":
                             continue
@@ -251,6 +251,7 @@ def analyze(project_before:project.Project, project_after:project.Project, repo_
     nx.nx_agraph.write_dot(taint_before_relabeled, taint_graph_before_relabeled_out)
     logger.info(f"Relabeled taint graph written to {taint_graph_before_relabeled_out}")
     project_after.taintDG_before = taint_before_relabeled.copy()
+    project_after.joern_path_before = project_before.joern_path
     taint_graph_updated = taint_graph_update(project_after, file_changed_lines, taint_before_relabeled)    
     # 输出合并后的图
     taint_graph_out = os.path.join(joern_path_after, "taint_graphs", "taint_graph_updated.dot")
@@ -310,51 +311,52 @@ def single_repo_analyze(repo_path: str,joern_workspace_path: str):
         logger.error(f"Failed to get commit list for repository {repo_name}")
 
     
-    try:
+    # try:
     
-        joern_path_init = os.path.join(joern_workspace_path, repo_name, f"0_{commit_list[0][:5]}_00000")
-        project_before = project.Project(repo_path, joern_path_init, commit_list[0], flag = "before")
-        project_before.extract_taint_graph_codes(project_before.taintDG)
+    joern_path_init = os.path.join(joern_workspace_path, repo_name, f"0_{commit_list[0][:5]}_00000")
+    project_before = project.Project(repo_path, joern_path_init, commit_list[0], flag = "before")
+    project_before.extract_taint_graph_codes(project_before.taintDG)
+    
+    project_dir_dict = {}
+    project_dir_dict[commit_list[0]] = joern_path_init
+    commit_before = commit_list[0]
+    
+    for i in range(len(commit_list) - 1):
+        # continue
+        # if i < 20:
+        #     continue
+        commit_after = commit_list[i + 1]
+        if commit_after == "bc0420af44b21c8a5429404739d7467637eed1ac":
+            print("debug")
+        commit_helper = CommitHelper(repo_path, commit_after)
+        # joern_path_after = os.path.join(joern_workspace_path, repo_name, str(i+1) + "_" + commit_after[:5])
         
-        project_dir_dict = {}
-        project_dir_dict[commit_list[0]] = joern_path_init
-        commit_before = commit_list[0]
-        
-        for i in range(len(commit_list) - 1):
-            # continue
-            # if i < 20:
-            #     continue
-            commit_after = commit_list[i + 1]
-            if commit_after == "942826ae3094d9aca7fd67a7980dd6ced4eca105":
-                print("debug")
-            commit_helper = CommitHelper(repo_path, commit_after)
-            # joern_path_after = os.path.join(joern_workspace_path, repo_name, str(i+1) + "_" + commit_after[:5])
-            
-            if commit_helper.parent_hash is None:
-                joern_path_after = os.path.join(joern_workspace_path, repo_name, str(i+1) + "_" + commit_after[:5] + "_00000")
-                project_after = project.Project(repo_path, joern_path_after,commit_after,flag = "before")
-                project_dir_dict[commit_after] = joern_path_after
-                continue
-            joern_path_after = os.path.join(joern_workspace_path, repo_name, str(i+1) + "_" + commit_after[:5]+ "_" + commit_helper.parent_hash[:5])
-            logger.info(f"Analyzing commit {i+1}/{len(commit_list)-1}: {commit_after}")
-            if commit_helper.parent_hash != commit_before:
-                commit_before = commit_helper.parent_hash
-                if commit_before not in project_dir_dict:
-                    project_dir_dict[commit_before] = str(i) + "_" + commit_before[:5]
-                joern_path_before = os.path.join(joern_workspace_path, repo_name, project_dir_dict.get(commit_before, ""))
-                # joern_path_before = os.path.join(joern_workspace_path, repo_name, "4_"+commit_before[:5])
-                project_before = project.Project(repo_path, joern_path_before, commit_before,flag = "before")
-                # project_before.extract_taint_graph_codes(project_before.taintDG)
-            
-            project_after = project.Project(repo_path, joern_path_after,commit_after,flag = "after")
+        if commit_helper.parent_hash is None:
+            joern_path_after = os.path.join(joern_workspace_path, repo_name, str(i+1) + "_" + commit_after[:5] + "_00000")
+            project_after = project.Project(repo_path, joern_path_after,commit_after,flag = "before")
             project_dir_dict[commit_after] = joern_path_after
-            
-            # project_after.extract_taint_graph_codes(project_after.taintDG)
-            project_after = analyze(project_before,project_after, repo_path, commit_helper, joern_path_after)
-            project_before = project_after
-            commit_before = commit_after
-    except Exception as e:
-        logger.error(f"Error processing repository {repo_name}: {e}")
+            continue
+        joern_path_after = os.path.join(joern_workspace_path, repo_name, str(i+1) + "_" + commit_after[:5]+ "_" + commit_helper.parent_hash[:5])
+        logger.info(f"Analyzing commit {i+1}/{len(commit_list)-1}: {commit_after}")
+        if commit_helper.parent_hash != commit_before:
+            commit_before = commit_helper.parent_hash
+            if commit_before not in project_dir_dict:
+                project_dir_dict[commit_before] = str(i) + "_" + commit_before[:5]
+            joern_path_before = os.path.join(joern_workspace_path, repo_name, project_dir_dict.get(commit_before, ""))
+            # joern_path_before = os.path.join(joern_workspace_path, repo_name, "4_"+commit_before[:5])
+            project_before = project.Project(repo_path, joern_path_before, commit_before,flag = "before")
+            project_before.joern_path_before = project_dir_dict.get(CommitHelper(repo_path, commit_before).parent_hash, "")
+            # project_before.extract_taint_graph_codes(project_before.taintDG)
+        
+        project_after = project.Project(repo_path, joern_path_after,commit_after,flag = "after")
+        project_dir_dict[commit_after] = joern_path_after
+        
+        # project_after.extract_taint_graph_codes(project_after.taintDG)
+        project_after = analyze(project_before,project_after, repo_path, commit_helper, joern_path_after)
+        project_before = project_after
+        commit_before = commit_after
+    # except Exception as e:
+    #     logger.error(f"Error processing repository {repo_name}: {e}")
     
 
 def parallel_repo_analyze(repo_dir: str, joern_workspace_path: str):
@@ -541,7 +543,7 @@ def change_commit_name(repo_path: str,joern_workspace_path: str):
 
 if __name__ == "__main__":
         
-    dataset_dir = "/home/lxy/lxy_codes/mal_update_detect/mal_update_dataset/multiple_commits/Python_Malware"
+    dataset_dir = "/home/lxy/lxy_codes/mal_update_detect/mal_update_dataset/multiple_commits/Python-RAT"
     joern_workspace_path = "/home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/"
     # parallel_repo_analyze(dataset_dir, joern_workspace_path)
     # change_commit_name(dataset_dir, joern_workspace_path)

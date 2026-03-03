@@ -36,9 +36,9 @@ def joern_export(package_code_path: str, package_joern_path: str, language: str,
 def joern_preprocess(package_dir: str, pdg_dir: str, cfg_dir: str, cpg_dir: str):
     cpg = nx.nx_agraph.read_dot(os.path.join(cpg_dir, 'export.dot'))
     for pdg_file in os.listdir(pdg_dir):
-        # file_id = pdg_file.split('-')[0]
+        file_id = pdg_file.split('-')[0]
         pdg: nx.MultiDiGraph = nx.nx_agraph.read_dot(os.path.join(pdg_dir, pdg_file))
-        # cfg: nx.MultiDiGraph = nx.nx_agraph.read_dot(os.path.join(cfg_dir, f'{file_id}-cfg.dot'))
+        cfg: nx.MultiDiGraph = nx.nx_agraph.read_dot(os.path.join(cfg_dir, f'{file_id}-cfg.dot'))
 
         # ddg_null_edges = []
         # for u, v, k, d in pdg.edges(data=True, keys=True):
@@ -46,16 +46,20 @@ def joern_preprocess(package_dir: str, pdg_dir: str, cfg_dir: str, cpg_dir: str)
         #         ddg_null_edges.append((u, v, k, d))
         # pdg.remove_edges_from(ddg_null_edges)
 
-        # redundant_edges = []
-        # pdg: nx.MultiDiGraph = nx.compose(pdg, cfg)
-        # for u, v, k, d in pdg.edges(data=True, keys=True):
-        #     if 'label' not in d:
-        #         number_of_edges = pdg.number_of_edges(u, v)
-        #         if number_of_edges == 1:
-        #             pdg.edges[u, v, k]['label'] = 'CFG'
-        #         else:
-        #             redundant_edges.append((u, v, k, d))
-        # pdg.remove_edges_from(redundant_edges)
+        redundant_edges = []
+        pdg: nx.MultiDiGraph = nx.compose(pdg, cfg)
+        for u, v, k, d in pdg.edges(data=True, keys=True):
+            if 'label' not in d:
+                number_of_edges = pdg.number_of_edges(u, v)
+                if number_of_edges == 1:
+                    if cpg.has_edge(u, v):
+                        pdg.edges[u, v, k]['label'] = cpg.edges[u, v, k]['label']
+                    else:
+                        pdg.edges[u, v, k]['label'] = 'CFG'
+                else:
+                    redundant_edges.append((u, v, k, d))
+            
+        pdg.remove_edges_from(redundant_edges)
         
         for node in pdg.nodes:
             for key, value in cpg.nodes[node].items():
@@ -129,7 +133,7 @@ def add_edge(pdg: nx.MultiDiGraph, package_dir, method_node, param_nodes):
                 pdg.add_edge(method_node, param_node, label='DDG')
 
 def joern_export_and_preprocess(package_code_path: str, package_joern_path: str, language: str,
-                           overwrite: bool = False):
+                           overwrite: bool = True):
     joern_export(package_code_path, package_joern_path, language, overwrite)
     pdg_dir = os.path.join(package_joern_path, 'pdg')
     cfg_dir = os.path.join(package_joern_path, 'cfg')

@@ -4,6 +4,7 @@ import base64
 from google import genai
 from openai import types
 import json
+from typing import Any, Dict
 
 SYSTEM_PROMPT = """
 ### ROLE
@@ -191,6 +192,9 @@ CODE SNIPPET:
 [Type A: InfoStealer] Goal: Steal Secrets (passwords, tokens). *Anti-Def*: Diagnostic logs (IP/Hostname) are Benign.
 [Type B: Backdoor/RAT] Goal: Remote access/execution.
 [Type C: Ransomware] Goal: Deny access via encryption.
+**ANTI-DEFINITION (BENIGN)**:
+  * Normal cryptography utilities/libraries (e.g., RSA/AES encrypt + decrypt helpers) for user-provided input/files are Benign by default.
+  * If code includes a working decrypt path/key-management path and no extortion/sabotage behavior, do NOT mark as malicious.
 [Type D: Wiper] Goal: Data destruction. 
 **ANTI-DEFINITION (BENIGN)**: 
   * "Utility/Cleanup": Utility functions named for cleanup (e.g., `clean_cache`) on safe scopes.
@@ -228,32 +232,12 @@ Logic: If the URL matches the package metadata or well-known trusted sources, it
    - **Indicator A (Targeting)**: Hardcoded system paths (`/etc/passwd`, `/`, `C:\\Windows`) OR sensitive info.
    - **Indicator B (Evasion)**: Obfuscation (Base64/Hex/Eval), hidden file attributes, or anti-analysis checks.
    - **Indicator C (Intentional Chaos)**: keyboard locking, network disconnection, file system disruption, etc.
-   - **Indicator D (Aggressive Action)**: `rm -rf /`, `encrypt` without key saving, `exec` connecting to C2.
+   - **Indicator D (Aggressive Action)**: `rm -rf /`, destructive overwrite, `exec` connecting to C2.
    - **Verdict**: If ANY indicator exists -> **Malicious** (Assign Type A-L).
    
    
 ### [CRITICAL REFERENCE EXAMPLES] (Learn from these cases)
-
-**CASE 1: The "Skeleton" Trap (Inert Code)**
-- **Input**: 
-  ```python
-  class Keylogger(Thread):
-      def __init__(self):
-          self.log = ""
-  # No on_press, no write_to_file, no send_data
-CLASSIFICATION: Undetermined Call Chain.
-Reasoning: Despite the malicious name "Keylogger", the code is purely declarative. It contains NO "Operational Logic" (Active Verbs). Without a function that actually captures, stores, or sends data, it is inert/dead code.
-
-**CASE 2: The "Dual-Use" Listener (Ambiguous)**
-- **Input**: 
-  ```python
-  def on_press(key):
-      print(f"Key  pressed")
-      if key == Key.esc: return False
-Verdict: Undetermined Call Chain (or Benign).
-Reasoning: This is standard input handling (Dual-Use). There is no attempt to hide, no writing to hidden files, and no network exfiltration. It lacks "Malicious Context".
-
-CASE 3: The "Real" Core (Malicious Intent Visible)
+CASE 1: The "Real" Core (Malicious Intent Visible)
 Input:
 code
 Python
@@ -294,8 +278,11 @@ REFERENCE: FULL ATTACK CHAIN CRITERIA
   
 [Type B: Backdoor / RAT / Reverse Shell]
 - Full Criteria:
- 1. Command Execution: Implements logic to run arbitrary commands (e.g., subprocess, os.system, eval).
- 2. Remote Connectivity: Connects to an external controller (Reverse Shell) OR opens a local port (Bind Shell) to receive instructions.
+ 1. Remote Connectivity: Connects to an external controller (Client/Reverse mode) OR opens a local port and accepts remote sessions (Server/Bind mode).
+ 2. Mode-Specific Capability:
+    - **Client/Reverse Backdoor**: MUST include command execution capability (e.g., subprocess/os.system/eval) or equivalent execution dispatcher.
+    - **Server/Bind Backdoor**: command execution API may be indirect/hidden; explicit `subprocess` is NOT strictly required if the code clearly implements remote interactive control/session handling and command forwarding protocol.
+ 3. Evidence of Unauthorized Control Intent: session loop, command channel, or instruction handling beyond benign local admin service patterns.
 
 [Type C: Ransomware]
 - Full Criteria: 
@@ -391,35 +378,90 @@ class LLM_Evaluate:
         )
         self.conversation_history = []
 
+    def _safe_json_loads(self, content: str) -> Dict[str, Any]:
+        try:
+            data = json.loads(content)
+            if isinstance(data, dict):
+                return data
+        except Exception:
+            pass
+        return {"error": "invalid_json", "raw_response": str(content)}
+
+    def _chat_json_with_retry(self, prompt: str, max_retries: int = 2) -> Dict[str, Any]:
+        last_result: Dict[str, Any] = {"error": "unknown"}
+        for _ in range(max_retries + 1):
+            completion = self.client.chat.completions.create(
+                model="deepseek-v3-1-250821",
+                messages=[
+                    {"role": "system", "content": SYSTEM_PROMPT},
+                    {"role": "user", "content": prompt}
+                ],
+                temperature=0,
+                seed=42,
+                response_format={"type": "json_object"}
+            )
+            raw = completion.choices[0].message.content
+            parsed = self._safe_json_loads(raw)
+            last_result = parsed
+            if "error" not in parsed:
+                return parsed
+        return last_result
+
+    def _normalize_step1_output(self, response_1: Dict[str, Any]) -> Dict[str, Any]:
+        detected = str(response_1.get("Detected Category", "")).strip()
+        if detected == "Benign":
+            classification = "Benign"
+        elif detected == "Undetermined":
+            classification = "Undetermined"
+        elif detected == "Malicious":
+            # Step1 only says "malicious intent exists", Step2 decides Full/Core.
+            classification = "Core Attack Chain"
+        else:
+            classification = "Undetermined"
+            detected = "Undetermined"
+
+        normalized = dict(response_1)
+        normalized["Detected Category"] = detected
+        normalized["Classification"] = classification
+        normalized["Stage"] = "Step1"
+        return normalized
+
+    def _normalize_step2_output(self, response_2: Dict[str, Any]) -> Dict[str, Any]:
+        cls = str(response_2.get("Classification", "")).strip()
+        valid = {
+            "Full Attack Chain",
+            "Core Attack Chain",
+            "Undetermined Call Chain",
+            "Benign Artifact",
+            "Undetermined",
+            "Benign",
+        }
+        if cls not in valid:
+            cls = "Undetermined"
+
+        # Unify labels for downstream scripts.
+        if cls == "Undetermined Call Chain":
+            cls = "Undetermined"
+        elif cls == "Benign Artifact":
+            cls = "Benign"
+
+        normalized = dict(response_2)
+        normalized["Classification"] = cls
+        normalized["Stage"] = "Step2"
+        return normalized
+
     def malware_analyze_two_steps(self, code_snippet):
         assertion_prompt = STEP1_PROMPT.format(code_snippet=code_snippet)
-        completion = self.client.chat.completions.create(
-            model="deepseek-v3-1-250821",
-            messages=[
-                {"role": "user", "content": assertion_prompt}
-            ],
-            temperature=0,
-            seed=42,
-            response_format={"type": "json_object"}
-        )
-        
-        response_1 = json.loads(completion.choices[0].message.content)
-        if response_1.get("Detected Category") == "Benign" or response_1.get("Detected Category") == "Undetermined":
+        response_1_raw = self._chat_json_with_retry(assertion_prompt)
+        response_1 = self._normalize_step1_output(response_1_raw)
+
+        # Step1 already identifies benign/undetermined: return early to save tokens.
+        if response_1.get("Detected Category") in {"Benign", "Undetermined"}:
             return response_1
-        # print("Initial LLM Response:")
-        # print(response_1)
+
         check_prompt = STEP2_PROMPT.format(step1_analysis=response_1, code_snippet=code_snippet)
-        completion = self.client.chat.completions.create(
-            model="deepseek-v3-1-250821",
-            messages=[
-                {"role": "user", "content": check_prompt}
-            ],
-            response_format={"type": "json_object"},
-            temperature=0,
-            seed=42
-        )
-        response_2 = completion.choices[0].message.content
-        return json.loads(response_2)  # 解析JSON字符串为Python字典
+        response_2_raw = self._chat_json_with_retry(check_prompt)
+        return self._normalize_step2_output(response_2_raw)
         
 
     def malware_analyze(self, code_snippet):

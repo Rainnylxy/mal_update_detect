@@ -1,0 +1,11 @@
+repo_name,commit_num,commit,code_slice,true_label,pred_label,error_type,reasoning
+BskyBot,10,baced,NEW@<module>@controller.py_slice.py,Full Attack Chain,Core Attack Chain,full_to_core,
+BskyBot,12,b40cc,NEW@<module>@controller.py_slice.py,Full Attack Chain,Core Attack Chain,full_to_core,
+Doomed,3,8e8c4,NEW@<module>@lock.py_slice.py,Full Attack Chain,Core Attack Chain,full_to_core,
+Python-Trojan,41,9f8d6,NEW@<module>@main.py_slice.py,Full Attack Chain,Core Attack Chain,full_to_core,
+Python-Trojan,42,3dc3b,NEW@<module>@main.py_slice.py,Full Attack Chain,Core Attack Chain,full_to_core,
+Python_KeyLogger_Prototype,6,5289f,NEW@<module>@KYLR.py_slice.py,Full Attack Chain,Core Attack Chain,full_to_core,missing initialization
+ScaryMalware,4,e22de,NEW@<module>@malware.py_slice.py,Full Attack Chain,Core Attack Chain,full_to_core,
+ScaryMalware,5,c5ff7,NEW@<module>@malware.py_slice.py,Full Attack Chain,Core Attack Chain,full_to_core,joern extract error slice
+ScaryMalware,8,3b2cc,NEW@<module>@malware.py_slice.py,Full Attack Chain,Core Attack Chain,full_to_core,joern extract error slice
+wanna-smile,13,0ccc5,NEW@<module>@bin_wanna-smile.py_slice.py,Full Attack Chain,Core Attack Chain,full_to_core,

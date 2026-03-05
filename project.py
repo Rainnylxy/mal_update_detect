@@ -548,7 +548,14 @@ class Project:
             # taint_graph.nodes[start_node]["label"] = self.cpg.nodes[start_node].get('label', '') + " " + self.cpg.nodes[start_node].get('CODE', '') + " "+ str(start_node)
             # taint_graph.nodes[start_node]['TYPE'] = self.cpg.nodes[start_node].get('label', '')
             taint_graph.nodes[start_node]['file_path'] = pdg.graph.get('file_path','unknown')
-            
+        
+        function_name = self.cpg.nodes[start_node].get("METHOD_FULL_NAME","")
+        dynamic_function_name = self.cpg.nodes[start_node].get("DYNAMIC_TYPE_HINT_FULL_NAME","")
+        if graph_helper.GraphHelper.is_sensitive_builtin(function_name) or graph_helper.GraphHelper.is_sensitive_builtin(dynamic_function_name):
+            taint_graph.nodes[start_node]['color'] = 'blue'
+            taint_graph.nodes[start_node]['style'] = 'filled'
+            taint_graph.nodes[start_node]['fillcolor'] = 'lightgrey' 
+        
         visited = set()
         to_visit = set()
         to_visit.add(start_node)
@@ -766,8 +773,6 @@ class Project:
                 out_path = os.path.join(methods_out_root, f'NEW@{method_name}@{method_path}_slice.py')
                 method_code = self.extract_subgraph_codes(method_graph_after, out_path)
         
-        
-        
     def extract_sensitive_subgraph_for_method(self, taint_graph: nx.MultiDiGraph, root: str) -> nx.MultiDiGraph:
         """
         为指定的method根节点提取其关联的敏感子图
@@ -797,7 +802,7 @@ class Project:
             cur = queue[qi]
             qi += 1
             
-            if cur == "107374182542":
+            if cur == "30064771156":
                 print("debug")
             
             
@@ -832,7 +837,7 @@ class Project:
             # 前驱节点视情况加入（排除SUB_FUNCTION_CALL的调用者）
             predecessors = set(taint_graph.predecessors(cur))
             predecessors = predecessors - sub_call_callers.get(cur, set())
-            comp_nodes.update(predecessor for predecessor in predecessors if self.cpg.nodes[predecessor].get("label","") == "CALL")
+            comp_nodes.update(predecessor for predecessor in predecessors if self.cpg.nodes[predecessor].get("label","") in ["CALL", "METHOD"])
             # queue.extend(predecessor for predecessor in predecessors if predecessor not in queue)
         
         # 构建子图：添加所有收集的节点和它们之间的边
@@ -1072,9 +1077,9 @@ class Project:
 
 
 if __name__ == "__main__":
-    repo_path = "/home/lxy/lxy_codes/mal_update_detect/mal_update_dataset/multiple_commits/funny-virus"
-    commit_after = "3e3b2"
-    joern_workspace_path = "/home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/funny-virus/18_3e3b2_5776f"
+    repo_path = "/home/lxy/lxy_codes/mal_update_detect/mal_update_dataset/multiple_commits/virus.py/"
+    commit_after = "81ce9"
+    joern_workspace_path = "/home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/virus.py/11_81ce9_967ec"
     project_after = Project(repo_path, joern_workspace_path,commit_after,flag = "after")
     project_after.extract_taint_graph_codes(project_after.taintDG)
     

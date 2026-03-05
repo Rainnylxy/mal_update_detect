@@ -90,6 +90,10 @@ def process_repo_name(repo_name, joern_dir):
                 for result_row in file_results:
                     if result_row:
                         results.append(result_row)
+            # for file_info in files_to_process:
+            #     result_row = process_file(file_info)
+            #     if result_row:
+            #         results.append(result_row)
                     
         else:
             logger.warning(f"Joern directory does not exist for {repo_name}: {repo_joern_dir}")
@@ -104,7 +108,7 @@ def process_repo_names(repo_names, joern_dir, result_csv_path):
     # for index, repo_name in enumerate(repo_names):
     #     if repo_name == "raccoon_clipper":
     #         print(index)
-    repos_to_process = repo_names[46:47]  # Example: process first 5 repos
+    repos_to_process = repo_names[97:98]  # Example: process first 5 repos
     
     # 顺序处理每个仓库（不使用多进程处理仓库）
     for repo_name in repos_to_process:
@@ -124,10 +128,10 @@ def process_repo_names(repo_names, joern_dir, result_csv_path):
 
 
 if __name__ == "__main__":
-    joern_dir = "/home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits"
+    joern_dir = "/home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits_human_made"
     csv_path = "./malware_update_dataset.csv"
     repo_names = read_repo_names_from_csv(csv_path)
-    result_csv_path = "./result_two_steps.csv"
+    result_csv_path = "./result_two_steps_human_made.csv"
     
     # print(cpu_count())
     # 初始化 CSV 文件头

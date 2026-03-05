@@ -103,7 +103,7 @@ class GraphHelper:
             "os.py:<module>.makedirs","os.py:<module>.walk","os.py:<module>.chdir","os.py:<module>.remove","os.py:<module>.rename","os.py:<module>.getcwd","os.py:<module>.listdir","os.py:<module>.stat",
             "__builtin.open","__builtin.input",
             "importlib.py:<module>.<member>(machinery).SourceFileLoader.__init__","importlib.py:<module>.<member>(machinery).SourceFileLoader.get_data",
-            
+            "glob.py:<module>.glob",
             # 进程相关
             "subprocess.py:<module>.call","os.py:<module>.getuid","subprocess.py:<module>.Popen.__init__","subprocess.py:<module>.getoutput","subprocess.py:<module>.run","subprocess.py:<module>.check_output",
             "threading.py:<module>.Thread","threading.py:<module>.Thread.__init__","threading.py:<module>.Thread.start",

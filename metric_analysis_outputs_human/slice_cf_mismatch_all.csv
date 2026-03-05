@@ -1,0 +1,3 @@
+repo_name,commit_num,commit,code_slice,true_label,pred_label,error_type,reasoning
+backdoor2,6,faa7c,NEW@<module>@reverse_shell.py_slice.py,Full Attack Chain,Core Attack Chain,full_to_core,
+ransomware2,5,c91af,NEW@<module>@encrypt.py_slice.py,Core Attack Chain,Full Attack Chain,core_to_full,

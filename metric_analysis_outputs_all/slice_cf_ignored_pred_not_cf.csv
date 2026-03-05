@@ -1,0 +1,10 @@
+repo_name,commit_num,commit,code_slice,true_label,pred_label,error_type,reasoning
+Infinite-Folder-Virus,4,88f37,NEW@<module>@attacker.py_slice.py,Full Attack Chain,Undetermined,ignored_pred_not_cf,dir copy
+Infinite-Folder-Virus,5,2118e,NEW@<module>@attacker.py_slice.py,Full Attack Chain,Benign,ignored_pred_not_cf,dir copy
+Infinite-Folder-Virus,7,a6604,NEW@<module>@attacker.py_slice.py,Full Attack Chain,Undetermined,ignored_pred_not_cf,dir copy
+Infinite-Folder-Virus,11,983cf,NEW@<module>@attacker.py_slice.py,Full Attack Chain,Benign,ignored_pred_not_cf,dir copy
+Infinite-Folder-Virus,12,a5995,NEW@<module>@attacker.py_slice.py,Full Attack Chain,Undetermined,ignored_pred_not_cf,dir copy
+funny-virus,17,5776f,NEW@<module>@Birthday_Message_Bomb_superstar.py_slice.py,Full Attack Chain,Benign,ignored_pred_not_cf,logic bomb
+parvox,6,5aad2,NEW@<module>@main.py_slice.py,Core Attack Chain,Undetermined,ignored_pred_not_cf,missing malicious intent
+shameleon,0,3759a,NEW@<module>@client.py_slice.py,Core Attack Chain,Undetermined,ignored_pred_not_cf,
+shameleon,1,00828,NEW@<module>@client.py_slice.py,Core Attack Chain,Undetermined,ignored_pred_not_cf,

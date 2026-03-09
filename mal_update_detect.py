@@ -470,7 +470,7 @@ def change_commit_name(repo_path: str,joern_workspace_path: str):
 
 if __name__ == "__main__":
     # dataset_dir = "/home/lxy/lxy_codes/mal_update_detect/mal_update_dataset/multiple_commits_human_made"
-    joern_workspace_path = "/home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits_human_made/"
+    joern_workspace_path = "/home/lxy/lxy_codes/mal_update_detect/joern_output/benign_dataset/encryption_tools"
     # repo_names = os.listdir(dataset_dir)
     # for repo_name in repo_names:
     #     repo_path = os.path.join(dataset_dir, repo_name)
@@ -480,5 +480,5 @@ if __name__ == "__main__":
     # parallel_repo_analyze(dataset_dir, joern_workspace_path)
     # change_commit_name(dataset_dir, joern_workspace_path)
     # single_repo_process(dataset_dir, joern_workspace_path)
-    repo_path = "/home/lxy/lxy_codes/mal_update_detect/mal_update_dataset/multiple_commits_human_made/virus1"
+    repo_path = "/home/lxy/lxy_codes/mal_update_detect/mal_update_dataset/benign_dataset/encryption_tools/algo"
     single_repo_analyze(repo_path, joern_workspace_path)

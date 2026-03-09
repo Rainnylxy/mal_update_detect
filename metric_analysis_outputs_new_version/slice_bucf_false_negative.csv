@@ -1,3 +1,0 @@
-repo_name,commit_num,commit,code_slice,true_label,pred_label,true_malicious,pred_malicious,error_type,reasoning
-shameleon,0,3759a,NEW@<module>@client.py_slice.py,Core Attack Chain,Undetermined,1,0,FN_CF_to_BU,
-shameleon,1,00828,NEW@<module>@client.py_slice.py,Core Attack Chain,Undetermined,1,0,FN_CF_to_BU,

@@ -7,3 +7,4 @@ __pycache__/
 logs/
 real_classification.csv
 result_v1.csv
+calculate_results/

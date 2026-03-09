@@ -1,2 +1,0 @@
-repo_name,commit_num,commit,code_slice,true_label,pred_label,true_malicious,pred_malicious,error_type,reasoning
-wanna-smile,12,a3479,NEW@<module>@bin_wanna-smile_SILENT_RUNNER.py_slice.py,Undetermined,Core Attack Chain,0,1,FP_BU_to_CF,

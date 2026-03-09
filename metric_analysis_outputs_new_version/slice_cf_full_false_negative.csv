@@ -1,7 +1,0 @@
-repo_name,commit_num,commit,code_slice,true_label,pred_label,error_type,reasoning
-Python-Trojan,41,9f8d6,NEW@<module>@main.py_slice.py,Full Attack Chain,Core Attack Chain,full_to_core,
-Python-Trojan,42,3dc3b,NEW@<module>@main.py_slice.py,Full Attack Chain,Core Attack Chain,full_to_core,
-ScaryMalware,4,e22de,NEW@<module>@malware.py_slice.py,Full Attack Chain,Core Attack Chain,full_to_core,
-ScaryMalware,5,c5ff7,NEW@<module>@malware.py_slice.py,Full Attack Chain,Core Attack Chain,full_to_core,
-ScaryMalware,8,3b2cc,NEW@<module>@malware.py_slice.py,Full Attack Chain,Core Attack Chain,full_to_core,
-wanna-smile,13,0ccc5,NEW@<module>@bin_wanna-smile.py_slice.py,Full Attack Chain,Core Attack Chain,full_to_core,

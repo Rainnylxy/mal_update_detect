@@ -108,10 +108,10 @@ def process_repo_names(repo_names, joern_dir, result_csv_path):
     # for index, repo_name in enumerate(repo_names):
     #     if repo_name == "raccoon_clipper":
     #         print(index)
-    repos_to_process = repo_names[97:98]  # Example: process first 5 repos
+    # repos_to_process = repo_names[:]  # Example: process first 5 repos
     
     # 顺序处理每个仓库（不使用多进程处理仓库）
-    for repo_name in repos_to_process:
+    for repo_name in repo_names:
         logger.info(f"Starting to process repository: {repo_name}")
         # change_commit_name(os.path.join("/home/lxy/lxy_codes/mal_update_detect/mal_update_dataset/multiple_commits", repo_name), joern_dir)
         results = process_repo_name(repo_name, joern_dir)
@@ -128,10 +128,11 @@ def process_repo_names(repo_names, joern_dir, result_csv_path):
 
 
 if __name__ == "__main__":
-    joern_dir = "/home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits_human_made"
+    joern_dir = "/home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits"
     csv_path = "./malware_update_dataset.csv"
-    repo_names = read_repo_names_from_csv(csv_path)
-    result_csv_path = "./result_two_steps_human_made.csv"
+    # repo_names = read_repo_names_from_csv(csv_path)
+    result_csv_path = "./result_two_steps_new_version.csv"
+    repo_names = ["Python_KeyLogger_Prototype","Python_Malware","crypto-clipper","dojo6oct16"]
     
     # print(cpu_count())
     # 初始化 CSV 文件头

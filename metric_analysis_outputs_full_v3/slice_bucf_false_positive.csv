@@ -1,4 +1,0 @@
-repo_name,commit_num,commit,code_slice,true_label,pred_label,true_malicious,pred_malicious,error_type,reasoning
-Infinite-Folder-Virus,8,4f6a1,NEW@<module>@test.py_slice.py,Benign,Full Attack Chain,0,1,FP_BU_to_CF,wiper useless dir
-KMike,7,8fb52,NEW@<module>@c_and_c_server_server.py_slice.py,Undetermined,Full Attack Chain,0,1,FP_BU_to_CF,no malice
-wanna-smile,12,a3479,NEW@<module>@bin_wanna-smile_SILENT_RUNNER.py_slice.py,Undetermined,Core Attack Chain,0,1,FP_BU_to_CF,

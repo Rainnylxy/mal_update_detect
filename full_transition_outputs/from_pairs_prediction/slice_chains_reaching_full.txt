@@ -1,0 +1,2212 @@
+# Slice Chains Reaching Full Attack Chain
+- source_csv: /home/lxy/lxy_codes/mal_update_detect/mal_update_detect/full_label_outputs/all_label_prediction_pairs.csv
+- label_column: prediction
+- unresolved_same_as_before: 59
+
+## Case 1
+- repo: 1stMalware
+- slice: <module>@modules_network_smtp.py_slice.py
+- first_state: Full Attack Chain @ 6 (21b58)
+- first_full: 6 (21b58) | starts_as_full=1
+- full_occurrence_count: 1 | full_commit_nums: 6
+- timeline:
+  - 6 (21b58) -> Full Attack Chain
+
+## Case 2
+- repo: 1stMalware
+- slice: <module>@modules_network_stmpgmail.py_slice.py
+- first_state: Full Attack Chain @ 7 (3a8ed)
+- first_full: 7 (3a8ed) | starts_as_full=1
+- full_occurrence_count: 1 | full_commit_nums: 7
+- timeline:
+  - 7 (3a8ed) -> Full Attack Chain
+
+## Case 3
+- repo: Backdoorcreator
+- slice: <module>@backdoorcreate.py_slice.py
+- first_state: Full Attack Chain @ 0 (04d0c)
+- first_full: 0 (04d0c) | starts_as_full=1
+- full_occurrence_count: 8 | full_commit_nums: 0;1;2;3;4;5;6;7
+- timeline:
+  - 0 (04d0c) -> Full Attack Chain
+  - 1 (22da0) -> Full Attack Chain
+  - 2 (677e6) -> Full Attack Chain
+  - 3 (697db) -> Full Attack Chain
+  - 4 (ad97a) -> Full Attack Chain
+  - 5 (c92d2) -> Full Attack Chain
+  - 6 (1ce4c) -> Full Attack Chain
+  - 7 (417b1) -> Full Attack Chain
+
+## Case 4
+- repo: BskyBot
+- slice: <module>@controller.py_slice.py
+- first_state: Full Attack Chain @ 7 (7e97f)
+- first_full: 7 (7e97f) | starts_as_full=1
+- full_occurrence_count: 1 | full_commit_nums: 7
+- timeline:
+  - 7 (7e97f) -> Full Attack Chain
+  - 8 (e0939) -> Core Attack Chain
+  - 9 (d789a) -> Core Attack Chain
+  - 10 (baced) -> Undetermined
+  - 11 (fbe51) -> Core Attack Chain
+  - 12 (b40cc) -> Core Attack Chain
+
+## Case 5
+- repo: Cerberus
+- slice: <module>@Cerberus.py_slice.py
+- first_state: Full Attack Chain @ 0 (ab1e0)
+- first_full: 0 (ab1e0) | starts_as_full=1
+- full_occurrence_count: 7 | full_commit_nums: 0;1;2;3;6;7;8
+- timeline:
+  - 0 (ab1e0) -> Full Attack Chain
+  - 1 (44601) -> Full Attack Chain
+  - 2 (cb198) -> Full Attack Chain
+  - 3 (7d2ad) -> Full Attack Chain
+  - 4 (e8f21) -> Core Attack Chain
+  - 5 (f03d4) -> Core Attack Chain
+  - 6 (261a4) -> Full Attack Chain
+  - 7 (1262b) -> Full Attack Chain
+  - 8 (f5ca7) -> Full Attack Chain
+
+## Case 6
+- repo: Chrome_pass_stealer
+- slice: <module>@chromepass.py_slice.py
+- first_state: Core Attack Chain @ 0 (915e2)
+- first_full: 4 (d766e) | starts_as_full=0
+- full_occurrence_count: 8 | full_commit_nums: 4;5;6;7;8;9;11;12
+- timeline:
+  - 0 (915e2) -> Core Attack Chain
+  - 1 (915e2) -> Core Attack Chain
+  - 2 (5c618) -> Core Attack Chain
+  - 3 (915e2) -> Core Attack Chain
+  - 4 (d766e) -> Full Attack Chain
+  - 5 (444fc) -> Full Attack Chain
+  - 6 (915e2) -> Full Attack Chain
+  - 7 (73291) -> Full Attack Chain
+  - 8 (4ac98) -> Full Attack Chain
+  - 9 (56cdf) -> Full Attack Chain
+  - 11 (b6c64) -> Full Attack Chain
+  - 12 (5d3bc) -> Full Attack Chain
+
+## Case 7
+- repo: HackerDoomsday
+- slice: <lambda>6@gui.py_slice.py
+- first_state: Core Attack Chain @ 21 (88b3c)
+- first_full: 22 (3b318) | starts_as_full=0
+- full_occurrence_count: 1 | full_commit_nums: 22
+- timeline:
+  - 21 (88b3c) -> Core Attack Chain
+  - 22 (3b318) -> Full Attack Chain
+  - 23 (cc00d) -> Core Attack Chain
+
+## Case 8
+- repo: HackerDoomsday
+- slice: <module>@gui.py_slice.py
+- first_state: Full Attack Chain @ 3 (90d6a)
+- first_full: 3 (90d6a) | starts_as_full=1
+- full_occurrence_count: 15 | full_commit_nums: 3;4;5;6;7;8;9;10;11;12;15;16;18;19;20
+- timeline:
+  - 3 (90d6a) -> Full Attack Chain
+  - 4 (4dce8) -> Full Attack Chain
+  - 5 (96855) -> Full Attack Chain
+  - 6 (74617) -> Full Attack Chain
+  - 7 (55bbf) -> Full Attack Chain
+  - 8 (63891) -> Full Attack Chain
+  - 9 (587b0) -> Full Attack Chain
+  - 10 (b73db) -> Full Attack Chain
+  - 11 (cfc7a) -> Full Attack Chain
+  - 12 (22e8b) -> Full Attack Chain
+  - 13 (584b5) -> Core Attack Chain
+  - 14 (79e7c) -> Core Attack Chain
+  - 15 (2b860) -> Full Attack Chain
+  - 16 (de183) -> Full Attack Chain
+  - 17 (2bf39) -> Core Attack Chain
+  - 18 (b4360) -> Full Attack Chain
+  - 19 (09785) -> Full Attack Chain
+  - 20 (9b8ec) -> Full Attack Chain
+  - 21 (88b3c) -> Core Attack Chain
+  - 22 (3b318) -> Core Attack Chain
+  - 23 (cc00d) -> Core Attack Chain
+
+## Case 9
+- repo: HackerDoomsday
+- slice: <module>@main.py_slice.py
+- first_state: Core Attack Chain @ 2 (4533e)
+- first_full: 3 (90d6a) | starts_as_full=0
+- full_occurrence_count: 21 | full_commit_nums: 3;4;5;6;7;8;9;10;11;12;13;14;15;16;17;18;19;20;21;22;23
+- timeline:
+  - 2 (4533e) -> Core Attack Chain
+  - 3 (90d6a) -> Full Attack Chain
+  - 4 (4dce8) -> Full Attack Chain
+  - 5 (96855) -> Full Attack Chain
+  - 6 (74617) -> Full Attack Chain
+  - 7 (55bbf) -> Full Attack Chain
+  - 8 (63891) -> Full Attack Chain
+  - 9 (587b0) -> Full Attack Chain
+  - 10 (b73db) -> Full Attack Chain
+  - 11 (cfc7a) -> Full Attack Chain
+  - 12 (22e8b) -> Full Attack Chain
+  - 13 (584b5) -> Full Attack Chain
+  - 14 (79e7c) -> Full Attack Chain
+  - 15 (2b860) -> Full Attack Chain
+  - 16 (de183) -> Full Attack Chain
+  - 17 (2bf39) -> Full Attack Chain
+  - 18 (b4360) -> Full Attack Chain
+  - 19 (09785) -> Full Attack Chain
+  - 20 (9b8ec) -> Full Attack Chain
+  - 21 (88b3c) -> Full Attack Chain
+  - 22 (3b318) -> Full Attack Chain
+  - 23 (cc00d) -> Full Attack Chain
+
+## Case 10
+- repo: HackerDoomsday
+- slice: <module>@multimedia.py_slice.py
+- first_state: Core Attack Chain @ 3 (90d6a)
+- first_full: 21 (88b3c) | starts_as_full=0
+- full_occurrence_count: 1 | full_commit_nums: 21
+- timeline:
+  - 3 (90d6a) -> Core Attack Chain
+  - 4 (4dce8) -> Core Attack Chain
+  - 5 (96855) -> Core Attack Chain
+  - 6 (74617) -> Core Attack Chain
+  - 7 (55bbf) -> Core Attack Chain
+  - 8 (63891) -> Core Attack Chain
+  - 9 (587b0) -> Core Attack Chain
+  - 10 (b73db) -> Core Attack Chain
+  - 11 (cfc7a) -> Core Attack Chain
+  - 12 (22e8b) -> Core Attack Chain
+  - 13 (584b5) -> Core Attack Chain
+  - 14 (79e7c) -> Core Attack Chain
+  - 15 (2b860) -> Core Attack Chain
+  - 16 (de183) -> Core Attack Chain
+  - 17 (2bf39) -> Core Attack Chain
+  - 18 (b4360) -> Core Attack Chain
+  - 19 (09785) -> Core Attack Chain
+  - 20 (9b8ec) -> Core Attack Chain
+  - 21 (88b3c) -> Full Attack Chain
+  - 22 (3b318) -> Core Attack Chain
+  - 23 (cc00d) -> Core Attack Chain
+
+## Case 11
+- repo: Infinite-Folder-Virus
+- slice: <module>@base.py_slice.py
+- first_state: Undetermined @ 4 (88f37)
+- first_full: 8 (4f6a1) | starts_as_full=0
+- full_occurrence_count: 1 | full_commit_nums: 8
+- timeline:
+  - 4 (88f37) -> Undetermined
+  - 5 (2118e) -> Undetermined
+  - 6 (90d1d) -> Undetermined
+  - 7 (a6604) -> Undetermined
+  - 8 (4f6a1) -> Full Attack Chain
+  - 9 (f5eb8) -> Core Attack Chain
+  - 10 (eb4ab) -> Core Attack Chain
+  - 11 (983cf) -> Core Attack Chain
+  - 12 (a5995) -> Core Attack Chain
+  - 13 (903ad) -> Core Attack Chain
+  - 14 (8c8d1) -> Core Attack Chain
+  - 15 (f9ce1) -> Core Attack Chain
+  - 16 (1c08f) -> Core Attack Chain
+  - 17 (9f429) -> Core Attack Chain
+  - 18 (926e2) -> Core Attack Chain
+  - 19 (4e4db) -> Core Attack Chain
+
+## Case 12
+- repo: KMike
+- slice: <module>@c_and_c_server_server.py_slice.py
+- first_state: Core Attack Chain @ 6 (e3a63)
+- first_full: 7 (8fb52) | starts_as_full=0
+- full_occurrence_count: 2 | full_commit_nums: 7;8
+- timeline:
+  - 6 (e3a63) -> Core Attack Chain
+  - 7 (8fb52) -> Full Attack Chain
+  - 8 (15cec) -> Full Attack Chain
+  - 9 (dd6c0) -> Core Attack Chain
+  - 10 (f9b65) -> Undetermined
+  - 11 (53197) -> Core Attack Chain
+  - 12 (647fe) -> Core Attack Chain
+  - 14 (62b21) -> Core Attack Chain
+  - 15 (abafd) -> Core Attack Chain
+  - 16 (33184) -> Core Attack Chain
+  - 17 (d75a9) -> Core Attack Chain
+  - 18 (6e12c) -> Core Attack Chain
+  - 19 (260e6) -> Core Attack Chain
+  - 20 (c18d4) -> Core Attack Chain
+  - 21 (bf4f9) -> Core Attack Chain
+  - 22 (1f1ca) -> Core Attack Chain
+  - 23 (b7edb) -> Core Attack Chain
+  - 24 (51fa8) -> Core Attack Chain
+  - 25 (7aa7d) -> Core Attack Chain
+  - 26 (36360) -> Core Attack Chain
+  - 27 (9873a) -> Core Attack Chain
+  - 28 (ef755) -> Core Attack Chain
+  - 29 (658cc) -> Core Attack Chain
+  - 30 (6201f) -> Core Attack Chain
+  - 31 (3a48f) -> Core Attack Chain
+  - 32 (8ed32) -> Core Attack Chain
+  - 33 (55750) -> Core Attack Chain
+  - 34 (3f8b3) -> Core Attack Chain
+  - 35 (a7ccd) -> Core Attack Chain
+  - 36 (602d0) -> Core Attack Chain
+  - 37 (a6b60) -> Core Attack Chain
+  - 38 (ad463) -> Core Attack Chain
+  - 39 (3af22) -> Core Attack Chain
+
+## Case 13
+- repo: Keylogger
+- slice: <module>@pylogger.py_slice.py
+- first_state: Full Attack Chain @ 0 (cb21f)
+- first_full: 0 (cb21f) | starts_as_full=1
+- full_occurrence_count: 4 | full_commit_nums: 0;1;2;3
+- timeline:
+  - 0 (cb21f) -> Full Attack Chain
+  - 1 (9cf98) -> Full Attack Chain
+  - 2 (3c8e6) -> Full Attack Chain
+  - 3 (12abc) -> Full Attack Chain
+
+## Case 14
+- repo: MakeMalware_EthicalHacking
+- slice: <body>@Project_Keylogger_keylogger.py_slice.py
+- first_state: Full Attack Chain @ 7 (b044a)
+- first_full: 7 (b044a) | starts_as_full=1
+- full_occurrence_count: 11 | full_commit_nums: 7;8;9;10;11;12;13;14;15;16;17
+- timeline:
+  - 7 (b044a) -> Full Attack Chain
+  - 8 (e2fd5) -> Full Attack Chain
+  - 9 (31751) -> Full Attack Chain
+  - 10 (6b7e3) -> Full Attack Chain
+  - 11 (fa6ae) -> Full Attack Chain
+  - 12 (f0f7d) -> Full Attack Chain
+  - 13 (e3fe9) -> Full Attack Chain
+  - 14 (4bc0e) -> Full Attack Chain
+  - 15 (7ad1b) -> Full Attack Chain
+  - 16 (c418d) -> Full Attack Chain
+  - 17 (74015) -> Full Attack Chain
+
+## Case 15
+- repo: MakeMalware_EthicalHacking
+- slice: <module>@Project_Backdoor_executeCommandServerInteractiveUpload.py_slice.py
+- first_state: Core Attack Chain @ 13 (e3fe9)
+- first_full: 14 (4bc0e) | starts_as_full=0
+- full_occurrence_count: 4 | full_commit_nums: 14;15;16;17
+- timeline:
+  - 13 (e3fe9) -> Core Attack Chain
+  - 14 (4bc0e) -> Full Attack Chain
+  - 15 (7ad1b) -> Full Attack Chain
+  - 16 (c418d) -> Full Attack Chain
+  - 17 (74015) -> Full Attack Chain
+
+## Case 16
+- repo: MakeMalware_EthicalHacking
+- slice: <module>@Project_Backdoor_executeCommandTarget.py_slice.py
+- first_state: Full Attack Chain @ 14 (4bc0e)
+- first_full: 14 (4bc0e) | starts_as_full=1
+- full_occurrence_count: 4 | full_commit_nums: 14;15;16;17
+- timeline:
+  - 14 (4bc0e) -> Full Attack Chain
+  - 15 (7ad1b) -> Full Attack Chain
+  - 16 (c418d) -> Full Attack Chain
+  - 17 (74015) -> Full Attack Chain
+
+## Case 17
+- repo: MakeMalware_EthicalHacking
+- slice: <module>@Project_Backdoor_executeCommandTargetInteractive.py_slice.py
+- first_state: Full Attack Chain @ 15 (7ad1b)
+- first_full: 15 (7ad1b) | starts_as_full=1
+- full_occurrence_count: 3 | full_commit_nums: 15;16;17
+- timeline:
+  - 15 (7ad1b) -> Full Attack Chain
+  - 16 (c418d) -> Full Attack Chain
+  - 17 (74015) -> Full Attack Chain
+
+## Case 18
+- repo: MakeMalware_EthicalHacking
+- slice: <module>@Project_Backdoor_executeCommandTargetInteractiveUpload.py_slice.py
+- first_state: Full Attack Chain @ 16 (c418d)
+- first_full: 16 (c418d) | starts_as_full=1
+- full_occurrence_count: 2 | full_commit_nums: 16;17
+- timeline:
+  - 16 (c418d) -> Full Attack Chain
+  - 17 (74015) -> Full Attack Chain
+
+## Case 19
+- repo: MakeMalware_EthicalHacking
+- slice: <module>@Project_Backdoor_executeCommandTargetJson.py_slice.py
+- first_state: Full Attack Chain @ 17 (74015)
+- first_full: 17 (74015) | starts_as_full=1
+- full_occurrence_count: 1 | full_commit_nums: 17
+- timeline:
+  - 17 (74015) -> Full Attack Chain
+
+## Case 20
+- repo: MakeMalware_EthicalHacking
+- slice: <module>@Project_Backdoor_executeCommandUsingConnection.py_slice.py
+- first_state: Full Attack Chain @ 8 (e2fd5)
+- first_full: 8 (e2fd5) | starts_as_full=1
+- full_occurrence_count: 10 | full_commit_nums: 8;9;10;11;12;13;14;15;16;17
+- timeline:
+  - 8 (e2fd5) -> Full Attack Chain
+  - 9 (31751) -> Full Attack Chain
+  - 10 (6b7e3) -> Full Attack Chain
+  - 11 (fa6ae) -> Full Attack Chain
+  - 12 (f0f7d) -> Full Attack Chain
+  - 13 (e3fe9) -> Full Attack Chain
+  - 14 (4bc0e) -> Full Attack Chain
+  - 15 (7ad1b) -> Full Attack Chain
+  - 16 (c418d) -> Full Attack Chain
+  - 17 (74015) -> Full Attack Chain
+
+## Case 21
+- repo: MakeMalware_EthicalHacking
+- slice: <module>@demo2_getReportByEmail.py_slice.py
+- first_state: Full Attack Chain @ 0 (3db3c)
+- first_full: 0 (3db3c) | starts_as_full=1
+- full_occurrence_count: 18 | full_commit_nums: 0;1;2;3;4;5;6;7;8;9;10;11;12;13;14;15;16;17
+- timeline:
+  - 0 (3db3c) -> Full Attack Chain
+  - 1 (a587c) -> Full Attack Chain
+  - 2 (ce388) -> Full Attack Chain
+  - 3 (2cfa9) -> Full Attack Chain
+  - 4 (06deb) -> Full Attack Chain
+  - 5 (f2561) -> Full Attack Chain
+  - 6 (40c64) -> Full Attack Chain
+  - 7 (b044a) -> Full Attack Chain
+  - 8 (e2fd5) -> Full Attack Chain
+  - 9 (31751) -> Full Attack Chain
+  - 10 (6b7e3) -> Full Attack Chain
+  - 11 (fa6ae) -> Full Attack Chain
+  - 12 (f0f7d) -> Full Attack Chain
+  - 13 (e3fe9) -> Full Attack Chain
+  - 14 (4bc0e) -> Full Attack Chain
+  - 15 (7ad1b) -> Full Attack Chain
+  - 16 (c418d) -> Full Attack Chain
+  - 17 (74015) -> Full Attack Chain
+
+## Case 22
+- repo: MakeMalware_EthicalHacking
+- slice: <module>@demo3_stealWLAN.py_slice.py
+- first_state: Full Attack Chain @ 2 (ce388)
+- first_full: 2 (ce388) | starts_as_full=1
+- full_occurrence_count: 16 | full_commit_nums: 2;3;4;5;6;7;8;9;10;11;12;13;14;15;16;17
+- timeline:
+  - 2 (ce388) -> Full Attack Chain
+  - 3 (2cfa9) -> Full Attack Chain
+  - 4 (06deb) -> Full Attack Chain
+  - 5 (f2561) -> Full Attack Chain
+  - 6 (40c64) -> Full Attack Chain
+  - 7 (b044a) -> Full Attack Chain
+  - 8 (e2fd5) -> Full Attack Chain
+  - 9 (31751) -> Full Attack Chain
+  - 10 (6b7e3) -> Full Attack Chain
+  - 11 (fa6ae) -> Full Attack Chain
+  - 12 (f0f7d) -> Full Attack Chain
+  - 13 (e3fe9) -> Full Attack Chain
+  - 14 (4bc0e) -> Full Attack Chain
+  - 15 (7ad1b) -> Full Attack Chain
+  - 16 (c418d) -> Full Attack Chain
+  - 17 (74015) -> Full Attack Chain
+
+## Case 23
+- repo: MakeMalware_EthicalHacking
+- slice: <module>@demo6_DownloadExecuteReport.py_slice.py
+- first_state: Core Attack Chain @ 5 (f2561)
+- first_full: 8 (e2fd5) | starts_as_full=0
+- full_occurrence_count: 10 | full_commit_nums: 8;9;10;11;12;13;14;15;16;17
+- timeline:
+  - 5 (f2561) -> Core Attack Chain
+  - 6 (40c64) -> Core Attack Chain
+  - 7 (b044a) -> Core Attack Chain
+  - 8 (e2fd5) -> Full Attack Chain
+  - 9 (31751) -> Full Attack Chain
+  - 10 (6b7e3) -> Full Attack Chain
+  - 11 (fa6ae) -> Full Attack Chain
+  - 12 (f0f7d) -> Full Attack Chain
+  - 13 (e3fe9) -> Full Attack Chain
+  - 14 (4bc0e) -> Full Attack Chain
+  - 15 (7ad1b) -> Full Attack Chain
+  - 16 (c418d) -> Full Attack Chain
+  - 17 (74015) -> Full Attack Chain
+
+## Case 24
+- repo: MakeMalware_EthicalHacking
+- slice: <module>@demo7_DownloadExecuteReportDelete.py_slice.py
+- first_state: Core Attack Chain @ 6 (40c64)
+- first_full: 7 (b044a) | starts_as_full=0
+- full_occurrence_count: 1 | full_commit_nums: 7
+- timeline:
+  - 6 (40c64) -> Core Attack Chain
+  - 7 (b044a) -> Full Attack Chain
+  - 8 (e2fd5) -> Core Attack Chain
+  - 9 (31751) -> Core Attack Chain
+  - 10 (6b7e3) -> Core Attack Chain
+  - 11 (fa6ae) -> Core Attack Chain
+  - 12 (f0f7d) -> Core Attack Chain
+  - 13 (e3fe9) -> Core Attack Chain
+  - 14 (4bc0e) -> Core Attack Chain
+  - 15 (7ad1b) -> Core Attack Chain
+  - 16 (c418d) -> Core Attack Chain
+  - 17 (74015) -> Core Attack Chain
+
+## Case 25
+- repo: Malware
+- slice: <module>@main.py_slice.py
+- first_state: Full Attack Chain @ 6 (c92fb)
+- first_full: 6 (c92fb) | starts_as_full=1
+- full_occurrence_count: 7 | full_commit_nums: 6;7;8;9;10;11;12
+- timeline:
+  - 6 (c92fb) -> Full Attack Chain
+  - 7 (6299c) -> Full Attack Chain
+  - 8 (ee86b) -> Full Attack Chain
+  - 9 (ebdb7) -> Full Attack Chain
+  - 10 (123bd) -> Full Attack Chain
+  - 11 (f560c) -> Full Attack Chain
+  - 12 (3d6cb) -> Full Attack Chain
+
+## Case 26
+- repo: Malware_Python
+- slice: <module>@main.py_slice.py
+- first_state: Full Attack Chain @ 0 (f5fae)
+- first_full: 0 (f5fae) | starts_as_full=1
+- full_occurrence_count: 16 | full_commit_nums: 0;1;2;3;4;5;6;9;10;14;16;17;18;19;21;24
+- timeline:
+  - 0 (f5fae) -> Full Attack Chain
+  - 1 (f8655) -> Full Attack Chain
+  - 2 (05254) -> Full Attack Chain
+  - 3 (ea11b) -> Full Attack Chain
+  - 4 (c1a2d) -> Full Attack Chain
+  - 5 (77298) -> Full Attack Chain
+  - 6 (0e5a2) -> Full Attack Chain
+  - 7 (35e28) -> Core Attack Chain
+  - 8 (be041) -> Core Attack Chain
+  - 9 (12941) -> Full Attack Chain
+  - 10 (b6a9f) -> Full Attack Chain
+  - 11 (7ed0b) -> Core Attack Chain
+  - 12 (2011b) -> Core Attack Chain
+  - 13 (ee1d1) -> Core Attack Chain
+  - 14 (2727c) -> Full Attack Chain
+  - 15 (9fab0) -> Core Attack Chain
+  - 16 (18e97) -> Full Attack Chain
+  - 17 (3c1b0) -> Full Attack Chain
+  - 18 (a676c) -> Full Attack Chain
+  - 19 (3154b) -> Full Attack Chain
+  - 20 (a778f) -> Core Attack Chain
+  - 21 (b6482) -> Full Attack Chain
+  - 22 (c2454) -> Core Attack Chain
+  - 23 (d1233) -> Core Attack Chain
+  - 24 (d9c91) -> Full Attack Chain
+
+## Case 27
+- repo: MirageLink-rat-gui
+- slice: <body>@builder_clients_data_client_client.py_slice.py
+- first_state: Full Attack Chain @ 30 (cb51a)
+- first_full: 30 (cb51a) | starts_as_full=1
+- full_occurrence_count: 1 | full_commit_nums: 30
+- timeline:
+  - 30 (cb51a) -> Full Attack Chain
+
+## Case 28
+- repo: MirageLink-rat-gui
+- slice: <body>@frames_function.py_slice.py
+- first_state: Core Attack Chain @ 13 (0c0f3)
+- first_full: 29 (278a3) | starts_as_full=0
+- full_occurrence_count: 1 | full_commit_nums: 29
+- timeline:
+  - 13 (0c0f3) -> Core Attack Chain
+  - 14 (38efe) -> Core Attack Chain
+  - 15 (7d0ce) -> Core Attack Chain
+  - 19 (cf4ae) -> Core Attack Chain
+  - 20 (16f9f) -> Core Attack Chain
+  - 21 (7a380) -> Core Attack Chain
+  - 22 (ba9e2) -> Core Attack Chain
+  - 23 (b2e6a) -> Core Attack Chain
+  - 24 (b1fa2) -> Core Attack Chain
+  - 25 (13334) -> Core Attack Chain
+  - 26 (7761a) -> Core Attack Chain
+  - 27 (d179f) -> Core Attack Chain
+  - 28 (17166) -> Core Attack Chain
+  - 29 (278a3) -> Full Attack Chain
+  - 30 (cb51a) -> Core Attack Chain
+
+## Case 29
+- repo: MirageLink-rat-gui
+- slice: <body>@server_gui.py_slice.py
+- first_state: Core Attack Chain @ 13 (0c0f3)
+- first_full: 29 (278a3) | starts_as_full=0
+- full_occurrence_count: 1 | full_commit_nums: 29
+- timeline:
+  - 13 (0c0f3) -> Core Attack Chain
+  - 14 (38efe) -> Core Attack Chain
+  - 15 (7d0ce) -> Core Attack Chain
+  - 16 (b03b0) -> Core Attack Chain
+  - 18 (1ec14) -> Core Attack Chain
+  - 19 (cf4ae) -> Core Attack Chain
+  - 20 (16f9f) -> Core Attack Chain
+  - 21 (7a380) -> Core Attack Chain
+  - 22 (ba9e2) -> Core Attack Chain
+  - 23 (b2e6a) -> Core Attack Chain
+  - 24 (b1fa2) -> Core Attack Chain
+  - 25 (13334) -> Core Attack Chain
+  - 26 (7761a) -> Core Attack Chain
+  - 27 (d179f) -> Core Attack Chain
+  - 28 (17166) -> Core Attack Chain
+  - 29 (278a3) -> Full Attack Chain
+  - 30 (cb51a) -> Core Attack Chain
+
+## Case 30
+- repo: MirageLink-rat-gui
+- slice: <module>@client_fold_client.py_slice.py
+- first_state: Full Attack Chain @ 0 (719c8)
+- first_full: 0 (719c8) | starts_as_full=1
+- full_occurrence_count: 10 | full_commit_nums: 0;1;2;3;6;7;8;9;10;11
+- timeline:
+  - 0 (719c8) -> Full Attack Chain
+  - 1 (6d2af) -> Full Attack Chain
+  - 2 (a4a85) -> Full Attack Chain
+  - 3 (b3c15) -> Full Attack Chain
+  - 4 (b79f1) -> Core Attack Chain
+  - 5 (2c888) -> Core Attack Chain
+  - 6 (eee30) -> Full Attack Chain
+  - 7 (445a2) -> Full Attack Chain
+  - 8 (1eab6) -> Full Attack Chain
+  - 9 (c0342) -> Full Attack Chain
+  - 10 (3f1a6) -> Full Attack Chain
+  - 11 (e0592) -> Full Attack Chain
+
+## Case 31
+- repo: PY-RAT
+- slice: <module>@PY-RAT_PY_RAT.py_slice.py
+- first_state: Full Attack Chain @ 2 (319e9)
+- first_full: 2 (319e9) | starts_as_full=1
+- full_occurrence_count: 8 | full_commit_nums: 2;3;4;5;6;7;8;9
+- timeline:
+  - 2 (319e9) -> Full Attack Chain
+  - 3 (566f4) -> Full Attack Chain
+  - 4 (ec602) -> Full Attack Chain
+  - 5 (2b5b2) -> Full Attack Chain
+  - 6 (cf545) -> Full Attack Chain
+  - 7 (82cfb) -> Full Attack Chain
+  - 8 (ef25b) -> Full Attack Chain
+  - 9 (95c8a) -> Full Attack Chain
+
+## Case 32
+- repo: PY-RAT
+- slice: <module>@SCRIPTS_keyLogger.py_slice.py
+- first_state: Full Attack Chain @ 9 (95c8a)
+- first_full: 9 (95c8a) | starts_as_full=1
+- full_occurrence_count: 1 | full_commit_nums: 9
+- timeline:
+  - 9 (95c8a) -> Full Attack Chain
+
+## Case 33
+- repo: PY-RAT
+- slice: <module>@SCRIPTS_moveToStartup.py_slice.py
+- first_state: Full Attack Chain @ 8 (ef25b)
+- first_full: 8 (ef25b) | starts_as_full=1
+- full_occurrence_count: 1 | full_commit_nums: 8
+- timeline:
+  - 8 (ef25b) -> Full Attack Chain
+
+## Case 34
+- repo: PizzaVirus
+- slice: <module>@pizza.py_slice.py
+- first_state: Benign @ 0 (2077d)
+- first_full: 5 (41984) | starts_as_full=0
+- full_occurrence_count: 5 | full_commit_nums: 5;6;7;8;9
+- timeline:
+  - 0 (2077d) -> Benign
+  - 2 (9d497) -> Benign
+  - 3 (ddc50) -> Benign
+  - 4 (68009) -> Core Attack Chain
+  - 5 (41984) -> Full Attack Chain
+  - 6 (9df46) -> Full Attack Chain
+  - 7 (3c4a2) -> Full Attack Chain
+  - 8 (36206) -> Full Attack Chain
+  - 9 (5a01a) -> Full Attack Chain
+
+## Case 35
+- repo: Python-RAT
+- slice: <module>@Listen.py_slice.py
+- first_state: Full Attack Chain @ 0 (fc9a2)
+- first_full: 0 (fc9a2) | starts_as_full=1
+- full_occurrence_count: 39 | full_commit_nums: 0;1;2;3;4;5;6;7;8;9;10;11;12;13;14;15;16;17;18;19;20;21;22;23;24;25;26;27;28;29;30;31;32;33;34;35;36;37;38
+- timeline:
+  - 0 (fc9a2) -> Full Attack Chain
+  - 1 (8b6ec) -> Full Attack Chain
+  - 2 (984ea) -> Full Attack Chain
+  - 3 (89d84) -> Full Attack Chain
+  - 4 (ef1a1) -> Full Attack Chain
+  - 5 (1af1d) -> Full Attack Chain
+  - 6 (c9dc7) -> Full Attack Chain
+  - 7 (28d2c) -> Full Attack Chain
+  - 8 (de5ad) -> Full Attack Chain
+  - 9 (8a098) -> Full Attack Chain
+  - 10 (70244) -> Full Attack Chain
+  - 11 (6753e) -> Full Attack Chain
+  - 12 (fd75a) -> Full Attack Chain
+  - 13 (2e9e3) -> Full Attack Chain
+  - 14 (0f259) -> Full Attack Chain
+  - 15 (90b45) -> Full Attack Chain
+  - 16 (a6753) -> Full Attack Chain
+  - 17 (cd427) -> Full Attack Chain
+  - 18 (36c31) -> Full Attack Chain
+  - 19 (32a21) -> Full Attack Chain
+  - 20 (72609) -> Full Attack Chain
+  - 21 (ac63b) -> Full Attack Chain
+  - 22 (43d35) -> Full Attack Chain
+  - 23 (fd5ff) -> Full Attack Chain
+  - 24 (8718d) -> Full Attack Chain
+  - 25 (069e1) -> Full Attack Chain
+  - 26 (be4c1) -> Full Attack Chain
+  - 27 (aece9) -> Full Attack Chain
+  - 28 (77726) -> Full Attack Chain
+  - 29 (a6337) -> Full Attack Chain
+  - 30 (2f3f7) -> Full Attack Chain
+  - 31 (e1596) -> Full Attack Chain
+  - 32 (60c5f) -> Full Attack Chain
+  - 33 (b7d26) -> Full Attack Chain
+  - 34 (dc08e) -> Full Attack Chain
+  - 35 (be056) -> Full Attack Chain
+  - 36 (41d0a) -> Full Attack Chain
+  - 37 (0f254) -> Full Attack Chain
+  - 38 (04773) -> Full Attack Chain
+
+## Case 36
+- repo: Python-RAT
+- slice: <module>@client.py_slice.py
+- first_state: Full Attack Chain @ 0 (fc9a2)
+- first_full: 0 (fc9a2) | starts_as_full=1
+- full_occurrence_count: 39 | full_commit_nums: 0;1;2;3;4;5;6;7;8;9;10;11;12;13;14;15;16;17;18;19;20;21;22;23;24;25;26;27;28;29;30;31;32;33;34;35;36;37;38
+- timeline:
+  - 0 (fc9a2) -> Full Attack Chain
+  - 1 (8b6ec) -> Full Attack Chain
+  - 2 (984ea) -> Full Attack Chain
+  - 3 (89d84) -> Full Attack Chain
+  - 4 (ef1a1) -> Full Attack Chain
+  - 5 (1af1d) -> Full Attack Chain
+  - 6 (c9dc7) -> Full Attack Chain
+  - 7 (28d2c) -> Full Attack Chain
+  - 8 (de5ad) -> Full Attack Chain
+  - 9 (8a098) -> Full Attack Chain
+  - 10 (70244) -> Full Attack Chain
+  - 11 (6753e) -> Full Attack Chain
+  - 12 (fd75a) -> Full Attack Chain
+  - 13 (2e9e3) -> Full Attack Chain
+  - 14 (0f259) -> Full Attack Chain
+  - 15 (90b45) -> Full Attack Chain
+  - 16 (a6753) -> Full Attack Chain
+  - 17 (cd427) -> Full Attack Chain
+  - 18 (36c31) -> Full Attack Chain
+  - 19 (32a21) -> Full Attack Chain
+  - 20 (72609) -> Full Attack Chain
+  - 21 (ac63b) -> Full Attack Chain
+  - 22 (43d35) -> Full Attack Chain
+  - 23 (fd5ff) -> Full Attack Chain
+  - 24 (8718d) -> Full Attack Chain
+  - 25 (069e1) -> Full Attack Chain
+  - 26 (be4c1) -> Full Attack Chain
+  - 27 (aece9) -> Full Attack Chain
+  - 28 (77726) -> Full Attack Chain
+  - 29 (a6337) -> Full Attack Chain
+  - 30 (2f3f7) -> Full Attack Chain
+  - 31 (e1596) -> Full Attack Chain
+  - 32 (60c5f) -> Full Attack Chain
+  - 33 (b7d26) -> Full Attack Chain
+  - 34 (dc08e) -> Full Attack Chain
+  - 35 (be056) -> Full Attack Chain
+  - 36 (41d0a) -> Full Attack Chain
+  - 37 (0f254) -> Full Attack Chain
+  - 38 (04773) -> Full Attack Chain
+
+## Case 37
+- repo: Python-Rootkit
+- slice: <module>@h00k_source.py_slice.py
+- first_state: Full Attack Chain @ 8 (06c25)
+- first_full: 8 (06c25) | starts_as_full=1
+- full_occurrence_count: 3 | full_commit_nums: 8;9;10
+- timeline:
+  - 8 (06c25) -> Full Attack Chain
+  - 9 (a93e9) -> Full Attack Chain
+  - 10 (0c7c9) -> Full Attack Chain
+
+## Case 38
+- repo: Python-Rootkit
+- slice: <module>@source_h00k_source.py_slice.py
+- first_state: Full Attack Chain @ 7 (4f617)
+- first_full: 7 (4f617) | starts_as_full=1
+- full_occurrence_count: 1 | full_commit_nums: 7
+- timeline:
+  - 7 (4f617) -> Full Attack Chain
+
+## Case 39
+- repo: Python-Rootkit
+- slice: <module>@source_r0d_source.py_slice.py
+- first_state: Full Attack Chain @ 6 (83d74)
+- first_full: 6 (83d74) | starts_as_full=1
+- full_occurrence_count: 1 | full_commit_nums: 6
+- timeline:
+  - 6 (83d74) -> Full Attack Chain
+
+## Case 40
+- repo: Python-Rootkit
+- slice: <module>@source_source.py_slice.py
+- first_state: Full Attack Chain @ 0 (49706)
+- first_full: 0 (49706) | starts_as_full=1
+- full_occurrence_count: 6 | full_commit_nums: 0;1;2;3;4;5
+- timeline:
+  - 0 (49706) -> Full Attack Chain
+  - 1 (4a56f) -> Full Attack Chain
+  - 2 (d1655) -> Full Attack Chain
+  - 3 (49613) -> Full Attack Chain
+  - 4 (0d4ec) -> Full Attack Chain
+  - 5 (f9a5c) -> Full Attack Chain
+
+## Case 41
+- repo: Python-Rootkit
+- slice: <module>@source_viRu5_source.py_slice.py
+- first_state: Full Attack Chain @ 6 (83d74)
+- first_full: 6 (83d74) | starts_as_full=1
+- full_occurrence_count: 2 | full_commit_nums: 6;7
+- timeline:
+  - 6 (83d74) -> Full Attack Chain
+  - 7 (4f617) -> Full Attack Chain
+
+## Case 42
+- repo: Python-Rootkit
+- slice: <module>@viRu5_source.py_slice.py
+- first_state: Full Attack Chain @ 8 (06c25)
+- first_full: 8 (06c25) | starts_as_full=1
+- full_occurrence_count: 3 | full_commit_nums: 8;9;10
+- timeline:
+  - 8 (06c25) -> Full Attack Chain
+  - 9 (a93e9) -> Full Attack Chain
+  - 10 (0c7c9) -> Full Attack Chain
+
+## Case 43
+- repo: Python-Trojan
+- slice: <module>@main.py_slice.py
+- first_state: Undetermined @ 1 (b2089)
+- first_full: 15 (1f06f) | starts_as_full=0
+- full_occurrence_count: 24 | full_commit_nums: 15;18;19;20;21;22;23;24;25;26;27;28;29;30;31;32;33;34;35;36;37;38;39;40
+- timeline:
+  - 1 (b2089) -> Undetermined
+  - 2 (44b19) -> Undetermined
+  - 3 (94f78) -> Undetermined
+  - 4 (f101c) -> Undetermined
+  - 5 (46687) -> Undetermined
+  - 6 (f2c0d) -> Core Attack Chain
+  - 7 (66103) -> Core Attack Chain
+  - 8 (4707e) -> Core Attack Chain
+  - 9 (a3b3f) -> Core Attack Chain
+  - 10 (ef777) -> Core Attack Chain
+  - 11 (ebfa5) -> Core Attack Chain
+  - 12 (28e72) -> Core Attack Chain
+  - 13 (27671) -> Core Attack Chain
+  - 14 (ca2be) -> Core Attack Chain
+  - 15 (1f06f) -> Full Attack Chain
+  - 16 (d4d71) -> Core Attack Chain
+  - 17 (1878b) -> Core Attack Chain
+  - 18 (af297) -> Full Attack Chain
+  - 19 (114fa) -> Full Attack Chain
+  - 20 (84747) -> Full Attack Chain
+  - 21 (2e587) -> Full Attack Chain
+  - 22 (8cc51) -> Full Attack Chain
+  - 23 (c7f9f) -> Full Attack Chain
+  - 24 (e88fa) -> Full Attack Chain
+  - 25 (3de6c) -> Full Attack Chain
+  - 26 (bad07) -> Full Attack Chain
+  - 27 (c7a42) -> Full Attack Chain
+  - 28 (dbdf0) -> Full Attack Chain
+  - 29 (0c466) -> Full Attack Chain
+  - 30 (cae75) -> Full Attack Chain
+  - 31 (5e20f) -> Full Attack Chain
+  - 32 (a8447) -> Full Attack Chain
+  - 33 (d257a) -> Full Attack Chain
+  - 34 (ebc01) -> Full Attack Chain
+  - 35 (9ebad) -> Full Attack Chain
+  - 36 (c5c00) -> Full Attack Chain
+  - 37 (4ff7f) -> Full Attack Chain
+  - 38 (6ec89) -> Full Attack Chain
+  - 39 (b5094) -> Full Attack Chain
+  - 40 (cfc93) -> Full Attack Chain
+  - 41 (9f8d6) -> Core Attack Chain
+  - 42 (3dc3b) -> Core Attack Chain
+
+## Case 44
+- repo: Python-Trojan
+- slice: on_message@main.py_slice.py
+- first_state: Core Attack Chain @ 13 (27671)
+- first_full: 23 (c7f9f) | starts_as_full=0
+- full_occurrence_count: 8 | full_commit_nums: 23;26;27;29;30;31;40;42
+- timeline:
+  - 13 (27671) -> Core Attack Chain
+  - 14 (ca2be) -> Core Attack Chain
+  - 15 (1f06f) -> Core Attack Chain
+  - 16 (d4d71) -> Core Attack Chain
+  - 17 (1878b) -> Core Attack Chain
+  - 18 (af297) -> Core Attack Chain
+  - 19 (114fa) -> Core Attack Chain
+  - 20 (84747) -> Core Attack Chain
+  - 21 (2e587) -> Core Attack Chain
+  - 22 (8cc51) -> Core Attack Chain
+  - 23 (c7f9f) -> Full Attack Chain
+  - 24 (e88fa) -> Core Attack Chain
+  - 25 (3de6c) -> Core Attack Chain
+  - 26 (bad07) -> Full Attack Chain
+  - 27 (c7a42) -> Full Attack Chain
+  - 28 (dbdf0) -> Core Attack Chain
+  - 29 (0c466) -> Full Attack Chain
+  - 30 (cae75) -> Full Attack Chain
+  - 31 (5e20f) -> Full Attack Chain
+  - 32 (a8447) -> Core Attack Chain
+  - 33 (d257a) -> Core Attack Chain
+  - 34 (ebc01) -> Core Attack Chain
+  - 35 (9ebad) -> Core Attack Chain
+  - 36 (c5c00) -> Core Attack Chain
+  - 37 (4ff7f) -> Core Attack Chain
+  - 38 (6ec89) -> Core Attack Chain
+  - 39 (b5094) -> Core Attack Chain
+  - 40 (cfc93) -> Full Attack Chain
+  - 41 (9f8d6) -> Core Attack Chain
+  - 42 (3dc3b) -> Full Attack Chain
+
+## Case 45
+- repo: Python-malware-example
+- slice: <module>@PME.py_slice.py
+- first_state: Full Attack Chain @ 2 (1901b)
+- first_full: 2 (1901b) | starts_as_full=1
+- full_occurrence_count: 2 | full_commit_nums: 2;3
+- timeline:
+  - 2 (1901b) -> Full Attack Chain
+  - 3 (9a575) -> Full Attack Chain
+
+## Case 46
+- repo: PythonMalware_1/PythonMalware
+- slice: <body>@malwareclient.py_slice.py
+- first_state: Full Attack Chain @ 3 (d37f7)
+- first_full: 3 (d37f7) | starts_as_full=1
+- full_occurrence_count: 4 | full_commit_nums: 3;4;5;6
+- timeline:
+  - 3 (d37f7) -> Full Attack Chain
+  - 4 (1a793) -> Full Attack Chain
+  - 5 (19982) -> Full Attack Chain
+  - 6 (82162) -> Full Attack Chain
+
+## Case 47
+- repo: PythonMalware_1/PythonMalware
+- slice: <body>@malwarecontrol.py_slice.py
+- first_state: Full Attack Chain @ 0 (a30d9)
+- first_full: 0 (a30d9) | starts_as_full=1
+- full_occurrence_count: 7 | full_commit_nums: 0;1;2;3;4;5;6
+- timeline:
+  - 0 (a30d9) -> Full Attack Chain
+  - 1 (3dd9f) -> Full Attack Chain
+  - 2 (4f24c) -> Full Attack Chain
+  - 3 (d37f7) -> Full Attack Chain
+  - 4 (1a793) -> Full Attack Chain
+  - 5 (19982) -> Full Attack Chain
+  - 6 (82162) -> Full Attack Chain
+
+## Case 48
+- repo: PythonMalware_1/PythonMalware
+- slice: <module>@malwarecontrol.py_slice.py
+- first_state: Full Attack Chain @ 0 (a30d9)
+- first_full: 0 (a30d9) | starts_as_full=1
+- full_occurrence_count: 7 | full_commit_nums: 0;1;2;3;4;5;6
+- timeline:
+  - 0 (a30d9) -> Full Attack Chain
+  - 1 (3dd9f) -> Full Attack Chain
+  - 2 (4f24c) -> Full Attack Chain
+  - 3 (d37f7) -> Full Attack Chain
+  - 4 (1a793) -> Full Attack Chain
+  - 5 (19982) -> Full Attack Chain
+  - 6 (82162) -> Full Attack Chain
+
+## Case 49
+- repo: PythonReverseShellBasic
+- slice: <module>@ReverseShell_client.py_slice.py
+- first_state: Core Attack Chain @ 4 (9c290)
+- first_full: 5 (891e2) | starts_as_full=0
+- full_occurrence_count: 2 | full_commit_nums: 5;6
+- timeline:
+  - 4 (9c290) -> Core Attack Chain
+  - 5 (891e2) -> Full Attack Chain
+  - 6 (5fe8a) -> Full Attack Chain
+
+## Case 50
+- repo: PythonVirusExamples
+- slice: <module>@ChromeLogger.py_slice.py
+- first_state: Core Attack Chain @ 0 (f266f)
+- first_full: 1 (1f06e) | starts_as_full=0
+- full_occurrence_count: 2 | full_commit_nums: 1;2
+- timeline:
+  - 0 (f266f) -> Core Attack Chain
+  - 1 (1f06e) -> Full Attack Chain
+  - 2 (7c4ab) -> Full Attack Chain
+
+## Case 51
+- repo: Python_KeyLogger_Prototype
+- slice: <module>@KYLR.py_slice.py
+- first_state: Full Attack Chain @ 0 (d9b6c)
+- first_full: 0 (d9b6c) | starts_as_full=1
+- full_occurrence_count: 4 | full_commit_nums: 0;9;10;11
+- timeline:
+  - 0 (d9b6c) -> Full Attack Chain
+  - 1 (3e192) -> Core Attack Chain
+  - 2 (381d9) -> Core Attack Chain
+  - 3 (41ebc) -> Core Attack Chain
+  - 4 (25ded) -> Core Attack Chain
+  - 5 (b01c9) -> Core Attack Chain
+  - 6 (5289f) -> Core Attack Chain
+  - 7 (31447) -> Core Attack Chain
+  - 8 (f1be2) -> Core Attack Chain
+  - 9 (26dfd) -> Full Attack Chain
+  - 10 (610e1) -> Full Attack Chain
+  - 11 (bd512) -> Full Attack Chain
+
+## Case 52
+- repo: Python_KeyLogger_Prototype
+- slice: <module>@test.py_slice.py
+- first_state: Full Attack Chain @ 4 (25ded)
+- first_full: 4 (25ded) | starts_as_full=1
+- full_occurrence_count: 1 | full_commit_nums: 4
+- timeline:
+  - 4 (25ded) -> Full Attack Chain
+  - 5 (b01c9) -> Core Attack Chain
+  - 6 (5289f) -> Core Attack Chain
+  - 7 (31447) -> Core Attack Chain
+  - 8 (f1be2) -> Core Attack Chain
+  - 9 (26dfd) -> Core Attack Chain
+  - 10 (610e1) -> Core Attack Chain
+  - 11 (bd512) -> Core Attack Chain
+
+## Case 53
+- repo: Python_Malware
+- slice: <module>@Client.py_slice.py
+- first_state: Full Attack Chain @ 0 (36e07)
+- first_full: 0 (36e07) | starts_as_full=1
+- full_occurrence_count: 22 | full_commit_nums: 0;1;2;3;4;5;6;7;8;9;10;11;12;13;14;15;16;17;18;19;20;21
+- timeline:
+  - 0 (36e07) -> Full Attack Chain
+  - 1 (94282) -> Full Attack Chain
+  - 2 (26ec6) -> Full Attack Chain
+  - 3 (a9c9a) -> Full Attack Chain
+  - 4 (c2d9c) -> Full Attack Chain
+  - 5 (3d3a2) -> Full Attack Chain
+  - 6 (be405) -> Full Attack Chain
+  - 7 (fe6b8) -> Full Attack Chain
+  - 8 (cd8a1) -> Full Attack Chain
+  - 9 (e43f3) -> Full Attack Chain
+  - 10 (1adc0) -> Full Attack Chain
+  - 11 (8eb41) -> Full Attack Chain
+  - 12 (678e6) -> Full Attack Chain
+  - 13 (a2c9c) -> Full Attack Chain
+  - 14 (1493b) -> Full Attack Chain
+  - 15 (4bfde) -> Full Attack Chain
+  - 16 (3b0f7) -> Full Attack Chain
+  - 17 (a263f) -> Full Attack Chain
+  - 18 (4dae7) -> Full Attack Chain
+  - 19 (95e44) -> Full Attack Chain
+  - 20 (c842d) -> Full Attack Chain
+  - 21 (f1354) -> Full Attack Chain
+
+## Case 54
+- repo: Python_Malware
+- slice: <module>@Malware.py_slice.py
+- first_state: Full Attack Chain @ 0 (36e07)
+- first_full: 0 (36e07) | starts_as_full=1
+- full_occurrence_count: 22 | full_commit_nums: 0;1;2;3;4;5;6;7;8;9;10;11;12;13;14;15;16;17;18;19;20;21
+- timeline:
+  - 0 (36e07) -> Full Attack Chain
+  - 1 (94282) -> Full Attack Chain
+  - 2 (26ec6) -> Full Attack Chain
+  - 3 (a9c9a) -> Full Attack Chain
+  - 4 (c2d9c) -> Full Attack Chain
+  - 5 (3d3a2) -> Full Attack Chain
+  - 6 (be405) -> Full Attack Chain
+  - 7 (fe6b8) -> Full Attack Chain
+  - 8 (cd8a1) -> Full Attack Chain
+  - 9 (e43f3) -> Full Attack Chain
+  - 10 (1adc0) -> Full Attack Chain
+  - 11 (8eb41) -> Full Attack Chain
+  - 12 (678e6) -> Full Attack Chain
+  - 13 (a2c9c) -> Full Attack Chain
+  - 14 (1493b) -> Full Attack Chain
+  - 15 (4bfde) -> Full Attack Chain
+  - 16 (3b0f7) -> Full Attack Chain
+  - 17 (a263f) -> Full Attack Chain
+  - 18 (4dae7) -> Full Attack Chain
+  - 19 (95e44) -> Full Attack Chain
+  - 20 (c842d) -> Full Attack Chain
+  - 21 (f1354) -> Full Attack Chain
+
+## Case 55
+- repo: ScaryMalware
+- slice: <module>@malware.py_slice.py
+- first_state: Benign @ 0 (b54b5)
+- first_full: 3 (d3e8c) | starts_as_full=0
+- full_occurrence_count: 5 | full_commit_nums: 3;6;7;9;10
+- timeline:
+  - 0 (b54b5) -> Benign
+  - 1 (57d43) -> Core Attack Chain
+  - 2 (702da) -> Core Attack Chain
+  - 3 (d3e8c) -> Full Attack Chain
+  - 4 (e22de) -> Core Attack Chain
+  - 5 (c5ff7) -> Core Attack Chain
+  - 6 (2e6cf) -> Full Attack Chain
+  - 7 (2c725) -> Full Attack Chain
+  - 8 (3b2cc) -> Core Attack Chain
+  - 9 (06075) -> Full Attack Chain
+  - 10 (36f13) -> Full Attack Chain
+
+## Case 56
+- repo: TheWeirdVirus
+- slice: <module>@VirusLoop.py_slice.py
+- first_state: Core Attack Chain @ 0 (b118c)
+- first_full: 1 (da27e) | starts_as_full=0
+- full_occurrence_count: 1 | full_commit_nums: 1
+- timeline:
+  - 0 (b118c) -> Core Attack Chain
+  - 1 (da27e) -> Full Attack Chain
+  - 2 (71a89) -> Core Attack Chain
+  - 3 (eae2b) -> Core Attack Chain
+  - 4 (f71c7) -> Core Attack Chain
+  - 5 (e57d7) -> Core Attack Chain
+  - 6 (60016) -> Core Attack Chain
+  - 7 (f4649) -> Core Attack Chain
+
+## Case 57
+- repo: Trojan
+- slice: <module>@trojan.py_slice.py
+- first_state: Full Attack Chain @ 0 (17412)
+- first_full: 0 (17412) | starts_as_full=1
+- full_occurrence_count: 3 | full_commit_nums: 0;1;2
+- timeline:
+  - 0 (17412) -> Full Attack Chain
+  - 1 (f1bbe) -> Full Attack Chain
+  - 2 (aa1f3) -> Full Attack Chain
+
+## Case 58
+- repo: Virus-Python
+- slice: <module>@gimme_money.py_slice.py
+- first_state: Benign @ 0 (4eb33)
+- first_full: 2 (47c8f) | starts_as_full=0
+- full_occurrence_count: 1 | full_commit_nums: 2
+- timeline:
+  - 0 (4eb33) -> Benign
+  - 1 (2742b) -> Benign
+  - 2 (47c8f) -> Full Attack Chain
+  - 3 (d52ac) -> Core Attack Chain
+  - 4 (95d00) -> Undetermined
+  - 5 (2884d) -> Core Attack Chain
+  - 6 (a27ae) -> Core Attack Chain
+
+## Case 59
+- repo: Virus000
+- slice: <body>@aTTacKer.py_slice.py
+- first_state: Full Attack Chain @ 0 (ea90b)
+- first_full: 0 (ea90b) | starts_as_full=1
+- full_occurrence_count: 7 | full_commit_nums: 0;1;2;3;4;5;6
+- timeline:
+  - 0 (ea90b) -> Full Attack Chain
+  - 1 (94bf5) -> Full Attack Chain
+  - 2 (e7558) -> Full Attack Chain
+  - 3 (ec220) -> Full Attack Chain
+  - 4 (0fea8) -> Full Attack Chain
+  - 5 (26784) -> Full Attack Chain
+  - 6 (29176) -> Full Attack Chain
+
+## Case 60
+- repo: Virus000
+- slice: <body>@viCtim.py_slice.py
+- first_state: Full Attack Chain @ 0 (ea90b)
+- first_full: 0 (ea90b) | starts_as_full=1
+- full_occurrence_count: 7 | full_commit_nums: 0;1;2;3;4;5;6
+- timeline:
+  - 0 (ea90b) -> Full Attack Chain
+  - 1 (94bf5) -> Full Attack Chain
+  - 2 (e7558) -> Full Attack Chain
+  - 3 (ec220) -> Full Attack Chain
+  - 4 (0fea8) -> Full Attack Chain
+  - 5 (26784) -> Full Attack Chain
+  - 6 (29176) -> Full Attack Chain
+
+## Case 61
+- repo: WannaHappy
+- slice: <module>@EXAMPLE-DJVU.py_slice.py
+- first_state: Full Attack Chain @ 5 (ef915)
+- first_full: 5 (ef915) | starts_as_full=1
+- full_occurrence_count: 1 | full_commit_nums: 5
+- timeline:
+  - 5 (ef915) -> Full Attack Chain
+
+## Case 62
+- repo: backdoor
+- slice: <body>@client.py_slice.py
+- first_state: Undetermined @ 1 (b94ad)
+- first_full: 2 (904d3) | starts_as_full=0
+- full_occurrence_count: 2 | full_commit_nums: 2;3
+- timeline:
+  - 1 (b94ad) -> Undetermined
+  - 2 (904d3) -> Full Attack Chain
+  - 3 (3ce22) -> Full Attack Chain
+
+## Case 63
+- repo: backdoor
+- slice: <module>@client.py_slice.py
+- first_state: Full Attack Chain @ 3 (3ce22)
+- first_full: 3 (3ce22) | starts_as_full=1
+- full_occurrence_count: 1 | full_commit_nums: 3
+- timeline:
+  - 3 (3ce22) -> Full Attack Chain
+
+## Case 64
+- repo: backdoor2
+- slice: <module>@reverse_shell.py_slice.py
+- first_state: Undetermined @ 1 (4982e)
+- first_full: 7 (e1fd3) | starts_as_full=0
+- full_occurrence_count: 1 | full_commit_nums: 7
+- timeline:
+  - 1 (4982e) -> Undetermined
+  - 2 (003bd) -> Core Attack Chain
+  - 3 (ce157) -> Core Attack Chain
+  - 4 (15433) -> Core Attack Chain
+  - 5 (8216c) -> Core Attack Chain
+  - 6 (faa7c) -> Core Attack Chain
+  - 7 (e1fd3) -> Full Attack Chain
+
+## Case 65
+- repo: beep
+- slice: <module>@virus.py_slice.py
+- first_state: Benign @ 0 (244fc)
+- first_full: 1 (aac79) | starts_as_full=0
+- full_occurrence_count: 9 | full_commit_nums: 1;2;3;4;5;6;8;9;12
+- timeline:
+  - 0 (244fc) -> Benign
+  - 1 (aac79) -> Full Attack Chain
+  - 2 (01a62) -> Full Attack Chain
+  - 3 (a6a72) -> Full Attack Chain
+  - 4 (6ca31) -> Full Attack Chain
+  - 5 (55be7) -> Full Attack Chain
+  - 6 (53e58) -> Full Attack Chain
+  - 7 (1ade8) -> Core Attack Chain
+  - 8 (77881) -> Full Attack Chain
+  - 9 (beae0) -> Full Attack Chain
+  - 10 (9719c) -> Core Attack Chain
+  - 11 (6a815) -> Core Attack Chain
+  - 12 (41a8e) -> Full Attack Chain
+
+## Case 66
+- repo: crypto-clipper
+- slice: <module>@main.py_slice.py
+- first_state: Full Attack Chain @ 0 (dfe2b)
+- first_full: 0 (dfe2b) | starts_as_full=1
+- full_occurrence_count: 5 | full_commit_nums: 0;1;2;3;4
+- timeline:
+  - 0 (dfe2b) -> Full Attack Chain
+  - 1 (868ca) -> Full Attack Chain
+  - 2 (ca07b) -> Full Attack Chain
+  - 3 (f9abe) -> Full Attack Chain
+  - 4 (299de) -> Full Attack Chain
+
+## Case 67
+- repo: dojo6oct16
+- slice: <body>@infector.py_slice.py
+- first_state: Full Attack Chain @ 10 (1f053)
+- first_full: 10 (1f053) | starts_as_full=1
+- full_occurrence_count: 8 | full_commit_nums: 10;11;12;13;14;15;16;17
+- timeline:
+  - 10 (1f053) -> Full Attack Chain
+  - 11 (502e1) -> Full Attack Chain
+  - 12 (84ec1) -> Full Attack Chain
+  - 13 (c2083) -> Full Attack Chain
+  - 14 (0098c) -> Full Attack Chain
+  - 15 (36a16) -> Full Attack Chain
+  - 16 (df504) -> Full Attack Chain
+  - 17 (af251) -> Full Attack Chain
+
+## Case 68
+- repo: dojo6oct16
+- slice: <module>@infector.py_slice.py
+- first_state: Core Attack Chain @ 4 (c6dce)
+- first_full: 7 (8916a) | starts_as_full=0
+- full_occurrence_count: 11 | full_commit_nums: 7;8;9;10;11;12;13;14;15;16;17
+- timeline:
+  - 4 (c6dce) -> Core Attack Chain
+  - 6 (ff97b) -> Core Attack Chain
+  - 7 (8916a) -> Full Attack Chain
+  - 8 (06600) -> Full Attack Chain
+  - 9 (1a34e) -> Full Attack Chain
+  - 10 (1f053) -> Full Attack Chain
+  - 11 (502e1) -> Full Attack Chain
+  - 12 (84ec1) -> Full Attack Chain
+  - 13 (c2083) -> Full Attack Chain
+  - 14 (0098c) -> Full Attack Chain
+  - 15 (36a16) -> Full Attack Chain
+  - 16 (df504) -> Full Attack Chain
+  - 17 (af251) -> Full Attack Chain
+
+## Case 69
+- repo: funny-virus
+- slice: <body>@papa_client.py_slice.py
+- first_state: Full Attack Chain @ 9 (d48fd)
+- first_full: 9 (d48fd) | starts_as_full=1
+- full_occurrence_count: 9 | full_commit_nums: 9;10;11;12;13;14;15;16;17
+- timeline:
+  - 9 (d48fd) -> Full Attack Chain
+  - 10 (90791) -> Full Attack Chain
+  - 11 (d8dd7) -> Full Attack Chain
+  - 12 (909c5) -> Full Attack Chain
+  - 13 (578e1) -> Full Attack Chain
+  - 14 (e69ef) -> Full Attack Chain
+  - 15 (11668) -> Full Attack Chain
+  - 16 (ad64d) -> Full Attack Chain
+  - 17 (5776f) -> Full Attack Chain
+
+## Case 70
+- repo: funny-virus
+- slice: <body>@papa_payload.py_slice.py
+- first_state: Full Attack Chain @ 14 (e69ef)
+- first_full: 14 (e69ef) | starts_as_full=1
+- full_occurrence_count: 4 | full_commit_nums: 14;15;16;17
+- timeline:
+  - 14 (e69ef) -> Full Attack Chain
+  - 15 (11668) -> Full Attack Chain
+  - 16 (ad64d) -> Full Attack Chain
+  - 17 (5776f) -> Full Attack Chain
+
+## Case 71
+- repo: funny-virus
+- slice: <body>@papa_server.py_slice.py
+- first_state: Core Attack Chain @ 10 (90791)
+- first_full: 16 (ad64d) | starts_as_full=0
+- full_occurrence_count: 2 | full_commit_nums: 16;17
+- timeline:
+  - 10 (90791) -> Core Attack Chain
+  - 11 (d8dd7) -> Core Attack Chain
+  - 12 (909c5) -> Core Attack Chain
+  - 13 (578e1) -> Core Attack Chain
+  - 14 (e69ef) -> Core Attack Chain
+  - 15 (11668) -> Core Attack Chain
+  - 16 (ad64d) -> Full Attack Chain
+  - 17 (5776f) -> Full Attack Chain
+
+## Case 72
+- repo: funny-virus
+- slice: <module>@papa_client.py_slice.py
+- first_state: Full Attack Chain @ 9 (d48fd)
+- first_full: 9 (d48fd) | starts_as_full=1
+- full_occurrence_count: 9 | full_commit_nums: 9;10;11;12;13;14;15;16;17
+- timeline:
+  - 9 (d48fd) -> Full Attack Chain
+  - 10 (90791) -> Full Attack Chain
+  - 11 (d8dd7) -> Full Attack Chain
+  - 12 (909c5) -> Full Attack Chain
+  - 13 (578e1) -> Full Attack Chain
+  - 14 (e69ef) -> Full Attack Chain
+  - 15 (11668) -> Full Attack Chain
+  - 16 (ad64d) -> Full Attack Chain
+  - 17 (5776f) -> Full Attack Chain
+
+## Case 73
+- repo: funny-virus
+- slice: <module>@papa_papa_socket.py_slice.py
+- first_state: Full Attack Chain @ 7 (97ad1)
+- first_full: 7 (97ad1) | starts_as_full=1
+- full_occurrence_count: 12 | full_commit_nums: 7;8;9;10;11;12;13;14;15;16;17;18
+- timeline:
+  - 7 (97ad1) -> Full Attack Chain
+  - 8 (0a71a) -> Full Attack Chain
+  - 9 (d48fd) -> Full Attack Chain
+  - 10 (90791) -> Full Attack Chain
+  - 11 (d8dd7) -> Full Attack Chain
+  - 12 (909c5) -> Full Attack Chain
+  - 13 (578e1) -> Full Attack Chain
+  - 14 (e69ef) -> Full Attack Chain
+  - 15 (11668) -> Full Attack Chain
+  - 16 (ad64d) -> Full Attack Chain
+  - 17 (5776f) -> Full Attack Chain
+  - 18 (3e3b2) -> Full Attack Chain
+
+## Case 74
+- repo: funny-virus
+- slice: <module>@papa_payload.py_slice.py
+- first_state: Full Attack Chain @ 14 (e69ef)
+- first_full: 14 (e69ef) | starts_as_full=1
+- full_occurrence_count: 5 | full_commit_nums: 14;15;16;17;18
+- timeline:
+  - 14 (e69ef) -> Full Attack Chain
+  - 15 (11668) -> Full Attack Chain
+  - 16 (ad64d) -> Full Attack Chain
+  - 17 (5776f) -> Full Attack Chain
+  - 18 (3e3b2) -> Full Attack Chain
+
+## Case 75
+- repo: funny-virus
+- slice: <module>@papa_server.py_slice.py
+- first_state: Full Attack Chain @ 10 (90791)
+- first_full: 10 (90791) | starts_as_full=1
+- full_occurrence_count: 3 | full_commit_nums: 10;14;15
+- timeline:
+  - 10 (90791) -> Full Attack Chain
+  - 11 (d8dd7) -> Core Attack Chain
+  - 12 (909c5) -> Core Attack Chain
+  - 13 (578e1) -> Core Attack Chain
+  - 14 (e69ef) -> Full Attack Chain
+  - 15 (11668) -> Full Attack Chain
+  - 16 (ad64d) -> Core Attack Chain
+  - 17 (5776f) -> Core Attack Chain
+  - 18 (3e3b2) -> Core Attack Chain
+
+## Case 76
+- repo: funny-virus
+- slice: <module>@papa_socket.py_slice.py
+- first_state: Core Attack Chain @ 15 (11668)
+- first_full: 16 (ad64d) | starts_as_full=0
+- full_occurrence_count: 3 | full_commit_nums: 16;17;18
+- timeline:
+  - 15 (11668) -> Core Attack Chain
+  - 16 (ad64d) -> Full Attack Chain
+  - 17 (5776f) -> Full Attack Chain
+  - 18 (3e3b2) -> Full Attack Chain
+
+## Case 77
+- repo: funny-virus
+- slice: <module>@riny_riny.py_slice.py
+- first_state: Full Attack Chain @ 5 (e4e14)
+- first_full: 5 (e4e14) | starts_as_full=1
+- full_occurrence_count: 13 | full_commit_nums: 5;6;7;8;9;10;11;12;13;14;15;16;17
+- timeline:
+  - 5 (e4e14) -> Full Attack Chain
+  - 6 (e2566) -> Full Attack Chain
+  - 7 (97ad1) -> Full Attack Chain
+  - 8 (0a71a) -> Full Attack Chain
+  - 9 (d48fd) -> Full Attack Chain
+  - 10 (90791) -> Full Attack Chain
+  - 11 (d8dd7) -> Full Attack Chain
+  - 12 (909c5) -> Full Attack Chain
+  - 13 (578e1) -> Full Attack Chain
+  - 14 (e69ef) -> Full Attack Chain
+  - 15 (11668) -> Full Attack Chain
+  - 16 (ad64d) -> Full Attack Chain
+  - 17 (5776f) -> Full Attack Chain
+
+## Case 78
+- repo: funny-virus
+- slice: <module>@sork.py_slice.py
+- first_state: Full Attack Chain @ 1 (410ec)
+- first_full: 1 (410ec) | starts_as_full=1
+- full_occurrence_count: 1 | full_commit_nums: 1
+- timeline:
+  - 1 (410ec) -> Full Attack Chain
+
+## Case 79
+- repo: funny-virus
+- slice: <module>@sork_sork.py_slice.py
+- first_state: Full Attack Chain @ 2 (2cbb3)
+- first_full: 2 (2cbb3) | starts_as_full=1
+- full_occurrence_count: 3 | full_commit_nums: 2;3;4
+- timeline:
+  - 2 (2cbb3) -> Full Attack Chain
+  - 3 (d3bdf) -> Full Attack Chain
+  - 4 (5df84) -> Full Attack Chain
+
+## Case 80
+- repo: iobdug_malware_py
+- slice: <module>@executable.py_slice.py
+- first_state: Benign @ 0 (6349e)
+- first_full: 3 (8dcab) | starts_as_full=0
+- full_occurrence_count: 1 | full_commit_nums: 3
+- timeline:
+  - 0 (6349e) -> Benign
+  - 1 (8601a) -> Core Attack Chain
+  - 2 (5d3d8) -> Core Attack Chain
+  - 3 (8dcab) -> Full Attack Chain
+
+## Case 81
+- repo: keylogger
+- slice: <body>@src_keylogger.py_slice.py
+- first_state: Full Attack Chain @ 5 (3291f)
+- first_full: 5 (3291f) | starts_as_full=1
+- full_occurrence_count: 39 | full_commit_nums: 5;6;7;8;9;10;11;12;16;17;18;19;20;21;22;23;24;25;26;27;28;29;30;31;32;33;34;35;36;37;38;39;40;41;42;43;44;45;46
+- timeline:
+  - 5 (3291f) -> Full Attack Chain
+  - 6 (10d8d) -> Full Attack Chain
+  - 7 (64762) -> Full Attack Chain
+  - 8 (fd003) -> Full Attack Chain
+  - 9 (ee3ab) -> Full Attack Chain
+  - 10 (97edf) -> Full Attack Chain
+  - 11 (b168c) -> Full Attack Chain
+  - 12 (9176b) -> Full Attack Chain
+  - 16 (b2aad) -> Full Attack Chain
+  - 17 (43a00) -> Full Attack Chain
+  - 18 (0bee1) -> Full Attack Chain
+  - 19 (dd79c) -> Full Attack Chain
+  - 20 (aa11f) -> Full Attack Chain
+  - 21 (f7a90) -> Full Attack Chain
+  - 22 (c4cb2) -> Full Attack Chain
+  - 23 (ab29d) -> Full Attack Chain
+  - 24 (fb60c) -> Full Attack Chain
+  - 25 (1c092) -> Full Attack Chain
+  - 26 (db70d) -> Full Attack Chain
+  - 27 (2b0ae) -> Full Attack Chain
+  - 28 (35982) -> Full Attack Chain
+  - 29 (a1fa1) -> Full Attack Chain
+  - 30 (da4e5) -> Full Attack Chain
+  - 31 (5dfdd) -> Full Attack Chain
+  - 32 (76743) -> Full Attack Chain
+  - 33 (b0fba) -> Full Attack Chain
+  - 34 (eb665) -> Full Attack Chain
+  - 35 (26557) -> Full Attack Chain
+  - 36 (826bf) -> Full Attack Chain
+  - 37 (944c2) -> Full Attack Chain
+  - 38 (a9570) -> Full Attack Chain
+  - 39 (943eb) -> Full Attack Chain
+  - 40 (c1c0f) -> Full Attack Chain
+  - 41 (3a05f) -> Full Attack Chain
+  - 42 (3e1bd) -> Full Attack Chain
+  - 43 (26727) -> Full Attack Chain
+  - 44 (8f0fd) -> Full Attack Chain
+  - 45 (0ef3a) -> Full Attack Chain
+  - 46 (1c0c8) -> Full Attack Chain
+
+## Case 82
+- repo: keylogger
+- slice: <module>@src_bot.py_slice.py
+- first_state: Undetermined @ 4 (e79cc)
+- first_full: 6 (10d8d) | starts_as_full=0
+- full_occurrence_count: 5 | full_commit_nums: 6;7;8;9;10
+- timeline:
+  - 4 (e79cc) -> Undetermined
+  - 5 (3291f) -> Undetermined
+  - 6 (10d8d) -> Full Attack Chain
+  - 7 (64762) -> Full Attack Chain
+  - 8 (fd003) -> Full Attack Chain
+  - 9 (ee3ab) -> Full Attack Chain
+  - 10 (97edf) -> Full Attack Chain
+
+## Case 83
+- repo: keylogger
+- slice: <module>@src_keylogger.py_slice.py
+- first_state: Full Attack Chain @ 7 (64762)
+- first_full: 7 (64762) | starts_as_full=1
+- full_occurrence_count: 37 | full_commit_nums: 7;8;9;10;11;12;16;17;18;19;20;21;22;23;24;25;26;27;28;29;30;31;32;33;34;35;36;37;38;39;40;41;42;43;44;45;46
+- timeline:
+  - 7 (64762) -> Full Attack Chain
+  - 8 (fd003) -> Full Attack Chain
+  - 9 (ee3ab) -> Full Attack Chain
+  - 10 (97edf) -> Full Attack Chain
+  - 11 (b168c) -> Full Attack Chain
+  - 12 (9176b) -> Full Attack Chain
+  - 16 (b2aad) -> Full Attack Chain
+  - 17 (43a00) -> Full Attack Chain
+  - 18 (0bee1) -> Full Attack Chain
+  - 19 (dd79c) -> Full Attack Chain
+  - 20 (aa11f) -> Full Attack Chain
+  - 21 (f7a90) -> Full Attack Chain
+  - 22 (c4cb2) -> Full Attack Chain
+  - 23 (ab29d) -> Full Attack Chain
+  - 24 (fb60c) -> Full Attack Chain
+  - 25 (1c092) -> Full Attack Chain
+  - 26 (db70d) -> Full Attack Chain
+  - 27 (2b0ae) -> Full Attack Chain
+  - 28 (35982) -> Full Attack Chain
+  - 29 (a1fa1) -> Full Attack Chain
+  - 30 (da4e5) -> Full Attack Chain
+  - 31 (5dfdd) -> Full Attack Chain
+  - 32 (76743) -> Full Attack Chain
+  - 33 (b0fba) -> Full Attack Chain
+  - 34 (eb665) -> Full Attack Chain
+  - 35 (26557) -> Full Attack Chain
+  - 36 (826bf) -> Full Attack Chain
+  - 37 (944c2) -> Full Attack Chain
+  - 38 (a9570) -> Full Attack Chain
+  - 39 (943eb) -> Full Attack Chain
+  - 40 (c1c0f) -> Full Attack Chain
+  - 41 (3a05f) -> Full Attack Chain
+  - 42 (3e1bd) -> Full Attack Chain
+  - 43 (26727) -> Full Attack Chain
+  - 44 (8f0fd) -> Full Attack Chain
+  - 45 (0ef3a) -> Full Attack Chain
+  - 46 (1c0c8) -> Full Attack Chain
+
+## Case 84
+- repo: keylogger
+- slice: run@src_keylogger.py_slice.py
+- first_state: Full Attack Chain @ 7 (64762)
+- first_full: 7 (64762) | starts_as_full=1
+- full_occurrence_count: 5 | full_commit_nums: 7;23;28;31;39
+- timeline:
+  - 7 (64762) -> Full Attack Chain
+  - 23 (ab29d) -> Full Attack Chain
+  - 28 (35982) -> Full Attack Chain
+  - 31 (5dfdd) -> Full Attack Chain
+  - 39 (943eb) -> Full Attack Chain
+
+## Case 85
+- repo: keylogger1
+- slice: <module>@keylogger.py_slice.py
+- first_state: Undetermined @ 0 (84329)
+- first_full: 1 (feaad) | starts_as_full=0
+- full_occurrence_count: 2 | full_commit_nums: 1;2
+- timeline:
+  - 0 (84329) -> Undetermined
+  - 1 (feaad) -> Full Attack Chain
+  - 2 (6342b) -> Full Attack Chain
+
+## Case 86
+- repo: keylogger2
+- slice: <body>@keylogger.py_slice.py
+- first_state: Core Attack Chain @ 3 (ef856)
+- first_full: 5 (4a737) | starts_as_full=0
+- full_occurrence_count: 2 | full_commit_nums: 5;6
+- timeline:
+  - 3 (ef856) -> Core Attack Chain
+  - 4 (96e94) -> Core Attack Chain
+  - 5 (4a737) -> Full Attack Chain
+  - 6 (2bc69) -> Full Attack Chain
+
+## Case 87
+- repo: keylogger3
+- slice: <module>@keylogger.py_slice.py
+- first_state: Undetermined @ 0 (3f948)
+- first_full: 2 (47879) | starts_as_full=0
+- full_occurrence_count: 1 | full_commit_nums: 2
+- timeline:
+  - 0 (3f948) -> Undetermined
+  - 1 (2e39e) -> Core Attack Chain
+  - 2 (47879) -> Full Attack Chain
+
+## Case 88
+- repo: keylogger4
+- slice: <body>@keylogger.py_slice.py
+- first_state: Core Attack Chain @ 3 (33dc7)
+- first_full: 4 (b071d) | starts_as_full=0
+- full_occurrence_count: 1 | full_commit_nums: 4
+- timeline:
+  - 3 (33dc7) -> Core Attack Chain
+  - 4 (b071d) -> Full Attack Chain
+
+## Case 89
+- repo: keylogger4
+- slice: <module>@keylogger.py_slice.py
+- first_state: Full Attack Chain @ 4 (b071d)
+- first_full: 4 (b071d) | starts_as_full=1
+- full_occurrence_count: 1 | full_commit_nums: 4
+- timeline:
+  - 4 (b071d) -> Full Attack Chain
+
+## Case 90
+- repo: little-python-malware
+- slice: <module>@malware.py_slice.py
+- first_state: Full Attack Chain @ 0 (4aead)
+- first_full: 0 (4aead) | starts_as_full=1
+- full_occurrence_count: 3 | full_commit_nums: 0;1;2
+- timeline:
+  - 0 (4aead) -> Full Attack Chain
+  - 1 (2647f) -> Full Attack Chain
+  - 2 (6c7ab) -> Full Attack Chain
+
+## Case 91
+- repo: malware-01
+- slice: <module>@client.py_slice.py
+- first_state: Full Attack Chain @ 0 (1df3a)
+- first_full: 0 (1df3a) | starts_as_full=1
+- full_occurrence_count: 4 | full_commit_nums: 0;1;2;3
+- timeline:
+  - 0 (1df3a) -> Full Attack Chain
+  - 1 (6a36d) -> Full Attack Chain
+  - 2 (f71ca) -> Full Attack Chain
+  - 3 (b22f0) -> Full Attack Chain
+
+## Case 92
+- repo: megaloptera
+- slice: <module>@dropper.py_slice.py
+- first_state: Full Attack Chain @ 7 (d66ad)
+- first_full: 7 (d66ad) | starts_as_full=1
+- full_occurrence_count: 1 | full_commit_nums: 7
+- timeline:
+  - 7 (d66ad) -> Full Attack Chain
+
+## Case 93
+- repo: megaloptera
+- slice: <module>@dropperObfuscate.py_slice.py
+- first_state: Full Attack Chain @ 7 (d66ad)
+- first_full: 7 (d66ad) | starts_as_full=1
+- full_occurrence_count: 1 | full_commit_nums: 7
+- timeline:
+  - 7 (d66ad) -> Full Attack Chain
+
+## Case 94
+- repo: megaloptera
+- slice: <module>@megaloptera.py_slice.py
+- first_state: Core Attack Chain @ 0 (9f2ed)
+- first_full: 4 (695c1) | starts_as_full=0
+- full_occurrence_count: 2 | full_commit_nums: 4;5
+- timeline:
+  - 0 (9f2ed) -> Core Attack Chain
+  - 1 (6af8d) -> Core Attack Chain
+  - 2 (50c4a) -> Core Attack Chain
+  - 3 (88129) -> Core Attack Chain
+  - 4 (695c1) -> Full Attack Chain
+  - 5 (75922) -> Full Attack Chain
+
+## Case 95
+- repo: megaloptera
+- slice: <module>@src_dropper.py_slice.py
+- first_state: Full Attack Chain @ 5 (75922)
+- first_full: 5 (75922) | starts_as_full=1
+- full_occurrence_count: 3 | full_commit_nums: 5;6;7
+- timeline:
+  - 5 (75922) -> Full Attack Chain
+  - 6 (b815c) -> Full Attack Chain
+  - 7 (d66ad) -> Full Attack Chain
+
+## Case 96
+- repo: parvox
+- slice: <module>@adder.py_slice.py
+- first_state: Core Attack Chain @ 5 (ae436)
+- first_full: 7 (ac111) | starts_as_full=0
+- full_occurrence_count: 3 | full_commit_nums: 7;8;9
+- timeline:
+  - 5 (ae436) -> Core Attack Chain
+  - 6 (5aad2) -> Core Attack Chain
+  - 7 (ac111) -> Full Attack Chain
+  - 8 (bc1e1) -> Full Attack Chain
+  - 9 (e22d0) -> Full Attack Chain
+
+## Case 97
+- repo: parvox
+- slice: <module>@dikz_payloads_revshell.py_slice.py
+- first_state: Full Attack Chain @ 1 (7e77e)
+- first_full: 1 (7e77e) | starts_as_full=1
+- full_occurrence_count: 3 | full_commit_nums: 1;2;3
+- timeline:
+  - 1 (7e77e) -> Full Attack Chain
+  - 2 (7f76c) -> Full Attack Chain
+  - 3 (3bc2b) -> Full Attack Chain
+
+## Case 98
+- repo: parvox
+- slice: <module>@dikz_payloads_wallp.py_slice.py
+- first_state: Full Attack Chain @ 1 (7e77e)
+- first_full: 1 (7e77e) | starts_as_full=1
+- full_occurrence_count: 1 | full_commit_nums: 1
+- timeline:
+  - 1 (7e77e) -> Full Attack Chain
+
+## Case 99
+- repo: parvox
+- slice: <module>@main.py_slice.py
+- first_state: Benign @ 0 (9467c)
+- first_full: 7 (ac111) | starts_as_full=0
+- full_occurrence_count: 3 | full_commit_nums: 7;8;9
+- timeline:
+  - 0 (9467c) -> Benign
+  - 1 (7e77e) -> Benign
+  - 2 (7f76c) -> Benign
+  - 3 (3bc2b) -> Benign
+  - 4 (1cf7a) -> Benign
+  - 5 (ae436) -> Core Attack Chain
+  - 6 (5aad2) -> Undetermined
+  - 7 (ac111) -> Full Attack Chain
+  - 8 (bc1e1) -> Full Attack Chain
+  - 9 (e22d0) -> Full Attack Chain
+
+## Case 100
+- repo: parvox
+- slice: <module>@output_virus.py_slice.py
+- first_state: Full Attack Chain @ 7 (ac111)
+- first_full: 7 (ac111) | starts_as_full=1
+- full_occurrence_count: 2 | full_commit_nums: 7;8
+- timeline:
+  - 7 (ac111) -> Full Attack Chain
+  - 8 (bc1e1) -> Full Attack Chain
+
+## Case 101
+- repo: parvox
+- slice: <module>@payloads_change_wallpaper.py_slice.py
+- first_state: Full Attack Chain @ 5 (ae436)
+- first_full: 5 (ae436) | starts_as_full=1
+- full_occurrence_count: 5 | full_commit_nums: 5;6;7;8;9
+- timeline:
+  - 5 (ae436) -> Full Attack Chain
+  - 6 (5aad2) -> Full Attack Chain
+  - 7 (ac111) -> Full Attack Chain
+  - 8 (bc1e1) -> Full Attack Chain
+  - 9 (e22d0) -> Full Attack Chain
+
+## Case 102
+- repo: parvox
+- slice: <module>@payloads_mini_worm.py_slice.py
+- first_state: Full Attack Chain @ 5 (ae436)
+- first_full: 5 (ae436) | starts_as_full=1
+- full_occurrence_count: 5 | full_commit_nums: 5;6;7;8;9
+- timeline:
+  - 5 (ae436) -> Full Attack Chain
+  - 6 (5aad2) -> Full Attack Chain
+  - 7 (ac111) -> Full Attack Chain
+  - 8 (bc1e1) -> Full Attack Chain
+  - 9 (e22d0) -> Full Attack Chain
+
+## Case 103
+- repo: parvox
+- slice: <module>@payloads_replicate.py_slice.py
+- first_state: Full Attack Chain @ 4 (1cf7a)
+- first_full: 4 (1cf7a) | starts_as_full=1
+- full_occurrence_count: 1 | full_commit_nums: 4
+- timeline:
+  - 4 (1cf7a) -> Full Attack Chain
+
+## Case 104
+- repo: parvox
+- slice: <module>@payloads_reverse_shell.py_slice.py
+- first_state: Full Attack Chain @ 5 (ae436)
+- first_full: 5 (ae436) | starts_as_full=1
+- full_occurrence_count: 5 | full_commit_nums: 5;6;7;8;9
+- timeline:
+  - 5 (ae436) -> Full Attack Chain
+  - 6 (5aad2) -> Full Attack Chain
+  - 7 (ac111) -> Full Attack Chain
+  - 8 (bc1e1) -> Full Attack Chain
+  - 9 (e22d0) -> Full Attack Chain
+
+## Case 105
+- repo: parvox
+- slice: <module>@payloads_revshell.py_slice.py
+- first_state: Full Attack Chain @ 4 (1cf7a)
+- first_full: 4 (1cf7a) | starts_as_full=1
+- full_occurrence_count: 1 | full_commit_nums: 4
+- timeline:
+  - 4 (1cf7a) -> Full Attack Chain
+
+## Case 106
+- repo: parvox
+- slice: <module>@payloads_wallp.py_slice.py
+- first_state: Full Attack Chain @ 4 (1cf7a)
+- first_full: 4 (1cf7a) | starts_as_full=1
+- full_occurrence_count: 1 | full_commit_nums: 4
+- timeline:
+  - 4 (1cf7a) -> Full Attack Chain
+
+## Case 107
+- repo: python-malware
+- slice: <module>@clipboard_event.py_slice.py
+- first_state: Full Attack Chain @ 14 (0c40b)
+- first_full: 14 (0c40b) | starts_as_full=1
+- full_occurrence_count: 1 | full_commit_nums: 14
+- timeline:
+  - 14 (0c40b) -> Full Attack Chain
+
+## Case 108
+- repo: python-malware
+- slice: <module>@mail_event.py_slice.py
+- first_state: Full Attack Chain @ 6 (31a0c)
+- first_full: 6 (31a0c) | starts_as_full=1
+- full_occurrence_count: 9 | full_commit_nums: 6;7;8;9;10;11;12;13;14
+- timeline:
+  - 6 (31a0c) -> Full Attack Chain
+  - 7 (09b46) -> Full Attack Chain
+  - 8 (22dee) -> Full Attack Chain
+  - 9 (2c321) -> Full Attack Chain
+  - 10 (a21dd) -> Full Attack Chain
+  - 11 (e70e9) -> Full Attack Chain
+  - 12 (7ac43) -> Full Attack Chain
+  - 13 (ad12d) -> Full Attack Chain
+  - 14 (0c40b) -> Full Attack Chain
+
+## Case 109
+- repo: python-malware
+- slice: <module>@mic_record.py_slice.py
+- first_state: Full Attack Chain @ 11 (e70e9)
+- first_full: 11 (e70e9) | starts_as_full=1
+- full_occurrence_count: 4 | full_commit_nums: 11;12;13;14
+- timeline:
+  - 11 (e70e9) -> Full Attack Chain
+  - 12 (7ac43) -> Full Attack Chain
+  - 13 (ad12d) -> Full Attack Chain
+  - 14 (0c40b) -> Full Attack Chain
+
+## Case 110
+- repo: python-malware1/python-malware
+- slice: <module>@alerta.py_slice.py
+- first_state: Full Attack Chain @ 0 (0dd59)
+- first_full: 0 (0dd59) | starts_as_full=1
+- full_occurrence_count: 4 | full_commit_nums: 0;1;2;3
+- timeline:
+  - 0 (0dd59) -> Full Attack Chain
+  - 1 (e495f) -> Full Attack Chain
+  - 2 (f5700) -> Full Attack Chain
+  - 3 (57b61) -> Full Attack Chain
+
+## Case 111
+- repo: python-malware1/python-malware
+- slice: <module>@script.py_slice.py
+- first_state: Full Attack Chain @ 3 (57b61)
+- first_full: 3 (57b61) | starts_as_full=1
+- full_occurrence_count: 9 | full_commit_nums: 3;4;5;6;7;8;9;10;11
+- timeline:
+  - 3 (57b61) -> Full Attack Chain
+  - 4 (ffc0c) -> Full Attack Chain
+  - 5 (820a3) -> Full Attack Chain
+  - 6 (7c0ab) -> Full Attack Chain
+  - 7 (f4a32) -> Full Attack Chain
+  - 8 (29566) -> Full Attack Chain
+  - 9 (40420) -> Full Attack Chain
+  - 10 (02d90) -> Full Attack Chain
+  - 11 (a8b81) -> Full Attack Chain
+
+## Case 112
+- repo: python-malware2/python-malware
+- slice: <module>@main.py_slice.py
+- first_state: Core Attack Chain @ 0 (b26c0)
+- first_full: 1 (4bd71) | starts_as_full=0
+- full_occurrence_count: 1 | full_commit_nums: 1
+- timeline:
+  - 0 (b26c0) -> Core Attack Chain
+  - 1 (4bd71) -> Full Attack Chain
+
+## Case 113
+- repo: python-malware3/python-malware
+- slice: <module>@client_client.py_slice.py
+- first_state: Full Attack Chain @ 9 (77145)
+- first_full: 9 (77145) | starts_as_full=1
+- full_occurrence_count: 2 | full_commit_nums: 9;10
+- timeline:
+  - 9 (77145) -> Full Attack Chain
+  - 10 (ad449) -> Full Attack Chain
+
+## Case 114
+- repo: python-malware3/python-malware
+- slice: <module>@clienttest.py_slice.py
+- first_state: Undetermined @ 0 (d3a15)
+- first_full: 7 (64c74) | starts_as_full=0
+- full_occurrence_count: 2 | full_commit_nums: 7;8
+- timeline:
+  - 0 (d3a15) -> Undetermined
+  - 1 (15c73) -> Undetermined
+  - 2 (850c8) -> Core Attack Chain
+  - 3 (8574a) -> Core Attack Chain
+  - 4 (dd22c) -> Core Attack Chain
+  - 5 (40fae) -> Core Attack Chain
+  - 6 (10f0a) -> Core Attack Chain
+  - 7 (64c74) -> Full Attack Chain
+  - 8 (cf1b7) -> Full Attack Chain
+
+## Case 115
+- repo: python-malware3/python-malware
+- slice: <module>@dos.py_slice.py
+- first_state: Full Attack Chain @ 6 (10f0a)
+- first_full: 6 (10f0a) | starts_as_full=1
+- full_occurrence_count: 3 | full_commit_nums: 6;7;8
+- timeline:
+  - 6 (10f0a) -> Full Attack Chain
+  - 7 (64c74) -> Full Attack Chain
+  - 8 (cf1b7) -> Full Attack Chain
+
+## Case 116
+- repo: python-malware3/python-malware
+- slice: <module>@tools_dos.py_slice.py
+- first_state: Full Attack Chain @ 9 (77145)
+- first_full: 9 (77145) | starts_as_full=1
+- full_occurrence_count: 2 | full_commit_nums: 9;10
+- timeline:
+  - 9 (77145) -> Full Attack Chain
+  - 10 (ad449) -> Full Attack Chain
+
+## Case 117
+- repo: python-malware3/python-malware
+- slice: <module>@tools_persistance.py_slice.py
+- first_state: Full Attack Chain @ 10 (ad449)
+- first_full: 10 (ad449) | starts_as_full=1
+- full_occurrence_count: 1 | full_commit_nums: 10
+- timeline:
+  - 10 (ad449) -> Full Attack Chain
+
+## Case 118
+- repo: ransomware
+- slice: <module>@lib_en_decrypt.py_slice.py
+- first_state: Full Attack Chain @ 1 (164d2)
+- first_full: 1 (164d2) | starts_as_full=1
+- full_occurrence_count: 2 | full_commit_nums: 1;2
+- timeline:
+  - 1 (164d2) -> Full Attack Chain
+  - 2 (ae168) -> Full Attack Chain
+
+## Case 119
+- repo: ransomware
+- slice: <module>@lib_zzz_exploit.py_slice.py
+- first_state: Full Attack Chain @ 2 (ae168)
+- first_full: 2 (ae168) | starts_as_full=1
+- full_occurrence_count: 1 | full_commit_nums: 2
+- timeline:
+  - 2 (ae168) -> Full Attack Chain
+
+## Case 120
+- repo: ransomware
+- slice: <module>@main.py_slice.py
+- first_state: Full Attack Chain @ 0 (fde37)
+- first_full: 0 (fde37) | starts_as_full=1
+- full_occurrence_count: 3 | full_commit_nums: 0;1;2
+- timeline:
+  - 0 (fde37) -> Full Attack Chain
+  - 1 (164d2) -> Full Attack Chain
+  - 2 (ae168) -> Full Attack Chain
+
+## Case 121
+- repo: ransomware2
+- slice: <module>@encrypt.py_slice.py
+- first_state: Undetermined @ 3 (f4a30)
+- first_full: 5 (c91af) | starts_as_full=0
+- full_occurrence_count: 1 | full_commit_nums: 5
+- timeline:
+  - 3 (f4a30) -> Undetermined
+  - 4 (96b1f) -> Core Attack Chain
+  - 5 (c91af) -> Full Attack Chain
+  - 6 (76b79) -> Core Attack Chain
+
+## Case 122
+- repo: ransomware3
+- slice: <module>@attack.py_slice.py
+- first_state: Undetermined @ 1 (fba94)
+- first_full: 3 (725f5) | starts_as_full=0
+- full_occurrence_count: 3 | full_commit_nums: 3;4;5
+- timeline:
+  - 1 (fba94) -> Undetermined
+  - 2 (aa702) -> Core Attack Chain
+  - 3 (725f5) -> Full Attack Chain
+  - 4 (e29aa) -> Full Attack Chain
+  - 5 (7d82f) -> Full Attack Chain
+
+## Case 123
+- repo: ransomware4
+- slice: <module>@ransomware.py_slice.py
+- first_state: Undetermined @ 2 (fea26)
+- first_full: 7 (6fa08) | starts_as_full=0
+- full_occurrence_count: 1 | full_commit_nums: 7
+- timeline:
+  - 2 (fea26) -> Undetermined
+  - 3 (92b3a) -> Undetermined
+  - 4 (034e6) -> Core Attack Chain
+  - 5 (f74df) -> Core Attack Chain
+  - 6 (e8210) -> Core Attack Chain
+  - 7 (6fa08) -> Full Attack Chain
+
+## Case 124
+- repo: ransomware6
+- slice: <module>@ransomware.py_slice.py
+- first_state: Undetermined @ 0 (571ee)
+- first_full: 2 (400a1) | starts_as_full=0
+- full_occurrence_count: 2 | full_commit_nums: 2;3
+- timeline:
+  - 0 (571ee) -> Undetermined
+  - 1 (2c7b0) -> Core Attack Chain
+  - 2 (400a1) -> Full Attack Chain
+  - 3 (546b3) -> Full Attack Chain
+
+## Case 125
+- repo: reverseShell1
+- slice: <module>@reverse.py_slice.py
+- first_state: Full Attack Chain @ 0 (c6677)
+- first_full: 0 (c6677) | starts_as_full=1
+- full_occurrence_count: 4 | full_commit_nums: 0;1;2;3
+- timeline:
+  - 0 (c6677) -> Full Attack Chain
+  - 1 (2ceaa) -> Full Attack Chain
+  - 2 (72770) -> Full Attack Chain
+  - 3 (a9d41) -> Full Attack Chain
+
+## Case 126
+- repo: reverseShell2
+- slice: <module>@client.py_slice.py
+- first_state: Undetermined @ 1 (683ad)
+- first_full: 3 (3d1ac) | starts_as_full=0
+- full_occurrence_count: 1 | full_commit_nums: 3
+- timeline:
+  - 1 (683ad) -> Undetermined
+  - 2 (86f9e) -> Undetermined
+  - 3 (3d1ac) -> Full Attack Chain
+
+## Case 127
+- repo: reverseShell3
+- slice: <module>@client.py_slice.py
+- first_state: Undetermined @ 0 (dcf79)
+- first_full: 1 (1ccbb) | starts_as_full=0
+- full_occurrence_count: 1 | full_commit_nums: 1
+- timeline:
+  - 0 (dcf79) -> Undetermined
+  - 1 (1ccbb) -> Full Attack Chain
+
+## Case 128
+- repo: shameleon
+- slice: <module>@builder.py_slice.py
+- first_state: Full Attack Chain @ 6 (464c1)
+- first_full: 6 (464c1) | starts_as_full=1
+- full_occurrence_count: 5 | full_commit_nums: 6;7;8;9;10
+- timeline:
+  - 6 (464c1) -> Full Attack Chain
+  - 7 (6486f) -> Full Attack Chain
+  - 8 (0bb1e) -> Full Attack Chain
+  - 9 (2e87b) -> Full Attack Chain
+  - 10 (0a26f) -> Full Attack Chain
+
+## Case 129
+- repo: simpleMalware1
+- slice: <module>@attack.py_slice.py
+- first_state: Undetermined @ 1 (f8ec2)
+- first_full: 2 (d320b) | starts_as_full=0
+- full_occurrence_count: 2 | full_commit_nums: 2;3
+- timeline:
+  - 1 (f8ec2) -> Undetermined
+  - 2 (d320b) -> Full Attack Chain
+  - 3 (cee65) -> Full Attack Chain
+
+## Case 130
+- repo: telegram_stealer
+- slice: <module>@source_main.py_slice.py
+- first_state: Core Attack Chain @ 0 (43aad)
+- first_full: 1 (18b08) | starts_as_full=0
+- full_occurrence_count: 1 | full_commit_nums: 1
+- timeline:
+  - 0 (43aad) -> Core Attack Chain
+  - 1 (18b08) -> Full Attack Chain
+
+## Case 131
+- repo: virus
+- slice: <module>@virus.py_slice.py
+- first_state: Benign @ 0 (6b4dd)
+- first_full: 2 (4c2c9) | starts_as_full=0
+- full_occurrence_count: 5 | full_commit_nums: 2;3;4;5;6
+- timeline:
+  - 0 (6b4dd) -> Benign
+  - 1 (b3c2e) -> Benign
+  - 2 (4c2c9) -> Full Attack Chain
+  - 3 (a9fa3) -> Full Attack Chain
+  - 4 (41627) -> Full Attack Chain
+  - 5 (3926d) -> Full Attack Chain
+  - 6 (336b5) -> Full Attack Chain
+
+## Case 132
+- repo: virus-chan
+- slice: <module>@Viirused.py_slice.py
+- first_state: Undetermined @ 0 (6fa9a)
+- first_full: 2 (79176) | starts_as_full=0
+- full_occurrence_count: 3 | full_commit_nums: 2;3;4
+- timeline:
+  - 0 (6fa9a) -> Undetermined
+  - 1 (42631) -> Undetermined
+  - 2 (79176) -> Full Attack Chain
+  - 3 (dd198) -> Full Attack Chain
+  - 4 (8d638) -> Full Attack Chain
+
+## Case 133
+- repo: virus-replicator
+- slice: <module>@main.py_slice.py
+- first_state: Core Attack Chain @ 1 (541e5)
+- first_full: 10 (38ecc) | starts_as_full=0
+- full_occurrence_count: 2 | full_commit_nums: 10;11
+- timeline:
+  - 1 (541e5) -> Core Attack Chain
+  - 2 (31a52) -> Core Attack Chain
+  - 3 (f9d3f) -> Core Attack Chain
+  - 4 (18773) -> Core Attack Chain
+  - 5 (acf95) -> Core Attack Chain
+  - 6 (26c97) -> Core Attack Chain
+  - 7 (01519) -> Core Attack Chain
+  - 8 (4dbd7) -> Core Attack Chain
+  - 9 (739a0) -> Core Attack Chain
+  - 10 (38ecc) -> Full Attack Chain
+  - 11 (668bb) -> Full Attack Chain
+
+## Case 134
+- repo: virus.py
+- slice: <module>@main.py_slice.py
+- first_state: Full Attack Chain @ 1 (52fb1)
+- first_full: 1 (52fb1) | starts_as_full=1
+- full_occurrence_count: 9 | full_commit_nums: 1;3;4;5;6;7;8;9;10
+- timeline:
+  - 1 (52fb1) -> Full Attack Chain
+  - 3 (f97d4) -> Full Attack Chain
+  - 4 (81900) -> Full Attack Chain
+  - 5 (a2151) -> Full Attack Chain
+  - 6 (1c8b3) -> Full Attack Chain
+  - 7 (6c1a3) -> Full Attack Chain
+  - 8 (44e31) -> Full Attack Chain
+  - 9 (8843d) -> Full Attack Chain
+  - 10 (967ec) -> Full Attack Chain
+  - 11 (81ce9) -> Core Attack Chain
+
+## Case 135
+- repo: virus1
+- slice: <module>@virus.py_slice.py
+- first_state: Core Attack Chain @ 0 (0581b)
+- first_full: 3 (ad298) | starts_as_full=0
+- full_occurrence_count: 2 | full_commit_nums: 3;4
+- timeline:
+  - 0 (0581b) -> Core Attack Chain
+  - 1 (981f2) -> Core Attack Chain
+  - 2 (9aa98) -> Core Attack Chain
+  - 3 (ad298) -> Full Attack Chain
+  - 4 (a166f) -> Full Attack Chain
+
+## Case 136
+- repo: virus2
+- slice: <body>@virus.py_slice.py
+- first_state: Core Attack Chain @ 1 (42c92)
+- first_full: 2 (221a4) | starts_as_full=0
+- full_occurrence_count: 3 | full_commit_nums: 2;3;4
+- timeline:
+  - 1 (42c92) -> Core Attack Chain
+  - 2 (221a4) -> Full Attack Chain
+  - 3 (e4abd) -> Full Attack Chain
+  - 4 (3423c) -> Full Attack Chain
+
+## Case 137
+- repo: wanna-smile
+- slice: <module>@bin_wanna-smile.py_slice.py
+- first_state: Full Attack Chain @ 8 (1d361)
+- first_full: 8 (1d361) | starts_as_full=1
+- full_occurrence_count: 3 | full_commit_nums: 8;10;12
+- timeline:
+  - 8 (1d361) -> Full Attack Chain
+  - 10 (3355f) -> Full Attack Chain
+  - 12 (a3479) -> Full Attack Chain
+  - 13 (0ccc5) -> Core Attack Chain
+
+## Case 138
+- repo: wanna-smile
+- slice: <module>@main.py_slice.py
+- first_state: Full Attack Chain @ 0 (b7497)
+- first_full: 0 (b7497) | starts_as_full=1
+- full_occurrence_count: 4 | full_commit_nums: 0;2;3;5
+- timeline:
+  - 0 (b7497) -> Full Attack Chain
+  - 2 (b8055) -> Full Attack Chain
+  - 3 (822b7) -> Full Attack Chain
+  - 5 (11ee6) -> Full Attack Chain
+
+## Case 139
+- repo: wanna-smile
+- slice: <module>@old_wanna-smile.py_slice.py
+- first_state: Full Attack Chain @ 11 (dfb17)
+- first_full: 11 (dfb17) | starts_as_full=1
+- full_occurrence_count: 1 | full_commit_nums: 11
+- timeline:
+  - 11 (dfb17) -> Full Attack Chain
+
+## Case 140
+- repo: wanna-smile
+- slice: <module>@wanna-smile.py_slice.py
+- first_state: Full Attack Chain @ 7 (4d56b)
+- first_full: 7 (4d56b) | starts_as_full=1
+- full_occurrence_count: 1 | full_commit_nums: 7
+- timeline:
+  - 7 (4d56b) -> Full Attack Chain
+
+## Case 141
+- repo: winrar-SFX-0day-exploiter
+- slice: <module>@winrarxexe.py_slice.py
+- first_state: Full Attack Chain @ 2 (4fd3c)
+- first_full: 2 (4fd3c) | starts_as_full=1
+- full_occurrence_count: 1 | full_commit_nums: 2
+- timeline:
+  - 2 (4fd3c) -> Full Attack Chain

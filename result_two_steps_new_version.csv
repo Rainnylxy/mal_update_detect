@@ -214,7 +214,7 @@ ScaryMalware,0,b54b5,NEW@<module>@malware.py_slice.py,Benign,Benign
 ScaryMalware,1,57d43,NEW@<module>@malware.py_slice.py,Core Attack Chain,Core Attack Chain
 ScaryMalware,2,702da,NEW@<module>@malware.py_slice.py,Core Attack Chain,Core Attack Chain
 ScaryMalware,3,d3e8c,NEW@<module>@malware.py_slice.py,Full Attack Chain,Full Attack Chain
-ScaryMalware,4,e22de,NEW@<module>@malware.py_slice.py,Full Attack Chain,Core Attack Chain
+ScaryMalware,4,e22de,NEW@<module>@malware.py_slice.py,Full Attack Chain,Full Attack Chain
 ScaryMalware,5,c5ff7,NEW@<module>@malware.py_slice.py,Full Attack Chain,Core Attack Chain,joern extract error slice
 ScaryMalware,6,2e6cf,NEW@<module>@malware.py_slice.py,Full Attack Chain,Full Attack Chain
 ScaryMalware,7,2c725,<module>@malware.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
@@ -1760,7 +1760,7 @@ MirageLink-rat-gui,29,278a3,NEW@<body>@frames_plugins_remote_tool.py_slice.py,Co
 MirageLink-rat-gui,29,278a3,NEW@<body>@frames_settings.py_slice.py,Benign,Benign
 MirageLink-rat-gui,30,cb51a,NEW@<body>@builder_clients_data_client_plugins_client_remote_desk.py_slice.py,Core Attack Chain,Core Attack Chain
 MirageLink-rat-gui,30,cb51a,<module>@config.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
-MirageLink-rat-gui,30,cb51a,NEW@<module>@builder_clients_data_client_client.py_slice.py,Core Attack Chain,Core Attack Chain
+MirageLink-rat-gui,30,cb51a,NEW@<module>@builder_clients_data_client_client.py_slice.py,Core Attack Chain,Full Attack Chain
 MirageLink-rat-gui,30,cb51a,NEW@<module>@builder_clients_data_client_build.py_slice.py,Benign,Benign
 MirageLink-rat-gui,30,cb51a,NEW@<module>@server_gui.py_slice.py,Undetermined,Undetermined
 MirageLink-rat-gui,30,cb51a,NEW@<body>@frames_function.py_slice.py,Core Attack Chain,Core Attack Chain

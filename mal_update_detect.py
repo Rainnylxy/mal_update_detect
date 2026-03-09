@@ -26,6 +26,7 @@ def read_repo_names_from_csv(csv_path):
 log_dir = "/home/lxy/lxy_codes/mal_update_detect/logs"
 os.makedirs(log_dir, exist_ok=True)
 log_file = os.path.join(log_dir, "mal_update_detect.log")
+error_log_file = os.path.join(log_dir, "mal_update_detect_error.log")
 
 logger.add(
     log_file,
@@ -34,8 +35,21 @@ logger.add(
     level="DEBUG",
     backtrace=True,
     diagnose=False,
+    enqueue=True,
     format="{time:YYYY-MM-DD HH:mm:ss} | {level} | {name} | {message}"
 )
+
+logger.add(
+    error_log_file,
+    rotation="10 MB",
+    retention="14 days",
+    level="ERROR",
+    backtrace=True,
+    diagnose=False,
+    enqueue=True,
+    format="{time:YYYY-MM-DD HH:mm:ss} | {level} | {name} | {message}"
+)
+
 
 
 
@@ -281,6 +295,7 @@ def analyze(project_before:project.Project, project_after:project.Project, repo_
 
 def single_repo_analyze(repo_path: str,joern_workspace_path: str):
     repo_name = os.path.basename(repo_path)
+    logger.info(f"[{repo_name}] Worker started")
     try:
         subprocess.check_output(
                 ["git", "-C", repo_path, "checkout", "FETCH_HEAD"],
@@ -307,8 +322,13 @@ def single_repo_analyze(repo_path: str,joern_workspace_path: str):
     except subprocess.CalledProcessError:
         commit_list = []
 
+    if commit_list and len(commit_list) > 100:
+        logger.error(f"[{repo_name}] Skipping repository with {len(commit_list)} useful commits")
+        return {"repo_name": repo_name, "status": "skipped", "error": "too_many_commits"}
+    
     if not commit_list:
-        logger.error(f"Failed to get commit list for repository {repo_name}")
+        logger.error(f"[{repo_name}] Failed to get commit list")
+        return {"repo_name": repo_name, "status": "failed", "error": "empty_commit_list"}
 
     
     try:
@@ -356,40 +376,69 @@ def single_repo_analyze(repo_path: str,joern_workspace_path: str):
             project_before = project_after
             commit_before = commit_after
     except Exception as e:
-        logger.error(f"Error processing repository {repo_name}: {e}")
+        logger.exception(f"[{repo_name}] Error processing repository: {e}")
+        return {"repo_name": repo_name, "status": "failed", "error": str(e)}
+    
+    logger.info(f"[{repo_name}] Worker finished")
+    return {"repo_name": repo_name, "status": "success"}
     
 
 def parallel_repo_analyze(repo_dir: str, joern_workspace_path: str):
     import multiprocessing
-    pool = multiprocessing.Pool(processes=5)  # 根据需要调整进程数
-    results = []
+    pool_size = 5
+    pool = multiprocessing.Pool(processes=pool_size)  # 根据需要调整进程数
+    summary = {"success": 0, "failed": 0, "crashed": 0}
+
+    def _on_repo_done(repo_result):
+        if isinstance(repo_result, dict) and repo_result.get("status") == "success":
+            summary["success"] += 1
+            logger.info(f"Repository finished: {repo_result.get('repo_name', 'unknown')} (success)")
+            return
+        summary["failed"] += 1
+        logger.error(f"Repository finished (failed): {repo_result}")
+
+    def _on_repo_error(exc):
+        summary["crashed"] += 1
+        logger.error(f"Worker crashed with unhandled exception: {exc!r}")
+
     # csv_path = "./malware_update_dataset.csv"
     # repo_names = read_repo_names_from_csv(csv_path)
     repo_names = os.listdir(repo_dir)
+    total_repos = 0
+    logger.info(f"Start parallel_repo_analyze: repo_dir={repo_dir}, workers={pool_size}")
     for repo_name in repo_names:
         repo_path = os.path.join(repo_dir, repo_name)
         if not os.path.isdir(repo_path):
             continue
+        total_repos += 1
         repo_name = os.path.basename(repo_path)
         # if not os.path.exists(os.path.join(joern_workspace_path, repo_name)):
         #     logger.info(f"Skipping repository: {repo_name}")
         #     continue
-        # if repo_name in ["PythonMalware_1","python-malware1","python-malware2","python-malware3","Malware1","Keylogger1",".vscode","TWO_PART"]:
-        #     logger.info(f"Skipping known problematic repository: {repo_name}")
-        #     continue
+        if repo_name in ["algo","Aoyama","badsecrets"]:
+            logger.info(f"Skipping solved repository: {repo_name}")
+            continue
         # if useful_count > 50:
         #     logger.info(f"Skipping repository {repo_path} with {useful_count} useful commits")
         #     continue
-        logger.info(f"Processing repository: {repo_name}")
+        # if repo_name!="Aoyama":
+        #     logger.error(f"Skipping repository {repo_name} for testing")
+        #     continue
+        logger.info(f"Queue repository {total_repos}: {repo_name}")
         
-        result = pool.apply_async(single_repo_analyze, args=(repo_path, joern_workspace_path))
-        results.append(result)
+        pool.apply_async(
+            single_repo_analyze,
+            args=(repo_path, joern_workspace_path),
+            callback=_on_repo_done,
+            error_callback=_on_repo_error
+        )
     
     pool.close()
     pool.join()
-    # 获取结果（如果需要）
-    for result in results:
-        result.get()
+    logger.info(
+        f"parallel_repo_analyze finished: total={total_repos}, "
+        f"success={summary['success']}, failed={summary['failed']}, crashed={summary['crashed']}"
+    )
 
 
 
@@ -469,7 +518,7 @@ def change_commit_name(repo_path: str,joern_workspace_path: str):
 
 
 if __name__ == "__main__":
-    # dataset_dir = "/home/lxy/lxy_codes/mal_update_detect/mal_update_dataset/multiple_commits_human_made"
+    dataset_dir = "/home/lxy/lxy_codes/mal_update_detect/mal_update_dataset/benign_dataset/encryption_tools"
     joern_workspace_path = "/home/lxy/lxy_codes/mal_update_detect/joern_output/benign_dataset/encryption_tools"
     # repo_names = os.listdir(dataset_dir)
     # for repo_name in repo_names:
@@ -477,8 +526,8 @@ if __name__ == "__main__":
     #     if not os.path.isdir(repo_path):
     #         continue
     #     logger.info(f"Processing repository: {repo_name}")
-    # parallel_repo_analyze(dataset_dir, joern_workspace_path)
+    parallel_repo_analyze(dataset_dir, joern_workspace_path)
     # change_commit_name(dataset_dir, joern_workspace_path)
     # single_repo_process(dataset_dir, joern_workspace_path)
-    repo_path = "/home/lxy/lxy_codes/mal_update_detect/mal_update_dataset/benign_dataset/encryption_tools/algo"
-    single_repo_analyze(repo_path, joern_workspace_path)
+    # repo_path = "/home/lxy/lxy_codes/mal_update_detect/mal_update_dataset/benign_dataset/encryption_tools/badsecrets"
+    # single_repo_analyze(repo_path, joern_workspace_path)

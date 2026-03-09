@@ -86,77 +86,89 @@ Output JSON:
 
 STEP2_PROMPT = """
 Task:
-Given Step1 result and snippet, classify capability level.
-
-Code:
-{code_snippet}
-
-Step1:
-{step1_analysis}
+Given the Step1 result and the same code snippet, assess the capability level of the detected behavior and output a single JSON object.
+Inputs:
+- Code Snippet: {code_snippet}
+- Step1 Analysis: {step1_analysis}
 
 Capability Labels:
-- Full Attack Chain: all critical steps for the selected type are visible.
+- Full Attack Chain: all critical steps for the selected type are visible and at least one malicious behavior is executable.
 - Core Attack Chain: malicious intent exists, but at least one critical step is missing.
-- Undetermined Call Chain: insufficient/ambiguous evidence.
-- Benign Artifact: legitimate context.
+- Undetermined Call Chain: evidence for a coherent malicious chain is insufficient or ambiguous.
+- Benign Artifact: Behavior is consistent with legitimate/non-malicious context.
 
-Type-Specific Full Criteria (compact):
-- Type A InfoStealer: sensitive collection + exfil channel + clear data-flow linkage.
+
+High-Priority Rules(MANDATORY):
+1) 1) Missing any critical attack step OR having no reachable code path to the malicious behavior even when this script/binary is executed => CANNOT be "Full Attack Chain".
+   - Manual execution of the script/binary by a user/operator counts as a valid execution path.
+   - The absence of auto-start/persistence/cron/etc. alone MUST NOT be used to downgrade from "Full Attack Chain" to "Core Attack Chain" when the malicious logic is fully implemented and reachable.
+2) External/undefined payloads or functions MUST be treated as missing; they do not count as implemented.
+3) Judge ONLY from visible code in this snippet; do NOT infer unseen project context or hidden C2.
+4) Do NOT downgrade Full to Core just because constants/endpoints/creds look fake or placeholder if the malicious flow is otherwise complete.
+5) “Missing_Components” MUST list only attack-critical gaps (e.g., no C2 channel, no payload execution, no exfil path, no ransom demand); 
+6）Do NOT mention code quality issues (logging, error handling, retries, style, etc.).
+
+Type-Specific Full Criteria (summary):
+Use the primary type inferred in Step1, and apply these as a checklist for Full vs Core:
+
+- Type A InfoStealer: sensitive data collection + exfiltration channel + clear data-flow linkage between the two.
+
 - Type B Backdoor/RAT:
-  - Client/Reverse Full: outbound C2 connectivity + remote task execution capability.
-  - Server/Bind Full: inbound listener/session control + command/task handling capability.
+  - Client/Reverse: outbound C2 connectivity + remote task/command execution capability.
+  - Server/Bind: inbound listener/session control + command/task handling/response capability.
+  - For Type B "Full Attack Chain", it is sufficient that EITHER a Client/Reverse pattern OR a Server/Bind pattern is fully implemented; both are NOT required in the same snippet.
   - Task execution can be arbitrary shell OR restricted operator actions (e.g., file browse/download/upload, process control, screenshot/recording, data exfiltration).
   - Task execution is present (e.g., cd/ls/upload/download), do NOT require arbitrary shell execution for Type B Full.
   - Endpoint value alone is not a blocker: localhost/127.0.0.1/private/test addresses still satisfy C2 endpoint evidence if connect/listen + command flow are implemented.
+
 - Type C Ransomware: target traversal/selection + active encryption + ransom demand note.
-- Type D Wiper: destructive deletion/overwrite at harmful scope.
-- Type E Clipper: clipboard pattern match + replacement action.
-- Type F File Infector: find target files + inject/modify them.
-- Type G Logic Bomb: trigger condition + malicious payload linked.
-- Type H Keylogger: active key capture + storage/exfil implementation.
+
+- Type D Wiper: Destructive delete/overwrite/corrupt/format operations against existing meaningful assets at harmful scope.
+Nuisance disruption or junk-file flood without clear destructive targeting => prefer Type K.
+
+- Type E Clipper: clipboard/wallet pattern match + replacement/modification action.
+
+- Type F File Infector: find/choose target files + inject/modify them.
+No explicit autonomous cross-target spread (otherwise see Type L).
+
+- Type G Logic Bomb:  Trigger condition + linked malicious payload that executes when condition holds.
+
+- Type H Keylogger: active key capture + storage and/or exfiltration implementation.
+
 - Type I Builder: complete malware build pipeline.
-- Type J Dropper/Downloader: ONLY when a distinct secondary payload is obtained/extracted, staged to a new location, and execution is handed off to that payload.
-- Type K System Interference: disruptive system-interference actions are implemented and executable (e.g., anti-analysis or persistence abuse or user/system disruption).
+
+- Type J Dropper/Downloader: DISTINCT secondary payload is obtained or extracted, staged to a new location, AND execution is handed off to that payload.
+  Self-copy/hiding/persistence/recon/anti-analysis alone are NOT Type J.
+
+- Type K System Interference: Disruptive/system-abusive behavior (e.g., resource exhaustion, process/service disruption, anti-analysis, persistence abuse, nuisance loops) that degrades normal usability.
+  For Type K to be Full:
+  - At least one disruptive action is visible, AND
+  - At least one visible execution path can trigger it (top-level statements also count as a path).
+  
 - Type L Worm:
   - L-File/Device Worm Full: target discovery across files/drives/removable/shared locations + self-copy/infection action + execution handoff on replicated target.
   - L-Network Worm Full: host discovery/scanning + propagation mechanism (exploit/credential abuse/remote copy) + remote execution handoff on other hosts.
-- Type M High-Impact: other high-impact harmful action is clearly implemented and executable, not better covered by A-L.
+  Local infection primitive without explicit spread loop => classify as Type F, not Type L.
+  If Type L applies, set "Malware_Type" as:
+  - "Type L (L-File/Device Worm)" OR
+  - "Type L (L-Network Worm)".
+  
+- Type M High-Impact: other high-impact harmful action is clearly implemented or executable, not better covered by A-L.
 
-Type D vs Type K Capability Boundary (MANDATORY):
-- Type D Full/Core must be tied to destructive actions on existing meaningful assets (mass delete/overwrite/corrupt/format) with harmful scope.
-- Type K Full/Core applies when implemented behavior is disruptive/system-abusive but not explicit targeted wiping (e.g., junk-file flood, fork/resource exhaustion, persistent nuisance loops, process/service disruption).
-- File-creation flood or overwrite of attacker-created/random junk files should be Type K by default.
+Additional Constraints:
+- Benign installer/updater from a trusted source with expected behavior => usually "Benign Artifact" or "Undetermined Call Chain".
+- Do NOT classify as Type D when only nuisance spam/resource interference appears without explicit destructive targeting of existing meaningful assets.
+- Do NOT classify as Type L when cross-target propagation is not explicit in this snippet.
 
-Type F vs Type L Capability Boundary (MANDATORY):
-- Type F Full/Core: file infection/patching is implemented, but autonomous cross-target propagation is not explicit.
-- Type L Full/Core: autonomous propagation intent is explicit (iterating targets and replicating/infecting beyond a single local target), including file/device spread or network-host spread.
-- If snippet shows only local infection primitive without clear spread loop/target discovery, classify as Type F, not Type L.
-
-Hard Constraints:
-- Missing critical step => cannot be Full.
-- External undefined payload/function => treat as missing.
-- Benign installer/updater from trusted source with expected behavior => Benign/Undetermined.
-- Do not infer unseen project context; judge only from code visible in the snippet.
-- Do not claim established network/C2 connection unless explicit bootstrap appears in this snippet (e.g., run/login/connect/handshake).
-- Do not downgrade any type solely due to placeholder/invalid constants (e.g., email creds, API keys, URLs, IPs, domains, paths) when core malicious logic flow is present.
-- Do not classify as Type J if the snippet only shows self-copy/hiding/persistence/recon/anti-analysis without distinct secondary payload retrieval/extraction + handoff.
-- If dominant behavior is disruption/anti-analysis/persistence/recon (e.g., taskkill, schtasks/startup, system recon), prefer Type K over Type J.
-- Do not classify as Type D when evidence only shows nuisance spam/resource interference without explicit destructive targeting of existing meaningful assets.
-- Do not classify as Type L when cross-target propagation is not explicit in visible code.
-- If Type L is selected, "Malware_Type" must include subtype: "Type L (L-File/Device Worm)" or "Type L (L-Network Worm)".
-- Only downgrade Full to Core when attack-critical logic is missing (e.g., no connect/listen/send/exfil/encrypt/execute path), not when literal constants seem nonfunctional.
-- "Missing_Components" must include only attack-critical gaps (e.g., no C2 channel, no payload execution, no exfiltration path, no ransom demand).
-Do NOT list software quality issues such as error handling, retries, logging, code style, or exception coverage.
-
-
-Output JSON:
+Output JSON (STRICT, single object, no extra text):
 {{
   "Classification": "Full Attack Chain" | "Core Attack Chain" | "Undetermined Call Chain" | "Benign Artifact",
-  "Malware_Type": "Type X xxxx | None",
-  "Missing_Components": "None | concise missing critical steps",
+  "Malware_Type": "Type X xxxx" | "Type L (L-File/Device Worm)" | "Type L (L-Network Worm)" | "None",
+  "Missing_Components": "None" | "Concise description of missing critical steps",
   "Threat_Level": "High" | "Medium" | "Low",
-  "Reasoning": "Concise evidence-based justification"
+  "Reasoning": "Concise evidence-based justification referencing visible code and the applied rules."
 }}
+
 """
 
 class LLM_Evaluate:
@@ -293,42 +305,14 @@ class LLM_Evaluate:
         return completion.choices[0].message.content
 
 if __name__ == "__main__":
-    code_snippet = r'''
-import keyboard
-import mouse
-import shutil
-import os
-BizimDosyaAdiExeUzantili = "lock.exe"
-def find(name, path):
-    for root, dirs, files in os.walk(path):
-        if name in files:
-            return os.path.join(root, name)
-def BaslangicaTasi():
-    hedefKonum = os.path.expanduser('~/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/Startup')
-    oradaMi = hedefKonum + "/" + BizimDosyaAdiExeUzantili
-    aramaSonucu = find(BizimDosyaAdiExeUzantili, "C:")
-    if(aramaSonucu != None):
-        if not os.path.isfile(oradaMi):
-            shutil.move(os.path.join(aramaSonucu), hedefKonum)
-    else:
-        aramaSonucu = find(BizimDosyaAdiExeUzantili, "D:")
-        if not os.path.isfile(oradaMi):
-            shutil.move(os.path.join(aramaSonucu), hedefKonum)
-def KlavyeyiKilitle():
-    engellenecekTuslar = {'alt','escape','delete','backspace', 'alt gr', 'ctrl', 'left alt', 'left ctrl', 'left shift', 'left windows', 'right alt', 'right ctrl', 'right shift', 'right windows', 'shift', 'windows'}
-    for herBirTus in engellenecekTuslar:
-        keyboard.block_key(herBirTus)
-def kapat():
-    fareyiKilitle = False
-keyboard.add_word_listener('hesoyam', kapat, triggers=['space', 'enter'], match_suffix=True, timeout=3)
-
-
-
-'''
-
+    code_path = "/home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/PY-RAT/0_9ffc2_00000/taint_slices_methods/NEW@<module>@PY_RAT.py_slice.py"
+    with open(code_path, "r") as f:
+        code_snippet = f.read()
     llm_evaluate = LLM_Evaluate(
         api_key="57bd6c19-3b9f-4cbe-8596-63c472ca47d2",
         base_url="https://ark.cn-beijing.volces.com/api/v3"
     )
     sensitive_api_result = llm_evaluate.malware_analyze_two_steps(code_snippet)
+    with open(os.path.join(code_path.replace(".py", "_result.json")), "w") as f:
+        json.dump(sensitive_api_result, f, indent=4)
     print(sensitive_api_result)

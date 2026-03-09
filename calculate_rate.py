@@ -131,13 +131,13 @@ if __name__ == "__main__":
     joern_dir = "/home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits"
     csv_path = "./malware_update_dataset.csv"
     # repo_names = read_repo_names_from_csv(csv_path)
-    result_csv_path = "./result_two_steps_new_version.csv"
-    repo_names = ["Python_KeyLogger_Prototype","Python_Malware","crypto-clipper","dojo6oct16"]
+    result_csv_path = "./result_two_steps_new_version_.csv"
+    repo_names = ["PizzaVirus","Python_KeyLogger_Prototype"]
     
     # print(cpu_count())
     # 初始化 CSV 文件头
-    # with open(result_csv_path, 'w', newline='') as f:
-    #     writer = csv.writer(f)
-    #     writer.writerow(["repo_name","commit_num", "commit", "code_slice", "classification","result_two_steps"])
+    with open(result_csv_path, 'w', newline='') as f:
+        writer = csv.writer(f)
+        writer.writerow(["repo_name","commit_num", "commit", "code_slice", "classification","result_two_steps"])
     
     process_repo_names(repo_names, joern_dir, result_csv_path)

@@ -1,0 +1,30 @@
+repo_name,commit_num,commit,code_slice,classification,result_two_steps
+PizzaVirus,0,2077d,NEW@<module>@pizza.py_slice.py,Benign,Benign
+PizzaVirus,2,9d497,NEW@<module>@pizza.py_slice.py,Benign,Benign
+PizzaVirus,3,ddc50,NEW@<module>@pizza.py_slice.py,Full Attack Chain,Full Attack Chain
+PizzaVirus,4,68009,NEW@<module>@pizza.py_slice.py,Full Attack Chain,Full Attack Chain
+PizzaVirus,5,41984,NEW@<module>@pizza.py_slice.py,Full Attack Chain,Full Attack Chain
+PizzaVirus,6,9df46,NEW@<module>@pizza.py_slice.py,Full Attack Chain,Full Attack Chain
+PizzaVirus,7,3c4a2,<module>@pizza.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
+PizzaVirus,8,36206,NEW@<module>@pizza.py_slice.py,Full Attack Chain,Full Attack Chain
+PizzaVirus,9,5a01a,<module>@pizza.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
+Python_KeyLogger_Prototype,0,d9b6c,NEW@<module>@KYLR.py_slice.py,Full Attack Chain,Full Attack Chain
+Python_KeyLogger_Prototype,1,3e192,NEW@<module>@KYLR.py_slice.py,Core Attack Chain,Core Attack Chain
+Python_KeyLogger_Prototype,2,381d9,<module>@KYLR.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
+Python_KeyLogger_Prototype,3,41ebc,<module>@KYLR.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
+Python_KeyLogger_Prototype,4,25ded,NEW@<module>@test.py_slice.py,Core Attack Chain,Core Attack Chain
+Python_KeyLogger_Prototype,4,25ded,<module>@KYLR.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
+Python_KeyLogger_Prototype,5,b01c9,NEW@<module>@test.py_slice.py,Core Attack Chain,Core Attack Chain
+Python_KeyLogger_Prototype,5,b01c9,<module>@KYLR.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
+Python_KeyLogger_Prototype,6,5289f,NEW@<module>@test.py_slice.py,Full Attack Chain,Full Attack Chain
+Python_KeyLogger_Prototype,6,5289f,NEW@<module>@KYLR.py_slice.py,Full Attack Chain,Full Attack Chain
+Python_KeyLogger_Prototype,7,31447,<module>@KYLR.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
+Python_KeyLogger_Prototype,7,31447,<module>@test.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
+Python_KeyLogger_Prototype,8,f1be2,<module>@KYLR.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
+Python_KeyLogger_Prototype,8,f1be2,<module>@test.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
+Python_KeyLogger_Prototype,9,26dfd,<module>@test.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
+Python_KeyLogger_Prototype,9,26dfd,NEW@<module>@KYLR.py_slice.py,Full Attack Chain,Full Attack Chain
+Python_KeyLogger_Prototype,10,610e1,<module>@KYLR.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
+Python_KeyLogger_Prototype,10,610e1,<module>@test.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
+Python_KeyLogger_Prototype,11,bd512,<module>@KYLR.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
+Python_KeyLogger_Prototype,11,bd512,<module>@test.py_slice.py,SAME AS BEFORE,SAME AS BEFORE

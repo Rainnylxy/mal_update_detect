@@ -52,17 +52,17 @@ def main() -> None:
     )
     parser.add_argument(
         "--csv",
-        default="./result_two_steps.csv",
+        default="./full_label_outputs/all_label_prediction_pairs.csv",
         help="Input CSV (default: ./result_two_steps.csv)",
     )
     parser.add_argument(
         "--label_column",
-        default="result_two_steps",
+        default="prediction",
         help="Which column to use as label source.",
     )
     parser.add_argument(
         "--out_dir",
-        default="./full_transition_outputs",
+        default="./full_transition_outputs/from_pairs_prediction",
         help="Output directory.",
     )
     args = parser.parse_args()

@@ -1,0 +1,20 @@
+# Slice Chains Reaching Full Attack Chain
+- source_csv: ./full_label_outputs/all_label_prediction_pairs.csv
+- label_column: ground_truth
+- unresolved_same_as_before: 59
+
+## Case 5
+
+- repo: BskyBot
+- slice: <module>@bot.py_slice.py
+- first_state: Full Attack Chain @ 6 (57dd6)
+- first_full: 6 (57dd6) | starts_as_full=1
+- full_occurrence_count: 7 | full_commit_nums: 6;7;8;9;10;11;12
+- timeline:
+  - 6 (57dd6) -> Full Attack Chain
+  - 7 (7e97f) -> Full Attack Chain
+  - 8 (e0939) -> Full Attack Chain
+  - 9 (d789a) -> Full Attack Chain
+  - 10 (baced) -> Full Attack Chain
+  - 11 (fbe51) -> Full Attack Chain
+  - 12 (b40cc) -> Full Attack Chain

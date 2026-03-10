@@ -120,7 +120,10 @@ Use the primary type inferred in Step1, and apply these as a checklist for Full 
   - Task execution can be arbitrary shell OR restricted operator actions (e.g., file browse/download/upload, process control, screenshot/recording, data exfiltration).
   - Task execution is present (e.g., cd/ls/upload/download), do NOT require arbitrary shell execution for Type B Full.
   - Endpoint value alone is not a blocker: localhost/127.0.0.1/private/test addresses still satisfy C2 endpoint evidence if connect/listen + command flow are implemented.
-
+  If Type B applies, set "Malware_Type" as:
+  - "Type B (Client/Reverse)" OR
+  - "Type B (Server/Bind)".
+  
 - Type C Ransomware: target traversal/selection + active encryption + ransom demand note.
 
 - Type D Wiper: Destructive delete/overwrite/corrupt/format operations against existing meaningful assets at harmful scope.
@@ -305,7 +308,14 @@ class LLM_Evaluate:
         return completion.choices[0].message.content
 
 if __name__ == "__main__":
-    code_path = "/home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/PY-RAT/0_9ffc2_00000/taint_slices_methods/NEW@<module>@PY_RAT.py_slice.py"
+    code_dir = "/home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/"
+    arg = "wanna-smile,13,0ccc5,NEW@<module>@bin_wanna-smile.py_slice.py"
+    repo_path = os.path.join(code_dir,arg.split(",")[0])
+    slice_path=""
+    for slice_dir in os.listdir(repo_path):
+        if arg.split(',')[1] == slice_dir.split('_')[0] and arg.split(',')[2] == slice_dir.split('_')[1]:
+            slice_path = os.path.join(repo_path,slice_dir)
+    code_path = os.path.join(slice_path,"taint_slices_methods",arg.split(',')[3])
     with open(code_path, "r") as f:
         code_snippet = f.read()
     llm_evaluate = LLM_Evaluate(

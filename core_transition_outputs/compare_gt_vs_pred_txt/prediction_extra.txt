@@ -1,0 +1,241 @@
+# Slice Chains Reaching Core Attack Chain (No Full)
+- source_csv: ./mal_update_detect/full_label_outputs/all_label_prediction_pairs.csv
+- label_column: prediction
+- unresolved_same_as_before: 59
+
+## Case 2
+
+- repo: 1stMalware
+- slice: <module>@main.py_slice.py
+- first_state: Core Attack Chain @ 6 (21b58)
+- first_core: 6 (21b58) | starts_as_core=1
+- core_occurrence_count: 5 | core_commit_nums: 6;7;8;9;10
+- timeline:
+  - 6 (21b58) -> Core Attack Chain
+  - 7 (3a8ed) -> Core Attack Chain
+  - 8 (03ca7) -> Core Attack Chain
+  - 9 (47f7a) -> Core Attack Chain
+  - 10 (3a1e0) -> Core Attack Chain
+
+## Case 7
+
+- repo: BskyBot
+- slice: <module>@bot.py_slice.py
+- first_state: Core Attack Chain @ 6 (57dd6)
+- first_core: 6 (57dd6) | starts_as_core=1
+- core_occurrence_count: 7 | core_commit_nums: 6;7;8;9;10;11;12
+- timeline:
+  - 6 (57dd6) -> Core Attack Chain
+  - 7 (7e97f) -> Core Attack Chain
+  - 8 (e0939) -> Core Attack Chain
+  - 9 (d789a) -> Core Attack Chain
+  - 10 (baced) -> Core Attack Chain
+  - 11 (fbe51) -> Core Attack Chain
+  - 12 (b40cc) -> Core Attack Chain
+
+## Case 8
+
+- repo: BskyBot
+- slice: <module>@bot_bot.py_slice.py
+- first_state: Core Attack Chain @ 4 (bae5f)
+- first_core: 4 (bae5f) | starts_as_core=1
+- core_occurrence_count: 2 | core_commit_nums: 4;5
+- timeline:
+  - 4 (bae5f) -> Core Attack Chain
+  - 5 (b7819) -> Core Attack Chain
+
+## Case 9
+
+- repo: Doomed
+- slice: <module>@DOOM.py_slice.py
+- first_state: Core Attack Chain @ 4 (01c74)
+- first_core: 4 (01c74) | starts_as_core=1
+- core_occurrence_count: 5 | core_commit_nums: 4;5;6;7;8
+- timeline:
+  - 4 (01c74) -> Core Attack Chain
+  - 5 (2b87d) -> Core Attack Chain
+  - 6 (a580d) -> Core Attack Chain
+  - 7 (920bf) -> Core Attack Chain
+  - 8 (06b31) -> Core Attack Chain
+
+## Case 10
+
+- repo: Doomed
+- slice: <module>@doomed.py_slice.py
+- first_state: Undetermined @ 0 (d5b77)
+- first_core: 2 (d1557) | starts_as_core=0
+- core_occurrence_count: 2 | core_commit_nums: 2;3
+- timeline:
+  - 0 (d5b77) -> Undetermined
+  - 1 (1e3ca) -> Undetermined
+  - 2 (d1557) -> Core Attack Chain
+  - 3 (8e8c4) -> Core Attack Chain
+
+## Case 12
+
+- repo: HackerDoomsday
+- slice: <module>@start_gdi.py_slice.py
+- first_state: Core Attack Chain @ 3 (90d6a)
+- first_core: 3 (90d6a) | starts_as_core=1
+- core_occurrence_count: 21 | core_commit_nums: 3;4;5;6;7;8;9;10;11;12;13;14;15;16;17;18;19;20;21;22;23
+- timeline:
+  - 3 (90d6a) -> Core Attack Chain
+  - 4 (4dce8) -> Core Attack Chain
+  - 5 (96855) -> Core Attack Chain
+  - 6 (74617) -> Core Attack Chain
+  - 7 (55bbf) -> Core Attack Chain
+  - 8 (63891) -> Core Attack Chain
+  - 9 (587b0) -> Core Attack Chain
+  - 10 (b73db) -> Core Attack Chain
+  - 11 (cfc7a) -> Core Attack Chain
+  - 12 (22e8b) -> Core Attack Chain
+  - 13 (584b5) -> Core Attack Chain
+  - 14 (79e7c) -> Core Attack Chain
+  - 15 (2b860) -> Core Attack Chain
+  - 16 (de183) -> Core Attack Chain
+  - 17 (2bf39) -> Core Attack Chain
+  - 18 (b4360) -> Core Attack Chain
+  - 19 (09785) -> Core Attack Chain
+  - 20 (9b8ec) -> Core Attack Chain
+  - 21 (88b3c) -> Core Attack Chain
+  - 22 (3b318) -> Core Attack Chain
+  - 23 (cc00d) -> Core Attack Chain
+
+## Case 14
+
+- repo: Hallucinate
+- slice: <module>@main.py_slice.py
+- first_state: Core Attack Chain @ 4 (961c9)
+- first_core: 4 (961c9) | starts_as_core=1
+- core_occurrence_count: 1 | core_commit_nums: 4
+- timeline:
+  - 4 (961c9) -> Core Attack Chain
+
+## Case 15
+
+- repo: Infinite-Folder-Virus
+- slice: <module>@test.py_slice.py
+- first_state: Benign @ 2 (65556)
+- first_core: 8 (4f6a1) | starts_as_core=0
+- core_occurrence_count: 2 | core_commit_nums: 8;9
+- timeline:
+  - 2 (65556) -> Benign
+  - 8 (4f6a1) -> Core Attack Chain
+  - 9 (f5eb8) -> Core Attack Chain
+
+## Case 58
+
+- repo: MakeMalware_EthicalHacking
+- slice: <module>@demo1_executeCommands.py_slice.py
+- first_state: Core Attack Chain @ 0 (3db3c)
+- first_core: 0 (3db3c) | starts_as_core=1
+- core_occurrence_count: 18 | core_commit_nums: 0;1;2;3;4;5;6;7;8;9;10;11;12;13;14;15;16;17
+- timeline:
+  - 0 (3db3c) -> Core Attack Chain
+  - 1 (a587c) -> Core Attack Chain
+  - 2 (ce388) -> Core Attack Chain
+  - 3 (2cfa9) -> Core Attack Chain
+  - 4 (06deb) -> Core Attack Chain
+  - 5 (f2561) -> Core Attack Chain
+  - 6 (40c64) -> Core Attack Chain
+  - 7 (b044a) -> Core Attack Chain
+  - 8 (e2fd5) -> Core Attack Chain
+  - 9 (31751) -> Core Attack Chain
+  - 10 (6b7e3) -> Core Attack Chain
+  - 11 (fa6ae) -> Core Attack Chain
+  - 12 (f0f7d) -> Core Attack Chain
+  - 13 (e3fe9) -> Core Attack Chain
+  - 14 (4bc0e) -> Core Attack Chain
+  - 15 (7ad1b) -> Core Attack Chain
+  - 16 (c418d) -> Core Attack Chain
+  - 17 (74015) -> Core Attack Chain
+
+## Case 60
+
+- repo: Malicious-Debian-Package-Maker
+- slice: <module>@main.py_slice.py
+- first_state: Benign @ 1 (3d8bc)
+- first_core: 7 (08b1a) | starts_as_core=0
+- core_occurrence_count: 6 | core_commit_nums: 7;8;9;10;11;12
+- timeline:
+  - 1 (3d8bc) -> Benign
+  - 2 (dafbc) -> Benign
+  - 3 (8111f) -> Undetermined
+  - 4 (8c58b) -> Benign
+  - 5 (5b718) -> Undetermined
+  - 6 (f45f7) -> Undetermined
+  - 7 (08b1a) -> Core Attack Chain
+  - 8 (5b3ce) -> Core Attack Chain
+  - 9 (5acf1) -> Core Attack Chain
+  - 10 (44e01) -> Core Attack Chain
+  - 11 (fb3cd) -> Core Attack Chain
+  - 12 (563e4) -> Core Attack Chain
+
+## Case 65
+
+- repo: MirageLink-rat-gui
+- slice: <body>@frames_plugins_remote_desktop.py_slice.py
+- first_state: Core Attack Chain @ 13 (0c0f3)
+- first_core: 13 (0c0f3) | starts_as_core=1
+- core_occurrence_count: 3 | core_commit_nums: 13;14;15
+- timeline:
+  - 13 (0c0f3) -> Core Attack Chain
+  - 14 (38efe) -> Core Attack Chain
+  - 15 (7d0ce) -> Core Attack Chain
+
+## Case 100
+
+- repo: Spyware
+- slice: <module>@main.py_slice.py
+- first_state: Core Attack Chain @ 0 (2ee4e)
+- first_core: 0 (2ee4e) | starts_as_core=1
+- core_occurrence_count: 5 | core_commit_nums: 0;1;2;3;4
+- timeline:
+  - 0 (2ee4e) -> Core Attack Chain
+  - 1 (84840) -> Core Attack Chain
+  - 2 (7952d) -> Core Attack Chain
+  - 3 (53c4a) -> Core Attack Chain
+  - 4 (289d2) -> Core Attack Chain
+
+## Case 121
+
+- repo: python-malware
+- slice: <module>@main.py_slice.py
+- first_state: Undetermined @ 4 (1b7a0)
+- first_core: 6 (31a0c) | starts_as_core=0
+- core_occurrence_count: 5 | core_commit_nums: 6;7;8;9;10
+- timeline:
+  - 4 (1b7a0) -> Undetermined
+  - 5 (28b65) -> Undetermined
+  - 6 (31a0c) -> Core Attack Chain
+  - 7 (09b46) -> Core Attack Chain
+  - 8 (22dee) -> Core Attack Chain
+  - 9 (2c321) -> Core Attack Chain
+  - 10 (a21dd) -> Core Attack Chain
+
+## Case 130
+
+- repo: ransomware5
+- slice: <module>@cryptware.py_slice.py
+- first_state: Undetermined @ 0 (1f376)
+- first_core: 1 (2e3d3) | starts_as_core=0
+- core_occurrence_count: 3 | core_commit_nums: 1;2;3
+- timeline:
+  - 0 (1f376) -> Undetermined
+  - 1 (2e3d3) -> Core Attack Chain
+  - 2 (262f1) -> Core Attack Chain
+  - 3 (2e4e1) -> Core Attack Chain
+
+## Case 143
+
+- repo: wanna-smile
+- slice: <module>@bin_wanna-smile_SILENT_RUNNER.py_slice.py
+- first_state: Undetermined @ 8 (1d361)
+- first_core: 12 (a3479) | starts_as_core=0
+- core_occurrence_count: 3 | core_commit_nums: 12;13;14
+- timeline:
+  - 8 (1d361) -> Undetermined
+  - 10 (3355f) -> Undetermined
+  - 12 (a3479) -> Core Attack Chain
+  - 13 (0ccc5) -> Core Attack Chain
+  - 14 (e9458) -> Core Attack Chain

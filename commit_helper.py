@@ -2,13 +2,17 @@ import subprocess
 import re
 import os
 
-def get_useful_commits(repo_path):
+def get_useful_commits(repo_path, first_parent_only: bool = False, rev: str = None):
     """
     返回按时间升序（最早在前）的 commit 哈希列表，
     仅包含那些修改了 .py 文件的提交。
     """
     try:
         cmd = ['git', '-C', repo_path, 'log', '--pretty=format:%H', '--reverse']
+        if first_parent_only:
+            cmd.append('--first-parent')
+        if rev:
+            cmd.append(rev)
         result = subprocess.run(cmd, capture_output=True, text=True, encoding='utf-8', errors='ignore', check=True)
     except subprocess.CalledProcessError:
         return []
@@ -74,10 +78,11 @@ def map_old_to_new(hunks, old_line):
     return old_line
 
 class CommitHelper:
-    def __init__(self,repo_path,commit_hash):
+    def __init__(self, repo_path, commit_hash, base_hash: str = None):
         self.repo_path = repo_path
         self.commit_hash = commit_hash
         self.parent_hash = self.get_parent_hash()
+        self.base_hash = base_hash or self.parent_hash
         self.diff_text = self.get_commit_diff()
         self.hunks = {}
         self.parse_hunks()  
@@ -107,10 +112,10 @@ class CommitHelper:
         :param commit_hash: commit的哈希值
         :return: diff内容字符串
         """
-        if self.parent_hash is None:
+        if self.base_hash is None:
             return ""
         cmd_diff = [
-            'git', '-C', self.repo_path, 'diff', f'{self.parent_hash}',f'{self.commit_hash}', '--unified=0', '--no-renames'
+            'git', '-C', self.repo_path, 'diff', f'{self.base_hash}', f'{self.commit_hash}', '--unified=0', '--no-renames'
         ]
         diff_output = subprocess.check_output(cmd_diff, text=True, encoding='utf-8', errors='ignore')
         return diff_output

@@ -14,6 +14,8 @@ import networkx as nx
 import json
 import pandas as pd
 
+FIRST_PARENT_ONLY = True
+
 def read_repo_names_from_csv(csv_path):
     repo_names = []
     with open(csv_path, 'r') as f:
@@ -22,6 +24,46 @@ def read_repo_names_from_csv(csv_path):
             if row:  # Ensure the row is not empty
                 repo_names.append(row[0])
     return repo_names
+
+
+def list_local_branches(repo_path: str):
+    cmd = [
+        "git", "-C", repo_path, "for-each-ref",
+        "--format=%(refname:short) %(objectname)", "refs/heads"
+    ]
+    result = subprocess.run(cmd, capture_output=True, text=True, encoding="utf-8", errors="ignore")
+    branches = []
+    for line in result.stdout.splitlines():
+        line = line.strip()
+        if not line:
+            continue
+        parts = line.split()
+        if len(parts) >= 2:
+            branches.append((parts[0], parts[1]))
+        elif len(parts) == 1:
+            branches.append((parts[0], ""))
+    return branches
+
+
+def pick_preferred_branch(names):
+    for preferred in ("main", "master"):
+        if preferred in names:
+            return preferred
+    return sorted(names)[0] if names else None
+
+
+def find_nearest_useful_ancestor(repo_path: str, commit_hash: str, useful_set: set, cache: dict):
+    if commit_hash in cache:
+        return cache[commit_hash]
+    cmd = ["git", "-C", repo_path, "rev-list", "--first-parent", commit_hash]
+    result = subprocess.run(cmd, capture_output=True, text=True, encoding="utf-8", errors="ignore")
+    ancestors = result.stdout.splitlines()
+    for anc in ancestors[1:]:
+        if anc in useful_set:
+            cache[commit_hash] = anc
+            return anc
+    cache[commit_hash] = None
+    return None
 
 log_dir = "/home/lxy/lxy_codes/mal_update_detect/logs"
 os.makedirs(log_dir, exist_ok=True)
@@ -321,67 +363,110 @@ def single_repo_analyze(repo_path: str,joern_workspace_path: str,io_semaphore = 
             except subprocess.CalledProcessError as e:
                 logger.error(f"Failed to checkout master/main for repository {repo_name}: {e}")
         
-    try: 
-        commit_list = get_useful_commits(repo_path)
-    except subprocess.CalledProcessError:
-        commit_list = []
+    branches = list_local_branches(repo_path)
+    branches_by_tip = {}
+    for name, tip in branches:
+        if tip:
+            branches_by_tip.setdefault(tip, []).append(name)
+    if not branches_by_tip:
+        branches_to_analyze = [None]
+    elif len(branches_by_tip) == 1:
+        names = next(iter(branches_by_tip.values()))
+        branches_to_analyze = [pick_preferred_branch(names)]
+    else:
+        branches_to_analyze = [pick_preferred_branch(names) for names in branches_by_tip.values()]
 
-    if commit_list and len(commit_list) > 100:
-        logger.error(f"[{repo_name}] Skipping repository with {len(commit_list)} useful commits")
-        return {"repo_name": repo_name, "status": "skipped", "error": "too_many_commits"}
-    
-    if not commit_list:
-        logger.error(f"[{repo_name}] Failed to get commit list")
-        return {"repo_name": repo_name, "status": "failed", "error": "empty_commit_list"}
+    branch_statuses = []
+    for branch in branches_to_analyze:
+        branch_label = branch or "HEAD"
+        try:
+            commit_list = get_useful_commits(repo_path, first_parent_only=FIRST_PARENT_ONLY, rev=branch)
+        except subprocess.CalledProcessError:
+            commit_list = []
 
-    
-    try:
-    
-        joern_path_init = os.path.join(joern_workspace_path, repo_name, f"0_{commit_list[0][:5]}_00000")
-        project_before = project.Project(repo_path, joern_path_init, commit_list[0], flag = "before", io_semaphore = io_semaphore, lazy_load = lazy_load)
-        project_before.extract_taint_graph_codes(project_before.taintDG)
+        if commit_list and len(commit_list) > 100:
+            logger.error(f"[{repo_name}] Skipping branch {branch_label} with {len(commit_list)} useful commits")
+            branch_statuses.append("skipped")
+            continue
         
-        project_dir_dict = {}
-        project_dir_dict[commit_list[0]] = joern_path_init
-        commit_before = commit_list[0]
-        
-        for i in range(len(commit_list) - 1):
-            # continue
-            # if i < 20:
-            #     continue
-            commit_after = commit_list[i + 1]
-            # if commit_after != "81ce968cd6765da83b8f6dc9ad61edf5db697e95":
-            #     continue
-            commit_helper = CommitHelper(repo_path, commit_after)
-            # joern_path_after = os.path.join(joern_workspace_path, repo_name, str(i+1) + "_" + commit_after[:5])
+        if not commit_list:
+            logger.error(f"[{repo_name}] Failed to get commit list for branch {branch_label}")
+            branch_statuses.append("empty")
+            continue
+
+        try:
+            useful_set = set(commit_list)
+            prev_useful = {}
+            if FIRST_PARENT_ONLY:
+                for idx in range(1, len(commit_list)):
+                    prev_useful[commit_list[idx]] = commit_list[idx - 1]
+            nearest_cache = {}
+
+            joern_path_init = os.path.join(joern_workspace_path, repo_name, f"0_{commit_list[0][:5]}_00000")
+            project_before = project.Project(repo_path, joern_path_init, commit_list[0], flag = "before", io_semaphore = io_semaphore, lazy_load = lazy_load)
+            project_before.extract_taint_graph_codes(project_before.taintDG)
             
-            if commit_helper.parent_hash is None:
-                joern_path_after = os.path.join(joern_workspace_path, repo_name, str(i+1) + "_" + commit_after[:5] + "_00000")
-                project_after = project.Project(repo_path, joern_path_after,commit_after,flag = "before", io_semaphore = io_semaphore, lazy_load = lazy_load)
+            project_dir_dict = {}
+            project_dir_dict[commit_list[0]] = joern_path_init
+            commit_before = commit_list[0]
+            
+            for i in range(len(commit_list) - 1):
+                # continue
+                # if i < 20:
+                #     continue
+                commit_after = commit_list[i + 1]
+                # if commit_after != "81ce968cd6765da83b8f6dc9ad61edf5db697e95":
+                #     continue
+                base_commit = prev_useful.get(commit_after) if FIRST_PARENT_ONLY else None
+                if base_commit is None:
+                    base_commit = find_nearest_useful_ancestor(repo_path, commit_after, useful_set, nearest_cache)
+                commit_helper = CommitHelper(repo_path, commit_after, base_hash=base_commit)
+                # joern_path_after = os.path.join(joern_workspace_path, repo_name, str(i+1) + "_" + commit_after[:5])
+                
+                if commit_helper.parent_hash is None:
+                    joern_path_after = os.path.join(joern_workspace_path, repo_name, str(i+1) + "_" + commit_after[:5] + "_00000")
+                    project_after = project.Project(repo_path, joern_path_after,commit_after,flag = "before", io_semaphore = io_semaphore, lazy_load = lazy_load)
+                    project_dir_dict[commit_after] = joern_path_after
+                    continue
+                ancestor_for_path = base_commit or commit_helper.parent_hash
+                joern_path_after = os.path.join(
+                    joern_workspace_path,
+                    repo_name,
+                    str(i+1) + "_" + commit_after[:5] + "_" + ancestor_for_path[:5],
+                )
+                logger.info(f"Analyzing branch {branch_label} commit {i+1}/{len(commit_list)-1}: {commit_after}")
+                if base_commit is None:
+                    base_commit = commit_helper.parent_hash
+                if base_commit != commit_before:
+                    commit_before = base_commit
+                    if commit_before not in project_dir_dict:
+                        project_dir_dict[commit_before] = str(i) + "_" + commit_before[:5]
+                    joern_path_before = os.path.join(joern_workspace_path, repo_name, project_dir_dict.get(commit_before, ""))
+                    # joern_path_before = os.path.join(joern_workspace_path, repo_name, "4_"+commit_before[:5])
+                    project_before = project.Project(repo_path, joern_path_before, commit_before,flag = "before", io_semaphore = io_semaphore, lazy_load = lazy_load)
+                    project_before.joern_path_before = project_dir_dict.get(CommitHelper(repo_path, commit_before).parent_hash, "")
+                    # project_before.extract_taint_graph_codes(project_before.taintDG)
+                
+                project_after = project.Project(repo_path, joern_path_after,commit_after,flag = "after")
                 project_dir_dict[commit_after] = joern_path_after
-                continue
-            joern_path_after = os.path.join(joern_workspace_path, repo_name, str(i+1) + "_" + commit_after[:5]+ "_" + commit_helper.parent_hash[:5])
-            logger.info(f"Analyzing commit {i+1}/{len(commit_list)-1}: {commit_after}")
-            if commit_helper.parent_hash != commit_before:
-                commit_before = commit_helper.parent_hash
-                if commit_before not in project_dir_dict:
-                    project_dir_dict[commit_before] = str(i) + "_" + commit_before[:5]
-                joern_path_before = os.path.join(joern_workspace_path, repo_name, project_dir_dict.get(commit_before, ""))
-                # joern_path_before = os.path.join(joern_workspace_path, repo_name, "4_"+commit_before[:5])
-                project_before = project.Project(repo_path, joern_path_before, commit_before,flag = "before", io_semaphore = io_semaphore, lazy_load = lazy_load)
-                project_before.joern_path_before = project_dir_dict.get(CommitHelper(repo_path, commit_before).parent_hash, "")
-                # project_before.extract_taint_graph_codes(project_before.taintDG)
-            
-            project_after = project.Project(repo_path, joern_path_after,commit_after,flag = "after")
-            project_dir_dict[commit_after] = joern_path_after
-            
-            # project_after.extract_taint_graph_codes(project_after.taintDG)
-            project_after = analyze(project_before,project_after, repo_path, commit_helper, joern_path_after,write_dots = False)
-            project_before = project_after
-            commit_before = commit_after
-    except Exception as e:
-        logger.exception(f"[{repo_name}] Error processing repository: {e}")
-        return {"repo_name": repo_name, "status": "failed", "error": str(e)}
+                
+                # project_after.extract_taint_graph_codes(project_after.taintDG)
+                project_after = analyze(project_before,project_after, repo_path, commit_helper, joern_path_after,write_dots = False)
+                project_before = project_after
+                commit_before = commit_after
+        except Exception as e:
+            logger.exception(f"[{repo_name}] Error processing branch {branch_label}: {e}")
+            branch_statuses.append("failed")
+            return {"repo_name": repo_name, "status": "failed", "error": str(e)}
+
+        branch_statuses.append("success")
+
+    if "success" in branch_statuses:
+        logger.info(f"[{repo_name}] Worker finished")
+        return {"repo_name": repo_name, "status": "success"}
+    if "skipped" in branch_statuses and "failed" not in branch_statuses:
+        return {"repo_name": repo_name, "status": "skipped", "error": "too_many_commits"}
+    return {"repo_name": repo_name, "status": "failed", "error": "empty_commit_list"}
     
     logger.info(f"[{repo_name}] Worker finished")
     return {"repo_name": repo_name, "status": "success"}
@@ -533,5 +618,5 @@ if __name__ == "__main__":
     # parallel_repo_analyze(dataset_dir, joern_workspace_path)
     # change_commit_name(dataset_dir, joern_workspace_path)
     # single_repo_process(dataset_dir, joern_workspace_path)
-    repo_path = "/home/lxy/lxy_codes/mal_update_detect/mal_update_dataset/multiple_commits/1stMalware"
+    repo_path = "/home/lxy/lxy_codes/mal_update_detect/mal_update_dataset/multiple_commits/Backdoorcreator"
     single_repo_analyze(repo_path, joern_workspace_path)

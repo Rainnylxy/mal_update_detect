@@ -116,7 +116,7 @@ class CommitHelper:
         return diff_output
 
     def parse_hunks(self):
-        diff_text = self.get_commit_diff()
+        diff_text = self.diff_text
 
         # 将整体 diff 按文件块分割，每一块以 "diff --git " 开头
         parts = re.split(r'(?m)^diff --git ', diff_text)

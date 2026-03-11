@@ -247,7 +247,7 @@ def LLM_analyze_code_slices(code_slices: dict):
                 fw.write(f"Failed to serialize response: {e}\nRaw response:\n{str(response)}")
     return True
 
-def analyze(project_before:project.Project, project_after:project.Project, repo_path: str, commit_helper: CommitHelper, joern_path_after: str):
+def analyze(project_before:project.Project, project_after:project.Project, repo_path: str, commit_helper: CommitHelper, joern_path_after: str,write_dots:bool = False) -> project.Project:
     project_after.switch_commit()
     # 判断commit中是否包含sensitive api
     file_changed_lines = commit_helper.get_commit_changed_line_numbers_by_file()
@@ -260,40 +260,44 @@ def analyze(project_before:project.Project, project_after:project.Project, repo_
     # 根据 node_pairs 将 project_before 的节点视为 node_after（node_before -> node_after），合并 sub_taint_graph
     node_pairs = get_node_pairs(project_before, project_after, file_changed_lines,commit_helper)
     taint_before_relabeled = taint_graph_relabel(taint_graph_before, node_pairs, project_after)
-    taint_graph_before_relabeled_out = os.path.join(joern_path_after, "taint_graphs", "taint_graph_before_relabeled.dot")
-    os.makedirs(os.path.dirname(taint_graph_before_relabeled_out), exist_ok=True)
-    nx.nx_agraph.write_dot(taint_before_relabeled, taint_graph_before_relabeled_out)
-    logger.info(f"Relabeled taint graph written to {taint_graph_before_relabeled_out}")
+    if write_dots:
+        # 输出 relabeled 的 taint graph
+        taint_graph_before_relabeled_out = os.path.join(joern_path_after, "taint_graphs", "taint_graph_before_relabeled.dot")
+        os.makedirs(os.path.dirname(taint_graph_before_relabeled_out), exist_ok=True)
+        nx.nx_agraph.write_dot(taint_before_relabeled, taint_graph_before_relabeled_out)
+        logger.info(f"Relabeled taint graph written to {taint_graph_before_relabeled_out}")
     project_after.taintDG_before = taint_before_relabeled.copy()
     project_after.joern_path_before = project_before.joern_path
     taint_graph_updated = taint_graph_update(project_after, file_changed_lines, taint_before_relabeled)    
-    # 输出合并后的图
-    taint_graph_out = os.path.join(joern_path_after, "taint_graphs", "taint_graph_updated.dot")
-    os.makedirs(os.path.dirname(taint_graph_out), exist_ok=True)
-    nx.nx_agraph.write_dot(taint_graph_updated, taint_graph_out)
-    logger.info(f"Merged taint graph written to {taint_graph_out}")
+    if write_dots:
+        # 输出合并后的图
+        taint_graph_out = os.path.join(joern_path_after, "taint_graphs", "taint_graph_updated.dot")
+        os.makedirs(os.path.dirname(taint_graph_out), exist_ok=True)
+        nx.nx_agraph.write_dot(taint_graph_updated, taint_graph_out)
+        logger.info(f"Merged taint graph written to {taint_graph_out}")
     project_after.taintDG = taint_graph_updated
     
     project_after.extract_taint_graph_codes(taint_graph_updated)
     
-    # 将 taint_graph_updated 的 label 设置为节点的 name（便于查看），并写入新的 dot 文件
-    taint_graph_copy = taint_graph_updated.copy()
-    for n, attrs in taint_graph_copy.nodes(data=True):
-        if attrs.get("label") == "METHOD":
-            name_val = attrs.get("NAME")
-            taint_graph_copy.nodes[n]["label"] = str(name_val)
-            taint_graph_copy.nodes[n]["color"] = "green"
+    if write_dots:
+        # 将 taint_graph_updated 的 label 设置为节点的 name（便于查看），并写入新的 dot 文件
+        taint_graph_copy = taint_graph_updated.copy()
+        for n, attrs in taint_graph_copy.nodes(data=True):
+            if attrs.get("label") == "METHOD":
+                name_val = attrs.get("NAME")
+                taint_graph_copy.nodes[n]["label"] = str(name_val)
+                taint_graph_copy.nodes[n]["color"] = "green"
 
-    taint_graph_labeled_out = os.path.join(joern_path_after, "taint_graphs", "taint_graph_updated_labeled.dot")
-    os.makedirs(os.path.dirname(taint_graph_labeled_out), exist_ok=True)
-    nx.nx_agraph.write_dot(taint_graph_copy, taint_graph_labeled_out)
-    logger.info(f"Labeled taint graph written to {taint_graph_labeled_out}")
-    # is_malicious = LLM_analyze_code_slices(code_slices)
+        taint_graph_labeled_out = os.path.join(joern_path_after, "taint_graphs", "taint_graph_updated_labeled.dot")
+        os.makedirs(os.path.dirname(taint_graph_labeled_out), exist_ok=True)
+        nx.nx_agraph.write_dot(taint_graph_copy, taint_graph_labeled_out)
+        logger.info(f"Labeled taint graph written to {taint_graph_labeled_out}")
+        # is_malicious = LLM_analyze_code_slices(code_slices)
 
     return project_after
     
 
-def single_repo_analyze(repo_path: str,joern_workspace_path: str):
+def single_repo_analyze(repo_path: str,joern_workspace_path: str,io_semaphore = None,lazy_load=True):
     repo_name = os.path.basename(repo_path)
     logger.info(f"[{repo_name}] Worker started")
     try:
@@ -334,7 +338,7 @@ def single_repo_analyze(repo_path: str,joern_workspace_path: str):
     try:
     
         joern_path_init = os.path.join(joern_workspace_path, repo_name, f"0_{commit_list[0][:5]}_00000")
-        project_before = project.Project(repo_path, joern_path_init, commit_list[0], flag = "before")
+        project_before = project.Project(repo_path, joern_path_init, commit_list[0], flag = "before", io_semaphore = io_semaphore, lazy_load = lazy_load)
         project_before.extract_taint_graph_codes(project_before.taintDG)
         
         project_dir_dict = {}
@@ -353,7 +357,7 @@ def single_repo_analyze(repo_path: str,joern_workspace_path: str):
             
             if commit_helper.parent_hash is None:
                 joern_path_after = os.path.join(joern_workspace_path, repo_name, str(i+1) + "_" + commit_after[:5] + "_00000")
-                project_after = project.Project(repo_path, joern_path_after,commit_after,flag = "before")
+                project_after = project.Project(repo_path, joern_path_after,commit_after,flag = "before", io_semaphore = io_semaphore, lazy_load = lazy_load)
                 project_dir_dict[commit_after] = joern_path_after
                 continue
             joern_path_after = os.path.join(joern_workspace_path, repo_name, str(i+1) + "_" + commit_after[:5]+ "_" + commit_helper.parent_hash[:5])
@@ -364,7 +368,7 @@ def single_repo_analyze(repo_path: str,joern_workspace_path: str):
                     project_dir_dict[commit_before] = str(i) + "_" + commit_before[:5]
                 joern_path_before = os.path.join(joern_workspace_path, repo_name, project_dir_dict.get(commit_before, ""))
                 # joern_path_before = os.path.join(joern_workspace_path, repo_name, "4_"+commit_before[:5])
-                project_before = project.Project(repo_path, joern_path_before, commit_before,flag = "before")
+                project_before = project.Project(repo_path, joern_path_before, commit_before,flag = "before", io_semaphore = io_semaphore, lazy_load = lazy_load)
                 project_before.joern_path_before = project_dir_dict.get(CommitHelper(repo_path, commit_before).parent_hash, "")
                 # project_before.extract_taint_graph_codes(project_before.taintDG)
             
@@ -372,7 +376,7 @@ def single_repo_analyze(repo_path: str,joern_workspace_path: str):
             project_dir_dict[commit_after] = joern_path_after
             
             # project_after.extract_taint_graph_codes(project_after.taintDG)
-            project_after = analyze(project_before,project_after, repo_path, commit_helper, joern_path_after)
+            project_after = analyze(project_before,project_after, repo_path, commit_helper, joern_path_after,write_dots = False)
             project_before = project_after
             commit_before = commit_after
     except Exception as e:
@@ -518,16 +522,16 @@ def change_commit_name(repo_path: str,joern_workspace_path: str):
 
 
 if __name__ == "__main__":
-    dataset_dir = "/home/lxy/lxy_codes/mal_update_detect/mal_update_dataset/benign_dataset/networking_tools"
-    joern_workspace_path = "/home/lxy/lxy_codes/mal_update_detect/joern_output/benign_dataset/networking_tools"
+    # dataset_dir = "/home/lxy/lxy_codes/mal_update_detect/mal_update_dataset/benign_dataset/networking_tools"
+    joern_workspace_path = "/home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits_preprocess/multiple_commits"
     # repo_names = os.listdir(dataset_dir)
     # for repo_name in repo_names:
     #     repo_path = os.path.join(dataset_dir, repo_name)
     #     if not os.path.isdir(repo_path):
     #         continue
     #     logger.info(f"Processing repository: {repo_name}")
-    parallel_repo_analyze(dataset_dir, joern_workspace_path)
+    # parallel_repo_analyze(dataset_dir, joern_workspace_path)
     # change_commit_name(dataset_dir, joern_workspace_path)
     # single_repo_process(dataset_dir, joern_workspace_path)
-    # repo_path = "/home/lxy/lxy_codes/mal_update_detect/mal_update_dataset/benign_dataset/encryption_tools/badsecrets"
-    # single_repo_analyze(repo_path, joern_workspace_path)
+    repo_path = "/home/lxy/lxy_codes/mal_update_detect/mal_update_dataset/multiple_commits/1stMalware"
+    single_repo_analyze(repo_path, joern_workspace_path)

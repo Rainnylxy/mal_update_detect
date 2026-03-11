@@ -308,14 +308,16 @@ class LLM_Evaluate:
         return completion.choices[0].message.content
 
 if __name__ == "__main__":
-    code_dir = "/home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/"
-    arg = "wanna-smile,13,0ccc5,NEW@<module>@bin_wanna-smile.py_slice.py"
-    repo_path = os.path.join(code_dir,arg.split(",")[0])
-    slice_path=""
-    for slice_dir in os.listdir(repo_path):
-        if arg.split(',')[1] == slice_dir.split('_')[0] and arg.split(',')[2] == slice_dir.split('_')[1]:
-            slice_path = os.path.join(repo_path,slice_dir)
-    code_path = os.path.join(slice_path,"taint_slices_methods",arg.split(',')[3])
+    # code_dir = "/home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/"
+    # arg = "wanna-smile,13,0ccc5,NEW@<module>@bin_wanna-smile.py_slice.py"
+    # repo_path = os.path.join(code_dir,arg.split(",")[0])
+    # slice_path=""
+    # for slice_dir in os.listdir(repo_path):
+    #     if arg.split(',')[1] == slice_dir.split('_')[0] and arg.split(',')[2] == slice_dir.split('_')[1]:
+    #         slice_path = os.path.join(repo_path,slice_dir)
+    # code_path = os.path.join(slice_path,"taint_slices_methods",arg.split(',')[3])
+    
+    code_path = "/home/lxy/lxy_codes/mal_update_detect/joern_output/benign_dataset/networking_tools/ECommerceCrawlers/45_88038_8b579/taint_slices_methods/NEW@<module>@DianpingCrawler_dazhong.py_slice.py"
     with open(code_path, "r") as f:
         code_snippet = f.read()
     llm_evaluate = LLM_Evaluate(

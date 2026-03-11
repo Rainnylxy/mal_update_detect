@@ -13,29 +13,90 @@ from ast_helper import closest_block_line
 from rapidfuzz import fuzz
 from ast_helper import extract_import_lines
 import copy
+from contextlib import contextmanager
 
 class Project:
-    def __init__(self, repo_path, joern_path,commit, flag=""):
+    def __init__(self, repo_path, joern_path,commit, flag="",io_semaphore = None,lazy_load=True):
         self.repo_path = repo_path
         self.joern_path = joern_path
         self.commit = commit
         self.joern_path_before = joern_path
         self.datagraph = {}
+        self._current_commit = None
+        self._lazy_load = lazy_load
+        self._io_semaphore = io_semaphore
+        self._cpg = None
+        self._pdgs = {}
+        self._pdgs_loaded = False
         self.switch_commit()
         if os.path.exists(joern_path) is False:
+            with self.io_guard():
             # joern_helper.joern_export(repo_path, joern_path, language='pythonsrc')
-            joern_helper.joern_export_and_preprocess(repo_path, joern_path, language='pythonsrc')
-        self.cpg = nx.nx_agraph.read_dot(os.path.join(joern_path, 'cpg', 'export.dot'))
-        self.pdgs = {}
-        self.load_pdgs()
+                joern_helper.joern_export_and_preprocess(repo_path, joern_path, language='pythonsrc')
+        # self.cpg = nx.nx_agraph.read_dot(os.path.join(joern_path, 'cpg', 'export.dot'))
+        # self.pdgs = {}
+        # self.load_pdgs()
         self.taintDG = nx.MultiDiGraph()
         self.taintDG_before = nx.MultiDiGraph()
-        # if flag == "before":
-        self.load_taint_DG()
+        if flag == "before":
+            self.load_taint_DG()
+        if not self._lazy_load:
+            self._load_cpg()
+            self.load_pdgs()
         
-        
-        
+    @contextmanager
+    def io_guard(self):
+        if self._io_semaphore is None:
+            yield
+            return
+        self._io_semaphore.acquire()
+        try:
+            yield
+        finally:
+            self._io_semaphore.release()
 
+    def _load_cpg(self):
+        if self._cpg is None:
+            self._cpg = nx.nx_agraph.read_dot(os.path.join(self.joern_path, 'cpg', 'export.dot'))
+        return self._cpg    
+
+    @property
+    def cpg(self):
+        return self._load_cpg()
+
+    @property
+    def pdgs(self):
+        if not self._pdgs_loaded:
+            self.load_pdgs()
+        return self._pdgs
+
+    def load_pdgs(self):
+        if self._pdgs_loaded:
+            return
+        pdg_dir = os.path.join(self.joern_path, "pdg")
+        if not os.path.isdir(pdg_dir):
+            self._pdgs_loaded = True
+            return
+
+        for pdg_file in os.listdir(pdg_dir):
+            pdg_path = os.path.join(pdg_dir, pdg_file)
+            pdg: nx.MultiDiGraph = nx.nx_agraph.read_dot(pdg_path)
+            if pdg.number_of_nodes() == 0:
+                continue
+            # file_path = self.get_pdg_file_path(pdg)
+            # pdg.graph['file_path'] = file_path
+            # if pdg.name == "&lt;body&gt;":
+            for node in pdg.nodes():
+                node_full_data = self.cpg.nodes[node]
+                if node_full_data.get("label", '') == "METHOD":
+                    pdg.name = node_full_data.get("FULL_NAME","unknown")
+                    file_path = node_full_data.get("FILENAME")
+                    pdg.graph['file_path'] = file_path
+                    break
+            self._pdgs[(file_path, pdg.name)] = pdg
+        self._pdgs_loaded = True
+    
+    
     def load_taint_DG(self):
         taint_dot_path = os.path.join(self.joern_path, "taint_graphs", "taint_graph_updated.dot")
         if os.path.exists(taint_dot_path):
@@ -73,31 +134,24 @@ class Project:
         return "unknown"
 
     
-    def load_pdgs(self):
-        pdg_dir = os.path.join(self.joern_path, "pdg")
-        for pdg_file in os.listdir(pdg_dir):
-            pdg_path = os.path.join(pdg_dir, pdg_file)
-            pdg: nx.MultiDiGraph = nx.nx_agraph.read_dot(pdg_path)
-            if pdg.number_of_nodes() == 0:
-                continue
-            # file_path = self.get_pdg_file_path(pdg)
-            # pdg.graph['file_path'] = file_path
-            # if pdg.name == "&lt;body&gt;":
-            for node in pdg.nodes():
-                node_full_data = self.cpg.nodes[node]
-                if node_full_data.get("label", '') == "METHOD":
-                    pdg.name = node_full_data.get("FULL_NAME","unknown")
-                    file_path = node_full_data.get("FILENAME")
-                    pdg.graph['file_path'] = file_path
-                    break
-            self.pdgs[(file_path, pdg.name)] = pdg
-
 
     def switch_commit(self):
+        try:
+            current = subprocess.check_output(
+                ["git", "-C", self.repo_path, "rev-parse", "HEAD"],
+                stderr=subprocess.DEVNULL
+            ).decode("utf-8", errors="ignore").strip()
+            if current == self.commit:
+                self._current_commit = current
+                return
+        except subprocess.CalledProcessError:
+            pass
+        
         subprocess.check_output(
             ["git", "-C", self.repo_path, "checkout", self.commit],
             stderr=subprocess.DEVNULL
         )
+        self._current_commit = self.commit
         # os.chdir(self.repo_path)
         # os.system(f'git checkout {self.commit}')
     
@@ -752,27 +806,26 @@ class Project:
         if os.path.exists(methods_out_root):
             shutil.rmtree(methods_out_root)
         os.makedirs(methods_out_root, exist_ok=True)
-        for method_node_id, method_graph_after in taint_subgraphs_after.items():
-            method_name = method_graph_after.nodes[method_node_id].get('NAME') or method_graph_after.nodes[method_node_id].get('METHOD_FULL_NAME') or f"method_{str(method_node_id)}"
-            method_path = method_graph_after.nodes[method_node_id].get('file_path','unknown').replace('/', '_')
-            # out_path = os.path.join(methods_out_root, f'{method_name}_{method_path}_slice.py')
-            # Skip metaClassAdapter methods
-            if method_name.endswith("<metaClassAdapter>") or ("<lambda>" in method_name):
-                continue
-            
-            # 仅按提取代码标准化后是否完全一致来判定等价
-            before_sig = self._load_before_slice_signature(method_name, method_path)
-            after_sig = self._subgraph_code_signature(method_graph_after)
-            isomorphic = bool(before_sig) and before_sig == after_sig
+        with self.io_guard():
+            for method_node_id, method_graph_after in taint_subgraphs_after.items():
+                method_name = method_graph_after.nodes[method_node_id].get('NAME') or method_graph_after.nodes[method_node_id].get('METHOD_FULL_NAME') or f"method_{str(method_node_id)}"
+                method_path = method_graph_after.nodes[method_node_id].get('file_path','unknown').replace('/', '_')
+                # out_path = os.path.join(methods_out_root, f'{method_name}_{method_path}_slice.py')
+                # Skip metaClassAdapter methods
+                if method_name.endswith("<metaClassAdapter>") or ("<lambda>" in method_name):
+                    continue
+                
+                # 仅按提取代码标准化后是否完全一致来判定等价
+                before_sig = self._load_before_slice_signature(method_name, method_path)
+                after_sig = self._subgraph_code_signature(method_graph_after)
+                isomorphic = bool(before_sig) and before_sig == after_sig
 
-            if isomorphic:
-                out_path = os.path.join(methods_out_root, f'{method_name}@{method_path}_slice.py')
-                method_code = self.extract_subgraph_codes(method_graph_after, out_path)
-            else:
-                print(f"Method {method_name} changed between commits, extracting both versions.")
-                out_path = os.path.join(methods_out_root, f'NEW@{method_name}@{method_path}_slice.py')
-                method_code = self.extract_subgraph_codes(method_graph_after, out_path)
-        
+                if isomorphic:
+                    out_path = os.path.join(methods_out_root, f'{method_name}@{method_path}_slice.py')
+                else:
+                    print(f"Method {method_name} changed between commits, extracting both versions.")
+                    out_path = os.path.join(methods_out_root, f'NEW@{method_name}@{method_path}_slice.py')
+                self.extract_subgraph_codes(method_graph_after, out_path)
     def extract_sensitive_subgraph_for_method(self, taint_graph: nx.MultiDiGraph, root: str) -> nx.MultiDiGraph:
         """
         为指定的method根节点提取其关联的敏感子图

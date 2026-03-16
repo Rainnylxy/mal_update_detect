@@ -1,4 +1,0 @@
-repo_name,commit_num,commit,code_slice,true_label,pred_label,true_malicious,pred_malicious,error_type,reasoning
-BskyBot,7,7e97f,NEW@<body>@controller.py_slice.py,Undetermined,Core Attack Chain,0,1,FP_BU_to_CF,
-MirageLink-rat-gui,13,0c0f3,NEW@<body>@frames_plugins_remote_desktop.py_slice.py,Undetermined,Core Attack Chain,0,1,FP_BU_to_CF,
-MirageLink-rat-gui,15,7d0ce,NEW@<body>@frames_plugins_remote_desktop.py_slice.py,Undetermined,Core Attack Chain,0,1,FP_BU_to_CF,

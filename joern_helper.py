@@ -2,7 +2,71 @@ import os
 import subprocess
 import networkx as nx
 import re
+import shutil
+import tempfile
+import tokenize
 from ast_parser import ASTParser
+
+_PY_EXTS = ('.py', '.pyw')
+
+
+def _iter_python_files(root: str):
+    if os.path.isfile(root):
+        if root.endswith(_PY_EXTS):
+            yield root
+        return
+    for dirpath, dirnames, filenames in os.walk(root):
+        # skip VCS metadata
+        dirnames[:] = [d for d in dirnames if d != '.git']
+        for name in filenames:
+            if name.endswith(_PY_EXTS):
+                yield os.path.join(dirpath, name)
+
+
+def _file_has_tab(path: str) -> bool:
+    try:
+        with open(path, 'rb') as f:
+            for chunk in iter(lambda: f.read(8192), b''):
+                if b'\t' in chunk:
+                    return True
+    except OSError:
+        return False
+    return False
+
+
+def _needs_tab_preprocess(root: str) -> bool:
+    for path in _iter_python_files(root):
+        if _file_has_tab(path):
+            return True
+    return False
+
+
+def _expand_tabs_to_spaces(src_path: str, dst_path: str, tabsize: int) -> None:
+    try:
+        with open(src_path, 'rb') as f:
+            encoding, _ = tokenize.detect_encoding(f.readline)
+            f.seek(0)
+            text = f.read().decode(encoding, errors='replace')
+    except OSError:
+        return
+    expanded = text.expandtabs(tabsize)
+    os.makedirs(os.path.dirname(dst_path), exist_ok=True)
+    with open(dst_path, 'w', encoding=encoding, newline='') as f:
+        f.write(expanded)
+
+
+def _prepare_preprocessed_source(src_root: str, tabsize: int) -> str:
+    temp_root = tempfile.mkdtemp(prefix="joern_src_")
+    if os.path.isfile(src_root):
+        dst_path = os.path.join(temp_root, os.path.basename(src_root))
+        _expand_tabs_to_spaces(src_root, dst_path, tabsize)
+        return temp_root
+
+    for src_path in _iter_python_files(src_root):
+        rel_path = os.path.relpath(src_path, src_root)
+        dst_path = os.path.join(temp_root, rel_path)
+        _expand_tabs_to_spaces(src_path, dst_path, tabsize)
+    return temp_root
 
 def joern_export(package_code_path: str, package_joern_path: str, language: str,
                  overwrite: bool = True):
@@ -133,12 +197,22 @@ def add_edge(pdg: nx.MultiDiGraph, package_dir, method_node, param_nodes):
                 pdg.add_edge(method_node, param_node, label='DDG')
 
 def joern_export_and_preprocess(package_code_path: str, package_joern_path: str, language: str,
-                           overwrite: bool = True):
-    joern_export(package_code_path, package_joern_path, language, overwrite)
-    pdg_dir = os.path.join(package_joern_path, 'pdg')
-    cfg_dir = os.path.join(package_joern_path, 'cfg')
-    cpg_dir = os.path.join(package_joern_path, 'cpg')
-    joern_preprocess(package_code_path, pdg_dir, cfg_dir, cpg_dir)
+                           overwrite: bool = True, preprocess_tabs: bool = True, tabsize: int = 4):
+    temp_root = None
+    source_path = package_code_path
+    if language == 'pythonsrc' and preprocess_tabs and _needs_tab_preprocess(package_code_path):
+        temp_root = _prepare_preprocessed_source(package_code_path, tabsize)
+        source_path = temp_root
+
+    try:
+        joern_export(source_path, package_joern_path, language, overwrite)
+        pdg_dir = os.path.join(package_joern_path, 'pdg')
+        cfg_dir = os.path.join(package_joern_path, 'cfg')
+        cpg_dir = os.path.join(package_joern_path, 'cpg')
+        joern_preprocess(package_code_path, pdg_dir, cfg_dir, cpg_dir)
+    finally:
+        if temp_root:
+            shutil.rmtree(temp_root, ignore_errors=True)
 
 
 if __name__ == '__main__':
@@ -148,8 +222,8 @@ if __name__ == '__main__':
     # joern_dir = os.path.join(package_code_path, joern_dir)
     language = 'pythonsrc'
     # package_code_dir = os.path.join(package_code_path, package_name)
-    package_code_dir = '/home/lxy/lxy_codes/mal_update_detect/mal_update_dataset/multiple_commits/PizzaVirus'
-    joern_export(package_code_dir, joern_dir, language, overwrite=True)
+    package_code_dir = '/home/lxy/lxy_codes/mal_update_detect/test_folder'
+    joern_export_and_preprocess(package_code_dir, joern_dir, language, overwrite=True)
     # pdg_dir = os.path.join(joern_dir, package_name, 'pdg')
     # cfg_dir = os.path.join(joern_dir, package_name, 'cfg')
     # cpg_dir = os.path.join(joern_dir, package_name, 'cpg')

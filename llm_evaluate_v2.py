@@ -309,7 +309,7 @@ class LLM_Evaluate:
 
 if __name__ == "__main__":
     code_dir = "/home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/"
-    arg = "shameleon,2,04c56,NEW@<module>@client.py_slice.py,"
+    arg = "crypto-clipper,0,dfe2b,NEW@<module>@main.py_slice.py"
     repo_path = os.path.join(code_dir,arg.split(",")[0])
     slice_path=""
     for slice_dir in os.listdir(repo_path):

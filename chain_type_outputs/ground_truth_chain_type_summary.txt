@@ -1,0 +1,19 @@
+# Ground Truth Chain Type Summary
+- source_csv: mal_update_detect/full_label_outputs/all_label_prediction_pairs.csv
+- unresolved_same_as_before: 59
+- total_chains: 451
+
+## Counts by Type
+- all_benign_or_undetermined: 148
+- all_full: 110
+- all_core: 104
+- benign_or_undetermined_to_core: 32
+- benign_or_undetermined_to_full: 18
+- core_to_full_no_bu: 16
+- benign_or_undetermined_only: 9
+- benign_or_undetermined_to_core_to_full: 9
+- full_then_core_no_bu: 3
+- benign_or_undetermined_to_full_then_core: 2
+- all_full_with_commit0: 28
+
+- output_csv: mal_update_detect/chain_type_outputs/ground_truth_chain_types.csv

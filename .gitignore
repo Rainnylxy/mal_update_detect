@@ -9,3 +9,4 @@ real_classification.csv
 result_v1.csv
 calculate_results/
 mal_update_detect_nohup.log
+*.log

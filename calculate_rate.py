@@ -1,9 +1,10 @@
+import json
 import os
 import csv
 from multiprocessing import Pool, cpu_count, Manager
 from loguru import logger
 from numpy import sort
-from code_slice_evaluate import LLM_analyze_code_slice
+from code_slice_evaluate import LLM_analyze_code_slice, _extract_label
 from mal_update_detect import change_commit_name
 
 log_dir = "/home/lxy/lxy_codes/mal_update_detect/joern_output/logs"
@@ -46,6 +47,15 @@ def process_file(file_info):
     try:
         if file.endswith(".py"):
             file_path = os.path.join(root, file)
+            dir_path = os.path.dirname(file_path)
+            out_file_path = os.path.join(dir_path, f"{os.path.basename(file_path)}_two_steps.json")
+            if os.path.exists(out_file_path):
+                logger.info(f"Skipping already processed file: {file_path}")
+                with open(out_file_path, "r", encoding="utf-8") as fr:
+                    response_v1 = json.load(fr)
+                classification_v2 = _extract_label(response_v1)
+                result_row = [repo_name,dir_info[0], dir_info[1], file, classification_v2, classification_v2]
+                return result_row
             logger.info(f"Analyzing code slice from file: {file_path}")
             if "NEW" in file:               
                 classification_v2 = LLM_analyze_code_slice(file_path)
@@ -62,43 +72,43 @@ def process_file(file_info):
 
 def process_repo_name(repo_name, joern_dir):
     """处理单个仓库，收集结果但不写入文件"""
-    try:
-        logger.info(f"Processing repository: {repo_name}")
-        repo_joern_dir = os.path.join(joern_dir, repo_name)
-        results = []
-        if os.path.exists(repo_joern_dir):
-            # 收集所有文件信息
-            files_to_process = []
-            for commit_dir in os.listdir(repo_joern_dir):
-                dir_info = commit_dir.split("_")
-                if len(dir_info) < 3:
-                    logger.warning(f"Skipping commit directory with no file changed: {commit_dir}")
-                    continue
-                commit_path = os.path.join(repo_joern_dir, commit_dir)
-                if os.path.isdir(commit_path):
-                    taint_slices_dir = os.path.join(commit_path, "taint_slices_methods")
-                    for root, dirs, files in os.walk(taint_slices_dir):
-                        for file in files:
-                            files_to_process.append((repo_name, dir_info, root, file))
-                    
-            # 使用多进程处理文件
-            if files_to_process:
-                with Pool(processes=min(20, len(files_to_process))) as file_pool:
-                    file_results = file_pool.map(process_file, files_to_process)
+    # try:
+    logger.info(f"Processing repository: {repo_name}")
+    repo_joern_dir = os.path.join(joern_dir, repo_name)
+    results = []
+    if os.path.exists(repo_joern_dir):
+        # 收集所有文件信息
+        files_to_process = []
+        for commit_dir in os.listdir(repo_joern_dir):
+            dir_info = commit_dir.split("_")
+            if len(dir_info) < 3:
+                logger.warning(f"Skipping commit directory with no file changed: {commit_dir}")
+                continue
+            commit_path = os.path.join(repo_joern_dir, commit_dir)
+            if os.path.isdir(commit_path):
+                taint_slices_dir = os.path.join(commit_path, "taint_slices_methods")
+                for root, dirs, files in os.walk(taint_slices_dir):
+                    for file in files:
+                        files_to_process.append((repo_name, dir_info, root, file))
                 
-                # 过滤掉 None 结果
-                for result_row in file_results:
-                    if result_row:
-                        results.append(result_row)
-            # for file_info in files_to_process:
-            #     result_row = process_file(file_info)
-            #     if result_row:
-            #         results.append(result_row)
+        # 使用多进程处理文件
+        if files_to_process:
+            with Pool(processes=min(10, len(files_to_process))) as file_pool:
+                file_results = file_pool.map(process_file, files_to_process)
+            
+            # 过滤掉 None 结果
+            for result_row in file_results:
+                if result_row:
+                    results.append(result_row)
+        # for file_info in files_to_process:
+        #     result_row = process_file(file_info)
+        #     if result_row:
+        #         results.append(result_row)
                     
-        else:
-            logger.warning(f"Joern directory does not exist for {repo_name}: {repo_joern_dir}")
-    except Exception as e:
-        logger.error(f"Error processing repository {repo_name}: {e}")
+    #     else:
+    #         logger.warning(f"Joern directory does not exist for {repo_name}: {repo_joern_dir}")
+    # except Exception as e:
+    #     logger.error(f"Error processing repository {repo_name}: {e}")
     
     return results
 
@@ -128,16 +138,26 @@ def process_repo_names(repo_names, joern_dir, result_csv_path):
 
 
 if __name__ == "__main__":
-    joern_dir = "/home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits"
-    csv_path = "./malware_update_dataset.csv"
-    # repo_names = read_repo_names_from_csv(csv_path)
-    result_csv_path = "./result_two_steps_new_version_.csv"
-    repo_names = ["PizzaVirus","Python_KeyLogger_Prototype"]
-    
+    joern_dir = "/home/lxy/lxy_codes/mal_update_detect/joern_output/benign_dataset/sysadmin_tools"
+    # csv_path = "./malware_update_dataset.csv"
+    # # repo_names = read_repo_names_from_csv(csv_path)
+    result_csv_path = "./result_two_steps_benign.csv"
+    # repo_names = ["PizzaVirus","Python_KeyLogger_Prototype"]
+    repo_analyzed = set()
     # print(cpu_count())
     # 初始化 CSV 文件头
-    with open(result_csv_path, 'w', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow(["repo_name","commit_num", "commit", "code_slice", "classification","result_two_steps"])
+    # with open(result_csv_path, 'w', newline='') as f:
+    #     writer = csv.writer(f)
+    #     writer.writerow(["repo_name","commit_num", "commit", "code_slice", "classification","result_two_steps"])
     
-    process_repo_names(repo_names, joern_dir, result_csv_path)
+    for repo_name in os.listdir(joern_dir):
+        repo_names = [repo_name]
+        try:
+            process_repo_names(repo_names, joern_dir, result_csv_path)
+            repo_analyzed.add(repo_name)
+        except Exception as e:
+            logger.error(f"Error processing repository {repo_name}: {e}")
+    
+    with open("./repo_analyzed.txt", 'a') as f:
+        for repo_name in repo_analyzed:
+            f.write(f"{repo_name}\n")

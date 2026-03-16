@@ -137,7 +137,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(
         description="Compute snapshot/slice-level metrics and export FP/FN/candidate files."
     )
-    parser.add_argument("--csv", default="./result_two_steps.csv", help="Path to input CSV.")
+    parser.add_argument("--csv", default="./full_label_outputs/all_label_prediction_pairs.csv", help="Path to input CSV.")
     parser.add_argument("--out_dir", default="./metric_analysis_outputs_all", help="Directory for exported analysis files.")
     args = parser.parse_args()
 
@@ -164,8 +164,8 @@ def main() -> None:
         is_new = code_slice.startswith("NEW@")
         state_key = (repo, slice_id)
 
-        t_raw = canonical_label(row["classification"])
-        p_raw = canonical_label(row["result_two_steps"])
+        t_raw = canonical_label(row["ground_truth"])
+        p_raw = canonical_label(row["prediction"])
 
         t = t_raw
         p = p_raw
@@ -193,8 +193,8 @@ def main() -> None:
                 "is_new": is_new,
                 "true_label": t if t in VALID_STATE else "",
                 "pred_label": p if p in VALID_STATE else "",
-                "raw_true_label": row["classification"],
-                "raw_pred_label": row["result_two_steps"],
+                "raw_true_label": row["ground_truth"],
+                "raw_pred_label": row["prediction"],
                 "reasoning": row.get("reasoning", ""),
             }
         )

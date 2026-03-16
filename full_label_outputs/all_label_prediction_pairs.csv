@@ -3,30 +3,30 @@ repo_name,commit_num,commit,code_slice,ground_truth,prediction,reason
 1stMalware,1,ba466,NEW@<module>@modules_crypt_crypt.py_slice.py,Core Attack Chain,Core Attack Chain
 1stMalware,2,177b1,NEW@<module>@test.py_slice.py,Benign Artifact,Undetermined
 1stMalware,2,177b1,<module>@modules_crypt_crypt.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
-1stMalware,3,f5809,NEW@<body>@modules_crypt_crypt.py_slice.py,Core Attack Chain,Undetermined
+1stMalware,3,f5809,NEW@<body>@modules_crypt_crypt.py_slice.py,Undetermined,Undetermined
 1stMalware,3,f5809,<module>@test.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
-1stMalware,3,f5809,NEW@<body>@modules_rights_getRights.py_slice.py,Core Attack Chain,Undetermined
+1stMalware,3,f5809,NEW@<body>@modules_rights_getRights.py_slice.py,Undetermined,Undetermined
 1stMalware,4,c45da,<body>@modules_rights_getRights.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 1stMalware,4,c45da,NEW@<body>@modules_crypt_crypt.py_slice.py,Core Attack Chain,Core Attack Chain
 1stMalware,5,426f7,<body>@modules_rights_getRights.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 1stMalware,5,426f7,<body>@modules_crypt_crypt.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
-1stMalware,6,21b58,NEW@<module>@main.py_slice.py,Full Attack Chain,Core Attack Chain
+1stMalware,6,21b58,NEW@<module>@main.py_slice.py,Core Attack Chain,Core Attack Chain
 1stMalware,6,21b58,<body>@modules_rights_getRights.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 1stMalware,6,21b58,NEW@<body>@modules_crypt_crypt.py_slice.py,Core Attack Chain,Core Attack Chain
 1stMalware,6,21b58,NEW@<module>@modules_network_smtp.py_slice.py,Full Attack Chain,Full Attack Chain
-1stMalware,7,3a8ed,NEW@<module>@main.py_slice.py,Full Attack Chain,Core Attack Chain
+1stMalware,7,3a8ed,NEW@<module>@main.py_slice.py,Core Attack Chain,Core Attack Chain
 1stMalware,7,3a8ed,<body>@modules_rights_getRights.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 1stMalware,7,3a8ed,NEW@<module>@modules_network_stmpgmail.py_slice.py,Full Attack Chain,Full Attack Chain
 1stMalware,7,3a8ed,NEW@<body>@modules_crypt_crypt.py_slice.py,Core Attack Chain,Core Attack Chain
-1stMalware,8,03ca7,NEW@<module>@main.py_slice.py,Full Attack Chain,Core Attack Chain
+1stMalware,8,03ca7,NEW@<module>@main.py_slice.py,Core Attack Chain,Core Attack Chain
 1stMalware,8,03ca7,<body>@modules_rights_getRights.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 1stMalware,8,03ca7,NEW@<body>@modules_crypt_crypt.py_slice.py,Core Attack Chain,Core Attack Chain
-1stMalware,9,47f7a,NEW@<module>@main.py_slice.py,Full Attack Chain,Core Attack Chain
+1stMalware,9,47f7a,NEW@<module>@main.py_slice.py,Core Attack Chain,Core Attack Chain
 1stMalware,9,47f7a,NEW@<body>@modules_crypt_crypt.py_slice.py,Core Attack Chain,Core Attack Chain
-1stMalware,9,47f7a,NEW@<body>@modules_rights_getRights.py_slice.py,Core Attack Chain,Undetermined
-1stMalware,10,3a1e0,NEW@<module>@main.py_slice.py,Full Attack Chain,Core Attack Chain
+1stMalware,9,47f7a,NEW@<body>@modules_rights_getRights.py_slice.py,Undetermined,Undetermined
+1stMalware,10,3a1e0,NEW@<module>@main.py_slice.py,Core Attack Chain,Core Attack Chain
 1stMalware,10,3a1e0,NEW@<body>@modules_crypt_crypt.py_slice.py,Core Attack Chain,Core Attack Chain
-1stMalware,10,3a1e0,NEW@<body>@modules_rights_getRights.py_slice.py,Core Attack Chain,Undetermined
+1stMalware,10,3a1e0,NEW@<body>@modules_rights_getRights.py_slice.py,Undetermined,Undetermined
 Backdoorcreator,0,04d0c,NEW@<module>@backdoorcreate.py_slice.py,Full Attack Chain,Full Attack Chain
 Backdoorcreator,0,04d0c,NEW@<module>@server.py_slice.py,Undetermined,Benign
 Backdoorcreator,1,22da0,NEW@<module>@backdoorcreate.py_slice.py,Full Attack Chain,Full Attack Chain
@@ -107,7 +107,7 @@ BskyBot,7,7e97f,<module>@bot.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 BskyBot,7,7e97f,decode@core_jpeg_stegano.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 BskyBot,7,7e97f,<body>@core_bsky_client.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 BskyBot,7,7e97f,<body>@core_dummy_image_path_generator.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
-BskyBot,7,7e97f,NEW@<body>@controller.py_slice.py,Core Attack Chain,Undetermined
+BskyBot,7,7e97f,NEW@<body>@controller.py_slice.py,Undetermined,Core Attack Chain,B:Hallucination
 BskyBot,8,e0939,encode@core_jpeg_stegano.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 BskyBot,8,e0939,NEW@<body>@bot.py_slice.py,Core Attack Chain,Core Attack Chain
 BskyBot,8,e0939,NEW@<module>@controller.py_slice.py,Full Attack Chain,Full Attack Chain
@@ -116,7 +116,7 @@ BskyBot,8,e0939,NEW@<module>@bot.py_slice.py,Full Attack Chain,Core Attack Chain
 BskyBot,8,e0939,decode@core_jpeg_stegano.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 BskyBot,8,e0939,<body>@core_bsky_client.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 BskyBot,8,e0939,<body>@core_dummy_image_path_generator.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
-BskyBot,8,e0939,NEW@<body>@controller.py_slice.py,Core Attack Chain,Undetermined
+BskyBot,8,e0939,NEW@<body>@controller.py_slice.py,Undetermined,Undetermined
 BskyBot,9,d789a,encode@core_jpeg_stegano.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 BskyBot,9,d789a,<body>@bot.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 BskyBot,9,d789a,NEW@<body>@core_bsky_client.py_slice.py,Benign,Benign
@@ -125,7 +125,7 @@ BskyBot,9,d789a,deserialize_bytes@core_data_serializer.py_slice.py,SAME AS BEFOR
 BskyBot,9,d789a,NEW@<module>@bot.py_slice.py,Full Attack Chain,Core Attack Chain,third-party package
 BskyBot,9,d789a,decode@core_jpeg_stegano.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 BskyBot,9,d789a,<body>@core_dummy_image_path_generator.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
-BskyBot,9,d789a,NEW@<body>@controller.py_slice.py,Core Attack Chain,Undetermined
+BskyBot,9,d789a,NEW@<body>@controller.py_slice.py,Undetermined,Undetermined
 BskyBot,10,baced,NEW@<body>@core_dummy_image_path_generator.py_slice.py,Benign,Benign
 BskyBot,10,baced,encode@core_jpeg_stegano.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 BskyBot,10,baced,NEW@<body>@bot.py_slice.py,Core Attack Chain,Core Attack Chain
@@ -134,7 +134,7 @@ BskyBot,10,baced,NEW@<module>@controller.py_slice.py,Full Attack Chain,Core Atta
 BskyBot,10,baced,deserialize_bytes@core_data_serializer.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 BskyBot,10,baced,NEW@<module>@bot.py_slice.py,Full Attack Chain,Core Attack Chain,third-party package
 BskyBot,10,baced,decode@core_jpeg_stegano.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
-BskyBot,10,baced,NEW@<body>@controller.py_slice.py,Core Attack Chain,Undetermined
+BskyBot,10,baced,NEW@<body>@controller.py_slice.py,Undetermined,Undetermined
 BskyBot,11,fbe51,encode@core_jpeg_stegano.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 BskyBot,11,fbe51,<body>@bot.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 BskyBot,11,fbe51,NEW@<module>@controller.py_slice.py,Full Attack Chain,Core Attack Chain,B:Hallucination
@@ -143,7 +143,7 @@ BskyBot,11,fbe51,<module>@bot.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 BskyBot,11,fbe51,decode@core_jpeg_stegano.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 BskyBot,11,fbe51,<body>@core_bsky_client.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 BskyBot,11,fbe51,<body>@core_dummy_image_path_generator.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
-BskyBot,11,fbe51,NEW@<body>@controller.py_slice.py,Core Attack Chain,Undetermined
+BskyBot,11,fbe51,NEW@<body>@controller.py_slice.py,Undetermined,Undetermined
 BskyBot,12,b40cc,NEW@<body>@core_dummy_image_path_generator.py_slice.py,Benign,Benign
 BskyBot,12,b40cc,encode@core_jpeg_stegano.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 BskyBot,12,b40cc,NEW@<body>@bot.py_slice.py,Core Attack Chain,Core Attack Chain
@@ -152,7 +152,7 @@ BskyBot,12,b40cc,NEW@<module>@controller.py_slice.py,Full Attack Chain,Core Atta
 BskyBot,12,b40cc,deserialize_bytes@core_data_serializer.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 BskyBot,12,b40cc,NEW@<module>@bot.py_slice.py,Full Attack Chain,Core Attack Chain,third-party package
 BskyBot,12,b40cc,decode@core_jpeg_stegano.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
-BskyBot,12,b40cc,NEW@<body>@controller.py_slice.py,Core Attack Chain,Undetermined
+BskyBot,12,b40cc,NEW@<body>@controller.py_slice.py,Undetermined,Undetermined
 Cerberus,0,ab1e0,NEW@<module>@Cerberus.py_slice.py,Full Attack Chain,Full Attack Chain
 Cerberus,1,44601,<module>@Cerberus.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 Cerberus,2,cb198,<module>@Cerberus.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
@@ -385,14 +385,14 @@ funny-virus,18,3e3b2,<module>@papa_papa_socket.py_slice.py,SAME AS BEFORE,SAME A
 HackerDoomsday,2,4533e,NEW@<module>@main.py_slice.py,Full Attack Chain,Full Attack Chain
 HackerDoomsday,3,90d6a,NEW@<module>@main.py_slice.py,Full Attack Chain,Full Attack Chain
 HackerDoomsday,3,90d6a,NEW@<module>@multimedia.py_slice.py,Full Attack Chain,Full Attack Chain
-HackerDoomsday,3,90d6a,NEW@<module>@start_gdi.py_slice.py,Undetermined,Core Attack Chain
+HackerDoomsday,3,90d6a,NEW@<module>@start_gdi.py_slice.py,Full Attack Chain,Full Attack Chain
 HackerDoomsday,3,90d6a,NEW@<module>@gui.py_slice.py,Full Attack Chain,Full Attack Chain
-HackerDoomsday,3,90d6a,NEW@<module>@regedit_and_virus_safe.py_slice.py,Core Attack Chain,Core Attack Chain
+HackerDoomsday,3,90d6a,NEW@<module>@regedit_and_virus_safe.py_slice.py,Full Attack Chain,Full Attack Chain
 HackerDoomsday,4,4dce8,NEW@<module>@main.py_slice.py,Full Attack Chain,Full Attack Chain
 HackerDoomsday,4,4dce8,NEW@<module>@multimedia.py_slice.py,Full Attack Chain,Full Attack Chain
-HackerDoomsday,4,4dce8,NEW@<module>@start_gdi.py_slice.py,Undetermined,Core Attack Chain
+HackerDoomsday,4,4dce8,NEW@<module>@start_gdi.py_slice.py,Full Attack Chain,Full Attack Chain
 HackerDoomsday,4,4dce8,NEW@<module>@gui.py_slice.py,Full Attack Chain,Full Attack Chain
-HackerDoomsday,4,4dce8,NEW@<module>@regedit_and_virus_safe.py_slice.py,Core Attack Chain,Core Attack Chain
+HackerDoomsday,4,4dce8,NEW@<module>@regedit_and_virus_safe.py_slice.py,Full Attack Chain,Core Attack Chain,D:executable
 HackerDoomsday,5,96855,NEW@<module>@main.py_slice.py,Full Attack Chain,Full Attack Chain
 HackerDoomsday,5,96855,<module>@start_gdi.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 HackerDoomsday,5,96855,NEW@<module>@gui.py_slice.py,Full Attack Chain,Full Attack Chain
@@ -412,12 +412,12 @@ HackerDoomsday,8,63891,NEW@<module>@main.py_slice.py,Full Attack Chain,Full Atta
 HackerDoomsday,8,63891,NEW@<module>@multimedia.py_slice.py,Full Attack Chain,Full Attack Chain
 HackerDoomsday,8,63891,<module>@start_gdi.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 HackerDoomsday,8,63891,NEW@<module>@gui.py_slice.py,Full Attack Chain,Full Attack Chain
-HackerDoomsday,8,63891,NEW@<module>@regedit_and_virus_safe.py_slice.py,Core Attack Chain,Undetermined
+HackerDoomsday,8,63891,NEW@<module>@regedit_and_virus_safe.py_slice.py,Full Attack Chain,Undetermined,slice extract unfully
 HackerDoomsday,9,587b0,NEW@<module>@main.py_slice.py,Full Attack Chain,Full Attack Chain
 HackerDoomsday,9,587b0,NEW@<module>@multimedia.py_slice.py,Full Attack Chain,Full Attack Chain
-HackerDoomsday,9,587b0,NEW@<module>@start_gdi.py_slice.py,Undetermined,Core Attack Chain
+HackerDoomsday,9,587b0,NEW@<module>@start_gdi.py_slice.py,Full Attack Chain,Full Attack Chain
 HackerDoomsday,9,587b0,NEW@<module>@gui.py_slice.py,Full Attack Chain,Full Attack Chain
-HackerDoomsday,9,587b0,NEW@<module>@regedit_and_virus_safe.py_slice.py,Core Attack Chain,Core Attack Chain
+HackerDoomsday,9,587b0,NEW@<module>@regedit_and_virus_safe.py_slice.py,Full Attack Chain,Core Attack Chain,slice extract unfully
 HackerDoomsday,10,b73db,NEW@<module>@main.py_slice.py,Full Attack Chain,Full Attack Chain
 HackerDoomsday,10,b73db,<module>@start_gdi.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 HackerDoomsday,10,b73db,NEW@<module>@gui.py_slice.py,Full Attack Chain,Full Attack Chain
@@ -432,7 +432,7 @@ HackerDoomsday,12,22e8b,NEW@<module>@main.py_slice.py,Full Attack Chain,Full Att
 HackerDoomsday,12,22e8b,NEW@<module>@multimedia.py_slice.py,Full Attack Chain,Full Attack Chain
 HackerDoomsday,12,22e8b,<module>@start_gdi.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 HackerDoomsday,12,22e8b,NEW@<module>@gui.py_slice.py,Full Attack Chain,Full Attack Chain
-HackerDoomsday,12,22e8b,NEW@<module>@regedit_and_virus_safe.py_slice.py,Core Attack Chain,Core Attack Chain
+HackerDoomsday,12,22e8b,NEW@<module>@regedit_and_virus_safe.py_slice.py,Full Attack Chain,Core Attack Chain,slice extract unfully
 HackerDoomsday,13,584b5,NEW@<module>@main.py_slice.py,Full Attack Chain,Full Attack Chain
 HackerDoomsday,13,584b5,NEW@<module>@multimedia.py_slice.py,Full Attack Chain,Full Attack Chain
 HackerDoomsday,13,584b5,<module>@start_gdi.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
@@ -442,23 +442,23 @@ HackerDoomsday,14,79e7c,NEW@<module>@main.py_slice.py,Full Attack Chain,Full Att
 HackerDoomsday,14,79e7c,NEW@worker@regedit_and_virus_safe.py_slice.py,Core Attack Chain,Core Attack Chain
 HackerDoomsday,14,79e7c,<module>@start_gdi.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 HackerDoomsday,14,79e7c,NEW@<module>@gui.py_slice.py,Full Attack Chain,Full Attack Chain
-HackerDoomsday,14,79e7c,NEW@<module>@regedit_and_virus_safe.py_slice.py,Core Attack Chain,Core Attack Chain
+HackerDoomsday,14,79e7c,NEW@<module>@regedit_and_virus_safe.py_slice.py,Full Attack Chain,Core Attack Chain,slice extract unfully
 HackerDoomsday,14,79e7c,<module>@multimedia.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 HackerDoomsday,15,2b860,NEW@<module>@main.py_slice.py,Full Attack Chain,Full Attack Chain
 HackerDoomsday,15,2b860,NEW@<module>@multimedia.py_slice.py,Full Attack Chain,Full Attack Chain
-HackerDoomsday,15,2b860,NEW@<module>@start_gdi.py_slice.py,Undetermined,Core Attack Chain
+HackerDoomsday,15,2b860,NEW@<module>@start_gdi.py_slice.py,Full Attack Chain,Full Attack Chain
 HackerDoomsday,15,2b860,NEW@<module>@gui.py_slice.py,Full Attack Chain,Full Attack Chain
-HackerDoomsday,15,2b860,NEW@<module>@regedit_and_virus_safe.py_slice.py,Core Attack Chain,Core Attack Chain
+HackerDoomsday,15,2b860,NEW@<module>@regedit_and_virus_safe.py_slice.py,Full Attack Chain,Core Attack Chain,slice extract unfully
 HackerDoomsday,16,de183,NEW@<module>@main.py_slice.py,Full Attack Chain,Full Attack Chain
 HackerDoomsday,16,de183,NEW@<module>@multimedia.py_slice.py,Full Attack Chain,Full Attack Chain
-HackerDoomsday,16,de183,NEW@<module>@start_gdi.py_slice.py,Undetermined,Core Attack Chain
+HackerDoomsday,16,de183,NEW@<module>@start_gdi.py_slice.py,Full Attack Chain,Full Attack Chain
 HackerDoomsday,16,de183,NEW@<module>@gui.py_slice.py,Full Attack Chain,Full Attack Chain
-HackerDoomsday,16,de183,NEW@<module>@regedit_and_virus_safe.py_slice.py,Core Attack Chain,Core Attack Chain
+HackerDoomsday,16,de183,NEW@<module>@regedit_and_virus_safe.py_slice.py,Full Attack Chain,Core Attack Chain,slice extract unfully
 HackerDoomsday,17,2bf39,NEW@<module>@main.py_slice.py,Full Attack Chain,Full Attack Chain
 HackerDoomsday,17,2bf39,NEW@<module>@multimedia.py_slice.py,Full Attack Chain,Full Attack Chain
 HackerDoomsday,17,2bf39,<module>@start_gdi.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 HackerDoomsday,17,2bf39,NEW@<module>@gui.py_slice.py,Full Attack Chain,Core Attack Chain,K:Hallucination
-HackerDoomsday,17,2bf39,NEW@<module>@regedit_and_virus_safe.py_slice.py,Core Attack Chain,Undetermined
+HackerDoomsday,17,2bf39,NEW@<module>@regedit_and_virus_safe.py_slice.py,Full Attack Chain,Core Attack Chain,slice extract unfully
 HackerDoomsday,18,b4360,NEW@<module>@main.py_slice.py,Full Attack Chain,Full Attack Chain
 HackerDoomsday,18,b4360,NEW@worker@regedit_and_virus_safe.py_slice.py,Benign,Benign
 HackerDoomsday,18,b4360,<module>@start_gdi.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
@@ -473,14 +473,14 @@ HackerDoomsday,19,09785,NEW@<module>@gui.py_slice.py,Full Attack Chain,Full Atta
 HackerDoomsday,19,09785,<module>@regedit_and_virus_safe.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 HackerDoomsday,20,9b8ec,NEW@<module>@main.py_slice.py,Full Attack Chain,Full Attack Chain
 HackerDoomsday,20,9b8ec,NEW@<module>@multimedia.py_slice.py,Full Attack Chain,Full Attack Chain
-HackerDoomsday,20,9b8ec,NEW@<module>@start_gdi.py_slice.py,Undetermined,Core Attack Chain
+HackerDoomsday,20,9b8ec,NEW@<module>@start_gdi.py_slice.py,Full Attack Chain,Full Attack Chain
 HackerDoomsday,20,9b8ec,NEW@<module>@gui.py_slice.py,Full Attack Chain,Full Attack Chain
-HackerDoomsday,20,9b8ec,NEW@<module>@regedit_and_virus_safe.py_slice.py,Core Attack Chain,Core Attack Chain
+HackerDoomsday,20,9b8ec,NEW@<module>@regedit_and_virus_safe.py_slice.py,Full Attack Chain,Core Attack Chain,slice extract unfully
 HackerDoomsday,21,88b3c,NEW@<module>@main.py_slice.py,Full Attack Chain,Full Attack Chain
 HackerDoomsday,21,88b3c,NEW@<module>@multimedia.py_slice.py,Full Attack Chain,Full Attack Chain
 HackerDoomsday,21,88b3c,<module>@start_gdi.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 HackerDoomsday,21,88b3c,NEW@<module>@gui.py_slice.py,Full Attack Chain,Full Attack Chain
-HackerDoomsday,21,88b3c,NEW@<module>@regedit_and_virus_safe.py_slice.py,Core Attack Chain,Core Attack Chain
+HackerDoomsday,21,88b3c,NEW@<module>@regedit_and_virus_safe.py_slice.py,Full Attack Chain,Core Attack Chain,slice extract unfully
 HackerDoomsday,22,3b318,NEW@<module>@main.py_slice.py,Full Attack Chain,Full Attack Chain
 HackerDoomsday,22,3b318,NEW@<module>@multimedia.py_slice.py,Full Attack Chain,Full Attack Chain
 HackerDoomsday,22,3b318,<module>@start_gdi.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
@@ -490,12 +490,12 @@ HackerDoomsday,23,cc00d,NEW@<module>@main.py_slice.py,Full Attack Chain,Full Att
 HackerDoomsday,23,cc00d,NEW@<module>@multimedia.py_slice.py,Full Attack Chain,Full Attack Chain
 HackerDoomsday,23,cc00d,<module>@start_gdi.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 HackerDoomsday,23,cc00d,NEW@<module>@gui.py_slice.py,Full Attack Chain,Full Attack Chain
-HackerDoomsday,23,cc00d,NEW@<module>@regedit_and_virus_safe.py_slice.py,Core Attack Chain,Core Attack Chain
+HackerDoomsday,23,cc00d,NEW@<module>@regedit_and_virus_safe.py_slice.py,Full Attack Chain,Full Attack Chain
 Hallucinate,0,1ab46,NEW@<module>@compiler.py_slice.py,Benign,Benign
 Hallucinate,1,1971e,NEW@<module>@compiler.py_slice.py,Benign,Benign
 Hallucinate,2,cf047,<module>@compiler.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 Hallucinate,3,ea14a,<module>@compiler.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
-Hallucinate,4,961c9,NEW@<module>@main.py_slice.py,Full Attack Chain,Core Attack Chain
+Hallucinate,4,961c9,NEW@<module>@main.py_slice.py,Full Attack Chain,Core Attack Chain,slice extract unfully
 Hallucinate,4,961c9,<module>@compiler.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 Infinite-Folder-Virus,0,ba7bd,attacker.py__module__slice.py,SAME AS BEFORE,SAME AS BEFORE
 Infinite-Folder-Virus,1,4a9ea,NEW@<module>@attacker.py_slice.py,Full Attack Chain,Full Attack Chain
@@ -510,10 +510,10 @@ Infinite-Folder-Virus,6,90d1d,NEW@<module>@attacker.py_slice.py,Full Attack Chai
 Infinite-Folder-Virus,6,90d1d,NEW@<module>@base.py_slice.py,Undetermined,Undetermined
 Infinite-Folder-Virus,7,a6604,NEW@<module>@attacker.py_slice.py,Full Attack Chain,Full Attack Chain
 Infinite-Folder-Virus,7,a6604,NEW@<module>@base.py_slice.py,Undetermined,Undetermined
-Infinite-Folder-Virus,8,4f6a1,NEW@<module>@test.py_slice.py,Benign,Core Attack Chain
+Infinite-Folder-Virus,8,4f6a1,NEW@<module>@test.py_slice.py,Full Attack Chain,Full Attack Chain
 Infinite-Folder-Virus,8,4f6a1,NEW@<module>@attacker.py_slice.py,Full Attack Chain,Full Attack Chain
 Infinite-Folder-Virus,8,4f6a1,NEW@<module>@base.py_slice.py,Full Attack Chain,Full Attack Chain
-Infinite-Folder-Virus,9,f5eb8,NEW@<module>@test.py_slice.py,Benign,Core Attack Chain
+Infinite-Folder-Virus,9,f5eb8,NEW@<module>@test.py_slice.py,Benign,Benign
 Infinite-Folder-Virus,9,f5eb8,NEW@<module>@attacker.py_slice.py,Full Attack Chain,Full Attack Chain
 Infinite-Folder-Virus,9,f5eb8,NEW@<module>@base.py_slice.py,Full Attack Chain,Full Attack Chain
 Infinite-Folder-Virus,10,eb4ab,NEW@<module>@attacker.py_slice.py,Full Attack Chain,Full Attack Chain
@@ -1730,7 +1730,7 @@ MakeMalware_EthicalHacking,9,31751,<module>@Project_Keylogger_callKeylogger.py_s
 MakeMalware_EthicalHacking,9,31751,<module>@Project_Backdoor_executeCommandUsingConnection.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 MakeMalware_EthicalHacking,9,31751,<module>@demo6_DownloadExecuteReport.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 MakeMalware_EthicalHacking,9,31751,<module>@demo7_DownloadExecuteReportDelete.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
-MakeMalware_EthicalHacking,9,31751,NEW@<module>@Project_Backdoor_connect.py_slice.py,Core Attack Chain,Undetermined
+MakeMalware_EthicalHacking,9,31751,NEW@<module>@Project_Backdoor_connect.py_slice.py,Undetermined,Undetermined
 MakeMalware_EthicalHacking,10,6b7e3,<module>@demo2_getReportByEmail.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 MakeMalware_EthicalHacking,10,6b7e3,<module>@demo4_downloadFilesOnTarget.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 MakeMalware_EthicalHacking,10,6b7e3,<module>@demo1_executeCommands.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
@@ -1751,7 +1751,7 @@ MakeMalware_EthicalHacking,11,fa6ae,NEW@<module>@demo6_DownloadExecuteReport.py_
 MakeMalware_EthicalHacking,11,fa6ae,<module>@Project_Backdoor_chat.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 MakeMalware_EthicalHacking,11,fa6ae,<module>@demo5_downloadAndRunFilesOnTarget.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 MakeMalware_EthicalHacking,11,fa6ae,<module>@demo3_stealWLAN.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
-MakeMalware_EthicalHacking,11,fa6ae,NEW@<module>@Project_Backdoor_talk.py_slice.py,Core Attack Chain,Undetermined
+MakeMalware_EthicalHacking,11,fa6ae,NEW@<module>@Project_Backdoor_talk.py_slice.py,Core Attack Chain,Core Attack Chain
 MakeMalware_EthicalHacking,11,fa6ae,NEW@<module>@Project_Keylogger_callKeylogger.py_slice.py,Core Attack Chain,Core Attack Chain
 MakeMalware_EthicalHacking,11,fa6ae,<module>@Project_Backdoor_connect.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 MakeMalware_EthicalHacking,11,fa6ae,<module>@Project_Backdoor_executeCommandUsingConnection.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
@@ -1775,7 +1775,7 @@ MakeMalware_EthicalHacking,13,e3fe9,<module>@demo4_downloadFilesOnTarget.py_slic
 MakeMalware_EthicalHacking,13,e3fe9,NEW@<module>@Project_Backdoor_executeCommandServer.py_slice.py,Full Attack Chain,Full Attack Chain
 MakeMalware_EthicalHacking,13,e3fe9,<module>@demo1_executeCommands.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 MakeMalware_EthicalHacking,13,e3fe9,NEW@<module>@Project_Backdoor_executeCommandServerInteractive.py_slice.py,Core Attack Chain,Core Attack Chain
-MakeMalware_EthicalHacking,13,e3fe9,NEW@<body>@Project_Backdoor_listen.py_slice.py,Core Attack Chain,Undetermined
+MakeMalware_EthicalHacking,13,e3fe9,NEW@<body>@Project_Backdoor_listen.py_slice.py,Undetermined,Undetermined
 MakeMalware_EthicalHacking,13,e3fe9,NEW@<module>@Project_Backdoor_executeCommandServerInteractiveUpload.py_slice.py,Full Attack Chain,Full Attack Chain
 MakeMalware_EthicalHacking,13,e3fe9,<module>@Project_Backdoor_chat.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 MakeMalware_EthicalHacking,13,e3fe9,NEW@<module>@Project_Backdoor_listen.py_slice.py,Undetermined,Undetermined
@@ -1795,7 +1795,7 @@ MakeMalware_EthicalHacking,14,4bc0e,<module>@demo4_downloadFilesOnTarget.py_slic
 MakeMalware_EthicalHacking,14,4bc0e,NEW@<module>@Project_Backdoor_executeCommandServer.py_slice.py,Full Attack Chain,Full Attack Chain
 MakeMalware_EthicalHacking,14,4bc0e,<module>@demo1_executeCommands.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 MakeMalware_EthicalHacking,14,4bc0e,NEW@<module>@Project_Backdoor_executeCommandServerInteractive.py_slice.py,Core Attack Chain,Core Attack Chain
-MakeMalware_EthicalHacking,14,4bc0e,NEW@<body>@Project_Backdoor_listen.py_slice.py,Core Attack Chain,Undetermined
+MakeMalware_EthicalHacking,14,4bc0e,NEW@<body>@Project_Backdoor_listen.py_slice.py,Undetermined,Undetermined
 MakeMalware_EthicalHacking,14,4bc0e,NEW@<module>@Project_Backdoor_executeCommandServerInteractiveUpload.py_slice.py,Full Attack Chain,Full Attack Chain
 MakeMalware_EthicalHacking,14,4bc0e,<module>@Project_Backdoor_chat.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 MakeMalware_EthicalHacking,14,4bc0e,<body>@Project_Keylogger_keylogger.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
@@ -1886,12 +1886,12 @@ Malicious-Debian-Package-Maker,3,8111f,NEW@<module>@main.py_slice.py,Undetermine
 Malicious-Debian-Package-Maker,4,8c58b,NEW@<module>@main.py_slice.py,Benign,Benign
 Malicious-Debian-Package-Maker,5,5b718,NEW@<module>@main.py_slice.py,Undetermined,Undetermined
 Malicious-Debian-Package-Maker,6,f45f7,NEW@<module>@main.py_slice.py,Undetermined,Undetermined
-Malicious-Debian-Package-Maker,7,08b1a,NEW@<module>@main.py_slice.py,Full Attack Chain,Core Attack Chain
-Malicious-Debian-Package-Maker,8,5b3ce,NEW@<module>@main.py_slice.py,Full Attack Chain,Core Attack Chain
-Malicious-Debian-Package-Maker,9,5acf1,NEW@<module>@main.py_slice.py,Full Attack Chain,Core Attack Chain
+Malicious-Debian-Package-Maker,7,08b1a,NEW@<module>@main.py_slice.py,Undetermined,Undetermined
+Malicious-Debian-Package-Maker,8,5b3ce,NEW@<module>@main.py_slice.py,Full Attack Chain,Full Attack Chain
+Malicious-Debian-Package-Maker,9,5acf1,NEW@<module>@main.py_slice.py,Full Attack Chain,Full Attack Chain
 Malicious-Debian-Package-Maker,10,44e01,<module>@main.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
-Malicious-Debian-Package-Maker,11,fb3cd,NEW@<module>@main.py_slice.py,Full Attack Chain,Core Attack Chain
-Malicious-Debian-Package-Maker,12,563e4,NEW@<module>@main.py_slice.py,Full Attack Chain,Core Attack Chain
+Malicious-Debian-Package-Maker,11,fb3cd,NEW@<module>@main.py_slice.py,Full Attack Chain,Full Attack Chain
+Malicious-Debian-Package-Maker,12,563e4,NEW@<module>@main.py_slice.py,Full Attack Chain,Full Attack Chain
 Malware,0,efd75,NEW@<module>@encrypt.py_slice.py,Core Attack Chain,Core Attack Chain
 Malware,1,1cd73,<module>@encrypt.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 Malware,1,1cd73,NEW@<module>@decrypt.py_slice.py,Core Attack Chain,Core Attack Chain
@@ -1920,7 +1920,7 @@ Malware,10,123bd,NEW@<module>@encrypt.py_slice.py,Core Attack Chain,Core Attack 
 Malware,10,123bd,<module>@decrypt.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 Malware,11,f560c,NEW@<module>@main.py_slice.py,Full Attack Chain,Full Attack Chain
 Malware,11,f560c,<module>@encrypt.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
-Malware,11,f560c,NEW@<module>@decrypt.py_slice.py,Core Attack Chain,Undetermined
+Malware,11,f560c,NEW@<module>@decrypt.py_slice.py,Undetermined,Undetermined
 Malware,12,3d6cb,NEW@<module>@main.py_slice.py,Full Attack Chain,Full Attack Chain
 Malware,12,3d6cb,<module>@encrypt.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 Malware,12,3d6cb,<module>@decrypt.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
@@ -2062,7 +2062,7 @@ MirageLink-rat-gui,11,e0592,<module>@client_fold_modules_main.py_slice.py,SAME A
 MirageLink-rat-gui,12,51b32,NEW@<body>@rat_gui.py_slice.py,Core Attack Chain,Core Attack Chain
 MirageLink-rat-gui,12,51b32,NEW@<module>@rat_gui.py_slice.py,Core Attack Chain,Core Attack Chain
 MirageLink-rat-gui,13,0c0f3,NEW@<body>@frames_plugins_remote_desktop.py_slice.py,Undetermined,Core Attack Chain
-MirageLink-rat-gui,13,0c0f3,NEW@<module>@server_gui.py_slice.py,Core Attack Chain,Undetermined
+MirageLink-rat-gui,13,0c0f3,NEW@<module>@server_gui.py_slice.py,Undetermined,Undetermined
 MirageLink-rat-gui,13,0c0f3,NEW@<module>@config.py_slice.py,Benign,Benign
 MirageLink-rat-gui,13,0c0f3,NEW@<body>@frames_function.py_slice.py,Core Attack Chain,Core Attack Chain
 MirageLink-rat-gui,13,0c0f3,NEW@<body>@frames_plugins_console.py_slice.py,Undetermined,Undetermined
@@ -2153,14 +2153,14 @@ MirageLink-rat-gui,19,cf4ae,NEW@<body>@server_gui.py_slice.py,Core Attack Chain,
 MirageLink-rat-gui,19,cf4ae,<body>@frames_plugins_console.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 MirageLink-rat-gui,19,cf4ae,NEW@<body>@frames_plugins_remote_tool.py_slice.py,Core Attack Chain,Core Attack Chain
 MirageLink-rat-gui,20,16f9f,<module>@config.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
-MirageLink-rat-gui,20,16f9f,NEW@<module>@server_gui.py_slice.py,Undetermined,Undetermined
+MirageLink-rat-gui,20,16f9f,NEW@<module>@server_gui.py_slice.py,Core Attack Chain,Core Attack Chain
 MirageLink-rat-gui,20,16f9f,NEW@<body>@frames_function.py_slice.py,Core Attack Chain,Core Attack Chain
 MirageLink-rat-gui,20,16f9f,<body>@frames_build_config.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 MirageLink-rat-gui,20,16f9f,NEW@<body>@frames_plugins_console.py_slice.py,Undetermined,Undetermined
 MirageLink-rat-gui,20,16f9f,NEW@<body>@server_gui.py_slice.py,Core Attack Chain,Core Attack Chain
 MirageLink-rat-gui,20,16f9f,NEW@<body>@frames_plugins_remote_tool.py_slice.py,Core Attack Chain,Core Attack Chain
 MirageLink-rat-gui,20,16f9f,NEW@<body>@frames_settings.py_slice.py,Benign,Benign
-MirageLink-rat-gui,21,7a380,NEW@<module>@server_gui.py_slice.py,Undetermined,Undetermined
+MirageLink-rat-gui,21,7a380,NEW@<module>@server_gui.py_slice.py,Core Attack Chain,Core Attack Chain
 MirageLink-rat-gui,21,7a380,NEW@<module>@config.py_slice.py,Benign,Benign
 MirageLink-rat-gui,21,7a380,NEW@<body>@frames_function.py_slice.py,Core Attack Chain,Core Attack Chain
 MirageLink-rat-gui,21,7a380,NEW@<body>@server_gui.py_slice.py,Core Attack Chain,Core Attack Chain
@@ -2179,7 +2179,7 @@ MirageLink-rat-gui,22,ba9e2,NEW@<body>@server_gui.py_slice.py,Core Attack Chain,
 MirageLink-rat-gui,22,ba9e2,<body>@frames_plugins_console.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 MirageLink-rat-gui,22,ba9e2,NEW@<body>@frames_plugins_remote_tool.py_slice.py,Core Attack Chain,Core Attack Chain
 MirageLink-rat-gui,22,ba9e2,NEW@<body>@frames_settings.py_slice.py,Benign,Benign
-MirageLink-rat-gui,22,ba9e2,NEW@<body>@frames_plugins_file_manager.py_slice.py,Benign,Benign
+MirageLink-rat-gui,22,ba9e2,NEW@<body>@frames_plugins_file_manager.py_slice.py,Undetermined,Undetermined
 MirageLink-rat-gui,23,b2e6a,<module>@config.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 MirageLink-rat-gui,23,b2e6a,NEW@<module>@server_gui.py_slice.py,Core Attack Chain,Core Attack Chain
 MirageLink-rat-gui,23,b2e6a,NEW@<body>@frames_function.py_slice.py,Core Attack Chain,Core Attack Chain
@@ -2188,7 +2188,7 @@ MirageLink-rat-gui,23,b2e6a,NEW@<body>@server_gui.py_slice.py,Core Attack Chain,
 MirageLink-rat-gui,23,b2e6a,<body>@frames_plugins_console.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 MirageLink-rat-gui,23,b2e6a,NEW@<body>@frames_plugins_remote_tool.py_slice.py,Core Attack Chain,Core Attack Chain
 MirageLink-rat-gui,23,b2e6a,NEW@<body>@frames_settings.py_slice.py,Benign,Benign
-MirageLink-rat-gui,23,b2e6a,NEW@<body>@frames_plugins_file_manager.py_slice.py,Core Attack Chain,Undetermined
+MirageLink-rat-gui,23,b2e6a,NEW@<body>@frames_plugins_file_manager.py_slice.py,Undetermined,Undetermined
 MirageLink-rat-gui,24,b1fa2,<module>@config.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 MirageLink-rat-gui,24,b1fa2,NEW@<module>@server_gui.py_slice.py,Core Attack Chain,Core Attack Chain
 MirageLink-rat-gui,24,b1fa2,NEW@<body>@frames_function.py_slice.py,Core Attack Chain,Core Attack Chain
@@ -2197,7 +2197,7 @@ MirageLink-rat-gui,24,b1fa2,NEW@<body>@server_gui.py_slice.py,Core Attack Chain,
 MirageLink-rat-gui,24,b1fa2,<body>@frames_plugins_console.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 MirageLink-rat-gui,24,b1fa2,NEW@<body>@frames_plugins_remote_tool.py_slice.py,Core Attack Chain,Core Attack Chain
 MirageLink-rat-gui,24,b1fa2,NEW@<body>@frames_settings.py_slice.py,Benign,Benign
-MirageLink-rat-gui,24,b1fa2,NEW@<body>@frames_plugins_file_manager.py_slice.py,Core Attack Chain,Core Attack Chain
+MirageLink-rat-gui,24,b1fa2,NEW@<body>@frames_plugins_file_manager.py_slice.py,Undetermined,Undetermined
 MirageLink-rat-gui,25,13334,<module>@config.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 MirageLink-rat-gui,25,13334,NEW@<module>@server_gui.py_slice.py,Core Attack Chain,Core Attack Chain
 MirageLink-rat-gui,25,13334,NEW@<body>@server_gui.py_slice.py,Core Attack Chain,Core Attack Chain
@@ -2206,7 +2206,7 @@ MirageLink-rat-gui,25,13334,NEW@<body>@frames_build_config.py_slice.py,Benign,Un
 MirageLink-rat-gui,25,13334,<body>@frames_plugins_console.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 MirageLink-rat-gui,25,13334,NEW@<body>@frames_plugins_remote_tool.py_slice.py,Core Attack Chain,Core Attack Chain
 MirageLink-rat-gui,25,13334,NEW@<body>@frames_settings.py_slice.py,Benign,Benign
-MirageLink-rat-gui,25,13334,NEW@<body>@frames_plugins_file_manager.py_slice.py,Core Attack Chain,Undetermined
+MirageLink-rat-gui,25,13334,NEW@<body>@frames_plugins_file_manager.py_slice.py,Undetermined,Undetermined
 MirageLink-rat-gui,26,7761a,NEW@<module>@server_gui.py_slice.py,Core Attack Chain,Core Attack Chain
 MirageLink-rat-gui,26,7761a,NEW@<module>@config.py_slice.py,Benign,Benign
 MirageLink-rat-gui,26,7761a,NEW@<body>@frames_function.py_slice.py,Core Attack Chain,Core Attack Chain
@@ -2262,7 +2262,7 @@ MirageLink-rat-gui,30,cb51a,NEW@<body>@frames_plugins_remote_tool.py_slice.py,Co
 MirageLink-rat-gui,30,cb51a,NEW@<module>@builder_clients_data_client_plugins_client_main.py_slice.py,Core Attack Chain,Core Attack Chain
 MirageLink-rat-gui,30,cb51a,NEW@<body>@frames_settings.py_slice.py,Benign,Benign
 MirageLink-rat-gui,30,cb51a,NEW@<body>@builder_clients_data_client_plugins_client_file_streamer.py_slice.py,Benign,Benign
-MirageLink-rat-gui,30,cb51a,NEW@<body>@frames_plugins_file_manager.py_slice.py,Benign,Undetermined
+MirageLink-rat-gui,30,cb51a,NEW@<body>@frames_plugins_file_manager.py_slice.py,Undetermined,Undetermined
 MirageLink-rat-gui,30,cb51a,NEW@<body>@builder_clients_data_client_client.py_slice.py,Full Attack Chain,Full Attack Chain
 NetWorm,0,77e84,NEW@<module>@worm.py_slice.py,Benign,Benign
 NetWorm,1,1ae15,NEW@<module>@worm.py_slice.py,Benign,Benign
@@ -2495,21 +2495,21 @@ python-malware,5,28b65,<module>@app.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 python-malware,5,28b65,<module>@keylogger.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 python-malware,5,28b65,show@app.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 python-malware,6,31a0c,<module>@my_request.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
-python-malware,6,31a0c,NEW@<module>@main.py_slice.py,Full Attack Chain,Core Attack Chain
+python-malware,6,31a0c,NEW@<module>@main.py_slice.py,Full Attack Chain,Core Attack Chain,slice extract unfully
 python-malware,6,31a0c,<module>@sendmail.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 python-malware,6,31a0c,NEW@<module>@mail_event.py_slice.py,Full Attack Chain,Full Attack Chain
 python-malware,6,31a0c,<module>@app.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 python-malware,6,31a0c,<module>@keylogger.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 python-malware,6,31a0c,show@app.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 python-malware,7,09b46,<module>@my_request.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
-python-malware,7,09b46,NEW@<module>@main.py_slice.py,Full Attack Chain,Core Attack Chain
+python-malware,7,09b46,NEW@<module>@main.py_slice.py,Full Attack Chain,Core Attack Chain,slice extract unfully
 python-malware,7,09b46,<module>@sendmail.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 python-malware,7,09b46,<module>@mail_event.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 python-malware,7,09b46,<module>@app.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 python-malware,7,09b46,<module>@keylogger.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 python-malware,7,09b46,show@app.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 python-malware,8,22dee,<module>@my_request.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
-python-malware,8,22dee,NEW@<module>@main.py_slice.py,Full Attack Chain,Core Attack Chain
+python-malware,8,22dee,NEW@<module>@main.py_slice.py,Full Attack Chain,Core Attack Chain,slice extract unfully
 python-malware,8,22dee,<module>@sendmail.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 python-malware,8,22dee,<module>@mail_event.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 python-malware,8,22dee,<module>@app.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
@@ -2969,8 +2969,8 @@ ransomware_malware,3,e7f34,NEW@<body>@ransomware.py_slice.py,Benign,Benign
 ransomware_malware,4,19851,NEW@<body>@ransomware.py_slice.py,Core Attack Chain,Core Attack Chain
 ransomware_malware,5,c9186,<body>@ransomware.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 ScaryMalware,0,b54b5,NEW@<module>@malware.py_slice.py,Benign,Benign
-ScaryMalware,1,57d43,NEW@<module>@malware.py_slice.py,Core Attack Chain,Core Attack Chain
-ScaryMalware,2,702da,NEW@<module>@malware.py_slice.py,Core Attack Chain,Core Attack Chain
+ScaryMalware,1,57d43,NEW@<module>@Malware.py_slice.py,Full Attack Chain,Core Attack Chain,slice extract unfully
+ScaryMalware,2,702da,NEW@<module>@Malware.py_slice.py,Full Attack Chain,Core Attack Chain,slice extract unfully
 ScaryMalware,3,d3e8c,NEW@<module>@malware.py_slice.py,Full Attack Chain,Full Attack Chain
 ScaryMalware,4,e22de,NEW@<module>@malware.py_slice.py,Full Attack Chain,Full Attack Chain
 ScaryMalware,5,c5ff7,NEW@<module>@malware.py_slice.py,Full Attack Chain,Core Attack Chain
@@ -2983,7 +2983,7 @@ shameleon,0,3759a,NEW@<body>@shameleon_client_modules_shell.py_slice.py,Core Att
 shameleon,0,3759a,NEW@post_input@misc_dummy_server_dummy_server.py_slice.py,Benign,Benign
 shameleon,0,3759a,NEW@get_result@misc_dummy_server_dummy_server.py_slice.py,Benign,Benign
 shameleon,0,3759a,NEW@post_output@misc_dummy_server_dummy_server.py_slice.py,Benign,Benign
-shameleon,0,3759a,NEW@<module>@client.py_slice.py,Core Attack Chain,Undetermined
+shameleon,0,3759a,NEW@<module>@client.py_slice.py,Core Attack Chain,Undetermined,B:intent error
 shameleon,0,3759a,NEW@<body>@shameleon_client_providers_dummy.py_slice.py,Undetermined,Undetermined
 shameleon,0,3759a,NEW@<body>@shameleon_client_providers_base.py_slice.py,Undetermined,Undetermined
 shameleon,0,3759a,NEW@get_input@misc_dummy_server_dummy_server.py_slice.py,Benign,Benign
@@ -2993,7 +2993,7 @@ shameleon,1,00828,<body>@misc_dummy_server_dummy_server.py_slice.py,SAME AS BEFO
 shameleon,1,00828,post_output@misc_dummy_server_dummy_server.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 shameleon,1,00828,NEW@_send_payload@shameleon_client_providers_dummy.py_slice.py,Undetermined,Undetermined
 shameleon,1,00828,get_input@misc_dummy_server_dummy_server.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
-shameleon,1,00828,NEW@<module>@client.py_slice.py,Core Attack Chain,Undetermined
+shameleon,1,00828,NEW@<module>@client.py_slice.py,Core Attack Chain,Core Attack Chain
 shameleon,1,00828,NEW@<body>@shameleon_client_providers_base.py_slice.py,Undetermined,Undetermined
 shameleon,1,00828,get_result@misc_dummy_server_dummy_server.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 shameleon,1,00828,post_input@misc_dummy_server_dummy_server.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
@@ -3102,13 +3102,13 @@ simple-virus-python,12,43792,NEW@infect@virus.py_slice.py,Core Attack Chain,Core
 simple-virus-python,12,43792,NEW@<module>@search.py_slice.py,Benign,Benign
 simple-virus-python,13,09236,<module>@virus.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 simple-virus-python,13,09236,infect@virus.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
-Spyware,0,2ee4e,NEW@<module>@main.py_slice.py,Full Attack Chain,Core Attack Chain
+Spyware,0,2ee4e,NEW@<module>@main.py_slice.py,Full Attack Chain,Core Attack Chain,slice extract unfully
 Spyware,0,2ee4e,NEW@<body>@WindowTracker.py_slice.py,Core Attack Chain,Core Attack Chain
 Spyware,0,2ee4e,NEW@<body>@keylogger.py_slice.py,Core Attack Chain,Core Attack Chain
 Spyware,0,2ee4e,NEW@<module>@Screenshot.py_slice.py,Undetermined,Undetermined
 Spyware,0,2ee4e,NEW@<body>@Screenshot.py_slice.py,Undetermined,Undetermined
 Spyware,0,2ee4e,NEW@<body>@FileHandler.py_slice.py,Undetermined,Undetermined
-Spyware,1,84840,NEW@<module>@main.py_slice.py,Full Attack Chain,Core Attack Chain
+Spyware,1,84840,NEW@<module>@main.py_slice.py,Full Attack Chain,Core Attack Chain,slice extract unfully
 Spyware,1,84840,NEW@<body>@WindowTracker.py_slice.py,Core Attack Chain,Core Attack Chain
 Spyware,1,84840,NEW@<module>@keylogger.py_slice.py,Core Attack Chain,Core Attack Chain
 Spyware,1,84840,NEW@<body>@keylogger.py_slice.py,Core Attack Chain,Core Attack Chain
@@ -3116,7 +3116,7 @@ Spyware,1,84840,<body>@FileHandler.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 Spyware,1,84840,<module>@Screenshot.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 Spyware,1,84840,<body>@Screenshot.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 Spyware,1,84840,NEW@<module>@WindowTracker.py_slice.py,Core Attack Chain,Core Attack Chain
-Spyware,2,7952d,NEW@<module>@main.py_slice.py,Full Attack Chain,Core Attack Chain
+Spyware,2,7952d,NEW@<module>@main.py_slice.py,Full Attack Chain,Core Attack Chain,slice extract unfully
 Spyware,2,7952d,NEW@<body>@WindowTracker.py_slice.py,Core Attack Chain,Core Attack Chain
 Spyware,2,7952d,NEW@<module>@keylogger.py_slice.py,Core Attack Chain,Core Attack Chain
 Spyware,2,7952d,NEW@<body>@keylogger.py_slice.py,Core Attack Chain,Core Attack Chain
@@ -3124,7 +3124,7 @@ Spyware,2,7952d,<module>@Screenshot.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 Spyware,2,7952d,<body>@Screenshot.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 Spyware,2,7952d,NEW@<module>@WindowTracker.py_slice.py,Core Attack Chain,Core Attack Chain
 Spyware,2,7952d,NEW@<body>@FileHandler.py_slice.py,Benign,Benign
-Spyware,3,53c4a,NEW@<module>@main.py_slice.py,Full Attack Chain,Core Attack Chain
+Spyware,3,53c4a,NEW@<module>@main.py_slice.py,Full Attack Chain,Core Attack Chain,slice extract unfully
 Spyware,3,53c4a,NEW@<body>@WindowTracker.py_slice.py,Core Attack Chain,Core Attack Chain
 Spyware,3,53c4a,<body>@keylogger.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 Spyware,3,53c4a,<body>@FileHandler.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
@@ -3132,7 +3132,7 @@ Spyware,3,53c4a,<module>@keylogger.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 Spyware,3,53c4a,NEW@<module>@Screenshot.py_slice.py,Undetermined,Undetermined
 Spyware,3,53c4a,NEW@<module>@WindowTracker.py_slice.py,Core Attack Chain,Core Attack Chain
 Spyware,3,53c4a,NEW@<body>@Screenshot.py_slice.py,Undetermined,Undetermined
-Spyware,4,289d2,NEW@<module>@main.py_slice.py,Full Attack Chain,Core Attack Chain
+Spyware,4,289d2,NEW@<module>@main.py_slice.py,Full Attack Chain,Core Attack Chain,slice extract unfully
 Spyware,4,289d2,NEW@<body>@WindowTracker.py_slice.py,Core Attack Chain,Core Attack Chain
 Spyware,4,289d2,<body>@keylogger.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 Spyware,4,289d2,<body>@FileHandler.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
@@ -3145,7 +3145,7 @@ Spyware,5,d5db4,NEW@<body>@Malware.py_slice.py,Core Attack Chain,Core Attack Cha
 Spyware,5,d5db4,NEW@<module>@command_test.py_slice.py,Undetermined,Undetermined
 Spyware,5,d5db4,NEW@<module>@Screenshot.py_slice.py,Undetermined,Undetermined
 Spyware,5,d5db4,NEW@<module>@WindowTracker.py_slice.py,Core Attack Chain,Core Attack Chain
-Spyware,5,d5db4,NEW@<module>@Malware.py_slice.py,Core Attack Chain,Core Attack Chain
+Spyware,5,d5db4,NEW@<module>@Malware.py_slice.py,Full Attack Chain,Core Attack Chain,slice extract unfully
 Spyware,5,d5db4,NEW@<body>@Screenshot.py_slice.py,Core Attack Chain,Core Attack Chain
 Spyware,5,d5db4,NEW@<body>@FileHandler.py_slice.py,Undetermined,Undetermined
 Spyware,6,21e7f,NEW@<body>@WindowTracker.py_slice.py,Core Attack Chain,Core Attack Chain
@@ -3153,13 +3153,13 @@ Spyware,6,21e7f,NEW@<body>@keylogger.py_slice.py,Core Attack Chain,Core Attack C
 Spyware,6,21e7f,<module>@command_test.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 Spyware,6,21e7f,NEW@<body>@Malware.py_slice.py,Core Attack Chain,Core Attack Chain
 Spyware,6,21e7f,NEW@<body>@Configuration.py_slice.py,Core Attack Chain,Core Attack Chain
-Spyware,6,21e7f,NEW@<module>@Malware.py_slice.py,Core Attack Chain,Core Attack Chain
+Spyware,6,21e7f,NEW@<module>@Malware.py_slice.py,Full Attack Chain,Core Attack Chain,slice extract unfully
 Spyware,7,47253,NEW@<body>@WindowTracker.py_slice.py,Core Attack Chain,Core Attack Chain
 Spyware,7,47253,<body>@Configuration.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 Spyware,7,47253,NEW@<body>@keylogger.py_slice.py,Core Attack Chain,Core Attack Chain
 Spyware,7,47253,<module>@command_test.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 Spyware,7,47253,NEW@<body>@Malware.py_slice.py,Core Attack Chain,Core Attack Chain
-Spyware,7,47253,NEW@<module>@Malware.py_slice.py,Core Attack Chain,Core Attack Chain
+Spyware,7,47253,NEW@<module>@Malware.py_slice.py,Full Attack Chain,Core Attack Chain,slice extract unfully
 Spyware,7,47253,NEW@<module>@FileHandler.py_slice.py,Undetermined,Undetermined
 Spyware,8,3bac0,<module>@Malware.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 Spyware,8,3bac0,<body>@keylogger.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
@@ -3172,21 +3172,21 @@ Spyware,9,401eb,NEW@executeShellCommand@Util.py_slice.py,Undetermined,Undetermin
 Spyware,9,401eb,<body>@Configuration.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 Spyware,9,401eb,NEW@<body>@keylogger.py_slice.py,Core Attack Chain,Core Attack Chain
 Spyware,9,401eb,NEW@<body>@Malware.py_slice.py,Core Attack Chain,Core Attack Chain
-Spyware,9,401eb,NEW@<module>@Malware.py_slice.py,Core Attack Chain,Core Attack Chain
+Spyware,9,401eb,NEW@<module>@Malware.py_slice.py,Full Attack Chain,Core Attack Chain,slice extract unfully
 Spyware,10,132bd,NEW@<body>@WindowTracker.py_slice.py,Core Attack Chain,Core Attack Chain
 Spyware,10,132bd,NEW@executeShellCommand@Util.py_slice.py,Undetermined,Undetermined
 Spyware,10,132bd,NEW@<body>@keylogger.py_slice.py,Core Attack Chain,Core Attack Chain
 Spyware,10,132bd,NEW@<body>@Malware.py_slice.py,Core Attack Chain,Core Attack Chain
 Spyware,10,132bd,NEW@<body>@Configuration.py_slice.py,Core Attack Chain,Core Attack Chain
 Spyware,10,132bd,NEW@<module>@json_test.py_slice.py,Benign,Benign
-Spyware,10,132bd,NEW@<module>@Malware.py_slice.py,Core Attack Chain,Core Attack Chain
+Spyware,10,132bd,NEW@<module>@Malware.py_slice.py,Full Attack Chain,Core Attack Chain,slice extract unfully
 Spyware,11,e9d43,NEW@<body>@WindowTracker.py_slice.py,Core Attack Chain,Core Attack Chain
 Spyware,11,e9d43,NEW@executeShellCommand@Util.py_slice.py,Undetermined,Undetermined
 Spyware,11,e9d43,NEW@<body>@keylogger.py_slice.py,Core Attack Chain,Core Attack Chain
 Spyware,11,e9d43,NEW@<body>@Malware.py_slice.py,Core Attack Chain,Core Attack Chain
 Spyware,11,e9d43,NEW@<body>@Configuration.py_slice.py,Core Attack Chain,Core Attack Chain
 Spyware,11,e9d43,<module>@json_test.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
-Spyware,11,e9d43,NEW@<module>@Malware.py_slice.py,Core Attack Chain,Core Attack Chain
+Spyware,11,e9d43,NEW@<module>@Malware.py_slice.py,Full Attack Chain,Core Attack Chain,slice extract unfully
 Spyware,11,e9d43,NEW@<module>@Communication.py_slice.py,Core Attack Chain,Core Attack Chain
 Spyware,11,e9d43,NEW@<body>@Communication.py_slice.py,Undetermined,Undetermined
 Spyware,12,c1f3c,NEW@<body>@WindowTracker.py_slice.py,Core Attack Chain,Core Attack Chain
@@ -3195,7 +3195,7 @@ Spyware,12,c1f3c,NEW@<body>@Malware.py_slice.py,Core Attack Chain,Core Attack Ch
 Spyware,12,c1f3c,executeShellCommand@Util.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 Spyware,12,c1f3c,NEW@<body>@Configuration.py_slice.py,Core Attack Chain,Core Attack Chain
 Spyware,12,c1f3c,<module>@json_test.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
-Spyware,12,c1f3c,NEW@<module>@Malware.py_slice.py,Core Attack Chain,Core Attack Chain
+Spyware,12,c1f3c,NEW@<module>@Malware.py_slice.py,Full Attack Chain,Core Attack Chain,slice extract unfully
 Spyware,12,c1f3c,NEW@<module>@Communication.py_slice.py,Core Attack Chain,Core Attack Chain
 Spyware,12,c1f3c,NEW@<body>@Communication.py_slice.py,Undetermined,Undetermined
 Spyware,13,ba54c,<module>@Malware.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
@@ -3214,7 +3214,7 @@ Spyware,14,63413,executeShellCommand@Util.py_slice.py,SAME AS BEFORE,SAME AS BEF
 Spyware,14,63413,NEW@<body>@Configuration.py_slice.py,Core Attack Chain,Core Attack Chain
 Spyware,14,63413,<module>@json_test.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 Spyware,14,63413,<body>@Communication.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
-Spyware,14,63413,NEW@<module>@Malware.py_slice.py,Core Attack Chain,Core Attack Chain
+Spyware,14,63413,NEW@<module>@Malware.py_slice.py,Full Attack Chain,Core Attack Chain,slice extract unfully
 Spyware,14,63413,NEW@<module>@Communication.py_slice.py,Undetermined,Undetermined
 Spyware,15,4ff70,NEW@<body>@WindowTracker.py_slice.py,Core Attack Chain,Core Attack Chain
 Spyware,15,4ff70,NEW@<module>@Configuration.py_slice.py,Core Attack Chain,Core Attack Chain
@@ -3223,7 +3223,7 @@ Spyware,15,4ff70,NEW@<body>@keylogger.py_slice.py,Core Attack Chain,Core Attack 
 Spyware,15,4ff70,NEW@<body>@Malware.py_slice.py,Core Attack Chain,Core Attack Chain
 Spyware,15,4ff70,NEW@<body>@Configuration.py_slice.py,Core Attack Chain,Core Attack Chain
 Spyware,15,4ff70,<module>@json_test.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
-Spyware,15,4ff70,NEW@<module>@Malware.py_slice.py,Core Attack Chain,Core Attack Chain
+Spyware,15,4ff70,NEW@<module>@Malware.py_slice.py,Full Attack Chain,Core Attack Chain,slice extract unfully
 Spyware,15,4ff70,NEW@<module>@Communication.py_slice.py,Core Attack Chain,Core Attack Chain
 Spyware,15,4ff70,NEW@<body>@Communication.py_slice.py,Undetermined,Undetermined
 Spyware,16,1d8cd,<body>@keylogger.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
@@ -3234,7 +3234,7 @@ Spyware,16,1d8cd,executeShellCommand@Util.py_slice.py,SAME AS BEFORE,SAME AS BEF
 Spyware,16,1d8cd,NEW@<body>@Configuration.py_slice.py,Core Attack Chain,Core Attack Chain
 Spyware,16,1d8cd,<module>@json_test.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 Spyware,16,1d8cd,<body>@Communication.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
-Spyware,16,1d8cd,NEW@<module>@Malware.py_slice.py,Core Attack Chain,Core Attack Chain
+Spyware,16,1d8cd,NEW@<module>@Malware.py_slice.py,Full Attack Chain,Core Attack Chain,slice extract unfully
 Spyware,16,1d8cd,NEW@<module>@Communication.py_slice.py,Core Attack Chain,Core Attack Chain
 Spyware,17,7c2d0,<body>@keylogger.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 Spyware,17,7c2d0,NEW@<module>@Configuration.py_slice.py,Core Attack Chain,Core Attack Chain
@@ -3244,7 +3244,7 @@ Spyware,17,7c2d0,executeShellCommand@Util.py_slice.py,SAME AS BEFORE,SAME AS BEF
 Spyware,17,7c2d0,NEW@<body>@Configuration.py_slice.py,Core Attack Chain,Core Attack Chain
 Spyware,17,7c2d0,<module>@json_test.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 Spyware,17,7c2d0,<body>@Communication.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
-Spyware,17,7c2d0,NEW@<module>@Malware.py_slice.py,Core Attack Chain,Core Attack Chain
+Spyware,17,7c2d0,NEW@<module>@Malware.py_slice.py,Full Attack Chain,Core Attack Chain,slice extract unfully
 Spyware,17,7c2d0,NEW@<module>@Communication.py_slice.py,Core Attack Chain,Core Attack Chain
 Spyware,18,34e7a,<body>@Configuration.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 Spyware,18,34e7a,NEW@<body>@keylogger.py_slice.py,Core Attack Chain,Core Attack Chain
@@ -3255,7 +3255,7 @@ Spyware,18,34e7a,executeShellCommand@Util.py_slice.py,SAME AS BEFORE,SAME AS BEF
 Spyware,18,34e7a,<module>@Communication.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 Spyware,18,34e7a,<module>@json_test.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 Spyware,18,34e7a,<body>@Communication.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
-Spyware,18,34e7a,NEW@<module>@Malware.py_slice.py,Core Attack Chain,Core Attack Chain
+Spyware,18,34e7a,NEW@<module>@Malware.py_slice.py,Full Attack Chain,Core Attack Chain,slice extract unfully
 Spyware,19,ce1f8,<module>@Malware.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 Spyware,19,ce1f8,<body>@Configuration.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 Spyware,19,ce1f8,NEW@<body>@keylogger.py_slice.py,Core Attack Chain,Core Attack Chain
@@ -3305,7 +3305,7 @@ Spyware,23,5f55f,executeShellCommand@Util.py_slice.py,SAME AS BEFORE,SAME AS BEF
 Spyware,23,5f55f,<module>@Communication.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 Spyware,23,5f55f,<module>@json_test.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 Spyware,23,5f55f,<body>@Communication.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
-Spyware,23,5f55f,NEW@<module>@Malware.py_slice.py,Core Attack Chain,Core Attack Chain
+Spyware,23,5f55f,NEW@<module>@Malware.py_slice.py,Full Attack Chain,Core Attack Chain,slice extract unfully
 Spyware,24,93974,<module>@Malware.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 Spyware,24,93974,<body>@Configuration.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 Spyware,24,93974,NEW@<body>@keylogger.py_slice.py,Core Attack Chain,Core Attack Chain
@@ -3322,7 +3322,7 @@ Spyware,25,3b7d3,NEW@<body>@keylogger.py_slice.py,Core Attack Chain,Core Attack 
 Spyware,25,3b7d3,NEW@<body>@Malware.py_slice.py,Core Attack Chain,Core Attack Chain
 Spyware,25,3b7d3,<module>@Configuration.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 Spyware,25,3b7d3,<module>@json_test.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
-Spyware,25,3b7d3,NEW@<module>@Malware.py_slice.py,Core Attack Chain,Core Attack Chain
+Spyware,25,3b7d3,NEW@<module>@Malware.py_slice.py,Full Attack Chain,Core Attack Chain,slice extract unfully
 Spyware,25,3b7d3,NEW@<module>@Communication.py_slice.py,Core Attack Chain,Core Attack Chain
 Spyware,25,3b7d3,NEW@<body>@Communication.py_slice.py,Core Attack Chain,Core Attack Chain
 Spyware,26,e91fb,NEW@<body>@WindowTracker.py_slice.py,Core Attack Chain,Core Attack Chain
@@ -3332,7 +3332,7 @@ Spyware,26,e91fb,NEW@<body>@Malware.py_slice.py,Core Attack Chain,Core Attack Ch
 Spyware,26,e91fb,<module>@Configuration.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 Spyware,26,e91fb,<module>@Communication.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 Spyware,26,e91fb,<module>@json_test.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
-Spyware,26,e91fb,NEW@<module>@Malware.py_slice.py,Core Attack Chain,Core Attack Chain
+Spyware,26,e91fb,NEW@<module>@Malware.py_slice.py,Full Attack Chain,Core Attack Chain,slice extract unfully
 Spyware,26,e91fb,NEW@<body>@Communication.py_slice.py,Core Attack Chain,Core Attack Chain
 Spyware,27,2498b,NEW@<body>@WindowTracker.py_slice.py,Core Attack Chain,Core Attack Chain
 Spyware,27,2498b,NEW@<module>@Configuration.py_slice.py,Core Attack Chain,Core Attack Chain
@@ -3340,7 +3340,7 @@ Spyware,27,2498b,NEW@<body>@keylogger.py_slice.py,Core Attack Chain,Core Attack 
 Spyware,27,2498b,NEW@<body>@Malware.py_slice.py,Core Attack Chain,Core Attack Chain
 Spyware,27,2498b,NEW@<body>@Configuration.py_slice.py,Core Attack Chain,Core Attack Chain
 Spyware,27,2498b,<module>@json_test.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
-Spyware,27,2498b,NEW@<module>@Malware.py_slice.py,Core Attack Chain,Core Attack Chain
+Spyware,27,2498b,NEW@<module>@Malware.py_slice.py,Full Attack Chain,Core Attack Chain,slice extract unfully
 Spyware,27,2498b,NEW@<module>@Communication.py_slice.py,Core Attack Chain,Core Attack Chain
 Spyware,27,2498b,NEW@<body>@Communication.py_slice.py,Core Attack Chain,Core Attack Chain
 Spyware,28,9edb2,<module>@Malware.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
@@ -3358,7 +3358,7 @@ Spyware,29,8e66b,NEW@<body>@keylogger.py_slice.py,Core Attack Chain,Core Attack 
 Spyware,29,8e66b,NEW@<body>@Malware.py_slice.py,Core Attack Chain,Core Attack Chain
 Spyware,29,8e66b,NEW@<body>@Configuration.py_slice.py,Core Attack Chain,Core Attack Chain
 Spyware,29,8e66b,<module>@json_test.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
-Spyware,29,8e66b,NEW@<module>@Malware.py_slice.py,Core Attack Chain,Core Attack Chain
+Spyware,29,8e66b,NEW@<module>@Malware.py_slice.py,Full Attack Chain,Core Attack Chain,slice extract unfully
 Spyware,29,8e66b,NEW@<body>@Communication.py_slice.py,Core Attack Chain,Core Attack Chain
 Spyware,30,318c9,NEW@<body>@WindowTracker.py_slice.py,Core Attack Chain,Core Attack Chain
 Spyware,30,318c9,<body>@Configuration.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
@@ -3366,7 +3366,7 @@ Spyware,30,318c9,NEW@<body>@keylogger.py_slice.py,Core Attack Chain,Core Attack 
 Spyware,30,318c9,NEW@<body>@Malware.py_slice.py,Core Attack Chain,Core Attack Chain
 Spyware,30,318c9,<module>@Configuration.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 Spyware,30,318c9,<module>@json_test.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
-Spyware,30,318c9,NEW@<module>@Malware.py_slice.py,Core Attack Chain,Core Attack Chain
+Spyware,30,318c9,NEW@<module>@Malware.py_slice.py,Full Attack Chain,Core Attack Chain,slice extract unfully
 Spyware,30,318c9,NEW@<body>@Communication.py_slice.py,Core Attack Chain,Core Attack Chain
 Spyware,31,e87c6,NEW@<body>@WindowTracker.py_slice.py,Core Attack Chain,Core Attack Chain
 Spyware,31,e87c6,<body>@Configuration.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
@@ -3374,7 +3374,7 @@ Spyware,31,e87c6,NEW@<body>@keylogger.py_slice.py,Core Attack Chain,Core Attack 
 Spyware,31,e87c6,NEW@<body>@Malware.py_slice.py,Core Attack Chain,Core Attack Chain
 Spyware,31,e87c6,<module>@Configuration.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 Spyware,31,e87c6,<module>@json_test.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
-Spyware,31,e87c6,NEW@<module>@Malware.py_slice.py,Core Attack Chain,Core Attack Chain
+Spyware,31,e87c6,NEW@<module>@Malware.py_slice.py,Full Attack Chain,Core Attack Chain,slice extract unfully
 Spyware,31,e87c6,NEW@<body>@Communication.py_slice.py,Core Attack Chain,Core Attack Chain
 Spyware,32,e5c24,<body>@keylogger.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 Spyware,32,e5c24,NEW@<module>@Configuration.py_slice.py,Core Attack Chain,Core Attack Chain
@@ -3383,34 +3383,34 @@ Spyware,32,e5c24,NEW@<body>@Malware.py_slice.py,Core Attack Chain,Core Attack Ch
 Spyware,32,e5c24,NEW@<body>@Configuration.py_slice.py,Core Attack Chain,Core Attack Chain
 Spyware,32,e5c24,<module>@json_test.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 Spyware,32,e5c24,<body>@Communication.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
-Spyware,32,e5c24,NEW@<module>@Malware.py_slice.py,Core Attack Chain,Core Attack Chain
+Spyware,32,e5c24,NEW@<module>@Malware.py_slice.py,Full Attack Chain,Core Attack Chain,slice extract unfully
 Spyware,33,99ba2,NEW@<body>@WindowTracker.py_slice.py,Core Attack Chain,Core Attack Chain
 Spyware,33,99ba2,NEW@<body>@keylogger.py_slice.py,Core Attack Chain,Core Attack Chain
 Spyware,33,99ba2,NEW@<body>@Malware.py_slice.py,Core Attack Chain,Core Attack Chain
 Spyware,33,99ba2,NEW@<body>@Configuration.py_slice.py,Core Attack Chain,Core Attack Chain
 Spyware,33,99ba2,<module>@json_test.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
-Spyware,33,99ba2,NEW@<module>@Malware.py_slice.py,Core Attack Chain,Core Attack Chain
+Spyware,33,99ba2,NEW@<module>@Malware.py_slice.py,Full Attack Chain,Core Attack Chain,slice extract unfully
 Spyware,33,99ba2,NEW@<body>@Communication.py_slice.py,Core Attack Chain,Core Attack Chain
 Spyware,34,5d92e,<body>@Configuration.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 Spyware,34,5d92e,NEW@<body>@keylogger.py_slice.py,Core Attack Chain,Core Attack Chain
 Spyware,34,5d92e,<body>@WindowTracker.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 Spyware,34,5d92e,NEW@<body>@Malware.py_slice.py,Core Attack Chain,Core Attack Chain
 Spyware,34,5d92e,<module>@json_test.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
-Spyware,34,5d92e,NEW@<module>@Malware.py_slice.py,Core Attack Chain,Core Attack Chain
+Spyware,34,5d92e,NEW@<module>@Malware.py_slice.py,Full Attack Chain,Core Attack Chain,slice extract unfully
 Spyware,34,5d92e,NEW@<body>@Communication.py_slice.py,Core Attack Chain,Core Attack Chain
 Spyware,35,a240a,<body>@Configuration.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 Spyware,35,a240a,NEW@<body>@keylogger.py_slice.py,Core Attack Chain,Core Attack Chain
 Spyware,35,a240a,<body>@WindowTracker.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 Spyware,35,a240a,NEW@<body>@Malware.py_slice.py,Core Attack Chain,Core Attack Chain
 Spyware,35,a240a,<module>@json_test.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
-Spyware,35,a240a,NEW@<module>@Malware.py_slice.py,Core Attack Chain,Core Attack Chain
+Spyware,35,a240a,NEW@<module>@Malware.py_slice.py,Full Attack Chain,Core Attack Chain,slice extract unfully
 Spyware,35,a240a,NEW@<body>@Communication.py_slice.py,Core Attack Chain,Core Attack Chain
 Spyware,36,3075f,<body>@Configuration.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 Spyware,36,3075f,NEW@<body>@keylogger.py_slice.py,Core Attack Chain,Core Attack Chain
 Spyware,36,3075f,<body>@WindowTracker.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 Spyware,36,3075f,NEW@<body>@Malware.py_slice.py,Core Attack Chain,Core Attack Chain
 Spyware,36,3075f,<module>@json_test.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
-Spyware,36,3075f,NEW@<module>@Malware.py_slice.py,Core Attack Chain,Core Attack Chain
+Spyware,36,3075f,NEW@<module>@Malware.py_slice.py,Full Attack Chain,Core Attack Chain,slice extract unfully
 Spyware,36,3075f,NEW@<body>@Communication.py_slice.py,Core Attack Chain,Core Attack Chain
 Spyware,37,bfadb,<module>@Malware.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 Spyware,37,bfadb,<body>@Configuration.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
@@ -3424,7 +3424,7 @@ Spyware,38,d1598,<body>@Configuration.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 Spyware,38,d1598,NEW@<body>@keylogger.py_slice.py,Core Attack Chain,Core Attack Chain
 Spyware,38,d1598,NEW@<body>@Malware.py_slice.py,Core Attack Chain,Core Attack Chain
 Spyware,38,d1598,<module>@json_test.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
-Spyware,38,d1598,NEW@<module>@Malware.py_slice.py,Core Attack Chain,Core Attack Chain
+Spyware,38,d1598,NEW@<module>@Malware.py_slice.py,Full Attack Chain,Core Attack Chain,slice extract unfully
 Spyware,38,d1598,NEW@<body>@Communication.py_slice.py,Core Attack Chain,Core Attack Chain
 Spyware,39,d6c88,<module>@Malware.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 Spyware,39,d6c88,<body>@Configuration.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
@@ -3437,28 +3437,28 @@ Spyware,40,dcccc,NEW@<body>@keylogger.py_slice.py,Core Attack Chain,Core Attack 
 Spyware,40,dcccc,NEW@<body>@Malware.py_slice.py,Core Attack Chain,Core Attack Chain
 Spyware,40,dcccc,NEW@<body>@gui_Controller.py_slice.py,Core Attack Chain,Core Attack Chain
 Spyware,40,dcccc,NEW@<body>@Configuration.py_slice.py,Core Attack Chain,Core Attack Chain
-Spyware,40,dcccc,NEW@<module>@Malware.py_slice.py,Core Attack Chain,Core Attack Chain
+Spyware,40,dcccc,NEW@<module>@Malware.py_slice.py,Full Attack Chain,Core Attack Chain,slice extract unfully
 Spyware,40,dcccc,NEW@<body>@Communication.py_slice.py,Core Attack Chain,Core Attack Chain
 Spyware,41,10f46,<body>@gui_Controller.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 Spyware,41,10f46,NEW@<body>@WindowTracker.py_slice.py,Core Attack Chain,Core Attack Chain
 Spyware,41,10f46,NEW@<body>@keylogger.py_slice.py,Core Attack Chain,Core Attack Chain
 Spyware,41,10f46,NEW@<body>@Malware.py_slice.py,Core Attack Chain,Core Attack Chain
 Spyware,41,10f46,NEW@<body>@Configuration.py_slice.py,Core Attack Chain,Core Attack Chain
-Spyware,41,10f46,NEW@<module>@Malware.py_slice.py,Core Attack Chain,Core Attack Chain
+Spyware,41,10f46,NEW@<module>@Malware.py_slice.py,Full Attack Chain,Core Attack Chain,slice extract unfully
 Spyware,41,10f46,NEW@<body>@Communication.py_slice.py,Core Attack Chain,Core Attack Chain
 Spyware,42,1e7ec,<body>@gui_Controller.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 Spyware,42,1e7ec,NEW@<body>@WindowTracker.py_slice.py,Core Attack Chain,Core Attack Chain
 Spyware,42,1e7ec,NEW@<body>@keylogger.py_slice.py,Core Attack Chain,Core Attack Chain
 Spyware,42,1e7ec,NEW@<body>@Malware.py_slice.py,Core Attack Chain,Core Attack Chain
 Spyware,42,1e7ec,NEW@<body>@Configuration.py_slice.py,Core Attack Chain,Core Attack Chain
-Spyware,42,1e7ec,NEW@<module>@Malware.py_slice.py,Core Attack Chain,Core Attack Chain
+Spyware,42,1e7ec,NEW@<module>@Malware.py_slice.py,Full Attack Chain,Core Attack Chain,slice extract unfully
 Spyware,42,1e7ec,NEW@<body>@Communication.py_slice.py,Core Attack Chain,Core Attack Chain
 Spyware,43,a444e,NEW@<body>@keylogger.py_slice.py,Core Attack Chain,Core Attack Chain
 Spyware,43,a444e,<body>@WindowTracker.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 Spyware,43,a444e,NEW@<body>@Malware.py_slice.py,Core Attack Chain,Core Attack Chain
 Spyware,43,a444e,NEW@<body>@gui_Controller.py_slice.py,Core Attack Chain,Core Attack Chain
 Spyware,43,a444e,NEW@<body>@Configuration.py_slice.py,Core Attack Chain,Core Attack Chain
-Spyware,43,a444e,NEW@<module>@Malware.py_slice.py,Core Attack Chain,Core Attack Chain
+Spyware,43,a444e,NEW@<module>@Malware.py_slice.py,Full Attack Chain,Core Attack Chain,slice extract unfully
 Spyware,43,a444e,NEW@<body>@Communication.py_slice.py,Core Attack Chain,Core Attack Chain
 Spyware,44,9650a,<body>@gui_Controller.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 Spyware,44,9650a,<module>@Malware.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
@@ -3484,7 +3484,7 @@ Spyware,46,5c8bd,<body>@WindowTracker.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 Spyware,46,5c8bd,NEW@<body>@Malware.py_slice.py,Core Attack Chain,Core Attack Chain
 Spyware,46,5c8bd,NEW@<module>@gui_FileExplorer.py_slice.py,Undetermined,Undetermined
 Spyware,46,5c8bd,NEW@WriteToFile@gui_FileExplorer.py_slice.py,Undetermined,Undetermined
-Spyware,46,5c8bd,NEW@<module>@Malware.py_slice.py,Core Attack Chain,Core Attack Chain
+Spyware,46,5c8bd,NEW@<module>@Malware.py_slice.py,Full Attack Chain,Core Attack Chain,slice extract unfully
 Spyware,46,5c8bd,NEW@DiscoverDirectory@gui_FileExplorer.py_slice.py,Undetermined,Undetermined
 Spyware,46,5c8bd,NEW@<body>@Communication.py_slice.py,Core Attack Chain,Core Attack Chain
 steal-all-files,0,6f698,NEW@<module>@script.py_slice.py,Benign,Benign
@@ -3599,7 +3599,7 @@ wanna-smile,10,3355f,<module>@bin_wanna-smile.py_slice.py,SAME AS BEFORE,SAME AS
 wanna-smile,11,dfb17,NEW@<module>@old_wanna-smile_SILENT_RUNNER.py_slice.py,Undetermined,Undetermined
 wanna-smile,11,dfb17,NEW@<module>@old_wanna-smile.py_slice.py,Full Attack Chain,Full Attack Chain
 wanna-smile,12,a3479,NEW@<module>@bin_wanna-smile.py_slice.py,Full Attack Chain,Full Attack Chain
-wanna-smile,12,a3479,NEW@<module>@bin_wanna-smile_SILENT_RUNNER.py_slice.py,Undetermined,Core Attack Chain
+wanna-smile,12,a3479,NEW@<module>@bin_wanna-smile_SILENT_RUNNER.py_slice.py,Undetermined,Undetermined
 wanna-smile,13,0ccc5,NEW@<module>@bin_wanna-smile.py_slice.py,Full Attack Chain,Full Attack Chain
 wanna-smile,13,0ccc5,<module>@bin_wanna-smile_SILENT_RUNNER.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
 wanna-smile,14,e9458,<module>@bin_wanna-smile_SILENT_RUNNER.py_slice.py,SAME AS BEFORE,SAME AS BEFORE

@@ -145,6 +145,11 @@ def get_node_pairs(project_before: project.Project, project_after: project.Proje
             continue
         
         if func_name_before and func_name_after:
+            # print(f"Trying to find similar node for {node} in function {func_name_before} -> {func_name_after}")
+            pdg_before = project_before.get_pdg_by_function(node_file, func_name_before)
+            if pdg_before is None:
+                logger.warning(f"PDG not found for {node_file} in function {func_name_before} (before)")
+                continue
             node_after = project_after.find_similar_node(
                 node_file, node, func_name_after, 
                 project_before.get_pdg_by_function(node_file, func_name_before),
@@ -384,7 +389,7 @@ def single_repo_analyze(repo_path: str,joern_workspace_path: str,io_semaphore = 
         except subprocess.CalledProcessError:
             commit_list = []
 
-        if commit_list and len(commit_list) > 100:
+        if commit_list and len(commit_list) < 100 or len(commit_list) > 300:
             logger.error(f"[{repo_name}] Skipping branch {branch_label} with {len(commit_list)} useful commits")
             branch_statuses.append("skipped")
             continue
@@ -412,7 +417,7 @@ def single_repo_analyze(repo_path: str,joern_workspace_path: str,io_semaphore = 
             
             for i in range(len(commit_list) - 1):
                 # continue
-                # if i < 20:
+                # if i < 9:
                 #     continue
                 commit_after = commit_list[i + 1]
                 # if commit_after != "81ce968cd6765da83b8f6dc9ad61edf5db697e95":
@@ -474,7 +479,7 @@ def single_repo_analyze(repo_path: str,joern_workspace_path: str,io_semaphore = 
 
 def parallel_repo_analyze(repo_dir: str, joern_workspace_path: str):
     import multiprocessing
-    pool_size = 5
+    pool_size = 2
     pool = multiprocessing.Pool(processes=pool_size)  # 根据需要调整进程数
     summary = {"success": 0, "failed": 0, "crashed": 0}
 
@@ -504,7 +509,7 @@ def parallel_repo_analyze(repo_dir: str, joern_workspace_path: str):
         # if not os.path.exists(os.path.join(joern_workspace_path, repo_name)):
         #     logger.info(f"Skipping repository: {repo_name}")
         #     continue
-        if repo_name in ["algo","Aoyama","badsecrets"]:
+        if repo_name in ["acme-cert-tool"]:
             logger.info(f"Skipping solved repository: {repo_name}")
             continue
         # if useful_count > 50:
@@ -607,16 +612,16 @@ def change_commit_name(repo_path: str,joern_workspace_path: str):
 
 
 if __name__ == "__main__":
-    # dataset_dir = "/home/lxy/lxy_codes/mal_update_detect/mal_update_dataset/benign_dataset/networking_tools"
-    joern_workspace_path = "/home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits_preprocess/multiple_commits"
+    dataset_dir = "/home/lxy/lxy_codes/mal_update_detect/mal_update_dataset/benign_dataset/networking_tools"
+    joern_workspace_path = "/home/lxy/lxy_codes/mal_update_detect/joern_output/benign_dataset/networking_tools"
     # repo_names = os.listdir(dataset_dir)
     # for repo_name in repo_names:
     #     repo_path = os.path.join(dataset_dir, repo_name)
     #     if not os.path.isdir(repo_path):
     #         continue
     #     logger.info(f"Processing repository: {repo_name}")
-    # parallel_repo_analyze(dataset_dir, joern_workspace_path)
+    parallel_repo_analyze(dataset_dir, joern_workspace_path)
     # change_commit_name(dataset_dir, joern_workspace_path)
     # single_repo_process(dataset_dir, joern_workspace_path)
-    repo_path = "/home/lxy/lxy_codes/mal_update_detect/mal_update_dataset/multiple_commits/Backdoorcreator"
-    single_repo_analyze(repo_path, joern_workspace_path)
+    # repo_path = "/home/lxy/lxy_codes/mal_update_detect/mal_update_dataset/benign_dataset/sysadmin_tools/bunkerweb"
+    # single_repo_analyze(repo_path, joern_workspace_path)

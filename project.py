@@ -28,6 +28,7 @@ class Project:
         self._cpg = None
         self._pdgs = {}
         self._pdgs_loaded = False
+        self._cpg_loaded = False
         self.switch_commit()
         if os.path.exists(joern_path) is False:
             with self.io_guard():
@@ -58,11 +59,14 @@ class Project:
     def _load_cpg(self):
         if self._cpg is None:
             self._cpg = nx.nx_agraph.read_dot(os.path.join(self.joern_path, 'cpg', 'export.dot'))
+            self._cpg_loaded = True
         return self._cpg    
 
     @property
     def cpg(self):
-        return self._load_cpg()
+        if not self._cpg_loaded:
+            self._load_cpg()
+        return self._cpg
 
     @property
     def pdgs(self):

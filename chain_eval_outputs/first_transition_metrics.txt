@@ -1,0 +1,19 @@
+# First-Transition Metrics
+- source_csv: mal_update_detect/full_label_outputs/all_label_prediction_pairs.csv
+- unresolved_same_as_before_gt: 59
+- unresolved_same_as_before_pred: 59
+
+## First CF Introduction (B/U -> C/F)
+- total: 294
+- match: 277
+- pred_missing: 0
+- accuracy: 0.9422
+
+## First C -> F Transition
+- total: 28
+- match: 24
+- pred_missing: 1
+- accuracy: 0.8571
+
+- first_intro_csv: mal_update_detect/chain_eval_outputs/first_cf_intro_eval.csv
+- first_c_to_f_csv: mal_update_detect/chain_eval_outputs/first_c_to_f_eval.csv

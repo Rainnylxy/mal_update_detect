@@ -1,0 +1,8 @@
+pattern,fp_count
+B/U->C->F,3
+B/U->C_or_F,6
+C->F,6
+F->C,3
+B/U->F->C,5
+ALL C,7
+ALL F,1

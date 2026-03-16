@@ -1,0 +1,9 @@
+pattern,gt_count,tp_count,fp_count
+B/U->C->F,10,9,8
+B/U->C_or_F,27,21,2
+C->F,14,10,0
+F->C,0,0,1
+B/U->F->C,2,2,1
+ALL C,8,7,0
+ALL F,3,2,1
+other_patterns_excluded,0,,0

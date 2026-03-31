@@ -326,3 +326,72 @@ If you are importing a large codebase (and/or running into memory issues), pleas
 2026-03-31 01:12:31.553 [33mWARN [m CdgPass                   Found CDG edge starting at BLOCK node io.shiftleft.codepropertygraph.generated.nodes.Literal[label=LITERAL; seq=73; id=90194313289] <-> io.shiftleft.codepropertygraph.generated.nodes.Block[label=BLOCK; seq=51; id=25769803827]. This is most likely caused by an invalid CFG. Method: io.shiftleft.codepropertygraph.generated.nodes.Method[label=METHOD; seq=16; id=107374182416] number of outgoing CFG edges from BLOCK node: 3
 2026-03-31 01:12:31.554 [33mWARN [m CdgPass                   Found CDG edge starting at BLOCK node io.shiftleft.codepropertygraph.generated.nodes.Call[label=CALL; seq=153; id=30064771225] <-> io.shiftleft.codepropertygraph.generated.nodes.Block[label=BLOCK; seq=29; id=25769803805]. This is most likely caused by an invalid CFG. Method: io.shiftleft.codepropertygraph.generated.nodes.Method[label=METHOD; seq=13; id=107374182413] number of outgoing CFG edges from BLOCK node: 3
 2026-03-31 01:12:31.554 [33mWARN [m CdgPass                   Found CDG edge starting at BLOCK node io.shiftleft.codepropertygraph.generated.nodes.Literal[label=LITERAL; seq=72; id=90194313288] <-> io.shiftleft.codepropertygraph.generated.nodes.Block[label=BLOCK; seq=51; id=25769803827]. This is most likely caused by an invalid CFG. Method: io.shiftleft.codepropertygraph.generated.nodes.Method[label=METHOD; seq=16; id=107374182416] number of outgoing CFG edges from BLOCK node: 3
+Successfully wrote graph to: /home/lxy/lxy_codes/mal_update_detect/joern_output/benign_dataset/networking_tools/Snapchat-All-Memories-Downloader/1_34f45_13eb9/cpg.bin
+To load the graph, type `joern /home/lxy/lxy_codes/mal_update_detect/joern_output/benign_dataset/networking_tools/Snapchat-All-Memories-Downloader/1_34f45_13eb9/cpg.bin`
+exported 2258 nodes, 14296 edges into /home/lxy/lxy_codes/mal_update_detect/joern_output/benign_dataset/networking_tools/Snapchat-All-Memories-Downloader/1_34f45_13eb9/cpg
+2026-03-31 01:12:41.463 | INFO     | project:extract_subgraph_codes:803 - Extracted subgraph to /home/lxy/lxy_codes/mal_update_detect/joern_output/benign_dataset/networking_tools/Leaked-GPTs/1_36be9_46ea8/taint_slices_methods/NEW@<body>@AutoGPTs Extraction_gpt4_openai_driver.py_slice.py
+2026-03-31 01:12:41.507 | INFO     | __main__:single_repo_analyze:496 - [Leaked-GPTs] Worker finished
+2026-03-31 01:12:41.511 | INFO     | __main__:single_repo_analyze:375 - [Weibo-Analyst] Worker started
+2026-03-31 01:12:41.511 | INFO     | __main__:_on_repo_done:515 - Repository finished: Leaked-GPTs (success)
+2026-03-31 01:12:41.575 | ERROR    | __main__:single_repo_analyze:382 - Failed to checkout FETCH_HEAD for repository Weibo-Analyst: Command '['git', '-C', '/home/lxy/lxy_codes/mal_update_detect/mal_update_dataset/benign_dataset/networking_tools/Weibo-Analyst', 'checkout', 'FETCH_HEAD']' returned non-zero exit status 1.
+Parsing code at: /home/lxy/lxy_codes/mal_update_detect/mal_update_dataset/benign_dataset/networking_tools/Weibo-Analyst - language: `pythonsrc`
+[+] Running language frontend
+=======================================================================================================
+Invoking CPG generator in a separate process. Note that the new process will consume additional memory.
+If you are importing a large codebase (and/or running into memory issues), please try the following:
+1) exit joern
+2) invoke the frontend: /home/lxy/lxy_codes/malicious_update/joern-4.0.387/joern-cli/pysrc2cpg -J-Xmx30208m /home/lxy/lxy_codes/mal_update_detect/mal_update_dataset/benign_dataset/networking_tools/Weibo-Analyst -o cpg.bin
+3) start joern, import the cpg: `importCpg("path/to/cpg")`
+=======================================================================================================
+
+2026-03-31 01:12:45.125 | INFO     | project:extract_subgraph_codes:803 - Extracted subgraph to /home/lxy/lxy_codes/mal_update_detect/joern_output/benign_dataset/networking_tools/Snapchat-All-Memories-Downloader/1_34f45_13eb9/taint_slices_methods/<body>@main.py_slice.py
+[+] Applying default overlays
+2026-03-31 01:12:47.657 | INFO     | project:extract_subgraph_codes:803 - Extracted subgraph to /home/lxy/lxy_codes/mal_update_detect/joern_output/benign_dataset/networking_tools/Snapchat-All-Memories-Downloader/1_34f45_13eb9/taint_slices_methods/NEW@<module>@main.py_slice.py
+2026-03-31 01:12:47.662 | INFO     | __main__:single_repo_analyze:496 - [Snapchat-All-Memories-Downloader] Worker finished
+2026-03-31 01:12:47.667 | INFO     | __main__:single_repo_analyze:375 - [EmailFinder] Worker started
+2026-03-31 01:12:47.667 | INFO     | __main__:_on_repo_done:515 - Repository finished: Snapchat-All-Memories-Downloader (success)
+2026-03-31 01:12:47.734 | ERROR    | __main__:single_repo_analyze:382 - Failed to checkout FETCH_HEAD for repository EmailFinder: Command '['git', '-C', '/home/lxy/lxy_codes/mal_update_detect/mal_update_dataset/benign_dataset/networking_tools/EmailFinder', 'checkout', 'FETCH_HEAD']' returned non-zero exit status 1.
+Parsing code at: /tmp/joern_src_16mebnwa - language: `pythonsrc`
+[+] Running language frontend
+=======================================================================================================
+Invoking CPG generator in a separate process. Note that the new process will consume additional memory.
+If you are importing a large codebase (and/or running into memory issues), please try the following:
+1) exit joern
+2) invoke the frontend: /home/lxy/lxy_codes/malicious_update/joern-4.0.387/joern-cli/pysrc2cpg -J-Xmx30208m /tmp/joern_src_16mebnwa -o cpg.bin
+3) start joern, import the cpg: `importCpg("path/to/cpg")`
+=======================================================================================================
+
+Successfully wrote graph to: /home/lxy/lxy_codes/mal_update_detect/joern_output/benign_dataset/networking_tools/Weibo-Analyst/0_5f453_00000/cpg.bin
+To load the graph, type `joern /home/lxy/lxy_codes/mal_update_detect/joern_output/benign_dataset/networking_tools/Weibo-Analyst/0_5f453_00000/cpg.bin`
+[+] Applying default overlays
+Successfully wrote graph to: /home/lxy/lxy_codes/mal_update_detect/joern_output/benign_dataset/networking_tools/EmailFinder/0_3cae2_00000/cpg.bin
+To load the graph, type `joern /home/lxy/lxy_codes/mal_update_detect/joern_output/benign_dataset/networking_tools/EmailFinder/0_3cae2_00000/cpg.bin`
+exported 6700 nodes, 48326 edges into /home/lxy/lxy_codes/mal_update_detect/joern_output/benign_dataset/networking_tools/Weibo-Analyst/0_5f453_00000/cpg
+exported 3727 nodes, 23424 edges into /home/lxy/lxy_codes/mal_update_detect/joern_output/benign_dataset/networking_tools/EmailFinder/0_3cae2_00000/cpg
+2026-03-31 01:13:13.527 | INFO     | project:extract_subgraph_codes:803 - Extracted subgraph to /home/lxy/lxy_codes/mal_update_detect/joern_output/benign_dataset/networking_tools/EmailFinder/0_3cae2_00000/taint_slices_methods/NEW@<module>@emailfinder_utils_banner.py_slice.py
+2026-03-31 01:13:13.538 | INFO     | project:extract_subgraph_codes:803 - Extracted subgraph to /home/lxy/lxy_codes/mal_update_detect/joern_output/benign_dataset/networking_tools/EmailFinder/0_3cae2_00000/taint_slices_methods/NEW@<module>@emailfinder_utils_file_email_parser.py_slice.py
+2026-03-31 01:13:13.624 | INFO     | project:extract_subgraph_codes:803 - Extracted subgraph to /home/lxy/lxy_codes/mal_update_detect/joern_output/benign_dataset/networking_tools/EmailFinder/0_3cae2_00000/taint_slices_methods/NEW@<module>@emailfinder_utils_finder_baidu.py_slice.py
+2026-03-31 01:13:13.814 | INFO     | project:extract_subgraph_codes:803 - Extracted subgraph to /home/lxy/lxy_codes/mal_update_detect/joern_output/benign_dataset/networking_tools/EmailFinder/0_3cae2_00000/taint_slices_methods/NEW@<module>@emailfinder_utils_finder_bing.py_slice.py
+2026-03-31 01:13:13.898 | INFO     | project:extract_subgraph_codes:803 - Extracted subgraph to /home/lxy/lxy_codes/mal_update_detect/joern_output/benign_dataset/networking_tools/EmailFinder/0_3cae2_00000/taint_slices_methods/NEW@<module>@emailfinder_utils_finder_yandex.py_slice.py
+2026-03-31 01:13:13.978 | INFO     | project:extract_subgraph_codes:803 - Extracted subgraph to /home/lxy/lxy_codes/mal_update_detect/joern_output/benign_dataset/networking_tools/EmailFinder/0_3cae2_00000/taint_slices_methods/NEW@<module>@emailfinder_utils_finder_google.py_slice.py
+2026-03-31 01:13:14.263 | INFO     | project:extract_subgraph_codes:803 - Extracted subgraph to /home/lxy/lxy_codes/mal_update_detect/joern_output/benign_dataset/networking_tools/EmailFinder/0_3cae2_00000/taint_slices_methods/NEW@<module>@emailfinder_utils_library.py_slice.py
+2026-03-31 01:13:14.287 | INFO     | project:extract_subgraph_codes:803 - Extracted subgraph to /home/lxy/lxy_codes/mal_update_detect/joern_output/benign_dataset/networking_tools/EmailFinder/0_3cae2_00000/taint_slices_methods/NEW@<module>@emailfinder_cli.py_slice.py
+2026-03-31 01:13:14.842 | INFO     | project:extract_subgraph_codes:803 - Extracted subgraph to /home/lxy/lxy_codes/mal_update_detect/joern_output/benign_dataset/networking_tools/EmailFinder/0_3cae2_00000/taint_slices_methods/NEW@<module>@emailfinder_utils_banner.py_slice.py
+2026-03-31 01:13:14.852 | INFO     | project:extract_subgraph_codes:803 - Extracted subgraph to /home/lxy/lxy_codes/mal_update_detect/joern_output/benign_dataset/networking_tools/EmailFinder/0_3cae2_00000/taint_slices_methods/NEW@<module>@emailfinder_utils_file_email_parser.py_slice.py
+2026-03-31 01:13:15.080 | INFO     | project:extract_subgraph_codes:803 - Extracted subgraph to /home/lxy/lxy_codes/mal_update_detect/joern_output/benign_dataset/networking_tools/EmailFinder/0_3cae2_00000/taint_slices_methods/NEW@<module>@emailfinder_utils_finder_baidu.py_slice.py
+2026-03-31 01:13:15.119 | INFO     | project:extract_subgraph_codes:803 - Extracted subgraph to /home/lxy/lxy_codes/mal_update_detect/joern_output/benign_dataset/networking_tools/EmailFinder/0_3cae2_00000/taint_slices_methods/NEW@<module>@emailfinder_utils_finder_bing.py_slice.py
+2026-03-31 01:13:15.211 | INFO     | project:extract_subgraph_codes:803 - Extracted subgraph to /home/lxy/lxy_codes/mal_update_detect/joern_output/benign_dataset/networking_tools/EmailFinder/0_3cae2_00000/taint_slices_methods/NEW@<module>@emailfinder_utils_finder_yandex.py_slice.py
+2026-03-31 01:13:15.292 | INFO     | project:extract_subgraph_codes:803 - Extracted subgraph to /home/lxy/lxy_codes/mal_update_detect/joern_output/benign_dataset/networking_tools/EmailFinder/0_3cae2_00000/taint_slices_methods/NEW@<module>@emailfinder_utils_finder_google.py_slice.py
+2026-03-31 01:13:15.712 | INFO     | project:extract_subgraph_codes:803 - Extracted subgraph to /home/lxy/lxy_codes/mal_update_detect/joern_output/benign_dataset/networking_tools/EmailFinder/0_3cae2_00000/taint_slices_methods/NEW@<module>@emailfinder_utils_library.py_slice.py
+2026-03-31 01:13:15.738 | INFO     | project:extract_subgraph_codes:803 - Extracted subgraph to /home/lxy/lxy_codes/mal_update_detect/joern_output/benign_dataset/networking_tools/EmailFinder/0_3cae2_00000/taint_slices_methods/NEW@<module>@emailfinder_cli.py_slice.py
+2026-03-31 01:13:15.781 | INFO     | __main__:single_repo_analyze:468 - Analyzing branch main commit 1/6: 29adcb3493d1daf54b0b73f9a90a7551aad80b7b
+Parsing code at: /tmp/joern_src_ur69kh65 - language: `pythonsrc`
+[+] Running language frontend
+=======================================================================================================
+Invoking CPG generator in a separate process. Note that the new process will consume additional memory.
+If you are importing a large codebase (and/or running into memory issues), please try the following:
+1) exit joern
+2) invoke the frontend: /home/lxy/lxy_codes/malicious_update/joern-4.0.387/joern-cli/pysrc2cpg -J-Xmx30208m /tmp/joern_src_ur69kh65 -o cpg.bin
+3) start joern, import the cpg: `importCpg("path/to/cpg")`
+=======================================================================================================
+

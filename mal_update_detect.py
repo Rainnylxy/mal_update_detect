@@ -4,8 +4,6 @@ import shutil
 from loguru import logger
 import os
 from commit_helper import CommitHelper, get_useful_commits
-from commit_helper import map_old_to_new
-from llm_evaluate import LLM_Evaluate
 import ast_helper
 import subprocess
 import graph_helper
@@ -94,6 +92,34 @@ logger.add(
 
 
 
+
+
+def is_repo_processed(repo_name: str, category: str, joern_output_dir: str) -> bool:
+    joern_repo_dir = os.path.join(joern_output_dir, category, repo_name)
+    return os.path.isdir(joern_repo_dir) and len(os.listdir(joern_repo_dir)) > 0
+
+
+def update_lt300_csv(csv_path: str, joern_output_dir: str):
+    with open(csv_path, 'r', encoding='utf-8') as f:
+        reader = csv.DictReader(f)
+        fieldnames = reader.fieldnames
+        rows = list(reader)
+
+    if 'Processed' not in fieldnames:
+        fieldnames = list(fieldnames) + ['Processed']
+
+    for row in rows:
+        repo_name = row['Repo Name'].split('/')[-1]
+        category = row['Category']
+        row['Processed'] = 'Yes' if is_repo_processed(repo_name, category, joern_output_dir) else 'No'
+
+    with open(csv_path, 'w', encoding='utf-8', newline='') as f:
+        writer = csv.DictWriter(f, fieldnames=fieldnames)
+        writer.writeheader()
+        writer.writerows(rows)
+
+    processed = sum(1 for r in rows if r['Processed'] == 'Yes')
+    logger.info(f"CSV updated: {processed}/{len(rows)} repos processed")
 
 
 def get_node_pairs(project_before: project.Project, project_after: project.Project, file_changed_lines: dict, commit_helper: CommitHelper) -> dict:
@@ -274,25 +300,25 @@ def taint_graph_relabel(taint_graph_before: nx.MultiDiGraph, node_pairs: dict, p
     return taint_before_relabeled
 
 
-def LLM_analyze_code_slices(code_slices: dict):
-    llm_evaluate = LLM_Evaluate(
-        api_key="1d368dbf-5a67-448f-9356-49f9efa2fc13",
-        base_url="https://ark.cn-beijing.volces.com/api/v3"
-    )
-    for output_path, code_slice in code_slices.items():
-        logger.debug(f"Evaluating code slice in {output_path} with LLM...")
-        response = llm_evaluate.malicious_assertion(code_slice)
-        logger.info(f"LLM response for {output_path}: {response}")
-        output_dir = os.path.dirname(output_path)
-        os.makedirs(output_dir, exist_ok=True)
-        out_file = os.path.join(output_dir, "llm_response.txt")
-        try:
-            with open(out_file, "w", encoding="utf-8") as fw:
-                fw.write(str(response))
-        except Exception as e:
-            with open(out_file, "w", encoding="utf-8") as fw:
-                fw.write(f"Failed to serialize response: {e}\nRaw response:\n{str(response)}")
-    return True
+# def LLM_analyze_code_slices(code_slices: dict):
+#     llm_evaluate = LLM_Evaluate(
+#         api_key="1d368dbf-5a67-448f-9356-49f9efa2fc13",
+#         base_url="https://ark.cn-beijing.volces.com/api/v3"
+#     )
+#     for output_path, code_slice in code_slices.items():
+#         logger.debug(f"Evaluating code slice in {output_path} with LLM...")
+#         response = llm_evaluate.malicious_assertion(code_slice)
+#         logger.info(f"LLM response for {output_path}: {response}")
+#         output_dir = os.path.dirname(output_path)
+#         os.makedirs(output_dir, exist_ok=True)
+#         out_file = os.path.join(output_dir, "llm_response.txt")
+#         try:
+#             with open(out_file, "w", encoding="utf-8") as fw:
+#                 fw.write(str(response))
+#         except Exception as e:
+#             with open(out_file, "w", encoding="utf-8") as fw:
+#                 fw.write(f"Failed to serialize response: {e}\nRaw response:\n{str(response)}")
+#     return True
 
 def analyze(project_before:project.Project, project_after:project.Project, repo_path: str, commit_helper: CommitHelper, joern_path_after: str,write_dots:bool = False) -> project.Project:
     project_after.switch_commit()
@@ -389,8 +415,8 @@ def single_repo_analyze(repo_path: str,joern_workspace_path: str,io_semaphore = 
         except subprocess.CalledProcessError:
             commit_list = []
 
-        if commit_list and len(commit_list) < 100 or len(commit_list) > 300:
-            logger.error(f"[{repo_name}] Skipping branch {branch_label} with {len(commit_list)} useful commits")
+        if commit_list and len(commit_list) > 300:
+            logger.error(f"[{repo_name}] Skipping branch {branch_label} with {len(commit_list)} useful commits (> 300)")
             branch_statuses.append("skipped")
             continue
         
@@ -477,11 +503,11 @@ def single_repo_analyze(repo_path: str,joern_workspace_path: str,io_semaphore = 
     return {"repo_name": repo_name, "status": "success"}
     
 
-def parallel_repo_analyze(repo_dir: str, joern_workspace_path: str):
+def parallel_repo_analyze(csv_path: str, joern_workspace_path: str, joern_output_dir: str):
     import multiprocessing
     pool_size = 2
-    pool = multiprocessing.Pool(processes=pool_size)  # 根据需要调整进程数
-    summary = {"success": 0, "failed": 0, "crashed": 0}
+    pool = multiprocessing.Pool(processes=pool_size)
+    summary = {"success": 0, "failed": 0, "crashed": 0, "skipped": 0}
 
     def _on_repo_done(repo_result):
         if isinstance(repo_result, dict) and repo_result.get("status") == "success":
@@ -495,43 +521,46 @@ def parallel_repo_analyze(repo_dir: str, joern_workspace_path: str):
         summary["crashed"] += 1
         logger.error(f"Worker crashed with unhandled exception: {exc!r}")
 
-    # csv_path = "./malware_update_dataset.csv"
-    # repo_names = read_repo_names_from_csv(csv_path)
-    repo_names = os.listdir(repo_dir)
-    total_repos = 0
-    logger.info(f"Start parallel_repo_analyze: repo_dir={repo_dir}, workers={pool_size}")
-    for repo_name in repo_names:
-        repo_path = os.path.join(repo_dir, repo_name)
+    with open(csv_path, 'r', encoding='utf-8') as f:
+        repos = list(csv.DictReader(f))
+
+    total_queued = 0
+    logger.info(f"Start parallel_repo_analyze from CSV: {csv_path}, workers={pool_size}")
+
+    for row in repos:
+        repo_name = row['Repo Name'].split('/')[-1]
+        category = row['Category']
+        repo_path = row['Local Path']
+
         if not os.path.isdir(repo_path):
+            logger.warning(f"Repo path not found, skipping: {repo_path}")
+            summary["skipped"] += 1
             continue
-        total_repos += 1
-        repo_name = os.path.basename(repo_path)
-        # if not os.path.exists(os.path.join(joern_workspace_path, repo_name)):
-        #     logger.info(f"Skipping repository: {repo_name}")
-        #     continue
-        if repo_name in ["acme-cert-tool"]:
-            logger.info(f"Skipping solved repository: {repo_name}")
+
+        if is_repo_processed(repo_name, category, joern_output_dir):
+            logger.info(f"Already processed, skipping: {category}/{repo_name}")
+            summary["skipped"] += 1
             continue
-        # if useful_count > 50:
-        #     logger.info(f"Skipping repository {repo_path} with {useful_count} useful commits")
-        #     continue
-        # if repo_name!="Aoyama":
-        #     logger.error(f"Skipping repository {repo_name} for testing")
-        #     continue
-        logger.info(f"Queue repository {total_repos}: {repo_name}")
-        
+
+        total_queued += 1
+        logger.info(f"Queue repository {total_queued}: {category}/{repo_name}")
+
         pool.apply_async(
             single_repo_analyze,
             args=(repo_path, joern_workspace_path),
             callback=_on_repo_done,
             error_callback=_on_repo_error
         )
-    
+
     pool.close()
     pool.join()
+
+    update_lt300_csv(csv_path, joern_output_dir)
+
     logger.info(
-        f"parallel_repo_analyze finished: total={total_repos}, "
-        f"success={summary['success']}, failed={summary['failed']}, crashed={summary['crashed']}"
+        f"parallel_repo_analyze finished: total_in_csv={len(repos)}, queued={total_queued}, "
+        f"skipped={summary['skipped']}, success={summary['success']}, "
+        f"failed={summary['failed']}, crashed={summary['crashed']}"
     )
 
 
@@ -612,16 +641,42 @@ def change_commit_name(repo_path: str,joern_workspace_path: str):
 
 
 if __name__ == "__main__":
-    dataset_dir = "/home/lxy/lxy_codes/mal_update_detect/mal_update_dataset/benign_dataset/networking_tools"
-    joern_workspace_path = "/home/lxy/lxy_codes/mal_update_detect/joern_output/benign_dataset/networking_tools"
-    # repo_names = os.listdir(dataset_dir)
-    # for repo_name in repo_names:
-    #     repo_path = os.path.join(dataset_dir, repo_name)
-    #     if not os.path.isdir(repo_path):
-    #         continue
-    #     logger.info(f"Processing repository: {repo_name}")
-    parallel_repo_analyze(dataset_dir, joern_workspace_path)
-    # change_commit_name(dataset_dir, joern_workspace_path)
-    # single_repo_process(dataset_dir, joern_workspace_path)
-    # repo_path = "/home/lxy/lxy_codes/mal_update_detect/mal_update_dataset/benign_dataset/sysadmin_tools/bunkerweb"
-    # single_repo_analyze(repo_path, joern_workspace_path)
+    csv_path = "/home/lxy/lxy_codes/mal_update_detect/mal_update_dataset/benign_dataset/benign_repos_info_lt300.csv"
+    joern_output_dir = "/home/lxy/lxy_codes/mal_update_detect/joern_output/benign_dataset"
+    # joern_workspace_path 按分类分别处理，这里统一使用 joern_output_dir 作为基准
+    # single_repo_analyze 内部会自行拼接 repo_name
+    # 但 joern_workspace_path 需要指定子分类目录，这里改为扫描 CSV 中的分类
+    # 实际上 joern_output 目录结构为 joern_output/benign_dataset/{category}/{repo_name}/...
+    # 而 single_repo_analyze 使用 joern_workspace_path/{repo_name}/...
+    # 所以需要按 category 分组调用
+    with open(csv_path, 'r', encoding='utf-8') as f:
+        repos = list(csv.DictReader(f))
+
+    categories = {}
+    for row in repos:
+        cat = row['Category']
+        if cat not in categories:
+            categories[cat] = []
+        categories[cat].append(row)
+
+    for category in ['networking_tools']:
+        if category not in categories:
+            logger.warning(f"Category {category} not found in CSV, skipping")
+            continue
+        cat_joern_path = os.path.join(joern_output_dir, category)
+        os.makedirs(cat_joern_path, exist_ok=True)
+        logger.info(f"=== Processing category: {category} ({len(categories[category])} repos) ===")
+        # 写入单分类临时 CSV
+        tmp_csv = os.path.join(joern_output_dir, f"_tmp_{category}.csv")
+        fieldnames = repos[0].keys()
+        with open(tmp_csv, 'w', encoding='utf-8', newline='') as f:
+            writer = csv.DictWriter(f, fieldnames=fieldnames)
+            writer.writeheader()
+            writer.writerows(categories[category])
+
+        parallel_repo_analyze(tmp_csv, cat_joern_path, joern_output_dir)
+        os.remove(tmp_csv)
+
+    # 最终更新原始 CSV
+    update_lt300_csv(csv_path, joern_output_dir)
+    logger.info("All categories processed.")

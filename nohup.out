@@ -1,0 +1,328 @@
+2026-03-31 01:10:31.605 | INFO     | __main__:<module>:668 - === Processing category: networking_tools (129 repos) ===
+2026-03-31 01:10:31.648 | INFO     | __main__:parallel_repo_analyze:528 - Start parallel_repo_analyze from CSV: /home/lxy/lxy_codes/mal_update_detect/joern_output/benign_dataset/_tmp_networking_tools.csv, workers=2
+2026-03-31 01:10:31.650 | INFO     | __main__:parallel_repo_analyze:546 - Queue repository 1: networking_tools/lxSpider
+2026-03-31 01:10:31.651 | INFO     | __main__:parallel_repo_analyze:546 - Queue repository 2: networking_tools/Python3Webcrawler
+2026-03-31 01:10:31.651 | INFO     | __main__:parallel_repo_analyze:541 - Already processed, skipping: networking_tools/Douyin_TikTok_Download_API
+2026-03-31 01:10:31.651 | INFO     | __main__:single_repo_analyze:375 - [lxSpider] Worker started
+2026-03-31 01:10:31.652 | INFO     | __main__:parallel_repo_analyze:541 - Already processed, skipping: networking_tools/mdcx
+2026-03-31 01:10:31.651 | INFO     | __main__:single_repo_analyze:375 - [Python3Webcrawler] Worker started
+2026-03-31 01:10:31.652 | INFO     | __main__:parallel_repo_analyze:546 - Queue repository 3: networking_tools/Leaked-GPTs
+2026-03-31 01:10:31.652 | INFO     | __main__:parallel_repo_analyze:546 - Queue repository 4: networking_tools/Free_Proxy_Website
+2026-03-31 01:10:31.653 | INFO     | __main__:parallel_repo_analyze:546 - Queue repository 5: networking_tools/AllNewsSpider
+2026-03-31 01:10:31.653 | INFO     | __main__:parallel_repo_analyze:546 - Queue repository 6: networking_tools/Snapchat-All-Memories-Downloader
+2026-03-31 01:10:31.654 | INFO     | __main__:parallel_repo_analyze:546 - Queue repository 7: networking_tools/Weibo-Analyst
+2026-03-31 01:10:31.654 | INFO     | __main__:parallel_repo_analyze:546 - Queue repository 8: networking_tools/EmailFinder
+2026-03-31 01:10:31.654 | INFO     | __main__:parallel_repo_analyze:546 - Queue repository 9: networking_tools/signature_algorithm
+2026-03-31 01:10:31.654 | INFO     | __main__:parallel_repo_analyze:546 - Queue repository 10: networking_tools/THU-Cloud-Downloader
+2026-03-31 01:10:31.655 | INFO     | __main__:parallel_repo_analyze:546 - Queue repository 11: networking_tools/cinecli
+2026-03-31 01:10:31.655 | INFO     | __main__:parallel_repo_analyze:541 - Already processed, skipping: networking_tools/psx-covers
+2026-03-31 01:10:31.656 | INFO     | __main__:parallel_repo_analyze:546 - Queue repository 12: networking_tools/douyin_downloader
+2026-03-31 01:10:31.656 | INFO     | __main__:parallel_repo_analyze:546 - Queue repository 13: networking_tools/mzitu
+2026-03-31 01:10:31.656 | INFO     | __main__:parallel_repo_analyze:541 - Already processed, skipping: networking_tools/ps2-covers
+2026-03-31 01:10:31.657 | INFO     | __main__:parallel_repo_analyze:546 - Queue repository 14: networking_tools/Mooc_Downloader
+2026-03-31 01:10:31.657 | INFO     | __main__:parallel_repo_analyze:546 - Queue repository 15: networking_tools/jd-autobuy
+2026-03-31 01:10:31.657 | INFO     | __main__:parallel_repo_analyze:546 - Queue repository 16: networking_tools/facebook-dl
+2026-03-31 01:10:31.658 | INFO     | __main__:parallel_repo_analyze:546 - Queue repository 17: networking_tools/magnet-dht
+2026-03-31 01:10:31.658 | INFO     | __main__:parallel_repo_analyze:541 - Already processed, skipping: networking_tools/Python
+2026-03-31 01:10:31.658 | INFO     | __main__:parallel_repo_analyze:546 - Queue repository 18: networking_tools/PornHub-downloader-python
+2026-03-31 01:10:31.659 | INFO     | __main__:parallel_repo_analyze:546 - Queue repository 19: networking_tools/BaiduImageSpider
+2026-03-31 01:10:31.659 | INFO     | __main__:parallel_repo_analyze:546 - Queue repository 20: networking_tools/mmjpg
+2026-03-31 01:10:31.659 | INFO     | __main__:parallel_repo_analyze:546 - Queue repository 21: networking_tools/bookcorpus
+2026-03-31 01:10:31.660 | INFO     | __main__:parallel_repo_analyze:541 - Already processed, skipping: networking_tools/Python3-Spider
+2026-03-31 01:10:31.660 | INFO     | __main__:parallel_repo_analyze:546 - Queue repository 22: networking_tools/AZMusicDownloader
+2026-03-31 01:10:31.660 | INFO     | __main__:parallel_repo_analyze:546 - Queue repository 23: networking_tools/kobo-book-downloader
+2026-03-31 01:10:31.660 | INFO     | __main__:parallel_repo_analyze:546 - Queue repository 24: networking_tools/lynda-dl
+2026-03-31 01:10:31.661 | INFO     | __main__:parallel_repo_analyze:546 - Queue repository 25: networking_tools/ArchiverForGooglePhotos
+2026-03-31 01:10:31.661 | INFO     | __main__:parallel_repo_analyze:546 - Queue repository 26: networking_tools/tumblr-crawler
+2026-03-31 01:10:31.661 | INFO     | __main__:parallel_repo_analyze:546 - Queue repository 27: networking_tools/Pinkerton
+2026-03-31 01:10:31.662 | INFO     | __main__:parallel_repo_analyze:546 - Queue repository 28: networking_tools/Manzana-Apple-Music-Downloader
+2026-03-31 01:10:31.662 | INFO     | __main__:parallel_repo_analyze:546 - Queue repository 29: networking_tools/python-automation-scripts
+2026-03-31 01:10:31.662 | INFO     | __main__:parallel_repo_analyze:546 - Queue repository 30: networking_tools/Download-Simply-Videos-From-YouTube
+2026-03-31 01:10:31.663 | INFO     | __main__:parallel_repo_analyze:546 - Queue repository 31: networking_tools/fbcrawl
+2026-03-31 01:10:31.663 | INFO     | __main__:parallel_repo_analyze:546 - Queue repository 32: networking_tools/TwitchLink
+2026-03-31 01:10:31.663 | INFO     | __main__:parallel_repo_analyze:546 - Queue repository 33: networking_tools/youtube_music_playlist_downloader
+2026-03-31 01:10:31.663 | INFO     | __main__:parallel_repo_analyze:546 - Queue repository 34: networking_tools/SciDownl
+2026-03-31 01:10:31.664 | INFO     | __main__:parallel_repo_analyze:546 - Queue repository 35: networking_tools/chatWeb
+2026-03-31 01:10:31.664 | INFO     | __main__:parallel_repo_analyze:546 - Queue repository 36: networking_tools/acloud-dl
+2026-03-31 01:10:31.664 | INFO     | __main__:parallel_repo_analyze:546 - Queue repository 37: networking_tools/spider_reverse
+2026-03-31 01:10:31.664 | INFO     | __main__:parallel_repo_analyze:546 - Queue repository 38: networking_tools/learnPython
+2026-03-31 01:10:31.665 | INFO     | __main__:parallel_repo_analyze:546 - Queue repository 39: networking_tools/spider_collection
+2026-03-31 01:10:31.665 | INFO     | __main__:parallel_repo_analyze:546 - Queue repository 40: networking_tools/course-crawler
+2026-03-31 01:10:31.665 | INFO     | __main__:parallel_repo_analyze:546 - Queue repository 41: networking_tools/Scavenger
+2026-03-31 01:10:31.665 | INFO     | __main__:parallel_repo_analyze:546 - Queue repository 42: networking_tools/DouYin
+2026-03-31 01:10:31.665 | INFO     | __main__:parallel_repo_analyze:546 - Queue repository 43: networking_tools/media-scraper
+2026-03-31 01:10:31.666 | INFO     | __main__:parallel_repo_analyze:541 - Already processed, skipping: networking_tools/JMComic-Crawler-Python
+2026-03-31 01:10:31.666 | INFO     | __main__:parallel_repo_analyze:546 - Queue repository 44: networking_tools/netease-cloud-music-dl
+2026-03-31 01:10:31.666 | INFO     | __main__:parallel_repo_analyze:546 - Queue repository 45: networking_tools/gitdir
+2026-03-31 01:10:31.666 | INFO     | __main__:parallel_repo_analyze:546 - Queue repository 46: networking_tools/AutoCrawler
+2026-03-31 01:10:31.667 | INFO     | __main__:parallel_repo_analyze:546 - Queue repository 47: networking_tools/PyInstaStories
+2026-03-31 01:10:31.667 | INFO     | __main__:parallel_repo_analyze:541 - Already processed, skipping: networking_tools/udemy-dl
+2026-03-31 01:10:31.667 | INFO     | __main__:parallel_repo_analyze:546 - Queue repository 48: networking_tools/Fast-Powerful-Whisper-AI-Services-API
+2026-03-31 01:10:31.667 | INFO     | __main__:parallel_repo_analyze:546 - Queue repository 49: networking_tools/twitter_media_downloader
+2026-03-31 01:10:31.668 | INFO     | __main__:parallel_repo_analyze:541 - Already processed, skipping: networking_tools/Bili23-Downloader
+2026-03-31 01:10:31.668 | INFO     | __main__:parallel_repo_analyze:546 - Queue repository 50: networking_tools/Youtube-Projects
+2026-03-31 01:10:31.668 | INFO     | __main__:parallel_repo_analyze:541 - Already processed, skipping: networking_tools/fansly-downloader
+2026-03-31 01:10:31.669 | INFO     | __main__:parallel_repo_analyze:546 - Queue repository 51: networking_tools/dude
+2026-03-31 01:10:31.669 | INFO     | __main__:parallel_repo_analyze:546 - Queue repository 52: networking_tools/Teachable-dl
+2026-03-31 01:10:31.669 | INFO     | __main__:parallel_repo_analyze:546 - Queue repository 53: networking_tools/DMArchiver
+2026-03-31 01:10:31.669 | INFO     | __main__:parallel_repo_analyze:546 - Queue repository 54: networking_tools/gain
+2026-03-31 01:10:31.670 | INFO     | __main__:parallel_repo_analyze:546 - Queue repository 55: networking_tools/mangadex-dl
+2026-03-31 01:10:31.670 | INFO     | __main__:parallel_repo_analyze:546 - Queue repository 56: networking_tools/DXY-COVID-19-Crawler
+2026-03-31 01:10:31.670 | INFO     | __main__:parallel_repo_analyze:541 - Already processed, skipping: networking_tools/owllook
+2026-03-31 01:10:31.670 | INFO     | __main__:parallel_repo_analyze:546 - Queue repository 57: networking_tools/KS-Downloader
+2026-03-31 01:10:31.671 | INFO     | __main__:parallel_repo_analyze:546 - Queue repository 58: networking_tools/pySmartDL
+2026-03-31 01:10:31.671 | INFO     | __main__:parallel_repo_analyze:546 - Queue repository 59: networking_tools/TikHub-API-Python-SDK
+2026-03-31 01:10:31.671 | INFO     | __main__:parallel_repo_analyze:546 - Queue repository 60: networking_tools/PlaystoreDownloader
+2026-03-31 01:10:31.671 | INFO     | __main__:parallel_repo_analyze:546 - Queue repository 61: networking_tools/spot-seek-bot
+2026-03-31 01:10:31.671 | INFO     | __main__:parallel_repo_analyze:541 - Already processed, skipping: networking_tools/ECommerceCrawlers
+2026-03-31 01:10:31.672 | INFO     | __main__:parallel_repo_analyze:546 - Queue repository 62: networking_tools/downloader-cli
+2026-03-31 01:10:31.672 | INFO     | __main__:parallel_repo_analyze:546 - Queue repository 63: networking_tools/CyberdropBunkrDownloader
+2026-03-31 01:10:31.672 | INFO     | __main__:parallel_repo_analyze:541 - Already processed, skipping: networking_tools/DecryptLogin
+2026-03-31 01:10:31.672 | INFO     | __main__:parallel_repo_analyze:546 - Queue repository 64: networking_tools/mlscraper
+2026-03-31 01:10:31.673 | INFO     | __main__:parallel_repo_analyze:546 - Queue repository 65: networking_tools/saveddit
+2026-03-31 01:10:31.673 | INFO     | __main__:parallel_repo_analyze:546 - Queue repository 66: networking_tools/4chan-downloader
+2026-03-31 01:10:31.673 | INFO     | __main__:parallel_repo_analyze:546 - Queue repository 67: networking_tools/YoutubeGO
+2026-03-31 01:10:31.673 | INFO     | __main__:parallel_repo_analyze:546 - Queue repository 68: networking_tools/spiders
+2026-03-31 01:10:31.674 | INFO     | __main__:parallel_repo_analyze:541 - Already processed, skipping: networking_tools/ProxyBroker
+2026-03-31 01:10:31.674 | INFO     | __main__:parallel_repo_analyze:546 - Queue repository 69: networking_tools/autoscraper
+2026-03-31 01:10:31.674 | INFO     | __main__:parallel_repo_analyze:546 - Queue repository 70: networking_tools/tiktok-downloader
+2026-03-31 01:10:31.674 | INFO     | __main__:parallel_repo_analyze:546 - Queue repository 71: networking_tools/myGPTReader
+2026-03-31 01:10:31.674 | INFO     | __main__:parallel_repo_analyze:546 - Queue repository 72: networking_tools/FinalRecon
+2026-03-31 01:10:31.675 | INFO     | __main__:parallel_repo_analyze:546 - Queue repository 73: networking_tools/KemonoDownloader
+2026-03-31 01:10:31.675 | INFO     | __main__:parallel_repo_analyze:546 - Queue repository 74: networking_tools/pywebcopy
+2026-03-31 01:10:31.675 | INFO     | __main__:parallel_repo_analyze:546 - Queue repository 75: networking_tools/qobuz-dl
+2026-03-31 01:10:31.675 | INFO     | __main__:parallel_repo_analyze:546 - Queue repository 76: networking_tools/yt-channel-downloader
+2026-03-31 01:10:31.676 | INFO     | __main__:parallel_repo_analyze:546 - Queue repository 77: networking_tools/copymanga-downloader
+2026-03-31 01:10:31.676 | INFO     | __main__:parallel_repo_analyze:546 - Queue repository 78: networking_tools/mega-link-downloader-bot
+2026-03-31 01:10:31.676 | INFO     | __main__:parallel_repo_analyze:546 - Queue repository 79: networking_tools/Hitomi-Downloader
+2026-03-31 01:10:31.676 | INFO     | __main__:parallel_repo_analyze:546 - Queue repository 80: networking_tools/Search-Engines-Scraper
+2026-03-31 01:10:31.677 | INFO     | __main__:parallel_repo_analyze:546 - Queue repository 81: networking_tools/google-play-scraper
+2026-03-31 01:10:31.677 | INFO     | __main__:parallel_repo_analyze:546 - Queue repository 82: networking_tools/gytmdl
+2026-03-31 01:10:31.677 | INFO     | __main__:parallel_repo_analyze:546 - Queue repository 83: networking_tools/TorCrawl.py
+2026-03-31 01:10:31.677 | INFO     | __main__:parallel_repo_analyze:546 - Queue repository 84: networking_tools/sqliv
+2026-03-31 01:10:31.678 | INFO     | __main__:parallel_repo_analyze:546 - Queue repository 85: networking_tools/xeHentai
+2026-03-31 01:10:31.678 | INFO     | __main__:parallel_repo_analyze:546 - Queue repository 86: networking_tools/BiliBili-Manga-Downloader
+2026-03-31 01:10:31.678 | INFO     | __main__:parallel_repo_analyze:546 - Queue repository 87: networking_tools/scrapyrt
+2026-03-31 01:10:31.678 | INFO     | __main__:parallel_repo_analyze:546 - Queue repository 88: networking_tools/freshonions-torscraper
+2026-03-31 01:10:31.678 | INFO     | __main__:parallel_repo_analyze:546 - Queue repository 89: networking_tools/llvd
+2026-03-31 01:10:31.679 | INFO     | __main__:parallel_repo_analyze:546 - Queue repository 90: networking_tools/scylla
+2026-03-31 01:10:31.679 | INFO     | __main__:parallel_repo_analyze:546 - Queue repository 91: networking_tools/scylla
+2026-03-31 01:10:31.679 | INFO     | __main__:parallel_repo_analyze:546 - Queue repository 92: networking_tools/haipproxy
+2026-03-31 01:10:31.680 | INFO     | __main__:parallel_repo_analyze:541 - Already processed, skipping: networking_tools/scrapy-redis
+2026-03-31 01:10:31.680 | INFO     | __main__:parallel_repo_analyze:546 - Queue repository 93: networking_tools/PSpider
+2026-03-31 01:10:31.680 | INFO     | __main__:parallel_repo_analyze:546 - Queue repository 94: networking_tools/vulnx
+2026-03-31 01:10:31.680 | INFO     | __main__:parallel_repo_analyze:546 - Queue repository 95: networking_tools/AniWorld-Downloader
+2026-03-31 01:10:31.680 | INFO     | __main__:parallel_repo_analyze:541 - Already processed, skipping: networking_tools/WechatSogou
+2026-03-31 01:10:31.681 | INFO     | __main__:parallel_repo_analyze:546 - Queue repository 96: networking_tools/icrawler
+2026-03-31 01:10:31.681 | INFO     | __main__:parallel_repo_analyze:546 - Queue repository 97: networking_tools/seo-audits-toolkit
+2026-03-31 01:10:31.681 | INFO     | __main__:parallel_repo_analyze:546 - Queue repository 98: networking_tools/vault
+2026-03-31 01:10:31.681 | INFO     | __main__:parallel_repo_analyze:546 - Queue repository 99: networking_tools/instagram-profilecrawl
+2026-03-31 01:10:31.682 | INFO     | __main__:parallel_repo_analyze:546 - Queue repository 100: networking_tools/Kemono-Downloader
+2026-03-31 01:10:31.682 | INFO     | __main__:parallel_repo_analyze:546 - Queue repository 101: networking_tools/bilili
+2026-03-31 01:10:31.682 | INFO     | __main__:parallel_repo_analyze:546 - Queue repository 102: networking_tools/BunkrDownloader
+2026-03-31 01:10:31.682 | INFO     | __main__:parallel_repo_analyze:546 - Queue repository 103: networking_tools/telegram-upload
+2026-03-31 01:10:31.682 | INFO     | __main__:parallel_repo_analyze:546 - Queue repository 104: networking_tools/All-Url-Uploader
+2026-03-31 01:10:31.683 | INFO     | __main__:parallel_repo_analyze:541 - Already processed, skipping: networking_tools/Photon
+2026-03-31 01:10:31.683 | INFO     | __main__:parallel_repo_analyze:546 - Queue repository 105: networking_tools/scrapple
+2026-03-31 01:10:31.683 | INFO     | __main__:parallel_repo_analyze:541 - Already processed, skipping: networking_tools/Ghost-Downloader-3
+2026-03-31 01:10:31.684 | INFO     | __main__:parallel_repo_analyze:546 - Queue repository 106: networking_tools/dirhunt
+2026-03-31 01:10:31.684 | INFO     | __main__:parallel_repo_analyze:546 - Queue repository 107: networking_tools/Krawl
+2026-03-31 01:10:31.684 | INFO     | __main__:parallel_repo_analyze:541 - Already processed, skipping: networking_tools/udemy-downloader
+2026-03-31 01:10:31.684 | INFO     | __main__:parallel_repo_analyze:546 - Queue repository 108: networking_tools/weibo-crawler
+2026-03-31 01:10:31.685 | INFO     | __main__:parallel_repo_analyze:546 - Queue repository 109: networking_tools/alt-app-installer
+2026-03-31 01:10:31.685 | INFO     | __main__:parallel_repo_analyze:546 - Queue repository 110: networking_tools/audiobook-dl
+2026-03-31 01:10:31.708 | ERROR    | __main__:single_repo_analyze:382 - Failed to checkout FETCH_HEAD for repository lxSpider: Command '['git', '-C', '/home/lxy/lxy_codes/mal_update_detect/mal_update_dataset/benign_dataset/networking_tools/lxSpider', 'checkout', 'FETCH_HEAD']' returned non-zero exit status 1.
+2026-03-31 01:10:31.721 | ERROR    | __main__:single_repo_analyze:382 - Failed to checkout FETCH_HEAD for repository Python3Webcrawler: Command '['git', '-C', '/home/lxy/lxy_codes/mal_update_detect/mal_update_dataset/benign_dataset/networking_tools/Python3Webcrawler', 'checkout', 'FETCH_HEAD']' returned non-zero exit status 1.
+2026-03-31 01:10:31.954 | ERROR    | __main__:single_repo_analyze:424 - [lxSpider] Failed to get commit list for branch main
+2026-03-31 01:10:31.955 | INFO     | __main__:single_repo_analyze:375 - [Leaked-GPTs] Worker started
+2026-03-31 01:10:31.956 | ERROR    | __main__:_on_repo_done:518 - Repository finished (failed): {'repo_name': 'lxSpider', 'status': 'failed', 'error': 'empty_commit_list'}
+2026-03-31 01:10:32.029 | ERROR    | __main__:single_repo_analyze:382 - Failed to checkout FETCH_HEAD for repository Leaked-GPTs: Command '['git', '-C', '/home/lxy/lxy_codes/mal_update_detect/mal_update_dataset/benign_dataset/networking_tools/Leaked-GPTs', 'checkout', 'FETCH_HEAD']' returned non-zero exit status 1.
+Parsing code at: /home/lxy/lxy_codes/mal_update_detect/mal_update_dataset/benign_dataset/networking_tools/Leaked-GPTs - language: `pythonsrc`
+[+] Running language frontend
+=======================================================================================================
+Invoking CPG generator in a separate process. Note that the new process will consume additional memory.
+If you are importing a large codebase (and/or running into memory issues), please try the following:
+1) exit joern
+2) invoke the frontend: /home/lxy/lxy_codes/malicious_update/joern-4.0.387/joern-cli/pysrc2cpg -J-Xmx30208m /home/lxy/lxy_codes/mal_update_detect/mal_update_dataset/benign_dataset/networking_tools/Leaked-GPTs -o cpg.bin
+3) start joern, import the cpg: `importCpg("path/to/cpg")`
+=======================================================================================================
+
+2026-03-31 01:10:32.998 | ERROR    | __main__:single_repo_analyze:424 - [Python3Webcrawler] Failed to get commit list for branch master
+2026-03-31 01:10:32.999 | INFO     | __main__:single_repo_analyze:375 - [Free_Proxy_Website] Worker started
+2026-03-31 01:10:32.999 | ERROR    | __main__:_on_repo_done:518 - Repository finished (failed): {'repo_name': 'Python3Webcrawler', 'status': 'failed', 'error': 'empty_commit_list'}
+2026-03-31 01:10:33.039 | ERROR    | __main__:single_repo_analyze:382 - Failed to checkout FETCH_HEAD for repository Free_Proxy_Website: Command '['git', '-C', '/home/lxy/lxy_codes/mal_update_detect/mal_update_dataset/benign_dataset/networking_tools/Free_Proxy_Website', 'checkout', 'FETCH_HEAD']' returned non-zero exit status 1.
+Parsing code at: /home/lxy/lxy_codes/mal_update_detect/mal_update_dataset/benign_dataset/networking_tools/Free_Proxy_Website - language: `pythonsrc`
+[+] Running language frontend
+=======================================================================================================
+Invoking CPG generator in a separate process. Note that the new process will consume additional memory.
+If you are importing a large codebase (and/or running into memory issues), please try the following:
+1) exit joern
+2) invoke the frontend: /home/lxy/lxy_codes/malicious_update/joern-4.0.387/joern-cli/pysrc2cpg -J-Xmx30208m /home/lxy/lxy_codes/mal_update_detect/mal_update_dataset/benign_dataset/networking_tools/Free_Proxy_Website -o cpg.bin
+3) start joern, import the cpg: `importCpg("path/to/cpg")`
+=======================================================================================================
+
+[+] Applying default overlays
+[+] Applying default overlays
+Successfully wrote graph to: /home/lxy/lxy_codes/mal_update_detect/joern_output/benign_dataset/networking_tools/Leaked-GPTs/0_46ea8_00000/cpg.bin
+To load the graph, type `joern /home/lxy/lxy_codes/mal_update_detect/joern_output/benign_dataset/networking_tools/Leaked-GPTs/0_46ea8_00000/cpg.bin`
+Successfully wrote graph to: /home/lxy/lxy_codes/mal_update_detect/joern_output/benign_dataset/networking_tools/Free_Proxy_Website/0_387f4_00000/cpg.bin
+To load the graph, type `joern /home/lxy/lxy_codes/mal_update_detect/joern_output/benign_dataset/networking_tools/Free_Proxy_Website/0_387f4_00000/cpg.bin`
+exported 940 nodes, 6132 edges into /home/lxy/lxy_codes/mal_update_detect/joern_output/benign_dataset/networking_tools/Free_Proxy_Website/0_387f4_00000/cpg
+exported 650 nodes, 3934 edges into /home/lxy/lxy_codes/mal_update_detect/joern_output/benign_dataset/networking_tools/Leaked-GPTs/0_46ea8_00000/cpg
+2026-03-31 01:10:48.095 | INFO     | project:extract_subgraph_codes:803 - Extracted subgraph to /home/lxy/lxy_codes/mal_update_detect/joern_output/benign_dataset/networking_tools/Leaked-GPTs/0_46ea8_00000/taint_slices_methods/NEW@<module>@AutoGPTs Extraction_main.py_slice.py
+2026-03-31 01:10:48.331 | INFO     | project:extract_subgraph_codes:803 - Extracted subgraph to /home/lxy/lxy_codes/mal_update_detect/joern_output/benign_dataset/networking_tools/Leaked-GPTs/0_46ea8_00000/taint_slices_methods/NEW@<module>@AutoGPTs Extraction_main.py_slice.py
+2026-03-31 01:10:48.360 | INFO     | __main__:single_repo_analyze:468 - Analyzing branch main commit 1/1: 36be9b51c90594b8150c99dfa7e3121d33bb314d
+2026-03-31 01:10:48.941 | INFO     | project:extract_subgraph_codes:803 - Extracted subgraph to /home/lxy/lxy_codes/mal_update_detect/joern_output/benign_dataset/networking_tools/Free_Proxy_Website/0_387f4_00000/taint_slices_methods/NEW@<module>@GetProxyFromSPYSONE.py_slice.py
+Parsing code at: /home/lxy/lxy_codes/mal_update_detect/mal_update_dataset/benign_dataset/networking_tools/Leaked-GPTs - language: `pythonsrc`
+[+] Running language frontend
+=======================================================================================================
+Invoking CPG generator in a separate process. Note that the new process will consume additional memory.
+If you are importing a large codebase (and/or running into memory issues), please try the following:
+1) exit joern
+2) invoke the frontend: /home/lxy/lxy_codes/malicious_update/joern-4.0.387/joern-cli/pysrc2cpg -J-Xmx30208m /home/lxy/lxy_codes/mal_update_detect/mal_update_dataset/benign_dataset/networking_tools/Leaked-GPTs -o cpg.bin
+3) start joern, import the cpg: `importCpg("path/to/cpg")`
+=======================================================================================================
+
+2026-03-31 01:10:49.498 | INFO     | project:extract_subgraph_codes:803 - Extracted subgraph to /home/lxy/lxy_codes/mal_update_detect/joern_output/benign_dataset/networking_tools/Free_Proxy_Website/0_387f4_00000/taint_slices_methods/NEW@<module>@GetProxyFromSPYSONE.py_slice.py
+2026-03-31 01:10:49.519 | INFO     | __main__:single_repo_analyze:468 - Analyzing branch master commit 1/1: dd14c7fb97943811b612ee84bfc35036f5520f68
+Parsing code at: /home/lxy/lxy_codes/mal_update_detect/mal_update_dataset/benign_dataset/networking_tools/Free_Proxy_Website - language: `pythonsrc`
+[+] Running language frontend
+=======================================================================================================
+Invoking CPG generator in a separate process. Note that the new process will consume additional memory.
+If you are importing a large codebase (and/or running into memory issues), please try the following:
+1) exit joern
+2) invoke the frontend: /home/lxy/lxy_codes/malicious_update/joern-4.0.387/joern-cli/pysrc2cpg -J-Xmx30208m /home/lxy/lxy_codes/mal_update_detect/mal_update_dataset/benign_dataset/networking_tools/Free_Proxy_Website -o cpg.bin
+3) start joern, import the cpg: `importCpg("path/to/cpg")`
+=======================================================================================================
+
+[+] Applying default overlays
+[+] Applying default overlays
+2026-03-31 01:10:53.620 [33mWARN [m CdgPass                   Found CDG edge starting at BLOCK node io.shiftleft.codepropertygraph.generated.nodes.FieldIdentifier[label=FIELD_IDENTIFIER; seq=293; id=55834575141] <-> io.shiftleft.codepropertygraph.generated.nodes.Block[label=BLOCK; seq=178; id=25769803954]. This is most likely caused by an invalid CFG. Method: io.shiftleft.codepropertygraph.generated.nodes.Method[label=METHOD; seq=25; id=107374182425] number of outgoing CFG edges from BLOCK node: 2
+2026-03-31 01:10:53.620 [33mWARN [m CdgPass                   Found CDG edge starting at BLOCK node io.shiftleft.codepropertygraph.generated.nodes.Identifier[label=IDENTIFIER; seq=828; id=68719477564] <-> io.shiftleft.codepropertygraph.generated.nodes.Block[label=BLOCK; seq=189; id=25769803965]. This is most likely caused by an invalid CFG. Method: io.shiftleft.codepropertygraph.generated.nodes.Method[label=METHOD; seq=26; id=107374182426] number of outgoing CFG edges from BLOCK node: 2
+2026-03-31 01:10:53.620 [33mWARN [m CdgPass                   Found CDG edge starting at BLOCK node io.shiftleft.codepropertygraph.generated.nodes.Call[label=CALL; seq=730; id=30064771802] <-> io.shiftleft.codepropertygraph.generated.nodes.Block[label=BLOCK; seq=127; id=25769803903]. This is most likely caused by an invalid CFG. Method: io.shiftleft.codepropertygraph.generated.nodes.Method[label=METHOD; seq=23; id=107374182423] number of outgoing CFG edges from BLOCK node: 2
+2026-03-31 01:10:53.620 [33mWARN [m CdgPass                   Found CDG edge starting at BLOCK node io.shiftleft.codepropertygraph.generated.nodes.Identifier[label=IDENTIFIER; seq=1208; id=68719477944] <-> io.shiftleft.codepropertygraph.generated.nodes.Block[label=BLOCK; seq=293; id=25769804069]. This is most likely caused by an invalid CFG. Method: io.shiftleft.codepropertygraph.generated.nodes.Method[label=METHOD; seq=33; id=107374182433] number of outgoing CFG edges from BLOCK node: 2
+2026-03-31 01:10:53.620 [33mWARN [m CdgPass                   Found CDG edge starting at BLOCK node io.shiftleft.codepropertygraph.generated.nodes.Block[label=BLOCK; seq=264; id=25769804040] <-> io.shiftleft.codepropertygraph.generated.nodes.Block[label=BLOCK; seq=263; id=25769804039]. This is most likely caused by an invalid CFG. Method: io.shiftleft.codepropertygraph.generated.nodes.Method[label=METHOD; seq=30; id=107374182430] number of outgoing CFG edges from BLOCK node: 2
+2026-03-31 01:10:53.620 [33mWARN [m CdgPass                   Found CDG edge starting at BLOCK node io.shiftleft.codepropertygraph.generated.nodes.Identifier[label=IDENTIFIER; seq=956; id=68719477692] <-> io.shiftleft.codepropertygraph.generated.nodes.Block[label=BLOCK; seq=232; id=25769804008]. This is most likely caused by an invalid CFG. Method: io.shiftleft.codepropertygraph.generated.nodes.Method[label=METHOD; seq=29; id=107374182429] number of outgoing CFG edges from BLOCK node: 3
+2026-03-31 01:10:53.620 [33mWARN [m CdgPass                   Found CDG edge starting at BLOCK node io.shiftleft.codepropertygraph.generated.nodes.Identifier[label=IDENTIFIER; seq=1232; id=68719477968] <-> io.shiftleft.codepropertygraph.generated.nodes.Block[label=BLOCK; seq=305; id=25769804081]. This is most likely caused by an invalid CFG. Method: io.shiftleft.codepropertygraph.generated.nodes.Method[label=METHOD; seq=34; id=107374182434] number of outgoing CFG edges from BLOCK node: 2
+2026-03-31 01:10:53.620 [33mWARN [m CdgPass                   Found CDG edge starting at BLOCK node io.shiftleft.codepropertygraph.generated.nodes.Block[label=BLOCK; seq=201; id=25769803977] <-> io.shiftleft.codepropertygraph.generated.nodes.Block[label=BLOCK; seq=199; id=25769803975]. This is most likely caused by an invalid CFG. Method: io.shiftleft.codepropertygraph.generated.nodes.Method[label=METHOD; seq=27; id=107374182427] number of outgoing CFG edges from BLOCK node: 2
+2026-03-31 01:10:53.620 [33mWARN [m CdgPass                   Found CDG edge starting at BLOCK node io.shiftleft.codepropertygraph.generated.nodes.Block[label=BLOCK; seq=153; id=25769803929] <-> io.shiftleft.codepropertygraph.generated.nodes.Block[label=BLOCK; seq=152; id=25769803928]. This is most likely caused by an invalid CFG. Method: io.shiftleft.codepropertygraph.generated.nodes.Method[label=METHOD; seq=24; id=107374182424] number of outgoing CFG edges from BLOCK node: 2
+Successfully wrote graph to: /home/lxy/lxy_codes/mal_update_detect/joern_output/benign_dataset/networking_tools/Free_Proxy_Website/1_dd14c_387f4/cpg.bin
+To load the graph, type `joern /home/lxy/lxy_codes/mal_update_detect/joern_output/benign_dataset/networking_tools/Free_Proxy_Website/1_dd14c_387f4/cpg.bin`
+2026-03-31 01:10:55.048 [33mWARN [m RecoverForPythonFile      Unhandled field structure (BLOCK,tmp48 = self.driver
+tmp48.find_element(By.TAG_NAME, "pre")),(FIELD_IDENTIFIER,text) @ AutoGPTs Extraction/gpt4_openai/driver.py#L292
+2026-03-31 01:10:55.051 [33mWARN [m RecoverForPythonFile      Unable to assign identifier 'response' to field load '<unknown>' @ AutoGPTs Extraction/gpt4_openai/driver.py#L292
+2026-03-31 01:10:55.191 [33mWARN [m RecoverForPythonFile      Unhandled field structure (BLOCK,tmp48 = self.driver
+tmp48.find_element(By.TAG_NAME, "pre")),(FIELD_IDENTIFIER,text) @ AutoGPTs Extraction/gpt4_openai/driver.py#L292
+2026-03-31 01:10:55.192 [33mWARN [m RecoverForPythonFile      Unable to assign identifier 'response' to field load '<unknown>' @ AutoGPTs Extraction/gpt4_openai/driver.py#L292
+Successfully wrote graph to: /home/lxy/lxy_codes/mal_update_detect/joern_output/benign_dataset/networking_tools/Leaked-GPTs/1_36be9_46ea8/cpg.bin
+To load the graph, type `joern /home/lxy/lxy_codes/mal_update_detect/joern_output/benign_dataset/networking_tools/Leaked-GPTs/1_36be9_46ea8/cpg.bin`
+exported 1298 nodes, 8627 edges into /home/lxy/lxy_codes/mal_update_detect/joern_output/benign_dataset/networking_tools/Free_Proxy_Website/1_dd14c_387f4/cpg
+exported 6843 nodes, 48301 edges into /home/lxy/lxy_codes/mal_update_detect/joern_output/benign_dataset/networking_tools/Leaked-GPTs/1_36be9_46ea8/cpg
+2026-03-31 01:11:06.254 | INFO     | project:extract_subgraph_codes:803 - Extracted subgraph to /home/lxy/lxy_codes/mal_update_detect/joern_output/benign_dataset/networking_tools/Free_Proxy_Website/1_dd14c_387f4/taint_slices_methods/<module>@GetProxyFromSPYSONE.py_slice.py
+2026-03-31 01:11:06.482 | INFO     | project:extract_subgraph_codes:803 - Extracted subgraph to /home/lxy/lxy_codes/mal_update_detect/joern_output/benign_dataset/networking_tools/Free_Proxy_Website/1_dd14c_387f4/taint_slices_methods/NEW@<module>@GetProxyFromSocks-proxy.py_slice.py
+2026-03-31 01:11:06.485 | INFO     | __main__:single_repo_analyze:496 - [Free_Proxy_Website] Worker finished
+2026-03-31 01:11:06.488 | INFO     | __main__:single_repo_analyze:375 - [AllNewsSpider] Worker started
+2026-03-31 01:11:06.488 | INFO     | __main__:_on_repo_done:515 - Repository finished: Free_Proxy_Website (success)
+2026-03-31 01:11:06.552 | ERROR    | __main__:single_repo_analyze:382 - Failed to checkout FETCH_HEAD for repository AllNewsSpider: Command '['git', '-C', '/home/lxy/lxy_codes/mal_update_detect/mal_update_dataset/benign_dataset/networking_tools/AllNewsSpider', 'checkout', 'FETCH_HEAD']' returned non-zero exit status 1.
+Parsing code at: /home/lxy/lxy_codes/mal_update_detect/mal_update_dataset/benign_dataset/networking_tools/AllNewsSpider - language: `pythonsrc`
+[+] Running language frontend
+=======================================================================================================
+Invoking CPG generator in a separate process. Note that the new process will consume additional memory.
+If you are importing a large codebase (and/or running into memory issues), please try the following:
+1) exit joern
+2) invoke the frontend: /home/lxy/lxy_codes/malicious_update/joern-4.0.387/joern-cli/pysrc2cpg -J-Xmx30208m /home/lxy/lxy_codes/mal_update_detect/mal_update_dataset/benign_dataset/networking_tools/AllNewsSpider -o cpg.bin
+3) start joern, import the cpg: `importCpg("path/to/cpg")`
+=======================================================================================================
+
+[+] Applying default overlays
+Successfully wrote graph to: /home/lxy/lxy_codes/mal_update_detect/joern_output/benign_dataset/networking_tools/AllNewsSpider/0_4e1b6_00000/cpg.bin
+To load the graph, type `joern /home/lxy/lxy_codes/mal_update_detect/joern_output/benign_dataset/networking_tools/AllNewsSpider/0_4e1b6_00000/cpg.bin`
+exported 1235 nodes, 8412 edges into /home/lxy/lxy_codes/mal_update_detect/joern_output/benign_dataset/networking_tools/AllNewsSpider/0_4e1b6_00000/cpg
+2026-03-31 01:11:25.018 | INFO     | project:extract_subgraph_codes:803 - Extracted subgraph to /home/lxy/lxy_codes/mal_update_detect/joern_output/benign_dataset/networking_tools/AllNewsSpider/0_4e1b6_00000/taint_slices_methods/NEW@<module>@baidu_baidu_news_spider.py_slice.py
+2026-03-31 01:11:26.160 | INFO     | project:extract_subgraph_codes:803 - Extracted subgraph to /home/lxy/lxy_codes/mal_update_detect/joern_output/benign_dataset/networking_tools/AllNewsSpider/0_4e1b6_00000/taint_slices_methods/NEW@<module>@baidu_baidu_news_spider.py_slice.py
+2026-03-31 01:11:26.195 | INFO     | __main__:single_repo_analyze:468 - Analyzing branch master commit 1/2: be52cbbea8efd691eec97749a162673e71d22a51
+Parsing code at: /home/lxy/lxy_codes/mal_update_detect/mal_update_dataset/benign_dataset/networking_tools/AllNewsSpider - language: `pythonsrc`
+[+] Running language frontend
+=======================================================================================================
+Invoking CPG generator in a separate process. Note that the new process will consume additional memory.
+If you are importing a large codebase (and/or running into memory issues), please try the following:
+1) exit joern
+2) invoke the frontend: /home/lxy/lxy_codes/malicious_update/joern-4.0.387/joern-cli/pysrc2cpg -J-Xmx30208m /home/lxy/lxy_codes/mal_update_detect/mal_update_dataset/benign_dataset/networking_tools/AllNewsSpider -o cpg.bin
+3) start joern, import the cpg: `importCpg("path/to/cpg")`
+=======================================================================================================
+
+[+] Applying default overlays
+Successfully wrote graph to: /home/lxy/lxy_codes/mal_update_detect/joern_output/benign_dataset/networking_tools/AllNewsSpider/1_be52c_4e1b6/cpg.bin
+To load the graph, type `joern /home/lxy/lxy_codes/mal_update_detect/joern_output/benign_dataset/networking_tools/AllNewsSpider/1_be52c_4e1b6/cpg.bin`
+exported 1235 nodes, 8412 edges into /home/lxy/lxy_codes/mal_update_detect/joern_output/benign_dataset/networking_tools/AllNewsSpider/1_be52c_4e1b6/cpg
+2026-03-31 01:11:42.145 | INFO     | project:extract_subgraph_codes:803 - Extracted subgraph to /home/lxy/lxy_codes/mal_update_detect/joern_output/benign_dataset/networking_tools/AllNewsSpider/1_be52c_4e1b6/taint_slices_methods/NEW@<module>@baidu_baidu_news_spider.py_slice.py
+2026-03-31 01:11:43.397 | INFO     | __main__:single_repo_analyze:468 - Analyzing branch master commit 2/2: 3fe67f674bc9c672d9f1c7bbae5023721015cbf1
+Parsing code at: /home/lxy/lxy_codes/mal_update_detect/mal_update_dataset/benign_dataset/networking_tools/AllNewsSpider - language: `pythonsrc`
+[+] Running language frontend
+=======================================================================================================
+Invoking CPG generator in a separate process. Note that the new process will consume additional memory.
+If you are importing a large codebase (and/or running into memory issues), please try the following:
+1) exit joern
+2) invoke the frontend: /home/lxy/lxy_codes/malicious_update/joern-4.0.387/joern-cli/pysrc2cpg -J-Xmx30208m /home/lxy/lxy_codes/mal_update_detect/mal_update_dataset/benign_dataset/networking_tools/AllNewsSpider -o cpg.bin
+3) start joern, import the cpg: `importCpg("path/to/cpg")`
+=======================================================================================================
+
+[+] Applying default overlays
+Successfully wrote graph to: /home/lxy/lxy_codes/mal_update_detect/joern_output/benign_dataset/networking_tools/AllNewsSpider/2_3fe67_be52c/cpg.bin
+To load the graph, type `joern /home/lxy/lxy_codes/mal_update_detect/joern_output/benign_dataset/networking_tools/AllNewsSpider/2_3fe67_be52c/cpg.bin`
+2026-03-31 01:11:52.545 | INFO     | project:extract_subgraph_codes:803 - Extracted subgraph to /home/lxy/lxy_codes/mal_update_detect/joern_output/benign_dataset/networking_tools/Leaked-GPTs/1_36be9_46ea8/taint_slices_methods/<module>@AutoGPTs Extraction_main.py_slice.py
+exported 1217 nodes, 8279 edges into /home/lxy/lxy_codes/mal_update_detect/joern_output/benign_dataset/networking_tools/AllNewsSpider/2_3fe67_be52c/cpg
+2026-03-31 01:12:07.695 | INFO     | project:extract_subgraph_codes:803 - Extracted subgraph to /home/lxy/lxy_codes/mal_update_detect/joern_output/benign_dataset/networking_tools/AllNewsSpider/2_3fe67_be52c/taint_slices_methods/NEW@<module>@baidu_baidu_news_spider.py_slice.py
+2026-03-31 01:12:07.701 | INFO     | __main__:single_repo_analyze:496 - [AllNewsSpider] Worker finished
+2026-03-31 01:12:07.707 | INFO     | __main__:single_repo_analyze:375 - [Snapchat-All-Memories-Downloader] Worker started
+2026-03-31 01:12:07.707 | INFO     | __main__:_on_repo_done:515 - Repository finished: AllNewsSpider (success)
+2026-03-31 01:12:07.761 | ERROR    | __main__:single_repo_analyze:382 - Failed to checkout FETCH_HEAD for repository Snapchat-All-Memories-Downloader: Command '['git', '-C', '/home/lxy/lxy_codes/mal_update_detect/mal_update_dataset/benign_dataset/networking_tools/Snapchat-All-Memories-Downloader', 'checkout', 'FETCH_HEAD']' returned non-zero exit status 1.
+Parsing code at: /home/lxy/lxy_codes/mal_update_detect/mal_update_dataset/benign_dataset/networking_tools/Snapchat-All-Memories-Downloader - language: `pythonsrc`
+[+] Running language frontend
+=======================================================================================================
+Invoking CPG generator in a separate process. Note that the new process will consume additional memory.
+If you are importing a large codebase (and/or running into memory issues), please try the following:
+1) exit joern
+2) invoke the frontend: /home/lxy/lxy_codes/malicious_update/joern-4.0.387/joern-cli/pysrc2cpg -J-Xmx30208m /home/lxy/lxy_codes/mal_update_detect/mal_update_dataset/benign_dataset/networking_tools/Snapchat-All-Memories-Downloader -o cpg.bin
+3) start joern, import the cpg: `importCpg("path/to/cpg")`
+=======================================================================================================
+
+[+] Applying default overlays
+2026-03-31 01:12:12.156 [33mWARN [m CdgPass                   Found CDG edge starting at BLOCK node io.shiftleft.codepropertygraph.generated.nodes.Call[label=CALL; seq=153; id=30064771225] <-> io.shiftleft.codepropertygraph.generated.nodes.Block[label=BLOCK; seq=29; id=25769803805]. This is most likely caused by an invalid CFG. Method: io.shiftleft.codepropertygraph.generated.nodes.Method[label=METHOD; seq=13; id=107374182413] number of outgoing CFG edges from BLOCK node: 3
+2026-03-31 01:12:12.156 [33mWARN [m CdgPass                   Found CDG edge starting at BLOCK node io.shiftleft.codepropertygraph.generated.nodes.Block[label=BLOCK; seq=56; id=25769803832] <-> io.shiftleft.codepropertygraph.generated.nodes.Block[label=BLOCK; seq=50; id=25769803826]. This is most likely caused by an invalid CFG. Method: io.shiftleft.codepropertygraph.generated.nodes.Method[label=METHOD; seq=15; id=107374182415] number of outgoing CFG edges from BLOCK node: 3
+2026-03-31 01:12:12.156 [33mWARN [m CdgPass                   Found CDG edge starting at BLOCK node io.shiftleft.codepropertygraph.generated.nodes.Block[label=BLOCK; seq=42; id=25769803818] <-> io.shiftleft.codepropertygraph.generated.nodes.Block[label=BLOCK; seq=41; id=25769803817]. This is most likely caused by an invalid CFG. Method: io.shiftleft.codepropertygraph.generated.nodes.Method[label=METHOD; seq=14; id=107374182414] number of outgoing CFG edges from BLOCK node: 2
+2026-03-31 01:12:12.160 [33mWARN [m CdgPass                   Found CDG edge starting at BLOCK node io.shiftleft.codepropertygraph.generated.nodes.Call[label=CALL; seq=280; id=30064771352] <-> io.shiftleft.codepropertygraph.generated.nodes.Block[label=BLOCK; seq=50; id=25769803826]. This is most likely caused by an invalid CFG. Method: io.shiftleft.codepropertygraph.generated.nodes.Method[label=METHOD; seq=15; id=107374182415] number of outgoing CFG edges from BLOCK node: 3
+2026-03-31 01:12:12.160 [33mWARN [m CdgPass                   Found CDG edge starting at BLOCK node io.shiftleft.codepropertygraph.generated.nodes.Identifier[label=IDENTIFIER; seq=160; id=68719476896] <-> io.shiftleft.codepropertygraph.generated.nodes.Block[label=BLOCK; seq=29; id=25769803805]. This is most likely caused by an invalid CFG. Method: io.shiftleft.codepropertygraph.generated.nodes.Method[label=METHOD; seq=13; id=107374182413] number of outgoing CFG edges from BLOCK node: 3
+2026-03-31 01:12:12.160 [33mWARN [m CdgPass                   Found CDG edge starting at BLOCK node io.shiftleft.codepropertygraph.generated.nodes.Call[label=CALL; seq=218; id=30064771290] <-> io.shiftleft.codepropertygraph.generated.nodes.Block[label=BLOCK; seq=41; id=25769803817]. This is most likely caused by an invalid CFG. Method: io.shiftleft.codepropertygraph.generated.nodes.Method[label=METHOD; seq=14; id=107374182414] number of outgoing CFG edges from BLOCK node: 2
+2026-03-31 01:12:12.160 [33mWARN [m CdgPass                   Found CDG edge starting at BLOCK node io.shiftleft.codepropertygraph.generated.nodes.Call[label=CALL; seq=272; id=30064771344] <-> io.shiftleft.codepropertygraph.generated.nodes.Block[label=BLOCK; seq=50; id=25769803826]. This is most likely caused by an invalid CFG. Method: io.shiftleft.codepropertygraph.generated.nodes.Method[label=METHOD; seq=15; id=107374182415] number of outgoing CFG edges from BLOCK node: 3
+2026-03-31 01:12:12.160 [33mWARN [m CdgPass                   Found CDG edge starting at BLOCK node io.shiftleft.codepropertygraph.generated.nodes.Identifier[label=IDENTIFIER; seq=159; id=68719476895] <-> io.shiftleft.codepropertygraph.generated.nodes.Block[label=BLOCK; seq=29; id=25769803805]. This is most likely caused by an invalid CFG. Method: io.shiftleft.codepropertygraph.generated.nodes.Method[label=METHOD; seq=13; id=107374182413] number of outgoing CFG edges from BLOCK node: 3
+2026-03-31 01:12:12.160 [33mWARN [m CdgPass                   Found CDG edge starting at BLOCK node io.shiftleft.codepropertygraph.generated.nodes.Call[label=CALL; seq=269; id=30064771341] <-> io.shiftleft.codepropertygraph.generated.nodes.Block[label=BLOCK; seq=50; id=25769803826]. This is most likely caused by an invalid CFG. Method: io.shiftleft.codepropertygraph.generated.nodes.Method[label=METHOD; seq=15; id=107374182415] number of outgoing CFG edges from BLOCK node: 3
+Successfully wrote graph to: /home/lxy/lxy_codes/mal_update_detect/joern_output/benign_dataset/networking_tools/Snapchat-All-Memories-Downloader/0_13eb9_00000/cpg.bin
+To load the graph, type `joern /home/lxy/lxy_codes/mal_update_detect/joern_output/benign_dataset/networking_tools/Snapchat-All-Memories-Downloader/0_13eb9_00000/cpg.bin`
+2026-03-31 01:12:13.164 | INFO     | project:extract_subgraph_codes:803 - Extracted subgraph to /home/lxy/lxy_codes/mal_update_detect/joern_output/benign_dataset/networking_tools/Leaked-GPTs/1_36be9_46ea8/taint_slices_methods/NEW@<body>@AutoGPTs Extraction_gpt4_openai___init__.py_slice.py
+exported 2189 nodes, 13822 edges into /home/lxy/lxy_codes/mal_update_detect/joern_output/benign_dataset/networking_tools/Snapchat-All-Memories-Downloader/0_13eb9_00000/cpg
+2026-03-31 01:12:24.167 | INFO     | project:extract_subgraph_codes:803 - Extracted subgraph to /home/lxy/lxy_codes/mal_update_detect/joern_output/benign_dataset/networking_tools/Snapchat-All-Memories-Downloader/0_13eb9_00000/taint_slices_methods/NEW@<body>@main.py_slice.py
+2026-03-31 01:12:25.570 | INFO     | project:extract_subgraph_codes:803 - Extracted subgraph to /home/lxy/lxy_codes/mal_update_detect/joern_output/benign_dataset/networking_tools/Snapchat-All-Memories-Downloader/0_13eb9_00000/taint_slices_methods/NEW@<module>@main.py_slice.py
+2026-03-31 01:12:25.992 | INFO     | project:extract_subgraph_codes:803 - Extracted subgraph to /home/lxy/lxy_codes/mal_update_detect/joern_output/benign_dataset/networking_tools/Snapchat-All-Memories-Downloader/0_13eb9_00000/taint_slices_methods/NEW@<body>@main.py_slice.py
+2026-03-31 01:12:27.382 | INFO     | project:extract_subgraph_codes:803 - Extracted subgraph to /home/lxy/lxy_codes/mal_update_detect/joern_output/benign_dataset/networking_tools/Snapchat-All-Memories-Downloader/0_13eb9_00000/taint_slices_methods/NEW@<module>@main.py_slice.py
+2026-03-31 01:12:27.413 | INFO     | __main__:single_repo_analyze:468 - Analyzing branch main commit 1/1: 34f45c85d7bed570d955c31fcdae3f1f2eefcec8
+Parsing code at: /home/lxy/lxy_codes/mal_update_detect/mal_update_dataset/benign_dataset/networking_tools/Snapchat-All-Memories-Downloader - language: `pythonsrc`
+[+] Running language frontend
+=======================================================================================================
+Invoking CPG generator in a separate process. Note that the new process will consume additional memory.
+If you are importing a large codebase (and/or running into memory issues), please try the following:
+1) exit joern
+2) invoke the frontend: /home/lxy/lxy_codes/malicious_update/joern-4.0.387/joern-cli/pysrc2cpg -J-Xmx30208m /home/lxy/lxy_codes/mal_update_detect/mal_update_dataset/benign_dataset/networking_tools/Snapchat-All-Memories-Downloader -o cpg.bin
+3) start joern, import the cpg: `importCpg("path/to/cpg")`
+=======================================================================================================
+
+[+] Applying default overlays
+2026-03-31 01:12:31.549 [33mWARN [m CdgPass                   Found CDG edge starting at BLOCK node io.shiftleft.codepropertygraph.generated.nodes.Return[label=RETURN; seq=13; id=141733920781] <-> io.shiftleft.codepropertygraph.generated.nodes.Block[label=BLOCK; seq=51; id=25769803827]. This is most likely caused by an invalid CFG. Method: io.shiftleft.codepropertygraph.generated.nodes.Method[label=METHOD; seq=16; id=107374182416] number of outgoing CFG edges from BLOCK node: 3
+2026-03-31 01:12:31.549 [33mWARN [m CdgPass                   Found CDG edge starting at BLOCK node io.shiftleft.codepropertygraph.generated.nodes.Call[label=CALL; seq=232; id=30064771304] <-> io.shiftleft.codepropertygraph.generated.nodes.Block[label=BLOCK; seq=42; id=25769803818]. This is most likely caused by an invalid CFG. Method: io.shiftleft.codepropertygraph.generated.nodes.Method[label=METHOD; seq=14; id=107374182414] number of outgoing CFG edges from BLOCK node: 2
+2026-03-31 01:12:31.549 [33mWARN [m CdgPass                   Found CDG edge starting at BLOCK node io.shiftleft.codepropertygraph.generated.nodes.Block[label=BLOCK; seq=32; id=25769803808] <-> io.shiftleft.codepropertygraph.generated.nodes.Block[label=BLOCK; seq=29; id=25769803805]. This is most likely caused by an invalid CFG. Method: io.shiftleft.codepropertygraph.generated.nodes.Method[label=METHOD; seq=13; id=107374182413] number of outgoing CFG edges from BLOCK node: 3
+2026-03-31 01:12:31.553 [33mWARN [m CdgPass                   Found CDG edge starting at BLOCK node io.shiftleft.codepropertygraph.generated.nodes.Literal[label=LITERAL; seq=71; id=90194313287] <-> io.shiftleft.codepropertygraph.generated.nodes.Block[label=BLOCK; seq=51; id=25769803827]. This is most likely caused by an invalid CFG. Method: io.shiftleft.codepropertygraph.generated.nodes.Method[label=METHOD; seq=16; id=107374182416] number of outgoing CFG edges from BLOCK node: 3
+2026-03-31 01:12:31.553 [33mWARN [m CdgPass                   Found CDG edge starting at BLOCK node io.shiftleft.codepropertygraph.generated.nodes.Block[label=BLOCK; seq=43; id=25769803819] <-> io.shiftleft.codepropertygraph.generated.nodes.Block[label=BLOCK; seq=42; id=25769803818]. This is most likely caused by an invalid CFG. Method: io.shiftleft.codepropertygraph.generated.nodes.Method[label=METHOD; seq=14; id=107374182414] number of outgoing CFG edges from BLOCK node: 2
+2026-03-31 01:12:31.553 [33mWARN [m CdgPass                   Found CDG edge starting at BLOCK node io.shiftleft.codepropertygraph.generated.nodes.Return[label=RETURN; seq=10; id=141733920778] <-> io.shiftleft.codepropertygraph.generated.nodes.Block[label=BLOCK; seq=29; id=25769803805]. This is most likely caused by an invalid CFG. Method: io.shiftleft.codepropertygraph.generated.nodes.Method[label=METHOD; seq=13; id=107374182413] number of outgoing CFG edges from BLOCK node: 3
+2026-03-31 01:12:31.553 [33mWARN [m CdgPass                   Found CDG edge starting at BLOCK node io.shiftleft.codepropertygraph.generated.nodes.Literal[label=LITERAL; seq=73; id=90194313289] <-> io.shiftleft.codepropertygraph.generated.nodes.Block[label=BLOCK; seq=51; id=25769803827]. This is most likely caused by an invalid CFG. Method: io.shiftleft.codepropertygraph.generated.nodes.Method[label=METHOD; seq=16; id=107374182416] number of outgoing CFG edges from BLOCK node: 3
+2026-03-31 01:12:31.554 [33mWARN [m CdgPass                   Found CDG edge starting at BLOCK node io.shiftleft.codepropertygraph.generated.nodes.Call[label=CALL; seq=153; id=30064771225] <-> io.shiftleft.codepropertygraph.generated.nodes.Block[label=BLOCK; seq=29; id=25769803805]. This is most likely caused by an invalid CFG. Method: io.shiftleft.codepropertygraph.generated.nodes.Method[label=METHOD; seq=13; id=107374182413] number of outgoing CFG edges from BLOCK node: 3
+2026-03-31 01:12:31.554 [33mWARN [m CdgPass                   Found CDG edge starting at BLOCK node io.shiftleft.codepropertygraph.generated.nodes.Literal[label=LITERAL; seq=72; id=90194313288] <-> io.shiftleft.codepropertygraph.generated.nodes.Block[label=BLOCK; seq=51; id=25769803827]. This is most likely caused by an invalid CFG. Method: io.shiftleft.codepropertygraph.generated.nodes.Method[label=METHOD; seq=16; id=107374182416] number of outgoing CFG edges from BLOCK node: 3

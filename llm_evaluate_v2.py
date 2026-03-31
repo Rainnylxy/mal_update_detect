@@ -1,7 +1,6 @@
 import os
 from openai import OpenAI
 import base64
-from google import genai
 from openai import types
 import json
 import textwrap
@@ -99,7 +98,7 @@ Capability Labels:
 
 
 High-Priority Rules(MANDATORY):
-1) 1) Missing any critical attack step OR having no reachable code path to the malicious behavior even when this script/binary is executed => CANNOT be "Full Attack Chain".
+1) Missing any critical attack step OR having no reachable code path to the malicious behavior even when this script/binary is executed => CANNOT be "Full Attack Chain".
    - Manual execution of the script/binary by a user/operator counts as a valid execution path.
    - The absence of auto-start/persistence/cron/etc. alone MUST NOT be used to downgrade from "Full Attack Chain" to "Core Attack Chain" when the malicious logic is fully implemented and reachable.
 2) External/undefined payloads or functions MUST be treated as missing; they do not count as implemented.

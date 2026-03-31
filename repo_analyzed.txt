@@ -46,3 +46,11 @@ generic-users
 shannot
 logalert.py
 c0admin
+awesome-devops
+bunkerweb
+Bili23-Downloader
+DecryptLogin
+Douyin_TikTok_Download_API
+Ghost-Downloader-3
+mdcx
+JMComic-Crawler-Python

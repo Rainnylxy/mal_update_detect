@@ -18,21 +18,56 @@ def get_useful_commits(repo_path, first_parent_only: bool = False, rev: str = No
         return []
 
     commits = [h.strip() for h in result.stdout.splitlines() if h.strip()]
-    useful = []
+    if not commits:
+        return []
 
-    for ch in commits:
-        if ch == "ff97ba8e5f58e1ef60fccbe0f410d90fafab07b2":
-            print("debug")
-        try:
-            cmd_files = ['git', '-C', repo_path, 'diff-tree','--root','-m', '--no-commit-id', '--name-only', '-r', ch]
-            r = subprocess.run(cmd_files, capture_output=True, text=True, encoding='utf-8', errors='ignore', check=True)
-            files = [p.strip() for p in r.stdout.splitlines() if p.strip()]
-        except subprocess.CalledProcessError:
+    try:
+        diff_cmd = [
+            'git',
+            '-C',
+            repo_path,
+            'diff-tree',
+            '--stdin',
+            '--root',
+            '-m',
+            '--name-only',
+            '-r',
+            '--format=__COMMIT__%H',
+        ]
+        diff_result = subprocess.run(
+            diff_cmd,
+            input='\n'.join(commits) + '\n',
+            capture_output=True,
+            text=True,
+            encoding='utf-8',
+            errors='ignore',
+            check=True,
+        )
+    except subprocess.CalledProcessError:
+        return []
+
+    useful = []
+    current_commit = None
+    current_has_py = False
+
+    for line in diff_result.stdout.splitlines():
+        if line.startswith('__COMMIT__'):
+            commit_hash = line[len('__COMMIT__'):].strip()
+            if current_commit is None:
+                current_commit = commit_hash
+                continue
+            if commit_hash != current_commit:
+                if current_has_py:
+                    useful.append(current_commit)
+                current_commit = commit_hash
+                current_has_py = False
             continue
 
-        # 如果该提交修改了任意 .py 文件，则认为是有用的
-        if any(f.lower().endswith('.py') for f in files):
-            useful.append(ch)
+        if line.strip() and line.lower().endswith('.py'):
+            current_has_py = True
+
+    if current_commit and current_has_py:
+        useful.append(current_commit)
 
     return useful
 

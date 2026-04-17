@@ -1,6 +1,5 @@
 import os
-import networkx as nx
-from multiprocessing import Pool, cpu_count
+from multiprocessing import Pool
 from project import Project
 
 
@@ -18,7 +17,7 @@ def process_commit(args):
         print(f"Processing commit {commit}")
 
         project = Project(repo_path, commit_dir, commit, flag="before")
-        project.extract_taint_codes(project.taintDG)
+        project.extract_taint_graph_codes(project.taintDG)
     except Exception as e:
         print(f"Error processing {repo_path}/{commit_dir}: {e}")
 

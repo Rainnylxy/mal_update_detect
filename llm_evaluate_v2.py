@@ -1,10 +1,15 @@
-import os
-from openai import OpenAI
-import base64
-from openai import types
 import json
+import os
 import textwrap
+import time
 from typing import Any, Dict
+
+from openai import OpenAI
+
+try:
+    import fcntl
+except ImportError:  # pragma: no cover - only happens on non-Unix platforms
+    fcntl = None
 
 SYSTEM_PROMPT = """
 Role:
@@ -19,6 +24,75 @@ Global Rules:
 6) Do not infer unseen project context; judge only from code visible in the snippet.
 """
 
+
+def _read_positive_float_from_env(name: str, default: float) -> float:
+    raw_value = os.environ.get(name)
+    if raw_value is None:
+        return default
+    try:
+        value = float(raw_value)
+    except ValueError:
+        return default
+    return value if value > 0 else default
+
+
+DEFAULT_GLOBAL_RPM = _read_positive_float_from_env(
+    "MAL_UPDATE_DETECT_GLOBAL_RPM", 20.0
+)
+DEFAULT_RATE_LIMIT_STATE_FILE = os.environ.get(
+    "MAL_UPDATE_DETECT_RATE_LIMIT_STATE_FILE",
+    "/tmp/mal_update_detect_llm_rate_limit.json",
+)
+
+
+class GlobalRateLimiter:
+    def __init__(self, requests_per_minute: float, state_file: str):
+        self._interval_seconds = 60.0 / requests_per_minute
+        self._state_file = state_file
+
+    def wait_for_turn(self) -> float:
+        state_dir = os.path.dirname(self._state_file)
+        if state_dir:
+            os.makedirs(state_dir, exist_ok=True)
+
+        with open(self._state_file, "a+", encoding="utf-8") as state_handle:
+            if fcntl is not None:
+                fcntl.flock(state_handle.fileno(), fcntl.LOCK_EX)
+
+            try:
+                state_handle.seek(0)
+                raw_state = state_handle.read().strip()
+                last_request_at = 0.0
+                if raw_state:
+                    try:
+                        parsed_state = json.loads(raw_state)
+                        last_request_at = float(parsed_state.get("last_request_at", 0.0))
+                    except (TypeError, ValueError, json.JSONDecodeError):
+                        last_request_at = 0.0
+
+                now = time.time()
+                wait_seconds = max(
+                    0.0, last_request_at + self._interval_seconds - now
+                )
+                if wait_seconds > 0:
+                    time.sleep(wait_seconds)
+                    now = time.time()
+
+                state_handle.seek(0)
+                state_handle.truncate()
+                json.dump({"last_request_at": now}, state_handle)
+                state_handle.flush()
+                return wait_seconds
+            finally:
+                if fcntl is not None:
+                    fcntl.flock(state_handle.fileno(), fcntl.LOCK_UN)
+
+
+GLOBAL_RATE_LIMITER = GlobalRateLimiter(
+    requests_per_minute=DEFAULT_GLOBAL_RPM,
+    state_file=DEFAULT_RATE_LIMIT_STATE_FILE,
+)
+
 STEP1_PROMPT = """
 Task:
 Given the code snippet, detect primary intent category.
@@ -29,20 +103,24 @@ Code:
 Decision Flow:
 1) Benign Filter:
 - If behavior matches normal utility/installer/updater/admin function with no malicious indicators -> Benign.
+- Security auditing/OSINT/penetration testing tools that collect publicly accessible information from legitimate sources (e.g., search engines, public APIs, public websites) are benign utilities, NOT malicious.
+- Tools requiring explicit user authorization (e.g., valid API tokens, cookies, account credentials provided by the user) and operating within platform scope should be labeled "Benign".
+- Examples of benign security tools: web scanners, email harvesters from public sources, certificate tools, vulnerability scanners, recon tools for authorized testing, content archivers with user auth.
 
 2) Ambiguity Filter:
 - Dangerous APIs/tools alone (e.g., subprocess, cryptography, base64, keyboard hooks) without harmful workflow -> Undetermined.
 - Bare connectivity alone is ambiguous -> Undetermined.
+- Tools that collect information from public sources or with user-provided credentials for legitimate purposes (archiving, research, security testing) -> Undetermined at worst, prefer Benign if no malicious workflow is present.
 
 3) Malicious Intent Match (pick one primary type):
-- Type A InfoStealer: collects sensitive data (credentials/tokens/keys/cookies/etc).
+- Type A InfoStealer: steals sensitive data (credentials/tokens/keys/cookies/etc).
 - Type B Backdoor/RAT: remote control channel + command/session handling.
 - Type C Ransomware: encryption used to deny access (not just normal crypto helper).
 - Type D Wiper: destructive deletion/overwrite at harmful scope.
 - Type E Clipper: clipboard wallet replacement.
 - Type F File Infector: injects/patches other files.
 - Type G Logic Bomb: trigger condition tied to malicious payload.
-- Type H Keylogger: active key capture with stealth/collection intent.
+- Type H Keylogger: active key capture with stealth intent.
 - Type I Builder: generates malware artifacts.
 - Type J Dropper/Downloader: payload delivery chain intent.
 - Type K System Interference: disrupts normal system usability.
@@ -73,6 +151,14 @@ Hard Constraints:
 - Select exactly one primary type based on dominant visible behavior in this snippet.
 - Do not infer missing context/files/functions; if key evidence is absent in this snippet, keep classification conservative.
 
+Dual-Use Tool Rules (MANDATORY):
+- Security tools, OSINT tools, and recon utilities are NOT malicious by default. Judge by actual harmful workflow, not by capability alone.
+- "Collecting publicly indexed data" (e.g., from search engines, public APIs, public websites) is NOT equivalent to "stealing credentials/tokens". Do NOT classify such tools as Type A InfoStealer.
+- Tools that require valid user authorization (cookies, API tokens, account credentials) and operate on the user's own data or publicly accessible data are benign utilities.
+- Web scanners, email harvesters, certificate checkers, vulnerability scanners, content archivers are legitimate security/admin tools unless they: (a) bypass authentication without authorization, (b) exploit vulnerabilities to gain unauthorized access, or (c) exfiltrate data to attacker-controlled infrastructure.
+- For dual-use tools, prefer "Benign" or "Undetermined" over "Malicious" unless clear malicious workflow (unauthorized access, data exfiltration to C2, destructive actions) is visible in the snippet.
+- Scraping/downloading content with user-provided credentials for archiving/personal use is a benign utility function, not malicious.
+
 Output JSON:
 {{
     "Detected Category": "Malicious" | "Undetermined" | "Benign",
@@ -98,7 +184,7 @@ Capability Labels:
 
 
 High-Priority Rules(MANDATORY):
-1) Missing any critical attack step OR having no reachable code path to the malicious behavior even when this script/binary is executed => CANNOT be "Full Attack Chain".
+1) Missing any critical attack component OR having no reachable code path to the malicious behavior even when this script/binary is executed => CANNOT be "Full Attack Chain".
    - Manual execution of the script/binary by a user/operator counts as a valid execution path.
    - The absence of auto-start/persistence/cron/etc. alone MUST NOT be used to downgrade from "Full Attack Chain" to "Core Attack Chain" when the malicious logic is fully implemented and reachable.
 2) External/undefined payloads or functions MUST be treated as missing; they do not count as implemented.
@@ -123,7 +209,7 @@ Use the primary type inferred in Step1, and apply these as a checklist for Full 
   - "Type B (Client/Reverse)" OR
   - "Type B (Server/Bind)".
   
-- Type C Ransomware: target traversal/selection + active encryption + ransom demand note.
+- Type C Ransomware: target traversal/selection + active encryption + explicit ransom demand note (visible ransom text required, not inferred from key storage or other artifacts).
 
 - Type D Wiper: Destructive delete/overwrite/corrupt/format operations against existing meaningful assets at harmful scope.
 Nuisance disruption or junk-file flood without clear destructive targeting => prefer Type K.
@@ -135,7 +221,7 @@ No explicit autonomous cross-target spread (otherwise see Type L).
 
 - Type G Logic Bomb:  Trigger condition + linked malicious payload that executes when condition holds.
 
-- Type H Keylogger: active key capture + storage and/or exfiltration implementation.
+- Type H Keylogger: active key capture + storage + remote exfiltration implementation.
 
 - Type I Builder: complete malware build pipeline.
 
@@ -201,8 +287,14 @@ class LLM_Evaluate:
     def _chat_json_with_retry(self, prompt: str, max_retries: int = 2) -> Dict[str, Any]:
         last_result: Dict[str, Any] = {"error": "unknown"}
         for _ in range(max_retries + 1):
+            wait_seconds = GLOBAL_RATE_LIMITER.wait_for_turn()
+            if wait_seconds > 0:
+                print(
+                    f"Rate limiter active: slept {wait_seconds:.2f}s "
+                    f"to respect {DEFAULT_GLOBAL_RPM:.2f} RPM."
+                )
             completion = self.client.chat.completions.create(
-                model="deepseek-v3-1-250821",
+                model="deepseek-v3-2-251201",
                 messages=[
                     {"role": "system", "content": SYSTEM_PROMPT},
                     {"role": "user", "content": prompt}
@@ -307,8 +399,8 @@ class LLM_Evaluate:
         return completion.choices[0].message.content
 
 if __name__ == "__main__":
-    code_dir = "/home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/"
-    arg = "crypto-clipper,0,dfe2b,NEW@<module>@main.py_slice.py"
+    code_dir = "/home/lxy/lxy_codes/mal_update_detect/joern_output/benign_dataset/encryption_tools"
+    arg = "browser-creds,0,a9b13,NEW@<module>@chrome.py_slice.py,"
     repo_path = os.path.join(code_dir,arg.split(",")[0])
     slice_path=""
     for slice_dir in os.listdir(repo_path):
@@ -324,6 +416,7 @@ if __name__ == "__main__":
         base_url="https://ark.cn-beijing.volces.com/api/v3"
     )
     sensitive_api_result = llm_evaluate.malware_analyze_two_steps(code_snippet)
+    print(sensitive_api_result)
     with open(os.path.join(code_path.replace(".py", "_result.json")), "w") as f:
         json.dump(sensitive_api_result, f, indent=4)
-    print(sensitive_api_result)
+    

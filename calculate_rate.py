@@ -126,6 +126,16 @@ def read_repo_names_from_csv(csv_path):
     return repo_names
 
 
+def _positive_int(value):
+    try:
+        parsed_value = int(value)
+    except (TypeError, ValueError) as exc:
+        raise argparse.ArgumentTypeError(f"Invalid integer value: {value}") from exc
+    if parsed_value <= 0:
+        raise argparse.ArgumentTypeError("Value must be a positive integer.")
+    return parsed_value
+
+
 def _dedupe_keep_order(values):
     seen = set()
     deduped_values = []
@@ -291,9 +301,13 @@ def _process_commit(repo_name, repo_joern_dir, commit_dir):
 
     taint_slices_dir = os.path.join(commit_path, "taint_slices_methods")
     if not os.path.isdir(taint_slices_dir):
-        logger.warning(f"Missing taint_slices_methods directory: {taint_slices_dir}")
-        return [], False, False
-
+        # logger.warning(f"Missing taint_slices_methods directory: {taint_slices_dir}")
+        # return [], False, False
+        taint_slices_dir = os.path.join(commit_path, "taint_slices_methods_new")
+        if not os.path.isdir(taint_slices_dir):
+            logger.warning(f"Missing taint_slices_methods directory: {taint_slices_dir}")
+            return [], False, False
+    
     files_to_process = []
     for root, dirs, files in os.walk(taint_slices_dir):
         dirs.sort(key=str.lower)
@@ -406,6 +420,7 @@ def process_repo_names(
     repo_analyzed_log,
     skip_existing_repos=True,
     dry_run=False,
+    limit=None,
 ):
     ensure_result_csv(result_csv_path)
 
@@ -421,6 +436,14 @@ def process_repo_names(
     skipped_repo_names = [
         repo_name for repo_name in repo_names if repo_name in existing_repo_names
     ]
+    total_pending_repo_count = len(repos_to_process)
+    if limit is not None:
+        repos_to_process = repos_to_process[:limit]
+        logger.info(
+            "Limiting this run to the first {} pending repositories; {} additional pending repositories remain queued.",
+            len(repos_to_process),
+            max(0, total_pending_repo_count - len(repos_to_process)),
+        )
 
     logger.info(
         "Selected {} repositories for analysis, skipped {} repositories already considered complete by prior results",
@@ -500,6 +523,11 @@ def parse_args():
         help="Optional file used to record repositories whose analysis finished successfully.",
     )
     parser.add_argument(
+        "--limit",
+        type=_positive_int,
+        help="Process only the first N repositories that are still pending after skip rules are applied.",
+    )
+    parser.add_argument(
         "--dry-run",
         action="store_true",
         help="Print repositories that would be processed after de-duplication and exit.",
@@ -541,6 +569,7 @@ def main():
         repo_analyzed_log=args.repo_analyzed_log,
         skip_existing_repos=args.skip_existing_repos,
         dry_run=args.dry_run,
+        limit=args.limit,
     )
 
     if args.dry_run:

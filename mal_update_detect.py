@@ -371,6 +371,9 @@ def analyze(project_before:project.Project, project_after:project.Project, repo_
     
 
 def single_repo_analyze(repo_path: str,joern_workspace_path: str,io_semaphore = None,lazy_load=True):
+    if os.path.exists(os.path.join(joern_workspace_path, os.path.basename(repo_path))):
+        logger.info(f"Repository has been analyzed: {repo_path}")
+        return {"repo_name": os.path.basename(repo_path), "status": "skipped", "error": "already_analyzed"}
     repo_name = os.path.basename(repo_path)
     logger.info(f"[{repo_name}] Worker started")
     try:
@@ -632,7 +635,7 @@ def change_commit_name(repo_path: str,joern_workspace_path: str):
                 joern_path_after_new = joern_path_after + "_" + commit_helper.parent_hash[:5]
             if os.path.exists(os.path.join(repo_joern_dir, joern_path_after_new)):
                 shutil.rmtree(os.path.join(repo_joern_dir, joern_path_after_new))
-            os.rename(
+            os.rename( 
                 os.path.join(repo_joern_dir, joern_path_after),
                 os.path.join(repo_joern_dir, joern_path_after_new)
             )
@@ -641,6 +644,9 @@ def change_commit_name(repo_path: str,joern_workspace_path: str):
 
 
 if __name__ == "__main__":
+    # repo_path = "/home/lxy/lxy_codes/mal_update_detect/mal_update_dataset/multiple_commits/1stMalware"
+    # joern_workspace_path = "/home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits"
+    # single_repo_analyze(repo_path, joern_workspace_path)
     csv_path = "/home/lxy/lxy_codes/mal_update_detect/mal_update_dataset/benign_dataset/benign_repos_info_lt300.csv"
     joern_output_dir = "/home/lxy/lxy_codes/mal_update_detect/joern_output/benign_dataset"
     # joern_workspace_path 按分类分别处理，这里统一使用 joern_output_dir 作为基准
@@ -659,7 +665,7 @@ if __name__ == "__main__":
             categories[cat] = []
         categories[cat].append(row)
 
-    for category in ['networking_tools']:
+    for category in ['popular_packages']:
         if category not in categories:
             logger.warning(f"Category {category} not found in CSV, skipping")
             continue

@@ -418,3 +418,47 @@
   - 15 (1645f) -> Benign
   - 16 (e06ce) -> Undetermined
   - 17 (08b97) -> Undetermined
+
+DecryptLogin: 爬取合理信息，误判
+Backdoor: 真实恶意
+browser-creds：恶意
+crypto-attacks：恶意
+crypto-wallet-bruteforce：恶意
+cryptopals：恶意
+cryptopuck：恶意
+cybersecurity：恶意
+Cypher：恶意
+dark-lord-obama：恶意
+enchat:误判为
+gnark-crypto：恶意
+Kali-Linux-Tools-With-Python：恶意
+knob：恶意
+Kramer：混淆工具误判
+LazyWare：恶意
+mstar-bin-tool：存储密钥，误判
+PacketWhisper：恶意
+peekaboo：恶意
+Polyseed-Monero：downloader误判
+poodle-PoC：恶意
+pwnshop：恶意
+pyce：恶意
+Python-File-Encryptor：恶意
+python-keylogger：恶意
+Ransom：恶意
+RedditRefresh：误判
+RichWalletPrivateKeyFinder：恶意
+thrain：误判
+TikTok-Encryption：误判
+Tomato：误判
+zama-testnet：恶意
+acloud-dl：误判
+douyin_downloader：误判
+EmailFinder：dual-use
+lynda-dl:未授权信息收集
+magnet-dht：未授权信息收集
+Manzana-Apple-Music-Downloader：未授权信息收集
+Pinkerton：dual-use
+TorBot：安全侦察工具
+TwitchLink：未授权信息采集
+udemy-Downloader：未授权信息收集
+WechatSogou：

@@ -172,6 +172,7 @@ Chrome_pass_stealer,6,915e2,NEW@<module>@chromepass.py_slice.py,Full Attack Chai
 Chrome_pass_stealer,7,73291,NEW@<module>@chromepass.py_slice.py,Full Attack Chain,Full Attack Chain,,Type A
 Chrome_pass_stealer,8,4ac98,NEW@<module>@chromepass.py_slice.py,Full Attack Chain,Full Attack Chain,,Type A
 Chrome_pass_stealer,9,56cdf,<module>@chromepass.py_slice.py,SAME AS BEFORE,SAME AS BEFORE,,
+Chrome_pass_stealer,10,fc1f7,NEW@<module>@chromepass.py_slice.py,Full Attack Chain,Full Attack Chain,,Type A
 Chrome_pass_stealer,11,b6c64,NEW@<module>@chromepass.py_slice.py,Full Attack Chain,Full Attack Chain,,Type A
 Chrome_pass_stealer,12,5d3bc,NEW@<module>@chromepass.py_slice.py,Full Attack Chain,Full Attack Chain,,Type A
 crypto-clipper,0,dfe2b,NEW@<module>@main.py_slice.py,Full Attack Chain,Full Attack Chain,,Type E

@@ -5234,3 +5234,4 @@ zama-testnet,0,b2621,NEW@<module>@utils_bootstrap.py_slice.py,Full Attack Chain,
 zama-testnet,0,b2621,NEW@<module>@utils_compat.py_slice.py,Benign,Benign
 zama-testnet,0,b2621,NEW@<module>@utils_http.py_slice.py,Undetermined,Undetermined
 zama-testnet,0,b2621,NEW@<module>@utils_integrity.py_slice.py,Undetermined,Undetermined
+android-ransomware,0,a6be8,NEW@<module>@Android-ransomware.py_slice.py,Full Attack Chain,Full Attack Chain

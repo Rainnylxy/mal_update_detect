@@ -66,8 +66,8 @@ except ModuleNotFoundError:
     logger = _FallbackLogger()
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-DEFAULT_JOERN_DIR = "/home/lxy/lxy_codes/mal_update_detect/joern_output/benign_dataset/sysadmin_tools"
-DEFAULT_RESULT_CSV = os.path.join(BASE_DIR, "result_two_steps_benign.csv")
+DEFAULT_JOERN_DIR = "/home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits/"
+DEFAULT_RESULT_CSV = os.path.join(BASE_DIR, "result_two_steps_malicious.csv")
 DEFAULT_REPO_ANALYZED_LOG = os.path.join(BASE_DIR, "repo_analyzed.txt")
 RESULT_HEADER = [
     "repo_name",
@@ -105,6 +105,12 @@ def _extract_label(response):
         return f"Error: {response['error']}"
     return "Undetermined"
 
+def _extract_malicious_type(response):
+    if not isinstance(response, dict):
+        return None
+    if "Malicious Type" in response:
+        return response["Malicious Type"]
+    return None
 
 def _load_llm_analyzer():
     from code_slice_evaluate import LLM_analyze_code_slice
@@ -260,6 +266,7 @@ def process_file(file_info):
             with open(out_file_path, "r", encoding="utf-8") as file_obj:
                 response_v1 = json.load(file_obj)
             classification_v2 = _extract_label(response_v1)
+            malicious_type = _extract_malicious_type(response_v1)
             return [
                 repo_name,
                 dir_info[0],
@@ -267,6 +274,7 @@ def process_file(file_info):
                 file_name,
                 classification_v2,
                 classification_v2,
+                malicious_type
             ], False
 
         logger.info(f"Analyzing code slice from file: {file_path}")
@@ -391,9 +399,9 @@ def process_repo_name(repo_name, joern_dir, result_csv_path, existing_commit_key
             processed_commit_count += 1
             if commit_key:
                 existing_commit_keys.add(commit_key)
-        if stop_after_commit:
-            stop_triggered = True
-            break
+        # if stop_after_commit:
+        #     stop_triggered = True
+        #     break
 
     return processed_commit_count, skipped_commit_count, stop_triggered, had_errors
 
@@ -418,7 +426,7 @@ def process_repo_names(
     joern_dir,
     result_csv_path,
     repo_analyzed_log,
-    skip_existing_repos=True,
+    skip_existing_repos=False,
     dry_run=False,
     limit=None,
 ):
@@ -536,7 +544,7 @@ def parse_args():
         "--skip-existing-repos",
         dest="skip_existing_repos",
         action="store_true",
-        default=True,
+        default=False,
         help="Skip repositories already considered complete by prior results.",
     )
     parser.add_argument(

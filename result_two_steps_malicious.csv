@@ -1,0 +1,18 @@
+repo_name,commit_num,commit,code_slice,ground_truth,prediction,Malware Type
+1stMalware,0,ba466,NEW@<module>@modules_crypt_crypt.py_slice.py,Undetermined,Undetermined
+1stMalware,1,177b1,<module>@modules_crypt_crypt.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
+1stMalware,1,177b1,NEW@<module>@test.py_slice.py,Undetermined,Undetermined
+1stMalware,2,f5809,<module>@test.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
+1stMalware,2,f5809,NEW@<file>@modules_crypt_crypt.py_slice.py,Undetermined,Undetermined
+1stMalware,3,c45da,NEW@<body>@modules_crypt_crypt.py_slice.py,Core Attack Chain,Core Attack Chain
+1stMalware,4,426f7,NEW@<body>@modules_crypt_crypt.py_slice.py,Core Attack Chain,Core Attack Chain
+1stMalware,5,21b58,NEW@<body>@modules_rights_getRights.py_slice.py,Undetermined,Undetermined
+1stMalware,5,21b58,NEW@<module>@main.py_slice.py,Core Attack Chain,Core Attack Chain
+1stMalware,5,21b58,NEW@<module>@modules_network_smtp.py_slice.py,Full Attack Chain,Full Attack Chain
+1stMalware,6,3a8ed,<body>@modules_rights_getRights.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
+1stMalware,6,3a8ed,NEW@<module>@main.py_slice.py,Core Attack Chain,Core Attack Chain
+1stMalware,6,3a8ed,NEW@<module>@modules_network_stmpgmail.py_slice.py,Full Attack Chain,Full Attack Chain
+1stMalware,7,03ca7,<body>@modules_rights_getRights.py_slice.py,SAME AS BEFORE,SAME AS BEFORE
+1stMalware,7,03ca7,NEW@<module>@main.py_slice.py,Core Attack Chain,Core Attack Chain
+1stMalware,8,47f7a,NEW@<body>@modules_crypt_crypt.py_slice.py,Core Attack Chain,Core Attack Chain
+1stMalware,9,3a1e0,NEW@<body>@modules_crypt_crypt.py_slice.py,Core Attack Chain,Core Attack Chain

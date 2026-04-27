@@ -1,6 +1,0 @@
-repo_name,commit_num,commit,ground_truth_current_commit_status,prediction_current_commit_status,ground_truth_raw_label_set,prediction_raw_label_set,ground_truth_resolved_label_set,prediction_resolved_label_set,ground_truth_unresolved_same_as_before_count,prediction_unresolved_same_as_before_count,ground_truth_resolution_notes,prediction_resolution_notes
-Malware_Python,6,0e5a2,Full Attack Chain,Core Attack Chain,SAME AS BEFORE,SAME AS BEFORE,Full Attack Chain,Core Attack Chain,0,0,,
-Spyware,8,3bac0,Full Attack Chain,Core Attack Chain,SAME AS BEFORE,SAME AS BEFORE,Undetermined | Core Attack Chain | Full Attack Chain,Undetermined | Core Attack Chain,0,0,,
-Spyware,13,ba54c,Full Attack Chain,Core Attack Chain,SAME AS BEFORE | Undetermined,SAME AS BEFORE | Undetermined,Benign | Undetermined | Core Attack Chain | Full Attack Chain,Benign | Undetermined | Core Attack Chain,0,0,,
-Spyware,44,9650a,Full Attack Chain,Core Attack Chain,SAME AS BEFORE,SAME AS BEFORE,Core Attack Chain | Full Attack Chain,Core Attack Chain,0,0,,
-TheWeirdVirus,7,f4649,Core Attack Chain,Full Attack Chain,SAME AS BEFORE,SAME AS BEFORE,Core Attack Chain,Full Attack Chain,0,0,,

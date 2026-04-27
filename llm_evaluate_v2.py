@@ -399,8 +399,8 @@ class LLM_Evaluate:
         return completion.choices[0].message.content
 
 if __name__ == "__main__":
-    code_dir = "/home/lxy/lxy_codes/mal_update_detect/joern_output/benign_dataset/encryption_tools"
-    arg = "browser-creds,0,a9b13,NEW@<module>@chrome.py_slice.py,"
+    code_dir = "/home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits"
+    arg = "Spyware,3,53c4a,NEW@<body>@Screenshot.py_slice.py"
     repo_path = os.path.join(code_dir,arg.split(",")[0])
     slice_path=""
     for slice_dir in os.listdir(repo_path):

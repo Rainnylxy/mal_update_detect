@@ -371,9 +371,9 @@ def analyze(project_before:project.Project, project_after:project.Project, repo_
     
 
 def single_repo_analyze(repo_path: str,joern_workspace_path: str,io_semaphore = None,lazy_load=True):
-    if os.path.exists(os.path.join(joern_workspace_path, os.path.basename(repo_path))):
-        logger.info(f"Repository has been analyzed: {repo_path}")
-        return {"repo_name": os.path.basename(repo_path), "status": "skipped", "error": "already_analyzed"}
+    # if os.path.exists(os.path.join(joern_workspace_path, os.path.basename(repo_path))):
+    #     logger.info(f"Repository has been analyzed: {repo_path}")
+    #     return {"repo_name": os.path.basename(repo_path), "status": "skipped", "error": "already_analyzed"}
     repo_name = os.path.basename(repo_path)
     logger.info(f"[{repo_name}] Worker started")
     try:
@@ -449,7 +449,7 @@ def single_repo_analyze(repo_path: str,joern_workspace_path: str,io_semaphore = 
                 # if i < 9:
                 #     continue
                 commit_after = commit_list[i + 1]
-                # if commit_after != "81ce968cd6765da83b8f6dc9ad61edf5db697e95":
+                # if commit_after != "b73dbbf0db99e64f117150c3e1421313f4ce3ee8":
                 #     continue
                 base_commit = prev_useful.get(commit_after) if FIRST_PARENT_ONLY else None
                 if base_commit is None:
@@ -644,45 +644,45 @@ def change_commit_name(repo_path: str,joern_workspace_path: str):
 
 
 if __name__ == "__main__":
-    # repo_path = "/home/lxy/lxy_codes/mal_update_detect/mal_update_dataset/multiple_commits/1stMalware"
-    # joern_workspace_path = "/home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits"
-    # single_repo_analyze(repo_path, joern_workspace_path)
-    csv_path = "/home/lxy/lxy_codes/mal_update_detect/mal_update_dataset/benign_dataset/benign_repos_info_lt300.csv"
-    joern_output_dir = "/home/lxy/lxy_codes/mal_update_detect/joern_output/benign_dataset"
-    # joern_workspace_path 按分类分别处理，这里统一使用 joern_output_dir 作为基准
-    # single_repo_analyze 内部会自行拼接 repo_name
-    # 但 joern_workspace_path 需要指定子分类目录，这里改为扫描 CSV 中的分类
-    # 实际上 joern_output 目录结构为 joern_output/benign_dataset/{category}/{repo_name}/...
-    # 而 single_repo_analyze 使用 joern_workspace_path/{repo_name}/...
-    # 所以需要按 category 分组调用
-    with open(csv_path, 'r', encoding='utf-8') as f:
-        repos = list(csv.DictReader(f))
+    repo_path = "/home/lxy/lxy_codes/mal_update_detect/mal_update_dataset/multiple_commits/1stMalware"
+    joern_workspace_path = "/home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits"
+    single_repo_analyze(repo_path, joern_workspace_path)
+    # csv_path = "/home/lxy/lxy_codes/mal_update_detect/mal_update_dataset/benign_dataset/benign_repos_info_lt300.csv"
+    # joern_output_dir = "/home/lxy/lxy_codes/mal_update_detect/joern_output/benign_dataset"
+    # # joern_workspace_path 按分类分别处理，这里统一使用 joern_output_dir 作为基准
+    # # single_repo_analyze 内部会自行拼接 repo_name
+    # # 但 joern_workspace_path 需要指定子分类目录，这里改为扫描 CSV 中的分类
+    # # 实际上 joern_output 目录结构为 joern_output/benign_dataset/{category}/{repo_name}/...
+    # # 而 single_repo_analyze 使用 joern_workspace_path/{repo_name}/...
+    # # 所以需要按 category 分组调用
+    # with open(csv_path, 'r', encoding='utf-8') as f:
+    #     repos = list(csv.DictReader(f))
 
-    categories = {}
-    for row in repos:
-        cat = row['Category']
-        if cat not in categories:
-            categories[cat] = []
-        categories[cat].append(row)
+    # categories = {}
+    # for row in repos:
+    #     cat = row['Category']
+    #     if cat not in categories:
+    #         categories[cat] = []
+    #     categories[cat].append(row)
 
-    for category in ['popular_packages']:
-        if category not in categories:
-            logger.warning(f"Category {category} not found in CSV, skipping")
-            continue
-        cat_joern_path = os.path.join(joern_output_dir, category)
-        os.makedirs(cat_joern_path, exist_ok=True)
-        logger.info(f"=== Processing category: {category} ({len(categories[category])} repos) ===")
-        # 写入单分类临时 CSV
-        tmp_csv = os.path.join(joern_output_dir, f"_tmp_{category}.csv")
-        fieldnames = repos[0].keys()
-        with open(tmp_csv, 'w', encoding='utf-8', newline='') as f:
-            writer = csv.DictWriter(f, fieldnames=fieldnames)
-            writer.writeheader()
-            writer.writerows(categories[category])
+    # for category in ['popular_packages']:
+    #     if category not in categories:
+    #         logger.warning(f"Category {category} not found in CSV, skipping")
+    #         continue
+    #     cat_joern_path = os.path.join(joern_output_dir, category)
+    #     os.makedirs(cat_joern_path, exist_ok=True)
+    #     logger.info(f"=== Processing category: {category} ({len(categories[category])} repos) ===")
+    #     # 写入单分类临时 CSV
+    #     tmp_csv = os.path.join(joern_output_dir, f"_tmp_{category}.csv")
+    #     fieldnames = repos[0].keys()
+    #     with open(tmp_csv, 'w', encoding='utf-8', newline='') as f:
+    #         writer = csv.DictWriter(f, fieldnames=fieldnames)
+    #         writer.writeheader()
+    #         writer.writerows(categories[category])
 
-        parallel_repo_analyze(tmp_csv, cat_joern_path, joern_output_dir)
-        os.remove(tmp_csv)
+    #     parallel_repo_analyze(tmp_csv, cat_joern_path, joern_output_dir)
+    #     os.remove(tmp_csv)
 
-    # 最终更新原始 CSV
-    update_lt300_csv(csv_path, joern_output_dir)
-    logger.info("All categories processed.")
+    # # 最终更新原始 CSV
+    # update_lt300_csv(csv_path, joern_output_dir)
+    # logger.info("All categories processed.")

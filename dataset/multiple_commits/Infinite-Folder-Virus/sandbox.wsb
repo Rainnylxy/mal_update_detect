@@ -1,9 +1,0 @@
-<configuration>
-    <MappedFolders>
-        <MappedFolder>
-            <HostFolder>D:\Projects\Infinite-Folder-Virus</HostFolder>
-            <SandboxFolder>C:\Infinite-Folder-Virus</SandboxFolder>
-            <ReadOnly>True</ReadOnly>
-        </MappedFolder>
-    </MappedFolders>
-</configuration>

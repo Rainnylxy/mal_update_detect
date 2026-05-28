@@ -1,5 +1,0 @@
-add computer names like this 
-
-computer name 1
-computer name 2
-computer name 3

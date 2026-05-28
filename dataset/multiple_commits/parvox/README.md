@@ -1,2 +1,0 @@
-# Parvox
- Python malware builder.

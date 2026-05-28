@@ -1,0 +1,34 @@
+# Mal Update Detect - Default Configuration
+# All paths are relative to the project root unless specified as absolute.
+
+paths:
+  # Data inputs
+  data_dir: data
+  repo_base: /home/lxy/lxy_codes/mal_update_detect/mal_update_dataset
+
+  # Outputs
+  joern_output_dir: /home/lxy/lxy_codes/mal_update_detect/joern_output
+  results_dir: data/outputs/results
+  labels_dir: data/outputs/labels
+  chains_dir: data/outputs/chains
+  log_dir: /home/lxy/lxy_codes/mal_update_detect/logs
+
+llm:
+  api_key: ${MAL_DETECT_API_KEY}
+  base_url: https://ark.cn-beijing.volces.com/api/v3
+  model: deepseek-v3-2-251201
+  rpm: 20
+  max_retries: 2
+
+pipeline:
+  first_parent_only: true
+  max_commits_per_branch: 300
+  max_taint_iterations: 10
+  pool_size: 2
+  joern_timeout: 40
+  language: pythonsrc
+
+logging:
+  rotation: 10 MB
+  retention: 7 days
+  error_retention: 14 days

@@ -1,7 +1,0 @@
-.venv
-dist
-build
-
-__pycache__
-*.log
-*.tmp

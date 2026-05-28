@@ -1,7 +1,0 @@
-PILLOW
-psutil
-pynput
-requests
-pyinstaller
-rich
-pystyle

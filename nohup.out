@@ -34468,3 +34468,17 @@ exported 27312 nodes, 200407 edges into /home/lxy/lxy_codes/mal_update_detect/jo
 2026-04-01 05:07:23.444 | INFO     | project:extract_subgraph_codes:803 - Extracted subgraph to /home/lxy/lxy_codes/mal_update_detect/joern_output/benign_dataset/networking_tools/acloud-dl/21_c2ed6_994db/taint_slices_methods/<body>@acloud__shared.py_slice.py
 2026-04-01 05:07:23.503 | INFO     | project:extract_subgraph_codes:803 - Extracted subgraph to /home/lxy/lxy_codes/mal_update_detect/joern_output/benign_dataset/networking_tools/acloud-dl/21_c2ed6_994db/taint_slices_methods/<body>@acloud__getpass.py_slice.py
 2026-04-01 08:56:49.153 | INFO     | project:extract_subgraph_codes:803 - Extracted subgraph to /home/lxy/lxy_codes/mal_update_detect/joern_output/benign_dataset/networking_tools/TwitchLink/7_936c8_c7bae/taint_slices_methods/NEW@<body>@Services_Temp_TempManager.py_slice.py
+usage: calculate_rate.py [-h] [--joern-dir JOERN_DIR]
+                         [--result-csv RESULT_CSV] [--repo REPOS]
+                         [--repo-csv REPO_CSV]
+                         [--repo-analyzed-log REPO_ANALYZED_LOG]
+                         [--limit LIMIT] [--dry-run] [--skip-existing-repos]
+                         [--no-skip-existing-repos]
+calculate_rate.py: error: unrecognized arguments: NetWorm PY-RAT
+usage: calculate_rate.py [-h] [--joern-dir JOERN_DIR]
+                         [--result-csv RESULT_CSV] [--repo REPOS]
+                         [--repo-csv REPO_CSV]
+                         [--repo-analyzed-log REPO_ANALYZED_LOG]
+                         [--limit LIMIT] [--dry-run] [--skip-existing-repos]
+                         [--no-skip-existing-repos]
+calculate_rate.py: error: unrecognized arguments: PY-RAT

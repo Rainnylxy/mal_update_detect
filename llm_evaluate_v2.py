@@ -251,7 +251,7 @@ Additional Constraints:
 Output JSON (STRICT, single object, no extra text):
 {{
   "Classification": "Full Attack Chain" | "Core Attack Chain" | "Undetermined Call Chain" | "Benign Artifact",
-  "Malware_Type": "Type X xxxx" | "Type L (L-File/Device Worm)" | "Type L (L-Network Worm)" | "None",
+  "Malware_Type": "Type X" | "None",
   "Missing_Components": "None" | "Concise description of missing critical steps",
   "Threat_Level": "High" | "Medium" | "Low",
   "Reasoning": "Concise evidence-based justification referencing visible code and the applied rules."
@@ -399,8 +399,8 @@ class LLM_Evaluate:
         return completion.choices[0].message.content
 
 if __name__ == "__main__":
-    code_dir = "/home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits"
-    arg = "Spyware,3,53c4a,NEW@<body>@Screenshot.py_slice.py"
+    code_dir = "/home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits_human_made"
+    arg = "backdoor3,2,3e05d,NEW@<module>@client.py_slice.py,"
     repo_path = os.path.join(code_dir,arg.split(",")[0])
     slice_path=""
     for slice_dir in os.listdir(repo_path):
@@ -417,6 +417,6 @@ if __name__ == "__main__":
     )
     sensitive_api_result = llm_evaluate.malware_analyze_two_steps(code_snippet)
     print(sensitive_api_result)
-    with open(os.path.join(code_path.replace(".py", "_result.json")), "w") as f:
+    with open(code_path+"_two_steps.json", "w") as f:
         json.dump(sensitive_api_result, f, indent=4)
     

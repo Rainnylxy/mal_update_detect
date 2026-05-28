@@ -76,6 +76,7 @@ RESULT_HEADER = [
     "code_slice",
     "ground_truth",
     "prediction",
+    "Malware Type"
 ]
 STOP_LABELS = {"Core Attack Chain", "Full Attack Chain"}
 
@@ -107,10 +108,12 @@ def _extract_label(response):
 
 def _extract_malicious_type(response):
     if not isinstance(response, dict):
-        return None
-    if "Malicious Type" in response:
-        return response["Malicious Type"]
-    return None
+        return ""
+    for key in ("Malware Type", "Malware_Type", "Malicious Type"):
+        value = response.get(key)
+        if value is not None:
+            return value
+    return ""
 
 def _load_llm_analyzer():
     from code_slice_evaluate import LLM_analyze_code_slice
@@ -208,6 +211,15 @@ def read_repo_names_with_stop_labels(result_csv_path):
 def ensure_result_csv(result_csv_path):
     os.makedirs(os.path.dirname(os.path.abspath(result_csv_path)), exist_ok=True)
     if os.path.exists(result_csv_path) and os.path.getsize(result_csv_path) > 0:
+        with open(result_csv_path, "r", newline="") as file_obj:
+            reader = csv.reader(file_obj)
+            existing_header = next(reader, [])
+        if existing_header != RESULT_HEADER:
+            raise ValueError(
+                f"Unexpected CSV header in {result_csv_path}: {existing_header}. "
+                f"Expected {RESULT_HEADER}. If this file was created before "
+                "Malware Type support, add the missing column or regenerate it."
+            )
         return
 
     with open(result_csv_path, "w", newline="") as file_obj:
@@ -280,9 +292,12 @@ def process_file(file_info):
         logger.info(f"Analyzing code slice from file: {file_path}")
         if "NEW" in file_name:
             llm_analyze_code_slice = _load_llm_analyzer()
-            classification_v2 = llm_analyze_code_slice(file_path)
+            response_v1 = llm_analyze_code_slice(file_path, return_raw=True)
+            classification_v2 = _extract_label(response_v1)
+            malicious_type = _extract_malicious_type(response_v1)
         else:
             classification_v2 = "SAME AS BEFORE"
+            malicious_type = ""
 
         return [
             repo_name,
@@ -291,6 +306,7 @@ def process_file(file_info):
             file_name,
             classification_v2,
             classification_v2,
+            malicious_type,
         ], False
     except Exception as exc:
         logger.error(f"Error processing file {file_name}: {exc}")

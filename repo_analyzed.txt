@@ -306,3 +306,14 @@ wireshark_remote
 xonsh-cheatsheet
 xxh
 1stMalware
+Chrome_pass_stealer
+Infinite-Folder-Virus
+MirageLink-rat-gui
+NetWorm
+PY-RAT
+Python-RAT
+dojo6oct16
+keylogger
+shameleon
+simple-virus-python
+Spyware

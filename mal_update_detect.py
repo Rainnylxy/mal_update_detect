@@ -644,9 +644,15 @@ def change_commit_name(repo_path: str,joern_workspace_path: str):
 
 
 if __name__ == "__main__":
-    repo_path = "/home/lxy/lxy_codes/mal_update_detect/mal_update_dataset/multiple_commits/1stMalware"
-    joern_workspace_path = "/home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits"
-    single_repo_analyze(repo_path, joern_workspace_path)
+    for repo_name in ["litellm"]:
+        repo_path = f"/home/lxy/lxy_codes/mal_update_detect/mal_update_dataset/dataset_test/compromise/git_repos/{repo_name}"
+        joern_workspace_path = f"/home/lxy/lxy_codes/mal_update_detect/joern_output/dataset_test/compromise"
+        change_commit_name(repo_path, joern_workspace_path)
+        single_repo_analyze(repo_path, joern_workspace_path)
+        
+    # repo_path = "/home/lxy/lxy_codes/mal_update_detect/mal_update_dataset/multiple_commits/Infinite-Folder-Virus"
+    # joern_workspace_path = "/home/lxy/lxy_codes/mal_update_detect/joern_output/multiple_commits"
+        
     # csv_path = "/home/lxy/lxy_codes/mal_update_detect/mal_update_dataset/benign_dataset/benign_repos_info_lt300.csv"
     # joern_output_dir = "/home/lxy/lxy_codes/mal_update_detect/joern_output/benign_dataset"
     # # joern_workspace_path 按分类分别处理，这里统一使用 joern_output_dir 作为基准

@@ -182,3 +182,169 @@ def read_callgraph_slices(commit_dir: str) -> list[SliceRecord]:
             is_new=is_new,
         ))
     return results
+
+
+# ═══════════════════════════════════════════════════
+# Normalization
+# ═══════════════════════════════════════════════════
+
+def normalize_file_path(file_token: str, source: str) -> str:
+    """Normalize to basename without extension, lowercase.
+
+    Joern: 'encrypt.py' -> 'encrypt'
+    CallGraph: 'utils_upload' -> 'upload' (last segment after last _)
+    Joern: 'platform_linux_keylogger.py' -> 'platform_linux_keylogger'
+    """
+    if source == "joern":
+        # Joern uses original filename with .py
+        if file_token.endswith(".py"):
+            file_token = file_token[:-3]
+        return file_token.lower()
+    else:
+        # CallGraph replaces / with _ and strips .py
+        # Take the last underscore-separated segment as basename
+        parts = file_token.split("_")
+        return parts[-1].lower()
+
+
+def normalize_func_name(func_name: str, source: str) -> str:
+    """Normalize function name for comparison.
+
+    Joern <module>/<body> -> keep as-is (special handling later)
+    All others: lowercase, strip whitespace
+    """
+    func_name = func_name.strip()
+    if source == "joern" and func_name in ('<module>', '<body>'):
+        return func_name  # keep special markers
+    return func_name.lower()
+
+
+def match_func_names(joern_name: str, cg_name: str) -> float:
+    """Fuzzy match two function names.
+
+    Returns 0-1 score. >= 0.8 considered a match.
+    Handles:
+      - Exact match after lower()
+      - One contains the other (e.g. '_send_data' contains 'send_data')
+      - SequenceMatcher ratio
+    """
+    j = joern_name.lower()
+    c = cg_name.lower()
+
+    if j == c:
+        return 1.0
+
+    # Contains check
+    if j in c or c in j:
+        return 0.9
+
+    # String similarity
+    return SequenceMatcher(None, j, c).ratio()
+
+
+def code_similarity(code1: str, code2: str) -> float:
+    """Compare two code strings using SequenceMatcher."""
+    if not code1 or not code2:
+        return 0.0
+    return SequenceMatcher(None, code1, code2).ratio()
+
+
+# ═══════════════════════════════════════════════════
+# Matching
+# ═══════════════════════════════════════════════════
+
+FUNC_MATCH_THRESHOLD = 0.8
+CODE_MATCH_THRESHOLD = 0.7
+
+
+def _build_normalized_key(slice_rec: SliceRecord, source: str) -> tuple[str, str]:
+    """Build (norm_file, norm_func) key for matching."""
+    nf = normalize_file_path(slice_rec.file_token, source)
+    nm = normalize_func_name(slice_rec.func_name, source)
+    return (nf, nm)
+
+
+def match_commit(
+    joern_slices: list[SliceRecord],
+    cg_slices: list[SliceRecord],
+    commit_hash: str,
+    commit_index: int,
+) -> MatchResult:
+    """Match NEW@ slices from Joern and CallGraph for one commit."""
+    result = MatchResult(commit_hash=commit_hash, commit_index=commit_index)
+
+    if not joern_slices:
+        result.cg_only = list(cg_slices)
+        return result
+
+    # Index CallGraph slices by normalized file path -> list
+    cg_by_file: dict[str, list[SliceRecord]] = {}
+    for s in cg_slices:
+        nf = normalize_file_path(s.file_token, "callgraph")
+        cg_by_file.setdefault(nf, []).append(s)
+
+    matched_cg_indices: set[int] = set()
+    joern_matched: set[int] = set()
+
+    # Phase 1: exact func name match on same file
+    for ji, js in enumerate(joern_slices):
+        nf = normalize_file_path(js.file_token, "joern")
+        candidates = cg_by_file.get(nf, [])
+
+        if js.is_special:
+            continue  # handled in Phase 2
+
+        best_score = 0.0
+        best_ci = -1
+        for ci, cs in enumerate(candidates):
+            if ci in matched_cg_indices:
+                continue
+            score = match_func_names(js.func_name, cs.func_name)
+            if score > best_score:
+                best_score = score
+                best_ci = ci
+
+        if best_score >= FUNC_MATCH_THRESHOLD and best_ci >= 0:
+            result.matched.append((js, candidates[best_ci], best_score))
+            matched_cg_indices.add(
+                cg_slices.index(candidates[best_ci])
+            )
+            joern_matched.add(ji)
+
+    # Phase 2: <module>/<body> — code similarity matching
+    for ji, js in enumerate(joern_slices):
+        if ji in joern_matched:
+            continue
+        if not js.is_special:
+            continue
+
+        nf = normalize_file_path(js.file_token, "joern")
+        candidates = cg_by_file.get(nf, [])
+
+        best_score = 0.0
+        best_ci = -1
+        for ci, cs in enumerate(candidates):
+            if cg_slices.index(cs) in matched_cg_indices:
+                continue
+            score = code_similarity(js.code, cs.code)
+            if score > best_score:
+                best_score = score
+                best_ci = ci
+
+        if best_score >= CODE_MATCH_THRESHOLD and best_ci >= 0:
+            result.matched.append((js, candidates[best_ci], best_score))
+            matched_cg_indices.add(
+                cg_slices.index(candidates[best_ci])
+            )
+            joern_matched.add(ji)
+
+    # Collect unmatched
+    for ji, js in enumerate(joern_slices):
+        if ji not in joern_matched:
+            result.joern_only.append(js)
+
+    for ci, cs in enumerate(cg_slices):
+        if ci not in matched_cg_indices:
+            result.cg_only.append(cs)
+
+    return result

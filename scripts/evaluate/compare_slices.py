@@ -31,7 +31,7 @@ class SliceRecord:
     @property
     def is_special(self) -> bool:
         """Joern <module> or <body> — need code-similarity matching."""
-        return self.func_name in ('<module>', '<body>')
+        return self.func_name in ('<module>', '<body>', '<file>')
 
 
 @dataclass
@@ -214,7 +214,7 @@ def normalize_func_name(func_name: str, source: str) -> str:
     All others: lowercase, strip whitespace
     """
     func_name = func_name.strip()
-    if source == "joern" and func_name in ('<module>', '<body>'):
+    if source == "joern" and func_name in ('<module>', '<body>', '<file>'):
         return func_name  # keep special markers
     return func_name.lower()
 

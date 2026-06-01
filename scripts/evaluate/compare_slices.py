@@ -348,3 +348,112 @@ def match_commit(
             result.cg_only.append(cs)
 
     return result
+
+
+# ═══════════════════════════════════════════════════
+# Commit alignment
+# ═══════════════════════════════════════════════════
+
+def _extract_joern_commit_hash(dirname: str) -> str | None:
+    """Extract commit hash from Joern dirname '3_4e4db_9f429' -> '4e4db'"""
+    parts = dirname.split("_")
+    if len(parts) >= 2:
+        return parts[1]
+    return None
+
+
+def _extract_callgraph_commit_hash(dirname: str) -> str | None:
+    """Extract commit hash from CallGraph dirname '1_1986c' -> '1986c'"""
+    parts = dirname.split("_")
+    if len(parts) >= 2:
+        return parts[1]
+    return None
+
+
+def evaluate_repo(
+    repo_name: str,
+    joern_repo_dir: str,
+    cg_repo_dir: str,
+    category: str = "",
+) -> RepoResult:
+    """Evaluate all commits for one repo."""
+    result = RepoResult(repo_name=repo_name, category=category)
+
+    # Index Joern commits by hash
+    joern_commits: dict[str, str] = {}
+    if os.path.isdir(joern_repo_dir):
+        for dname in os.listdir(joern_repo_dir):
+            dpath = os.path.join(joern_repo_dir, dname)
+            if not os.path.isdir(dpath):
+                continue
+            h = _extract_joern_commit_hash(dname)
+            if h:
+                joern_commits[h] = dpath
+
+    # Index CallGraph commits by hash
+    cg_commits: dict[str, str] = {}
+    if os.path.isdir(cg_repo_dir):
+        for dname in os.listdir(cg_repo_dir):
+            dpath = os.path.join(cg_repo_dir, dname)
+            if not os.path.isdir(dpath):
+                continue
+            h = _extract_callgraph_commit_hash(dname)
+            if h:
+                cg_commits[h] = dpath
+
+    # Find common commits
+    common_hashes = set(joern_commits.keys()) & set(cg_commits.keys())
+
+    for h in sorted(common_hashes, key=lambda x: x):
+        joern_slices = read_joern_slices(joern_commits[h])
+        cg_slices = read_callgraph_slices(cg_commits[h])
+        if not joern_slices and not cg_slices:
+            continue
+
+        match_result = match_commit(joern_slices, cg_slices, h, len(result.commits))
+        result.commits.append(match_result)
+
+    return result
+
+
+# ═══════════════════════════════════════════════════
+# Mismatch categorization
+# ═══════════════════════════════════════════════════
+
+MISMATCH_CATEGORIES = {
+    "A": "Import resolution failure",
+    "B": "Missing category pattern",
+    "C": "Call chain broken",
+    "D": "Module/Body difference",
+    "E": "Other",
+}
+
+
+def categorize_joern_only(slice_rec: SliceRecord) -> str:
+    """Heuristic categorization of why a Joern slice was not matched.
+
+    D: <module> or <body> — CallGraph doesn't have this concept
+    E: otherwise — needs manual review
+    """
+    if slice_rec.is_special:
+        return "D"
+    return "E"
+
+
+def categorize_mismatches(
+    repo_result: RepoResult,
+) -> dict[str, list[dict]]:
+    """Categorize all joern_only slices across commits."""
+    cats: dict[str, list[dict]] = {k: [] for k in MISMATCH_CATEGORIES}
+
+    for commit in repo_result.commits:
+        for js in commit.joern_only:
+            cat = categorize_joern_only(js)
+            cats[cat].append({
+                "commit": commit.commit_hash,
+                "func_name": js.func_name,
+                "file_token": js.file_token,
+                "code_preview": js.code[:200],
+            })
+
+    return cats

@@ -1,0 +1,791 @@
+{
+  "total_repos_evaluated": 97,
+  "total_repos_skipped": 4,
+  "skipped_repos": [
+    "python-malware1/python-malware",
+    "python-malware2/python-malware",
+    "python-malware3/python-malware",
+    "PythonMalware_1/PythonMalware"
+  ],
+  "total_joern_new_slices": 255,
+  "total_matched": 7,
+  "overall_recall": 0.0275,
+  "per_repo": [
+    {
+      "repo_name": "1stMalware",
+      "category": "multiple_commits",
+      "joern_new": 13,
+      "matched": 0,
+      "recall": 0.0,
+      "commits_evaluated": 10
+    },
+    {
+      "repo_name": "Backdoorcreator",
+      "category": "multiple_commits",
+      "joern_new": 0,
+      "matched": 0,
+      "recall": 1.0,
+      "commits_evaluated": 1
+    },
+    {
+      "repo_name": "Basic-Keylogger",
+      "category": "multiple_commits",
+      "joern_new": 0,
+      "matched": 0,
+      "recall": 1.0,
+      "commits_evaluated": 0
+    },
+    {
+      "repo_name": "beep",
+      "category": "multiple_commits",
+      "joern_new": 0,
+      "matched": 0,
+      "recall": 1.0,
+      "commits_evaluated": 9
+    },
+    {
+      "repo_name": "BskyBot",
+      "category": "multiple_commits",
+      "joern_new": 3,
+      "matched": 0,
+      "recall": 0.0,
+      "commits_evaluated": 11
+    },
+    {
+      "repo_name": "Cerberus",
+      "category": "multiple_commits",
+      "joern_new": 0,
+      "matched": 0,
+      "recall": 1.0,
+      "commits_evaluated": 0
+    },
+    {
+      "repo_name": "Chrome_pass_stealer",
+      "category": "multiple_commits",
+      "joern_new": 9,
+      "matched": 0,
+      "recall": 0.0,
+      "commits_evaluated": 10
+    },
+    {
+      "repo_name": "crypto-clipper",
+      "category": "multiple_commits",
+      "joern_new": 0,
+      "matched": 0,
+      "recall": 1.0,
+      "commits_evaluated": 3
+    },
+    {
+      "repo_name": "dojo6oct16",
+      "category": "multiple_commits",
+      "joern_new": 7,
+      "matched": 0,
+      "recall": 0.0,
+      "commits_evaluated": 7
+    },
+    {
+      "repo_name": "Doomed",
+      "category": "multiple_commits",
+      "joern_new": 0,
+      "matched": 0,
+      "recall": 1.0,
+      "commits_evaluated": 9
+    },
+    {
+      "repo_name": "EvilCrow",
+      "category": "multiple_commits",
+      "joern_new": 0,
+      "matched": 0,
+      "recall": 1.0,
+      "commits_evaluated": 2
+    },
+    {
+      "repo_name": "funny-virus",
+      "category": "multiple_commits",
+      "joern_new": 0,
+      "matched": 0,
+      "recall": 1.0,
+      "commits_evaluated": 15
+    },
+    {
+      "repo_name": "HackerDoomsday",
+      "category": "multiple_commits",
+      "joern_new": 0,
+      "matched": 0,
+      "recall": 1.0,
+      "commits_evaluated": 20
+    },
+    {
+      "repo_name": "Hallucinate",
+      "category": "multiple_commits",
+      "joern_new": 0,
+      "matched": 0,
+      "recall": 1.0,
+      "commits_evaluated": 2
+    },
+    {
+      "repo_name": "Infinite-Folder-Virus",
+      "category": "multiple_commits",
+      "joern_new": 8,
+      "matched": 1,
+      "recall": 0.125,
+      "commits_evaluated": 4
+    },
+    {
+      "repo_name": "iobdug_malware_py",
+      "category": "multiple_commits",
+      "joern_new": 0,
+      "matched": 0,
+      "recall": 1.0,
+      "commits_evaluated": 4
+    },
+    {
+      "repo_name": "keylogger",
+      "category": "multiple_commits",
+      "joern_new": 28,
+      "matched": 0,
+      "recall": 0.0,
+      "commits_evaluated": 24
+    },
+    {
+      "repo_name": "Keylogger",
+      "category": "multiple_commits",
+      "joern_new": 0,
+      "matched": 0,
+      "recall": 1.0,
+      "commits_evaluated": 0
+    },
+    {
+      "repo_name": "KeySpy",
+      "category": "multiple_commits",
+      "joern_new": 13,
+      "matched": 0,
+      "recall": 0.0,
+      "commits_evaluated": 23
+    },
+    {
+      "repo_name": "KMike",
+      "category": "multiple_commits",
+      "joern_new": 0,
+      "matched": 0,
+      "recall": 1.0,
+      "commits_evaluated": 24
+    },
+    {
+      "repo_name": "little-python-malware",
+      "category": "multiple_commits",
+      "joern_new": 0,
+      "matched": 0,
+      "recall": 1.0,
+      "commits_evaluated": 0
+    },
+    {
+      "repo_name": "MakeMalware_EthicalHacking",
+      "category": "multiple_commits",
+      "joern_new": 0,
+      "matched": 0,
+      "recall": 1.0,
+      "commits_evaluated": 14
+    },
+    {
+      "repo_name": "Malicious-Debian-Package-Maker",
+      "category": "multiple_commits",
+      "joern_new": 0,
+      "matched": 0,
+      "recall": 1.0,
+      "commits_evaluated": 6
+    },
+    {
+      "repo_name": "Malware",
+      "category": "multiple_commits",
+      "joern_new": 0,
+      "matched": 0,
+      "recall": 1.0,
+      "commits_evaluated": 6
+    },
+    {
+      "repo_name": "Malware_Python",
+      "category": "multiple_commits",
+      "joern_new": 0,
+      "matched": 0,
+      "recall": 1.0,
+      "commits_evaluated": 23
+    },
+    {
+      "repo_name": "malware-01",
+      "category": "multiple_commits",
+      "joern_new": 0,
+      "matched": 0,
+      "recall": 1.0,
+      "commits_evaluated": 0
+    },
+    {
+      "repo_name": "malware-educational-purpose-",
+      "category": "multiple_commits",
+      "joern_new": 0,
+      "matched": 0,
+      "recall": 1.0,
+      "commits_evaluated": 3
+    },
+    {
+      "repo_name": "Malware-Sandbox-Simulation-",
+      "category": "multiple_commits",
+      "joern_new": 0,
+      "matched": 0,
+      "recall": 1.0,
+      "commits_evaluated": 1
+    },
+    {
+      "repo_name": "megaloptera",
+      "category": "multiple_commits",
+      "joern_new": 0,
+      "matched": 0,
+      "recall": 1.0,
+      "commits_evaluated": 5
+    },
+    {
+      "repo_name": "MirageLink-rat-gui",
+      "category": "multiple_commits",
+      "joern_new": 15,
+      "matched": 0,
+      "recall": 0.0,
+      "commits_evaluated": 11
+    },
+    {
+      "repo_name": "NetWorm",
+      "category": "multiple_commits",
+      "joern_new": 15,
+      "matched": 0,
+      "recall": 0.0,
+      "commits_evaluated": 15
+    },
+    {
+      "repo_name": "parvox",
+      "category": "multiple_commits",
+      "joern_new": 0,
+      "matched": 0,
+      "recall": 1.0,
+      "commits_evaluated": 6
+    },
+    {
+      "repo_name": "pinkcord",
+      "category": "multiple_commits",
+      "joern_new": 0,
+      "matched": 0,
+      "recall": 1.0,
+      "commits_evaluated": 27
+    },
+    {
+      "repo_name": "PizzaVirus",
+      "category": "multiple_commits",
+      "joern_new": 0,
+      "matched": 0,
+      "recall": 1.0,
+      "commits_evaluated": 1
+    },
+    {
+      "repo_name": "PY-RAT",
+      "category": "multiple_commits",
+      "joern_new": 6,
+      "matched": 0,
+      "recall": 0.0,
+      "commits_evaluated": 7
+    },
+    {
+      "repo_name": "Python_KeyLogger_Prototype",
+      "category": "multiple_commits",
+      "joern_new": 0,
+      "matched": 0,
+      "recall": 1.0,
+      "commits_evaluated": 3
+    },
+    {
+      "repo_name": "Python_Malware",
+      "category": "multiple_commits",
+      "joern_new": 0,
+      "matched": 0,
+      "recall": 1.0,
+      "commits_evaluated": 10
+    },
+    {
+      "repo_name": "Python-Backdoor",
+      "category": "multiple_commits",
+      "joern_new": 0,
+      "matched": 0,
+      "recall": 1.0,
+      "commits_evaluated": 54
+    },
+    {
+      "repo_name": "python-malware",
+      "category": "multiple_commits",
+      "joern_new": 5,
+      "matched": 0,
+      "recall": 0.0,
+      "commits_evaluated": 10
+    },
+    {
+      "repo_name": "Python-Malware",
+      "category": "multiple_commits",
+      "joern_new": 0,
+      "matched": 0,
+      "recall": 1.0,
+      "commits_evaluated": 56
+    },
+    {
+      "repo_name": "Python-malware-example",
+      "category": "multiple_commits",
+      "joern_new": 0,
+      "matched": 0,
+      "recall": 1.0,
+      "commits_evaluated": 1
+    },
+    {
+      "repo_name": "Python-ransomware",
+      "category": "multiple_commits",
+      "joern_new": 0,
+      "matched": 0,
+      "recall": 1.0,
+      "commits_evaluated": 5
+    },
+    {
+      "repo_name": "Python-RAT",
+      "category": "multiple_commits",
+      "joern_new": 46,
+      "matched": 0,
+      "recall": 0.0,
+      "commits_evaluated": 36
+    },
+    {
+      "repo_name": "Python-Rootkit",
+      "category": "multiple_commits",
+      "joern_new": 0,
+      "matched": 0,
+      "recall": 1.0,
+      "commits_evaluated": 4
+    },
+    {
+      "repo_name": "Python-Trojan",
+      "category": "multiple_commits",
+      "joern_new": 0,
+      "matched": 0,
+      "recall": 1.0,
+      "commits_evaluated": 34
+    },
+    {
+      "repo_name": "PythonReverseShellBasic",
+      "category": "multiple_commits",
+      "joern_new": 0,
+      "matched": 0,
+      "recall": 1.0,
+      "commits_evaluated": 3
+    },
+    {
+      "repo_name": "PythonVirusExamples",
+      "category": "multiple_commits",
+      "joern_new": 0,
+      "matched": 0,
+      "recall": 1.0,
+      "commits_evaluated": 2
+    },
+    {
+      "repo_name": "PythonVirusStiller",
+      "category": "multiple_commits",
+      "joern_new": 0,
+      "matched": 0,
+      "recall": 1.0,
+      "commits_evaluated": 1
+    },
+    {
+      "repo_name": "raccoon_clipper",
+      "category": "multiple_commits",
+      "joern_new": 0,
+      "matched": 0,
+      "recall": 1.0,
+      "commits_evaluated": 2
+    },
+    {
+      "repo_name": "RansomPy-Covid19",
+      "category": "multiple_commits",
+      "joern_new": 0,
+      "matched": 0,
+      "recall": 1.0,
+      "commits_evaluated": 94
+    },
+    {
+      "repo_name": "ransomware",
+      "category": "multiple_commits",
+      "joern_new": 0,
+      "matched": 0,
+      "recall": 1.0,
+      "commits_evaluated": 3
+    },
+    {
+      "repo_name": "ransomware_malware",
+      "category": "multiple_commits",
+      "joern_new": 0,
+      "matched": 0,
+      "recall": 1.0,
+      "commits_evaluated": 2
+    },
+    {
+      "repo_name": "ScaryMalware",
+      "category": "multiple_commits",
+      "joern_new": 0,
+      "matched": 0,
+      "recall": 1.0,
+      "commits_evaluated": 9
+    },
+    {
+      "repo_name": "shameleon",
+      "category": "multiple_commits",
+      "joern_new": 9,
+      "matched": 0,
+      "recall": 0.0,
+      "commits_evaluated": 3
+    },
+    {
+      "repo_name": "simple-virus-python",
+      "category": "multiple_commits",
+      "joern_new": 2,
+      "matched": 0,
+      "recall": 0.0,
+      "commits_evaluated": 2
+    },
+    {
+      "repo_name": "Spyware",
+      "category": "multiple_commits",
+      "joern_new": 76,
+      "matched": 6,
+      "recall": 0.0789,
+      "commits_evaluated": 46
+    },
+    {
+      "repo_name": "steal-all-files",
+      "category": "multiple_commits",
+      "joern_new": 0,
+      "matched": 0,
+      "recall": 1.0,
+      "commits_evaluated": 5
+    },
+    {
+      "repo_name": "telegram_stealer",
+      "category": "multiple_commits",
+      "joern_new": 0,
+      "matched": 0,
+      "recall": 1.0,
+      "commits_evaluated": 2
+    },
+    {
+      "repo_name": "Thesis-MyZombPy",
+      "category": "multiple_commits",
+      "joern_new": 0,
+      "matched": 0,
+      "recall": 1.0,
+      "commits_evaluated": 38
+    },
+    {
+      "repo_name": "TheWeirdVirus",
+      "category": "multiple_commits",
+      "joern_new": 0,
+      "matched": 0,
+      "recall": 1.0,
+      "commits_evaluated": 0
+    },
+    {
+      "repo_name": "Trojan",
+      "category": "multiple_commits",
+      "joern_new": 0,
+      "matched": 0,
+      "recall": 1.0,
+      "commits_evaluated": 2
+    },
+    {
+      "repo_name": "virus",
+      "category": "multiple_commits",
+      "joern_new": 0,
+      "matched": 0,
+      "recall": 1.0,
+      "commits_evaluated": 2
+    },
+    {
+      "repo_name": "virus-chan",
+      "category": "multiple_commits",
+      "joern_new": 0,
+      "matched": 0,
+      "recall": 1.0,
+      "commits_evaluated": 0
+    },
+    {
+      "repo_name": "Virus-Python",
+      "category": "multiple_commits",
+      "joern_new": 0,
+      "matched": 0,
+      "recall": 1.0,
+      "commits_evaluated": 0
+    },
+    {
+      "repo_name": "virus-replicator",
+      "category": "multiple_commits",
+      "joern_new": 0,
+      "matched": 0,
+      "recall": 1.0,
+      "commits_evaluated": 0
+    },
+    {
+      "repo_name": "virus.py",
+      "category": "multiple_commits",
+      "joern_new": 0,
+      "matched": 0,
+      "recall": 1.0,
+      "commits_evaluated": 0
+    },
+    {
+      "repo_name": "Virus000",
+      "category": "multiple_commits",
+      "joern_new": 0,
+      "matched": 0,
+      "recall": 1.0,
+      "commits_evaluated": 7
+    },
+    {
+      "repo_name": "wanna-smile",
+      "category": "multiple_commits",
+      "joern_new": 0,
+      "matched": 0,
+      "recall": 1.0,
+      "commits_evaluated": 1
+    },
+    {
+      "repo_name": "WannaHappy",
+      "category": "multiple_commits",
+      "joern_new": 0,
+      "matched": 0,
+      "recall": 1.0,
+      "commits_evaluated": 4
+    },
+    {
+      "repo_name": "winrar-SFX-0day-exploiter",
+      "category": "multiple_commits",
+      "joern_new": 0,
+      "matched": 0,
+      "recall": 1.0,
+      "commits_evaluated": 2
+    },
+    {
+      "repo_name": "Wormy",
+      "category": "multiple_commits",
+      "joern_new": 0,
+      "matched": 0,
+      "recall": 1.0,
+      "commits_evaluated": 3
+    },
+    {
+      "repo_name": "backdoor",
+      "category": "multiple_commits_human_made",
+      "joern_new": 0,
+      "matched": 0,
+      "recall": 1.0,
+      "commits_evaluated": 1
+    },
+    {
+      "repo_name": "backdoor1",
+      "category": "multiple_commits_human_made",
+      "joern_new": 0,
+      "matched": 0,
+      "recall": 1.0,
+      "commits_evaluated": 0
+    },
+    {
+      "repo_name": "backdoor2",
+      "category": "multiple_commits_human_made",
+      "joern_new": 0,
+      "matched": 0,
+      "recall": 1.0,
+      "commits_evaluated": 4
+    },
+    {
+      "repo_name": "backdoor3",
+      "category": "multiple_commits_human_made",
+      "joern_new": 0,
+      "matched": 0,
+      "recall": 1.0,
+      "commits_evaluated": 0
+    },
+    {
+      "repo_name": "keylogger1",
+      "category": "multiple_commits_human_made",
+      "joern_new": 0,
+      "matched": 0,
+      "recall": 1.0,
+      "commits_evaluated": 1
+    },
+    {
+      "repo_name": "keylogger2",
+      "category": "multiple_commits_human_made",
+      "joern_new": 0,
+      "matched": 0,
+      "recall": 1.0,
+      "commits_evaluated": 2
+    },
+    {
+      "repo_name": "keylogger3",
+      "category": "multiple_commits_human_made",
+      "joern_new": 0,
+      "matched": 0,
+      "recall": 1.0,
+      "commits_evaluated": 1
+    },
+    {
+      "repo_name": "keylogger4",
+      "category": "multiple_commits_human_made",
+      "joern_new": 0,
+      "matched": 0,
+      "recall": 1.0,
+      "commits_evaluated": 2
+    },
+    {
+      "repo_name": "keylogger5",
+      "category": "multiple_commits_human_made",
+      "joern_new": 0,
+      "matched": 0,
+      "recall": 1.0,
+      "commits_evaluated": 1
+    },
+    {
+      "repo_name": "ransomware1",
+      "category": "multiple_commits_human_made",
+      "joern_new": 0,
+      "matched": 0,
+      "recall": 1.0,
+      "commits_evaluated": 0
+    },
+    {
+      "repo_name": "ransomware2",
+      "category": "multiple_commits_human_made",
+      "joern_new": 0,
+      "matched": 0,
+      "recall": 1.0,
+      "commits_evaluated": 0
+    },
+    {
+      "repo_name": "ransomware3",
+      "category": "multiple_commits_human_made",
+      "joern_new": 0,
+      "matched": 0,
+      "recall": 1.0,
+      "commits_evaluated": 4
+    },
+    {
+      "repo_name": "ransomware4",
+      "category": "multiple_commits_human_made",
+      "joern_new": 0,
+      "matched": 0,
+      "recall": 1.0,
+      "commits_evaluated": 4
+    },
+    {
+      "repo_name": "ransomware5",
+      "category": "multiple_commits_human_made",
+      "joern_new": 0,
+      "matched": 0,
+      "recall": 1.0,
+      "commits_evaluated": 1
+    },
+    {
+      "repo_name": "ransomware6",
+      "category": "multiple_commits_human_made",
+      "joern_new": 0,
+      "matched": 0,
+      "recall": 1.0,
+      "commits_evaluated": 3
+    },
+    {
+      "repo_name": "ransomware7",
+      "category": "multiple_commits_human_made",
+      "joern_new": 0,
+      "matched": 0,
+      "recall": 1.0,
+      "commits_evaluated": 1
+    },
+    {
+      "repo_name": "reverseShell1",
+      "category": "multiple_commits_human_made",
+      "joern_new": 0,
+      "matched": 0,
+      "recall": 1.0,
+      "commits_evaluated": 2
+    },
+    {
+      "repo_name": "reverseShell2",
+      "category": "multiple_commits_human_made",
+      "joern_new": 0,
+      "matched": 0,
+      "recall": 1.0,
+      "commits_evaluated": 0
+    },
+    {
+      "repo_name": "reverseShell3",
+      "category": "multiple_commits_human_made",
+      "joern_new": 0,
+      "matched": 0,
+      "recall": 1.0,
+      "commits_evaluated": 0
+    },
+    {
+      "repo_name": "reverseShell4",
+      "category": "multiple_commits_human_made",
+      "joern_new": 0,
+      "matched": 0,
+      "recall": 1.0,
+      "commits_evaluated": 2
+    },
+    {
+      "repo_name": "reverseShell5",
+      "category": "multiple_commits_human_made",
+      "joern_new": 0,
+      "matched": 0,
+      "recall": 1.0,
+      "commits_evaluated": 4
+    },
+    {
+      "repo_name": "simpleMalware1",
+      "category": "multiple_commits_human_made",
+      "joern_new": 0,
+      "matched": 0,
+      "recall": 1.0,
+      "commits_evaluated": 0
+    },
+    {
+      "repo_name": "virus1",
+      "category": "multiple_commits_human_made",
+      "joern_new": 0,
+      "matched": 0,
+      "recall": 1.0,
+      "commits_evaluated": 3
+    },
+    {
+      "repo_name": "virus2",
+      "category": "multiple_commits_human_made",
+      "joern_new": 0,
+      "matched": 0,
+      "recall": 1.0,
+      "commits_evaluated": 3
+    },
+    {
+      "repo_name": "worm1",
+      "category": "multiple_commits_human_made",
+      "joern_new": 0,
+      "matched": 0,
+      "recall": 1.0,
+      "commits_evaluated": 4
+    },
+    {
+      "repo_name": "worm2",
+      "category": "multiple_commits_human_made",
+      "joern_new": 0,
+      "matched": 0,
+      "recall": 1.0,
+      "commits_evaluated": 3
+    }
+  ]
+}

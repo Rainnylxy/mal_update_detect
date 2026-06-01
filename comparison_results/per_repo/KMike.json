@@ -1,0 +1,1553 @@
+{
+  "repo_name": "KMike",
+  "category": "multiple_commits",
+  "recall": 1.0,
+  "total_joern_new": 0,
+  "total_matched": 0,
+  "commits": [
+    {
+      "commit_hash": "1ccc9",
+      "commit_index": 0,
+      "joern_new_count": 0,
+      "cg_new_count": 29,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 29,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "__init__",
+          "file_token": "ransomware_core_crypto_asymmetric_encryption"
+        },
+        {
+          "func_name": "_get_padding",
+          "file_token": "ransomware_core_crypto_asymmetric_encryption"
+        },
+        {
+          "func_name": "_load_private_key_from_byte_string",
+          "file_token": "ransomware_core_crypto_asymmetric_encryption"
+        },
+        {
+          "func_name": "_load_public_key_from_byte_string",
+          "file_token": "ransomware_core_crypto_asymmetric_encryption"
+        },
+        {
+          "func_name": "build_request",
+          "file_token": "ransomware_core_comms_decrypt"
+        },
+        {
+          "func_name": "build_request",
+          "file_token": "ransomware_core_comms_payment"
+        },
+        {
+          "func_name": "decrypt",
+          "file_token": "c_and_c_server_server"
+        },
+        {
+          "func_name": "decrypt_data",
+          "file_token": "ransomware_core_crypto_asymmetric_encryption"
+        },
+        {
+          "func_name": "decrypt_data",
+          "file_token": "ransomware_core_crypto_symmetric_encryption"
+        },
+        {
+          "func_name": "decrypt_rsa_data",
+          "file_token": "c_and_c_server_utils"
+        },
+        {
+          "func_name": "encode_private_key_in_wif",
+          "file_token": "c_and_c_server_payment"
+        },
+        {
+          "func_name": "encrypt_data",
+          "file_token": "ransomware_core_crypto_asymmetric_encryption"
+        },
+        {
+          "func_name": "encrypt_data",
+          "file_token": "ransomware_core_crypto_symmetric_encryption"
+        },
+        {
+          "func_name": "encrypt_large_data",
+          "file_token": "ransomware_core_crypto_asymmetric_encryption"
+        },
+        {
+          "func_name": "generate_bitcoin_address",
+          "file_token": "c_and_c_server_payment"
+        },
+        {
+          "func_name": "generate_bitcoin_wallet_id",
+          "file_token": "c_and_c_server_payment"
+        },
+        {
+          "func_name": "get_bitcoin_wallet_address",
+          "file_token": "ransomware_core_comms_payment"
+        },
+        {
+          "func_name": "get_client_id",
+          "file_token": "ransomware_core_utils"
+        },
+        {
+          "func_name": "get_decrypted_key_from_server",
+          "file_token": "ransomware_core_comms_decrypt"
+        },
+        {
+          "func_name": "initialise",
+          "file_token": "c_and_c_server_server"
+        },
+        {
+          "func_name": "private_key",
+          "file_token": "ransomware_core_crypto_asymmetric_encryption"
+        },
+        {
+          "func_name": "process_request",
+          "file_token": "c_and_c_server_utils"
+        },
+        {
+          "func_name": "ripemd160",
+          "file_token": "c_and_c_server_payment"
+        },
+        {
+          "func_name": "send_request",
+          "file_token": "ransomware_core_comms_decrypt"
+        },
+        {
+          "func_name": "send_request",
+          "file_token": "ransomware_core_comms_payment"
+        },
+        {
+          "func_name": "sha256",
+          "file_token": "c_and_c_server_payment"
+        },
+        {
+          "func_name": "start_encryption",
+          "file_token": "ransomware_core_encrypt_files"
+        },
+        {
+          "func_name": "unpack_decrypt_request",
+          "file_token": "c_and_c_server_utils"
+        },
+        {
+          "func_name": "unpack_initialise_request",
+          "file_token": "c_and_c_server_utils"
+        }
+      ]
+    },
+    {
+      "commit_hash": "2b764",
+      "commit_index": 1,
+      "joern_new_count": 0,
+      "cg_new_count": 8,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 8,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "decode_file_encryption_details",
+          "file_token": "ransomware_decrypt_files"
+        },
+        {
+          "func_name": "decrypt_file",
+          "file_token": "ransomware_decrypt_files"
+        },
+        {
+          "func_name": "decrypt_file_encryption_details",
+          "file_token": "ransomware_decrypt_files"
+        },
+        {
+          "func_name": "decrypt_files",
+          "file_token": "ransomware_decrypt_files"
+        },
+        {
+          "func_name": "decrypt_local_rsa_key",
+          "file_token": "ransomware_decrypt_files"
+        },
+        {
+          "func_name": "encrypt_file_details",
+          "file_token": "ransomware_encrypt_files"
+        },
+        {
+          "func_name": "start_decryption",
+          "file_token": "ransomware_decrypt_files"
+        },
+        {
+          "func_name": "start_encryption",
+          "file_token": "ransomware_encrypt_files"
+        }
+      ]
+    },
+    {
+      "commit_hash": "33184",
+      "commit_index": 2,
+      "joern_new_count": 0,
+      "cg_new_count": 21,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 21,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "_get_padding",
+          "file_token": "ransomware_core_crypto_asymmetric_encryption"
+        },
+        {
+          "func_name": "build_request",
+          "file_token": "ransomware_core_comms_decrypt"
+        },
+        {
+          "func_name": "create_tables",
+          "file_token": "c_and_c_server_db"
+        },
+        {
+          "func_name": "decrypt_file",
+          "file_token": "ransomware_core_decrypt_files"
+        },
+        {
+          "func_name": "decrypt_file_encryption_details",
+          "file_token": "ransomware_core_decrypt_files"
+        },
+        {
+          "func_name": "decrypt_files",
+          "file_token": "ransomware_core_decrypt_files"
+        },
+        {
+          "func_name": "decrypt_local_rsa_key",
+          "file_token": "ransomware_core_decrypt_files"
+        },
+        {
+          "func_name": "encrypt_large_data",
+          "file_token": "ransomware_core_crypto_asymmetric_encryption"
+        },
+        {
+          "func_name": "format_and_insert_statistics_to_database",
+          "file_token": "c_and_c_server_utils"
+        },
+        {
+          "func_name": "generate_client_id",
+          "file_token": "ransomware_core_utils_generators"
+        },
+        {
+          "func_name": "generate_rsa_key_pair",
+          "file_token": "ransomware_core_utils_generators"
+        },
+        {
+          "func_name": "get_bitcoin_wallet_address",
+          "file_token": "ransomware_core_comms_bitcoin_address"
+        },
+        {
+          "func_name": "get_device_name",
+          "file_token": "ransomware_core_utils_statistics"
+        },
+        {
+          "func_name": "get_mac_address",
+          "file_token": "ransomware_core_utils_statistics"
+        },
+        {
+          "func_name": "get_username",
+          "file_token": "ransomware_core_utils_statistics"
+        },
+        {
+          "func_name": "insert_statistics_to_database",
+          "file_token": "c_and_c_server_db"
+        },
+        {
+          "func_name": "is_admin",
+          "file_token": "ransomware_core_utils_statistics"
+        },
+        {
+          "func_name": "read_data_from_file",
+          "file_token": "ransomware_core_utils_file_ops"
+        },
+        {
+          "func_name": "send_request",
+          "file_token": "ransomware_core_comms_bitcoin_address"
+        },
+        {
+          "func_name": "shred_file",
+          "file_token": "ransomware_core_utils_file_ops"
+        },
+        {
+          "func_name": "write_data_to_file",
+          "file_token": "ransomware_core_utils_file_ops"
+        }
+      ]
+    },
+    {
+      "commit_hash": "3af22",
+      "commit_index": 3,
+      "joern_new_count": 0,
+      "cg_new_count": 11,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 11,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "__init__",
+          "file_token": "ransomware_core_gui_start_menu"
+        },
+        {
+          "func_name": "decode_file_encryption_details",
+          "file_token": "ransomware_core_decrypt_files"
+        },
+        {
+          "func_name": "decrypt_button_handler",
+          "file_token": "ransomware_core_gui_start_menu"
+        },
+        {
+          "func_name": "decrypt_file",
+          "file_token": "ransomware_core_decrypt_files"
+        },
+        {
+          "func_name": "decrypt_file_encryption_details",
+          "file_token": "ransomware_core_decrypt_files"
+        },
+        {
+          "func_name": "decrypt_files",
+          "file_token": "ransomware_core_decrypt_files"
+        },
+        {
+          "func_name": "encrypt_button_handler",
+          "file_token": "ransomware_core_gui_start_menu"
+        },
+        {
+          "func_name": "encrypt_file_details",
+          "file_token": "ransomware_core_encrypt_files"
+        },
+        {
+          "func_name": "encrypt_files",
+          "file_token": "ransomware_core_encrypt_files"
+        },
+        {
+          "func_name": "start_decryption",
+          "file_token": "ransomware_core_decrypt_files"
+        },
+        {
+          "func_name": "start_encryption",
+          "file_token": "ransomware_core_encrypt_files"
+        }
+      ]
+    },
+    {
+      "commit_hash": "51fa8",
+      "commit_index": 4,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "__init__",
+          "file_token": "ransomware_core_gui_start_menu"
+        }
+      ]
+    },
+    {
+      "commit_hash": "53197",
+      "commit_index": 5,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "process",
+          "file_token": "c_and_c_server_server"
+        }
+      ]
+    },
+    {
+      "commit_hash": "602d0",
+      "commit_index": 6,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "start_encryption",
+          "file_token": "ransomware_core_encrypt_files"
+        }
+      ]
+    },
+    {
+      "commit_hash": "6201f",
+      "commit_index": 7,
+      "joern_new_count": 0,
+      "cg_new_count": 11,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 11,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "decrypt_button_handler",
+          "file_token": "ransomware_core_gui_start_menu"
+        },
+        {
+          "func_name": "decrypt_file_encryption_details",
+          "file_token": "ransomware_core_decrypt_files"
+        },
+        {
+          "func_name": "decrypt_local_rsa_key",
+          "file_token": "ransomware_core_decrypt_files"
+        },
+        {
+          "func_name": "encrypt_files",
+          "file_token": "ransomware_core_encrypt_files"
+        },
+        {
+          "func_name": "generate_domains",
+          "file_token": "ransomware_core_comms_cnc_generator"
+        },
+        {
+          "func_name": "get_bitcoin_wallet_address",
+          "file_token": "ransomware_core_comms_bitcoin_address"
+        },
+        {
+          "func_name": "get_cnc_from_youtube",
+          "file_token": "ransomware_core_comms_cnc_generator"
+        },
+        {
+          "func_name": "get_decrypted_key_from_server",
+          "file_token": "ransomware_core_comms_decrypt"
+        },
+        {
+          "func_name": "send_request",
+          "file_token": "ransomware_core_comms_bitcoin_address"
+        },
+        {
+          "func_name": "send_request",
+          "file_token": "ransomware_core_comms_decrypt"
+        },
+        {
+          "func_name": "start_encryption",
+          "file_token": "ransomware_core_encrypt_files"
+        }
+      ]
+    },
+    {
+      "commit_hash": "62b21",
+      "commit_index": 8,
+      "joern_new_count": 0,
+      "cg_new_count": 28,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 28,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "__init__",
+          "file_token": "c_and_c_server_asymmetric_encryption"
+        },
+        {
+          "func_name": "_get_padding",
+          "file_token": "c_and_c_server_asymmetric_encryption"
+        },
+        {
+          "func_name": "_load_private_key_from_byte_string",
+          "file_token": "c_and_c_server_asymmetric_encryption"
+        },
+        {
+          "func_name": "_load_public_key_from_byte_string",
+          "file_token": "c_and_c_server_asymmetric_encryption"
+        },
+        {
+          "func_name": "build_request",
+          "file_token": "ransomware_core_comms_decrypt"
+        },
+        {
+          "func_name": "build_request",
+          "file_token": "ransomware_core_comms_payment"
+        },
+        {
+          "func_name": "create_connection",
+          "file_token": "c_and_c_server_db"
+        },
+        {
+          "func_name": "create_tables",
+          "file_token": "c_and_c_server_db"
+        },
+        {
+          "func_name": "decrypt_data",
+          "file_token": "c_and_c_server_asymmetric_encryption"
+        },
+        {
+          "func_name": "decrypt_rsa_data",
+          "file_token": "c_and_c_server_utils"
+        },
+        {
+          "func_name": "encode_private_key_in_wif",
+          "file_token": "c_and_c_server_payment"
+        },
+        {
+          "func_name": "generate_bitcoin_address",
+          "file_token": "c_and_c_server_payment"
+        },
+        {
+          "func_name": "generate_bitcoin_wallet_address",
+          "file_token": "c_and_c_server_payment"
+        },
+        {
+          "func_name": "get_bitcoin_wallet_address",
+          "file_token": "ransomware_core_comms_payment"
+        },
+        {
+          "func_name": "get_bitcoin_wallet_id_database",
+          "file_token": "c_and_c_server_db"
+        },
+        {
+          "func_name": "get_client_id",
+          "file_token": "ransomware_core_utils"
+        },
+        {
+          "func_name": "insert_bitcoin_details_to_database",
+          "file_token": "c_and_c_server_db"
+        },
+        {
+          "func_name": "insert_payment_details_into_database",
+          "file_token": "c_and_c_server_db"
+        },
+        {
+          "func_name": "insert_statistics_to_database",
+          "file_token": "c_and_c_server_db"
+        },
+        {
+          "func_name": "private_key",
+          "file_token": "c_and_c_server_asymmetric_encryption"
+        },
+        {
+          "func_name": "process_request",
+          "file_token": "c_and_c_server_utils"
+        },
+        {
+          "func_name": "ripemd160",
+          "file_token": "c_and_c_server_payment"
+        },
+        {
+          "func_name": "send_request",
+          "file_token": "ransomware_core_comms_payment"
+        },
+        {
+          "func_name": "sha256",
+          "file_token": "c_and_c_server_payment"
+        },
+        {
+          "func_name": "unpack_decrypt_request",
+          "file_token": "c_and_c_server_utils"
+        },
+        {
+          "func_name": "unpack_initialise_request",
+          "file_token": "c_and_c_server_utils"
+        },
+        {
+          "func_name": "validate_decryption_request",
+          "file_token": "c_and_c_server_validation"
+        },
+        {
+          "func_name": "verify_payment",
+          "file_token": "c_and_c_server_payment"
+        }
+      ]
+    },
+    {
+      "commit_hash": "647fe",
+      "commit_index": 9,
+      "joern_new_count": 0,
+      "cg_new_count": 29,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 29,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "__init__",
+          "file_token": "ransomware_core_asymmetric_encryption"
+        },
+        {
+          "func_name": "_get_padding",
+          "file_token": "ransomware_core_asymmetric_encryption"
+        },
+        {
+          "func_name": "_load_private_key_from_byte_string",
+          "file_token": "ransomware_core_asymmetric_encryption"
+        },
+        {
+          "func_name": "_load_public_key_from_byte_string",
+          "file_token": "ransomware_core_asymmetric_encryption"
+        },
+        {
+          "func_name": "build_request",
+          "file_token": "ransomware_core_comms"
+        },
+        {
+          "func_name": "decode_file_encryption_details",
+          "file_token": "ransomware_core_decrypt_files"
+        },
+        {
+          "func_name": "decrypt_data",
+          "file_token": "ransomware_core_asymmetric_encryption"
+        },
+        {
+          "func_name": "decrypt_data",
+          "file_token": "ransomware_core_symmetric_encryption"
+        },
+        {
+          "func_name": "decrypt_file",
+          "file_token": "ransomware_core_decrypt_files"
+        },
+        {
+          "func_name": "decrypt_file_encryption_details",
+          "file_token": "ransomware_core_decrypt_files"
+        },
+        {
+          "func_name": "decrypt_files",
+          "file_token": "ransomware_core_decrypt_files"
+        },
+        {
+          "func_name": "decrypt_local_rsa_key",
+          "file_token": "ransomware_core_decrypt_files"
+        },
+        {
+          "func_name": "encrypt_data",
+          "file_token": "ransomware_core_asymmetric_encryption"
+        },
+        {
+          "func_name": "encrypt_data",
+          "file_token": "ransomware_core_symmetric_encryption"
+        },
+        {
+          "func_name": "encrypt_file_details",
+          "file_token": "ransomware_core_encrypt_files"
+        },
+        {
+          "func_name": "encrypt_files",
+          "file_token": "ransomware_core_encrypt_files"
+        },
+        {
+          "func_name": "encrypt_large_data",
+          "file_token": "ransomware_core_asymmetric_encryption"
+        },
+        {
+          "func_name": "generate_bitcoin_address",
+          "file_token": "ransomware_core_utils"
+        },
+        {
+          "func_name": "generate_rsa_key_pair",
+          "file_token": "ransomware_core_utils"
+        },
+        {
+          "func_name": "get_decrypted_key_from_server",
+          "file_token": "ransomware_core_comms"
+        },
+        {
+          "func_name": "private_key",
+          "file_token": "ransomware_core_asymmetric_encryption"
+        },
+        {
+          "func_name": "read_data_from_file",
+          "file_token": "ransomware_core_utils"
+        },
+        {
+          "func_name": "ripemd160",
+          "file_token": "ransomware_core_utils"
+        },
+        {
+          "func_name": "send_request",
+          "file_token": "ransomware_core_comms"
+        },
+        {
+          "func_name": "sha256",
+          "file_token": "ransomware_core_utils"
+        },
+        {
+          "func_name": "shred_file",
+          "file_token": "ransomware_core_utils"
+        },
+        {
+          "func_name": "start_decryption",
+          "file_token": "ransomware_core_decrypt_files"
+        },
+        {
+          "func_name": "start_encryption",
+          "file_token": "ransomware_core_encrypt_files"
+        },
+        {
+          "func_name": "write_data_to_file",
+          "file_token": "ransomware_core_utils"
+        }
+      ]
+    },
+    {
+      "commit_hash": "658cc",
+      "commit_index": 10,
+      "joern_new_count": 0,
+      "cg_new_count": 14,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 14,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "decrypt_file_encryption_details",
+          "file_token": "ransomware_core_decrypt_files"
+        },
+        {
+          "func_name": "decrypt_files",
+          "file_token": "ransomware_core_decrypt_files"
+        },
+        {
+          "func_name": "decrypt_local_rsa_key",
+          "file_token": "ransomware_core_decrypt_files"
+        },
+        {
+          "func_name": "encrypt_button_handler",
+          "file_token": "ransomware_core_gui_start_menu"
+        },
+        {
+          "func_name": "encrypt_file_details",
+          "file_token": "ransomware_core_encrypt_files"
+        },
+        {
+          "func_name": "encrypt_files",
+          "file_token": "ransomware_core_encrypt_files"
+        },
+        {
+          "func_name": "generate_domains",
+          "file_token": "ransomware_core_comms_cnc_generator"
+        },
+        {
+          "func_name": "get_bitcoin_wallet_address",
+          "file_token": "ransomware_core_comms_bitcoin_address"
+        },
+        {
+          "func_name": "get_decrypted_key_from_server",
+          "file_token": "ransomware_core_comms_decrypt"
+        },
+        {
+          "func_name": "get_payment_details",
+          "file_token": "ransomware_core_gui_start_menu"
+        },
+        {
+          "func_name": "send_request",
+          "file_token": "ransomware_core_comms_bitcoin_address"
+        },
+        {
+          "func_name": "send_request",
+          "file_token": "ransomware_core_comms_decrypt"
+        },
+        {
+          "func_name": "start_decryption",
+          "file_token": "ransomware_core_decrypt_files"
+        },
+        {
+          "func_name": "start_encryption",
+          "file_token": "ransomware_core_encrypt_files"
+        }
+      ]
+    },
+    {
+      "commit_hash": "742ad",
+      "commit_index": 11,
+      "joern_new_count": 0,
+      "cg_new_count": 3,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 3,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "read_data_from_file",
+          "file_token": "ransomware_encrypt"
+        },
+        {
+          "func_name": "write_data_to_file",
+          "file_token": "ransomware_encrypt"
+        },
+        {
+          "func_name": "write_to_original_file",
+          "file_token": "ransomware_encrypt"
+        }
+      ]
+    },
+    {
+      "commit_hash": "798ec",
+      "commit_index": 12,
+      "joern_new_count": 0,
+      "cg_new_count": 13,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 13,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "_get_padding",
+          "file_token": "ransomware_asymmetric_encryption"
+        },
+        {
+          "func_name": "_load_private_key_from_byte_string",
+          "file_token": "ransomware_asymmetric_encryption"
+        },
+        {
+          "func_name": "_load_public_key_from_byte_string",
+          "file_token": "ransomware_asymmetric_encryption"
+        },
+        {
+          "func_name": "decrypt_files",
+          "file_token": "ransomware_decrypt_files"
+        },
+        {
+          "func_name": "decrypt_key_file",
+          "file_token": "ransomware_decrypt_files"
+        },
+        {
+          "func_name": "decrypt_local_master_key",
+          "file_token": "ransomware_decrypt_files"
+        },
+        {
+          "func_name": "decrypt_single_file",
+          "file_token": "ransomware_decrypt_files"
+        },
+        {
+          "func_name": "encrypt_data",
+          "file_token": "ransomware_asymmetric_encryption"
+        },
+        {
+          "func_name": "encrypt_file_details",
+          "file_token": "ransomware_encrypt_files"
+        },
+        {
+          "func_name": "encrypt_files",
+          "file_token": "ransomware_encrypt_files"
+        },
+        {
+          "func_name": "encrypt_large_data",
+          "file_token": "ransomware_asymmetric_encryption"
+        },
+        {
+          "func_name": "get_file_info",
+          "file_token": "ransomware_decrypt_files"
+        },
+        {
+          "func_name": "write_data_to_file",
+          "file_token": "ransomware_utils"
+        }
+      ]
+    },
+    {
+      "commit_hash": "8fb52",
+      "commit_index": 13,
+      "joern_new_count": 0,
+      "cg_new_count": 2,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 2,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "decrypt_rsa_key",
+          "file_token": "c_and_c_server_server"
+        },
+        {
+          "func_name": "hello_world",
+          "file_token": "c_and_c_server_server"
+        }
+      ]
+    },
+    {
+      "commit_hash": "9873a",
+      "commit_index": 14,
+      "joern_new_count": 0,
+      "cg_new_count": 6,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 6,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "create_tables",
+          "file_token": "c_and_c_server_db"
+        },
+        {
+          "func_name": "format_and_insert_statistics_to_database",
+          "file_token": "c_and_c_server_utils"
+        },
+        {
+          "func_name": "generate_bitcoin_address",
+          "file_token": "c_and_c_server_payment"
+        },
+        {
+          "func_name": "get_bitcoin_wallet_id_database",
+          "file_token": "c_and_c_server_db"
+        },
+        {
+          "func_name": "insert_statistics_to_database",
+          "file_token": "c_and_c_server_db"
+        },
+        {
+          "func_name": "process_request",
+          "file_token": "c_and_c_server_utils"
+        }
+      ]
+    },
+    {
+      "commit_hash": "abafd",
+      "commit_index": 15,
+      "joern_new_count": 0,
+      "cg_new_count": 15,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 15,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "__init__",
+          "file_token": "ransomware_core_crypto_asymmetric_encryption"
+        },
+        {
+          "func_name": "_get_padding",
+          "file_token": "ransomware_core_crypto_asymmetric_encryption"
+        },
+        {
+          "func_name": "_load_private_key_from_byte_string",
+          "file_token": "ransomware_core_crypto_asymmetric_encryption"
+        },
+        {
+          "func_name": "_load_public_key_from_byte_string",
+          "file_token": "ransomware_core_crypto_asymmetric_encryption"
+        },
+        {
+          "func_name": "decrypt_data",
+          "file_token": "ransomware_core_crypto_asymmetric_encryption"
+        },
+        {
+          "func_name": "decrypt_data",
+          "file_token": "ransomware_core_crypto_symmetric_encryption"
+        },
+        {
+          "func_name": "encrypt_data",
+          "file_token": "ransomware_core_crypto_asymmetric_encryption"
+        },
+        {
+          "func_name": "encrypt_data",
+          "file_token": "ransomware_core_crypto_symmetric_encryption"
+        },
+        {
+          "func_name": "encrypt_large_data",
+          "file_token": "ransomware_core_crypto_asymmetric_encryption"
+        },
+        {
+          "func_name": "format_and_insert_statistics_to_database",
+          "file_token": "c_and_c_server_utils"
+        },
+        {
+          "func_name": "get_bitcoin_wallet_address",
+          "file_token": "ransomware_core_comms_payment"
+        },
+        {
+          "func_name": "insert_statistics_to_database",
+          "file_token": "c_and_c_server_db"
+        },
+        {
+          "func_name": "private_key",
+          "file_token": "ransomware_core_crypto_asymmetric_encryption"
+        },
+        {
+          "func_name": "process_request",
+          "file_token": "c_and_c_server_utils"
+        },
+        {
+          "func_name": "send_request",
+          "file_token": "ransomware_core_comms_payment"
+        }
+      ]
+    },
+    {
+      "commit_hash": "bf4f9",
+      "commit_index": 16,
+      "joern_new_count": 0,
+      "cg_new_count": 2,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 2,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "generate_rsa_key_pair",
+          "file_token": "ransomware_core_utils_generators"
+        },
+        {
+          "func_name": "send_request",
+          "file_token": "ransomware_core_comms_decrypt"
+        }
+      ]
+    },
+    {
+      "commit_hash": "c18d4",
+      "commit_index": 17,
+      "joern_new_count": 0,
+      "cg_new_count": 8,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 8,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "format_and_insert_statistics_to_database",
+          "file_token": "c_and_c_server_utils"
+        },
+        {
+          "func_name": "generate_domains",
+          "file_token": "ransomware_core_comms_cnc_generator"
+        },
+        {
+          "func_name": "get_bitcoin_wallet_address",
+          "file_token": "ransomware_core_comms_bitcoin_address"
+        },
+        {
+          "func_name": "get_cnc_from_youtube",
+          "file_token": "ransomware_core_comms_cnc_generator"
+        },
+        {
+          "func_name": "get_decrypted_key_from_server",
+          "file_token": "ransomware_core_comms_decrypt"
+        },
+        {
+          "func_name": "process_request",
+          "file_token": "c_and_c_server_utils"
+        },
+        {
+          "func_name": "send_request",
+          "file_token": "ransomware_core_comms_bitcoin_address"
+        },
+        {
+          "func_name": "send_request",
+          "file_token": "ransomware_core_comms_decrypt"
+        }
+      ]
+    },
+    {
+      "commit_hash": "c5401",
+      "commit_index": 18,
+      "joern_new_count": 0,
+      "cg_new_count": 23,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 23,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "__init__",
+          "file_token": "ransomware_basic_functionality_asymmetric_encryption"
+        },
+        {
+          "func_name": "_get_padding",
+          "file_token": "ransomware_basic_functionality_asymmetric_encryption"
+        },
+        {
+          "func_name": "_load_private_key_from_byte_string",
+          "file_token": "ransomware_basic_functionality_asymmetric_encryption"
+        },
+        {
+          "func_name": "_load_public_key_from_byte_string",
+          "file_token": "ransomware_basic_functionality_asymmetric_encryption"
+        },
+        {
+          "func_name": "decode_file_encryption_details",
+          "file_token": "ransomware_basic_functionality_decrypt_files"
+        },
+        {
+          "func_name": "decrypt_data",
+          "file_token": "ransomware_basic_functionality_asymmetric_encryption"
+        },
+        {
+          "func_name": "decrypt_data",
+          "file_token": "ransomware_basic_functionality_symmetric_encryption"
+        },
+        {
+          "func_name": "decrypt_file",
+          "file_token": "ransomware_basic_functionality_decrypt_files"
+        },
+        {
+          "func_name": "decrypt_file_encryption_details",
+          "file_token": "ransomware_basic_functionality_decrypt_files"
+        },
+        {
+          "func_name": "decrypt_files",
+          "file_token": "ransomware_basic_functionality_decrypt_files"
+        },
+        {
+          "func_name": "decrypt_local_rsa_key",
+          "file_token": "ransomware_basic_functionality_decrypt_files"
+        },
+        {
+          "func_name": "encrypt_data",
+          "file_token": "ransomware_basic_functionality_asymmetric_encryption"
+        },
+        {
+          "func_name": "encrypt_data",
+          "file_token": "ransomware_basic_functionality_symmetric_encryption"
+        },
+        {
+          "func_name": "encrypt_file_details",
+          "file_token": "ransomware_basic_functionality_encrypt_files"
+        },
+        {
+          "func_name": "encrypt_files",
+          "file_token": "ransomware_basic_functionality_encrypt_files"
+        },
+        {
+          "func_name": "encrypt_large_data",
+          "file_token": "ransomware_basic_functionality_asymmetric_encryption"
+        },
+        {
+          "func_name": "generate_rsa_key_pair",
+          "file_token": "ransomware_basic_functionality_utils"
+        },
+        {
+          "func_name": "private_key",
+          "file_token": "ransomware_basic_functionality_asymmetric_encryption"
+        },
+        {
+          "func_name": "read_data_from_file",
+          "file_token": "ransomware_basic_functionality_utils"
+        },
+        {
+          "func_name": "shred_file",
+          "file_token": "ransomware_basic_functionality_utils"
+        },
+        {
+          "func_name": "start_decryption",
+          "file_token": "ransomware_basic_functionality_decrypt_files"
+        },
+        {
+          "func_name": "start_encryption",
+          "file_token": "ransomware_basic_functionality_encrypt_files"
+        },
+        {
+          "func_name": "write_data_to_file",
+          "file_token": "ransomware_basic_functionality_utils"
+        }
+      ]
+    },
+    {
+      "commit_hash": "d75a9",
+      "commit_index": 19,
+      "joern_new_count": 0,
+      "cg_new_count": 6,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 6,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "build_request",
+          "file_token": "ransomware_core_comms_decrypt"
+        },
+        {
+          "func_name": "get_bitcoin_wallet_address",
+          "file_token": "ransomware_core_comms_bitcoin_address"
+        },
+        {
+          "func_name": "get_decrypted_key_from_server",
+          "file_token": "ransomware_core_comms_decrypt"
+        },
+        {
+          "func_name": "send_request",
+          "file_token": "ransomware_core_comms_bitcoin_address"
+        },
+        {
+          "func_name": "send_request",
+          "file_token": "ransomware_core_comms_decrypt"
+        },
+        {
+          "func_name": "shred_file",
+          "file_token": "ransomware_core_utils_file_ops"
+        }
+      ]
+    },
+    {
+      "commit_hash": "dd6c0",
+      "commit_index": 20,
+      "joern_new_count": 0,
+      "cg_new_count": 9,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 9,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "_get_padding",
+          "file_token": "c_and_c_server_server"
+        },
+        {
+          "func_name": "build_request",
+          "file_token": "ransomware_basic_functionality_comms"
+        },
+        {
+          "func_name": "decode_file_encryption_details",
+          "file_token": "ransomware_basic_functionality_decrypt_files"
+        },
+        {
+          "func_name": "decrypt_local_rsa_key",
+          "file_token": "ransomware_basic_functionality_decrypt_files"
+        },
+        {
+          "func_name": "encrypt_file_details",
+          "file_token": "ransomware_basic_functionality_encrypt_files"
+        },
+        {
+          "func_name": "encrypt_files",
+          "file_token": "ransomware_basic_functionality_encrypt_files"
+        },
+        {
+          "func_name": "get_decrypted_key_from_server",
+          "file_token": "ransomware_basic_functionality_comms"
+        },
+        {
+          "func_name": "send_request",
+          "file_token": "ransomware_basic_functionality_comms"
+        },
+        {
+          "func_name": "start_encryption",
+          "file_token": "ransomware_basic_functionality_encrypt_files"
+        }
+      ]
+    },
+    {
+      "commit_hash": "e3a63",
+      "commit_index": 21,
+      "joern_new_count": 0,
+      "cg_new_count": 30,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 30,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "__init__",
+          "file_token": "c_and_c_server_RSA"
+        },
+        {
+          "func_name": "__init__",
+          "file_token": "c_and_c_server_server"
+        },
+        {
+          "func_name": "__init__",
+          "file_token": "helper_scripts_master_key_pair_gen"
+        },
+        {
+          "func_name": "__init__",
+          "file_token": "ransomware_basic_functionality_asymmetric_encryption"
+        },
+        {
+          "func_name": "_get_padding",
+          "file_token": "c_and_c_server_RSA"
+        },
+        {
+          "func_name": "_get_padding",
+          "file_token": "c_and_c_server_server"
+        },
+        {
+          "func_name": "_get_padding",
+          "file_token": "ransomware_basic_functionality_asymmetric_encryption"
+        },
+        {
+          "func_name": "_load_private_key_from_byte_string",
+          "file_token": "c_and_c_server_RSA"
+        },
+        {
+          "func_name": "_load_private_key_from_byte_string",
+          "file_token": "c_and_c_server_server"
+        },
+        {
+          "func_name": "_load_private_key_from_byte_string",
+          "file_token": "ransomware_basic_functionality_asymmetric_encryption"
+        },
+        {
+          "func_name": "_load_public_key_from_byte_string",
+          "file_token": "ransomware_basic_functionality_asymmetric_encryption"
+        },
+        {
+          "func_name": "decrypt_data",
+          "file_token": "c_and_c_server_RSA"
+        },
+        {
+          "func_name": "decrypt_data",
+          "file_token": "c_and_c_server_server"
+        },
+        {
+          "func_name": "decrypt_data",
+          "file_token": "ransomware_basic_functionality_asymmetric_encryption"
+        },
+        {
+          "func_name": "decrypt_file_encryption_details",
+          "file_token": "ransomware_basic_functionality_decrypt_files"
+        },
+        {
+          "func_name": "decrypt_files",
+          "file_token": "ransomware_basic_functionality_decrypt_files"
+        },
+        {
+          "func_name": "decrypt_local_rsa_key",
+          "file_token": "ransomware_basic_functionality_decrypt_files"
+        },
+        {
+          "func_name": "decrypt_rsa_key",
+          "file_token": "c_and_c_server_server"
+        },
+        {
+          "func_name": "encrypt_data",
+          "file_token": "ransomware_basic_functionality_asymmetric_encryption"
+        },
+        {
+          "func_name": "encrypt_data",
+          "file_token": "ransomware_basic_functionality_symmetric_encryption"
+        },
+        {
+          "func_name": "encrypt_file_details",
+          "file_token": "ransomware_basic_functionality_encrypt_files"
+        },
+        {
+          "func_name": "encrypt_files",
+          "file_token": "ransomware_basic_functionality_encrypt_files"
+        },
+        {
+          "func_name": "encrypt_large_data",
+          "file_token": "ransomware_basic_functionality_asymmetric_encryption"
+        },
+        {
+          "func_name": "generate_rsa_key_pair",
+          "file_token": "ransomware_basic_functionality_utils"
+        },
+        {
+          "func_name": "hello_world",
+          "file_token": "c_and_c_server_server"
+        },
+        {
+          "func_name": "private_key",
+          "file_token": "c_and_c_server_RSA"
+        },
+        {
+          "func_name": "private_key",
+          "file_token": "c_and_c_server_server"
+        },
+        {
+          "func_name": "private_key",
+          "file_token": "helper_scripts_master_key_pair_gen"
+        },
+        {
+          "func_name": "private_key",
+          "file_token": "ransomware_basic_functionality_asymmetric_encryption"
+        },
+        {
+          "func_name": "start_encryption",
+          "file_token": "ransomware_basic_functionality_encrypt_files"
+        }
+      ]
+    },
+    {
+      "commit_hash": "ef755",
+      "commit_index": 22,
+      "joern_new_count": 0,
+      "cg_new_count": 13,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 13,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "create_tables",
+          "file_token": "c_and_c_server_db"
+        },
+        {
+          "func_name": "decrypt_rsa_data",
+          "file_token": "c_and_c_server_utils"
+        },
+        {
+          "func_name": "encode_private_key_in_wif",
+          "file_token": "c_and_c_server_payment"
+        },
+        {
+          "func_name": "format_and_insert_statistics_to_database",
+          "file_token": "c_and_c_server_utils"
+        },
+        {
+          "func_name": "generate_bitcoin_address",
+          "file_token": "c_and_c_server_payment"
+        },
+        {
+          "func_name": "get_bitcoin_wallet_id_database",
+          "file_token": "c_and_c_server_db"
+        },
+        {
+          "func_name": "insert_bitcoin_details_to_database",
+          "file_token": "c_and_c_server_db"
+        },
+        {
+          "func_name": "insert_payment_details_into_database",
+          "file_token": "c_and_c_server_db"
+        },
+        {
+          "func_name": "insert_statistics_to_database",
+          "file_token": "c_and_c_server_db"
+        },
+        {
+          "func_name": "process_request",
+          "file_token": "c_and_c_server_utils"
+        },
+        {
+          "func_name": "unpack_decrypt_request",
+          "file_token": "c_and_c_server_utils"
+        },
+        {
+          "func_name": "validate_decryption_request",
+          "file_token": "c_and_c_server_validation"
+        },
+        {
+          "func_name": "verify_payment",
+          "file_token": "c_and_c_server_payment"
+        }
+      ]
+    },
+    {
+      "commit_hash": "f9b65",
+      "commit_index": 23,
+      "joern_new_count": 0,
+      "cg_new_count": 18,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 18,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "__init__",
+          "file_token": "c_and_c_server_asymmetric_encryption"
+        },
+        {
+          "func_name": "__init__",
+          "file_token": "ransomware_basic_functionality_asymmetric_encryption"
+        },
+        {
+          "func_name": "_get_padding",
+          "file_token": "c_and_c_server_asymmetric_encryption"
+        },
+        {
+          "func_name": "_load_private_key_from_byte_string",
+          "file_token": "c_and_c_server_asymmetric_encryption"
+        },
+        {
+          "func_name": "_load_public_key_from_byte_string",
+          "file_token": "c_and_c_server_asymmetric_encryption"
+        },
+        {
+          "func_name": "build_request",
+          "file_token": "ransomware_basic_functionality_comms"
+        },
+        {
+          "func_name": "decrypt_data",
+          "file_token": "c_and_c_server_asymmetric_encryption"
+        },
+        {
+          "func_name": "decrypt_rsa_key",
+          "file_token": "c_and_c_server_server"
+        },
+        {
+          "func_name": "generate_bitcoin_address",
+          "file_token": "ransomware_basic_functionality_utils"
+        },
+        {
+          "func_name": "get_decrypted_key_from_server",
+          "file_token": "ransomware_basic_functionality_comms"
+        },
+        {
+          "func_name": "private_key",
+          "file_token": "c_and_c_server_asymmetric_encryption"
+        },
+        {
+          "func_name": "private_key",
+          "file_token": "ransomware_basic_functionality_asymmetric_encryption"
+        },
+        {
+          "func_name": "process",
+          "file_token": "c_and_c_server_server"
+        },
+        {
+          "func_name": "ripemd160",
+          "file_token": "ransomware_basic_functionality_utils"
+        },
+        {
+          "func_name": "send_request",
+          "file_token": "ransomware_basic_functionality_comms"
+        },
+        {
+          "func_name": "sha256",
+          "file_token": "ransomware_basic_functionality_utils"
+        },
+        {
+          "func_name": "shred_file",
+          "file_token": "ransomware_basic_functionality_utils"
+        },
+        {
+          "func_name": "unpack_request",
+          "file_token": "c_and_c_server_server"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "repo_name": "ransomware7",
+  "category": "multiple_commits_human_made",
+  "recall": 1.0,
+  "total_joern_new": 0,
+  "total_matched": 0,
+  "commits": [
+    {
+      "commit_hash": "8770a",
+      "commit_index": 0,
+      "joern_new_count": 0,
+      "cg_new_count": 4,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 4,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "delete_files",
+          "file_token": "ransomware"
+        },
+        {
+          "func_name": "encrypt_files",
+          "file_token": "ransomware"
+        },
+        {
+          "func_name": "generate_key",
+          "file_token": "ransomware"
+        },
+        {
+          "func_name": "list_files",
+          "file_token": "ransomware"
+        }
+      ]
+    }
+  ]
+}

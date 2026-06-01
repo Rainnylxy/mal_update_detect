@@ -1,0 +1,85 @@
+{
+  "repo_name": "ransomware4",
+  "category": "multiple_commits_human_made",
+  "recall": 1.0,
+  "total_joern_new": 0,
+  "total_matched": 0,
+  "commits": [
+    {
+      "commit_hash": "034e6",
+      "commit_index": 0,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "send_email",
+          "file_token": "ransomware"
+        }
+      ]
+    },
+    {
+      "commit_hash": "92b3a",
+      "commit_index": 1,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "get_files_in_dir",
+          "file_token": "ransomware"
+        }
+      ]
+    },
+    {
+      "commit_hash": "e8210",
+      "commit_index": 2,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "decrypt_files",
+          "file_token": "ransomware"
+        }
+      ]
+    },
+    {
+      "commit_hash": "f74df",
+      "commit_index": 3,
+      "joern_new_count": 0,
+      "cg_new_count": 2,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 2,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "encrypt_files",
+          "file_token": "ransomware"
+        },
+        {
+          "func_name": "generate_key",
+          "file_token": "ransomware"
+        }
+      ]
+    }
+  ]
+}

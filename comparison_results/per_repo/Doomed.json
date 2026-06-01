@@ -1,0 +1,367 @@
+{
+  "repo_name": "Doomed",
+  "category": "multiple_commits",
+  "recall": 1.0,
+  "total_joern_new": 0,
+  "total_matched": 0,
+  "commits": [
+    {
+      "commit_hash": "01c74",
+      "commit_index": 0,
+      "joern_new_count": 0,
+      "cg_new_count": 22,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 22,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "BaslangicaTasi",
+          "file_token": "DOOM"
+        },
+        {
+          "func_name": "KlavyeyiKilitle",
+          "file_token": "DOOM_lock"
+        },
+        {
+          "func_name": "Lock",
+          "file_token": "DOOM"
+        },
+        {
+          "func_name": "Yazilar",
+          "file_token": "DOOM"
+        },
+        {
+          "func_name": "__init__",
+          "file_token": "DOOM_player"
+        },
+        {
+          "func_name": "__init__",
+          "file_token": "DOOM_sprite_object"
+        },
+        {
+          "func_name": "aciklamaSekmesi",
+          "file_token": "DOOM_first"
+        },
+        {
+          "func_name": "check_animation_time",
+          "file_token": "DOOM_sprite_object"
+        },
+        {
+          "func_name": "check_events",
+          "file_token": "DOOM_main"
+        },
+        {
+          "func_name": "check_health_recovery_delay",
+          "file_token": "DOOM_player"
+        },
+        {
+          "func_name": "find",
+          "file_token": "DOOM"
+        },
+        {
+          "func_name": "get_images",
+          "file_token": "DOOM_sprite_object"
+        },
+        {
+          "func_name": "kapat",
+          "file_token": "DOOM_lock"
+        },
+        {
+          "func_name": "load",
+          "file_token": "DOOM_first"
+        },
+        {
+          "func_name": "mouse_control",
+          "file_token": "DOOM_player"
+        },
+        {
+          "func_name": "movement",
+          "file_token": "DOOM_player"
+        },
+        {
+          "func_name": "otomatikYazi",
+          "file_token": "DOOM_first"
+        },
+        {
+          "func_name": "recover_health",
+          "file_token": "DOOM_player"
+        },
+        {
+          "func_name": "run",
+          "file_token": "DOOM_main"
+        },
+        {
+          "func_name": "sonSekme",
+          "file_token": "DOOM_first"
+        },
+        {
+          "func_name": "update",
+          "file_token": "DOOM_player"
+        },
+        {
+          "func_name": "update",
+          "file_token": "DOOM_sprite_object"
+        }
+      ]
+    },
+    {
+      "commit_hash": "06b31",
+      "commit_index": 1,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "movement",
+          "file_token": "DOOM_player"
+        }
+      ]
+    },
+    {
+      "commit_hash": "1e3ca",
+      "commit_index": 2,
+      "joern_new_count": 0,
+      "cg_new_count": 8,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 8,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "Yazilar",
+          "file_token": "doomed"
+        },
+        {
+          "func_name": "check_animation_time",
+          "file_token": "sprite_object"
+        },
+        {
+          "func_name": "check_events",
+          "file_token": "main"
+        },
+        {
+          "func_name": "check_health_recovery_delay",
+          "file_token": "player"
+        },
+        {
+          "func_name": "get_images",
+          "file_token": "sprite_object"
+        },
+        {
+          "func_name": "mouse_control",
+          "file_token": "player"
+        },
+        {
+          "func_name": "movement",
+          "file_token": "player"
+        },
+        {
+          "func_name": "recover_health",
+          "file_token": "player"
+        }
+      ]
+    },
+    {
+      "commit_hash": "2b87d",
+      "commit_index": 3,
+      "joern_new_count": 0,
+      "cg_new_count": 5,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 5,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "BaslangicaTasi",
+          "file_token": "DOOM"
+        },
+        {
+          "func_name": "KlavyeyiKilitle",
+          "file_token": "DOOM_lock"
+        },
+        {
+          "func_name": "Yazilar",
+          "file_token": "DOOM"
+        },
+        {
+          "func_name": "recover_health",
+          "file_token": "DOOM_player"
+        },
+        {
+          "func_name": "startGame",
+          "file_token": "DOOM"
+        }
+      ]
+    },
+    {
+      "commit_hash": "8e8c4",
+      "commit_index": 4,
+      "joern_new_count": 0,
+      "cg_new_count": 5,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 5,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "BaslangicaTasi",
+          "file_token": "lock"
+        },
+        {
+          "func_name": "KlavyeyiKilitle",
+          "file_token": "lock"
+        },
+        {
+          "func_name": "Yazilar",
+          "file_token": "doomed"
+        },
+        {
+          "func_name": "find",
+          "file_token": "lock"
+        },
+        {
+          "func_name": "kapat",
+          "file_token": "lock"
+        }
+      ]
+    },
+    {
+      "commit_hash": "920bf",
+      "commit_index": 5,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "BaslangicaTasi",
+          "file_token": "DOOM"
+        }
+      ]
+    },
+    {
+      "commit_hash": "a580d",
+      "commit_index": 6,
+      "joern_new_count": 0,
+      "cg_new_count": 5,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 5,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "BaslangicaTasi",
+          "file_token": "DOOM"
+        },
+        {
+          "func_name": "Lock",
+          "file_token": "DOOM"
+        },
+        {
+          "func_name": "Yazilar",
+          "file_token": "DOOM"
+        },
+        {
+          "func_name": "__init__",
+          "file_token": "DOOM_sprite_object"
+        },
+        {
+          "func_name": "startGame",
+          "file_token": "DOOM"
+        }
+      ]
+    },
+    {
+      "commit_hash": "d1557",
+      "commit_index": 7,
+      "joern_new_count": 0,
+      "cg_new_count": 2,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 2,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "Lock",
+          "file_token": "doomed"
+        },
+        {
+          "func_name": "Yazilar",
+          "file_token": "doomed"
+        }
+      ]
+    },
+    {
+      "commit_hash": "d5b77",
+      "commit_index": 8,
+      "joern_new_count": 0,
+      "cg_new_count": 9,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 9,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "Yazilar",
+          "file_token": "doomed"
+        },
+        {
+          "func_name": "check_animation_time",
+          "file_token": "game_sprite_object"
+        },
+        {
+          "func_name": "check_events",
+          "file_token": "game_main"
+        },
+        {
+          "func_name": "check_health_recovery_delay",
+          "file_token": "game_player"
+        },
+        {
+          "func_name": "get_images",
+          "file_token": "game_sprite_object"
+        },
+        {
+          "func_name": "mouse_control",
+          "file_token": "game_player"
+        },
+        {
+          "func_name": "movement",
+          "file_token": "game_player"
+        },
+        {
+          "func_name": "otomatikYazi",
+          "file_token": "first"
+        },
+        {
+          "func_name": "recover_health",
+          "file_token": "game_player"
+        }
+      ]
+    }
+  ]
+}

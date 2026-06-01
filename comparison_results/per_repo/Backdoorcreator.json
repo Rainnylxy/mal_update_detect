@@ -1,0 +1,35 @@
+{
+  "repo_name": "Backdoorcreator",
+  "category": "multiple_commits",
+  "recall": 1.0,
+  "total_joern_new": 0,
+  "total_matched": 0,
+  "commits": [
+    {
+      "commit_hash": "04d0c",
+      "commit_index": 0,
+      "joern_new_count": 0,
+      "cg_new_count": 3,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 3,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "choice",
+          "file_token": "backdoorcreate"
+        },
+        {
+          "func_name": "linux_shell",
+          "file_token": "backdoorcreate"
+        },
+        {
+          "func_name": "windows_reverse",
+          "file_token": "backdoorcreate"
+        }
+      ]
+    }
+  ]
+}

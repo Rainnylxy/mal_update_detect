@@ -1,0 +1,262 @@
+{
+  "repo_name": "Chrome_pass_stealer",
+  "category": "multiple_commits",
+  "recall": 0.0,
+  "total_joern_new": 9,
+  "total_matched": 0,
+  "commits": [
+    {
+      "commit_hash": "0c8fb",
+      "commit_index": 0,
+      "joern_new_count": 1,
+      "cg_new_count": 3,
+      "matched_count": 0,
+      "joern_only_count": 1,
+      "cg_only_count": 3,
+      "recall": 0.0,
+      "matched": [],
+      "joern_only": [
+        {
+          "func_name": "<module>",
+          "file_token": "chromepass.py",
+          "category": "D"
+        }
+      ],
+      "cg_only": [
+        {
+          "func_name": "getpasswords",
+          "file_token": "chromepass"
+        },
+        {
+          "func_name": "getpath",
+          "file_token": "chromepass"
+        },
+        {
+          "func_name": "send",
+          "file_token": "chromepass"
+        }
+      ]
+    },
+    {
+      "commit_hash": "0eeba",
+      "commit_index": 1,
+      "joern_new_count": 1,
+      "cg_new_count": 3,
+      "matched_count": 0,
+      "joern_only_count": 1,
+      "cg_only_count": 3,
+      "recall": 0.0,
+      "matched": [],
+      "joern_only": [
+        {
+          "func_name": "<module>",
+          "file_token": "chromepass.py",
+          "category": "D"
+        }
+      ],
+      "cg_only": [
+        {
+          "func_name": "getpasswords",
+          "file_token": "chromepass"
+        },
+        {
+          "func_name": "getpath",
+          "file_token": "chromepass"
+        },
+        {
+          "func_name": "send",
+          "file_token": "chromepass"
+        }
+      ]
+    },
+    {
+      "commit_hash": "444fc",
+      "commit_index": 2,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "send",
+          "file_token": "chromepass"
+        }
+      ]
+    },
+    {
+      "commit_hash": "4ac98",
+      "commit_index": 3,
+      "joern_new_count": 1,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 1,
+      "cg_only_count": 1,
+      "recall": 0.0,
+      "matched": [],
+      "joern_only": [
+        {
+          "func_name": "<module>",
+          "file_token": "chromepass.py",
+          "category": "D"
+        }
+      ],
+      "cg_only": [
+        {
+          "func_name": "send",
+          "file_token": "chromepass"
+        }
+      ]
+    },
+    {
+      "commit_hash": "5d3bc",
+      "commit_index": 4,
+      "joern_new_count": 1,
+      "cg_new_count": 0,
+      "matched_count": 0,
+      "joern_only_count": 1,
+      "cg_only_count": 0,
+      "recall": 0.0,
+      "matched": [],
+      "joern_only": [
+        {
+          "func_name": "<module>",
+          "file_token": "chromepass.py",
+          "category": "D"
+        }
+      ],
+      "cg_only": []
+    },
+    {
+      "commit_hash": "73291",
+      "commit_index": 5,
+      "joern_new_count": 1,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 1,
+      "cg_only_count": 1,
+      "recall": 0.0,
+      "matched": [],
+      "joern_only": [
+        {
+          "func_name": "<module>",
+          "file_token": "chromepass.py",
+          "category": "D"
+        }
+      ],
+      "cg_only": [
+        {
+          "func_name": "send",
+          "file_token": "chromepass"
+        }
+      ]
+    },
+    {
+      "commit_hash": "915e2",
+      "commit_index": 6,
+      "joern_new_count": 1,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 1,
+      "cg_only_count": 1,
+      "recall": 0.0,
+      "matched": [],
+      "joern_only": [
+        {
+          "func_name": "<module>",
+          "file_token": "chromepass.py",
+          "category": "D"
+        }
+      ],
+      "cg_only": [
+        {
+          "func_name": "getpasswords",
+          "file_token": "chromepass"
+        }
+      ]
+    },
+    {
+      "commit_hash": "c060d",
+      "commit_index": 7,
+      "joern_new_count": 1,
+      "cg_new_count": 2,
+      "matched_count": 0,
+      "joern_only_count": 1,
+      "cg_only_count": 2,
+      "recall": 0.0,
+      "matched": [],
+      "joern_only": [
+        {
+          "func_name": "<module>",
+          "file_token": "chromepass.py",
+          "category": "D"
+        }
+      ],
+      "cg_only": [
+        {
+          "func_name": "getpath",
+          "file_token": "chromepass"
+        },
+        {
+          "func_name": "send",
+          "file_token": "chromepass"
+        }
+      ]
+    },
+    {
+      "commit_hash": "d766e",
+      "commit_index": 8,
+      "joern_new_count": 1,
+      "cg_new_count": 2,
+      "matched_count": 0,
+      "joern_only_count": 1,
+      "cg_only_count": 2,
+      "recall": 0.0,
+      "matched": [],
+      "joern_only": [
+        {
+          "func_name": "<module>",
+          "file_token": "chromepass.py",
+          "category": "D"
+        }
+      ],
+      "cg_only": [
+        {
+          "func_name": "getpasswords",
+          "file_token": "chromepass"
+        },
+        {
+          "func_name": "send",
+          "file_token": "chromepass"
+        }
+      ]
+    },
+    {
+      "commit_hash": "fc1f7",
+      "commit_index": 9,
+      "joern_new_count": 1,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 1,
+      "cg_only_count": 1,
+      "recall": 0.0,
+      "matched": [],
+      "joern_only": [
+        {
+          "func_name": "<module>",
+          "file_token": "chromepass.py",
+          "category": "D"
+        }
+      ],
+      "cg_only": [
+        {
+          "func_name": "send",
+          "file_token": "chromepass"
+        }
+      ]
+    }
+  ]
+}

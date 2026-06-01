@@ -1,0 +1,913 @@
+{
+  "repo_name": "Python-RAT",
+  "category": "multiple_commits",
+  "recall": 0.0,
+  "total_joern_new": 46,
+  "total_matched": 0,
+  "commits": [
+    {
+      "commit_hash": "04773",
+      "commit_index": 0,
+      "joern_new_count": 2,
+      "cg_new_count": 0,
+      "matched_count": 0,
+      "joern_only_count": 2,
+      "cg_only_count": 0,
+      "recall": 0.0,
+      "matched": [],
+      "joern_only": [
+        {
+          "func_name": "<module>",
+          "file_token": "client.py",
+          "category": "D"
+        },
+        {
+          "func_name": "<module>",
+          "file_token": "findPrivateIP.py",
+          "category": "D"
+        }
+      ],
+      "cg_only": []
+    },
+    {
+      "commit_hash": "069e1",
+      "commit_index": 1,
+      "joern_new_count": 2,
+      "cg_new_count": 2,
+      "matched_count": 0,
+      "joern_only_count": 2,
+      "cg_only_count": 2,
+      "recall": 0.0,
+      "matched": [],
+      "joern_only": [
+        {
+          "func_name": "<module>",
+          "file_token": "Listen.py",
+          "category": "D"
+        },
+        {
+          "func_name": "<module>",
+          "file_token": "client.py",
+          "category": "D"
+        }
+      ],
+      "cg_only": [
+        {
+          "func_name": "run_commands",
+          "file_token": "client"
+        },
+        {
+          "func_name": "send_commands",
+          "file_token": "Listen"
+        }
+      ]
+    },
+    {
+      "commit_hash": "0f254",
+      "commit_index": 2,
+      "joern_new_count": 1,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 1,
+      "cg_only_count": 1,
+      "recall": 0.0,
+      "matched": [],
+      "joern_only": [
+        {
+          "func_name": "<module>",
+          "file_token": "client.py",
+          "category": "D"
+        }
+      ],
+      "cg_only": [
+        {
+          "func_name": "run_commands",
+          "file_token": "client"
+        }
+      ]
+    },
+    {
+      "commit_hash": "0f259",
+      "commit_index": 3,
+      "joern_new_count": 1,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 1,
+      "cg_only_count": 1,
+      "recall": 0.0,
+      "matched": [],
+      "joern_only": [
+        {
+          "func_name": "<module>",
+          "file_token": "client.py",
+          "category": "D"
+        }
+      ],
+      "cg_only": [
+        {
+          "func_name": "run_commands",
+          "file_token": "client"
+        }
+      ]
+    },
+    {
+      "commit_hash": "1af1d",
+      "commit_index": 4,
+      "joern_new_count": 2,
+      "cg_new_count": 3,
+      "matched_count": 0,
+      "joern_only_count": 2,
+      "cg_only_count": 3,
+      "recall": 0.0,
+      "matched": [],
+      "joern_only": [
+        {
+          "func_name": "<module>",
+          "file_token": "Listen.py",
+          "category": "D"
+        },
+        {
+          "func_name": "<module>",
+          "file_token": "client.py",
+          "category": "D"
+        }
+      ],
+      "cg_only": [
+        {
+          "func_name": "login",
+          "file_token": "Listen"
+        },
+        {
+          "func_name": "run_commands",
+          "file_token": "client"
+        },
+        {
+          "func_name": "send_commands",
+          "file_token": "Listen"
+        }
+      ]
+    },
+    {
+      "commit_hash": "2e9e3",
+      "commit_index": 5,
+      "joern_new_count": 1,
+      "cg_new_count": 2,
+      "matched_count": 0,
+      "joern_only_count": 1,
+      "cg_only_count": 2,
+      "recall": 0.0,
+      "matched": [],
+      "joern_only": [
+        {
+          "func_name": "<module>",
+          "file_token": "client.py",
+          "category": "D"
+        }
+      ],
+      "cg_only": [
+        {
+          "func_name": "login",
+          "file_token": "client"
+        },
+        {
+          "func_name": "run_commands",
+          "file_token": "client"
+        }
+      ]
+    },
+    {
+      "commit_hash": "2f3f7",
+      "commit_index": 6,
+      "joern_new_count": 1,
+      "cg_new_count": 0,
+      "matched_count": 0,
+      "joern_only_count": 1,
+      "cg_only_count": 0,
+      "recall": 0.0,
+      "matched": [],
+      "joern_only": [
+        {
+          "func_name": "<module>",
+          "file_token": "client.py",
+          "category": "D"
+        }
+      ],
+      "cg_only": []
+    },
+    {
+      "commit_hash": "32a21",
+      "commit_index": 7,
+      "joern_new_count": 2,
+      "cg_new_count": 2,
+      "matched_count": 0,
+      "joern_only_count": 2,
+      "cg_only_count": 2,
+      "recall": 0.0,
+      "matched": [],
+      "joern_only": [
+        {
+          "func_name": "<module>",
+          "file_token": "Listen.py",
+          "category": "D"
+        },
+        {
+          "func_name": "<module>",
+          "file_token": "client.py",
+          "category": "D"
+        }
+      ],
+      "cg_only": [
+        {
+          "func_name": "run_commands",
+          "file_token": "client"
+        },
+        {
+          "func_name": "send_commands",
+          "file_token": "Listen"
+        }
+      ]
+    },
+    {
+      "commit_hash": "36c31",
+      "commit_index": 8,
+      "joern_new_count": 2,
+      "cg_new_count": 0,
+      "matched_count": 0,
+      "joern_only_count": 2,
+      "cg_only_count": 0,
+      "recall": 0.0,
+      "matched": [],
+      "joern_only": [
+        {
+          "func_name": "<module>",
+          "file_token": "client.py",
+          "category": "D"
+        },
+        {
+          "func_name": "<module>",
+          "file_token": "keylogger.py",
+          "category": "D"
+        }
+      ],
+      "cg_only": []
+    },
+    {
+      "commit_hash": "41d0a",
+      "commit_index": 9,
+      "joern_new_count": 1,
+      "cg_new_count": 0,
+      "matched_count": 0,
+      "joern_only_count": 1,
+      "cg_only_count": 0,
+      "recall": 0.0,
+      "matched": [],
+      "joern_only": [
+        {
+          "func_name": "<module>",
+          "file_token": "client.py",
+          "category": "D"
+        }
+      ],
+      "cg_only": []
+    },
+    {
+      "commit_hash": "43d35",
+      "commit_index": 10,
+      "joern_new_count": 1,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 1,
+      "cg_only_count": 1,
+      "recall": 0.0,
+      "matched": [],
+      "joern_only": [
+        {
+          "func_name": "<module>",
+          "file_token": "client.py",
+          "category": "D"
+        }
+      ],
+      "cg_only": [
+        {
+          "func_name": "run_commands",
+          "file_token": "client"
+        }
+      ]
+    },
+    {
+      "commit_hash": "60c5f",
+      "commit_index": 11,
+      "joern_new_count": 1,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 1,
+      "cg_only_count": 1,
+      "recall": 0.0,
+      "matched": [],
+      "joern_only": [
+        {
+          "func_name": "<module>",
+          "file_token": "client.py",
+          "category": "D"
+        }
+      ],
+      "cg_only": [
+        {
+          "func_name": "run_commands",
+          "file_token": "client"
+        }
+      ]
+    },
+    {
+      "commit_hash": "6753e",
+      "commit_index": 12,
+      "joern_new_count": 1,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 1,
+      "cg_only_count": 1,
+      "recall": 0.0,
+      "matched": [],
+      "joern_only": [
+        {
+          "func_name": "<module>",
+          "file_token": "Listen.py",
+          "category": "D"
+        }
+      ],
+      "cg_only": [
+        {
+          "func_name": "send_commands",
+          "file_token": "Listen"
+        }
+      ]
+    },
+    {
+      "commit_hash": "72609",
+      "commit_index": 13,
+      "joern_new_count": 1,
+      "cg_new_count": 0,
+      "matched_count": 0,
+      "joern_only_count": 1,
+      "cg_only_count": 0,
+      "recall": 0.0,
+      "matched": [],
+      "joern_only": [
+        {
+          "func_name": "<module>",
+          "file_token": "client.py",
+          "category": "D"
+        }
+      ],
+      "cg_only": []
+    },
+    {
+      "commit_hash": "77726",
+      "commit_index": 14,
+      "joern_new_count": 1,
+      "cg_new_count": 0,
+      "matched_count": 0,
+      "joern_only_count": 1,
+      "cg_only_count": 0,
+      "recall": 0.0,
+      "matched": [],
+      "joern_only": [
+        {
+          "func_name": "<module>",
+          "file_token": "client.py",
+          "category": "D"
+        }
+      ],
+      "cg_only": []
+    },
+    {
+      "commit_hash": "8718d",
+      "commit_index": 15,
+      "joern_new_count": 1,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 1,
+      "cg_only_count": 1,
+      "recall": 0.0,
+      "matched": [],
+      "joern_only": [
+        {
+          "func_name": "<module>",
+          "file_token": "client.py",
+          "category": "D"
+        }
+      ],
+      "cg_only": [
+        {
+          "func_name": "run_commands",
+          "file_token": "client"
+        }
+      ]
+    },
+    {
+      "commit_hash": "89d84",
+      "commit_index": 16,
+      "joern_new_count": 1,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 1,
+      "cg_only_count": 1,
+      "recall": 0.0,
+      "matched": [],
+      "joern_only": [
+        {
+          "func_name": "<module>",
+          "file_token": "Listen.py",
+          "category": "D"
+        }
+      ],
+      "cg_only": [
+        {
+          "func_name": "send_commands",
+          "file_token": "Listen"
+        }
+      ]
+    },
+    {
+      "commit_hash": "8a098",
+      "commit_index": 17,
+      "joern_new_count": 1,
+      "cg_new_count": 0,
+      "matched_count": 0,
+      "joern_only_count": 1,
+      "cg_only_count": 0,
+      "recall": 0.0,
+      "matched": [],
+      "joern_only": [
+        {
+          "func_name": "<module>",
+          "file_token": "client.py",
+          "category": "D"
+        }
+      ],
+      "cg_only": []
+    },
+    {
+      "commit_hash": "8b6ec",
+      "commit_index": 18,
+      "joern_new_count": 1,
+      "cg_new_count": 0,
+      "matched_count": 0,
+      "joern_only_count": 1,
+      "cg_only_count": 0,
+      "recall": 0.0,
+      "matched": [],
+      "joern_only": [
+        {
+          "func_name": "<module>",
+          "file_token": "Listen.py",
+          "category": "D"
+        }
+      ],
+      "cg_only": []
+    },
+    {
+      "commit_hash": "90b45",
+      "commit_index": 19,
+      "joern_new_count": 1,
+      "cg_new_count": 0,
+      "matched_count": 0,
+      "joern_only_count": 1,
+      "cg_only_count": 0,
+      "recall": 0.0,
+      "matched": [],
+      "joern_only": [
+        {
+          "func_name": "<module>",
+          "file_token": "client.py",
+          "category": "D"
+        }
+      ],
+      "cg_only": []
+    },
+    {
+      "commit_hash": "a6337",
+      "commit_index": 20,
+      "joern_new_count": 1,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 1,
+      "cg_only_count": 1,
+      "recall": 0.0,
+      "matched": [],
+      "joern_only": [
+        {
+          "func_name": "<module>",
+          "file_token": "client.py",
+          "category": "D"
+        }
+      ],
+      "cg_only": [
+        {
+          "func_name": "imports",
+          "file_token": "client"
+        }
+      ]
+    },
+    {
+      "commit_hash": "a6753",
+      "commit_index": 21,
+      "joern_new_count": 1,
+      "cg_new_count": 5,
+      "matched_count": 0,
+      "joern_only_count": 1,
+      "cg_only_count": 5,
+      "recall": 0.0,
+      "matched": [],
+      "joern_only": [
+        {
+          "func_name": "<module>",
+          "file_token": "keylogger.py",
+          "category": "D"
+        }
+      ],
+      "cg_only": [
+        {
+          "func_name": "add_to_start",
+          "file_token": "keylogger"
+        },
+        {
+          "func_name": "clipboard_logger",
+          "file_token": "keylogger"
+        },
+        {
+          "func_name": "keylogger",
+          "file_token": "keylogger"
+        },
+        {
+          "func_name": "log_window",
+          "file_token": "keylogger"
+        },
+        {
+          "func_name": "subprocess_commands",
+          "file_token": "keylogger"
+        }
+      ]
+    },
+    {
+      "commit_hash": "ac63b",
+      "commit_index": 22,
+      "joern_new_count": 1,
+      "cg_new_count": 0,
+      "matched_count": 0,
+      "joern_only_count": 1,
+      "cg_only_count": 0,
+      "recall": 0.0,
+      "matched": [],
+      "joern_only": [
+        {
+          "func_name": "<module>",
+          "file_token": "client.py",
+          "category": "D"
+        }
+      ],
+      "cg_only": []
+    },
+    {
+      "commit_hash": "aece9",
+      "commit_index": 23,
+      "joern_new_count": 1,
+      "cg_new_count": 0,
+      "matched_count": 0,
+      "joern_only_count": 1,
+      "cg_only_count": 0,
+      "recall": 0.0,
+      "matched": [],
+      "joern_only": [
+        {
+          "func_name": "<module>",
+          "file_token": "client.py",
+          "category": "D"
+        }
+      ],
+      "cg_only": []
+    },
+    {
+      "commit_hash": "b7d26",
+      "commit_index": 24,
+      "joern_new_count": 1,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 1,
+      "cg_only_count": 1,
+      "recall": 0.0,
+      "matched": [],
+      "joern_only": [
+        {
+          "func_name": "<module>",
+          "file_token": "client.py",
+          "category": "D"
+        }
+      ],
+      "cg_only": [
+        {
+          "func_name": "run_commands",
+          "file_token": "client"
+        }
+      ]
+    },
+    {
+      "commit_hash": "be056",
+      "commit_index": 25,
+      "joern_new_count": 1,
+      "cg_new_count": 0,
+      "matched_count": 0,
+      "joern_only_count": 1,
+      "cg_only_count": 0,
+      "recall": 0.0,
+      "matched": [],
+      "joern_only": [
+        {
+          "func_name": "<module>",
+          "file_token": "client.py",
+          "category": "D"
+        }
+      ],
+      "cg_only": []
+    },
+    {
+      "commit_hash": "be4c1",
+      "commit_index": 26,
+      "joern_new_count": 1,
+      "cg_new_count": 0,
+      "matched_count": 0,
+      "joern_only_count": 1,
+      "cg_only_count": 0,
+      "recall": 0.0,
+      "matched": [],
+      "joern_only": [
+        {
+          "func_name": "<module>",
+          "file_token": "client.py",
+          "category": "D"
+        }
+      ],
+      "cg_only": []
+    },
+    {
+      "commit_hash": "c9dc7",
+      "commit_index": 27,
+      "joern_new_count": 2,
+      "cg_new_count": 3,
+      "matched_count": 0,
+      "joern_only_count": 2,
+      "cg_only_count": 3,
+      "recall": 0.0,
+      "matched": [],
+      "joern_only": [
+        {
+          "func_name": "<module>",
+          "file_token": "Listen.py",
+          "category": "D"
+        },
+        {
+          "func_name": "<module>",
+          "file_token": "client.py",
+          "category": "D"
+        }
+      ],
+      "cg_only": [
+        {
+          "func_name": "login",
+          "file_token": "Listen"
+        },
+        {
+          "func_name": "run_commands",
+          "file_token": "client"
+        },
+        {
+          "func_name": "send_commands",
+          "file_token": "Listen"
+        }
+      ]
+    },
+    {
+      "commit_hash": "cd427",
+      "commit_index": 28,
+      "joern_new_count": 1,
+      "cg_new_count": 2,
+      "matched_count": 0,
+      "joern_only_count": 1,
+      "cg_only_count": 2,
+      "recall": 0.0,
+      "matched": [],
+      "joern_only": [
+        {
+          "func_name": "<module>",
+          "file_token": "keylogger.py",
+          "category": "D"
+        }
+      ],
+      "cg_only": [
+        {
+          "func_name": "finish_and_write_info",
+          "file_token": "keylogger"
+        },
+        {
+          "func_name": "keylogger",
+          "file_token": "keylogger"
+        }
+      ]
+    },
+    {
+      "commit_hash": "dc08e",
+      "commit_index": 29,
+      "joern_new_count": 2,
+      "cg_new_count": 2,
+      "matched_count": 0,
+      "joern_only_count": 2,
+      "cg_only_count": 2,
+      "recall": 0.0,
+      "matched": [],
+      "joern_only": [
+        {
+          "func_name": "<module>",
+          "file_token": "Listen.py",
+          "category": "D"
+        },
+        {
+          "func_name": "<module>",
+          "file_token": "client.py",
+          "category": "D"
+        }
+      ],
+      "cg_only": [
+        {
+          "func_name": "run_commands",
+          "file_token": "client"
+        },
+        {
+          "func_name": "send_commands",
+          "file_token": "Listen"
+        }
+      ]
+    },
+    {
+      "commit_hash": "de5ad",
+      "commit_index": 30,
+      "joern_new_count": 1,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 1,
+      "cg_only_count": 1,
+      "recall": 0.0,
+      "matched": [],
+      "joern_only": [
+        {
+          "func_name": "<module>",
+          "file_token": "Listen.py",
+          "category": "D"
+        }
+      ],
+      "cg_only": [
+        {
+          "func_name": "login",
+          "file_token": "Listen"
+        }
+      ]
+    },
+    {
+      "commit_hash": "e1596",
+      "commit_index": 31,
+      "joern_new_count": 1,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 1,
+      "cg_only_count": 1,
+      "recall": 0.0,
+      "matched": [],
+      "joern_only": [
+        {
+          "func_name": "<module>",
+          "file_token": "client.py",
+          "category": "D"
+        }
+      ],
+      "cg_only": [
+        {
+          "func_name": "run_commands",
+          "file_token": "client"
+        }
+      ]
+    },
+    {
+      "commit_hash": "ef1a1",
+      "commit_index": 32,
+      "joern_new_count": 2,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 2,
+      "cg_only_count": 1,
+      "recall": 0.0,
+      "matched": [],
+      "joern_only": [
+        {
+          "func_name": "<module>",
+          "file_token": "Listen.py",
+          "category": "D"
+        },
+        {
+          "func_name": "<module>",
+          "file_token": "client.py",
+          "category": "D"
+        }
+      ],
+      "cg_only": [
+        {
+          "func_name": "send_commands",
+          "file_token": "Listen"
+        }
+      ]
+    },
+    {
+      "commit_hash": "fc9a2",
+      "commit_index": 33,
+      "joern_new_count": 2,
+      "cg_new_count": 2,
+      "matched_count": 0,
+      "joern_only_count": 2,
+      "cg_only_count": 2,
+      "recall": 0.0,
+      "matched": [],
+      "joern_only": [
+        {
+          "func_name": "<module>",
+          "file_token": "Listen.py",
+          "category": "D"
+        },
+        {
+          "func_name": "<module>",
+          "file_token": "client.py",
+          "category": "D"
+        }
+      ],
+      "cg_only": [
+        {
+          "func_name": "run_commands",
+          "file_token": "client"
+        },
+        {
+          "func_name": "send_commands",
+          "file_token": "Listen"
+        }
+      ]
+    },
+    {
+      "commit_hash": "fd5ff",
+      "commit_index": 34,
+      "joern_new_count": 2,
+      "cg_new_count": 2,
+      "matched_count": 0,
+      "joern_only_count": 2,
+      "cg_only_count": 2,
+      "recall": 0.0,
+      "matched": [],
+      "joern_only": [
+        {
+          "func_name": "<module>",
+          "file_token": "Listen.py",
+          "category": "D"
+        },
+        {
+          "func_name": "<module>",
+          "file_token": "client.py",
+          "category": "D"
+        }
+      ],
+      "cg_only": [
+        {
+          "func_name": "run_commands",
+          "file_token": "client"
+        },
+        {
+          "func_name": "send_commands",
+          "file_token": "Listen"
+        }
+      ]
+    },
+    {
+      "commit_hash": "fd75a",
+      "commit_index": 35,
+      "joern_new_count": 1,
+      "cg_new_count": 0,
+      "matched_count": 0,
+      "joern_only_count": 1,
+      "cg_only_count": 0,
+      "recall": 0.0,
+      "matched": [],
+      "joern_only": [
+        {
+          "func_name": "<module>",
+          "file_token": "client.py",
+          "category": "D"
+        }
+      ],
+      "cg_only": []
+    }
+  ]
+}

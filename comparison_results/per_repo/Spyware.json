@@ -1,0 +1,1256 @@
+{
+  "repo_name": "Spyware",
+  "category": "multiple_commits",
+  "recall": 0.0789,
+  "total_joern_new": 76,
+  "total_matched": 6,
+  "commits": [
+    {
+      "commit_hash": "0b18d",
+      "commit_index": 0,
+      "joern_new_count": 1,
+      "cg_new_count": 3,
+      "matched_count": 0,
+      "joern_only_count": 1,
+      "cg_only_count": 3,
+      "recall": 0.0,
+      "matched": [],
+      "joern_only": [
+        {
+          "func_name": "<module>",
+          "file_token": "gui_FileExplorer.py",
+          "category": "D"
+        }
+      ],
+      "cg_only": [
+        {
+          "func_name": "DiscoverDirectory",
+          "file_token": "gui_FileExplorer"
+        },
+        {
+          "func_name": "SearchForFile",
+          "file_token": "gui_FileExplorer"
+        },
+        {
+          "func_name": "WriteToFile",
+          "file_token": "gui_FileExplorer"
+        }
+      ]
+    },
+    {
+      "commit_hash": "10f46",
+      "commit_index": 1,
+      "joern_new_count": 1,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 1,
+      "cg_only_count": 1,
+      "recall": 0.0,
+      "matched": [],
+      "joern_only": [
+        {
+          "func_name": "<module>",
+          "file_token": "Malware.py",
+          "category": "D"
+        }
+      ],
+      "cg_only": [
+        {
+          "func_name": "setAttributes",
+          "file_token": "Configuration"
+        }
+      ]
+    },
+    {
+      "commit_hash": "132bd",
+      "commit_index": 2,
+      "joern_new_count": 3,
+      "cg_new_count": 2,
+      "matched_count": 0,
+      "joern_only_count": 3,
+      "cg_only_count": 2,
+      "recall": 0.0,
+      "matched": [],
+      "joern_only": [
+        {
+          "func_name": "<module>",
+          "file_token": "Malware.py",
+          "category": "D"
+        },
+        {
+          "func_name": "<module>",
+          "file_token": "json_test.py",
+          "category": "D"
+        },
+        {
+          "func_name": "executeShellCommand",
+          "file_token": "Util.py",
+          "category": "E"
+        }
+      ],
+      "cg_only": [
+        {
+          "func_name": "__init__",
+          "file_token": "Configuration"
+        },
+        {
+          "func_name": "main",
+          "file_token": "json_test"
+        }
+      ]
+    },
+    {
+      "commit_hash": "1d8cd",
+      "commit_index": 3,
+      "joern_new_count": 1,
+      "cg_new_count": 1,
+      "matched_count": 1,
+      "joern_only_count": 0,
+      "cg_only_count": 0,
+      "recall": 1.0,
+      "matched": [
+        {
+          "joern": "<module>@Configuration.py",
+          "callgraph": "__init__@Configuration",
+          "score": 0.749
+        }
+      ],
+      "joern_only": [],
+      "cg_only": []
+    },
+    {
+      "commit_hash": "1e7ec",
+      "commit_index": 4,
+      "joern_new_count": 1,
+      "cg_new_count": 0,
+      "matched_count": 0,
+      "joern_only_count": 1,
+      "cg_only_count": 0,
+      "recall": 0.0,
+      "matched": [],
+      "joern_only": [
+        {
+          "func_name": "<module>",
+          "file_token": "Malware.py",
+          "category": "D"
+        }
+      ],
+      "cg_only": []
+    },
+    {
+      "commit_hash": "21e7f",
+      "commit_index": 5,
+      "joern_new_count": 1,
+      "cg_new_count": 3,
+      "matched_count": 0,
+      "joern_only_count": 1,
+      "cg_only_count": 3,
+      "recall": 0.0,
+      "matched": [],
+      "joern_only": [
+        {
+          "func_name": "<module>",
+          "file_token": "Malware.py",
+          "category": "D"
+        }
+      ],
+      "cg_only": [
+        {
+          "func_name": "__init__",
+          "file_token": "Configuration"
+        },
+        {
+          "func_name": "fileOut",
+          "file_token": "FileHandler"
+        },
+        {
+          "func_name": "run",
+          "file_token": "WindowTracker"
+        }
+      ]
+    },
+    {
+      "commit_hash": "2498b",
+      "commit_index": 6,
+      "joern_new_count": 3,
+      "cg_new_count": 2,
+      "matched_count": 1,
+      "joern_only_count": 2,
+      "cg_only_count": 1,
+      "recall": 0.3333,
+      "matched": [
+        {
+          "joern": "<module>@Configuration.py",
+          "callgraph": "__init__@Configuration",
+          "score": 0.802
+        }
+      ],
+      "joern_only": [
+        {
+          "func_name": "<module>",
+          "file_token": "Communication.py",
+          "category": "D"
+        },
+        {
+          "func_name": "<module>",
+          "file_token": "Malware.py",
+          "category": "D"
+        }
+      ],
+      "cg_only": [
+        {
+          "func_name": "stealFile",
+          "file_token": "Communication"
+        }
+      ]
+    },
+    {
+      "commit_hash": "289d2",
+      "commit_index": 7,
+      "joern_new_count": 3,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 3,
+      "cg_only_count": 1,
+      "recall": 0.0,
+      "matched": [],
+      "joern_only": [
+        {
+          "func_name": "<module>",
+          "file_token": "Screenshot.py",
+          "category": "D"
+        },
+        {
+          "func_name": "<module>",
+          "file_token": "WindowTracker.py",
+          "category": "D"
+        },
+        {
+          "func_name": "<module>",
+          "file_token": "main.py",
+          "category": "D"
+        }
+      ],
+      "cg_only": [
+        {
+          "func_name": "run",
+          "file_token": "WindowTracker"
+        }
+      ]
+    },
+    {
+      "commit_hash": "2ee4e",
+      "commit_index": 8,
+      "joern_new_count": 2,
+      "cg_new_count": 0,
+      "matched_count": 0,
+      "joern_only_count": 2,
+      "cg_only_count": 0,
+      "recall": 0.0,
+      "matched": [],
+      "joern_only": [
+        {
+          "func_name": "<module>",
+          "file_token": "Screenshot.py",
+          "category": "D"
+        },
+        {
+          "func_name": "<module>",
+          "file_token": "main.py",
+          "category": "D"
+        }
+      ],
+      "cg_only": []
+    },
+    {
+      "commit_hash": "3075f",
+      "commit_index": 9,
+      "joern_new_count": 1,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 1,
+      "cg_only_count": 1,
+      "recall": 0.0,
+      "matched": [],
+      "joern_only": [
+        {
+          "func_name": "<module>",
+          "file_token": "Malware.py",
+          "category": "D"
+        }
+      ],
+      "cg_only": [
+        {
+          "func_name": "uploadFilesFTP",
+          "file_token": "Communication"
+        }
+      ]
+    },
+    {
+      "commit_hash": "30e5c",
+      "commit_index": 10,
+      "joern_new_count": 1,
+      "cg_new_count": 0,
+      "matched_count": 0,
+      "joern_only_count": 1,
+      "cg_only_count": 0,
+      "recall": 0.0,
+      "matched": [],
+      "joern_only": [
+        {
+          "func_name": "<module>",
+          "file_token": "Malware.py",
+          "category": "D"
+        }
+      ],
+      "cg_only": []
+    },
+    {
+      "commit_hash": "318c9",
+      "commit_index": 11,
+      "joern_new_count": 1,
+      "cg_new_count": 0,
+      "matched_count": 0,
+      "joern_only_count": 1,
+      "cg_only_count": 0,
+      "recall": 0.0,
+      "matched": [],
+      "joern_only": [
+        {
+          "func_name": "<module>",
+          "file_token": "Malware.py",
+          "category": "D"
+        }
+      ],
+      "cg_only": []
+    },
+    {
+      "commit_hash": "34e7a",
+      "commit_index": 12,
+      "joern_new_count": 1,
+      "cg_new_count": 0,
+      "matched_count": 0,
+      "joern_only_count": 1,
+      "cg_only_count": 0,
+      "recall": 0.0,
+      "matched": [],
+      "joern_only": [
+        {
+          "func_name": "<module>",
+          "file_token": "Malware.py",
+          "category": "D"
+        }
+      ],
+      "cg_only": []
+    },
+    {
+      "commit_hash": "3700c",
+      "commit_index": 13,
+      "joern_new_count": 1,
+      "cg_new_count": 0,
+      "matched_count": 0,
+      "joern_only_count": 1,
+      "cg_only_count": 0,
+      "recall": 0.0,
+      "matched": [],
+      "joern_only": [
+        {
+          "func_name": "<module>",
+          "file_token": "Malware.py",
+          "category": "D"
+        }
+      ],
+      "cg_only": []
+    },
+    {
+      "commit_hash": "3b7d3",
+      "commit_index": 14,
+      "joern_new_count": 3,
+      "cg_new_count": 2,
+      "matched_count": 0,
+      "joern_only_count": 3,
+      "cg_only_count": 2,
+      "recall": 0.0,
+      "matched": [],
+      "joern_only": [
+        {
+          "func_name": "<module>",
+          "file_token": "Communication.py",
+          "category": "D"
+        },
+        {
+          "func_name": "<module>",
+          "file_token": "Configuration.py",
+          "category": "D"
+        },
+        {
+          "func_name": "<module>",
+          "file_token": "Malware.py",
+          "category": "D"
+        }
+      ],
+      "cg_only": [
+        {
+          "func_name": "executeShellCommand",
+          "file_token": "Communication"
+        },
+        {
+          "func_name": "fileOut",
+          "file_token": "Util"
+        }
+      ]
+    },
+    {
+      "commit_hash": "3bac0",
+      "commit_index": 15,
+      "joern_new_count": 1,
+      "cg_new_count": 0,
+      "matched_count": 0,
+      "joern_only_count": 1,
+      "cg_only_count": 0,
+      "recall": 0.0,
+      "matched": [],
+      "joern_only": [
+        {
+          "func_name": "<module>",
+          "file_token": "FileHandler.py",
+          "category": "D"
+        }
+      ],
+      "cg_only": []
+    },
+    {
+      "commit_hash": "401eb",
+      "commit_index": 16,
+      "joern_new_count": 2,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 2,
+      "cg_only_count": 1,
+      "recall": 0.0,
+      "matched": [],
+      "joern_only": [
+        {
+          "func_name": "<module>",
+          "file_token": "Malware.py",
+          "category": "D"
+        },
+        {
+          "func_name": "executeShellCommand",
+          "file_token": "Util.py",
+          "category": "E"
+        }
+      ],
+      "cg_only": [
+        {
+          "func_name": "fileOut",
+          "file_token": "Util"
+        }
+      ]
+    },
+    {
+      "commit_hash": "46db8",
+      "commit_index": 17,
+      "joern_new_count": 1,
+      "cg_new_count": 0,
+      "matched_count": 0,
+      "joern_only_count": 1,
+      "cg_only_count": 0,
+      "recall": 0.0,
+      "matched": [],
+      "joern_only": [
+        {
+          "func_name": "<module>",
+          "file_token": "Malware.py",
+          "category": "D"
+        }
+      ],
+      "cg_only": []
+    },
+    {
+      "commit_hash": "47253",
+      "commit_index": 18,
+      "joern_new_count": 2,
+      "cg_new_count": 0,
+      "matched_count": 0,
+      "joern_only_count": 2,
+      "cg_only_count": 0,
+      "recall": 0.0,
+      "matched": [],
+      "joern_only": [
+        {
+          "func_name": "<module>",
+          "file_token": "FileHandler.py",
+          "category": "D"
+        },
+        {
+          "func_name": "<module>",
+          "file_token": "Malware.py",
+          "category": "D"
+        }
+      ],
+      "cg_only": []
+    },
+    {
+      "commit_hash": "4ff70",
+      "commit_index": 19,
+      "joern_new_count": 3,
+      "cg_new_count": 2,
+      "matched_count": 1,
+      "joern_only_count": 2,
+      "cg_only_count": 1,
+      "recall": 0.3333,
+      "matched": [
+        {
+          "joern": "<module>@Configuration.py",
+          "callgraph": "__init__@Configuration",
+          "score": 0.753
+        }
+      ],
+      "joern_only": [
+        {
+          "func_name": "<module>",
+          "file_token": "Communication.py",
+          "category": "D"
+        },
+        {
+          "func_name": "<module>",
+          "file_token": "Malware.py",
+          "category": "D"
+        }
+      ],
+      "cg_only": [
+        {
+          "func_name": "jsonIn",
+          "file_token": "Util"
+        }
+      ]
+    },
+    {
+      "commit_hash": "53c4a",
+      "commit_index": 20,
+      "joern_new_count": 2,
+      "cg_new_count": 0,
+      "matched_count": 0,
+      "joern_only_count": 2,
+      "cg_only_count": 0,
+      "recall": 0.0,
+      "matched": [],
+      "joern_only": [
+        {
+          "func_name": "<module>",
+          "file_token": "Screenshot.py",
+          "category": "D"
+        },
+        {
+          "func_name": "<module>",
+          "file_token": "WindowTracker.py",
+          "category": "D"
+        }
+      ],
+      "cg_only": []
+    },
+    {
+      "commit_hash": "5c8bd",
+      "commit_index": 21,
+      "joern_new_count": 2,
+      "cg_new_count": 3,
+      "matched_count": 0,
+      "joern_only_count": 2,
+      "cg_only_count": 3,
+      "recall": 0.0,
+      "matched": [],
+      "joern_only": [
+        {
+          "func_name": "<module>",
+          "file_token": "Malware.py",
+          "category": "D"
+        },
+        {
+          "func_name": "<module>",
+          "file_token": "gui_FileExplorer.py",
+          "category": "D"
+        }
+      ],
+      "cg_only": [
+        {
+          "func_name": "SearchForFile",
+          "file_token": "gui_FileExplorer"
+        },
+        {
+          "func_name": "archive",
+          "file_token": "gui_FileExplorer"
+        },
+        {
+          "func_name": "uploadFilesFTP",
+          "file_token": "Communication"
+        }
+      ]
+    },
+    {
+      "commit_hash": "5d92e",
+      "commit_index": 22,
+      "joern_new_count": 1,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 1,
+      "cg_only_count": 1,
+      "recall": 0.0,
+      "matched": [],
+      "joern_only": [
+        {
+          "func_name": "<module>",
+          "file_token": "Malware.py",
+          "category": "D"
+        }
+      ],
+      "cg_only": [
+        {
+          "func_name": "uploadFilesFTP",
+          "file_token": "Communication"
+        }
+      ]
+    },
+    {
+      "commit_hash": "5f55f",
+      "commit_index": 23,
+      "joern_new_count": 1,
+      "cg_new_count": 0,
+      "matched_count": 0,
+      "joern_only_count": 1,
+      "cg_only_count": 0,
+      "recall": 0.0,
+      "matched": [],
+      "joern_only": [
+        {
+          "func_name": "<module>",
+          "file_token": "Malware.py",
+          "category": "D"
+        }
+      ],
+      "cg_only": []
+    },
+    {
+      "commit_hash": "63413",
+      "commit_index": 24,
+      "joern_new_count": 2,
+      "cg_new_count": 2,
+      "matched_count": 0,
+      "joern_only_count": 2,
+      "cg_only_count": 2,
+      "recall": 0.0,
+      "matched": [],
+      "joern_only": [
+        {
+          "func_name": "<module>",
+          "file_token": "Communication.py",
+          "category": "D"
+        },
+        {
+          "func_name": "<module>",
+          "file_token": "Malware.py",
+          "category": "D"
+        }
+      ],
+      "cg_only": [
+        {
+          "func_name": "__init__",
+          "file_token": "Configuration"
+        },
+        {
+          "func_name": "fileIn",
+          "file_token": "Util"
+        }
+      ]
+    },
+    {
+      "commit_hash": "7952d",
+      "commit_index": 25,
+      "joern_new_count": 3,
+      "cg_new_count": 0,
+      "matched_count": 0,
+      "joern_only_count": 3,
+      "cg_only_count": 0,
+      "recall": 0.0,
+      "matched": [],
+      "joern_only": [
+        {
+          "func_name": "<module>",
+          "file_token": "WindowTracker.py",
+          "category": "D"
+        },
+        {
+          "func_name": "<module>",
+          "file_token": "keylogger.py",
+          "category": "D"
+        },
+        {
+          "func_name": "<module>",
+          "file_token": "main.py",
+          "category": "D"
+        }
+      ],
+      "cg_only": []
+    },
+    {
+      "commit_hash": "7c2d0",
+      "commit_index": 26,
+      "joern_new_count": 1,
+      "cg_new_count": 1,
+      "matched_count": 1,
+      "joern_only_count": 0,
+      "cg_only_count": 0,
+      "recall": 1.0,
+      "matched": [
+        {
+          "joern": "<module>@Configuration.py",
+          "callgraph": "__init__@Configuration",
+          "score": 0.774
+        }
+      ],
+      "joern_only": [],
+      "cg_only": []
+    },
+    {
+      "commit_hash": "84840",
+      "commit_index": 27,
+      "joern_new_count": 3,
+      "cg_new_count": 0,
+      "matched_count": 0,
+      "joern_only_count": 3,
+      "cg_only_count": 0,
+      "recall": 0.0,
+      "matched": [],
+      "joern_only": [
+        {
+          "func_name": "<module>",
+          "file_token": "WindowTracker.py",
+          "category": "D"
+        },
+        {
+          "func_name": "<module>",
+          "file_token": "keylogger.py",
+          "category": "D"
+        },
+        {
+          "func_name": "<module>",
+          "file_token": "main.py",
+          "category": "D"
+        }
+      ],
+      "cg_only": []
+    },
+    {
+      "commit_hash": "8e66b",
+      "commit_index": 28,
+      "joern_new_count": 2,
+      "cg_new_count": 4,
+      "matched_count": 1,
+      "joern_only_count": 1,
+      "cg_only_count": 3,
+      "recall": 0.5,
+      "matched": [
+        {
+          "joern": "<module>@Configuration.py",
+          "callgraph": "__init__@Configuration",
+          "score": 0.701
+        }
+      ],
+      "joern_only": [
+        {
+          "func_name": "<module>",
+          "file_token": "Malware.py",
+          "category": "D"
+        }
+      ],
+      "cg_only": [
+        {
+          "func_name": "__setConfig",
+          "file_token": "Configuration"
+        },
+        {
+          "func_name": "extractShellData",
+          "file_token": "Util"
+        },
+        {
+          "func_name": "setAttributes",
+          "file_token": "Configuration"
+        }
+      ]
+    },
+    {
+      "commit_hash": "93974",
+      "commit_index": 29,
+      "joern_new_count": 1,
+      "cg_new_count": 0,
+      "matched_count": 0,
+      "joern_only_count": 1,
+      "cg_only_count": 0,
+      "recall": 0.0,
+      "matched": [],
+      "joern_only": [
+        {
+          "func_name": "<module>",
+          "file_token": "Malware.py",
+          "category": "D"
+        }
+      ],
+      "cg_only": []
+    },
+    {
+      "commit_hash": "99ba2",
+      "commit_index": 30,
+      "joern_new_count": 1,
+      "cg_new_count": 2,
+      "matched_count": 0,
+      "joern_only_count": 1,
+      "cg_only_count": 2,
+      "recall": 0.0,
+      "matched": [],
+      "joern_only": [
+        {
+          "func_name": "<module>",
+          "file_token": "Malware.py",
+          "category": "D"
+        }
+      ],
+      "cg_only": [
+        {
+          "func_name": "run",
+          "file_token": "Communication"
+        },
+        {
+          "func_name": "uploadFilesFTP",
+          "file_token": "Communication"
+        }
+      ]
+    },
+    {
+      "commit_hash": "9edb2",
+      "commit_index": 31,
+      "joern_new_count": 1,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 1,
+      "cg_only_count": 1,
+      "recall": 0.0,
+      "matched": [],
+      "joern_only": [
+        {
+          "func_name": "<module>",
+          "file_token": "Communication.py",
+          "category": "D"
+        }
+      ],
+      "cg_only": [
+        {
+          "func_name": "getConfigFromServer",
+          "file_token": "Communication"
+        }
+      ]
+    },
+    {
+      "commit_hash": "a240a",
+      "commit_index": 32,
+      "joern_new_count": 1,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 1,
+      "cg_only_count": 1,
+      "recall": 0.0,
+      "matched": [],
+      "joern_only": [
+        {
+          "func_name": "<module>",
+          "file_token": "Malware.py",
+          "category": "D"
+        }
+      ],
+      "cg_only": [
+        {
+          "func_name": "uploadFilesFTP",
+          "file_token": "Communication"
+        }
+      ]
+    },
+    {
+      "commit_hash": "a444e",
+      "commit_index": 33,
+      "joern_new_count": 2,
+      "cg_new_count": 2,
+      "matched_count": 0,
+      "joern_only_count": 2,
+      "cg_only_count": 2,
+      "recall": 0.0,
+      "matched": [],
+      "joern_only": [
+        {
+          "func_name": "<body>",
+          "file_token": "gui_Controller.py",
+          "category": "D"
+        },
+        {
+          "func_name": "<module>",
+          "file_token": "Malware.py",
+          "category": "D"
+        }
+      ],
+      "cg_only": [
+        {
+          "func_name": "getfiles",
+          "file_token": "gui_Controller"
+        },
+        {
+          "func_name": "uploadFilesFTP",
+          "file_token": "Communication"
+        }
+      ]
+    },
+    {
+      "commit_hash": "ba54c",
+      "commit_index": 34,
+      "joern_new_count": 1,
+      "cg_new_count": 0,
+      "matched_count": 0,
+      "joern_only_count": 1,
+      "cg_only_count": 0,
+      "recall": 0.0,
+      "matched": [],
+      "joern_only": [
+        {
+          "func_name": "<module>",
+          "file_token": "Communication.py",
+          "category": "D"
+        }
+      ],
+      "cg_only": []
+    },
+    {
+      "commit_hash": "bfadb",
+      "commit_index": 35,
+      "joern_new_count": 1,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 1,
+      "cg_only_count": 1,
+      "recall": 0.0,
+      "matched": [],
+      "joern_only": [
+        {
+          "func_name": "<module>",
+          "file_token": "Malware.py",
+          "category": "D"
+        }
+      ],
+      "cg_only": [
+        {
+          "func_name": "uploadFilesFTP",
+          "file_token": "Communication"
+        }
+      ]
+    },
+    {
+      "commit_hash": "c1f3c",
+      "commit_index": 36,
+      "joern_new_count": 2,
+      "cg_new_count": 2,
+      "matched_count": 0,
+      "joern_only_count": 2,
+      "cg_only_count": 2,
+      "recall": 0.0,
+      "matched": [],
+      "joern_only": [
+        {
+          "func_name": "<module>",
+          "file_token": "Communication.py",
+          "category": "D"
+        },
+        {
+          "func_name": "<module>",
+          "file_token": "Malware.py",
+          "category": "D"
+        }
+      ],
+      "cg_only": [
+        {
+          "func_name": "__init__",
+          "file_token": "Configuration"
+        },
+        {
+          "func_name": "fileOut",
+          "file_token": "Util"
+        }
+      ]
+    },
+    {
+      "commit_hash": "ce1f8",
+      "commit_index": 37,
+      "joern_new_count": 1,
+      "cg_new_count": 0,
+      "matched_count": 0,
+      "joern_only_count": 1,
+      "cg_only_count": 0,
+      "recall": 0.0,
+      "matched": [],
+      "joern_only": [
+        {
+          "func_name": "<module>",
+          "file_token": "Malware.py",
+          "category": "D"
+        }
+      ],
+      "cg_only": []
+    },
+    {
+      "commit_hash": "d1598",
+      "commit_index": 38,
+      "joern_new_count": 1,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 1,
+      "cg_only_count": 1,
+      "recall": 0.0,
+      "matched": [],
+      "joern_only": [
+        {
+          "func_name": "<module>",
+          "file_token": "Malware.py",
+          "category": "D"
+        }
+      ],
+      "cg_only": [
+        {
+          "func_name": "uploadFilesFTP",
+          "file_token": "Communication"
+        }
+      ]
+    },
+    {
+      "commit_hash": "d5db4",
+      "commit_index": 39,
+      "joern_new_count": 5,
+      "cg_new_count": 3,
+      "matched_count": 1,
+      "joern_only_count": 4,
+      "cg_only_count": 2,
+      "recall": 0.2,
+      "matched": [
+        {
+          "joern": "<module>@Malware.py",
+          "callgraph": "__init__@Malware",
+          "score": 0.729
+        }
+      ],
+      "joern_only": [
+        {
+          "func_name": "<module>",
+          "file_token": "Screenshot.py",
+          "category": "D"
+        },
+        {
+          "func_name": "<module>",
+          "file_token": "WindowTracker.py",
+          "category": "D"
+        },
+        {
+          "func_name": "<module>",
+          "file_token": "command_test.py",
+          "category": "D"
+        },
+        {
+          "func_name": "<module>",
+          "file_token": "keylogger.py",
+          "category": "D"
+        }
+      ],
+      "cg_only": [
+        {
+          "func_name": "__init__",
+          "file_token": "FileHandler"
+        },
+        {
+          "func_name": "__init__",
+          "file_token": "Screenshot"
+        }
+      ]
+    },
+    {
+      "commit_hash": "d6c88",
+      "commit_index": 40,
+      "joern_new_count": 1,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 1,
+      "cg_only_count": 1,
+      "recall": 0.0,
+      "matched": [],
+      "joern_only": [
+        {
+          "func_name": "<module>",
+          "file_token": "Malware.py",
+          "category": "D"
+        }
+      ],
+      "cg_only": [
+        {
+          "func_name": "uploadFilesFTP",
+          "file_token": "Communication"
+        }
+      ]
+    },
+    {
+      "commit_hash": "dcccc",
+      "commit_index": 41,
+      "joern_new_count": 2,
+      "cg_new_count": 5,
+      "matched_count": 0,
+      "joern_only_count": 2,
+      "cg_only_count": 5,
+      "recall": 0.0,
+      "matched": [],
+      "joern_only": [
+        {
+          "func_name": "<body>",
+          "file_token": "gui_Controller.py",
+          "category": "D"
+        },
+        {
+          "func_name": "<module>",
+          "file_token": "Malware.py",
+          "category": "D"
+        }
+      ],
+      "cg_only": [
+        {
+          "func_name": "__init__",
+          "file_token": "gui_Gui"
+        },
+        {
+          "func_name": "extractShellData",
+          "file_token": "Util"
+        },
+        {
+          "func_name": "main",
+          "file_token": "gui_Main"
+        },
+        {
+          "func_name": "run",
+          "file_token": "Communication"
+        },
+        {
+          "func_name": "run",
+          "file_token": "WindowTracker"
+        }
+      ]
+    },
+    {
+      "commit_hash": "e5c24",
+      "commit_index": 42,
+      "joern_new_count": 1,
+      "cg_new_count": 2,
+      "matched_count": 0,
+      "joern_only_count": 1,
+      "cg_only_count": 2,
+      "recall": 0.0,
+      "matched": [],
+      "joern_only": [
+        {
+          "func_name": "<module>",
+          "file_token": "Configuration.py",
+          "category": "D"
+        }
+      ],
+      "cg_only": [
+        {
+          "func_name": "extractShellData",
+          "file_token": "Util"
+        },
+        {
+          "func_name": "setAttributes",
+          "file_token": "Configuration"
+        }
+      ]
+    },
+    {
+      "commit_hash": "e87c6",
+      "commit_index": 43,
+      "joern_new_count": 1,
+      "cg_new_count": 0,
+      "matched_count": 0,
+      "joern_only_count": 1,
+      "cg_only_count": 0,
+      "recall": 0.0,
+      "matched": [],
+      "joern_only": [
+        {
+          "func_name": "<module>",
+          "file_token": "Malware.py",
+          "category": "D"
+        }
+      ],
+      "cg_only": []
+    },
+    {
+      "commit_hash": "e91fb",
+      "commit_index": 44,
+      "joern_new_count": 1,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 1,
+      "cg_only_count": 1,
+      "recall": 0.0,
+      "matched": [],
+      "joern_only": [
+        {
+          "func_name": "<module>",
+          "file_token": "Communication.py",
+          "category": "D"
+        }
+      ],
+      "cg_only": [
+        {
+          "func_name": "getConfigFromServer",
+          "file_token": "Communication"
+        }
+      ]
+    },
+    {
+      "commit_hash": "e9d43",
+      "commit_index": 45,
+      "joern_new_count": 3,
+      "cg_new_count": 2,
+      "matched_count": 0,
+      "joern_only_count": 3,
+      "cg_only_count": 2,
+      "recall": 0.0,
+      "matched": [],
+      "joern_only": [
+        {
+          "func_name": "<module>",
+          "file_token": "Communication.py",
+          "category": "D"
+        },
+        {
+          "func_name": "<module>",
+          "file_token": "Malware.py",
+          "category": "D"
+        },
+        {
+          "func_name": "executeShellCommand",
+          "file_token": "Util.py",
+          "category": "E"
+        }
+      ],
+      "cg_only": [
+        {
+          "func_name": "__init__",
+          "file_token": "Configuration"
+        },
+        {
+          "func_name": "fileOut",
+          "file_token": "Util"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,2193 @@
+{
+  "repo_name": "RansomPy-Covid19",
+  "category": "multiple_commits",
+  "recall": 1.0,
+  "total_joern_new": 0,
+  "total_matched": 0,
+  "commits": [
+    {
+      "commit_hash": "005af",
+      "commit_index": 0,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "dwnExec",
+          "file_token": "svchost"
+        }
+      ]
+    },
+    {
+      "commit_hash": "01ae0",
+      "commit_index": 1,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "filelist",
+          "file_token": "decrypt_tools_decryption_users_directory"
+        }
+      ]
+    },
+    {
+      "commit_hash": "01fe8",
+      "commit_index": 2,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "filelist",
+          "file_token": "modules_crypt_crypt"
+        }
+      ]
+    },
+    {
+      "commit_hash": "07797",
+      "commit_index": 3,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "dir",
+          "file_token": "modules_permission_icacls"
+        }
+      ]
+    },
+    {
+      "commit_hash": "09bb4",
+      "commit_index": 4,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "dwnExec",
+          "file_token": "svchost"
+        }
+      ]
+    },
+    {
+      "commit_hash": "09bea",
+      "commit_index": 5,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "setInit",
+          "file_token": "modules_system_regedit"
+        }
+      ]
+    },
+    {
+      "commit_hash": "09f2b",
+      "commit_index": 6,
+      "joern_new_count": 0,
+      "cg_new_count": 2,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 2,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "dir",
+          "file_token": "modules_permission_icacls"
+        },
+        {
+          "func_name": "proc",
+          "file_token": "modules_permission_icacls"
+        }
+      ]
+    },
+    {
+      "commit_hash": "0cdda",
+      "commit_index": 7,
+      "joern_new_count": 0,
+      "cg_new_count": 4,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 4,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "file_decrypt",
+          "file_token": "decrypt_tools_decryption_current_directory"
+        },
+        {
+          "func_name": "file_decrypt",
+          "file_token": "decrypt_tools_decryption_users_directory"
+        },
+        {
+          "func_name": "filelist",
+          "file_token": "decrypt_tools_decryption_current_directory"
+        },
+        {
+          "func_name": "filelist",
+          "file_token": "decrypt_tools_decryption_users_directory"
+        }
+      ]
+    },
+    {
+      "commit_hash": "0da19",
+      "commit_index": 8,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "send_key",
+          "file_token": "modules_network_sendkey_smtp"
+        }
+      ]
+    },
+    {
+      "commit_hash": "11f26",
+      "commit_index": 9,
+      "joern_new_count": 0,
+      "cg_new_count": 3,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 3,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "file_ecrypt",
+          "file_token": "modules_crypt_crypt"
+        },
+        {
+          "func_name": "filelist",
+          "file_token": "modules_crypt_crypt"
+        },
+        {
+          "func_name": "genkey",
+          "file_token": "modules_crypt_crypt"
+        }
+      ]
+    },
+    {
+      "commit_hash": "17a7d",
+      "commit_index": 10,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "updateTime",
+          "file_token": "modules_gui_gui_counter"
+        }
+      ]
+    },
+    {
+      "commit_hash": "1982d",
+      "commit_index": 11,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "updateTime",
+          "file_token": "modules_gui_gui_counter"
+        }
+      ]
+    },
+    {
+      "commit_hash": "19b8e",
+      "commit_index": 12,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "copy_counter",
+          "file_token": "main"
+        }
+      ]
+    },
+    {
+      "commit_hash": "24150",
+      "commit_index": 13,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "file_decrypt",
+          "file_token": "decrypt_tools_decryption_users_directory"
+        }
+      ]
+    },
+    {
+      "commit_hash": "24462",
+      "commit_index": 14,
+      "joern_new_count": 0,
+      "cg_new_count": 2,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 2,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "file_ecrypt",
+          "file_token": "crypt_init"
+        },
+        {
+          "func_name": "genkey",
+          "file_token": "crypt_init"
+        }
+      ]
+    },
+    {
+      "commit_hash": "27cc7",
+      "commit_index": 15,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "filelist",
+          "file_token": "modules_crypt_crypt"
+        }
+      ]
+    },
+    {
+      "commit_hash": "2a35a",
+      "commit_index": 16,
+      "joern_new_count": 0,
+      "cg_new_count": 2,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 2,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "dir",
+          "file_token": "modules_permission_takeown"
+        },
+        {
+          "func_name": "proc",
+          "file_token": "modules_permission_takeown"
+        }
+      ]
+    },
+    {
+      "commit_hash": "2e7a9",
+      "commit_index": 17,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "keyrcv",
+          "file_token": "modules_network_host_connect"
+        }
+      ]
+    },
+    {
+      "commit_hash": "2ec29",
+      "commit_index": 18,
+      "joern_new_count": 0,
+      "cg_new_count": 2,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 2,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "file_encrypt",
+          "file_token": "modules_crypt_crypt"
+        },
+        {
+          "func_name": "filelist",
+          "file_token": "modules_crypt_crypt"
+        }
+      ]
+    },
+    {
+      "commit_hash": "2f965",
+      "commit_index": 19,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "dwnExec",
+          "file_token": "svchost"
+        }
+      ]
+    },
+    {
+      "commit_hash": "2ff98",
+      "commit_index": 20,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "setInit",
+          "file_token": "modules_system_regedit"
+        }
+      ]
+    },
+    {
+      "commit_hash": "32d71",
+      "commit_index": 21,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "dir",
+          "file_token": "modules_permission_takeown"
+        }
+      ]
+    },
+    {
+      "commit_hash": "3316d",
+      "commit_index": 22,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "send_key",
+          "file_token": "crypt_init"
+        }
+      ]
+    },
+    {
+      "commit_hash": "3606d",
+      "commit_index": 23,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "file_ecrypt",
+          "file_token": "modules_crypt_crypt"
+        }
+      ]
+    },
+    {
+      "commit_hash": "3800c",
+      "commit_index": 24,
+      "joern_new_count": 0,
+      "cg_new_count": 4,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 4,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "exp",
+          "file_token": "modules_system_delproc"
+        },
+        {
+          "func_name": "pwsst",
+          "file_token": "modules_system_delproc"
+        },
+        {
+          "func_name": "smart",
+          "file_token": "modules_system_delproc"
+        },
+        {
+          "func_name": "tskmgr",
+          "file_token": "modules_system_delproc"
+        }
+      ]
+    },
+    {
+      "commit_hash": "390c8",
+      "commit_index": 25,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "dwnExec",
+          "file_token": "svchost"
+        }
+      ]
+    },
+    {
+      "commit_hash": "3ad84",
+      "commit_index": 26,
+      "joern_new_count": 0,
+      "cg_new_count": 10,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 10,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "bMonitor",
+          "file_token": "modules_system_regedit"
+        },
+        {
+          "func_name": "delInit",
+          "file_token": "modules_system_regedit"
+        },
+        {
+          "func_name": "delcmd",
+          "file_token": "modules_system_regedit"
+        },
+        {
+          "func_name": "noRun",
+          "file_token": "modules_system_regedit"
+        },
+        {
+          "func_name": "onAccess",
+          "file_token": "modules_system_regedit"
+        },
+        {
+          "func_name": "scanRtime",
+          "file_token": "modules_system_regedit"
+        },
+        {
+          "func_name": "setCmd",
+          "file_token": "modules_system_regedit"
+        },
+        {
+          "func_name": "setInit",
+          "file_token": "modules_system_regedit"
+        },
+        {
+          "func_name": "setRv",
+          "file_token": "modules_system_regedit"
+        },
+        {
+          "func_name": "spy",
+          "file_token": "modules_system_regedit"
+        }
+      ]
+    },
+    {
+      "commit_hash": "46efd",
+      "commit_index": 27,
+      "joern_new_count": 0,
+      "cg_new_count": 6,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 6,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "icc_exp",
+          "file_token": "modules_permission_icacls"
+        },
+        {
+          "func_name": "icc_perf",
+          "file_token": "modules_permission_icacls"
+        },
+        {
+          "func_name": "icc_perf_all",
+          "file_token": "modules_permission_icacls"
+        },
+        {
+          "func_name": "icc_powershell",
+          "file_token": "modules_permission_icacls"
+        },
+        {
+          "func_name": "icc_reg",
+          "file_token": "modules_permission_icacls"
+        },
+        {
+          "func_name": "icc_sys32",
+          "file_token": "modules_permission_icacls"
+        }
+      ]
+    },
+    {
+      "commit_hash": "494ed",
+      "commit_index": 28,
+      "joern_new_count": 0,
+      "cg_new_count": 2,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 2,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "EchoClientHandler",
+          "file_token": "Server_ransom"
+        },
+        {
+          "func_name": "keygen",
+          "file_token": "Server_ransom"
+        }
+      ]
+    },
+    {
+      "commit_hash": "49625",
+      "commit_index": 29,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "filelist",
+          "file_token": "modules_crypt_crypt"
+        }
+      ]
+    },
+    {
+      "commit_hash": "4a399",
+      "commit_index": 30,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "kill_init",
+          "file_token": "vaccine"
+        }
+      ]
+    },
+    {
+      "commit_hash": "505d2",
+      "commit_index": 31,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "send_key",
+          "file_token": "crypt_init"
+        }
+      ]
+    },
+    {
+      "commit_hash": "55ae9",
+      "commit_index": 32,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "updateTime",
+          "file_token": "GuiCounter"
+        }
+      ]
+    },
+    {
+      "commit_hash": "595fe",
+      "commit_index": 33,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "dwnExec",
+          "file_token": "modules_network_svchost"
+        }
+      ]
+    },
+    {
+      "commit_hash": "5aea5",
+      "commit_index": 34,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "file_encrypt",
+          "file_token": "crypt_init"
+        }
+      ]
+    },
+    {
+      "commit_hash": "5c3fd",
+      "commit_index": 35,
+      "joern_new_count": 0,
+      "cg_new_count": 7,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 7,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "exp",
+          "file_token": "modules_permission_icacls"
+        },
+        {
+          "func_name": "perf",
+          "file_token": "modules_permission_icacls"
+        },
+        {
+          "func_name": "perfall",
+          "file_token": "modules_permission_icacls"
+        },
+        {
+          "func_name": "pshll",
+          "file_token": "modules_permission_icacls"
+        },
+        {
+          "func_name": "reg",
+          "file_token": "modules_permission_icacls"
+        },
+        {
+          "func_name": "sys32",
+          "file_token": "modules_permission_icacls"
+        },
+        {
+          "func_name": "sysDir",
+          "file_token": "modules_permission_icacls"
+        }
+      ]
+    },
+    {
+      "commit_hash": "5e711",
+      "commit_index": 36,
+      "joern_new_count": 0,
+      "cg_new_count": 3,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 3,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "file_decrypt",
+          "file_token": "vaccine"
+        },
+        {
+          "func_name": "filelist",
+          "file_token": "vaccine"
+        },
+        {
+          "func_name": "kill_init",
+          "file_token": "vaccine"
+        }
+      ]
+    },
+    {
+      "commit_hash": "62408",
+      "commit_index": 37,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "filelist",
+          "file_token": "modules_crypt_crypt"
+        }
+      ]
+    },
+    {
+      "commit_hash": "65643",
+      "commit_index": 38,
+      "joern_new_count": 0,
+      "cg_new_count": 2,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 2,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "filelist",
+          "file_token": "modules_crypt_crypt"
+        },
+        {
+          "func_name": "genkey",
+          "file_token": "modules_crypt_crypt"
+        }
+      ]
+    },
+    {
+      "commit_hash": "6684d",
+      "commit_index": 39,
+      "joern_new_count": 0,
+      "cg_new_count": 2,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 2,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "remove_exp",
+          "file_token": "modules_system_delproc"
+        },
+        {
+          "func_name": "remove_pwsst",
+          "file_token": "modules_system_delproc"
+        }
+      ]
+    },
+    {
+      "commit_hash": "6ad28",
+      "commit_index": 40,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "cp_guitmp",
+          "file_token": "modules_system_cpysrc"
+        }
+      ]
+    },
+    {
+      "commit_hash": "6b2ed",
+      "commit_index": 41,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "copy_counter",
+          "file_token": "main"
+        }
+      ]
+    },
+    {
+      "commit_hash": "6c407",
+      "commit_index": 42,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "random_id",
+          "file_token": "modules_crypt_crypt"
+        }
+      ]
+    },
+    {
+      "commit_hash": "6ce58",
+      "commit_index": 43,
+      "joern_new_count": 0,
+      "cg_new_count": 4,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 4,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "exp",
+          "file_token": "modules_system_delproc"
+        },
+        {
+          "func_name": "power",
+          "file_token": "modules_system_delproc"
+        },
+        {
+          "func_name": "smart",
+          "file_token": "modules_system_delproc"
+        },
+        {
+          "func_name": "stsk",
+          "file_token": "modules_system_delproc"
+        }
+      ]
+    },
+    {
+      "commit_hash": "6d79c",
+      "commit_index": 44,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "kill_proc",
+          "file_token": "module_pkill"
+        }
+      ]
+    },
+    {
+      "commit_hash": "6eaf3",
+      "commit_index": 45,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "updateTime",
+          "file_token": "gui_GuiCounter"
+        }
+      ]
+    },
+    {
+      "commit_hash": "705d4",
+      "commit_index": 46,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "filelist",
+          "file_token": "decrypt_tools_decryption_users_directory"
+        }
+      ]
+    },
+    {
+      "commit_hash": "7a641",
+      "commit_index": 47,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "setInit",
+          "file_token": "modules_system_regedit"
+        }
+      ]
+    },
+    {
+      "commit_hash": "7b235",
+      "commit_index": 48,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "dwnExec",
+          "file_token": "svchost"
+        }
+      ]
+    },
+    {
+      "commit_hash": "7d745",
+      "commit_index": 49,
+      "joern_new_count": 0,
+      "cg_new_count": 2,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 2,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "dir",
+          "file_token": "modules_permission_icacls"
+        },
+        {
+          "func_name": "proc",
+          "file_token": "modules_permission_icacls"
+        }
+      ]
+    },
+    {
+      "commit_hash": "7fcbe",
+      "commit_index": 50,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "filelist",
+          "file_token": "modules_crypt_crypt"
+        }
+      ]
+    },
+    {
+      "commit_hash": "836a3",
+      "commit_index": 51,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "getcrypt",
+          "file_token": "modules_network_keyserver"
+        }
+      ]
+    },
+    {
+      "commit_hash": "84f21",
+      "commit_index": 52,
+      "joern_new_count": 0,
+      "cg_new_count": 2,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 2,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "dwnExec",
+          "file_token": "svchost"
+        },
+        {
+          "func_name": "updateTime",
+          "file_token": "GuiCounter"
+        }
+      ]
+    },
+    {
+      "commit_hash": "852f1",
+      "commit_index": 53,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "dir",
+          "file_token": "modules_permission_icacls"
+        }
+      ]
+    },
+    {
+      "commit_hash": "8b06c",
+      "commit_index": 54,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "is_admin",
+          "file_token": "module_get_admin_permission"
+        }
+      ]
+    },
+    {
+      "commit_hash": "8e5ba",
+      "commit_index": 55,
+      "joern_new_count": 0,
+      "cg_new_count": 2,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 2,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "dir",
+          "file_token": "modules_permission_takeown"
+        },
+        {
+          "func_name": "proc",
+          "file_token": "modules_permission_takeown"
+        }
+      ]
+    },
+    {
+      "commit_hash": "929ec",
+      "commit_index": 56,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "cp_guitmp",
+          "file_token": "modules_system_cpysrc"
+        }
+      ]
+    },
+    {
+      "commit_hash": "939c7",
+      "commit_index": 57,
+      "joern_new_count": 0,
+      "cg_new_count": 2,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 2,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "decrypt",
+          "file_token": "GuiCounter"
+        },
+        {
+          "func_name": "openNewWindowDecrypt",
+          "file_token": "GuiCounter"
+        }
+      ]
+    },
+    {
+      "commit_hash": "962ba",
+      "commit_index": 58,
+      "joern_new_count": 0,
+      "cg_new_count": 14,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 14,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "delRules",
+          "file_token": "module_regedit"
+        },
+        {
+          "func_name": "delSpecRules",
+          "file_token": "module_regedit"
+        },
+        {
+          "func_name": "delWindir",
+          "file_token": "module_regedit"
+        },
+        {
+          "func_name": "file_ecrypt",
+          "file_token": "module_main_function"
+        },
+        {
+          "func_name": "filelist",
+          "file_token": "module_main_function"
+        },
+        {
+          "func_name": "icc_powershell",
+          "file_token": "module_icacls"
+        },
+        {
+          "func_name": "icc_sys32",
+          "file_token": "module_icacls"
+        },
+        {
+          "func_name": "pkill",
+          "file_token": "module_killproc"
+        },
+        {
+          "func_name": "pkill_smart",
+          "file_token": "module_icacls"
+        },
+        {
+          "func_name": "pkill_smart",
+          "file_token": "module_killproc"
+        },
+        {
+          "func_name": "read_reg",
+          "file_token": "module_regedit"
+        },
+        {
+          "func_name": "remove_proc",
+          "file_token": "module_icacls"
+        },
+        {
+          "func_name": "setRef",
+          "file_token": "module_regedit"
+        },
+        {
+          "func_name": "tkOwn_process",
+          "file_token": "module_takeown"
+        }
+      ]
+    },
+    {
+      "commit_hash": "99cac",
+      "commit_index": 59,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "fkey",
+          "file_token": "modules_gui_gui_counter"
+        }
+      ]
+    },
+    {
+      "commit_hash": "9edee",
+      "commit_index": 60,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "send_key",
+          "file_token": "modules_network_sendkey_smtp"
+        }
+      ]
+    },
+    {
+      "commit_hash": "9fc48",
+      "commit_index": 61,
+      "joern_new_count": 0,
+      "cg_new_count": 2,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 2,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "drives_aux",
+          "file_token": "modules_crypt_crypt"
+        },
+        {
+          "func_name": "filelist",
+          "file_token": "modules_crypt_crypt"
+        }
+      ]
+    },
+    {
+      "commit_hash": "a18c6",
+      "commit_index": 62,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "tkOwn_regexp",
+          "file_token": "modules_permission_takeown"
+        }
+      ]
+    },
+    {
+      "commit_hash": "a2014",
+      "commit_index": 63,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "filelist",
+          "file_token": "modules_crypt_crypt"
+        }
+      ]
+    },
+    {
+      "commit_hash": "a2d05",
+      "commit_index": 64,
+      "joern_new_count": 0,
+      "cg_new_count": 2,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 2,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "EchoClientHandler",
+          "file_token": "Ransome_server"
+        },
+        {
+          "func_name": "keygen",
+          "file_token": "Ransome_server"
+        }
+      ]
+    },
+    {
+      "commit_hash": "a3050",
+      "commit_index": 65,
+      "joern_new_count": 0,
+      "cg_new_count": 8,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 8,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "delSpecRules",
+          "file_token": "gui_modules_system_regedit"
+        },
+        {
+          "func_name": "delWindir",
+          "file_token": "gui_modules_system_regedit"
+        },
+        {
+          "func_name": "delenv",
+          "file_token": "gui_modules_system_regedit"
+        },
+        {
+          "func_name": "exp",
+          "file_token": "gui_modules_system_delproc"
+        },
+        {
+          "func_name": "exp",
+          "file_token": "gui_modules_system_killproc"
+        },
+        {
+          "func_name": "noCmd",
+          "file_token": "gui_modules_system_regedit"
+        },
+        {
+          "func_name": "pwsst",
+          "file_token": "gui_modules_system_delproc"
+        },
+        {
+          "func_name": "updateTime",
+          "file_token": "gui_GuiCounter"
+        }
+      ]
+    },
+    {
+      "commit_hash": "a3340",
+      "commit_index": 66,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "filelist",
+          "file_token": "modules_crypt_crypt"
+        }
+      ]
+    },
+    {
+      "commit_hash": "a7f00",
+      "commit_index": 67,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "is_admin",
+          "file_token": "main"
+        }
+      ]
+    },
+    {
+      "commit_hash": "a8acf",
+      "commit_index": 68,
+      "joern_new_count": 0,
+      "cg_new_count": 2,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 2,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "pkill_exp",
+          "file_token": "modules_system_killproc"
+        },
+        {
+          "func_name": "pkill_smart",
+          "file_token": "modules_system_killproc"
+        }
+      ]
+    },
+    {
+      "commit_hash": "ab8c9",
+      "commit_index": 69,
+      "joern_new_count": 0,
+      "cg_new_count": 10,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 10,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "icc_iexdir",
+          "file_token": "modules_permission_icacls"
+        },
+        {
+          "func_name": "icc_powershell",
+          "file_token": "modules_permission_icacls"
+        },
+        {
+          "func_name": "icc_regexp",
+          "file_token": "modules_permission_icacls"
+        },
+        {
+          "func_name": "icc_sys32",
+          "file_token": "modules_permission_icacls"
+        },
+        {
+          "func_name": "remove_proc",
+          "file_token": "modules_permission_icacls"
+        },
+        {
+          "func_name": "tkOwn_DirWallpaper",
+          "file_token": "modules_permission_takeown"
+        },
+        {
+          "func_name": "tkOwn_IexploreDir",
+          "file_token": "modules_permission_takeown"
+        },
+        {
+          "func_name": "tkOwn_SoftDir",
+          "file_token": "modules_permission_takeown"
+        },
+        {
+          "func_name": "tkOwn_process",
+          "file_token": "modules_permission_takeown"
+        },
+        {
+          "func_name": "tkOwn_regexp",
+          "file_token": "modules_permission_takeown"
+        }
+      ]
+    },
+    {
+      "commit_hash": "af769",
+      "commit_index": 70,
+      "joern_new_count": 0,
+      "cg_new_count": 2,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 2,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "getcrypt",
+          "file_token": "modules_network_keyserver"
+        },
+        {
+          "func_name": "keyrcv",
+          "file_token": "modules_network_host_connect"
+        }
+      ]
+    },
+    {
+      "commit_hash": "afac3",
+      "commit_index": 71,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "copy_img",
+          "file_token": "modules_system_set_wallpaper"
+        }
+      ]
+    },
+    {
+      "commit_hash": "b29d9",
+      "commit_index": 72,
+      "joern_new_count": 0,
+      "cg_new_count": 2,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 2,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "delkey",
+          "file_token": "modules_system_regedit"
+        },
+        {
+          "func_name": "setkey",
+          "file_token": "modules_system_regedit"
+        }
+      ]
+    },
+    {
+      "commit_hash": "b6613",
+      "commit_index": 73,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "keygen",
+          "file_token": "Ransome_server"
+        }
+      ]
+    },
+    {
+      "commit_hash": "b6895",
+      "commit_index": 74,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "filelist",
+          "file_token": "modules_crypt_crypt"
+        }
+      ]
+    },
+    {
+      "commit_hash": "b956f",
+      "commit_index": 75,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "file_decrypt",
+          "file_token": "decrypt_tools_decryption_users_directory"
+        }
+      ]
+    },
+    {
+      "commit_hash": "b987d",
+      "commit_index": 76,
+      "joern_new_count": 0,
+      "cg_new_count": 7,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 7,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "delSpecRules",
+          "file_token": "modules_gui_modules_system_regedit"
+        },
+        {
+          "func_name": "delWindir",
+          "file_token": "modules_gui_modules_system_regedit"
+        },
+        {
+          "func_name": "delenv",
+          "file_token": "modules_gui_modules_system_regedit"
+        },
+        {
+          "func_name": "exp",
+          "file_token": "modules_gui_modules_system_delproc"
+        },
+        {
+          "func_name": "exp",
+          "file_token": "modules_gui_modules_system_killproc"
+        },
+        {
+          "func_name": "pwsst",
+          "file_token": "modules_gui_modules_system_delproc"
+        },
+        {
+          "func_name": "smart",
+          "file_token": "modules_gui_modules_system_killproc"
+        }
+      ]
+    },
+    {
+      "commit_hash": "bb0b6",
+      "commit_index": 77,
+      "joern_new_count": 0,
+      "cg_new_count": 15,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 15,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "connect",
+          "file_token": "modules_crypt_encrypt_function"
+        },
+        {
+          "func_name": "delRules",
+          "file_token": "modules_system_regedit"
+        },
+        {
+          "func_name": "delSpecRules",
+          "file_token": "modules_system_regedit"
+        },
+        {
+          "func_name": "delWindir",
+          "file_token": "modules_system_regedit"
+        },
+        {
+          "func_name": "file_ecrypt",
+          "file_token": "modules_crypt_encrypt_function"
+        },
+        {
+          "func_name": "filelist",
+          "file_token": "modules_crypt_encrypt_function"
+        },
+        {
+          "func_name": "filelist_aux",
+          "file_token": "modules_crypt_encrypt_function"
+        },
+        {
+          "func_name": "icc_powershell",
+          "file_token": "modules_permission_icacls"
+        },
+        {
+          "func_name": "icc_sys32",
+          "file_token": "modules_permission_icacls"
+        },
+        {
+          "func_name": "is_admin",
+          "file_token": "modules_permission_get_admin_rights"
+        },
+        {
+          "func_name": "pkill_smart",
+          "file_token": "modules_system_killproc"
+        },
+        {
+          "func_name": "read_reg",
+          "file_token": "modules_system_regedit"
+        },
+        {
+          "func_name": "remove_proc",
+          "file_token": "modules_permission_icacls"
+        },
+        {
+          "func_name": "setRef",
+          "file_token": "modules_system_regedit"
+        },
+        {
+          "func_name": "tkOwn_process",
+          "file_token": "modules_permission_takeown"
+        }
+      ]
+    },
+    {
+      "commit_hash": "be8e7",
+      "commit_index": 78,
+      "joern_new_count": 0,
+      "cg_new_count": 2,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 2,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "EchoClientHandler",
+          "file_token": "ServerKey"
+        },
+        {
+          "func_name": "keygen",
+          "file_token": "ServerKey"
+        }
+      ]
+    },
+    {
+      "commit_hash": "c3875",
+      "commit_index": 79,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "dwnExec",
+          "file_token": "gui_svchost"
+        }
+      ]
+    },
+    {
+      "commit_hash": "ca989",
+      "commit_index": 80,
+      "joern_new_count": 0,
+      "cg_new_count": 4,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 4,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "file_ecrypt",
+          "file_token": "modules_crypt_crypt"
+        },
+        {
+          "func_name": "filelist",
+          "file_token": "modules_crypt_crypt"
+        },
+        {
+          "func_name": "filelist_aux",
+          "file_token": "modules_crypt_crypt"
+        },
+        {
+          "func_name": "genkey",
+          "file_token": "modules_crypt_crypt"
+        }
+      ]
+    },
+    {
+      "commit_hash": "cb926",
+      "commit_index": 81,
+      "joern_new_count": 0,
+      "cg_new_count": 5,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 5,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "exp",
+          "file_token": "modules_permission_takeown"
+        },
+        {
+          "func_name": "perf",
+          "file_token": "modules_permission_takeown"
+        },
+        {
+          "func_name": "perfall",
+          "file_token": "modules_permission_takeown"
+        },
+        {
+          "func_name": "process",
+          "file_token": "modules_permission_takeown"
+        },
+        {
+          "func_name": "sysDir",
+          "file_token": "modules_permission_takeown"
+        }
+      ]
+    },
+    {
+      "commit_hash": "cf59b",
+      "commit_index": 82,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "dir",
+          "file_token": "modules_permission_takeown"
+        }
+      ]
+    },
+    {
+      "commit_hash": "d35cb",
+      "commit_index": 83,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "filelist",
+          "file_token": "modules_crypt_crypt"
+        }
+      ]
+    },
+    {
+      "commit_hash": "d7ec7",
+      "commit_index": 84,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "getcrypt",
+          "file_token": "modules_network_keyserver"
+        }
+      ]
+    },
+    {
+      "commit_hash": "db6d0",
+      "commit_index": 85,
+      "joern_new_count": 0,
+      "cg_new_count": 3,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 3,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "delkey",
+          "file_token": "modules_system_regedit"
+        },
+        {
+          "func_name": "setInit",
+          "file_token": "modules_system_regedit"
+        },
+        {
+          "func_name": "setkey",
+          "file_token": "modules_system_regedit"
+        }
+      ]
+    },
+    {
+      "commit_hash": "dc258",
+      "commit_index": 86,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "send_key",
+          "file_token": "modules_network_sendkey_smtp"
+        }
+      ]
+    },
+    {
+      "commit_hash": "dd04f",
+      "commit_index": 87,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "copy_counter",
+          "file_token": "main"
+        }
+      ]
+    },
+    {
+      "commit_hash": "dde24",
+      "commit_index": 88,
+      "joern_new_count": 0,
+      "cg_new_count": 11,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 11,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "delRules",
+          "file_token": "Ransomware"
+        },
+        {
+          "func_name": "delSpecRules",
+          "file_token": "Ransomware"
+        },
+        {
+          "func_name": "file_ecrypt",
+          "file_token": "Ransomware"
+        },
+        {
+          "func_name": "filelist",
+          "file_token": "Ransomware"
+        },
+        {
+          "func_name": "filelist_aux",
+          "file_token": "Ransomware"
+        },
+        {
+          "func_name": "icc_powershell",
+          "file_token": "Ransomware"
+        },
+        {
+          "func_name": "icc_sys32",
+          "file_token": "Ransomware"
+        },
+        {
+          "func_name": "is_admin",
+          "file_token": "Ransomware"
+        },
+        {
+          "func_name": "pkill_smart",
+          "file_token": "Ransomware"
+        },
+        {
+          "func_name": "remove_proc",
+          "file_token": "Ransomware"
+        },
+        {
+          "func_name": "tkOwn_process",
+          "file_token": "Ransomware"
+        }
+      ]
+    },
+    {
+      "commit_hash": "e4dbb",
+      "commit_index": 89,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "send_key",
+          "file_token": "modules_network_sendkey_smtp"
+        }
+      ]
+    },
+    {
+      "commit_hash": "f3158",
+      "commit_index": 90,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "setInit",
+          "file_token": "modules_system_regedit"
+        }
+      ]
+    },
+    {
+      "commit_hash": "f5b12",
+      "commit_index": 91,
+      "joern_new_count": 0,
+      "cg_new_count": 6,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 6,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "action_decrypt",
+          "file_token": "GuiCounter"
+        },
+        {
+          "func_name": "action_pay",
+          "file_token": "GuiCounter"
+        },
+        {
+          "func_name": "decrypt",
+          "file_token": "GuiCounter"
+        },
+        {
+          "func_name": "openNewWindow",
+          "file_token": "GuiCounter"
+        },
+        {
+          "func_name": "pay",
+          "file_token": "GuiCounter"
+        },
+        {
+          "func_name": "updateTime",
+          "file_token": "GuiCounter"
+        }
+      ]
+    },
+    {
+      "commit_hash": "f5bd2",
+      "commit_index": 92,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "drives_aux",
+          "file_token": "modules_crypt_crypt"
+        }
+      ]
+    },
+    {
+      "commit_hash": "fd415",
+      "commit_index": 93,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "filelist",
+          "file_token": "decrypt_tools_decryption_users_directory"
+        }
+      ]
+    }
+  ]
+}

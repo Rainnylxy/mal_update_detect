@@ -1,0 +1,211 @@
+{
+  "repo_name": "Virus000",
+  "category": "multiple_commits",
+  "recall": 1.0,
+  "total_joern_new": 0,
+  "total_matched": 0,
+  "commits": [
+    {
+      "commit_hash": "0fea8",
+      "commit_index": 0,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "screenShot",
+          "file_token": "viCtim"
+        }
+      ]
+    },
+    {
+      "commit_hash": "26784",
+      "commit_index": 1,
+      "joern_new_count": 0,
+      "cg_new_count": 4,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 4,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "__main__",
+          "file_token": "aTTacKer"
+        },
+        {
+          "func_name": "__main__",
+          "file_token": "viCtim"
+        },
+        {
+          "func_name": "download_file",
+          "file_token": "aTTacKer"
+        },
+        {
+          "func_name": "download_file",
+          "file_token": "viCtim"
+        }
+      ]
+    },
+    {
+      "commit_hash": "29176",
+      "commit_index": 2,
+      "joern_new_count": 0,
+      "cg_new_count": 2,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 2,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "__main__",
+          "file_token": "viCtim"
+        },
+        {
+          "func_name": "persistence",
+          "file_token": "viCtim"
+        }
+      ]
+    },
+    {
+      "commit_hash": "94bf5",
+      "commit_index": 3,
+      "joern_new_count": 0,
+      "cg_new_count": 2,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 2,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "__main__",
+          "file_token": "aTTacKer"
+        },
+        {
+          "func_name": "__main__",
+          "file_token": "viCtim"
+        }
+      ]
+    },
+    {
+      "commit_hash": "e7558",
+      "commit_index": 4,
+      "joern_new_count": 0,
+      "cg_new_count": 7,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 7,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "__connect__",
+          "file_token": "viCtim"
+        },
+        {
+          "func_name": "__main__",
+          "file_token": "aTTacKer"
+        },
+        {
+          "func_name": "__main__",
+          "file_token": "viCtim"
+        },
+        {
+          "func_name": "download_file",
+          "file_token": "aTTacKer"
+        },
+        {
+          "func_name": "download_file",
+          "file_token": "viCtim"
+        },
+        {
+          "func_name": "upload_file",
+          "file_token": "aTTacKer"
+        },
+        {
+          "func_name": "upload_file",
+          "file_token": "viCtim"
+        }
+      ]
+    },
+    {
+      "commit_hash": "ea90b",
+      "commit_index": 5,
+      "joern_new_count": 0,
+      "cg_new_count": 4,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 4,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "__connect__",
+          "file_token": "viCtim"
+        },
+        {
+          "func_name": "__listen__",
+          "file_token": "aTTacKer"
+        },
+        {
+          "func_name": "__main__",
+          "file_token": "aTTacKer"
+        },
+        {
+          "func_name": "__main__",
+          "file_token": "viCtim"
+        }
+      ]
+    },
+    {
+      "commit_hash": "ec220",
+      "commit_index": 6,
+      "joern_new_count": 0,
+      "cg_new_count": 6,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 6,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "__listen__",
+          "file_token": "aTTacKer"
+        },
+        {
+          "func_name": "__main__",
+          "file_token": "aTTacKer"
+        },
+        {
+          "func_name": "__main__",
+          "file_token": "viCtim"
+        },
+        {
+          "func_name": "screenShot",
+          "file_token": "viCtim"
+        },
+        {
+          "func_name": "simple_decrypt",
+          "file_token": "viCtim"
+        },
+        {
+          "func_name": "simple_encrypt",
+          "file_token": "viCtim"
+        }
+      ]
+    }
+  ]
+}

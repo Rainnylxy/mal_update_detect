@@ -1,0 +1,81 @@
+{
+  "repo_name": "reverseShell5",
+  "category": "multiple_commits_human_made",
+  "recall": 1.0,
+  "total_joern_new": 0,
+  "total_matched": 0,
+  "commits": [
+    {
+      "commit_hash": "210be",
+      "commit_index": 0,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "handle_client",
+          "file_token": "reverse_ssl"
+        }
+      ]
+    },
+    {
+      "commit_hash": "456e6",
+      "commit_index": 1,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "start_server",
+          "file_token": "reverse_ssl"
+        }
+      ]
+    },
+    {
+      "commit_hash": "a63f7",
+      "commit_index": 2,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "generate_and_compress_client_code",
+          "file_token": "reverse_ssl"
+        }
+      ]
+    },
+    {
+      "commit_hash": "c0b0e",
+      "commit_index": 3,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "generate_certificate",
+          "file_token": "reverse_ssl"
+        }
+      ]
+    }
+  ]
+}

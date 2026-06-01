@@ -1,0 +1,275 @@
+{
+  "repo_name": "ransomware",
+  "category": "multiple_commits",
+  "recall": 1.0,
+  "total_joern_new": 0,
+  "total_matched": 0,
+  "commits": [
+    {
+      "commit_hash": "164d2",
+      "commit_index": 0,
+      "joern_new_count": 0,
+      "cg_new_count": 3,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 3,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "Encrypt",
+          "file_token": "lib_en_decrypt"
+        },
+        {
+          "func_name": "aesDecrypt",
+          "file_token": "lib_en_decrypt"
+        },
+        {
+          "func_name": "aesEncrypt",
+          "file_token": "lib_en_decrypt"
+        }
+      ]
+    },
+    {
+      "commit_hash": "ae168",
+      "commit_index": 1,
+      "joern_new_count": 0,
+      "cg_new_count": 48,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 48,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "__init__",
+          "file_token": "lib_mysmb"
+        },
+        {
+          "func_name": "align_transaction_and_leak",
+          "file_token": "lib_zzz_exploit"
+        },
+        {
+          "func_name": "check_accessible_pipes",
+          "file_token": "lib_eternal_checker"
+        },
+        {
+          "func_name": "check_ms17_010",
+          "file_token": "lib_eternal_checker"
+        },
+        {
+          "func_name": "checker",
+          "file_token": "lib_eternal_checker"
+        },
+        {
+          "func_name": "cleanup_server",
+          "file_token": "lib_mysmb"
+        },
+        {
+          "func_name": "connect_tree",
+          "file_token": "lib_mysmb"
+        },
+        {
+          "func_name": "create_nt_trans_packet",
+          "file_token": "lib_mysmb"
+        },
+        {
+          "func_name": "create_nt_trans_secondary_packet",
+          "file_token": "lib_mysmb"
+        },
+        {
+          "func_name": "create_smb_packet",
+          "file_token": "lib_mysmb"
+        },
+        {
+          "func_name": "create_trans2_packet",
+          "file_token": "lib_mysmb"
+        },
+        {
+          "func_name": "create_trans2_secondary_packet",
+          "file_token": "lib_mysmb"
+        },
+        {
+          "func_name": "create_trans_packet",
+          "file_token": "lib_mysmb"
+        },
+        {
+          "func_name": "create_trans_secondary_packet",
+          "file_token": "lib_mysmb"
+        },
+        {
+          "func_name": "default",
+          "file_token": "lib_mysmb"
+        },
+        {
+          "func_name": "discoverFiles_decry",
+          "file_token": "lib_system_manager"
+        },
+        {
+          "func_name": "discoverFiles_encry",
+          "file_token": "lib_system_manager"
+        },
+        {
+          "func_name": "do_CD",
+          "file_token": "lib_mysmb"
+        },
+        {
+          "func_name": "do_cd",
+          "file_token": "lib_mysmb"
+        },
+        {
+          "func_name": "do_shell",
+          "file_token": "lib_mysmb"
+        },
+        {
+          "func_name": "do_system_mysmb_session",
+          "file_token": "lib_zzz_exploit"
+        },
+        {
+          "func_name": "do_write_andx_raw_pipe",
+          "file_token": "lib_mysmb"
+        },
+        {
+          "func_name": "execute_remote",
+          "file_token": "lib_mysmb"
+        },
+        {
+          "func_name": "exp_main",
+          "file_token": "lib_zzz_exploit"
+        },
+        {
+          "func_name": "exploit",
+          "file_token": "lib_zzz_exploit"
+        },
+        {
+          "func_name": "exploit_fish_barrel",
+          "file_token": "lib_zzz_exploit"
+        },
+        {
+          "func_name": "exploit_matched_pairs",
+          "file_token": "lib_zzz_exploit"
+        },
+        {
+          "func_name": "finish",
+          "file_token": "lib_mysmb"
+        },
+        {
+          "func_name": "get_dce_rpc",
+          "file_token": "lib_mysmb"
+        },
+        {
+          "func_name": "get_drives",
+          "file_token": "lib_system_manager"
+        },
+        {
+          "func_name": "get_hosts_ip",
+          "file_token": "lib_system_manager"
+        },
+        {
+          "func_name": "get_output",
+          "file_token": "lib_mysmb"
+        },
+        {
+          "func_name": "get_smbconnection",
+          "file_token": "lib_mysmb"
+        },
+        {
+          "func_name": "leak_frag_size",
+          "file_token": "lib_zzz_exploit"
+        },
+        {
+          "func_name": "read_data",
+          "file_token": "lib_zzz_exploit"
+        },
+        {
+          "func_name": "run",
+          "file_token": "lib_mysmb"
+        },
+        {
+          "func_name": "scan_port",
+          "file_token": "lib_system_manager"
+        },
+        {
+          "func_name": "send_data",
+          "file_token": "lib_mysmb"
+        },
+        {
+          "func_name": "send_nt_trans",
+          "file_token": "lib_mysmb"
+        },
+        {
+          "func_name": "send_nt_trans_secondary",
+          "file_token": "lib_mysmb"
+        },
+        {
+          "func_name": "send_trans2_secondary",
+          "file_token": "lib_mysmb"
+        },
+        {
+          "func_name": "send_trans",
+          "file_token": "lib_mysmb"
+        },
+        {
+          "func_name": "send_trans_secondary",
+          "file_token": "lib_mysmb"
+        },
+        {
+          "func_name": "service_exec",
+          "file_token": "lib_zzz_exploit"
+        },
+        {
+          "func_name": "smb_send_file",
+          "file_token": "lib_zzz_exploit"
+        },
+        {
+          "func_name": "stop",
+          "file_token": "lib_mysmb"
+        },
+        {
+          "func_name": "wait_for_request_processed",
+          "file_token": "lib_zzz_exploit"
+        },
+        {
+          "func_name": "write_data",
+          "file_token": "lib_zzz_exploit"
+        }
+      ]
+    },
+    {
+      "commit_hash": "fde37",
+      "commit_index": 2,
+      "joern_new_count": 0,
+      "cg_new_count": 5,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 5,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "generated",
+          "file_token": "main"
+        },
+        {
+          "func_name": "get_de_key",
+          "file_token": "main"
+        },
+        {
+          "func_name": "get_en_msg_key",
+          "file_token": "main"
+        },
+        {
+          "func_name": "main",
+          "file_token": "main"
+        },
+        {
+          "func_name": "npass",
+          "file_token": "main"
+        }
+      ]
+    }
+  ]
+}

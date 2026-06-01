@@ -1,0 +1,95 @@
+{
+  "repo_name": "crypto-clipper",
+  "category": "multiple_commits",
+  "recall": 1.0,
+  "total_joern_new": 0,
+  "total_matched": 0,
+  "commits": [
+    {
+      "commit_hash": "ca07b",
+      "commit_index": 0,
+      "joern_new_count": 0,
+      "cg_new_count": 2,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 2,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "add_reg",
+          "file_token": "main"
+        },
+        {
+          "func_name": "check",
+          "file_token": "main"
+        }
+      ]
+    },
+    {
+      "commit_hash": "dfe2b",
+      "commit_index": 1,
+      "joern_new_count": 0,
+      "cg_new_count": 5,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 5,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "add_reg",
+          "file_token": "main"
+        },
+        {
+          "func_name": "dupe_self",
+          "file_token": "main"
+        },
+        {
+          "func_name": "main",
+          "file_token": "main"
+        },
+        {
+          "func_name": "remove_files",
+          "file_token": "uninstaller"
+        },
+        {
+          "func_name": "remove_registry_entry",
+          "file_token": "uninstaller"
+        }
+      ]
+    },
+    {
+      "commit_hash": "f9abe",
+      "commit_index": 2,
+      "joern_new_count": 0,
+      "cg_new_count": 4,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 4,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "add_reg",
+          "file_token": "main"
+        },
+        {
+          "func_name": "check",
+          "file_token": "main"
+        },
+        {
+          "func_name": "dupe_self",
+          "file_token": "main"
+        },
+        {
+          "func_name": "main",
+          "file_token": "main"
+        }
+      ]
+    }
+  ]
+}

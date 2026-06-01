@@ -1,0 +1,231 @@
+{
+  "repo_name": "megaloptera",
+  "category": "multiple_commits",
+  "recall": 1.0,
+  "total_joern_new": 0,
+  "total_matched": 0,
+  "commits": [
+    {
+      "commit_hash": "695c1",
+      "commit_index": 0,
+      "joern_new_count": 0,
+      "cg_new_count": 10,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 10,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "auto_run",
+          "file_token": "megaloptera"
+        },
+        {
+          "func_name": "browser",
+          "file_token": "megaloptera"
+        },
+        {
+          "func_name": "convert_file",
+          "file_token": "megaloptera"
+        },
+        {
+          "func_name": "evasion",
+          "file_token": "megaloptera"
+        },
+        {
+          "func_name": "ip",
+          "file_token": "megaloptera"
+        },
+        {
+          "func_name": "location",
+          "file_token": "megaloptera"
+        },
+        {
+          "func_name": "password",
+          "file_token": "megaloptera"
+        },
+        {
+          "func_name": "screenshots",
+          "file_token": "megaloptera"
+        },
+        {
+          "func_name": "webcam",
+          "file_token": "megaloptera"
+        },
+        {
+          "func_name": "wifi_password",
+          "file_token": "megaloptera"
+        }
+      ]
+    },
+    {
+      "commit_hash": "75922",
+      "commit_index": 1,
+      "joern_new_count": 0,
+      "cg_new_count": 2,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 2,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "download_file",
+          "file_token": "src_dropper"
+        },
+        {
+          "func_name": "launch",
+          "file_token": "src_dropper"
+        }
+      ]
+    },
+    {
+      "commit_hash": "9f2ed",
+      "commit_index": 2,
+      "joern_new_count": 0,
+      "cg_new_count": 10,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 10,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "auto_run",
+          "file_token": "megaloptera"
+        },
+        {
+          "func_name": "browser",
+          "file_token": "megaloptera"
+        },
+        {
+          "func_name": "convert_file",
+          "file_token": "megaloptera"
+        },
+        {
+          "func_name": "ip",
+          "file_token": "megaloptera"
+        },
+        {
+          "func_name": "location",
+          "file_token": "megaloptera"
+        },
+        {
+          "func_name": "mega",
+          "file_token": "megaloptera"
+        },
+        {
+          "func_name": "password",
+          "file_token": "megaloptera"
+        },
+        {
+          "func_name": "screenshots",
+          "file_token": "megaloptera"
+        },
+        {
+          "func_name": "webcam",
+          "file_token": "megaloptera"
+        },
+        {
+          "func_name": "wifi_password",
+          "file_token": "megaloptera"
+        }
+      ]
+    },
+    {
+      "commit_hash": "b815c",
+      "commit_index": 3,
+      "joern_new_count": 0,
+      "cg_new_count": 12,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 12,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "auto_run",
+          "file_token": "megaloptera"
+        },
+        {
+          "func_name": "browser",
+          "file_token": "megaloptera"
+        },
+        {
+          "func_name": "clipboard",
+          "file_token": "megaloptera"
+        },
+        {
+          "func_name": "computer_info",
+          "file_token": "megaloptera"
+        },
+        {
+          "func_name": "convert_file",
+          "file_token": "megaloptera"
+        },
+        {
+          "func_name": "evasion",
+          "file_token": "megaloptera"
+        },
+        {
+          "func_name": "ip",
+          "file_token": "megaloptera"
+        },
+        {
+          "func_name": "location",
+          "file_token": "megaloptera"
+        },
+        {
+          "func_name": "password",
+          "file_token": "megaloptera"
+        },
+        {
+          "func_name": "screenshots",
+          "file_token": "megaloptera"
+        },
+        {
+          "func_name": "sessions",
+          "file_token": "megaloptera"
+        },
+        {
+          "func_name": "wifi_password",
+          "file_token": "megaloptera"
+        }
+      ]
+    },
+    {
+      "commit_hash": "d66ad",
+      "commit_index": 4,
+      "joern_new_count": 0,
+      "cg_new_count": 4,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 4,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "download_file",
+          "file_token": "dropperObfuscate"
+        },
+        {
+          "func_name": "download_file",
+          "file_token": "dropper"
+        },
+        {
+          "func_name": "launch",
+          "file_token": "dropperObfuscate"
+        },
+        {
+          "func_name": "launch",
+          "file_token": "dropper"
+        }
+      ]
+    }
+  ]
+}

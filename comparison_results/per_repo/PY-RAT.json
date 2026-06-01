@@ -1,0 +1,199 @@
+{
+  "repo_name": "PY-RAT",
+  "category": "multiple_commits",
+  "recall": 0.0,
+  "total_joern_new": 6,
+  "total_matched": 0,
+  "commits": [
+    {
+      "commit_hash": "319e9",
+      "commit_index": 0,
+      "joern_new_count": 1,
+      "cg_new_count": 5,
+      "matched_count": 0,
+      "joern_only_count": 1,
+      "cg_only_count": 5,
+      "recall": 0.0,
+      "matched": [],
+      "joern_only": [
+        {
+          "func_name": "<module>",
+          "file_token": "PY-RAT_PY_RAT.py",
+          "category": "D"
+        }
+      ],
+      "cg_only": [
+        {
+          "func_name": "clearTerminal",
+          "file_token": "PY-RAT_PY_RAT"
+        },
+        {
+          "func_name": "getMsgWithDataSplit",
+          "file_token": "PY-RAT_PY_RAT"
+        },
+        {
+          "func_name": "makeConnections",
+          "file_token": "PY-RAT_PY_RAT"
+        },
+        {
+          "func_name": "recvall",
+          "file_token": "PY-RAT_PY_RAT"
+        },
+        {
+          "func_name": "testConnection",
+          "file_token": "PY-RAT_PY_RAT"
+        }
+      ]
+    },
+    {
+      "commit_hash": "82cfb",
+      "commit_index": 1,
+      "joern_new_count": 1,
+      "cg_new_count": 5,
+      "matched_count": 0,
+      "joern_only_count": 1,
+      "cg_only_count": 5,
+      "recall": 0.0,
+      "matched": [],
+      "joern_only": [
+        {
+          "func_name": "<module>",
+          "file_token": "PY-RAT_PY_RAT.py",
+          "category": "D"
+        }
+      ],
+      "cg_only": [
+        {
+          "func_name": "clearTerminal",
+          "file_token": "PY-RAT_PY_RAT"
+        },
+        {
+          "func_name": "makeConnections",
+          "file_token": "PY-RAT_PY_RAT"
+        },
+        {
+          "func_name": "recvall",
+          "file_token": "PY-RAT_PY_RAT"
+        },
+        {
+          "func_name": "stopStream",
+          "file_token": "PY-RAT_PY_RAT"
+        },
+        {
+          "func_name": "testConnection",
+          "file_token": "PY-RAT_PY_RAT"
+        }
+      ]
+    },
+    {
+      "commit_hash": "9ffc2",
+      "commit_index": 2,
+      "joern_new_count": 1,
+      "cg_new_count": 0,
+      "matched_count": 0,
+      "joern_only_count": 1,
+      "cg_only_count": 0,
+      "recall": 0.0,
+      "matched": [],
+      "joern_only": [
+        {
+          "func_name": "<module>",
+          "file_token": "PY_RAT.py",
+          "category": "D"
+        }
+      ],
+      "cg_only": []
+    },
+    {
+      "commit_hash": "cf545",
+      "commit_index": 3,
+      "joern_new_count": 1,
+      "cg_new_count": 0,
+      "matched_count": 0,
+      "joern_only_count": 1,
+      "cg_only_count": 0,
+      "recall": 0.0,
+      "matched": [],
+      "joern_only": [
+        {
+          "func_name": "<module>",
+          "file_token": "PY-RAT_PY_RAT.py",
+          "category": "D"
+        }
+      ],
+      "cg_only": []
+    },
+    {
+      "commit_hash": "ec602",
+      "commit_index": 4,
+      "joern_new_count": 1,
+      "cg_new_count": 0,
+      "matched_count": 0,
+      "joern_only_count": 1,
+      "cg_only_count": 0,
+      "recall": 0.0,
+      "matched": [],
+      "joern_only": [
+        {
+          "func_name": "<module>",
+          "file_token": "PY-RAT_PY_RAT.py",
+          "category": "D"
+        }
+      ],
+      "cg_only": []
+    },
+    {
+      "commit_hash": "ef25b",
+      "commit_index": 5,
+      "joern_new_count": 1,
+      "cg_new_count": 0,
+      "matched_count": 0,
+      "joern_only_count": 1,
+      "cg_only_count": 0,
+      "recall": 0.0,
+      "matched": [],
+      "joern_only": [
+        {
+          "func_name": "<module>",
+          "file_token": "SCRIPTS_moveToStartup.py",
+          "category": "D"
+        }
+      ],
+      "cg_only": []
+    },
+    {
+      "commit_hash": "f8025",
+      "commit_index": 6,
+      "joern_new_count": 0,
+      "cg_new_count": 5,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 5,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "clearTerminal",
+          "file_token": "PY-RAT_PY_RAT"
+        },
+        {
+          "func_name": "makeConnections",
+          "file_token": "PY-RAT_PY_RAT"
+        },
+        {
+          "func_name": "recvall",
+          "file_token": "PY-RAT_PY_RAT"
+        },
+        {
+          "func_name": "stopStream",
+          "file_token": "PY-RAT_PY_RAT"
+        },
+        {
+          "func_name": "testConnection",
+          "file_token": "PY-RAT_PY_RAT"
+        }
+      ]
+    }
+  ]
+}

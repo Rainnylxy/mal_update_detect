@@ -1,0 +1,47 @@
+{
+  "repo_name": "simple-virus-python",
+  "category": "multiple_commits",
+  "recall": 0.0,
+  "total_joern_new": 2,
+  "total_matched": 0,
+  "commits": [
+    {
+      "commit_hash": "09236",
+      "commit_index": 0,
+      "joern_new_count": 1,
+      "cg_new_count": 0,
+      "matched_count": 0,
+      "joern_only_count": 1,
+      "cg_only_count": 0,
+      "recall": 0.0,
+      "matched": [],
+      "joern_only": [
+        {
+          "func_name": "<module>",
+          "file_token": "virus.py",
+          "category": "D"
+        }
+      ],
+      "cg_only": []
+    },
+    {
+      "commit_hash": "43792",
+      "commit_index": 1,
+      "joern_new_count": 1,
+      "cg_new_count": 0,
+      "matched_count": 0,
+      "joern_only_count": 1,
+      "cg_only_count": 0,
+      "recall": 0.0,
+      "matched": [],
+      "joern_only": [
+        {
+          "func_name": "<module>",
+          "file_token": "virus.py",
+          "category": "D"
+        }
+      ],
+      "cg_only": []
+    }
+  ]
+}

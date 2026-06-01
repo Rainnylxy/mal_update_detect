@@ -1,0 +1,459 @@
+{
+  "repo_name": "funny-virus",
+  "category": "multiple_commits",
+  "recall": 1.0,
+  "total_joern_new": 0,
+  "total_matched": 0,
+  "commits": [
+    {
+      "commit_hash": "0a71a",
+      "commit_index": 0,
+      "joern_new_count": 0,
+      "cg_new_count": 3,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 3,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "handle_client",
+          "file_token": "papa_papa_server"
+        },
+        {
+          "func_name": "send_command_to_client",
+          "file_token": "papa_papa_server"
+        },
+        {
+          "func_name": "start_listener",
+          "file_token": "papa_papa_server"
+        }
+      ]
+    },
+    {
+      "commit_hash": "11668",
+      "commit_index": 1,
+      "joern_new_count": 0,
+      "cg_new_count": 3,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 3,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "handle_client",
+          "file_token": "papa_socket"
+        },
+        {
+          "func_name": "send_command_to_client",
+          "file_token": "papa_socket"
+        },
+        {
+          "func_name": "start_listener",
+          "file_token": "papa_socket"
+        }
+      ]
+    },
+    {
+      "commit_hash": "2cbb3",
+      "commit_index": 2,
+      "joern_new_count": 0,
+      "cg_new_count": 5,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 5,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "get_network_profiles",
+          "file_token": "sork_sork"
+        },
+        {
+          "func_name": "get_profile_info",
+          "file_token": "sork_sork"
+        },
+        {
+          "func_name": "main",
+          "file_token": "sork_sork"
+        },
+        {
+          "func_name": "save_to_txt",
+          "file_token": "sork_sork"
+        },
+        {
+          "func_name": "send_data_tcp",
+          "file_token": "sork_sork"
+        }
+      ]
+    },
+    {
+      "commit_hash": "410ec",
+      "commit_index": 3,
+      "joern_new_count": 0,
+      "cg_new_count": 4,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 4,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "get_network_profiles",
+          "file_token": "sork"
+        },
+        {
+          "func_name": "get_profile_info",
+          "file_token": "sork"
+        },
+        {
+          "func_name": "save_to_txt",
+          "file_token": "sork"
+        },
+        {
+          "func_name": "send_data_tcp",
+          "file_token": "sork"
+        }
+      ]
+    },
+    {
+      "commit_hash": "5d0e8",
+      "commit_index": 4,
+      "joern_new_count": 0,
+      "cg_new_count": 3,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 3,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "get_network_profiles",
+          "file_token": "1"
+        },
+        {
+          "func_name": "get_profile_info",
+          "file_token": "1"
+        },
+        {
+          "func_name": "save_to_txt",
+          "file_token": "1"
+        }
+      ]
+    },
+    {
+      "commit_hash": "5df84",
+      "commit_index": 5,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "send_data_tcp",
+          "file_token": "sork_sork"
+        }
+      ]
+    },
+    {
+      "commit_hash": "90791",
+      "commit_index": 6,
+      "joern_new_count": 0,
+      "cg_new_count": 3,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 3,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "handle_client",
+          "file_token": "papa_server"
+        },
+        {
+          "func_name": "send_command_to_client",
+          "file_token": "papa_server"
+        },
+        {
+          "func_name": "start_listener",
+          "file_token": "papa_server"
+        }
+      ]
+    },
+    {
+      "commit_hash": "909c5",
+      "commit_index": 7,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "get_usb_event_logs",
+          "file_token": "usb_history"
+        }
+      ]
+    },
+    {
+      "commit_hash": "97ad1",
+      "commit_index": 8,
+      "joern_new_count": 0,
+      "cg_new_count": 2,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 2,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "execute_command",
+          "file_token": "papa_papa_socket"
+        },
+        {
+          "func_name": "handle_connection",
+          "file_token": "papa_papa_socket"
+        }
+      ]
+    },
+    {
+      "commit_hash": "ad64d",
+      "commit_index": 9,
+      "joern_new_count": 0,
+      "cg_new_count": 4,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 4,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "birthday_party",
+          "file_token": "Birthday_Message_Bomb_superstar"
+        },
+        {
+          "func_name": "main",
+          "file_token": "Birthday_Message_Bomb_superstar"
+        },
+        {
+          "func_name": "move_mouse",
+          "file_token": "Birthday_Message_Bomb_superstar"
+        },
+        {
+          "func_name": "open_fun_stuff",
+          "file_token": "Birthday_Message_Bomb_superstar"
+        }
+      ]
+    },
+    {
+      "commit_hash": "d3bdf",
+      "commit_index": 10,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "start_listener",
+          "file_token": "sork_sork_listner"
+        }
+      ]
+    },
+    {
+      "commit_hash": "d48fd",
+      "commit_index": 11,
+      "joern_new_count": 0,
+      "cg_new_count": 12,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 12,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "create_directory",
+          "file_token": "papa_client"
+        },
+        {
+          "func_name": "delete_file",
+          "file_token": "papa_client"
+        },
+        {
+          "func_name": "download_file",
+          "file_token": "papa_client"
+        },
+        {
+          "func_name": "execute_command",
+          "file_token": "papa_client"
+        },
+        {
+          "func_name": "execute_powershell",
+          "file_token": "papa_client"
+        },
+        {
+          "func_name": "execute_powershell_command",
+          "file_token": "papa_client"
+        },
+        {
+          "func_name": "handle_connection",
+          "file_token": "papa_client"
+        },
+        {
+          "func_name": "kill_process",
+          "file_token": "papa_client"
+        },
+        {
+          "func_name": "ping_target",
+          "file_token": "papa_client"
+        },
+        {
+          "func_name": "remove_directory",
+          "file_token": "papa_client"
+        },
+        {
+          "func_name": "rename_file",
+          "file_token": "papa_client"
+        },
+        {
+          "func_name": "upload_file",
+          "file_token": "papa_client"
+        }
+      ]
+    },
+    {
+      "commit_hash": "e2566",
+      "commit_index": 12,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "start_listener",
+          "file_token": "riny_riny_listner"
+        }
+      ]
+    },
+    {
+      "commit_hash": "e4e14",
+      "commit_index": 13,
+      "joern_new_count": 0,
+      "cg_new_count": 5,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 5,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "get_network_profiles",
+          "file_token": "riny_riny"
+        },
+        {
+          "func_name": "get_profile_info",
+          "file_token": "riny_riny"
+        },
+        {
+          "func_name": "main",
+          "file_token": "riny_riny"
+        },
+        {
+          "func_name": "save_to_txt",
+          "file_token": "riny_riny"
+        },
+        {
+          "func_name": "send_data_tcp",
+          "file_token": "riny_riny"
+        }
+      ]
+    },
+    {
+      "commit_hash": "e69ef",
+      "commit_index": 14,
+      "joern_new_count": 0,
+      "cg_new_count": 12,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 12,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "create_directory",
+          "file_token": "papa_payload"
+        },
+        {
+          "func_name": "delete_file",
+          "file_token": "papa_payload"
+        },
+        {
+          "func_name": "download_file",
+          "file_token": "papa_payload"
+        },
+        {
+          "func_name": "execute_command",
+          "file_token": "papa_payload"
+        },
+        {
+          "func_name": "execute_powershell",
+          "file_token": "papa_payload"
+        },
+        {
+          "func_name": "execute_powershell_command",
+          "file_token": "papa_payload"
+        },
+        {
+          "func_name": "handle_connection",
+          "file_token": "papa_payload"
+        },
+        {
+          "func_name": "kill_process",
+          "file_token": "papa_payload"
+        },
+        {
+          "func_name": "ping_target",
+          "file_token": "papa_payload"
+        },
+        {
+          "func_name": "remove_directory",
+          "file_token": "papa_payload"
+        },
+        {
+          "func_name": "rename_file",
+          "file_token": "papa_payload"
+        },
+        {
+          "func_name": "upload_file",
+          "file_token": "papa_payload"
+        }
+      ]
+    }
+  ]
+}

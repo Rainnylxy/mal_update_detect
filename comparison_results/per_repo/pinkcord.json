@@ -1,0 +1,751 @@
+{
+  "repo_name": "pinkcord",
+  "category": "multiple_commits",
+  "recall": 1.0,
+  "total_joern_new": 0,
+  "total_matched": 0,
+  "commits": [
+    {
+      "commit_hash": "028d9",
+      "commit_index": 0,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "encrypt_code_AES",
+          "file_token": "bypasser"
+        }
+      ]
+    },
+    {
+      "commit_hash": "15f34",
+      "commit_index": 1,
+      "joern_new_count": 0,
+      "cg_new_count": 2,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 2,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "bsod",
+          "file_token": "src_template_pinkcord"
+        },
+        {
+          "func_name": "h",
+          "file_token": "src_template_pinkcord"
+        }
+      ]
+    },
+    {
+      "commit_hash": "2c8c4",
+      "commit_index": 2,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "h",
+          "file_token": "pinkcord"
+        }
+      ]
+    },
+    {
+      "commit_hash": "2e783",
+      "commit_index": 3,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "decrypt_code",
+          "file_token": "src_template_pinkcord_bypass"
+        }
+      ]
+    },
+    {
+      "commit_hash": "47368",
+      "commit_index": 4,
+      "joern_new_count": 0,
+      "cg_new_count": 3,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 3,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "chrome",
+          "file_token": "pinkcord"
+        },
+        {
+          "func_name": "cookieSteal",
+          "file_token": "pinkcord"
+        },
+        {
+          "func_name": "h",
+          "file_token": "pinkcord"
+        }
+      ]
+    },
+    {
+      "commit_hash": "4849d",
+      "commit_index": 5,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "decrypt_code",
+          "file_token": "template_pinkcord_bypass"
+        }
+      ]
+    },
+    {
+      "commit_hash": "568a8",
+      "commit_index": 6,
+      "joern_new_count": 0,
+      "cg_new_count": 17,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 17,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "chrome",
+          "file_token": "src_template_pinkcord"
+        },
+        {
+          "func_name": "cli",
+          "file_token": "src_template_pinkcord"
+        },
+        {
+          "func_name": "cookieSteal",
+          "file_token": "src_template_pinkcord"
+        },
+        {
+          "func_name": "dir",
+          "file_token": "src_template_pinkcord"
+        },
+        {
+          "func_name": "get_public_ip",
+          "file_token": "src_template_pinkcord"
+        },
+        {
+          "func_name": "grab_info",
+          "file_token": "src_template_pinkcord"
+        },
+        {
+          "func_name": "h",
+          "file_token": "src_template_pinkcord"
+        },
+        {
+          "func_name": "info",
+          "file_token": "src_template_pinkcord"
+        },
+        {
+          "func_name": "keylogger",
+          "file_token": "src_template_pinkcord"
+        },
+        {
+          "func_name": "loc",
+          "file_token": "src_template_pinkcord"
+        },
+        {
+          "func_name": "rename",
+          "file_token": "src_template_pinkcord"
+        },
+        {
+          "func_name": "sessions",
+          "file_token": "src_template_pinkcord"
+        },
+        {
+          "func_name": "shell",
+          "file_token": "src_template_pinkcord"
+        },
+        {
+          "func_name": "ss",
+          "file_token": "src_template_pinkcord"
+        },
+        {
+          "func_name": "steal",
+          "file_token": "src_template_pinkcord"
+        },
+        {
+          "func_name": "upload",
+          "file_token": "src_template_pinkcord"
+        },
+        {
+          "func_name": "write",
+          "file_token": "src_template_pinkcord"
+        }
+      ]
+    },
+    {
+      "commit_hash": "5d29e",
+      "commit_index": 7,
+      "joern_new_count": 0,
+      "cg_new_count": 17,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 17,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "chrome",
+          "file_token": "template_pinkcord"
+        },
+        {
+          "func_name": "cli",
+          "file_token": "template_pinkcord"
+        },
+        {
+          "func_name": "cookieSteal",
+          "file_token": "template_pinkcord"
+        },
+        {
+          "func_name": "dir",
+          "file_token": "template_pinkcord"
+        },
+        {
+          "func_name": "get_public_ip",
+          "file_token": "template_pinkcord"
+        },
+        {
+          "func_name": "grab_info",
+          "file_token": "template_pinkcord"
+        },
+        {
+          "func_name": "h",
+          "file_token": "template_pinkcord"
+        },
+        {
+          "func_name": "info",
+          "file_token": "template_pinkcord"
+        },
+        {
+          "func_name": "keylogger",
+          "file_token": "template_pinkcord"
+        },
+        {
+          "func_name": "loc",
+          "file_token": "template_pinkcord"
+        },
+        {
+          "func_name": "rename",
+          "file_token": "template_pinkcord"
+        },
+        {
+          "func_name": "sessions",
+          "file_token": "template_pinkcord"
+        },
+        {
+          "func_name": "shell",
+          "file_token": "template_pinkcord"
+        },
+        {
+          "func_name": "ss",
+          "file_token": "template_pinkcord"
+        },
+        {
+          "func_name": "steal",
+          "file_token": "template_pinkcord"
+        },
+        {
+          "func_name": "upload",
+          "file_token": "template_pinkcord"
+        },
+        {
+          "func_name": "write",
+          "file_token": "template_pinkcord"
+        }
+      ]
+    },
+    {
+      "commit_hash": "6d0a6",
+      "commit_index": 8,
+      "joern_new_count": 0,
+      "cg_new_count": 2,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 2,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "h",
+          "file_token": "src_template_pinkcord"
+        },
+        {
+          "func_name": "wifi",
+          "file_token": "src_template_pinkcord"
+        }
+      ]
+    },
+    {
+      "commit_hash": "7006e",
+      "commit_index": 9,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "steal",
+          "file_token": "pinkcord"
+        }
+      ]
+    },
+    {
+      "commit_hash": "71e17",
+      "commit_index": 10,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "wifi",
+          "file_token": "src_template_pinkcord"
+        }
+      ]
+    },
+    {
+      "commit_hash": "753cb",
+      "commit_index": 11,
+      "joern_new_count": 0,
+      "cg_new_count": 2,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 2,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "delete",
+          "file_token": "src_template_pinkcord"
+        },
+        {
+          "func_name": "h",
+          "file_token": "src_template_pinkcord"
+        }
+      ]
+    },
+    {
+      "commit_hash": "75a8d",
+      "commit_index": 12,
+      "joern_new_count": 0,
+      "cg_new_count": 2,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 2,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "execute",
+          "file_token": "src_template_pinkcord"
+        },
+        {
+          "func_name": "h",
+          "file_token": "src_template_pinkcord"
+        }
+      ]
+    },
+    {
+      "commit_hash": "7aa88",
+      "commit_index": 13,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "wifi",
+          "file_token": "src_template_pinkcord"
+        }
+      ]
+    },
+    {
+      "commit_hash": "80d05",
+      "commit_index": 14,
+      "joern_new_count": 0,
+      "cg_new_count": 2,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 2,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "h",
+          "file_token": "pinkcord"
+        },
+        {
+          "func_name": "sessions",
+          "file_token": "pinkcord"
+        }
+      ]
+    },
+    {
+      "commit_hash": "85dbb",
+      "commit_index": 15,
+      "joern_new_count": 0,
+      "cg_new_count": 2,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 2,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "h",
+          "file_token": "src_template_pinkcord"
+        },
+        {
+          "func_name": "kill",
+          "file_token": "src_template_pinkcord"
+        }
+      ]
+    },
+    {
+      "commit_hash": "8ad8b",
+      "commit_index": 16,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "encrypt_code_AES",
+          "file_token": "setup"
+        }
+      ]
+    },
+    {
+      "commit_hash": "adc37",
+      "commit_index": 17,
+      "joern_new_count": 0,
+      "cg_new_count": 8,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 8,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "delete",
+          "file_token": "src_template_pinkcord_minimal"
+        },
+        {
+          "func_name": "dir",
+          "file_token": "src_template_pinkcord_minimal"
+        },
+        {
+          "func_name": "h",
+          "file_token": "src_template_pinkcord_minimal"
+        },
+        {
+          "func_name": "kill",
+          "file_token": "src_template_pinkcord_minimal"
+        },
+        {
+          "func_name": "rename",
+          "file_token": "src_template_pinkcord_minimal"
+        },
+        {
+          "func_name": "restart",
+          "file_token": "src_template_pinkcord_minimal"
+        },
+        {
+          "func_name": "sessions",
+          "file_token": "src_template_pinkcord_minimal"
+        },
+        {
+          "func_name": "shell",
+          "file_token": "src_template_pinkcord_minimal"
+        }
+      ]
+    },
+    {
+      "commit_hash": "b11b1",
+      "commit_index": 18,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "h",
+          "file_token": "src_template_pinkcord"
+        }
+      ]
+    },
+    {
+      "commit_hash": "b1dfa",
+      "commit_index": 19,
+      "joern_new_count": 0,
+      "cg_new_count": 2,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 2,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "h",
+          "file_token": "src_template_pinkcord"
+        },
+        {
+          "func_name": "shutdown",
+          "file_token": "src_template_pinkcord"
+        }
+      ]
+    },
+    {
+      "commit_hash": "c02dc",
+      "commit_index": 20,
+      "joern_new_count": 0,
+      "cg_new_count": 11,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 11,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "delete",
+          "file_token": "src_template_pinkcord_lite"
+        },
+        {
+          "func_name": "dir",
+          "file_token": "src_template_pinkcord_lite"
+        },
+        {
+          "func_name": "h",
+          "file_token": "src_template_pinkcord_lite"
+        },
+        {
+          "func_name": "kill",
+          "file_token": "src_template_pinkcord_lite"
+        },
+        {
+          "func_name": "rename",
+          "file_token": "src_template_pinkcord_lite"
+        },
+        {
+          "func_name": "restart",
+          "file_token": "src_template_pinkcord_lite"
+        },
+        {
+          "func_name": "sessions",
+          "file_token": "src_template_pinkcord_lite"
+        },
+        {
+          "func_name": "shell",
+          "file_token": "src_template_pinkcord_lite"
+        },
+        {
+          "func_name": "ss",
+          "file_token": "src_template_pinkcord_lite"
+        },
+        {
+          "func_name": "steal",
+          "file_token": "src_template_pinkcord_lite"
+        },
+        {
+          "func_name": "upload",
+          "file_token": "src_template_pinkcord_lite"
+        }
+      ]
+    },
+    {
+      "commit_hash": "d97df",
+      "commit_index": 21,
+      "joern_new_count": 0,
+      "cg_new_count": 2,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 2,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "h",
+          "file_token": "src_template_pinkcord"
+        },
+        {
+          "func_name": "wallpaper",
+          "file_token": "src_template_pinkcord"
+        }
+      ]
+    },
+    {
+      "commit_hash": "da2d2",
+      "commit_index": 22,
+      "joern_new_count": 0,
+      "cg_new_count": 2,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 2,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "h",
+          "file_token": "src_template_pinkcord"
+        },
+        {
+          "func_name": "restart",
+          "file_token": "src_template_pinkcord"
+        }
+      ]
+    },
+    {
+      "commit_hash": "db5b9",
+      "commit_index": 23,
+      "joern_new_count": 0,
+      "cg_new_count": 3,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 3,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "audio",
+          "file_token": "pinkcord"
+        },
+        {
+          "func_name": "grab_info",
+          "file_token": "pinkcord"
+        },
+        {
+          "func_name": "keylogger",
+          "file_token": "pinkcord"
+        }
+      ]
+    },
+    {
+      "commit_hash": "de3e1",
+      "commit_index": 24,
+      "joern_new_count": 0,
+      "cg_new_count": 2,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 2,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "clear_console",
+          "file_token": "src_Setup"
+        },
+        {
+          "func_name": "encrypt_code_AES",
+          "file_token": "src_Setup"
+        }
+      ]
+    },
+    {
+      "commit_hash": "e2834",
+      "commit_index": 25,
+      "joern_new_count": 0,
+      "cg_new_count": 2,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 2,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "genpinkcord",
+          "file_token": "src_Setup"
+        },
+        {
+          "func_name": "genpinkcordminimal",
+          "file_token": "src_Setup"
+        }
+      ]
+    },
+    {
+      "commit_hash": "f7968",
+      "commit_index": 26,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "genpinkcordlite",
+          "file_token": "src_Setup"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1301 @@
+{
+  "repo_name": "Thesis-MyZombPy",
+  "category": "multiple_commits",
+  "recall": 1.0,
+  "total_joern_new": 0,
+  "total_matched": 0,
+  "commits": [
+    {
+      "commit_hash": "0d6a2",
+      "commit_index": 0,
+      "joern_new_count": 0,
+      "cg_new_count": 3,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 3,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "http_flooding",
+          "file_token": "ReverseBackdoor"
+        },
+        {
+          "func_name": "run",
+          "file_token": "ReverseBackdoor"
+        },
+        {
+          "func_name": "syn_flooding",
+          "file_token": "ReverseBackdoor"
+        }
+      ]
+    },
+    {
+      "commit_hash": "14d3f",
+      "commit_index": 1,
+      "joern_new_count": 0,
+      "cg_new_count": 6,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 6,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "fake_dns_responses",
+          "file_token": "ReverseBackdoor"
+        },
+        {
+          "func_name": "run",
+          "file_token": "ReverseBackdoor"
+        },
+        {
+          "func_name": "send_dns_requests",
+          "file_token": "ReverseBackdoor"
+        },
+        {
+          "func_name": "send_dns_response",
+          "file_token": "ReverseBackdoor"
+        },
+        {
+          "func_name": "send_dns_responses_pool",
+          "file_token": "ReverseBackdoor"
+        },
+        {
+          "func_name": "shell",
+          "file_token": "Listener"
+        }
+      ]
+    },
+    {
+      "commit_hash": "21113",
+      "commit_index": 2,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "network_scanner",
+          "file_token": "main"
+        }
+      ]
+    },
+    {
+      "commit_hash": "2719e",
+      "commit_index": 3,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "shell",
+          "file_token": "Listener"
+        }
+      ]
+    },
+    {
+      "commit_hash": "2ea63",
+      "commit_index": 4,
+      "joern_new_count": 0,
+      "cg_new_count": 6,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 6,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "check_connections",
+          "file_token": "Listener"
+        },
+        {
+          "func_name": "execute_remotely",
+          "file_token": "Listener"
+        },
+        {
+          "func_name": "reliable_receive",
+          "file_token": "Listener"
+        },
+        {
+          "func_name": "run",
+          "file_token": "ReverseBackdoor"
+        },
+        {
+          "func_name": "session",
+          "file_token": "Listener"
+        },
+        {
+          "func_name": "shell",
+          "file_token": "Listener"
+        }
+      ]
+    },
+    {
+      "commit_hash": "328bb",
+      "commit_index": 5,
+      "joern_new_count": 0,
+      "cg_new_count": 3,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 3,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "arp_spoof",
+          "file_token": "main"
+        },
+        {
+          "func_name": "cleanup",
+          "file_token": "main"
+        },
+        {
+          "func_name": "kill_arp",
+          "file_token": "main"
+        }
+      ]
+    },
+    {
+      "commit_hash": "3432f",
+      "commit_index": 6,
+      "joern_new_count": 0,
+      "cg_new_count": 2,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 2,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "arp_spoof",
+          "file_token": "main"
+        },
+        {
+          "func_name": "network_scanner",
+          "file_token": "main"
+        }
+      ]
+    },
+    {
+      "commit_hash": "39b18",
+      "commit_index": 7,
+      "joern_new_count": 0,
+      "cg_new_count": 7,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 7,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "arp_spoof",
+          "file_token": "ReverseBackdoor"
+        },
+        {
+          "func_name": "cleanup",
+          "file_token": "ReverseBackdoor"
+        },
+        {
+          "func_name": "kill_arp",
+          "file_token": "ReverseBackdoor"
+        },
+        {
+          "func_name": "network_scanner",
+          "file_token": "ReverseBackdoor"
+        },
+        {
+          "func_name": "restore",
+          "file_token": "ReverseBackdoor"
+        },
+        {
+          "func_name": "run",
+          "file_token": "ReverseBackdoor"
+        },
+        {
+          "func_name": "spoof",
+          "file_token": "ReverseBackdoor"
+        }
+      ]
+    },
+    {
+      "commit_hash": "5495a",
+      "commit_index": 8,
+      "joern_new_count": 0,
+      "cg_new_count": 3,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 3,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "network_scanner",
+          "file_token": "main"
+        },
+        {
+          "func_name": "port_scanner",
+          "file_token": "main"
+        },
+        {
+          "func_name": "vulnscan_info",
+          "file_token": "main"
+        }
+      ]
+    },
+    {
+      "commit_hash": "680e7",
+      "commit_index": 9,
+      "joern_new_count": 0,
+      "cg_new_count": 6,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 6,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "dns_spoof",
+          "file_token": "main"
+        },
+        {
+          "func_name": "hook",
+          "file_token": "main"
+        },
+        {
+          "func_name": "kill_arp",
+          "file_token": "main"
+        },
+        {
+          "func_name": "kill_hook",
+          "file_token": "main"
+        },
+        {
+          "func_name": "process_packet_dns",
+          "file_token": "main"
+        },
+        {
+          "func_name": "process_packet_hook",
+          "file_token": "main"
+        }
+      ]
+    },
+    {
+      "commit_hash": "6bcfe",
+      "commit_index": 10,
+      "joern_new_count": 0,
+      "cg_new_count": 6,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 6,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "arp_spoof",
+          "file_token": "main"
+        },
+        {
+          "func_name": "cleanup",
+          "file_token": "main"
+        },
+        {
+          "func_name": "dns_spoof",
+          "file_token": "main"
+        },
+        {
+          "func_name": "kill_arp",
+          "file_token": "main"
+        },
+        {
+          "func_name": "kill_dns",
+          "file_token": "main"
+        },
+        {
+          "func_name": "process_packet",
+          "file_token": "main"
+        }
+      ]
+    },
+    {
+      "commit_hash": "74f9f",
+      "commit_index": 11,
+      "joern_new_count": 0,
+      "cg_new_count": 4,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 4,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "http_flooding",
+          "file_token": "ReverseBackdoor"
+        },
+        {
+          "func_name": "ping_of_death",
+          "file_token": "ReverseBackdoor"
+        },
+        {
+          "func_name": "run",
+          "file_token": "ReverseBackdoor"
+        },
+        {
+          "func_name": "syn_flooding",
+          "file_token": "ReverseBackdoor"
+        }
+      ]
+    },
+    {
+      "commit_hash": "80b8e",
+      "commit_index": 12,
+      "joern_new_count": 0,
+      "cg_new_count": 5,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 5,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "fake_dns_responses",
+          "file_token": "ReverseBackdoor"
+        },
+        {
+          "func_name": "network_scanner",
+          "file_token": "ReverseBackdoor"
+        },
+        {
+          "func_name": "ping_of_death",
+          "file_token": "ReverseBackdoor"
+        },
+        {
+          "func_name": "run",
+          "file_token": "ReverseBackdoor"
+        },
+        {
+          "func_name": "syn_flooding",
+          "file_token": "ReverseBackdoor"
+        }
+      ]
+    },
+    {
+      "commit_hash": "839ff",
+      "commit_index": 13,
+      "joern_new_count": 0,
+      "cg_new_count": 10,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 10,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "arp_spoof",
+          "file_token": "ReverseBackdoor"
+        },
+        {
+          "func_name": "cleanup",
+          "file_token": "ReverseBackdoor"
+        },
+        {
+          "func_name": "dns_spoof",
+          "file_token": "ReverseBackdoor"
+        },
+        {
+          "func_name": "hook",
+          "file_token": "ReverseBackdoor"
+        },
+        {
+          "func_name": "kill_arp",
+          "file_token": "ReverseBackdoor"
+        },
+        {
+          "func_name": "kill_dns",
+          "file_token": "ReverseBackdoor"
+        },
+        {
+          "func_name": "kill_hook",
+          "file_token": "ReverseBackdoor"
+        },
+        {
+          "func_name": "network_scanner",
+          "file_token": "ReverseBackdoor"
+        },
+        {
+          "func_name": "process_packet_dns",
+          "file_token": "ReverseBackdoor"
+        },
+        {
+          "func_name": "run",
+          "file_token": "ReverseBackdoor"
+        }
+      ]
+    },
+    {
+      "commit_hash": "861bc",
+      "commit_index": 14,
+      "joern_new_count": 0,
+      "cg_new_count": 4,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 4,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "run",
+          "file_token": "ReverseBackdoor"
+        },
+        {
+          "func_name": "send_dns_requests",
+          "file_token": "ReverseBackdoor"
+        },
+        {
+          "func_name": "send_dns_response",
+          "file_token": "ReverseBackdoor"
+        },
+        {
+          "func_name": "shell",
+          "file_token": "Listener"
+        }
+      ]
+    },
+    {
+      "commit_hash": "891f9",
+      "commit_index": 15,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "network_scanner",
+          "file_token": "NetworkScanner"
+        }
+      ]
+    },
+    {
+      "commit_hash": "94750",
+      "commit_index": 16,
+      "joern_new_count": 0,
+      "cg_new_count": 2,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 2,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "arp_spoof",
+          "file_token": "main"
+        },
+        {
+          "func_name": "kill_arp",
+          "file_token": "main"
+        }
+      ]
+    },
+    {
+      "commit_hash": "ad351",
+      "commit_index": 17,
+      "joern_new_count": 0,
+      "cg_new_count": 4,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 4,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "check_connections",
+          "file_token": "Listener"
+        },
+        {
+          "func_name": "reliable_receive",
+          "file_token": "Listener"
+        },
+        {
+          "func_name": "session",
+          "file_token": "Listener"
+        },
+        {
+          "func_name": "shell",
+          "file_token": "Listener"
+        }
+      ]
+    },
+    {
+      "commit_hash": "b001a",
+      "commit_index": 18,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "vulnscan_info",
+          "file_token": "VulnerabilityScanner"
+        }
+      ]
+    },
+    {
+      "commit_hash": "b57a6",
+      "commit_index": 19,
+      "joern_new_count": 0,
+      "cg_new_count": 3,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 3,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "network_scanner",
+          "file_token": "NetworkScanner"
+        },
+        {
+          "func_name": "scan_dns",
+          "file_token": "main"
+        },
+        {
+          "func_name": "scan_ports",
+          "file_token": "main"
+        }
+      ]
+    },
+    {
+      "commit_hash": "b5a0d",
+      "commit_index": 20,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "run",
+          "file_token": "main"
+        }
+      ]
+    },
+    {
+      "commit_hash": "b8dfb",
+      "commit_index": 21,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "session",
+          "file_token": "Listener"
+        }
+      ]
+    },
+    {
+      "commit_hash": "bfee4",
+      "commit_index": 22,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "run",
+          "file_token": "ReverseBackdoor"
+        }
+      ]
+    },
+    {
+      "commit_hash": "c7499",
+      "commit_index": 23,
+      "joern_new_count": 0,
+      "cg_new_count": 2,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 2,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "port_scanner",
+          "file_token": "main"
+        },
+        {
+          "func_name": "request_dns",
+          "file_token": "main"
+        }
+      ]
+    },
+    {
+      "commit_hash": "ca4a0",
+      "commit_index": 24,
+      "joern_new_count": 0,
+      "cg_new_count": 3,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 3,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "network_scanner",
+          "file_token": "main"
+        },
+        {
+          "func_name": "run",
+          "file_token": "main"
+        },
+        {
+          "func_name": "spoof",
+          "file_token": "main"
+        }
+      ]
+    },
+    {
+      "commit_hash": "d2ba9",
+      "commit_index": 25,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "arp_spoof",
+          "file_token": "main"
+        }
+      ]
+    },
+    {
+      "commit_hash": "d3d5c",
+      "commit_index": 26,
+      "joern_new_count": 0,
+      "cg_new_count": 38,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 38,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "__init__",
+          "file_token": "sslstrip-master_build_lib_sslstrip_ClientRequest"
+        },
+        {
+          "func_name": "__init__",
+          "file_token": "sslstrip-master_build_lib_sslstrip_ServerConnection"
+        },
+        {
+          "func_name": "__init__",
+          "file_token": "sslstrip-master_sslstrip_ClientRequest"
+        },
+        {
+          "func_name": "__init__",
+          "file_token": "sslstrip-master_sslstrip_ServerConnection"
+        },
+        {
+          "func_name": "addSecureLink",
+          "file_token": "sslstrip-master_build_lib_sslstrip_URLMonitor"
+        },
+        {
+          "func_name": "addSecureLink",
+          "file_token": "sslstrip-master_sslstrip_URLMonitor"
+        },
+        {
+          "func_name": "capture",
+          "file_token": "sslstrip-master_setup"
+        },
+        {
+          "func_name": "clientConnectionFailed",
+          "file_token": "sslstrip-master_build_lib_sslstrip_ServerConnectionFactory"
+        },
+        {
+          "func_name": "clientConnectionFailed",
+          "file_token": "sslstrip-master_sslstrip_ServerConnectionFactory"
+        },
+        {
+          "func_name": "getExpireHeaders",
+          "file_token": "sslstrip-master_build_lib_sslstrip_CookieCleaner"
+        },
+        {
+          "func_name": "getExpireHeaders",
+          "file_token": "sslstrip-master_sslstrip_CookieCleaner"
+        },
+        {
+          "func_name": "handleHeader",
+          "file_token": "sslstrip-master_build_lib_sslstrip_SSLServerConnection"
+        },
+        {
+          "func_name": "handleHeader",
+          "file_token": "sslstrip-master_build_lib_sslstrip_ServerConnection"
+        },
+        {
+          "func_name": "handleHeader",
+          "file_token": "sslstrip-master_sslstrip_SSLServerConnection"
+        },
+        {
+          "func_name": "handleHeader",
+          "file_token": "sslstrip-master_sslstrip_ServerConnection"
+        },
+        {
+          "func_name": "handleHostResolvedSuccess",
+          "file_token": "sslstrip-master_build_lib_sslstrip_ClientRequest"
+        },
+        {
+          "func_name": "handleHostResolvedSuccess",
+          "file_token": "sslstrip-master_sslstrip_ClientRequest"
+        },
+        {
+          "func_name": "handleResponse",
+          "file_token": "sslstrip-master_build_lib_sslstrip_ServerConnection"
+        },
+        {
+          "func_name": "handleResponse",
+          "file_token": "sslstrip-master_sslstrip_ServerConnection"
+        },
+        {
+          "func_name": "handleResponseEnd",
+          "file_token": "sslstrip-master_build_lib_sslstrip_ServerConnection"
+        },
+        {
+          "func_name": "handleResponseEnd",
+          "file_token": "sslstrip-master_sslstrip_ServerConnection"
+        },
+        {
+          "func_name": "handleResponsePart",
+          "file_token": "sslstrip-master_build_lib_sslstrip_ServerConnection"
+        },
+        {
+          "func_name": "handleResponsePart",
+          "file_token": "sslstrip-master_sslstrip_ServerConnection"
+        },
+        {
+          "func_name": "isSecureFavicon",
+          "file_token": "sslstrip-master_build_lib_sslstrip_URLMonitor"
+        },
+        {
+          "func_name": "isSecureFavicon",
+          "file_token": "sslstrip-master_sslstrip_URLMonitor"
+        },
+        {
+          "func_name": "main",
+          "file_token": "sslstrip-master_sslstrip"
+        },
+        {
+          "func_name": "parseOptions",
+          "file_token": "sslstrip-master_sslstrip"
+        },
+        {
+          "func_name": "removeall",
+          "file_token": "sslstrip-master_setup"
+        },
+        {
+          "func_name": "replaceCssLinks",
+          "file_token": "sslstrip-master_build_lib_sslstrip_SSLServerConnection"
+        },
+        {
+          "func_name": "replaceCssLinks",
+          "file_token": "sslstrip-master_sslstrip_SSLServerConnection"
+        },
+        {
+          "func_name": "replaceFavicon",
+          "file_token": "sslstrip-master_build_lib_sslstrip_SSLServerConnection"
+        },
+        {
+          "func_name": "replaceFavicon",
+          "file_token": "sslstrip-master_sslstrip_SSLServerConnection"
+        },
+        {
+          "func_name": "replaceSecureLinks",
+          "file_token": "sslstrip-master_build_lib_sslstrip_SSLServerConnection"
+        },
+        {
+          "func_name": "replaceSecureLinks",
+          "file_token": "sslstrip-master_build_lib_sslstrip_ServerConnection"
+        },
+        {
+          "func_name": "replaceSecureLinks",
+          "file_token": "sslstrip-master_sslstrip_SSLServerConnection"
+        },
+        {
+          "func_name": "replaceSecureLinks",
+          "file_token": "sslstrip-master_sslstrip_ServerConnection"
+        },
+        {
+          "func_name": "sendSpoofedFaviconResponse",
+          "file_token": "sslstrip-master_build_lib_sslstrip_ClientRequest"
+        },
+        {
+          "func_name": "sendSpoofedFaviconResponse",
+          "file_token": "sslstrip-master_sslstrip_ClientRequest"
+        }
+      ]
+    },
+    {
+      "commit_hash": "d47f0",
+      "commit_index": 27,
+      "joern_new_count": 0,
+      "cg_new_count": 2,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 2,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "check_connections",
+          "file_token": "Listener"
+        },
+        {
+          "func_name": "shell",
+          "file_token": "Listener"
+        }
+      ]
+    },
+    {
+      "commit_hash": "d8e1a",
+      "commit_index": 28,
+      "joern_new_count": 0,
+      "cg_new_count": 6,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 6,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "arp_spoof",
+          "file_token": "ReverseBackdoor"
+        },
+        {
+          "func_name": "dns_spoof",
+          "file_token": "ReverseBackdoor"
+        },
+        {
+          "func_name": "hook",
+          "file_token": "ReverseBackdoor"
+        },
+        {
+          "func_name": "reconnect",
+          "file_token": "ReverseBackdoor"
+        },
+        {
+          "func_name": "run",
+          "file_token": "ReverseBackdoor"
+        },
+        {
+          "func_name": "syn_flooding",
+          "file_token": "ReverseBackdoor"
+        }
+      ]
+    },
+    {
+      "commit_hash": "daa1e",
+      "commit_index": 29,
+      "joern_new_count": 0,
+      "cg_new_count": 14,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 14,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "__init__",
+          "file_token": "Listener"
+        },
+        {
+          "func_name": "__init__",
+          "file_token": "ReverseBackdoor"
+        },
+        {
+          "func_name": "execute_remotely",
+          "file_token": "Listener"
+        },
+        {
+          "func_name": "execute_system_command",
+          "file_token": "ReverseBackdoor"
+        },
+        {
+          "func_name": "read_file",
+          "file_token": "Listener"
+        },
+        {
+          "func_name": "read_file",
+          "file_token": "ReverseBackdoor"
+        },
+        {
+          "func_name": "reliable_receive",
+          "file_token": "Listener"
+        },
+        {
+          "func_name": "reliable_receive",
+          "file_token": "ReverseBackdoor"
+        },
+        {
+          "func_name": "reliable_send",
+          "file_token": "ReverseBackdoor"
+        },
+        {
+          "func_name": "run",
+          "file_token": "ReverseBackdoor"
+        },
+        {
+          "func_name": "session",
+          "file_token": "Listener"
+        },
+        {
+          "func_name": "shell",
+          "file_token": "Listener"
+        },
+        {
+          "func_name": "write_file",
+          "file_token": "Listener"
+        },
+        {
+          "func_name": "write_file",
+          "file_token": "ReverseBackdoor"
+        }
+      ]
+    },
+    {
+      "commit_hash": "e8a90",
+      "commit_index": 30,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "network_scanner",
+          "file_token": "main"
+        }
+      ]
+    },
+    {
+      "commit_hash": "eb041",
+      "commit_index": 31,
+      "joern_new_count": 0,
+      "cg_new_count": 3,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 3,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "network_scanner",
+          "file_token": "main"
+        },
+        {
+          "func_name": "search_router_ip",
+          "file_token": "main"
+        },
+        {
+          "func_name": "update_routers",
+          "file_token": "main"
+        }
+      ]
+    },
+    {
+      "commit_hash": "ed2db",
+      "commit_index": 32,
+      "joern_new_count": 0,
+      "cg_new_count": 7,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 7,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "__init__",
+          "file_token": "Listener"
+        },
+        {
+          "func_name": "__init__",
+          "file_token": "ReverseBackdoor"
+        },
+        {
+          "func_name": "check_connections",
+          "file_token": "Listener"
+        },
+        {
+          "func_name": "execute_remotely",
+          "file_token": "Listener"
+        },
+        {
+          "func_name": "reconnect",
+          "file_token": "ReverseBackdoor"
+        },
+        {
+          "func_name": "run",
+          "file_token": "ReverseBackdoor"
+        },
+        {
+          "func_name": "shell",
+          "file_token": "Listener"
+        }
+      ]
+    },
+    {
+      "commit_hash": "f23d3",
+      "commit_index": 33,
+      "joern_new_count": 0,
+      "cg_new_count": 12,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 12,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "__init__",
+          "file_token": "ReverseBackdoor"
+        },
+        {
+          "func_name": "dns_spoof",
+          "file_token": "ReverseBackdoor"
+        },
+        {
+          "func_name": "hook",
+          "file_token": "ReverseBackdoor"
+        },
+        {
+          "func_name": "kill_arp",
+          "file_token": "ReverseBackdoor"
+        },
+        {
+          "func_name": "kill_dns",
+          "file_token": "ReverseBackdoor"
+        },
+        {
+          "func_name": "kill_hook",
+          "file_token": "ReverseBackdoor"
+        },
+        {
+          "func_name": "network_scanner",
+          "file_token": "ReverseBackdoor"
+        },
+        {
+          "func_name": "process_packet_dns",
+          "file_token": "ReverseBackdoor"
+        },
+        {
+          "func_name": "process_packet_hook",
+          "file_token": "ReverseBackdoor"
+        },
+        {
+          "func_name": "reliable_receive",
+          "file_token": "ReverseBackdoor"
+        },
+        {
+          "func_name": "restore",
+          "file_token": "ReverseBackdoor"
+        },
+        {
+          "func_name": "run",
+          "file_token": "ReverseBackdoor"
+        }
+      ]
+    },
+    {
+      "commit_hash": "f3311",
+      "commit_index": 34,
+      "joern_new_count": 0,
+      "cg_new_count": 8,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 8,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "arp_spoof",
+          "file_token": "main"
+        },
+        {
+          "func_name": "dns_spoof",
+          "file_token": "main"
+        },
+        {
+          "func_name": "hook",
+          "file_token": "main"
+        },
+        {
+          "func_name": "kill_arp",
+          "file_token": "main"
+        },
+        {
+          "func_name": "process_packet_dns",
+          "file_token": "main"
+        },
+        {
+          "func_name": "process_packet_hook",
+          "file_token": "main"
+        },
+        {
+          "func_name": "restore",
+          "file_token": "main"
+        },
+        {
+          "func_name": "spoof",
+          "file_token": "main"
+        }
+      ]
+    },
+    {
+      "commit_hash": "f88d0",
+      "commit_index": 35,
+      "joern_new_count": 0,
+      "cg_new_count": 8,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 8,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "__init__",
+          "file_token": "VulnerabilityScanner"
+        },
+        {
+          "func_name": "crawl",
+          "file_token": "VulnerabilityScanner"
+        },
+        {
+          "func_name": "extract_forms",
+          "file_token": "VulnerabilityScanner"
+        },
+        {
+          "func_name": "extract_links",
+          "file_token": "VulnerabilityScanner"
+        },
+        {
+          "func_name": "run_scanner",
+          "file_token": "VulnerabilityScanner"
+        },
+        {
+          "func_name": "submit_form",
+          "file_token": "VulnerabilityScanner"
+        },
+        {
+          "func_name": "test_form",
+          "file_token": "VulnerabilityScanner"
+        },
+        {
+          "func_name": "test_xss_in_link",
+          "file_token": "VulnerabilityScanner"
+        }
+      ]
+    },
+    {
+      "commit_hash": "f94d6",
+      "commit_index": 36,
+      "joern_new_count": 0,
+      "cg_new_count": 3,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 3,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "flooding_tcp",
+          "file_token": "ReverseBackdoor"
+        },
+        {
+          "func_name": "process_packet_dns",
+          "file_token": "ReverseBackdoor"
+        },
+        {
+          "func_name": "run",
+          "file_token": "ReverseBackdoor"
+        }
+      ]
+    },
+    {
+      "commit_hash": "fb506",
+      "commit_index": 37,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "port_scanner",
+          "file_token": "main"
+        }
+      ]
+    }
+  ]
+}

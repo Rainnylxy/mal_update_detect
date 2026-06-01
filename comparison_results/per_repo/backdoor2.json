@@ -1,0 +1,85 @@
+{
+  "repo_name": "backdoor2",
+  "category": "multiple_commits_human_made",
+  "recall": 1.0,
+  "total_joern_new": 0,
+  "total_matched": 0,
+  "commits": [
+    {
+      "commit_hash": "15433",
+      "commit_index": 0,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "download",
+          "file_token": "reverse_shell"
+        }
+      ]
+    },
+    {
+      "commit_hash": "8216c",
+      "commit_index": 1,
+      "joern_new_count": 0,
+      "cg_new_count": 2,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 2,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "recv_over_json",
+          "file_token": "reverse_shell"
+        },
+        {
+          "func_name": "send_over_json",
+          "file_token": "reverse_shell"
+        }
+      ]
+    },
+    {
+      "commit_hash": "ce157",
+      "commit_index": 2,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "connect_back",
+          "file_token": "reverse_shell"
+        }
+      ]
+    },
+    {
+      "commit_hash": "faa7c",
+      "commit_index": 3,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "shell",
+          "file_token": "reverse_shell"
+        }
+      ]
+    }
+  ]
+}

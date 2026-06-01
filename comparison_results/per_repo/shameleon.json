@@ -1,0 +1,142 @@
+{
+  "repo_name": "shameleon",
+  "category": "multiple_commits",
+  "recall": 0.0,
+  "total_joern_new": 9,
+  "total_matched": 0,
+  "commits": [
+    {
+      "commit_hash": "0a26f",
+      "commit_index": 0,
+      "joern_new_count": 3,
+      "cg_new_count": 7,
+      "matched_count": 0,
+      "joern_only_count": 3,
+      "cg_only_count": 7,
+      "recall": 0.0,
+      "matched": [],
+      "joern_only": [
+        {
+          "func_name": "<body>",
+          "file_token": "shameleon_client_providers_loki.py",
+          "category": "D"
+        },
+        {
+          "func_name": "<module>",
+          "file_token": "builder.py",
+          "category": "D"
+        },
+        {
+          "func_name": "<module>",
+          "file_token": "client.py",
+          "category": "D"
+        }
+      ],
+      "cg_only": [
+        {
+          "func_name": "_handle_request",
+          "file_token": "shameleon_client_features_socks"
+        },
+        {
+          "func_name": "handle_input",
+          "file_token": "shameleon_client_server"
+        },
+        {
+          "func_name": "handle_output",
+          "file_token": "shameleon_client_server"
+        },
+        {
+          "func_name": "lfoward_connection_hook",
+          "file_token": "shameleon_client_features_lforward"
+        },
+        {
+          "func_name": "receive_data",
+          "file_token": "shameleon_client_providers_base"
+        },
+        {
+          "func_name": "send_data",
+          "file_token": "shameleon_client_providers_base"
+        },
+        {
+          "func_name": "socks_connection_hook",
+          "file_token": "shameleon_client_features_socks"
+        }
+      ]
+    },
+    {
+      "commit_hash": "2e87b",
+      "commit_index": 1,
+      "joern_new_count": 3,
+      "cg_new_count": 0,
+      "matched_count": 0,
+      "joern_only_count": 3,
+      "cg_only_count": 0,
+      "recall": 0.0,
+      "matched": [],
+      "joern_only": [
+        {
+          "func_name": "<body>",
+          "file_token": "shameleon_client_providers_loki.py",
+          "category": "D"
+        },
+        {
+          "func_name": "<module>",
+          "file_token": "builder.py",
+          "category": "D"
+        },
+        {
+          "func_name": "<module>",
+          "file_token": "client.py",
+          "category": "D"
+        }
+      ],
+      "cg_only": []
+    },
+    {
+      "commit_hash": "3759a",
+      "commit_index": 2,
+      "joern_new_count": 3,
+      "cg_new_count": 4,
+      "matched_count": 0,
+      "joern_only_count": 3,
+      "cg_only_count": 4,
+      "recall": 0.0,
+      "matched": [],
+      "joern_only": [
+        {
+          "func_name": "<body>",
+          "file_token": "shameleon_client_providers_base.py",
+          "category": "D"
+        },
+        {
+          "func_name": "<file>",
+          "file_token": "misc_dummy_server_dummy_server.py",
+          "category": "E"
+        },
+        {
+          "func_name": "<module>",
+          "file_token": "client.py",
+          "category": "D"
+        }
+      ],
+      "cg_only": [
+        {
+          "func_name": "acquire",
+          "file_token": "misc_dummy_server_dummy_server"
+        },
+        {
+          "func_name": "receive_data",
+          "file_token": "shameleon_client_providers_base"
+        },
+        {
+          "func_name": "release",
+          "file_token": "misc_dummy_server_dummy_server"
+        },
+        {
+          "func_name": "send_data",
+          "file_token": "shameleon_client_providers_base"
+        }
+      ]
+    }
+  ]
+}

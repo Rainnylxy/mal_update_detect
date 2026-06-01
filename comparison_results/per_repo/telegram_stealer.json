@@ -1,0 +1,45 @@
+{
+  "repo_name": "telegram_stealer",
+  "category": "multiple_commits",
+  "recall": 1.0,
+  "total_joern_new": 0,
+  "total_matched": 0,
+  "commits": [
+    {
+      "commit_hash": "18b08",
+      "commit_index": 0,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "send_webhook_message",
+          "file_token": "source_main"
+        }
+      ]
+    },
+    {
+      "commit_hash": "43aad",
+      "commit_index": 1,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "steal_telegram",
+          "file_token": "source_main"
+        }
+      ]
+    }
+  ]
+}

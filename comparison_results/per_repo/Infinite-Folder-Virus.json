@@ -1,0 +1,114 @@
+{
+  "repo_name": "Infinite-Folder-Virus",
+  "category": "multiple_commits",
+  "recall": 0.125,
+  "total_joern_new": 8,
+  "total_matched": 1,
+  "commits": [
+    {
+      "commit_hash": "4e4db",
+      "commit_index": 0,
+      "joern_new_count": 2,
+      "cg_new_count": 0,
+      "matched_count": 0,
+      "joern_only_count": 2,
+      "cg_only_count": 0,
+      "recall": 0.0,
+      "matched": [],
+      "joern_only": [
+        {
+          "func_name": "<module>",
+          "file_token": "Fbscraper.py",
+          "category": "D"
+        },
+        {
+          "func_name": "<module>",
+          "file_token": "base.py",
+          "category": "D"
+        }
+      ],
+      "cg_only": []
+    },
+    {
+      "commit_hash": "9f429",
+      "commit_index": 1,
+      "joern_new_count": 2,
+      "cg_new_count": 0,
+      "matched_count": 0,
+      "joern_only_count": 2,
+      "cg_only_count": 0,
+      "recall": 0.0,
+      "matched": [],
+      "joern_only": [
+        {
+          "func_name": "<module>",
+          "file_token": "base.py",
+          "category": "D"
+        },
+        {
+          "func_name": "<module>",
+          "file_token": "ctypesTest.py",
+          "category": "D"
+        }
+      ],
+      "cg_only": []
+    },
+    {
+      "commit_hash": "a5995",
+      "commit_index": 2,
+      "joern_new_count": 3,
+      "cg_new_count": 0,
+      "matched_count": 0,
+      "joern_only_count": 3,
+      "cg_only_count": 0,
+      "recall": 0.0,
+      "matched": [],
+      "joern_only": [
+        {
+          "func_name": "<module>",
+          "file_token": "EnvCreator.py",
+          "category": "D"
+        },
+        {
+          "func_name": "<module>",
+          "file_token": "attacker.py",
+          "category": "D"
+        },
+        {
+          "func_name": "<module>",
+          "file_token": "base.py",
+          "category": "D"
+        }
+      ],
+      "cg_only": []
+    },
+    {
+      "commit_hash": "ba7bd",
+      "commit_index": 3,
+      "joern_new_count": 1,
+      "cg_new_count": 3,
+      "matched_count": 1,
+      "joern_only_count": 0,
+      "cg_only_count": 2,
+      "recall": 1.0,
+      "matched": [
+        {
+          "joern": "<module>@attacker.py",
+          "callgraph": "duplicate@attacker",
+          "score": 0.785
+        }
+      ],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "folder_explore",
+          "file_token": "attacker"
+        },
+        {
+          "func_name": "folder_getter",
+          "file_token": "attacker"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,311 @@
+{
+  "repo_name": "BskyBot",
+  "category": "multiple_commits",
+  "recall": 0.0,
+  "total_joern_new": 3,
+  "total_matched": 0,
+  "commits": [
+    {
+      "commit_hash": "48818",
+      "commit_index": 0,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "compress_bsky",
+          "file_token": "core_image_processor"
+        }
+      ]
+    },
+    {
+      "commit_hash": "57dd6",
+      "commit_index": 1,
+      "joern_new_count": 0,
+      "cg_new_count": 3,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 3,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "_callback",
+          "file_token": "bot"
+        },
+        {
+          "func_name": "_respond",
+          "file_token": "bot"
+        },
+        {
+          "func_name": "start",
+          "file_token": "bot"
+        }
+      ]
+    },
+    {
+      "commit_hash": "60dc3",
+      "commit_index": 2,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "_parse_posts",
+          "file_token": "core_bsky_client"
+        }
+      ]
+    },
+    {
+      "commit_hash": "7e97f",
+      "commit_index": 3,
+      "joern_new_count": 0,
+      "cg_new_count": 3,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 3,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "request",
+          "file_token": "controller"
+        },
+        {
+          "func_name": "serialize_bytes",
+          "file_token": "core_data_serializer"
+        },
+        {
+          "func_name": "serialize_string",
+          "file_token": "core_data_serializer"
+        }
+      ]
+    },
+    {
+      "commit_hash": "b40cc",
+      "commit_index": 4,
+      "joern_new_count": 3,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 3,
+      "cg_only_count": 1,
+      "recall": 0.0,
+      "matched": [],
+      "joern_only": [
+        {
+          "func_name": "<file>",
+          "file_token": "core_jpeg_stegano.py",
+          "category": "E"
+        },
+        {
+          "func_name": "<module>",
+          "file_token": "bot.py",
+          "category": "D"
+        },
+        {
+          "func_name": "<module>",
+          "file_token": "controller.py",
+          "category": "D"
+        }
+      ],
+      "cg_only": [
+        {
+          "func_name": "_callback",
+          "file_token": "bot"
+        }
+      ]
+    },
+    {
+      "commit_hash": "baced",
+      "commit_index": 5,
+      "joern_new_count": 0,
+      "cg_new_count": 6,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 6,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "_parse_posts",
+          "file_token": "core_bsky_client"
+        },
+        {
+          "func_name": "_respond",
+          "file_token": "bot"
+        },
+        {
+          "func_name": "create_reply",
+          "file_token": "core_bsky_client"
+        },
+        {
+          "func_name": "read_posts_latest",
+          "file_token": "core_bsky_client"
+        },
+        {
+          "func_name": "read_thread",
+          "file_token": "core_bsky_client"
+        },
+        {
+          "func_name": "request",
+          "file_token": "controller"
+        }
+      ]
+    },
+    {
+      "commit_hash": "bae5f",
+      "commit_index": 6,
+      "joern_new_count": 0,
+      "cg_new_count": 5,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 5,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "_callback",
+          "file_token": "bot_bot"
+        },
+        {
+          "func_name": "_respond",
+          "file_token": "bot_bot"
+        },
+        {
+          "func_name": "generate",
+          "file_token": "core_dummy_image_path_generator"
+        },
+        {
+          "func_name": "start",
+          "file_token": "bot_bot"
+        },
+        {
+          "func_name": "upload",
+          "file_token": "controller_main"
+        }
+      ]
+    },
+    {
+      "commit_hash": "d789a",
+      "commit_index": 7,
+      "joern_new_count": 0,
+      "cg_new_count": 2,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 2,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "compress_bsky",
+          "file_token": "core_image_processor"
+        },
+        {
+          "func_name": "request",
+          "file_token": "controller"
+        }
+      ]
+    },
+    {
+      "commit_hash": "dc601",
+      "commit_index": 8,
+      "joern_new_count": 0,
+      "cg_new_count": 4,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 4,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "deserialize_bytes",
+          "file_token": "core_data_serializer"
+        },
+        {
+          "func_name": "deserialize_string",
+          "file_token": "core_data_serializer"
+        },
+        {
+          "func_name": "serialize_bytes",
+          "file_token": "core_data_serializer"
+        },
+        {
+          "func_name": "serialize_string",
+          "file_token": "core_data_serializer"
+        }
+      ]
+    },
+    {
+      "commit_hash": "e0939",
+      "commit_index": 9,
+      "joern_new_count": 0,
+      "cg_new_count": 6,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 6,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "_callback",
+          "file_token": "bot"
+        },
+        {
+          "func_name": "_respond",
+          "file_token": "bot"
+        },
+        {
+          "func_name": "compress_bsky",
+          "file_token": "core_image_processor"
+        },
+        {
+          "func_name": "decode",
+          "file_token": "core_text_stegano"
+        },
+        {
+          "func_name": "encode",
+          "file_token": "core_text_stegano"
+        },
+        {
+          "func_name": "request",
+          "file_token": "controller"
+        }
+      ]
+    },
+    {
+      "commit_hash": "fbe51",
+      "commit_index": 10,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "request",
+          "file_token": "controller"
+        }
+      ]
+    }
+  ]
+}

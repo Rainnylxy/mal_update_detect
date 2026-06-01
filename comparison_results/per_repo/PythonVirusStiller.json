@@ -1,0 +1,59 @@
+{
+  "repo_name": "PythonVirusStiller",
+  "category": "multiple_commits",
+  "recall": 1.0,
+  "total_joern_new": 0,
+  "total_matched": 0,
+  "commits": [
+    {
+      "commit_hash": "9258d",
+      "commit_index": 0,
+      "joern_new_count": 0,
+      "cg_new_count": 9,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 9,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "create_zip_cover_tracks",
+          "file_token": "Virus_Stiller"
+        },
+        {
+          "func_name": "decrypt_payload",
+          "file_token": "Virus_Stiller"
+        },
+        {
+          "func_name": "get_login_and_password",
+          "file_token": "Virus_Stiller"
+        },
+        {
+          "func_name": "get_size",
+          "file_token": "Virus_Stiller"
+        },
+        {
+          "func_name": "main_history_cookies",
+          "file_token": "Virus_Stiller"
+        },
+        {
+          "func_name": "send_chrome_data",
+          "file_token": "Virus_Stiller"
+        },
+        {
+          "func_name": "send_operagx_data",
+          "file_token": "Virus_Stiller"
+        },
+        {
+          "func_name": "send_tg_logs",
+          "file_token": "Virus_Stiller"
+        },
+        {
+          "func_name": "telegram",
+          "file_token": "Virus_Stiller"
+        }
+      ]
+    }
+  ]
+}

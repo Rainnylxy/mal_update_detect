@@ -1,0 +1,657 @@
+{
+  "repo_name": "Python-Trojan",
+  "category": "multiple_commits",
+  "recall": 1.0,
+  "total_joern_new": 0,
+  "total_matched": 0,
+  "commits": [
+    {
+      "commit_hash": "0c466",
+      "commit_index": 0,
+      "joern_new_count": 0,
+      "cg_new_count": 5,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 5,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "get_gpu",
+          "file_token": "main"
+        },
+        {
+          "func_name": "get_os",
+          "file_token": "main"
+        },
+        {
+          "func_name": "get_processor",
+          "file_token": "main"
+        },
+        {
+          "func_name": "on_message",
+          "file_token": "main"
+        },
+        {
+          "func_name": "on_ready",
+          "file_token": "main"
+        }
+      ]
+    },
+    {
+      "commit_hash": "1878b",
+      "commit_index": 1,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "on_message",
+          "file_token": "main"
+        }
+      ]
+    },
+    {
+      "commit_hash": "1f06f",
+      "commit_index": 2,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "on_message",
+          "file_token": "main"
+        }
+      ]
+    },
+    {
+      "commit_hash": "27671",
+      "commit_index": 3,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "on_message",
+          "file_token": "main"
+        }
+      ]
+    },
+    {
+      "commit_hash": "28e72",
+      "commit_index": 4,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "on_message",
+          "file_token": "main"
+        }
+      ]
+    },
+    {
+      "commit_hash": "2e587",
+      "commit_index": 5,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "on_message",
+          "file_token": "main"
+        }
+      ]
+    },
+    {
+      "commit_hash": "44b19",
+      "commit_index": 6,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "main",
+          "file_token": "main"
+        }
+      ]
+    },
+    {
+      "commit_hash": "46687",
+      "commit_index": 7,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "main",
+          "file_token": "main"
+        }
+      ]
+    },
+    {
+      "commit_hash": "4707e",
+      "commit_index": 8,
+      "joern_new_count": 0,
+      "cg_new_count": 2,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 2,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "main",
+          "file_token": "main"
+        },
+        {
+          "func_name": "on_message",
+          "file_token": "main"
+        }
+      ]
+    },
+    {
+      "commit_hash": "5e20f",
+      "commit_index": 9,
+      "joern_new_count": 0,
+      "cg_new_count": 3,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 3,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "get_gpu",
+          "file_token": "main"
+        },
+        {
+          "func_name": "get_os",
+          "file_token": "main"
+        },
+        {
+          "func_name": "get_processor",
+          "file_token": "main"
+        }
+      ]
+    },
+    {
+      "commit_hash": "66103",
+      "commit_index": 10,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "send_message",
+          "file_token": "main"
+        }
+      ]
+    },
+    {
+      "commit_hash": "84747",
+      "commit_index": 11,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "on_message",
+          "file_token": "main"
+        }
+      ]
+    },
+    {
+      "commit_hash": "8cc51",
+      "commit_index": 12,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "on_message",
+          "file_token": "main"
+        }
+      ]
+    },
+    {
+      "commit_hash": "94f78",
+      "commit_index": 13,
+      "joern_new_count": 0,
+      "cg_new_count": 2,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 2,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "main",
+          "file_token": "main"
+        },
+        {
+          "func_name": "send_hearbeat",
+          "file_token": "main"
+        }
+      ]
+    },
+    {
+      "commit_hash": "9ebad",
+      "commit_index": 14,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "on_message",
+          "file_token": "main"
+        }
+      ]
+    },
+    {
+      "commit_hash": "9f8d6",
+      "commit_index": 15,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "on_message",
+          "file_token": "main"
+        }
+      ]
+    },
+    {
+      "commit_hash": "a3b3f",
+      "commit_index": 16,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "on_ready",
+          "file_token": "main"
+        }
+      ]
+    },
+    {
+      "commit_hash": "a8447",
+      "commit_index": 17,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "on_message",
+          "file_token": "main"
+        }
+      ]
+    },
+    {
+      "commit_hash": "af297",
+      "commit_index": 18,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "on_message",
+          "file_token": "main"
+        }
+      ]
+    },
+    {
+      "commit_hash": "b5094",
+      "commit_index": 19,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "on_message",
+          "file_token": "main"
+        }
+      ]
+    },
+    {
+      "commit_hash": "c7a42",
+      "commit_index": 20,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "on_message",
+          "file_token": "main"
+        }
+      ]
+    },
+    {
+      "commit_hash": "c7f9f",
+      "commit_index": 21,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "on_message",
+          "file_token": "main"
+        }
+      ]
+    },
+    {
+      "commit_hash": "ca2be",
+      "commit_index": 22,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "on_message",
+          "file_token": "main"
+        }
+      ]
+    },
+    {
+      "commit_hash": "cae75",
+      "commit_index": 23,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "on_message",
+          "file_token": "main"
+        }
+      ]
+    },
+    {
+      "commit_hash": "cfc93",
+      "commit_index": 24,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "on_message",
+          "file_token": "main"
+        }
+      ]
+    },
+    {
+      "commit_hash": "d257a",
+      "commit_index": 25,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "on_message",
+          "file_token": "main"
+        }
+      ]
+    },
+    {
+      "commit_hash": "d4d71",
+      "commit_index": 26,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "on_message",
+          "file_token": "main"
+        }
+      ]
+    },
+    {
+      "commit_hash": "dbdf0",
+      "commit_index": 27,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "on_message",
+          "file_token": "main"
+        }
+      ]
+    },
+    {
+      "commit_hash": "e88fa",
+      "commit_index": 28,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "on_message",
+          "file_token": "main"
+        }
+      ]
+    },
+    {
+      "commit_hash": "ebc01",
+      "commit_index": 29,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "on_message",
+          "file_token": "main"
+        }
+      ]
+    },
+    {
+      "commit_hash": "ebfa5",
+      "commit_index": 30,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "on_message",
+          "file_token": "main"
+        }
+      ]
+    },
+    {
+      "commit_hash": "ef777",
+      "commit_index": 31,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "on_message",
+          "file_token": "main"
+        }
+      ]
+    },
+    {
+      "commit_hash": "f101c",
+      "commit_index": 32,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "send_heartbeat",
+          "file_token": "main"
+        }
+      ]
+    },
+    {
+      "commit_hash": "f2c0d",
+      "commit_index": 33,
+      "joern_new_count": 0,
+      "cg_new_count": 2,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 2,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "main",
+          "file_token": "main"
+        },
+        {
+          "func_name": "send_message",
+          "file_token": "main"
+        }
+      ]
+    }
+  ]
+}

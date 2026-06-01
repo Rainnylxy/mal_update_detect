@@ -1,0 +1,182 @@
+{
+  "repo_name": "dojo6oct16",
+  "category": "multiple_commits",
+  "recall": 0.0,
+  "total_joern_new": 7,
+  "total_matched": 0,
+  "commits": [
+    {
+      "commit_hash": "1a34e",
+      "commit_index": 0,
+      "joern_new_count": 1,
+      "cg_new_count": 0,
+      "matched_count": 0,
+      "joern_only_count": 1,
+      "cg_only_count": 0,
+      "recall": 0.0,
+      "matched": [],
+      "joern_only": [
+        {
+          "func_name": "<module>",
+          "file_token": "infector.py",
+          "category": "D"
+        }
+      ],
+      "cg_only": []
+    },
+    {
+      "commit_hash": "1f053",
+      "commit_index": 1,
+      "joern_new_count": 1,
+      "cg_new_count": 3,
+      "matched_count": 0,
+      "joern_only_count": 1,
+      "cg_only_count": 3,
+      "recall": 0.0,
+      "matched": [],
+      "joern_only": [
+        {
+          "func_name": "<module>",
+          "file_token": "infector.py",
+          "category": "D"
+        }
+      ],
+      "cg_only": [
+        {
+          "func_name": "_infect",
+          "file_token": "infector"
+        },
+        {
+          "func_name": "find_spec",
+          "file_token": "infector"
+        },
+        {
+          "func_name": "infect",
+          "file_token": "infector"
+        }
+      ]
+    },
+    {
+      "commit_hash": "36a16",
+      "commit_index": 2,
+      "joern_new_count": 1,
+      "cg_new_count": 0,
+      "matched_count": 0,
+      "joern_only_count": 1,
+      "cg_only_count": 0,
+      "recall": 0.0,
+      "matched": [],
+      "joern_only": [
+        {
+          "func_name": "<module>",
+          "file_token": "infector.py",
+          "category": "D"
+        }
+      ],
+      "cg_only": []
+    },
+    {
+      "commit_hash": "af251",
+      "commit_index": 3,
+      "joern_new_count": 1,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 1,
+      "cg_only_count": 1,
+      "recall": 0.0,
+      "matched": [],
+      "joern_only": [
+        {
+          "func_name": "<module>",
+          "file_token": "infector.py",
+          "category": "D"
+        }
+      ],
+      "cg_only": [
+        {
+          "func_name": "find_spec",
+          "file_token": "infector"
+        }
+      ]
+    },
+    {
+      "commit_hash": "c2083",
+      "commit_index": 4,
+      "joern_new_count": 1,
+      "cg_new_count": 2,
+      "matched_count": 0,
+      "joern_only_count": 1,
+      "cg_only_count": 2,
+      "recall": 0.0,
+      "matched": [],
+      "joern_only": [
+        {
+          "func_name": "<module>",
+          "file_token": "infector.py",
+          "category": "D"
+        }
+      ],
+      "cg_only": [
+        {
+          "func_name": "_infect",
+          "file_token": "infector"
+        },
+        {
+          "func_name": "find_spec",
+          "file_token": "infector"
+        }
+      ]
+    },
+    {
+      "commit_hash": "df504",
+      "commit_index": 5,
+      "joern_new_count": 1,
+      "cg_new_count": 3,
+      "matched_count": 0,
+      "joern_only_count": 1,
+      "cg_only_count": 3,
+      "recall": 0.0,
+      "matched": [],
+      "joern_only": [
+        {
+          "func_name": "<module>",
+          "file_token": "infector.py",
+          "category": "D"
+        }
+      ],
+      "cg_only": [
+        {
+          "func_name": "_infect",
+          "file_token": "infector"
+        },
+        {
+          "func_name": "find_spec",
+          "file_token": "infector"
+        },
+        {
+          "func_name": "infect",
+          "file_token": "infector"
+        }
+      ]
+    },
+    {
+      "commit_hash": "ff97b",
+      "commit_index": 6,
+      "joern_new_count": 1,
+      "cg_new_count": 0,
+      "matched_count": 0,
+      "joern_only_count": 1,
+      "cg_only_count": 0,
+      "recall": 0.0,
+      "matched": [],
+      "joern_only": [
+        {
+          "func_name": "<module>",
+          "file_token": "infector.py",
+          "category": "D"
+        }
+      ],
+      "cg_only": []
+    }
+  ]
+}

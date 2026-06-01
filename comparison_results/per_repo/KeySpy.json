@@ -1,0 +1,565 @@
+{
+  "repo_name": "KeySpy",
+  "category": "multiple_commits",
+  "recall": 0.0,
+  "total_joern_new": 13,
+  "total_matched": 0,
+  "commits": [
+    {
+      "commit_hash": "04fa2",
+      "commit_index": 0,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "test_remote_logging",
+          "file_token": "tests_test_data_handler"
+        }
+      ]
+    },
+    {
+      "commit_hash": "119a1",
+      "commit_index": 1,
+      "joern_new_count": 0,
+      "cg_new_count": 2,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 2,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "read_file",
+          "file_token": "utils_file_handler"
+        },
+        {
+          "func_name": "write_file",
+          "file_token": "utils_file_handler"
+        }
+      ]
+    },
+    {
+      "commit_hash": "1d0a5",
+      "commit_index": 2,
+      "joern_new_count": 0,
+      "cg_new_count": 3,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 3,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "_setup_unix_startup",
+          "file_token": "core_persistence"
+        },
+        {
+          "func_name": "_setup_windows_startup",
+          "file_token": "core_persistence"
+        },
+        {
+          "func_name": "setup_persistence",
+          "file_token": "core_persistence"
+        }
+      ]
+    },
+    {
+      "commit_hash": "1dc1b",
+      "commit_index": 3,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "test_email_alert",
+          "file_token": "tests_test_alert_manager"
+        }
+      ]
+    },
+    {
+      "commit_hash": "2075a",
+      "commit_index": 4,
+      "joern_new_count": 0,
+      "cg_new_count": 4,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 4,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "decrypt_data",
+          "file_token": "core_data_handler"
+        },
+        {
+          "func_name": "enable_encryption",
+          "file_token": "core_data_handler"
+        },
+        {
+          "func_name": "encrypt_data",
+          "file_token": "core_data_handler"
+        },
+        {
+          "func_name": "remote_log",
+          "file_token": "core_data_handler"
+        }
+      ]
+    },
+    {
+      "commit_hash": "216b7",
+      "commit_index": 5,
+      "joern_new_count": 0,
+      "cg_new_count": 2,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 2,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "is_keylogger_running",
+          "file_token": "scripts_monitor_keylogger"
+        },
+        {
+          "func_name": "restart_keylogger",
+          "file_token": "scripts_monitor_keylogger"
+        }
+      ]
+    },
+    {
+      "commit_hash": "26d79",
+      "commit_index": 6,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "test_encryption",
+          "file_token": "scripts_test_logging"
+        }
+      ]
+    },
+    {
+      "commit_hash": "2e4a4",
+      "commit_index": 7,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "setup_logger",
+          "file_token": "utils_logger"
+        }
+      ]
+    },
+    {
+      "commit_hash": "42040",
+      "commit_index": 8,
+      "joern_new_count": 0,
+      "cg_new_count": 2,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 2,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "_on_key_press",
+          "file_token": "platform_windows_keylogger"
+        },
+        {
+          "func_name": "start_logging",
+          "file_token": "platform_windows_keylogger"
+        }
+      ]
+    },
+    {
+      "commit_hash": "4eacf",
+      "commit_index": 9,
+      "joern_new_count": 0,
+      "cg_new_count": 4,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 4,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "__init__",
+          "file_token": "utils_encryption"
+        },
+        {
+          "func_name": "decrypt_data",
+          "file_token": "utils_encryption"
+        },
+        {
+          "func_name": "encrypt_data",
+          "file_token": "utils_encryption"
+        },
+        {
+          "func_name": "generate_key",
+          "file_token": "utils_encryption"
+        }
+      ]
+    },
+    {
+      "commit_hash": "71084",
+      "commit_index": 10,
+      "joern_new_count": 0,
+      "cg_new_count": 2,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 2,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "test_unix_persistence",
+          "file_token": "tests_test_persistence"
+        },
+        {
+          "func_name": "test_windows_persistence",
+          "file_token": "tests_test_persistence"
+        }
+      ]
+    },
+    {
+      "commit_hash": "8a2cb",
+      "commit_index": 11,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "start_keylogger",
+          "file_token": "scripts_run_keylogger"
+        }
+      ]
+    },
+    {
+      "commit_hash": "8e87b",
+      "commit_index": 12,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "send_email_alert",
+          "file_token": "core_alert_manager"
+        }
+      ]
+    },
+    {
+      "commit_hash": "933b5",
+      "commit_index": 13,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "test_encrypted_logging",
+          "file_token": "tests_test_logger"
+        }
+      ]
+    },
+    {
+      "commit_hash": "9c9d6",
+      "commit_index": 14,
+      "joern_new_count": 0,
+      "cg_new_count": 2,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 2,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "_on_key_press",
+          "file_token": "platform_mac_keylogger"
+        },
+        {
+          "func_name": "start_logging",
+          "file_token": "platform_mac_keylogger"
+        }
+      ]
+    },
+    {
+      "commit_hash": "b65de",
+      "commit_index": 15,
+      "joern_new_count": 13,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 13,
+      "cg_only_count": 1,
+      "recall": 0.0,
+      "matched": [],
+      "joern_only": [
+        {
+          "func_name": "<body>",
+          "file_token": "utils_file_handler.py",
+          "category": "D"
+        },
+        {
+          "func_name": "<body>",
+          "file_token": "utils_network.py",
+          "category": "D"
+        },
+        {
+          "func_name": "<module>",
+          "file_token": "config_secret_key_generator.py",
+          "category": "D"
+        },
+        {
+          "func_name": "<module>",
+          "file_token": "platform_linux_keylogger.py",
+          "category": "D"
+        },
+        {
+          "func_name": "<module>",
+          "file_token": "platform_mac_keylogger.py",
+          "category": "D"
+        },
+        {
+          "func_name": "<module>",
+          "file_token": "platform_windows_keylogger.py",
+          "category": "D"
+        },
+        {
+          "func_name": "<module>",
+          "file_token": "scripts_install_dependencies.py",
+          "category": "D"
+        },
+        {
+          "func_name": "<module>",
+          "file_token": "scripts_monitor_keylogger.py",
+          "category": "D"
+        },
+        {
+          "func_name": "<module>",
+          "file_token": "scripts_setup_env.py",
+          "category": "D"
+        },
+        {
+          "func_name": "<module>",
+          "file_token": "scripts_test_logging.py",
+          "category": "D"
+        },
+        {
+          "func_name": "<module>",
+          "file_token": "setup.py",
+          "category": "D"
+        },
+        {
+          "func_name": "<module>",
+          "file_token": "utils_encryption.py",
+          "category": "D"
+        },
+        {
+          "func_name": "parse_json",
+          "file_token": "utils_formatter.py",
+          "category": "E"
+        }
+      ],
+      "cg_only": [
+        {
+          "func_name": "read_version",
+          "file_token": "setup"
+        }
+      ]
+    },
+    {
+      "commit_hash": "c1a12",
+      "commit_index": 16,
+      "joern_new_count": 0,
+      "cg_new_count": 3,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 3,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "test_linux_keylogger",
+          "file_token": "tests_test_platform_keylogger"
+        },
+        {
+          "func_name": "test_mac_keylogger",
+          "file_token": "tests_test_platform_keylogger"
+        },
+        {
+          "func_name": "test_windows_keylogger",
+          "file_token": "tests_test_platform_keylogger"
+        }
+      ]
+    },
+    {
+      "commit_hash": "ceb99",
+      "commit_index": 17,
+      "joern_new_count": 0,
+      "cg_new_count": 2,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 2,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "_apply_environment_overrides",
+          "file_token": "config_loader"
+        },
+        {
+          "func_name": "_decrypt_sensitive_data",
+          "file_token": "config_loader"
+        }
+      ]
+    },
+    {
+      "commit_hash": "d0e6c",
+      "commit_index": 18,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "setup_environment",
+          "file_token": "scripts_setup_env"
+        }
+      ]
+    },
+    {
+      "commit_hash": "d4716",
+      "commit_index": 19,
+      "joern_new_count": 0,
+      "cg_new_count": 1,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 1,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "test_env_variables",
+          "file_token": "tests_test_config_loader"
+        }
+      ]
+    },
+    {
+      "commit_hash": "eaef5",
+      "commit_index": 20,
+      "joern_new_count": 0,
+      "cg_new_count": 2,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 2,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "_on_key_press",
+          "file_token": "platform_linux_keylogger"
+        },
+        {
+          "func_name": "start_logging",
+          "file_token": "platform_linux_keylogger"
+        }
+      ]
+    },
+    {
+      "commit_hash": "f1f6c",
+      "commit_index": 21,
+      "joern_new_count": 0,
+      "cg_new_count": 2,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 2,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "install_python_packages",
+          "file_token": "scripts_install_dependencies"
+        },
+        {
+          "func_name": "install_system_packages",
+          "file_token": "scripts_install_dependencies"
+        }
+      ]
+    },
+    {
+      "commit_hash": "f69a3",
+      "commit_index": 22,
+      "joern_new_count": 0,
+      "cg_new_count": 2,
+      "matched_count": 0,
+      "joern_only_count": 0,
+      "cg_only_count": 2,
+      "recall": 1.0,
+      "matched": [],
+      "joern_only": [],
+      "cg_only": [
+        {
+          "func_name": "check_connectivity",
+          "file_token": "utils_network"
+        },
+        {
+          "func_name": "send_post_request",
+          "file_token": "utils_network"
+        }
+      ]
+    }
+  ]
+}

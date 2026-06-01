@@ -457,3 +457,188 @@ def categorize_mismatches(
             })
 
     return cats
+
+
+# ═══════════════════════════════════════════════════
+# Paths
+# ═══════════════════════════════════════════════════
+
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+CSV_PATH = os.path.join(BASE_DIR, "data", "inputs", "malicious_all_dataset.csv")
+JOERN_OUTPUT_BASE = "/home/lxy/lxy_codes/mal_update_detect/joern_output"
+CG_OUTPUT_BASE = os.path.join(BASE_DIR, "callgraph_output")
+RESULTS_DIR = os.path.join(BASE_DIR, "comparison_results")
+
+SOURCE_ROOTS = [
+    "/home/lxy/lxy_codes/mal_update_detect/mal_update_dataset/multiple_commits",
+    "/home/lxy/lxy_codes/mal_update_detect/mal_update_dataset/multiple_commits_human_made",
+]
+
+
+def find_category(repo_name: str) -> str | None:
+    """Determine which category a repo belongs to."""
+    for root in SOURCE_ROOTS:
+        candidate = os.path.join(root, repo_name)
+        if os.path.isdir(candidate):
+            # Extract category from root path
+            return os.path.basename(root)
+    return None
+
+
+def main():
+    os.makedirs(RESULTS_DIR, exist_ok=True)
+
+    # Read CSV
+    with open(CSV_PATH, "r", encoding="utf-8") as f:
+        repo_names = [line.strip() for line in f if line.strip()]
+
+    all_results: list[RepoResult] = []
+    skipped: list[str] = []
+
+    for repo_name in repo_names:
+        category = find_category(repo_name)
+        if category is None:
+            print(f"[SKIP] {repo_name}: source not found")
+            skipped.append(repo_name)
+            continue
+
+        joern_repo_dir = os.path.join(JOERN_OUTPUT_BASE, category, repo_name)
+        cg_repo_dir = os.path.join(CG_OUTPUT_BASE, category, repo_name)
+
+        if not os.path.isdir(joern_repo_dir):
+            print(f"[SKIP] {repo_name}: no Joern output at {joern_repo_dir}")
+            skipped.append(repo_name)
+            continue
+
+        if not os.path.isdir(cg_repo_dir):
+            print(f"[SKIP] {repo_name}: no CallGraph output at {cg_repo_dir}")
+            skipped.append(repo_name)
+            continue
+
+        print(f"[{len(all_results)+1}/{len(repo_names)}] Evaluating: {repo_name}")
+        repo_result = evaluate_repo(repo_name, joern_repo_dir, cg_repo_dir, category)
+        all_results.append(repo_result)
+
+        if repo_result.commits:
+            print(f"  -> {repo_result.total_joern} Joern NEW slices, "
+                  f"{repo_result.total_matched} matched, "
+                  f"recall={repo_result.recall:.2%}")
+
+    # ── Summary ──
+    total_joern = sum(r.total_joern for r in all_results)
+    total_matched = sum(r.total_matched for r in all_results)
+    overall_recall = total_matched / total_joern if total_joern > 0 else 0.0
+
+    summary = {
+        "total_repos_evaluated": len(all_results),
+        "total_repos_skipped": len(skipped),
+        "skipped_repos": skipped,
+        "total_joern_new_slices": total_joern,
+        "total_matched": total_matched,
+        "overall_recall": round(overall_recall, 4),
+        "per_repo": [
+            {
+                "repo_name": r.repo_name,
+                "category": r.category,
+                "joern_new": r.total_joern,
+                "matched": r.total_matched,
+                "recall": round(r.recall, 4),
+                "commits_evaluated": len(r.commits),
+            }
+            for r in all_results
+        ],
+    }
+
+    summary_path = os.path.join(RESULTS_DIR, "summary.json")
+    with open(summary_path, "w", encoding="utf-8") as f:
+        json.dump(summary, f, indent=2, ensure_ascii=False)
+    print(f"\nSummary written to {summary_path}")
+    print(f"Overall recall: {overall_recall:.2%} ({total_matched}/{total_joern})")
+
+    # ── Per-repo details ──
+    per_repo_dir = os.path.join(RESULTS_DIR, "per_repo")
+    os.makedirs(per_repo_dir, exist_ok=True)
+    for r in all_results:
+        detail = {
+            "repo_name": r.repo_name,
+            "category": r.category,
+            "recall": round(r.recall, 4),
+            "total_joern_new": r.total_joern,
+            "total_matched": r.total_matched,
+            "commits": [],
+        }
+        for c in r.commits:
+            detail["commits"].append({
+                "commit_hash": c.commit_hash,
+                "commit_index": c.commit_index,
+                "joern_new_count": c.joern_total,
+                "cg_new_count": c.cg_total,
+                "matched_count": len(c.matched),
+                "joern_only_count": len(c.joern_only),
+                "cg_only_count": len(c.cg_only),
+                "recall": round(c.recall, 4),
+                "matched": [
+                    {
+                        "joern": f"{m[0].func_name}@{m[0].file_token}",
+                        "callgraph": f"{m[1].func_name}@{m[1].file_token}",
+                        "score": round(m[2], 3),
+                    }
+                    for m in c.matched
+                ],
+                "joern_only": [
+                    {
+                        "func_name": s.func_name,
+                        "file_token": s.file_token,
+                        "category": categorize_joern_only(s),
+                    }
+                    for s in c.joern_only
+                ],
+                "cg_only": [
+                    {"func_name": s.func_name, "file_token": s.file_token}
+                    for s in c.cg_only
+                ],
+            })
+
+        fpath = os.path.join(per_repo_dir, f"{r.repo_name}.json")
+        with open(fpath, "w", encoding="utf-8") as f:
+            json.dump(detail, f, indent=2, ensure_ascii=False)
+
+    print(f"Per-repo details written to {per_repo_dir}/")
+
+    # ── Mismatch summary ──
+    mismatches_dir = os.path.join(RESULTS_DIR, "mismatches")
+    os.makedirs(mismatches_dir, exist_ok=True)
+
+    all_cats: dict[str, list[dict]] = {k: [] for k in MISMATCH_CATEGORIES}
+    all_joern_only: list[dict] = []
+
+    for r in all_results:
+        cats = categorize_mismatches(r)
+        for cat_key, items in cats.items():
+            for item in items:
+                item["repo"] = r.repo_name
+            all_cats[cat_key].extend(items)
+            all_joern_only.extend(items)
+
+    mismatch_summary = {
+        "total_joern_only": len(all_joern_only),
+        "by_category": {k: len(v) for k, v in all_cats.items()},
+        "samples": {k: v[:10] for k, v in all_cats.items() if v},
+    }
+
+    mpath = os.path.join(mismatches_dir, "mismatch_summary.json")
+    with open(mpath, "w", encoding="utf-8") as f:
+        json.dump(mismatch_summary, f, indent=2, ensure_ascii=False)
+    print(f"Mismatch analysis written to {mpath}")
+
+    # ── Print mismatch breakdown ──
+    print("\nMismatch root cause breakdown (joern_only):")
+    for cat_key, cat_label in MISMATCH_CATEGORIES.items():
+        count = len(all_cats[cat_key])
+        pct = count / len(all_joern_only) * 100 if all_joern_only else 0
+        print(f"  {cat_key} ({cat_label}): {count} ({pct:.1f}%)")
+
+
+if __name__ == "__main__":
+    main()

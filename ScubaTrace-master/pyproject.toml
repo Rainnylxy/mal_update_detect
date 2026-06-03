@@ -1,0 +1,45 @@
+[build-system]
+requires = ["setuptools>=43.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "scubatrace"
+version = "1.1.2"
+dependencies = [
+    "tree_sitter==0.24.0",
+    "tree_sitter_cpp==0.23.4",
+    "tree_sitter_java==0.23.5",
+    "tree_sitter_python==0.23.6",
+    "tree_sitter_javascript==0.23.1",
+    "tree_sitter_c_sharp==0.23.1",
+    "tree_sitter_go==0.23.4",
+    "tree_sitter_php==0.23.11",
+    "tree_sitter_ruby==0.23.1",
+    "tree_sitter_rust==0.23.2",
+    "tree_sitter_swift==0.0.1",
+    "networkx>=3.3",
+    "pygraphviz>=1.13",
+    "pydot>=3.0.3",
+    "chardet>=5.2.0",
+    "zstandard>=0.23.0",
+    "scubalspy>=0.0.24",
+    "GitPython>=3.1.0",
+]
+authors = [{ name = "SunBK201", email = "sunbk201gm@gmail.com" }]
+description = "ScubaTrace: Source-level code analysis toolkit for SAST, context engineering, and AI coding."
+keywords = ["codebase", "parsing", "ast", "analysis"]
+readme = "README.md"
+license = "GPL-3.0-or-later"
+requires-python = ">=3.10"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+]
+
+[project.urls]
+Homepage = "https://sunbk201.github.io/ScubaTrace"
+Issues = "https://github.com/SunBK201/ScubaTrace/issues"
+
+[project.optional-dependencies]
+docs = ["sphinx", "sphinx-book-theme", "sphinx_copybutton"]

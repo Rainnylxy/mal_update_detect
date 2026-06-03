@@ -11,3 +11,6 @@ calculate_results/
 mal_update_detect_nohup.log
 *.log
 *.out
+callgraph_output/
+CallGraphmds/
+docs/

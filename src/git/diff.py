@@ -255,6 +255,23 @@ class CommitHelper:
                     file_changes[current_file]["deleted"].append(line[1:])
         return file_changes
 
+def get_changed_files(repo_path: str, commit_hash: str) -> set[str]:
+    """Return the set of files changed in a commit (relative paths)."""
+    cmd = [
+        "git", "-C", repo_path,
+        "diff-tree", "--name-only", "--no-commit-id", "-r", commit_hash,
+    ]
+    result = subprocess.run(
+        cmd, capture_output=True, text=True, encoding="utf-8", errors="ignore"
+    )
+    files = set()
+    for line in result.stdout.splitlines():
+        line = line.strip()
+        if line:
+            files.add(line)
+    return files
+
+
 # 示例用法
 if __name__ == "__main__":
     repo = "/home/lxy/lxy_codes/mal_update_detect/mal_update_dataset/multiple_commits/EvilCrow"

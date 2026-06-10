@@ -14,3 +14,7 @@ mal_update_detect_nohup.log
 callgraph_output/
 CallGraphmds/
 docs/
+scubatrace_output/
+dataset_test_output/
+.claude/
+claude.md

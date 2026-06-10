@@ -235,7 +235,7 @@ def closest_block_line(file_path, code_line):
     # When parent and child have same position, child node comes first
     candidates.sort(key=lambda n: (n.end_point[0] - n.start_point[0], -n.start_point[0]))
     node = candidates[0]
-    
+
     slice_lines = set()
     start_line = node.start_point[0] + 1
     end_line = node.end_point[0] + 1
@@ -252,8 +252,8 @@ def closest_block_line(file_path, code_line):
                     "finally_clause"]:
         parent = node.parent
         slice_lines.add(parent.start_point[0] + 1)
-        slice_lines.add(parent.end_point[0] + 1)            
-    
+        slice_lines.add(parent.end_point[0] + 1)
+
     if node.type == "if_statement":
         # Find the last else_clause
         for child in node.children:
@@ -264,11 +264,11 @@ def closest_block_line(file_path, code_line):
         parent = node.parent
         slice_lines.add(parent.start_point[0] + 1)
         slice_lines.add(parent.end_point[0] + 1)
-    
+
     if node.type in ["with_statement","call","assignment"]:
         slice_lines.update(range(start_line, end_line + 1))
         return slice_lines
-    
+
     # if node.type in ["expression_statement"]:
     #     return slice_lines
 

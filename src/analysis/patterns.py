@@ -173,6 +173,7 @@ SENSITIVE_FUNCTIONS_ADDITIONAL = [
     "webbrowser.py:<module>.open", "urllib.py:<module>.urlopen",
     "websocket.py:<module>.create_connection",
     "urllib/request.py:<module>.urlopen",
+    "urllib/request.py:<module>.urlretrieve",
     # Crypto
     "json.py:<module>.dumps.<returnValue>.encode", "json.py:<module>.loads",
     "base64.py:<module>.b64decode",
